@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "counts_by_policy": {
+    "all_validate": {
+      "total_decisions": 120,
+      "selected": 120,
+      "all_claims": 120
+    },
+    "clear_all": {
+      "total_decisions": 120,
+      "selected": 0
+    },
+    "file_invalidate": {
+      "total_decisions": 120,
+      "selected": 120,
+      "graph_free_unresolved_fallback": 120,
+      "unresolved_dependency": 120,
+      "anchor_file_changed": 5,
+      "subject_file_changed": 5
+    },
+    "file_validate": {
+      "total_decisions": 120,
+      "selected": 120,
+      "graph_free_unresolved_fallback": 120,
+      "unresolved_dependency": 120,
+      "anchor_file_changed": 5,
+      "subject_file_changed": 5
+    },
+    "keep_all": {
+      "total_decisions": 120,
+      "selected": 0
+    },
+    "symbol_invalidate": {
+      "total_decisions": 120,
+      "selected": 120,
+      "unresolved_dependency": 120
+    },
+    "symbol_validate": {
+      "total_decisions": 120,
+      "selected": 120,
+      "unresolved_dependency": 120
+    }
+  }
+}

@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________________________ test_f ____________________________________
+
+    def test_f():
+>       assert f() == 1
+E       assert 2 == 1
+E        +  where 2 = f()
+
+/probe/test_probe.py:3: AssertionError
+=========================== short test summary info ============================
+FAILED ../probe/test_probe.py::test_f - assert 2 == 1
+1 failed in 0.01s
+CAMI_RESULT={"python_version": "3.12.12", "exit_code": 1, "collected": ["test_probe.py::test_f"], "reports": [{"nodeid": "test_probe.py::test_f", "when": "setup", "outcome": "passed", "assertion": false, "fingerprint": null}, {"nodeid": "test_probe.py::test_f", "when": "call", "outcome": "failed", "assertion": true, "fingerprint": "54cae3389c5193c36498b568e66a1d944bb6b69554d7f7670581d85f49fa9a4f"}, {"nodeid": "test_probe.py::test_f", "when": "teardown", "outcome": "passed", "assertion": false, "fingerprint": null}]}
+
+STDERR:
