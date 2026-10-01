@@ -2,3 +2,22 @@
 .DS_Store
 __pycache__/
 *.py[cod]
+.venv/
+.uv-cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+runs/
+data/corpora/
+*.egg-info/
+.tools/
+data/pilot/
+examples/demo/repo/
+
+# Generated working reports; keep selected baseline evidence in Git.
+/reports/click-annotation*/
+/reports/example*/
+/reports/demo-analysis/
+/reports/demo-annotation-import/
+/reports/click-pilot/

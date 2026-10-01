@@ -1,0 +1,87 @@
+# CAMI
+
+CAMI maintains a fixed cohort of claims about Python repositories and measures how Git-aware selection changes validation cost and memory availability. It reads committed Git objects without checking out or importing the repository on the host. Synthetic demonstrations are separate from real datasets.
+
+## Install and run the offline demo
+
+Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:
+
+```bash
+python3 -m pip install --target .tools uv==0.12.21
+export PATH="$PWD/.tools/bin:$PATH"
+uv sync --locked --extra dev
+uv run cami demo --out runs/demo-new
+uv run pytest
+uv run ruff check .
+uv run mypy src/cami
+```
+
+`demo` creates a real synthetic Git history, executes all seven policies, and writes `runs/demo-new/report/`. No Docker, API key, or network is used by the demo. An existing output directory is always rejected. Choose a new output path for another run.
+
+The small checked-in example uses a bundled synthetic Git history. Restore it once in a fresh clone, then run the command contract:
+
+```bash
+git clone examples/demo/repo.bundle examples/demo/repo
+uv run cami check-inputs --config examples/demo/run.json
+uv run cami run --config examples/demo/run.json --out runs/example-new
+uv run cami score --run runs/example-new --labels examples/demo/labels.jsonl --out reports/example-new
+uv run cami compare --runs runs/demo-new/keep_all runs/demo-new/all_validate runs/demo-new/file_validate runs/demo-new/symbol_validate --labels runs/demo-new/dataset/labels.jsonl --out reports/comparison-new
+```
+
+## Run isolated behavior probes
+
+Build the image outside measured probe execution. Record its full repository digest from the inspect output.
+
+```bash
+docker build -f docker/Dockerfile.probes -t cami-probes:py312-pytest842 .
+docker image inspect cami-probes:py312-pytest842 --format '{{json .RepoDigests}}'
+export CAMI_TEST_IMAGE='docker.io/library/cami-probes@sha256:YOUR_ACTUAL_DIGEST'
+uv run pytest -m docker
+```
+
+The locally verified digest is recorded in [implementation_status.md](docs/implementation_status.md). Build attestations can change the derived image digest. Always use the actual digest, never a floating tag in run configurations.
+
+A behavior claim supplies an immutable probe hash, exact pytest node ID and environment profile. CAMI performs three parent repeats before admission and three repeats per selected child. Only three matching assertion failures contradict a claim. Collection, import, crash, timeout and inconsistent outcomes yield insufficient evidence. Repository and probe mounts are read-only; the container has no network, no capabilities, a non-root user and fixed resource limits. Probes must contain their own fixtures; repository conftest and automatic pytest plugins are disabled.
+
+## Prepare the real Click pilot
+
+Fetch source data before running CAMI. `run` disables Git lazy fetching.
+
+```bash
+git clone --no-checkout https://github.com/pallets/click.git data/corpora/click
+uv run cami prepare-pilot --repo data/corpora/click --out data/pilot/click-new
+uv run cami pilot-run --dataset data/pilot/click-new/dataset.json --out runs/click-new
+uv run cami pilot-report --runs runs/click-new --out reports/click-new
+uv run cami pilot-environments --dataset data/pilot/click-new/dataset.json --image "$CAMI_TEST_IMAGE" --out runs/click-environments-new
+uv run cami annotate-export --dataset data/pilot/click-new/dataset.json --out reports/click-annotation-new
+uv run cami freeze --dataset data/pilot/click-new/dataset.json --out runs/click-protocol-new
+```
+
+The pilot selects the last 12 non-merge first-parent transitions through Click 8.1.8. Up to ten exact top-level function claims per parent are sampled with seed 42 before reading child source. An independent tokenizer supplies parent structural evidence. No child labels are generated. These adjacent pairs share one episode cluster. The environment pilot checks one finite Click invocation, not every historical test.
+
+## Annotate, freeze and analyze
+
+See [annotation_guide.md](docs/annotation_guide.md) for the import format and independent-review procedure. Import retains all original answers and adjudication history:
+
+```bash
+uv run cami annotate-import --input annotations.json --out data/annotations/import-001
+uv run cami freeze --dataset data/dataset.json --out runs/protocol-001
+uv run cami analyze --dataset data/dataset.json --runs RUN_DIR_1 RUN_DIR_2 --labels data/annotations/import-001/labels.jsonl --out reports/analysis-001
+uv run cami prepare-scenario --dataset examples/demo/dataset.json --mode hidden_missing --drop 0.50 --seed 42 --out runs/scenario-001
+```
+
+`compare` requires one shared cohort and scenario. `analyze` handles explicitly declared multiple populations, checks complete paired policy sets, separates repositories, strata and replay sequences, and uses declared episode clusters for paired bootstrap. It reports micro rates and repository macro rates separately. Reliability remains exploratory with fewer than 50 contradictions or fewer than 20 clusters containing contradictions.
+
+A freeze hashes configs, cohort records, evidence, probes, graph views and available annotations. It never runs a validator. Missing annotations remain explicitly pending. Held-out `run` requires `frozen_protocol_path` pointing to a matching `protocol.json`; add this path after freeze. The reference field is excluded from the sealed configuration digest. Held-out preflight must reproduce the sealed cohort and exclusions; any change fails the run. Execution requires the recorded local Git repository even though the frozen source evidence is portable.
+
+## Read the artifacts
+
+Every completed run contains a manifest, immutable claims and provenance, selections, validations, states, transitions, costs, evidence and logs. `last_checked_commit` changes only after validation. Carried claims remain distinguishable from claims confirmed at the current revision. Direct invalidation withholds memory without declaring it false. Previously withheld claims are rechecked by validating policies, including after reverts.
+
+Only the evaluation and annotation tools read child labels. Policies and validators receive no labels. Scoring rejects incomplete runs, changed artifacts, incompatible cohorts and incomplete label coverage. Zero-denominator metrics are null with a reason.
+
+Costs separate actual validations, logical validations, cache hits, preflight, initial indexing and incremental indexing. Cached durations are reconstructed estimates, not measured end-to-end times. CPU time covers the analyzer process; container and child-process CPU are not measured. Provenance preparation costs and annotation minutes remain separate. The real pilot uses one fixed execution order, so its measured times are operational observations rather than a final timing comparison.
+
+M6 is not enabled or implemented. No paid requests are made. It requires a separate model, API key, explicit budget and frozen protocol. The executable M0–M5 prototype and pilot do not complete independent annotation or establish the research hypothesis.
+
+Exit codes are 0 for a completed operation, 2 for invalid inputs, 3 for a missing required resource and 4 for an interrupted or incomplete operation.
