@@ -86,6 +86,25 @@ M6 is not enabled or implemented. No paid requests are made. It requires a separ
 
 Exit codes are 0 for a completed operation, 2 for invalid inputs, 3 for a missing required resource and 4 for an interrupted or incomplete operation.
 
+## Demonstrate structural provenance closure
+
+```bash
+uv sync --locked --extra dev
+uv run python scripts/demo_structural_closure.py --out runs/structural-closure-dev-001
+```
+
+Use a new output directory for each invocation. The command creates four fixed synthetic claims,
+prepares hash-bound derived provenance from parent inputs before child commits exist, and runs
+`all_validate`, `symbol_validate` with original incomplete provenance, and `symbol_validate` with
+closed provenance. It checks six authored transitions with an independent tokenizer oracle and
+executes each variant five times in rotating order. `summary.json` records selection reasons,
+verdicts, carried claims and full CLI wall times. A reduction in validations is not a speedup claim.
+
+The [development addendum](docs/protocol_1_1_structural_closure_v1.md) defines the narrow closure
+criterion. Fixture automation cannot authorize real or held-out data and does not create independent
+human reviews. See the [demonstration report](docs/structural_closure_demo_ru.md) for measured results
+and the remaining experiment requirements.
+
 ## Аудит и подготовка следующего эксперимента (2026-10-01)
 
 Подробный результат, ограничения и команды: [русский отчёт](docs/next_stage_report_ru.md).

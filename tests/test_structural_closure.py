@@ -47,7 +47,7 @@ class Fixture:
     parent: str
 
     def rows(self, name: str) -> list[dict[str, Any]]:
-        return read_jsonl(self.inputs / name)  # type: ignore[no-any-return]
+        return read_jsonl(self.inputs / name)
 
     def bind(self) -> None:
         request = read_json(self.request)
@@ -133,6 +133,33 @@ def assert_rejected(fixture: Fixture, output: Path) -> None:
     assert not output.exists()
 
 
+def test_broader_claim_text_cannot_borrow_an_exact_scope(tmp_path):
+    fixture = make_fixture(tmp_path)
+    claims = fixture.rows("claims.jsonl")
+    claims[0]["text"] = "The function always returns a positive integer."
+    write_jsonl(fixture.inputs / "claims.jsonl", claims)
+    fixture.bind()
+    assert_rejected(fixture, tmp_path / "rejected")
+
+
+def test_source_root_must_be_a_directory_containing_the_subject(tmp_path):
+    fixture = make_fixture(tmp_path)
+    request = read_json(fixture.request)
+    request["repo"]["source_roots"] = ["src/module.py"]
+    write_json(fixture.request, request)
+    assert_rejected(fixture, tmp_path / "rejected")
+
+
+@pytest.mark.parametrize("source", [
+    "from builtins import globals as ns\ndef target():\n    return ns()\n",
+    "from builtins import globals as ns\ndef target():\n    ns().update({'target': 7})\n",
+    "from sys import modules as registry\ndef target():\n    return registry\n",
+])
+def test_aliased_namespace_access_is_rejected(tmp_path, source):
+    fixture = make_fixture(tmp_path, source)
+    assert_rejected(fixture, tmp_path / "rejected")
+
+
 def test_closes_both_predicates_with_bound_evidence_and_immutable_sources(tmp_path):
     fixture = make_fixture(tmp_path)
     before = {p: p.read_bytes() for p in fixture.inputs.iterdir()}
@@ -144,6 +171,7 @@ def test_closes_both_predicates_with_bound_evidence_and_immutable_sources(tmp_pa
     assert manifest["parent_only"] is True and manifest["child_data_used"] is False
     assert manifest["independent_review"] is False and manifest["real_experiment_eligible"] is False
     assert manifest["derived_provenance_version"] == closure.ADDENDUM_VERSION
+    assert manifest["python_version"] == sys.version
     assert manifest["addendum_sha256"] == file_hash(closure.DOCUMENT)
     assert manifest["request_sha256"] == file_hash(fixture.request)
     assert manifest["derived_provenance_sha256"] == file_hash(output / "provenance.jsonl")

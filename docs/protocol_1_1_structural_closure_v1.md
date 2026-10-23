@@ -15,6 +15,9 @@ create a ParentReceipt, label, scientific freeze, or human review.
 
 Closure is per claim. Only `symbol_exists` and `signature_equals` are eligible,
 with an exact top-level function subject whose qualname is a simple identifier.
+`known_incomplete=false` means no known support obligation remains for that exact
+accepted predicate under this addendum. It does not prove complete dependence on,
+or independence from, all possible factors.
 The explicit scope allowlist is:
 
 - `Exact syntactic definition, no runtime semantics.` for either predicate.
@@ -23,6 +26,11 @@ The explicit scope allowlist is:
   for `signature_equals`.
 
 The latter two strings recognize generated scopes without authorizing real data.
+Text must also match an exact fixture template. Accepted text is
+`Exact fixture syntax.`, `Exact KIND predicate for PATH::QUALNAME.`, or the
+generator's exact existence or canonical normalized-signature sentence for that
+subject and predicate. Other wording is refused even if its scope string is allowed.
+The complete claim, including text, scope and expected predicate, is hash-bound.
 The original intact provenance must have zero explicit dependencies,
 `known_incomplete=true`, and a nonempty list of known remarks. The only dischargeable
 remark is exactly `Draft parent-only anchors; dependency extraction and review pending.`.
@@ -44,6 +52,8 @@ Each authorization binds canonical Claim and Provenance SHA-256 digests. The req
 also binds the exact input file hashes, full parent object ID, repository location,
 configured source roots, protocol, and addendum document hash. Claims must belong to
 that repository and parent. The subject must lie within the configured index roots.
+An indexed root must contain the subject as a descendant, rather than name the
+subject file itself.
 The complete subject blob is retained with its Git object ID and SHA-256 digest.
 
 Closure requires exactly one matching definition in the complete matching definition
@@ -109,6 +119,7 @@ file digest, exact remark dispositions, and automatic fixture authority.
 
 The manifest binds request, original and derived file hashes, version, document and
 protocol hashes, implementation hashes, and the complete payload file inventory.
+The Python version and signature normalization identity are recorded with the index version.
 The inventory excludes only the manifest itself to avoid a self-hash cycle.
 It records `parent_only=true`, `child_data_used=false`, `independent_review=false`,
 and `real_experiment_eligible=false`. These artifacts permit a subsequent synthetic

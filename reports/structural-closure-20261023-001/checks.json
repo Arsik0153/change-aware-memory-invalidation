@@ -1,0 +1,54 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "checks": [
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-m",
+        "not docker"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 27.49541669699829,
+      "log": "pytest.log"
+    },
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python3",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.08012327901087701,
+      "log": "ruff.log"
+    },
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python3",
+        "-m",
+        "mypy",
+        "src/cami"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.3007721119793132,
+      "log": "mypy.log"
+    },
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python3",
+        "-m",
+        "mypy",
+        "src/cami",
+        "scripts/demo_structural_closure.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.550614909036085,
+      "log": "demo_mypy.log"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>
+body{margin:0;font-family:var(--font-sans,system-ui);color:var(--foreground,#222);line-height:1.45}
+p{margin:0 0 12px}table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:14px}
+th,td{padding:8px 4px;border-bottom:1px solid var(--border,#ddd);text-align:right}
+th:first-child,td:first-child{text-align:left;padding-left:0}th{font-weight:600}td:not(:first-child){font-variant-numeric:tabular-nums}
+tfoot{font-weight:600}.note{font-size:13px;color:var(--muted-foreground,#666)}
+</style></head><body><p>Число проверок на четырёх фиксированных claims</p>
+<table><thead><tr><th>Переход</th><th>Все</th><th>Неполная</th><th>Закрытая</th></tr></thead><tbody><tr><td>Посторонний файл</td><td>4</td><td>4</td><td>0</td></tr><tr><td>Тело функции</td><td>4</td><td>4</td><td>2</td></tr><tr><td>Сигнатура</td><td>4</td><td>4</td><td>2</td></tr><tr><td>Удаление</td><td>4</td><td>4</td><td>2</td></tr><tr><td>Неоднозначный binding</td><td>4</td><td>4</td><td>2</td></tr><tr><td>Возврат версии</td><td>4</td><td>4</td><td>2</td></tr></tbody><tfoot><tr><td>За последовательность</td><td>24</td><td>24</td><td>10</td></tr></tfoot></table>
+<p class="note">«Все» — all_validate. Остальные варианты — symbol_validate. Изменение тела законно выбирает оба claim функции по AST.</p>
+<p>Полное время CLI, 5 повторений каждого варианта</p><table><thead><tr><th>Вариант</th><th>Проверки</th><th>Медиана, с</th><th>Диапазон, с</th></tr></thead><tbody><tr><td>all_validate</td><td>24</td><td>0.408</td><td>0.351–0.422</td></tr><tr><td>Неполная provenance</td><td>24</td><td>0.401</td><td>0.375–0.446</td></tr><tr><td>После закрытия</td><td>10</td><td>0.356</td><td>0.340–0.407</td></tr></tbody></table>
+<p class="note">Время включает запуск Python, preflight, все 6 переходов, Git I/O и запись артефактов. Диапазоны пересекаются. Ускорение не установлено.</p>
+<p class="note">Изменение сигнатуры и удаление обнаружены. Неоднозначность дала insufficient_evidence. Возврат к прежней версии восстановил claims. Это synthetic development, не доказательство качества на реальных проектах.</p></body></html>

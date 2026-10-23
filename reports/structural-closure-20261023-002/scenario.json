@@ -1,0 +1,62 @@
+{
+  "version": "cami-structural-fixture-1",
+  "description": "Authored expectations before CAMI execution. Synthetic lexical function predicates only.",
+  "claims": [
+    {"id": "f-exists", "name": "f", "kind": "symbol_exists"},
+    {"id": "f-signature", "name": "f", "kind": "signature_equals"},
+    {"id": "stable-exists", "name": "stable", "kind": "symbol_exists"},
+    {"id": "stable-signature", "name": "stable", "kind": "signature_equals"}
+  ],
+  "parent_source": "def f(x):\n    return x + 1\n\ndef stable(x):\n    return x\n",
+  "parent_unrelated": "VALUE = 1\n",
+  "transitions": [
+    {
+      "name": "unrelated_file",
+      "source": "def f(x):\n    return x + 1\n\ndef stable(x):\n    return x\n",
+      "unrelated": "VALUE = 2\n",
+      "closed_selected": [],
+      "f_exists": "supported",
+      "f_signature": "supported"
+    },
+    {
+      "name": "body_only",
+      "source": "def f(x):\n    return x + 2\n\ndef stable(x):\n    return x\n",
+      "unrelated": "VALUE = 2\n",
+      "closed_selected": ["f-exists", "f-signature"],
+      "f_exists": "supported",
+      "f_signature": "supported"
+    },
+    {
+      "name": "signature_change",
+      "source": "def f(x, y=0):\n    return x + 2\n\ndef stable(x):\n    return x\n",
+      "unrelated": "VALUE = 2\n",
+      "closed_selected": ["f-exists", "f-signature"],
+      "f_exists": "supported",
+      "f_signature": "contradicted"
+    },
+    {
+      "name": "function_removed",
+      "source": "def stable(x):\n    return x\n",
+      "unrelated": "VALUE = 2\n",
+      "closed_selected": ["f-exists", "f-signature"],
+      "f_exists": "contradicted",
+      "f_signature": "contradicted"
+    },
+    {
+      "name": "ambiguous_binding",
+      "source": "def f(x):\n    return x + 1\n\nf = 7\n\ndef stable(x):\n    return x\n",
+      "unrelated": "VALUE = 2\n",
+      "closed_selected": ["f-exists", "f-signature"],
+      "f_exists": "insufficient_evidence",
+      "f_signature": "insufficient_evidence"
+    },
+    {
+      "name": "revert",
+      "source": "def f(x):\n    return x + 1\n\ndef stable(x):\n    return x\n",
+      "unrelated": "VALUE = 1\n",
+      "closed_selected": ["f-exists", "f-signature"],
+      "f_exists": "supported",
+      "f_signature": "supported"
+    }
+  ]
+}

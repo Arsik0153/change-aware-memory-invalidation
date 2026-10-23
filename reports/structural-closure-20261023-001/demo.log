@@ -1,0 +1,11 @@
+all_validate: 24 checks; CLI median 0.374810s [0.346133, 0.420570]
+original_incomplete: 24 checks; CLI median 0.356570s [0.331026, 0.392586]
+closed_structural: 10 checks; CLI median 0.343693s [0.308589, 0.346329]
+unrelated_file: all=4, incomplete=4, closed=0; all claims carried
+body_only: all=4, incomplete=4, closed=2; f-exists=supported:predicate_matches, f-signature=supported:predicate_matches
+signature_change: all=4, incomplete=4, closed=2; f-exists=supported:predicate_matches, f-signature=contradicted:predicate_mismatch
+function_removed: all=4, incomplete=4, closed=2; f-exists=contradicted:subject_absent, f-signature=contradicted:subject_absent
+ambiguous_binding: all=4, incomplete=4, closed=2; f-exists=insufficient_evidence:ambiguous_subject, f-signature=insufficient_evidence:ambiguous_subject
+revert: all=4, incomplete=4, closed=2; f-exists=supported:predicate_matches, f-signature=supported:predicate_matches
+Independent fixture checks: 28; status: passed
+Summary: /root/apps/change-aware-memory-invalidation/runs/structural-closure-dev-001/summary.json

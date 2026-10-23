@@ -5,6 +5,7 @@ import ast
 import hashlib
 import keyword
 import shutil
+import sys
 from pathlib import Path, PurePosixPath
 from typing import Annotated, Literal, TypeVar
 
@@ -132,7 +133,8 @@ def _simple(name: str) -> bool:
 
 
 def _in_roots(path: str, roots: tuple[str, ...]) -> bool:
-    return any(root == "." or PurePosixPath(path).is_relative_to(root) for root in roots)
+    return path not in roots and any(
+        root == "." or PurePosixPath(path).is_relative_to(root) for root in roots)
 
 
 _INERT = (
@@ -157,7 +159,6 @@ def _inert(expression: ast.AST) -> None:
 
 
 def _binding_check(tree: ast.Module) -> None:
-    """Accept a small static language; function bodies are syntax, never executed."""
     for part in ast.walk(tree):
         if getattr(part, "type_params", ()):
             raise InputError("unsupported type_params")
@@ -165,6 +166,9 @@ def _binding_check(tree: ast.Module) -> None:
             raise InputError("cross-scope or walrus binding uncertainty")
         if isinstance(part, ast.ImportFrom) and any(a.name == "*" for a in part.names):
             raise InputError("wildcard binding uncertainty")
+        if isinstance(part, ast.alias) and any(
+                name in _DYNAMIC_NAMES or name in _DYNAMIC_ATTRS for name in part.name.split(".")):
+            raise InputError("aliased dynamic namespace uncertainty")
         if (isinstance(part, ast.Name) and part.id in _DYNAMIC_NAMES
                 or isinstance(part, ast.Attribute) and part.attr in _DYNAMIC_ATTRS):
             raise InputError("dynamic namespace uncertainty")
@@ -263,6 +267,16 @@ def _close(claim: Claim, prov: Provenance, authorization: ClosureAuthorization,
         raise InputError("claim/provenance authorization digest mismatch")
     if claim.kind not in SCOPES or claim.scope not in SCOPES[claim.kind]:
         raise InputError("ineligible claim kind or exact syntactic scope")
+    texts = {"Exact fixture syntax.",
+             f"Exact {claim.kind} predicate for {claim.subject.path}::{claim.subject.qualname}."}
+    if isinstance(claim.predicate, Equals):
+        texts.add(f"The exact definition {claim.subject.path}:{claim.subject.qualname} has "
+                  f"normalized signature {canonical(claim.predicate.expected_signature).decode()}.")
+    else:
+        texts.add(f"{claim.subject.path} contains the exact top-level function definition "
+                  f"{claim.subject.qualname}.")
+    if claim.text not in texts:
+        raise InputError("claim text is outside the exact syntactic fixture templates")
     if claim.subject.node_kind != "function" or not _simple(claim.subject.qualname):
         raise InputError("ineligible subject kind or identity")
     if prov.scenario_id != "intact" or prov.dependencies or not prov.known_incomplete:
@@ -384,6 +398,8 @@ def prepare_structural_closure(parent_inputs: Path, output: Path) -> Path:
         "parent_only": True, "child_data_used": False, "independent_review": False,
         "real_experiment_eligible": False, "authority": request.authority.model_dump(mode="json"),
         "index_version": INDEX_VERSION,
+        "python_version": sys.version,
+        "signature_normalization": "cami.index.signature; syntax only; index_version=" + INDEX_VERSION,
         "implementation_sha256": {name: file_hash(Path(__file__).with_name(name)) for name in
                                   ("structural_closure.py", "index.py", "repository.py",
                                    "models.py", "artifacts.py")},
