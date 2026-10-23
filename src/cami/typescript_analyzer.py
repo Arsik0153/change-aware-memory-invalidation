@@ -202,6 +202,10 @@ def analyze_typescript(
             process.kill()
             process.wait()
             raise TypeScriptAnalyzerError("TypeScript analysis exceeded timeout") from error
+        except BaseException:
+            process.kill()
+            process.wait()
+            raise
         stdout.seek(0)
         raw = stdout.read(MAX_OUTPUT_BYTES + 1)
         stderr.seek(0)

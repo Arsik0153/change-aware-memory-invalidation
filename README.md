@@ -175,3 +175,5 @@ receipts и labels ещё не получены. Формы и дальнейш�
 
 Product memory commands and the agent consumption flow are described in
 [Рабочая память для CLI-агента](docs/product_memory_ru.md).
+
+Product background refresh and agent workflow: [cami watch](docs/watch.md).

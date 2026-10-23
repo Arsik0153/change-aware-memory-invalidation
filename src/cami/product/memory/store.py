@@ -191,6 +191,24 @@ class MemoryStore:
         except (sqlite3.Error, ValidationError, CacheCorrupt) as exc:
             raise IncompleteError(f"memory_database_error: {exc}") from exc
 
+    @contextmanager
+    def observation_connection(self) -> Iterator[sqlite3.Connection | None]:
+        """Inspect established knowledge without initializing or completing live recovery."""
+        try:
+            if self._role() is DatabaseRole.FIRST_USE:
+                yield None
+                return
+            with capture_database(self.path) as snapshot:
+                if snapshot.journal is not None or snapshot.pending() is not None:
+                    raise IncompleteError("memory_observation_requires_refresh: recovery pending")
+                with self._private_connection(snapshot.main, None) as db:
+                    snapshot.verify()
+                    db.execute("PRAGMA query_only=ON")
+                    yield db
+                    snapshot.verify()
+        except (sqlite3.Error, ValidationError, CacheCorrupt) as exc:
+            raise IncompleteError(f"memory_database_error: {exc}") from exc
+
     def put_sources(self, captured: dict[str, bytes], view: CodeView) -> None:
         self.objects.mkdir(exist_ok=True)
         _sync_directory(self.objects.parent)

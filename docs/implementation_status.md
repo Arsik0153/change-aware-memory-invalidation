@@ -497,3 +497,37 @@ fixes implemented, and fresh watcher R2 is active according to the parent transf
 Watch code is absent from this commit. These self-checks do not accept Stage4. The exact commit, trees,
 commands, outputs, limits, and postcommit checks are in
 [the integration receipt](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json).
+
+## 2026-10-23 corrected WATCH and OPT integrated into MAIN
+
+Stage4 was subsequently accepted by independent exact-MAIN R3 at
+`83f6aea2178b7ace167102b668cedb78c04dca17`. Stages 1 through 4 remain accepted in their prior scope.
+WATCH and OPT are now integrated over that corrected memory implementation.
+Stage5 is `integration_completed` and `under_review` pending fresh exact-MAIN review.
+
+The [fresh independent union PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union-review/20261023T1736Z-r1/REPORT.md)
+accepts the isolated 21-file artifact, SHA256
+`84e1d10bd513da67d97c8b7d6353765808d8682b6a0b3d81edc3864073801937`.
+MAIN source and tests match its trees `ac78ecf07326cfaa666c15367d54d70fe23ba4d0`
+and `53d2876ad78fed4a507cf5a7e184a431c828af3a`.
+All relevant source, tests, configuration, fixtures, locks, Python/Node/dependency versions,
+interpreter hashes and trusted compiler files match the recorded inputs.
+Program documentation differences are reconciled separately.
+The writer's 819 full passes with four Docker tests deselected and 497 focused passes
+are reused as `FROM_IDENTICAL_ARTIFACT`. They were not rerun on MAIN.
+Installed-wheel and fresh reviewer evidence are also reused under that label after package-byte comparison.
+
+New MAIN checks exercise the actual retained `.venv/bin/cami`, outside the checkout with PYTHONPATH absent.
+Eleven CLI commands and three persisted phases prove real start/edit/background memory/recovery/stop,
+same-canonical context without a new transition, and own-project find/context for `run_experiment`.
+SQLite/CAS observations precede refresh-capable queries. Owned controller, workers and Node are absent after stop.
+An initial external probe raced session publication; its transient unknown result and cleanup are retained.
+Only the readiness oracle changed. No product source changed after applying the reviewed patch.
+
+The scope P1 repair, name repair, legacy cache/ignore and relative-import fixes remain intact.
+Earlier FAILs and the historical three-second oversized-CAS timeout remain in the record.
+The timeout's retrospective cause remains unknown. No benchmark was rerun and no general latency claim is added.
+Research protocols, datasets, seals, freeze, held-out targets and Docker remain unchanged.
+Exact commit, commands, reused receipts, quota/resource boundaries and cleanup are in the
+[MAIN integration handoff](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-main-integration/20261023T174926Z/HANDOFF.md).
+Independent integrated-MAIN acceptance remains pending.

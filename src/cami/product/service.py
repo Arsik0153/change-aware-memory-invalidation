@@ -9,8 +9,9 @@ from typing import Literal
 
 from cami.errors import IncompleteError, InputError
 from cami.product.models import Observation, digest
-from cami.product.store import CacheCorrupt, GenerationStore, state_base
-from cami.product.worktree import repository_root
+from cami.product.observation import ProductObservation
+from cami.product.store import CacheCorrupt, GenerationStore, index_fingerprint, state_base
+from cami.product.worktree import CaptureChanged, capture, repository_root
 from cami.product.memory.adapters import ProductIndexPort, HybridIndexPort
 from cami.product.memory.models import (
     AgentContext, AvailableRecord, CodeView, DefinitionFact, ExistsPayload, MemoryGeneration,
@@ -40,6 +41,19 @@ def semantic_payload(payload: Payload) -> object:
     return value
 
 
+def _probes(records: tuple[RecordRevision, ...] | list[RecordRevision],
+            query: str | None = None, request: MutationRequest | None = None) -> tuple[str, ...]:
+    paths = {r.payload.subject.path for r in records}
+    for record in records:
+        if isinstance(record.payload, NotePayload):
+            paths.update(s.path for s in record.payload.sources)
+    if query and ":" in query:
+        paths.add(query.split(":", 1)[0])
+    if request:
+        paths.add(request.payload.subject.path)
+    return tuple(sorted(paths))
+
+
 class ProductMemory:
     def __init__(self, repo: Path, source_roots: tuple[str, ...] | None = None,
                  excluded_paths: tuple[str, ...] = (), port: ProductIndexPort | None = None):
@@ -60,6 +74,64 @@ class ProductMemory:
 
     def refresh(self) -> MemoryGeneration:
         return self._coordinate(None, None)[0]
+
+    def observe(self) -> ProductObservation:
+        """Capture canonical inputs without analysis, validation or knowledge publication."""
+        started = datetime.now(UTC).isoformat()
+        try:
+            with self.index_store.writer(), self.store.observation_connection() as db:
+                previous = self.store.head(db) if db is not None else None
+                records = self.store.revisions(db) if db is not None else ()
+                probes = _probes(records)
+                fingerprint = index_fingerprint()
+                captured = capture(self.root, self.roots, self.excludes, state_base(), probes)
+                matches = (previous is not None
+                           and previous.index.snapshot_id == captured.snapshot_id
+                           and previous.index.analyzer_fingerprint == fingerprint
+                           and previous.index.policy_fingerprint == digest(
+                               captured.policy.model_dump(mode="json"))
+                           and previous.validator_fingerprint == VALIDATOR_FINGERPRINT
+                           and tuple(s.record for s in previous.states) == records)
+                reason: Literal["inputs_changed", "head_matches",
+                                "index_artifact_unavailable", "no_head"] = (
+                                    "head_matches" if matches else
+                                    "no_head" if previous is None else "inputs_changed")
+                if previous is not None and db is not None:
+                    view = self.store.view(db, previous.index.generation_id)
+                    if view.index != previous.index:
+                        raise IncompleteError("memory_head_index_mismatch")
+                    # Unavailable compiler results deliberately have no reusable cache artifact.
+                    unavailable = any(error == "compiler_unavailable"
+                                      for _, error in view.path_errors)
+                    if matches and not unavailable and self.index_store.load(
+                            previous.index.generation_id, captured, fingerprint) is None:
+                        matches, reason = False, "index_artifact_unavailable"
+                    for item in previous.states:
+                        sources = (item.record.payload.sources
+                                   if isinstance(item.record.payload, NotePayload) else
+                                   tuple(e for e in item.state.check.evidence
+                                         if isinstance(e, SourceRef))
+                                   if not isinstance(item.state, NoteState) else ())
+                        for source in sources:
+                            self.store.read_source(source)
+                verified = capture(self.root, self.roots, self.excludes, state_base(), probes)
+                if (captured.snapshot_id != verified.snapshot_id
+                        or captured.base_commit != verified.base_commit
+                        or fingerprint != index_fingerprint()):
+                    raise IncompleteError("memory_observation_unstable: inputs changed")
+                return ProductObservation(
+                    comparison_key=digest([captured.snapshot_id, fingerprint,
+                                           VALIDATOR_FINGERPRINT,
+                                           [r.model_dump(mode="json") for r in records],
+                                           previous.catalog_epoch if previous else 0]),
+                    relation="matching" if matches else "changed", reason=reason,
+                    capture_started_at=started, verified_at=datetime.now(UTC).isoformat(),
+                    memory_generation_id=previous.memory_generation_id if previous else None,
+                    index=previous.index if previous else None)
+        except CaptureChanged as exc:
+            raise IncompleteError(f"memory_observation_unstable: {exc}") from exc
+        except (OSError, CacheCorrupt) as exc:
+            raise IncompleteError(f"memory_state_io_error: {exc}") from exc
 
     def context(self, query: str) -> AgentContext:
         if not query.strip() or "\x00" in query:
@@ -156,15 +228,7 @@ class ProductMemory:
                            request: MutationRequest | None) -> tuple[MemoryGeneration, CodeView, Observation, MutationReceipt | None]:
         previous = self.store.head(db)
         records = list(self.store.revisions(db))
-        probe_paths = {r.payload.subject.path for r in records}
-        for record in records:
-            if isinstance(record.payload, NotePayload):
-                probe_paths.update(s.path for s in record.payload.sources)
-        if query and ":" in query:
-            probe_paths.add(query.split(":", 1)[0])
-        if request:
-            probe_paths.add(request.payload.subject.path)
-        probes = tuple(sorted(probe_paths))
+        probes = _probes(records, query, request)
         prepared = self.port.prepare_locked(self.index_store, self.root, self.roots,
                                             self.excludes, probes)
         view = prepared.view

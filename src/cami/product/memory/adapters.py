@@ -11,7 +11,7 @@ from typing import Protocol
 
 from pydantic import TypeAdapter, ValidationError
 
-from cami.ecma_models import EcmaAnalysis, EcmaDefinition
+from cami.ecma_models import EcmaAnalysis, EcmaDefinition, EcmaIdentityGap
 from cami.errors import IncompleteError
 from cami.product.memory.models import (
     CodeView, DefinitionFact, EcmaSignatureSyntax, IndexRef,
@@ -136,6 +136,9 @@ def ecma_view(analysis: EcmaAnalysis, index: IndexRef, captured: Mapping[str, by
     if not set(analysis.analyzed_files).issubset(sources):
         raise ValueError("ECMA analysis refers to uncaptured files")
     signatures = ecma_signatures(analysis.definitions, trusted_compiler=trusted_compiler)
+    gaps_by_path: dict[str, list[EcmaIdentityGap]] = {}
+    for gap in analysis.identity_gaps:
+        gaps_by_path.setdefault(gap.path, []).append(gap)
     definitions = tuple(DefinitionFact(
         subject=SymbolKey(language=d.language, path=d.key.path, qualname=d.key.qualname,
                           node_kind=d.key.kind),
@@ -143,7 +146,7 @@ def ecma_view(analysis: EcmaAnalysis, index: IndexRef, captured: Mapping[str, by
         source=sources[d.key.path], ambiguous=d.ambiguous,
         identity_uncertain=not d.implementation or any(
             g.covers(d.key.path, d.key.qualname, d.key.kind)
-            for g in analysis.identity_gaps))
+            for g in gaps_by_path.get(d.key.path, ())))
         for d, signature in zip(analysis.definitions, signatures, strict=True))
     errors = tuple((item.path, "parse_error" if item.reason == "syntax_error"
                     else "scope_uncovered") for item in analysis.excluded_files)

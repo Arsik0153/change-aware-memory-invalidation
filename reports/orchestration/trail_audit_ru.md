@@ -128,3 +128,30 @@ Disposable check directory очищается в finally, продуктовые
 Неподтверждённые historical task workstates не восстановлены как live; PR ledger и frontier не изменены.
 Статус четырёх принятых этапов не означает завершение vision. Следующий gate есть fresh union review,
 затем MAIN integration commit и exact-MAIN review. Symbol-domain unit и реальный agent demo следуют после них.
+
+## 2026-10-23 интеграция corrected WATCH и OPT в MAIN
+
+Этот run supersedes прежнее ожидание union review. Прочитан свежий
+[independent artifact PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union-review/20261023T1736Z-r1/REPORT.md).
+Он не принимает integrated MAIN. Все прежние FAIL и строки trail сохранены.
+Исходный checkout был clean на `008f606cfecb7cb59249d70a9c00a9827c50f9cb`.
+Source/tests совпали с принятым `83f6aea2178b7ace167102b668cedb78c04dca17` и corrected-memory prerequisite.
+Проверен SHA256 feature patch, затем без конфликтов применён ровно 21 feature path.
+Проверены 361 union input, source/test trees, config/fixtures/locks, Python и Node hashes,
+dependency versions и 146 trusted compiler files. Отличия program docs разобраны отдельно.
+
+Writer 819 full, четыре Docker deselected, 497 focused и installed evidence переиспользованы как
+`FROM_IDENTICAL_ARTIFACT`. Новый full suite и benchmark не запускались.
+Свежий MAIN smoke выполнил 11 CLI commands и три persisted phases.
+Реальные SQLite/CAS до context подтвердили background uncertainty и recovery.
+Confirmed stop, PID/starttime readback, отсутствие workers/Node/socket и own-project find/context проверены непосредственно.
+Первый readiness probe поймал transient unknown до session publication.
+Его evidence и cleanup сохранены; исправлено только внешнее ожидание ready, product bytes не менялись.
+
+Текущий run проверяет append-only prefix `decisions.tsv` относительно Git008.
+Self-verification и deslop не являются новым independent review. Stage1–4 остаются accepted;
+Stage5 `integration_completed`, acceptance `under_review` до fresh exact-MAIN review.
+Точные hashes, ресурсы, structured quota с actual timestamps, команды, cleanup и postcommit receipt хранятся в
+[integration evidence](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-main-integration/20261023T174926Z/HANDOFF.md).
+Смена quota с 58% и reset29Oct на 100% и reset30Oct сохранена без объяснения причины.
+Ledger, frontier и чужие runtime handles не изменялись. Новые task workstates не выдумывались.

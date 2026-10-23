@@ -15,6 +15,8 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     from cami.product.memory.cli import add_parser as add_memory_parser
     add_memory_parser(sub)
+    from cami.product.watch.cli import add_parser as add_watch_parser
+    add_watch_parser(sub)
     find = sub.add_parser("find", help="find Python, JS, and TS definitions in worktree or Git snapshots")
     find.add_argument("symbol")
     find.add_argument("--repo", type=Path, required=True)
@@ -80,6 +82,9 @@ def main(argv: list[str] | None = None) -> int:
             except TypeScriptSetupError as error:
                 raise ResourceError(str(error)) from error
             print(f"TypeScript 6.0.3 ready: {directory}")
+        elif args.command == "watch":
+            from cami.product.watch.cli import execute as watch_execute
+            return watch_execute(args)
         elif args.command == "memory":
             from cami.product.memory.cli import execute
             execute(args)

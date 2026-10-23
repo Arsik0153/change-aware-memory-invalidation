@@ -168,3 +168,23 @@ def test_known_unsupported_member_withholds_nested_function(hybrid, replacement)
     current = memory.context(symbol)
     assert current.withheld[0].reason == 'binding_unresolved'
     assert current.withheld[0].state.check.verdict == 'insufficient_evidence'
+
+
+def test_nested_identity_gap_is_scoped_to_its_source_file(hybrid):
+    root, memory = hybrid
+    original = 'class C { method() { function inner() {} } }'
+    for path in ('safe.ts', 'uncertain.ts'):
+        (root / path).write_text(original)
+        symbol = f'{path}:C.method.inner'
+        memory.remember('symbol_exists', symbol, memory.context(symbol), path)
+    (root / 'uncertain.ts').write_text(
+        'class C { method() { function inner() {} } "method" = wrap(() => 1); }')
+
+    safe = memory.context('safe.ts:C.method.inner')
+    assert len(safe.facts) == 1 and not safe.withheld
+    assert not safe.code[0].identity_uncertain
+    uncertain = memory.context('uncertain.ts:C.method.inner')
+    assert uncertain.code[0].identity_uncertain
+    assert not uncertain.facts
+    assert uncertain.withheld[0].reason == 'binding_unresolved'
+    assert uncertain.withheld[0].state.check.verdict == 'insufficient_evidence'

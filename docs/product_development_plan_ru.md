@@ -9,10 +9,12 @@
 `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
 Stage4 принят после [независимого exact-MAIN R3 PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T165329Z-r3/REVIEW.md)
 на `83f6aea2178b7ace167102b668cedb78c04dca17`. Четыре этапа приняты в согласованном scope.
-Предыдущие FAIL сохранены. Stage5 остаётся `not_accepted`, isolated, union `under_review`.
-Corrected OPT имеет отдельный conditional PASS. WATCH и OPT ещё не интегрированы в MAIN.
-Сохранённые 819 full и 497 focused passes union принадлежат writer и не заменяют независимый review.
-Следующий порядок: свежий union review, MAIN integration commit, свежий exact-MAIN review.
+Предыдущие FAIL сохранены. Stage5 имеет статус `integration_completed`, acceptance `under_review`.
+[Свежий independent union PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union-review/20261023T1736Z-r1/REPORT.md)
+принимает isolated artifact. WATCH и OPT интегрированы в MAIN с сохранением принятого memory repair.
+Сохранённые 819 full и 497 focused passes переиспользованы как `FROM_IDENTICAL_ARTIFACT`
+после проверки source, tests, config, fixtures, locks и toolchain. Они не запускались повторно.
+Новый checkout CLI smoke прошёл; следующий gate есть свежий exact-MAIN review commit.
 Затем расширение symbol domain, onboarding агента и содержательная демонстрация на реальном проекте по vision.
 Objects, values и classes остаются design-only. Общей готовности продукта ещё нет.
 Пользователь возобновил работу после [cleanup 18,21 GiB](/root/.claude/orchestrate/change-aware-memory-invalidation/cleanup/20261023-cleanup/REPORT.md).
@@ -298,7 +300,8 @@ Acceptance этапа:
 
 ### 5. Watch и интеграция агента
 
-Статус `in_progress`, acceptance `not_accepted`. Watch остаётся isolated.
+Статус `integration_completed`, acceptance `under_review`. WATCH и OPT интегрированы в MAIN.
+Это implementation delivery. Integrated MAIN PASS ещё не получен.
 [Watcher R1 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-watch-review/t3-08f708c7-20261023T152115Z-r1/REVIEW.md)
 относится к original artifact `fb5018509d87a2116eb25c45d6af6212875ee1c814a7b9e9494ae6d978f65d0b`.
 Три findings: P1 Node orphan после stop, P1 startup worker и lease ownership,
@@ -323,6 +326,22 @@ Actual сохранённые `full.log` и `targeted.log` подтвержда�
 Эти результаты не являются independent PASS. Worker был прерван после full run до final receipt;
 завершение static workflow сверяется по сохранённым receipts, не по предполагаемому task state.
 Точные continuation paths и cleanup evidence находятся в [RESUME](/root/.claude/orchestrate/change-aware-memory-invalidation/cleanup/20261023-cleanup/RESUME.md).
+
+Свежий [independent union review](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union-review/20261023T1736Z-r1/REPORT.md)
+дал PASS exact artifact, включая 79 focused passes, installed Node-stop, 38 CLI/process launches
+и 12 persisted phases, authentic old62 background upgrade и ownership/crash probes.
+Свежие Ruff, strict mypy по 52 source files, оба Node syntax checks и diff check закрыли static gate артефакта.
+Это результаты reviewer на isolated artifact. Они не являются integrated MAIN acceptance.
+При интеграции 21 feature file совпал побайтно с artifact; все 361 входных файлов проверены,
+а отличия program docs разобраны отдельно. Принятые scope predicate, validator closure,
+storage, name fix и legacy cache/ignore/relative-import regressions сохранены.
+Новый MAIN checkout smoke прошёл 11 CLI commands и три persisted phases.
+Реальный watcher опубликовал binding_unresolved после edit до context и восстановил support после возврата кода.
+Подтверждён stop с reap owned controller/worker/Node и find/context самого CAMI.
+Один ранний probe ожидал готовый session.json сразу после Popen; transient unknown/exit4 сохранён,
+oracle исправлен ожиданием running и latest_successful. Product bytes не менялись.
+Полные команды, cleanup, hashes и postcommit binding находятся в
+[integration handoff](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-main-integration/20261023T174926Z/HANDOFF.md).
 
 [Независимый corrected OPT review](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/context-gap-review/20261023T164400Z-r1/REPORT.md)
 дал conditional PASS на частной corrected composition. Обе версии прошли по 112 focused tests,
@@ -419,18 +438,18 @@ Stage1 `accepted` после независимого `PASS` r2 для `499acfad
 Stage2 `accepted` на `6037294831fc0cde5525986cab043ea21af27dd3`.
 Stage3 `accepted` на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838` после independent MAIN PASS.
 Stage4 `implementation_completed`, acceptance `accepted` на `83f6aea2178b7ace167102b668cedb78c04dca17` после independent R3 PASS.
-Stage5 `in_progress`, `not_accepted`; isolated union `under_review`.
+Stage5 `integration_completed`, acceptance `under_review`; isolated union имеет independent PASS.
 Итого пять продуктовых этапов: четыре приняты в согласованном scope, один ещё не принят.
 MAIN содержит product memory с прежним R4 storage, name fix и scope repair.
-MAIN62 R2 FAIL сохранён. WATCH и OPT в MAIN отсутствуют.
+MAIN62 R2 FAIL сохранён. MAIN содержит exact corrected WATCH+OPT union поверх принятого memory repair.
 Self-checks и identical-artifact receipts не заменяют независимый review.
 Runtime units включают отдельные implementation, design, review и docs runs.
 Исторический FAIL сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4` и обоих memory artifacts.
 Watcher R1 terminal FAIL сохранён. Cleanup terminal, artifact R2 conditional PASS.
-Corrected union source и writer logs сохранены после cleanup; новый independent review ещё необходим.
+Corrected union получил fresh independent artifact PASS. Интеграция проверена на реальном MAIN checkout.
 Исторический partial timeout сохранён, тот же case прошёл в новом writer artifact.
 Полные переданные task/thread/run/node handles и прежние running snapshots сохранены как история.
-Новый reviewer handle родитель передаст отдельно. Текущий integrator другие задачи не опрашивает.
+Exact-MAIN reviewer handle родитель назначит отдельно. Текущий integrator другие задачи не опрашивает.
 Исторический recorder snapshot завершён в 14:29:18 UTC и не обновляется автоматически.
 Только подтверждённый acceptance меняет статус этапа на принятый.
 
@@ -440,7 +459,7 @@ Standing orders хранятся в `preferences.md`; runtime handles и ист�
 Canonical decision trail остаётся `reports/orchestration/decisions.tsv`; store содержит только ссылку на него.
 Исходные plugin paths перечислены в `references.md` внешнего store. Временная vendor-копия удалена.
 PR frontier seed пропущен: пользователь выбрал локальные коммиты на main без PR.
-Текущий MAIN integrator коммитит только три разрешённых docs files, без push и PR. Новых агентов не запускает.
+Текущий MAIN integrator коммитит 21 feature path и разрешённые program docs, без push и PR. Новых агентов не запускает.
 [Аудит журнала](../reports/orchestration/trail_audit_ru.md) указывает проверенный диапазон, слабые pointers и пределы проверки.
 Исторический integration receipt имел путь
 `/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/memory-scope-main-integration/run-20261023T1640Z/receipts/integration.json`.
@@ -448,8 +467,8 @@ PR frontier seed пропущен: пользователь выбрал лок�
 Работа `resumed` по новому поручению пользователя; paused cleanup snapshot остаётся историческим.
 Дальнейшая последовательность обязательна.
 
-1. Свежий независимый review exact corrected union artifact с проверкой сохранённых static receipts.
-2. После PASS интеграция в MAIN и локальный commit с подтверждением source/tests/config/tool correspondence.
+1. Выполнен свежий независимый review exact corrected union artifact и static checks, PASS только артефакту.
+2. Выполнена интеграция в MAIN с подтверждением source/tests/config/tool correspondence и локальным commit.
 3. Свежий independent exact-MAIN review нового commit. Только он может принять integrated Stage5 scope.
 4. Затем vertical unit по [symbol-domain design](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/symbol-domain-design/20261023T162408Z-448c97ad/DESIGN.md).
    Первый slice охватывает module-level identifier `const`, named non-ambient classes,
