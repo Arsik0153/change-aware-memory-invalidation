@@ -3,23 +3,30 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
-Актуальный снимок после возобновления 2026-10-23: Stage1 принят на
-`499acfad48b2d62e37b0f57a3b051bc09eaf847b`, Stage2 на
-`6037294831fc0cde5525986cab043ea21af27dd3`, Stage3 на
-`c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
-Stage4 принят после [независимого exact-MAIN R3 PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T165329Z-r3/REVIEW.md)
-на `83f6aea2178b7ace167102b668cedb78c04dca17`. Четыре этапа приняты в согласованном scope.
-Предыдущие FAIL сохранены. Stage5 имеет статус `integration_completed`, acceptance `under_review`.
-[Свежий independent union PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union-review/20261023T1736Z-r1/REPORT.md)
-принимает isolated artifact. WATCH и OPT интегрированы в MAIN с сохранением принятого memory repair.
-Сохранённые 819 full и 497 focused passes переиспользованы как `FROM_IDENTICAL_ARTIFACT`
-после проверки source, tests, config, fixtures, locks и toolchain. Они не запускались повторно.
-Новый checkout CLI smoke прошёл; следующий gate есть свежий exact-MAIN review commit.
-Затем расширение symbol domain, onboarding агента и содержательная демонстрация на реальном проекте по vision.
-Objects, values и classes остаются design-only. Общей готовности продукта ещё нет.
-Пользователь возобновил работу после [cleanup 18,21 GiB](/root/.claude/orchestrate/change-aware-memory-invalidation/cleanup/20261023-cleanup/REPORT.md).
-Заполнение диска снизилось с 96% до 68%; это изменение всего filesystem, отдельное от allocated-byte manifest.
-Исторические snapshots ниже сохранены.
+Актуальный снимок на завершение сессии 2026-10-23. Все пять этапов приняты
+в согласованном объёме. Stage1 принят на `499acfad48b2d62e37b0f57a3b051bc09eaf847b`,
+Stage2 на `6037294831fc0cde5525986cab043ea21af27dd3`,
+Stage3 на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`,
+Stage4 на `83f6aea2178b7ace167102b668cedb78c04dca17`.
+Stage5 принят свежим независимым exact-MAIN PASS без findings на
+`43edac89d8a38ed1551195048e6383ced1479399`.
+[Переносимая выжимка приёмки](../reports/orchestration/final_acceptance_2026-10-23.md)
+сохраняет идентичность reviewer, команды, 18 новых passes, 20 CLI/process launches
+и четыре persisted phases. 819 full и 497 focused passes остаются
+`FROM_IDENTICAL_ARTIFACT`, без повторного full run.
+
+[Итоговый отчёт](session_report_2026-10-23_ru.md) описывает пользовательские команды,
+исправления и ограничения. Вся vision не завершена. Constants, objects и named classes,
+onboarding агента, реальный Next.js demo, sustained incremental indexing и GC остаются
+отдельными следующими задачами. Эта сессия заканчивается после прямо разрешённых
+финального docs commit и обычного push текущей main в существующий origin/main.
+Новая продуктовая работа сейчас не начинается.
+
+Cleanup освободил 18,21 GiB allocated bytes в 329 generated paths. Заполнение всего
+filesystem снизилось с 96% до 68%. Общие MAIN environment, compiler и исходники сохранены.
+Один тяжёлый worker, собственные temp до 512 MiB, немедленная owned cleanup и запрет
+беспричинных повторов full suite остаются правилами последующей работы.
+Исторические snapshots, pending и FAIL ниже сохранены. Их статусы не являются текущими.
 Task counts не являются числом принятых этапов.
 
 ## Исходное состояние

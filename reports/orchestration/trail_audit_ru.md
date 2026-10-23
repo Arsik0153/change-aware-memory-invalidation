@@ -155,3 +155,40 @@ Stage5 `integration_completed`, acceptance `under_review` до fresh exact-MAIN 
 [integration evidence](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-main-integration/20261023T174926Z/HANDOFF.md).
 Смена quota с 58% и reset29Oct на 100% и reset30Oct сохранена без объяснения причины.
 Ledger, frontier и чужие runtime handles не изменялись. Новые task workstates не выдумывались.
+
+## 2026-10-23 финальная приёмка Stage 5 и остановка сессии
+
+Свежий независимый exact-MAIN review принял `43edac89d8a38ed1551195048e6383ced1479399`
+в согласованном Stage 5 WATCH и OPT scope. Verdict PASS, findings `[]`.
+[Переносимая выжимка](final_acceptance_2026-10-23.md) сохраняет исходную review identity,
+SHA-256 оригинала, input trees, команды и границы evidence.
+18 tests, 20 CLI/process launches и четыре persisted phases были новыми проверками reviewer.
+819 full, четыре Docker deselections, 497 focused и installed evidence остались
+`FROM_IDENTICAL_ARTIFACT`. Финальный publisher их не повторял.
+Все пять этапов scoped accepted. Product vision и scientific validation не объявлены завершёнными.
+Прежние FAIL и append-only prefix TSV сохранены.
+
+Пользователь прямо разрешил финальный docs commit и обычный push существующей main
+в origin/main. Это разрешение заменяет старый noPush только для этой публикации.
+[Итоговый отчёт](../../docs/session_report_2026-10-23_ru.md) сохраняет выполненный объём,
+практические команды, исправления, ограничения и следующие задачи.
+Publisher проверяет фактические docs bytes, относительные ссылки и anchors, TSV schema/prefix,
+Git diff и неизменность всех tracked inputs вне разрешённых docs. Тесты, сборки,
+benchmark, новые environments и nested agents при публикации не запускаются.
+
+Код остаётся source TREE `ac78ecf07326cfaa666c15367d54d70fe23ba4d0`,
+tests TREE `53d2876ad78fed4a507cf5a7e184a431c828af3a`.
+Свежий fetch и ls-remote перед push проверяют ancestry, после push сравниваются
+remote SHA, HEAD, upstream и чистый checkout. Реальный результат записывается вне Git
+в `outputs/final-session-report/20261023-final-publisher/publication-receipt.json`
+в orchestration store. До этой проверки успех push не заявляется.
+Неизвестные historical task states, чужие handles и PR ledger не изменяются.
+После публикации сессия останавливается по поручению пользователя.
+
+Лёгкая проверка publisher дала PASS. Проверены 27 относительных Markdown links и anchors,
+семь shell blocks через `bash -n` без исполнения, flags по AST трёх CLI parsers
+и семь selectors чтением AST tests. Сохранены исходные 51 712 bytes TSV prefix,
+bytes и executable modes всех 358 tracked paths вне трёх изменяемых старых docs.
+Это self-check документов, а не новый независимый review или продуктовый test run.
+Принцип Prove It Works определил прямую сверку bytes и удалённого SHA;
+deslop и technical-writing определили узкий diff без изменения source и tests.
