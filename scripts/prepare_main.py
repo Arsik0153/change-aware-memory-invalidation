@@ -26,6 +26,7 @@ from cami.errors import InputError
 from cami.index import signature
 from cami.models import Claim, ParentReceipt, Provenance, RepoLocation, RunConfig
 from cami.pilot import parent_candidates
+from cami.provenance_audit import audit_provenance, import_provenance_review
 from cami.repository import git, read_snapshot, resolve
 
 SEED = 20261001
@@ -530,6 +531,13 @@ def main() -> None:
     importer.add_argument("--dataset", type=Path, required=True)
     importer.add_argument("--annotations", type=Path, required=True)
     importer.add_argument("--out", type=Path, required=True)
+    audit = commands.add_parser("audit-provenance")
+    audit.add_argument("--dataset", type=Path, required=True)
+    audit.add_argument("--out", type=Path, required=True)
+    review_import = commands.add_parser("import-provenance-review")
+    review_import.add_argument("--audit", type=Path, required=True)
+    review_import.add_argument("--reviews", type=Path, required=True)
+    review_import.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     try:
         if args.command == "select":
@@ -539,8 +547,12 @@ def main() -> None:
             result = args.out / "generation.json"
         elif args.command == "assemble":
             result = assemble(args.selection, args.candidates, args.out)
-        else:
+        elif args.command == "import-parent":
             result = import_parent(args.dataset, args.annotations, args.out)
+        elif args.command == "audit-provenance":
+            result = audit_provenance(args.dataset, args.out)
+        else:
+            result = import_provenance_review(args.audit, args.reviews, args.out)
     except (InputError, ValueError) as exc:
         parser.exit(2, f"preparation error: {exc}\n")
     print(result.resolve())

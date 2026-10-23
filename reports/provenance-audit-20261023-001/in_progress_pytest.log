@@ -1,0 +1,34 @@
+........................................................................ [ 39%]
+........................................................................ [ 79%]
+......................F.F............                                    [100%]
+=================================== FAILURES ===================================
+____ test_provenance_audit_reports_missing_anchor_and_unresolved_dependency ____
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '9705ffa50d120439ba7fd008a7279987179f7614', 'repo_id': 'click', ...st-of-zhanarys/pytest-0/test_provenance_audit_reports_0/source repo', ...}, 'bd797c4d7b134237b2ff8edfbf22764bf55b79dc')
+tmp_path = PosixPath('/private/var/folders/jp/r7lflnbn4jq4gxm0rwmy89gw0000gn/T/pytest-of-zhanarys/pytest-0/test_provenance_audit_reports_0')
+
+    def test_provenance_audit_reports_missing_anchor_and_unresolved_dependency(parent_repo, tmp_path):
+        dataset = assemble_fixture(parent_repo, tmp_path)
+        group = read_json(dataset)
+>       config_path = dataset.parent / group.runs[0].config_path
+                                       ^^^^^^^^^^
+E       AttributeError: 'dict' object has no attribute 'runs'
+
+tests/test_prepare_main.py:134: AttributeError
+___ test_audit_is_parent_only_and_preserves_conservative_candidate_selection ___
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '13a71cbba0079d92d68a4ff78fb5afe2e1e4db60', 'repo_id': 'click', ...st-of-zhanarys/pytest-0/test_audit_is_parent_only_and_0/source repo', ...}, '466a67ade262c7fff45723fc54d5f0971687790b')
+tmp_path = PosixPath('/private/var/folders/jp/r7lflnbn4jq4gxm0rwmy89gw0000gn/T/pytest-of-zhanarys/pytest-0/test_audit_is_parent_only_and_0')
+
+    def test_audit_is_parent_only_and_preserves_conservative_candidate_selection(parent_repo, tmp_path):
+        dataset = assemble_fixture(parent_repo, tmp_path)
+        manifest = read_json(dataset)
+>       config_path = dataset.parent / manifest.runs[0].config_path
+                                       ^^^^^^^^^^^^^
+E       AttributeError: 'dict' object has no attribute 'runs'
+
+tests/test_prepare_main.py:168: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_prepare_main.py::test_provenance_audit_reports_missing_anchor_and_unresolved_dependency
+FAILED tests/test_prepare_main.py::test_audit_is_parent_only_and_preserves_conservative_candidate_selection
+2 failed, 179 passed, 4 deselected in 40.25s

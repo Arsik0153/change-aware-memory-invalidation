@@ -77,4 +77,84 @@
 6. Выполните `cami freeze --dataset FINAL_DATASET --out NEW_PROTOCOL_DIR`. Только этот финальный seal используйте как `frozen_protocol_path`. `preparation_hashes.json` является записью подготовки, не разрешением held-out evaluation.
 7. Выполните заранее объявленные held-out запуски и отдельный scorer. Не меняйте отбор после просмотра их ответов. Chronological, enriched и каждая replay-последовательность анализируются отдельно.
 
+## Аудит provenance до независимого эксперимента
+
+Аудит выполняется на parent snapshot и пишет отдельный каталог. Он не читает child revisions,
+labels, receipts, selections или результаты policies и не меняет исходные claims/provenance:
+
+```bash
+.venv/bin/python scripts/prepare_main.py audit-provenance \
+  --dataset runs/next-stage-20261001/main-ready/dataset.json \
+  --out runs/main-provenance-audit-001
+```
+
+`provenance_audit.jsonl` содержит полный неизменённый claim с текстом, predicate и scope,
+subject, исходную provenance, записанные anchors и явные зависимости. `automatic_checks`
+отделены от `independent_review`. Для зависимости проверяются оба конца, включая точные
+qualname. Существование концов не подтверждает саму связь. Пустой список зависимостей
+фиксируется как исходный факт и сам по себе не считается дефектом structural claim 1.1.
+
+Проверки используют production parser CAMI и не являются независимым oracle. Аудит
+сохраняет конкретные unresolved nodes, ограничения parser и global unresolved для parent
+в `groups[].snapshot_index` манифеста. Для claim отдельно указаны ограничения и unresolved
+в его записанной поддержке. Эти наблюдения не добавляются автоматически в явные зависимости
+и не меняют правило отбора 1.1.
+
+Исходные claims/provenance сохраняются побайтно в `groups/RUN/source_inputs/`. Прочитанные
+parent blobs сохраняются без перекодирования в `groups/RUN/sources/`; запись наблюдения
+содержит путь и SHA-256, относительный к `source_evidence_base`. Для behavior сохраняются
+байты и ожидаемый/фактический hash frozen probe в `groups/RUN/probes/`, без исполнения.
+Манифест содержит hashes файлов пакета, реализации аудита и индексатора, а также index version.
+
+Проверки существования символа, хеша blob и строкового диапазона подтверждают только
+записанные данные. Они не доказывают, что все опорные участки и зависимости перечислены.
+Диапазон строк служит отображению, не идентичности anchor. Односторонняя граница или
+диапазон, не покрывающий всё определение, допустимы. Выход указанной строки за пределы
+parent blob фиксируется как ошибочное наблюдение; фактические строки определения
+сохраняются отдельно от указанных границ.
+В IMPLEMENTATION_SPEC.md `known_incomplete=false` означает отсутствие известных пропусков,
+а не доказанную полноту. Протокол не задаёт процедуру закрытия уже известных пропусков.
+Поэтому исходная provenance остаётся неизменной, а консервативный флаг аудита остаётся
+`known_incomplete=true`, включая после положительного независимого review. Исходный флаг
+и причины отдельно сохранены в `source_known_incomplete` и `source_unresolved_reasons`.
+
+`review_form.jsonl` является пустой формой независимого review. Не меняйте `claim_id`,
+`parent_commit`, `claim_sha256` и `provenance_sha256`. Эти поля связывают ответ с точной
+версией claim и provenance; ответ на предыдущую версию не принимается. Заполните
+`reviewer_id`, установите `independent: true`, укажите `status` (`confirmed`, `incomplete`
+или `uncertain`), списки `confirmed_dependencies` и `omitted_dependencies`, evidence и заметки.
+Статус `confirmed` означает оценку записанной поддержки человеком и не является ни label
+истинности claim, ни разрешением снять флаг неполноты. Parent receipt подтверждает истинность
+claim и не заменяет этот отдельный review поддержки.
+
+Оба списка зависимостей используют исходную структуру Dependency с полями `from`, `to`,
+`relation`, `origin`. Подтверждённые связи должны присутствовать в исходной provenance.
+Пропущенные связи сохраняются в ответе, но не дописываются в исходную provenance автоматически.
+При `status=confirmed` список пропущенных связей должен быть пустым. `evidence` содержит
+непустой список относительных путей к реальным parent-only файлам, относительно каталога
+завершённого JSONL. Абсолютные пути, выход через `..` и свободный текст вместо файлов
+не принимаются. Например, `"evidence": ["evidence/parent-review.txt"]`.
+Передайте реально полученные строки в JSONL и импортируйте их в новый каталог:
+
+```bash
+.venv/bin/python scripts/prepare_main.py import-provenance-review \
+  --audit runs/main-provenance-audit-001/audit_manifest.json \
+  --reviews /absolute/path/to/completed-provenance-reviews.jsonl \
+  --out runs/main-provenance-reviewed-001
+```
+
+Импорт сохраняет точные исходные байты ответов в `raw_provenance_reviews.jsonl` и копирует
+байты evidence в `review_evidence/` с hashes и исходными ссылками. Root и group audit rows
+синхронизируются; оригинальный каталог аудита сохраняется. При частичном импорте остальные
+claims остаются `unreviewed`. Пустые формы, ответы без независимого решения, неизвестные
+или повторные claims и несовпадающие hashes отклоняются до создания output. Изменённые
+файлы исходного пакета аудита также отклоняются. Output не может находиться внутри input.
+
+Для архитектуры рассмотрены расширение `Provenance`/`ParentReceipt` и отдельный пакет
+аудита. Выбран отдельный пакет с реализацией в `src/cami/provenance_audit.py`, подключённый
+через `scripts/prepare_main.py`. Так автоматические наблюдения и независимые ответы остаются
+различимы, а schemas policy inputs, claims, predicates и policies сохраняют прежнее значение.
+До утверждения процедуры закрытия пропусков пакет фиксирует оставшуюся блокировку и не
+допускает cohort автоматически. Held-out policies, child labels и freeze эти команды не запускают.
+
 Труд разметчиков, минуты adjudication, расходы подготовки provenance и восстановления образов записываются отдельно. Никаких независимых человеческих ответов в текущем пакете ещё нет.

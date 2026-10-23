@@ -1,0 +1,38 @@
+[
+  {
+    "name": "pytest",
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "-m",
+      "not docker"
+    ],
+    "exit_code": 0,
+    "log": "pytest.log"
+  },
+  {
+    "name": "ruff",
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0,
+    "log": "ruff.log"
+  },
+  {
+    "name": "mypy",
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+      "-m",
+      "mypy",
+      "src/cami"
+    ],
+    "exit_code": 0,
+    "log": "mypy.log"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "name": "ruff",
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0,
+    "output": "All checks passed!\n"
+  },
+  {
+    "name": "mypy",
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+      "-m",
+      "mypy",
+      "src/cami"
+    ],
+    "exit_code": 0,
+    "output": "Success: no issues found in 25 source files\n"
+  },
+  {
+    "name": "diff",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  }
+]

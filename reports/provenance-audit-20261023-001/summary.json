@@ -1,0 +1,75 @@
+{
+  "main": {
+    "claims": 600,
+    "kind_counts": {
+      "symbol_exists": 240,
+      "signature_equals": 240,
+      "behavior_test": 60,
+      "prose": 60
+    },
+    "known_incomplete": 600,
+    "subject_statuses": {
+      "verified": 600
+    },
+    "anchor_statuses": {
+      "verified": 600
+    },
+    "explicit_dependencies": 0,
+    "claims_with_indexed_unresolved_in_recorded_support": 600,
+    "claims_with_indexed_limitations_in_recorded_support": 0,
+    "frozen_probe_statuses": {
+      "verified": 60
+    },
+    "review_statuses": {
+      "unreviewed": 600
+    },
+    "blocking_reasons": {
+      "completeness_criterion_undefined_in_protocol": 600,
+      "independent_provenance_review_required": 600,
+      "source_known_incomplete_flag": 600,
+      "source_unresolved:Draft parent-only anchors; dependency extraction and review pending.": 600
+    }
+  },
+  "replay": {
+    "claims": 30,
+    "kind_counts": {
+      "symbol_exists": 12,
+      "signature_equals": 12,
+      "behavior_test": 3,
+      "prose": 3
+    },
+    "known_incomplete": 30,
+    "subject_statuses": {
+      "verified": 30
+    },
+    "anchor_statuses": {
+      "verified": 30
+    },
+    "explicit_dependencies": 0,
+    "claims_with_indexed_unresolved_in_recorded_support": 30,
+    "claims_with_indexed_limitations_in_recorded_support": 0,
+    "frozen_probe_statuses": {
+      "verified": 3
+    },
+    "review_statuses": {
+      "unreviewed": 30
+    },
+    "blocking_reasons": {
+      "completeness_criterion_undefined_in_protocol": 30,
+      "independent_provenance_review_required": 30,
+      "source_known_incomplete_flag": 30,
+      "source_unresolved:Draft parent-only anchors; dependency extraction and review pending.": 30
+    }
+  },
+  "verification": {
+    "original_source_files_unchanged": 1739,
+    "audit_files_hash_verified": 643,
+    "group_count": 63,
+    "all_group_rows_match_root": true,
+    "original_claims_and_provenance_copies_identical": true,
+    "implementation_stable_during_audit": true,
+    "known_incomplete_cleared": 0,
+    "groups_with_global_unresolved": 63,
+    "groups_with_index_limitations": 0
+  }
+}

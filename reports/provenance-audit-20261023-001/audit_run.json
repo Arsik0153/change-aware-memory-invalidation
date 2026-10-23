@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/Users/zhanarys/Projects/change-aware-memory-invalidation/tmp/provenance-audit-venv/bin/python",
+    "scripts/prepare_main.py",
+    "audit-provenance",
+    "--dataset",
+    "runs/next-stage-20261001/main-ready/dataset.json",
+    "--out",
+    "runs/provenance-audit-20261023-001"
+  ],
+  "exit_code": 0,
+  "implementation_before": {
+    "src/cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+    "src/cami/index.py": "1a7907bf7c3974ca84ab6e424bcc2fd0740db66c8a7e89e5687c7333f00837eb",
+    "src/cami/repository.py": "49676a5c252eeea7e3c015f201b367822684366aa4858f8a9c8019c6372179fb",
+    "scripts/prepare_main.py": "86a4611f89f14cb5547ab6a4fa220686feda41d1193b7ef17d4ad69202db622c"
+  },
+  "implementation_after": {
+    "src/cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+    "src/cami/index.py": "1a7907bf7c3974ca84ab6e424bcc2fd0740db66c8a7e89e5687c7333f00837eb",
+    "src/cami/repository.py": "49676a5c252eeea7e3c015f201b367822684366aa4858f8a9c8019c6372179fb",
+    "scripts/prepare_main.py": "86a4611f89f14cb5547ab6a4fa220686feda41d1193b7ef17d4ad69202db622c"
+  }
+}
