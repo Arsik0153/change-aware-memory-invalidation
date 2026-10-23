@@ -28,6 +28,7 @@ from cami.models import Claim, ParentReceipt, Provenance, RepoLocation, RunConfi
 from cami.pilot import parent_candidates
 from cami.provenance_audit import audit_provenance, import_provenance_review
 from cami.repository import git, read_snapshot, resolve
+from cami.structural_closure import prepare_structural_closure
 
 SEED = 20261001
 START_DATE = "2018-01-01T00:00:00Z"
@@ -538,6 +539,9 @@ def main() -> None:
     review_import.add_argument("--audit", type=Path, required=True)
     review_import.add_argument("--reviews", type=Path, required=True)
     review_import.add_argument("--out", type=Path, required=True)
+    closure = commands.add_parser("close-structural-provenance")
+    closure.add_argument("--parents", type=Path, required=True)
+    closure.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     try:
         if args.command == "select":
@@ -551,6 +555,8 @@ def main() -> None:
             result = import_parent(args.dataset, args.annotations, args.out)
         elif args.command == "audit-provenance":
             result = audit_provenance(args.dataset, args.out)
+        elif args.command == "close-structural-provenance":
+            result = prepare_structural_closure(args.parents, args.out)
         else:
             result = import_provenance_review(args.audit, args.reviews, args.out)
     except (InputError, ValueError) as exc:
