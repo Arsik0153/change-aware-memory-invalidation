@@ -46,37 +46,50 @@ def _stamp(info: os.stat_result) -> tuple[int, ...]:
 def _read_file(parent_fd: int, name: str) -> tuple[bytes | None, str, os.stat_result]:
     fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=parent_fd)
     try:
-        before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode):
-            raise CaptureChanged(f"file type changed: {name}")
-        sha = hashlib.sha256()
-        chunks: list[bytes] = []
-        size = 0
-        while size <= before.st_size:
-            chunk = os.read(fd, min(128 * 1024, before.st_size - size + 1))
-            if not chunk:
-                break
-            sha.update(chunk)
-            size += len(chunk)
-            if size <= MAX_FILE_BYTES:
-                chunks.append(chunk)
-        if _stamp(before) != _stamp(os.fstat(fd)) or size != before.st_size:
-            raise CaptureChanged(f"file changed during read: {name}")
-        return b"".join(chunks) if size <= MAX_FILE_BYTES else None, sha.hexdigest(), before
+        return _read_regular(fd, name)
     finally:
         os.close(fd)
 
 
+def _read_regular(fd: int, name: str) -> tuple[bytes | None, str, os.stat_result]:
+    before = os.fstat(fd)
+    if not stat.S_ISREG(before.st_mode):
+        raise CaptureChanged(f"file type changed: {name}")
+    sha = hashlib.sha256()
+    chunks: list[bytes] = []
+    size = 0
+    while size <= before.st_size:
+        chunk = os.read(fd, min(128 * 1024, before.st_size - size + 1))
+        if not chunk:
+            break
+        sha.update(chunk)
+        size += len(chunk)
+        if size <= MAX_FILE_BYTES:
+            chunks.append(chunk)
+    if _stamp(before) != _stamp(os.fstat(fd)) or size != before.st_size:
+        raise CaptureChanged(f"file changed during read: {name}")
+    return b"".join(chunks) if size <= MAX_FILE_BYTES else None, sha.hexdigest(), before
+
+
 def _external_ignore(path: Path) -> tuple[str, str | None]:
     try:
-        fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        info = path.stat()
     except FileNotFoundError:
         return str(path), None
+    except OSError as exc:
+        raise IncompleteError(f"capture_ignore_error: {path}: {exc}") from exc
+    if path.resolve() == Path(os.devnull) and stat.S_ISCHR(info.st_mode):
+        return str(path), hashlib.sha256(b"").hexdigest()
+    if not stat.S_ISREG(info.st_mode) or info.st_size > MAX_FILE_BYTES:
+        raise IncompleteError(f"capture_ignore_unsupported: {path}: expected regular ignore file "
+                              f"of at most {MAX_FILE_BYTES} bytes, or {os.devnull}")
+    fd = os.open(path, os.O_RDONLY | os.O_NONBLOCK)
     try:
-        try:
-            _, sha, _ = _read_file(fd, path.name)
-        except FileNotFoundError:
-            return str(path), None
+        if _stamp(info) != _stamp(os.fstat(fd)):
+            raise CaptureChanged(f"ignore file replaced: {path}")
+        _, sha, _ = _read_regular(fd, str(path))
+        if _stamp(info) != _stamp(path.stat()):
+            raise CaptureChanged(f"ignore file replaced: {path}")
         return str(path), sha
     finally:
         os.close(fd)
@@ -146,17 +159,18 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
             submodules.add(path)
     tracked_parents = {parent.as_posix() for path in tracked
                        for parent in PurePosixPath(path).parents}
-    excludes_file = git(root, "config", "--path", "--get", "--default", "",
-                        "core.excludesFile").decode().strip()
-    global_ignore = (Path(excludes_file).expanduser() if excludes_file else
-                     Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
-                     / "git" / "ignore")
+    default_ignore = (Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
+                      / "git" / "ignore")
+    excludes_file = git(root, "config", "-z", "--path", "--get", "--default",
+                        str(default_ignore), "core.excludesFile").decode().removesuffix("\0")
+    global_ignore = Path(excludes_file).expanduser()
     if not global_ignore.is_absolute():
         global_ignore = root / global_ignore
     info_exclude = Path(os.fsdecode(git(root, "rev-parse", "--path-format=absolute",
                                        "--git-path", "info/exclude")).strip())
-    ignore_inputs: list[tuple[str, str | None]] = [_external_ignore(global_ignore),
-                                                  _external_ignore(info_exclude)]
+    ignore_inputs: list[tuple[str, str | None]] = [_external_ignore(info_exclude)]
+    if excludes_file:
+        ignore_inputs.append(_external_ignore(global_ignore))
     ignore_case = git(root, "config", "--get", "--default", "", "core.ignorecase").decode()
     entries: list[InputEntry] = []
     blobs: list[Blob] = []
@@ -175,15 +189,21 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
                 raise InputError("worktree contains an unsupported path") from exc
             if child.name in EXCLUDED_DIRS or (not prefix and child.name in ROOT_OUTPUTS):
                 continue
-            if any(_within(path, item) for item in excluded):
-                continue
             if child.name == ".gitignore":
                 info = child.stat(follow_symlinks=False)
                 if stat.S_ISREG(info.st_mode):
+                    if info.st_size > MAX_FILE_BYTES:
+                        raise IncompleteError(f"capture_ignore_unsupported: {path}: "
+                                              f"ignore file exceeds {MAX_FILE_BYTES} bytes")
                     _, ignore_sha, _ = _read_file(fd, child.name)
                     ignore_inputs.append((path, ignore_sha))
                 elif stat.S_ISLNK(info.st_mode):
                     ignore_inputs.append((path, "symlink_not_used_by_git"))
+                else:
+                    raise IncompleteError(f"capture_ignore_unsupported: {path}: "
+                                          "expected regular .gitignore file")
+            if any(_within(path, item) for item in excluded):
+                continue
             if not any(_within(path, item) or _within(item, path) for item in roots):
                 continue
             candidates.append((path, child))

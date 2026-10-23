@@ -74,6 +74,19 @@ nested rules. Tracked-файл остаётся входом, даже если 
 игнорирует его путь. Учитываются repository `info/exclude`, глобальный
 `core.excludesFile` и стандартный global ignore. Их содержимое входит в
 ignore fingerprint. Точечное чтение ignore metadata не обходит `.git`.
+Исключение source-пути `.gitignore` не исключает действующие Git rules из capture
+и повторной проверки policy. Это относится и к nested `.gitignore` в каталогах
+включённых источников. Изменение rules меняет fingerprint, snapshot и generation,
+даже если текущий набор Python-входов прежний.
+
+External ignore-конфигурация имеет отдельные правила чтения. Git-допустимые
+symlinks к обычным ignore-файлам разрешены; проверяются bytes referent и его
+метаданные до и после чтения. `/dev/null` обозначает пустые rules. Явный пустой
+`core.excludesFile` отключает default global ignore. Ignore-файлы ограничены
+2 MiB. Неподдерживаемые FIFO, устройства и каталоги дают явную ошибку
+`capture_ignore_unsupported`; ошибочная symlink-конфигурация даёт
+`capture_ignore_error`. Эти ошибки не считаются бесконечной concurrent mutation.
+Source symlinks по-прежнему не читаются и дают честное `partial`.
 
 До спуска исключаются `.git`, `.venv`, `venv`, `node_modules`, `__pycache__`,
 `.pytest_cache`, `.mypy_cache`, `.ruff_cache`, `.cache`, `.tox`, `.nox`.
@@ -119,6 +132,16 @@ Writer создаёт `.pending-*`, записывает и синхронизи
 пересборку. Повреждённый каталог переносится в `.corrupt-*`, а восстановленный
 кандидат публикуется целиком. Недоступный state даёт явную ошибку, не stale answer.
 Повреждённый pointer восстанавливается из проверенного поколения.
+Pointer, manifest, index и каталоги поколений открываются через descriptors
+без следования по symlinks. Файлы открываются nonblocking; перед чтением
+проверяются regular-file type и размер. Pointer ограничен 4096 bytes,
+manifest и index ограничены 256 MiB каждый. Чтение ограничено исходным размером
+плюс один byte и проверяет замену или рост. Запись соблюдает тот же лимит.
+Неверный тип cache-файла, generation-directory или `generations` вызывает
+quarantine соответствующего собственного артефакта и atomic rebuild. CAMI
+не обходит и не удаляет содержимое symlink target. Следующий процесс использует
+восстановленное поколение. Неверный тип `writer.lock` и ошибки доступа дают
+`product_state_io_error`; lock не заменяется под другими writers.
 
 ## Проверки поведения
 
@@ -128,7 +151,7 @@ Writer создаёт `.pending-*`, записывает и синхронизи
 uv run --locked pytest -q tests/test_worktree_search.py tests/test_symbol_search.py tests/test_index.py
 uv run --locked pytest -q -m 'not docker'
 uv run --locked ruff check .
-uv run --locked mypy src/cami
+uv run --locked mypy src/cami scripts/demo_structural_closure.py
 git diff --check
 ```
 

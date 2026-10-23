@@ -322,3 +322,35 @@ IDs, and postcommit CLI results are in
 The receipt is `integration-receipt.json`. These are implementation checks.
 Stage2 acceptance remains `under_review` until the parent's fresh independent
 review of the committed SHA. Historical stage1 FAIL and exact-499 PASS remain.
+
+### Stage2 review r1 and storage repair
+
+Independent review r1 returned **FAIL** for exact main SHA
+`1adf399f38e38b98b16b405359287e8a28884d8e`. Four P2 defects were reproduced.
+Valid external ignore sources caused false capture instability. A FIFO cache
+index blocked while holding the writer lock. A file replacing a generation
+directory prevented persistent repair. Excluding `.gitignore` from sources hid
+active ignore rules from policy identity. The original report is retained at
+`/tmp/cami-stage2-review-2p90pzt2/review-report.json`.
+
+The fix separates Git configuration reads from source capture, validates cache
+types through nonblocking descriptors, and quarantines malformed cache artifacts
+before atomic publication. Active `.gitignore` metadata is captured before source
+path filtering. Source symlinks remain unsupported. The existing product-code
+fingerprint invalidates older generations automatically; research schemas and
+index semantics are unchanged.
+
+Before changes, the baseline passed 95 targeted and 408 non-Docker tests.
+New regression tests then produced **16 failures and 8 passes**. After changes,
+**133 targeted and 446 non-Docker tests passed, 4 Docker tests deselected**.
+The increase is 38 focused regression cases; all previous 27 relative-import
+regressions remain. Ruff, strict mypy for 32 files, and diff checks passed.
+The same CLI repros now succeed, with persistent repair and next-process reuse.
+Separate-process acceptance also passed 15 lifecycle scenarios and 10 calls
+covering the original P2, valid relative imports, and own-source worktree/Git queries.
+No benchmark or independent acceptance is claimed.
+
+Before/after logs, drivers, quota, exact committed SHA, and receipt are under
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage2-storage-fix/run-20261023T123409Z/`.
+The repair is `under_review` pending the parent's fresh independent review r2.
+The historical r1 FAIL remains attached to `1adf399f38e38b98b16b405359287e8a28884d8e`.

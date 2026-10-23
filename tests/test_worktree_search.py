@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -23,10 +24,10 @@ def isolated_state(tmp_path, monkeypatch):
     monkeypatch.setenv("GIT_CONFIG_NOSYSTEM", "1")
 
 
-def cli(root, query, *args, seed="1"):
+def cli(root, query, *args, seed="1", timeout=20):
     return subprocess.run(
         [sys.executable, "-m", "cami.cli", "find", query, "--repo", str(root),
-         "--format", "json", *args], capture_output=True, text=True, timeout=20,
+         "--format", "json", *args], capture_output=True, text=True, timeout=timeout,
         env={**os.environ, "PYTHONHASHSEED": seed}, check=False)
 
 
@@ -459,14 +460,14 @@ def test_crash_recovery_publishes_only_complete_immutable_generations(repo, phas
     (repo.root / "a.py").write_text("def target(fresh=True): pass\n")
     result = run_hook(repo.root, f"""
 replace = store.os.replace
-def crash(source, destination):
+def crash(source, destination, **kwargs):
     destination = Path(destination)
-    is_generation = destination.parent.name == 'generations'
+    is_generation = len(destination.name) == 64
     is_pointer = destination.name == 'current.json'
     phase = {phase!r}
     if (phase == 'before_generation' and is_generation) or (phase == 'before_pointer' and is_pointer):
         os._exit(73)
-    replace(source, destination)
+    replace(source, destination, **kwargs)
     if (phase == 'after_generation' and is_generation) or (phase == 'after_pointer' and is_pointer):
         os._exit(73)
 store.os.replace = crash
@@ -571,3 +572,281 @@ def test_policy_and_indexer_fingerprints_change_generation_identity(repo, monkey
     assert first.snapshot.snapshot_id == second.snapshot.snapshot_id
     assert first.snapshot.generation_id != second.snapshot.generation_id
     assert not second.observation.cache_reused
+
+
+@pytest.mark.parametrize("kind", ["regular", "symlink", "dev_null", "info", "global"])
+def test_git_effective_external_ignore_is_verified_and_reused(repo, tmp_path, kind):
+    repo.commit({"a.py": "def target(): pass\n"})
+    (repo.root / "hidden.py").write_text("def hidden(): pass\n")
+    referent = tmp_path / "ignore-rules"
+    referent.write_text("hidden.py\n")
+    if kind == "info":
+        referent = repo.root / ".git/info/exclude"
+        referent.write_text("hidden.py\n")
+    elif kind == "global":
+        referent = tmp_path / "config/git/ignore"
+        referent.parent.mkdir(parents=True)
+        referent.write_text("hidden.py\n")
+    else:
+        source = referent
+        if kind == "symlink":
+            source = tmp_path / "ignore-link"
+            source.symlink_to(referent)
+        elif kind == "dev_null":
+            source = os.devnull
+        repo.git("config", "core.excludesFile", str(source))
+    first = lookup(repo.root, "target")
+    assert lookup(repo.root, "target")["observation"]["cache_reused"]
+    hidden = lookup(repo.root, "hidden")
+    assert hidden["status"] == ("found" if kind == "dev_null" else "not_found")
+    if kind != "dev_null":
+        referent.write_text("other.py\n")
+        changed = lookup(repo.root, "target")
+        for field in ("snapshot_id", "generation_id"):
+            assert changed["snapshot"][field] != first["snapshot"][field]
+        assert changed["snapshot"]["policy"]["ignore_fingerprint"] != first["snapshot"]["policy"]["ignore_fingerprint"]
+        assert lookup(repo.root, "hidden")["status"] == "found"
+        assert lookup(repo.root, "target")["observation"]["cache_reused"]
+
+
+@pytest.mark.parametrize("prefix", ["", "pkg/"])
+def test_source_exclusion_does_not_hide_active_ignore_policy(repo, prefix):
+    repo.commit({prefix + "a.py": "def target(): pass\n"})
+    ignore = repo.root / (prefix + ".gitignore")
+    ignore.write_text("*.one\n")
+    args = ("--exclude", prefix + ".gitignore", "--source-root", prefix.rstrip("/") or ".")
+    first = lookup(repo.root, "target", *args)
+    ignore.write_text("*.two\n")
+    second = lookup(repo.root, "target", *args)
+    assert second["matches"] == first["matches"]
+    for field in ("snapshot_id", "generation_id"):
+        assert second["snapshot"][field] != first["snapshot"][field]
+    assert second["snapshot"]["policy"]["ignore_fingerprint"] != first["snapshot"]["policy"]["ignore_fingerprint"]
+    assert not second["observation"]["cache_reused"]
+    assert lookup(repo.root, "target", *args)["observation"]["cache_reused"]
+
+
+@pytest.mark.parametrize("artifact", ["index.json", "manifest.json", "current.json", "generation", "generations"])
+@pytest.mark.parametrize("kind", ["fifo", "directory", "symlink"])
+def test_cache_artifact_types_repair_persistently_without_following_targets(repo, tmp_path, artifact, kind):
+    repo.commit({"a.py": "def target(): pass\n"})
+    first = lookup(repo.root, "target")
+    state = state_path(repo.root)
+    generation = state / "generations" / first["snapshot"]["generation_id"]
+    damaged = (generation if artifact == "generation" else state / "generations"
+               if artifact == "generations" else state / "current.json"
+               if artifact == "current.json" else generation / artifact)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    sentinel = outside / "sentinel"
+    sentinel.write_text("outside must remain untouched")
+    if damaged.is_dir():
+        shutil.rmtree(damaged)
+    else:
+        damaged.unlink()
+    if kind == "fifo":
+        os.mkfifo(damaged)
+    elif kind == "symlink":
+        damaged.symlink_to(outside, target_is_directory=True)
+    elif artifact in ("generation", "generations"):
+        damaged.write_text("a directory was replaced by a file")
+    else:
+        damaged.mkdir()
+    result = cli(repo.root, "target", timeout=4)
+    assert result.returncode == 0, result.stderr
+    assert "cami cache:" in result.stderr
+    repaired = json.loads(result.stdout)
+    assert payload(repaired) == payload(first)
+    assert generation.is_dir() and not generation.is_symlink()
+    assert (generation / "index.json").is_file()
+    assert (generation / "manifest.json").is_file()
+    assert not (generation / "manifest.json").is_symlink()
+    assert sentinel.read_text() == "outside must remain untouched"
+    assert list(outside.iterdir()) == [sentinel]
+    assert lookup(repo.root, "target")["observation"]["cache_reused"]
+
+
+def test_repaired_fifo_index_releases_lock_for_concurrent_process_reuse(repo):
+    repo.commit({"a.py": "def target(): pass\n"})
+    first = lookup(repo.root, "target")
+    index = state_path(repo.root) / "generations" / first["snapshot"]["generation_id"] / "index.json"
+    index.unlink()
+    os.mkfifo(index)
+    repaired = cli(repo.root, "target", timeout=4)
+    assert repaired.returncode == 0, repaired.stderr
+    processes = []
+    try:
+        for _ in range(2):
+            processes.append(subprocess.Popen(
+                [sys.executable, "-m", "cami.cli", "find", "target", "--repo", str(repo.root),
+                 "--format", "json"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True))
+        for process in processes:
+            stdout, stderr = process.communicate(timeout=8)
+            assert process.returncode == 0 and not stderr, stderr
+            data = json.loads(stdout)
+            assert payload(data) == payload(first)
+            assert data["observation"]["cache_reused"]
+    finally:
+        for process in processes:
+            if process.poll() is None:
+                process.kill()
+                process.communicate(timeout=2)
+
+
+@pytest.mark.parametrize("kind", ["fifo", "directory", "device", "loop", "oversize"])
+def test_unsupported_external_ignore_fails_before_git_can_block(repo, tmp_path, kind):
+    repo.commit({"a.py": "def target(): pass\n"})
+    source = tmp_path / "ignore-config"
+    if kind == "fifo":
+        os.mkfifo(source)
+    elif kind == "directory":
+        source.mkdir()
+    elif kind == "device":
+        source.symlink_to("/dev/zero")
+    elif kind == "loop":
+        source.symlink_to(source)
+    else:
+        with source.open("wb") as stream:
+            stream.truncate(worktree.MAX_FILE_BYTES + 1)
+    repo.git("config", "core.excludesFile", str(source))
+    result = cli(repo.root, "target", timeout=4)
+    assert result.returncode == 4 and not result.stdout
+    assert ("capture_ignore_error" if kind == "loop" else "capture_ignore_unsupported") in result.stderr
+    assert not (state_path(repo.root) / "current.json").exists()
+
+
+def test_explicit_empty_excludes_file_disables_default_global_ignore(repo, tmp_path):
+    repo.commit({"a.py": "def target(): pass\n"})
+    default = tmp_path / "config/git/ignore"
+    default.parent.mkdir(parents=True)
+    default.write_text("hidden.py\n")
+    (repo.root / "hidden.py").write_text("def hidden(): pass\n")
+    assert lookup(repo.root, "hidden")["status"] == "not_found"
+    repo.git("config", "core.excludesFile", "")
+    found = lookup(repo.root, "hidden")
+    assert found["status"] == "found"
+    default.write_text("*.py\n")
+    assert lookup(repo.root, "hidden")["snapshot"] == found["snapshot"]
+    assert lookup(repo.root, "hidden")["observation"]["cache_reused"]
+
+
+@pytest.mark.parametrize("role", ["external_symlink", "excluded_local"])
+def test_ignore_metadata_changed_after_cache_load_discards_candidate(repo, tmp_path, monkeypatch, role):
+    repo.commit({"a.py": "def target(): pass\n"})
+    rules = tmp_path / "ignore-rules" if role == "external_symlink" else repo.root / ".gitignore"
+    rules.write_text("*.one\n")
+    if role == "external_symlink":
+        link = tmp_path / "ignore-link"
+        link.symlink_to(rules)
+        repo.git("config", "core.excludesFile", str(link))
+    args = ("--exclude", ".gitignore")
+    first = lookup(repo.root, "target", *args)
+    load = store.GenerationStore.load
+    calls = []
+
+    def changing(self, *parameters):
+        candidate = load(self, *parameters)
+        calls.append(candidate is not None)
+        if len(calls) == 1:
+            rules.write_text("*.two\n")
+        return candidate
+
+    monkeypatch.setattr(store.GenerationStore, "load", changing)
+    result = find_symbols(repo.root, "target", excluded_paths=(".gitignore",))
+    assert calls == [True, False]
+    assert result.snapshot.snapshot_id != first["snapshot"]["snapshot_id"]
+    assert result.snapshot.policy.ignore_fingerprint != first["snapshot"]["policy"]["ignore_fingerprint"]
+    assert not result.observation.cache_reused
+    assert lookup(repo.root, "target", *args)["observation"]["cache_reused"]
+
+
+def test_oversized_cache_index_repairs_before_reading_bytes(repo):
+    repo.commit({"a.py": "def target(): pass\n"})
+    first = lookup(repo.root, "target")
+    index = state_path(repo.root) / "generations" / first["snapshot"]["generation_id"] / "index.json"
+    with index.open("wb") as stream:
+        stream.truncate(store.MAX_CACHE_BYTES + 1)
+    repaired = cli(repo.root, "target", timeout=4)
+    assert repaired.returncode == 0, repaired.stderr
+    assert payload(json.loads(repaired.stdout)) == payload(first)
+    assert index.stat().st_size < store.MAX_CACHE_BYTES
+    assert lookup(repo.root, "target")["observation"]["cache_reused"]
+
+
+def test_cache_open_race_to_fifo_is_bounded_and_repairs(repo, monkeypatch):
+    repo.commit({"a.py": "def target(): pass\n"})
+    first = lookup(repo.root, "target")
+    index = state_path(repo.root) / "generations" / first["snapshot"]["generation_id"] / "index.json"
+    opened = store._cache_open
+    swaps = []
+
+    def swapping(name, flags, parent_fd=None):
+        if name == "index.json" and not swaps:
+            swaps.append(True)
+            index.unlink()
+            os.mkfifo(index)
+        return opened(name, flags, parent_fd)
+
+    monkeypatch.setattr(store, "_cache_open", swapping)
+    result = find_symbols(repo.root, "target")
+    assert swaps and not result.observation.cache_reused
+    assert index.is_file()
+    assert lookup(repo.root, "target")["observation"]["cache_reused"]
+
+
+def test_cache_read_growth_stops_at_initial_size(tmp_path, monkeypatch):
+    path = tmp_path / "index.json"
+    path.write_bytes(b"{}")
+    read = os.read
+    calls = []
+
+    def growing(fd, size):
+        calls.append(size)
+        assert len(calls) <= 3, "cache read kept chasing appended bytes"
+        chunk = read(fd, size)
+        with path.open("ab") as stream:
+            stream.write(b" " * 1024)
+        return chunk
+
+    with store._cache_directory(tmp_path) as fd:
+        monkeypatch.setattr(store.os, "read", growing)
+        with pytest.raises(store.CacheCorrupt, match="changed during read"):
+            store._cache_read(fd, "index.json")
+
+
+def test_cache_permission_failure_is_fatal_and_preserves_pointer(repo, monkeypatch, capsys):
+    repo.commit({"a.py": "def target(): pass\n"})
+    lookup(repo.root, "target")
+    before = current(repo.root)
+    read = store._cache_read
+
+    def denied(fd, name, *args):
+        if name == "index.json":
+            raise PermissionError("controlled cache denial")
+        return read(fd, name, *args)
+
+    monkeypatch.setattr(store, "_cache_read", denied)
+    assert main(["find", "target", "--repo", str(repo.root), "--format", "json"]) == 4
+    output = capsys.readouterr()
+    assert not output.out and "product_state_io_error" in output.err
+    assert current(repo.root) == before
+
+
+@pytest.mark.parametrize("kind", ["fifo", "symlink", "directory"])
+def test_invalid_writer_lock_fails_without_blocking_or_following(repo, tmp_path, kind):
+    repo.commit({"a.py": "def target(): pass\n"})
+    lookup(repo.root, "target")
+    lock = state_path(repo.root) / "writer.lock"
+    lock.unlink()
+    outside = tmp_path / "outside-lock"
+    outside.write_text("untouched")
+    if kind == "fifo":
+        os.mkfifo(lock)
+    elif kind == "symlink":
+        lock.symlink_to(outside)
+    else:
+        lock.mkdir()
+    result = cli(repo.root, "target", timeout=4)
+    assert result.returncode == 4 and not result.stdout
+    assert "product_state_io_error" in result.stderr
+    assert outside.read_text() == "untouched"

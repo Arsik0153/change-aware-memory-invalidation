@@ -309,3 +309,30 @@ Memory core implementation также запущена изолированно 
 Полная TS/memory CLI-приемка ожидает подключения TS find.
 Task/thread handles сохранены в `runtime-handles.json` внешнего store.
 Эти parent-transferred события уточняют прежние launch snapshots, не расширяют scope Stage2.
+
+### Stage2 review r1 и исправление четырёх P2
+
+Независимый review r1 дал FAIL точному main SHA
+`1adf399f38e38b98b16b405359287e8a28884d8e`. Исторический verdict сохраняется.
+Исправлены external ignore capture, блокирующее чтение cache FIFO, persistent
+repair неверного типа generation-directory и fingerprint исключённой `.gitignore`.
+Source-symlink coverage не расширено. Frozen research inputs и contracts не менялись.
+
+До правок baseline95/full408 прошёл; новые regression tests дали 16 FAIL и 8 PASS.
+После правок прошли targeted133/full446, 4 Docker deselected, Ruff, strict mypy32
+и diffcheck. CLI подтвердил исходные четыре дефекта до правок и их исправление
+с persistent repair/reuse. Дополнительно прошли 15 lifecycle scenarios и 10 CLI
+вызовов для исходного relative-import P2, valid imports и запросов к own source.
+Это implementation verification. Новый commit остаётся `under_review` до свежего
+независимого review r2 от parent. Exact SHA и receipt сохраняются после commit в
+`outputs/stage2-storage-fix/run-20261023T123409Z/` внешнего store. PR не создавался.
+
+### Memory component handoff из parent
+
+Memory core завершён как tested component. Parent передал 477 non-Docker tests
+и 20 CLI checks. Patch находится в
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-core/t3-2ea4315e-20261023T1220/feature.patch`.
+Переданный SHA-256 равен `07a71b84d3c83b0c39a939229f3a1fa0bc32598078326defbfbe489b667ea937`.
+Это не main integration и не PASS memory acceptance. Полный TS CLI gate остаётся pending.
+Независимый read-only component review r1 запущен для завершённого memory candidate.
+Task/thread handles сохранены во внешнем `runtime-handles.json`; verdict пока отсутствует.
