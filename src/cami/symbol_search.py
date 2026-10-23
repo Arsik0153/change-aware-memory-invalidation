@@ -86,7 +86,7 @@ def _local_import_edges(index: CodeIndex) -> set[Dependency]:
                            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)))
             blocked.update(name for node in lexical if isinstance(node, (ast.Global, ast.Nonlocal))
                            for name in node.names)
-            bindings: dict[str, set[tuple[str, str]]] = {}
+            bindings: dict[str, set[tuple[str | None, str]]] = {}
             for node in lexical:
                 if isinstance(node, ast.ImportFrom):
                     target_module = _import_module(module, node)
@@ -104,21 +104,24 @@ def _local_import_edges(index: CodeIndex) -> set[Dependency]:
                 imports = bindings[called_name]
                 if len(imports) != 1:
                     continue
-                candidates = targets.get(next(iter(imports)), [])
+                target_module, target_name = next(iter(imports))
+                if target_module is None:
+                    continue
+                candidates = targets.get((target_module, target_name), [])
                 if len(candidates) == 1:
                     edges.add(Dependency(source=definition.node, target=candidates[0],
                                          relation="calls", origin="static"))
     return edges
 
 
-def _import_module(module: Module, node: ast.ImportFrom) -> str:
+def _import_module(module: Module, node: ast.ImportFrom) -> str | None:
     if not node.level:
-        return node.module or ""
-    package = module.module_name.split(".")
+        return node.module
+    package = module.module_name.split(".") if module.module_name else []
     if not module.path.endswith("/__init__.py") and module.path != "__init__.py":
         package = package[:-1]
     if node.level > len(package):
-        return ""
+        return None
     return ".".join(package[:len(package) - node.level + 1]
                     + ([node.module] if node.module else []))
 

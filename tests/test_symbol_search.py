@@ -182,6 +182,83 @@ def test_local_import_calls_are_candidates_without_changing_research_index(repo)
     assert build_index(snapshot).edges == ()
 
 
+def test_relative_import_overflow_never_calls_root_init_target(repo):
+    revision = repo.commit({
+        "__init__.py": "def target(): pass\n",
+        "cli.py": "def main():\n    from . import target\n    target()\n",
+        "pkg/cli.py": "def nested():\n    from .. import target\n    target()\n",
+    })
+    data = lookup(repo.root, "__init__.py:target", "--revision", revision)
+    assert data["status"] == "found"
+    assert data["matches"][0]["incoming"] == []
+    assert data["unresolved"] == [
+        {"path": "cli.py", "qualname": "main"},
+        {"path": "pkg/cli.py", "qualname": "nested"},
+    ]
+    assert data["graph_complete"] is False
+    assert {"code": "unresolved_is_conservative", "path": None} in data["limitations"]
+    for path, name in [("cli.py", "main"), ("pkg/cli.py", "nested")]:
+        caller = lookup(repo.root, f"{path}:{name}", "--revision", revision)
+        assert caller["matches"][0]["outgoing"] == []
+
+
+@pytest.mark.parametrize("path, level", [
+    ("cli.py", 3), ("__init__.py", 1),
+    ("pkg/cli.py", 2), ("pkg/__init__.py", 3),
+    ("pkg/nested/cli.py", 3), ("pkg/nested/__init__.py", 4),
+])
+@pytest.mark.parametrize("module", ["", "name"])
+def test_relative_import_overflow_stays_unresolved(repo, path, level, module):
+    files = {"__init__.py": "def target(): pass\n", "name.py": "def target(): pass\n"}
+    files[path] = files.get(path, "") + (
+        f"def caller():\n    from {'.' * level}{module} import target as run\n    run()\n")
+    revision = repo.commit(files)
+    for target in ("__init__.py:target", "name.py:target"):
+        data = lookup(repo.root, target, "--revision", revision)
+        assert data["matches"][0]["incoming"] == []
+        assert {"path": path, "qualname": "caller"} in data["unresolved"]
+    caller = lookup(repo.root, f"{path}:caller", "--revision", revision)
+    assert caller["matches"][0]["outgoing"] == []
+
+
+@pytest.mark.parametrize("caller_path, target_path, module", [
+    ("pkg/cli.py", "pkg/engine.py", ".engine"),
+    ("pkg/cli.py", "pkg/__init__.py", "."),
+    ("pkg/nested/cli.py", "pkg/engine.py", "..engine"),
+    ("pkg/nested/cli.py", "pkg/__init__.py", ".."),
+    ("pkg/__init__.py", "pkg/engine.py", ".engine"),
+    ("pkg/nested/__init__.py", "pkg/__init__.py", ".."),
+])
+@pytest.mark.parametrize("alias", ["target", "run"])
+def test_valid_relative_local_import_keeps_call(repo, caller_path, target_path, module, alias):
+    alias_clause = f" as {alias}" if alias != "target" else ""
+    revision = repo.commit({
+        target_path: "def target(): pass\n",
+        caller_path: f"def caller():\n    from {module} import target{alias_clause}\n    {alias}()\n",
+    })
+    data = lookup(repo.root, f"{target_path}:target", "--revision", revision)
+    edge = {"source": {"path": caller_path, "qualname": "caller"},
+            "target": {"path": target_path, "qualname": "target"},
+            "relation": "calls", "origin": "static"}
+    assert data["matches"][0]["incoming"] == [edge]
+    caller = lookup(repo.root, f"{caller_path}:caller", "--revision", revision)
+    assert caller["matches"][0]["outgoing"] == [edge]
+
+
+@pytest.mark.parametrize("imports", [
+    "from .. import target\n    from .engine import target",
+    "from .engine import target\n    from .. import target",
+])
+def test_unresolvable_relative_import_keeps_competing_binding_ambiguous(repo, imports):
+    revision = repo.commit({
+        "pkg/engine.py": "def target(): pass\n",
+        "pkg/cli.py": f"def caller():\n    {imports}\n    target()\n",
+    })
+    data = lookup(repo.root, "pkg.engine.target", "--revision", revision)
+    assert data["matches"][0]["incoming"] == []
+    assert {"path": "pkg/cli.py", "qualname": "caller"} in data["unresolved"]
+
+
 @pytest.mark.parametrize("body", [
     "from engine import target\n    target = replacement\n    target()",
     "from engine import target\n    del target\n    target()",

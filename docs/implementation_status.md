@@ -2,6 +2,40 @@
 
 The implementation follows docs/IMPLEMENTATION_SPEC.md version 1.0. Research documents and the existing submission builder remain unchanged.
 
+## 2026-10-23: relative import overflow correction
+
+The product adapter represented an impossible relative import with an empty
+module name, which also identifies the indexed root `__init__.py`. The original
+review fixture at revision `09cac2b704daf3becfad85200fc651d04174036d` produced
+two false incoming calls to `__init__.py:target`, from `cli.py:main` and
+`pkg/cli.py:nested`. The research index contributed no edges on that fixture.
+
+Module resolution now returns `None` for an impossible import. An empty module
+name has zero package depth. Unresolvable imports remain among competing
+bindings, so the adapter still rejects ambiguous call targets. The same explicit
+revision CLI query now returns no incoming calls. Its unresolved nodes and
+limitations are unchanged, and `graph_complete` remains false.
+
+The new CLI regressions ran before the production edit, with 12 failures and
+15 passes. After the fix, all 27 pass. They cover the original fixture, overflow
+from modules and package initializers, named imports such as `from ...name`,
+valid sibling and parent imports, aliases, and competing unresolved bindings.
+These are implementation checks. Fresh independent acceptance remains pending.
+
+Verification used `PYTHONDONTWRITEBYTECODE=1` and disabled the pytest cache:
+
+```bash
+.venv/bin/pytest -q -p no:cacheprovider tests/test_symbol_search.py tests/test_index.py
+.venv/bin/pytest -q -p no:cacheprovider -m 'not docker'
+.venv/bin/ruff check .
+.venv/bin/mypy --cache-dir /tmp/cami-relative-fix/mypy-cache src/cami scripts/demo_structural_closure.py
+git diff --check
+```
+
+The targeted suite passed 59 tests. The full non-Docker suite passed 372 tests,
+with 4 deselected. Ruff passed, strict mypy passed for 28 source files, and the
+diff check passed. No held-out experiment, freeze, or Docker run was performed.
+
 ## 2026-10-23: first product stage, Git symbol search
 
 `cami find SYMBOL --repo PATH --revision HEAD --format json` now searches the
