@@ -2,6 +2,23 @@
 
 CAMI maintains a fixed cohort of claims about Python repositories and measures how Git-aware selection changes validation cost and memory availability. It reads committed Git objects without checking out or importing the repository on the host. Synthetic demonstrations are separate from real datasets.
 
+## Find Python definitions in a Git revision
+
+```bash
+uv run cami find run_experiment --repo . --revision HEAD
+uv run cami find cami.engine.run_experiment --repo . --revision HEAD --format json
+uv run cami find src/cami/engine.py:run_experiment --repo . --source-root src --format json
+```
+
+`find` returns definitions, signatures, and incoming and outgoing static relations.
+The JSON contract has `schema_version: 1` and reports `found`, `not_found`, or
+`ambiguous` without hiding duplicate definitions. It records the resolved commit,
+Git tree, source roots, analyzer versions, limitations, and unresolved nodes.
+The graph is partial. Working tree changes and TypeScript are outside this stage.
+See the [symbol search contract](docs/symbol_search_ru.md) for matching rules,
+exit codes, and reproducible acceptance checks. The research `run` command keeps
+its existing contract.
+
 ## Install and run the offline demo
 
 Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:

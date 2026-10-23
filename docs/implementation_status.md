@@ -2,6 +2,55 @@
 
 The implementation follows docs/IMPLEMENTATION_SPEC.md version 1.0. Research documents and the existing submission builder remain unchanged.
 
+## 2026-10-23: first product stage, Git symbol search
+
+`cami find SYMBOL --repo PATH --revision HEAD --format json` now searches the
+existing Python AST index. Text output is the default. JSON schema version 1
+records the resolved commit and Git tree, source roots, analyzer versions,
+definition locations, structured and readable signatures, incoming and outgoing
+static relations, all matches, limitations, and conservative unresolved nodes.
+Statuses are `found`, `not_found`, and `ambiguous`. Invalid inputs produce stderr
+and exit code 2. The [Russian contract](symbol_search_ru.md) specifies matching,
+exit codes, graph limits, and the next stage's snapshot and cache requirements.
+
+The product adapter owns local from-import call resolution, including the call
+from `cli.main` to `engine.run_experiment`. Existing research index, selector,
+validator, and `run` contracts are unchanged. Graph completeness is always false.
+The inherited graph can miss calls and attribute extra calls across nested scopes
+or approximate bindings. Working tree search, TypeScript, and persistent storage
+remain outside this stage. No new dependencies were added.
+
+Real CLI acceptance used a temporary Git repository with spaces in its path.
+It verified exact and qualified matches, missing symbols, duplicates, revisions
+before and after rename and delete, invalid repo and ref, JSON parsing, and text
+output. Separate process regressions also verify staged and unstaged preservation,
+signatures, relative local imports, name shadowing, module collisions, and byte
+determinism across Python hash seeds. On CAMI at baseline
+`dcd67fab2b1b282e1f10578e3832bedfccb48a3c`, `run_experiment` was found at
+`src/cami/engine.py:38-99` with a static incoming call from `src/cami/cli.py:main`.
+
+Verified commands for the final implementation:
+
+```bash
+uv run pytest -q tests/test_symbol_search.py tests/test_index.py
+uv run pytest -q -m 'not docker'
+uv run ruff check .
+uv run mypy src/cami scripts/demo_structural_closure.py
+git diff --check
+```
+
+The targeted suite passed 32 tests. The complete non-Docker suite passed 345 tests
+with 4 deselected. Ruff and strict mypy passed, with mypy checking 28 source files.
+The diff check passed. Deslop review checked the complete product diff before
+commit. No real held-out datasets, protocol freeze, paid API calls, or performance
+experiments were run for this stage.
+
+Safe local Codex quota telemetry used only `event_msg` `token_count` records for
+`limit_id=codex`, `window_minutes=10080`. Before implementation, the latest event
+was `2026-10-23T11:09:52.984Z`, with 86% remaining. After implementation and final
+tests, the latest observed event was `2026-10-23T11:19:58.623Z`, with 85% remaining.
+Both report reset at `2026-10-29 18:36:49 UTC`.
+
 ## Workflow
 
 - Read the Principles section of poteto-mode. Done.

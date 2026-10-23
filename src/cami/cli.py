@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -12,6 +13,13 @@ from cami.errors import IncompleteError, InputError, ResourceError
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="cami")
     sub = parser.add_subparsers(dest="command", required=True)
+    find = sub.add_parser("find", help="find Python definitions in a committed Git snapshot")
+    find.add_argument("symbol")
+    find.add_argument("--repo", type=Path, required=True)
+    find.add_argument("--revision", default="HEAD")
+    find.add_argument("--format", choices=("text", "json"), default="text")
+    find.add_argument("--source-root", action="append", dest="source_roots",
+                      help="repository-relative Python source root; repeat for multiple roots")
     check = sub.add_parser("check-inputs")
     check.add_argument("--config", type=Path, required=True)
     run = sub.add_parser("run")
@@ -60,7 +68,13 @@ def main(argv: list[str] | None = None) -> int:
     analyze.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
-        if args.command == "check-inputs":
+        if args.command == "find":
+            from cami.symbol_search import find_symbols, format_text
+            result = find_symbols(args.repo, args.symbol, args.revision,
+                                  tuple(args.source_roots) if args.source_roots else None)
+            print(json.dumps(result.model_dump(mode="json"), ensure_ascii=True, sort_keys=True)
+                  if args.format == "json" else format_text(result))
+        elif args.command == "check-inputs":
             from cami.inputs import check_inputs
             inputs = check_inputs(args.config)
             print(f"valid: {len(inputs.claims)} claims, {len(inputs.config.child_commits)} transitions")
