@@ -365,3 +365,17 @@ Actual CLI15 проверил quarantine, correct query, valid regular JSON, reu
 а memory component имеет FAIL с тремя findings и исправляется isolated без
 коммитов. Эти события заменяют старые running/no-verdict snapshots, но не означают
 TS или memory acceptance. Их интеграция в main этой правкой не выполнялась.
+
+### Parent wave после socket implementation commit
+
+Новый parent handoff уточняет предыдущий snapshot. TS artifact review завершён
+с FAIL и тремя новыми P2 по destructuring default scopes, active config during
+build и setup cache publication. Fresh TS fix запущен isolated без коммитов.
+Memory fix component завершён с переданными 559 full и 63 memory tests.
+Patch находится в
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-fix/t3-3ed26adc-20261023T1300/feature.patch`,
+переданный SHA-256 равен `9776a6f30a9f7a445d89868eb72d1455929f6d45c567dfaf26238a7f8df2509c`.
+Fresh memory component review r2 запущен read-only; verdict ещё отсутствует.
+Оба новых task/thread handles сохранены во внешнем `runtime-handles.json`.
+TS и memory не имеют PASS; full TS/memory CLI gate остаётся pending.
+Это transferred evidence, без новых проверок или code integration в main.
