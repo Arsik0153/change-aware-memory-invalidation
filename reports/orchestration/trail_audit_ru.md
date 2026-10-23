@@ -57,3 +57,15 @@ PR отсутствует, PR ledger не пополняется. Exact-SHA PASS
 Quota 84% на 11:40:54.145Z, reset 2026-10-29T18:36:49Z передана пользователем и reviewer report, здесь не измерена.
 
 Фактические docs checks и full SHA нового коммита записываются после commit в external `docs-drain-20261023-receipt.json`.
+
+## Docs/state run после Stage3 MAIN PASS
+
+Диапазон этого run: строки 61–64 canonical TSV. Прежние 60 строк сохранены побайтно.
+Прочитаны exact-main review.json и полный terminal report Stage3. PASS относится только к c9a94f7,
+188 focused tests и 103 CLI/package/cache-командам. Writer 569 full и 4 deselected остаются отдельными evidence.
+Memory f0bb R3 FAIL прочитан. Два active handles сохранены из parent transfer без нового опроса liveness или ожидания.
+Старые stage counts и pending Stage3 выше исторические. Сейчас три этапа приняты, Stage4 в работе, Stage5 pending.
+Quota 73% на 2026-10-23T14:31:27.347Z передана из review, здесь не измерена.
+Независимый review этого docs run не выполнен: явное задание запрещает nested agents.
+Проверка ограничена своими строками, supporting reports, docs diff и state readback. История целиком повторно не проверялась.
+Результаты проверок и commit blobs: `/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/milestone-docs/run-20261023T143501Z-stage3-acceptance/receipt.json`.

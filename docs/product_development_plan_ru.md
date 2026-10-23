@@ -3,21 +3,16 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
-Актуальное состояние на 2026-10-23 после Stage2 R3 и TypeScript artifact R2:
-Stage2 принят только на `6037294831fc0cde5525986cab043ea21af27dd3`.
-TypeScript artifact `741ef6de1b68519354f73259b25731d5c37c1735d0cfeaa443786decafa9e145`
-получил независимый PASS. Его интеграция в MAIN проверяется отдельно и остаётся
-`under_review` до свежей проверки итогового коммита. Memory component R3 работает
-read-only над candidate f0bb, Stage4 не принят. Watch design завершён как proposal,
-Stage5 не реализован. Последующие старые snapshots сохранены как история.
-
-Текущий интеграционный snapshot stage2 от 2026-10-23 заменяет прежние ожидания ниже.
-Implementation перенесена в исходную main, self-tests пройдены, acceptance `under_review`.
-Точный integration commit указан во внешнем `stage2-main-integration.json`.
-Main code/index/commit принадлежит текущему integration worker по прямому заданию.
-Прежние docs-only scope и launch snapshots ниже являются историческими.
-Stage1 принят только на exact `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
-Stage3 CLI integration, product memory и watch этим переносом не приняты.
+Актуальное состояние на 2026-10-23 после независимого Stage3 MAIN review:
+Stage1 принят на `499acfad48b2d62e37b0f57a3b051bc09eaf847b`,
+Stage2 на `6037294831fc0cde5525986cab043ea21af27dd3`,
+Stage3 на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
+Итого три продуктовых этапа приняты, Stage4 `in_progress`, Stage5 `pending`.
+Memory component f0bb получил R3 FAIL. Изолированные journal-boundary fix и
+mixed-language memory integration активны без коммитов. Memory и watch не приняты.
+Watch design завершён как proposal, implementation не начата.
+Исторические ожидания в конце документа и старый recorder snapshot от 14:24:36 UTC
+не описывают текущее состояние. Task counts не являются числом принятых этапов.
 
 ## Исходное состояние
 
@@ -36,13 +31,11 @@ MCP остаётся возможным расширением. Первый а�
 
 ## Последовательность и acceptance
 
-Planned порядок теперь ведёт к полезному TS/TSX Next.js path до product memory и watcher.
-Stage1 принят после независимого review r2 на exact SHA ниже. По явному решению родителя
-параллельная implementation допускается в изолированных app-owned worktrees БЕЗ КОММИТОВ
-(standing order 13). Stage2 уже `in_progress`, `not_accepted`. Read-only design work
-может идти заранее. Интеграция stage2 в исходную main выполняется после acceptance stage1:
-свежий parent-assigned integrator переносит проверенный patch, сохраняет fix stage1,
-повторяет acceptance и последовательно коммитит main.
+Порядок ведёт от принятого TS/TSX Next.js path к product memory и watcher.
+По явному решению родителя параллельная implementation допускается в изолированных
+app-owned worktrees БЕЗ КОММИТОВ, standing order 13. Один writer работает в каждом checkout.
+Интеграции и коммиты выполняются последовательно в исходной main.
+Read-only design work может идти заранее и не означает acceptance реализации.
 Архитектурные evidence могут уточнить задачи и контракты. Причина и новый acceptance
 попадают в [журнал решений](../reports/orchestration/decisions.tsv) до реализации изменения.
 Контракты этапов задают целевое поведение. Точные флаги подтверждает writer.
@@ -96,7 +89,9 @@ Acceptance этапа:
 
 ### 2. Worktree snapshots и persistent index
 
-Статус реализации `implementation_completed`, acceptance `under_review`. Stage1 принят.
+Статус реализации `implementation_completed`, acceptance `accepted` на exact
+`6037294831fc0cde5525986cab043ea21af27dd3` после независимого R3 PASS.
+Report: `/tmp/cami-stage2-review-r3-ncph5p29/review-report.json`.
 Исторический launch до интеграции описан следующим абзацем.
 Implementation запущена параллельно в T3 isolation worktree, БЕЗ КОММИТОВ.
 Проверенный patch и evidence передаются свежему parent-assigned main integrator; он сохраняет
@@ -127,10 +122,21 @@ Acceptance этапа:
 
 ### 3. JS, TS, TSX и полезный сценарий Next.js
 
-Статус core `in_progress`, acceptance `not_accepted`; CLI integration `pending` после этапа 2.
-Trusted compiler core для JS, JSX, TS и TSX и Python bridge запущены в отдельном app-owned worktree
-БЕЗ КОММИТОВ. Scope ограничен новыми модулями и component handoff. Полный Next.js-сценарий
-через `cami find`, worktree snapshots и persistent index остаётся отдельной задачей после интеграции этапа 2.
+Статус реализации `implementation_completed`, acceptance `accepted` после независимого
+MAIN PASS для exact `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
+[Независимый отчёт Stage3](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage3-main-review/review-20261023T142134Z/review.json)
+подтверждает 188 focused tests, включая все 53 cache/ignore и 27 relative-import regressions.
+Все 103 CLI/package/cache-команды прошли, включая relocated read-only wheel под uid65534.
+Три исходных findings закрыты: destructuring default scopes, active config capture/invalidation,
+repair непустого повреждённого compiler cache. Новых actionable findings нет.
+
+Scope включает Python, JS, JSX, TS и TSX search через worktree и Git, compiler setup и cache.
+Поддерживается один root config с captured relative extends. Граф синтаксический и неполный,
+`graph_complete=false`. Typechecking, inference и general member/dynamic dispatch не приняты.
+Writer отдельно сообщил 569 full tests и 4 deselected. Независимый reviewer не повторял full suite.
+Исторический artifact R2 PASS для patch SHA-256
+`741ef6de1b68519354f73259b25731d5c37c1735d0cfeaa443786decafa9e145` сохранён отдельно.
+Exact-SHA local receipt: `stage3-main-review.json` во внешнем orchestration store.
 
 Задачи этапа:
 
@@ -155,7 +161,20 @@ Acceptance этапа:
 
 ### 4. Product memory и lifecycle structural claims
 
-Статус `pending`. Зависимость от этапа 3.
+Статус `in_progress`, acceptance `not_accepted`. Этап 3 принят.
+Component patch `f0bb2dd9adad63878e3613cec9c6ccac661c68fb0bb90f76dcdfe99e49b7d937`
+получил [R3 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-review/t3-2a8e7cd2-20261023T1400-r3/REVIEW.md).
+SQLite может потребить исходный hot journal до post-open validation подменённой базы.
+Следующие обычные history/context не восстанавливают доступность. Исходные три findings
+и ordinary ABA исправлены, но combined crash/ABA требует отдельного boundary fix.
+
+`memoryJournalFixTask` исправляет только эту границу в изолированном worktree без коммитов.
+Отдельный `hybridMemoryTask` интегрирует mixed-language memory, также isolated без коммитов.
+В нём `memory/store.py` зафиксирован на f0bb до boundaryfix-only overlay.
+Его обязательные gates включают unsupported-binding false-absence gap и реальный TS/TSX memory CLI.
+Stage4 требует main integration и независимого review после завершения обеих активных задач.
+Полная [карта memory/TS integration](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/memory-ts-merge-map-20261023-v1.md)
+хранится вне репозитория.
 
 Задачи этапа:
 
@@ -183,7 +202,9 @@ Acceptance этапа:
 
 ### 5. Watch и интеграция агента
 
-Статус `pending`. Зависимость от этапа 4.
+Статус `pending`. Зависимость от этапа 4. Design готов только как
+[proposal](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/watcher-design-20261023-v1.md),
+implementation не начата. Финальный ABI нужно сверить после memory integration.
 
 Задачи этапа:
 
@@ -231,9 +252,9 @@ M0–M5 описывают исследовательские инструмен
 
 ## Оркестрация и бюджет
 
-Один code-writer работает в каждом checkout. По прямому поручению пользователя текущий docs integrator
-единолично владеет Git index и commit в исходной `main`. Fixworker и reviewer r2 завершены.
-Stage2 и TS core работают в отдельных app-owned worktrees БЕЗ КОММИТОВ по standing rule 13.
+Один code-writer работает в каждом checkout. По прямому поручению пользователя текущий docs worker
+единолично владеет Git index и docs commit в исходной `main`.
+Два активных memory workers работают в отдельных app-owned worktrees БЕЗ КОММИТОВ по standing rule 13.
 Все фактические интеграции и коммиты выполняются последовательно в исходной `main`.
 Этот drain меняет только план, canonical trail, компактный аудит trail и external store.
 Source, tests, README, pyproject, protocols, datasets и seals остаются прежними.
@@ -247,9 +268,9 @@ Source, tests, README, pyproject, protocols, datasets и seals остаются 
 Условие автономного продолжения задано пользователем как недельный остаток Codex `>10%`.
 Источник указанного снимка бюджета находится в `/root/.codex/sessions`,
 structured `event_msg` с `token_count.rate_limits`, `limit_id=codex`, окно `10080` минут.
-Последний transferred snapshot на `2026-10-23 11:40:54.145 UTC` даёт remaining `84%`.
-Предыдущий docs snapshot: `84%` на `2026-10-23 11:28:38.016 UTC`.
-Receipts: `quota-transferred.json` и `quota-docs.json` во внешнем store.
+Последний переданный snapshot из Stage3 MAIN review даёт remaining `73%`
+на `2026-10-23T14:31:27.347Z`, `limit_id=codex`, `window_minutes=10080`.
+Источник: `quota_after` в независимом отчёте Stage3. Этот docs worker не измерял quota.
 Reset указан как `2026-10-29 18:36:49 UTC`. Эти значения переданы оркестратором,
 здесь они не представлены как новое измерение или текущий остаток.
 Перед продолжением волн и после крупного этапа оркестратор обновляет quota evidence.
@@ -260,14 +281,15 @@ Reset указан как `2026-10-29 18:36:49 UTC`. Эти значения п�
 
 Точка продолжения задаётся этим планом и append-only [decisions.tsv](../reports/orchestration/decisions.tsv).
 Stage1 `accepted` после независимого `PASS` r2 для `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
-Stage2 implementation `implementation_completed`, acceptance `under_review`; self-tests пройдены.
-Последний переданный Stage3 core snapshot `in_progress`, integration `pending`, `not_accepted`.
-Этапы 4 и 5 `pending`. Итого пять продуктовых этапов: один принят, два в работе, два ожидают.
+Stage2 `accepted` на `6037294831fc0cde5525986cab043ea21af27dd3`.
+Stage3 `accepted` на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838` после independent MAIN PASS.
+Stage4 `in_progress`, `not_accepted`; Stage5 `pending`, implementation не начата.
+Итого пять продуктовых этапов: три приняты, один в работе, один ожидает.
 Runtime units включают отдельные implementation, design, review и docs runs. Их число не означает число готовых этапов.
 Исторический независимый `FAIL` сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4`.
-Stage2 worktree начат от docs commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a`, до fix stage1.
-Интегратор сохраняет fix при переносе patch и повторяет acceptance в main.
-После stage2 требуется отдельная полная TS find integration и независимый acceptance Next.js-сценария.
+Активны `memoryJournalFixTask` и `hybridMemoryTask`. Runtime handles сохранены в store
+из parent transfer, без ожидания их завершения или нового утверждения о текущей liveness.
+Исторический recorder snapshot завершён в 14:29:18 UTC и не обновляется автоматически.
 Только подтверждённый acceptance меняет статус этапа на принятый.
 
 Долговечный orchestration store находится в `/root/.claude/orchestrate/change-aware-memory-invalidation/`.
@@ -278,13 +300,18 @@ Canonical decision trail остаётся `reports/orchestration/decisions.tsv`;
 PR frontier seed пропущен: пользователь выбрал локальные коммиты на main без PR.
 Текущий docs integrator коммитит только разрешённые документы в main, без push и PR. Новых агентов не запускает.
 [Аудит журнала](../reports/orchestration/trail_audit_ru.md) указывает проверенный диапазон, слабые pointers и пределы проверки.
-Полный SHA этого docs commit сохраняется после коммита в external receipt `docs-drain-20261023-receipt.json`.
+Полный SHA этого docs commit и результаты readback сохраняются во внешнем receipt
+`outputs/milestone-docs/run-20261023T143501Z-stage3-acceptance/receipt.json`.
 
 Docs-only commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a` завершён: terminal clean,
 2 files, +255; receipt `docs-integration.json` во внешнем store. Это исторический
 переданный snapshot, не утверждение о текущем состоянии main.
 
-## Проверка интеграции stage2 в main
+## История интеграций и review до Stage3 MAIN PASS
+
+Следующие snapshots сохранены как история. Текущие acceptance и active tasks указаны выше.
+
+### Проверка интеграции stage2 в main
 
 Patch SHA-256 `9a62a9c4395521eb059071a2fdf517b3dc5fa157364f2fe47e53448d63529294`
 проверен перед применением к чистой main `14572ebd470d7c246c52d860b6957635a32a0a64`.
