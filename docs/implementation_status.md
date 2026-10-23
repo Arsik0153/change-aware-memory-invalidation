@@ -264,3 +264,61 @@ and all 72 Click smoke executions (24 combined supported verdicts, no exclusions
 Ruff, mypy and diff checks passed again. Logs and exact commands are in
 `reports/next-stage-20261001/completion/`. This final smoke includes the new runner
 collision guard; it does not remove the documented pytest environment limitation.
+
+## 2026-10-23: worktree search and persistent product generations
+
+`cami find SYMBOL --repo PATH` now reads the working tree by default, including
+unstaged changes and untracked Python files. Explicit `--revision HEAD` or a SHA
+still reads Git objects in a dirty checkout. Product JSON uses schema version 2;
+research records, protocols, datasets, seals, and `cami run` retain their contracts.
+The [worktree index contract](worktree_index_ru.md) documents coverage, excludes,
+content identity, persistence, and errors.
+
+The product captures bytes, builds a complete immutable index, and verifies the
+readset before publication or reuse. Content identity includes full file hashes,
+policy, and analyzer fingerprint. Per-worktree writer locks serialize refresh;
+atomic generation and pointer publication supports restart and concurrent queries.
+The guarantee is `verified_readset` over a reported interval. It does not claim an
+atomic filesystem snapshot. Parse errors permit healthy search with partial
+coverage; I/O failures do not publish a partial current generation or return an
+old index as fresh. Damaged caches rebuild with stderr diagnostics.
+
+Implementation-worktree validation passed 68 targeted tests and the complete
+non-Docker suite, **381 passed, 4 Docker tests deselected**. Ruff, strict mypy for
+31 source files, and `git diff --check` passed. Separate-process CLI fixtures
+cover staged/unstaged bytes, untracked files, rename, delete, revert, comment-line
+identity, HEAD isolation, parse recovery, and persistent reuse. Controlled tests
+cover unstable capture, permission failure, symlink replacement, crash boundaries,
+corrupt state, and two concurrent processes. These are correctness and reuse
+checks; no speedup is claimed. Integration must preserve the independent stage1
+resolver fix and repeat key acceptance before committing to main.
+
+JavaScript/TypeScript, product memory, watch, and automatic generation GC remain
+future work. No heldout Requests/pytest execution or scientific freeze was run
+for this product stage.
+
+### Main integration verification
+
+The Stage2 full-index patch was applied three-way to main `14572ebd470d7c246c52d860b6957635a32a0a64`
+without conflicts. The accepted stage1 resolver helpers are AST-identical, and all
+27 P2 regression cases remain. Main validation passed **95 targeted tests** and
+**408 non-Docker tests, 4 deselected**, Ruff, and strict mypy for `src/cami` and
+`scripts/demo_structural_closure.py`. The increase over the implementation
+worktree is the preserved 27 P2 cases, not replacement tests.
+
+Separate-process acceptance passed 15 lifecycle scenarios and 13 additional
+checks for reuse without a builder, capture instability, input changes during
+cache loading, corrupt/incompatible cache rebuild, crash recovery, unsupported
+files, and the original P2 fixture in worktree, HEAD, and explicit SHA modes.
+P2 has zero false incoming edges. Unresolved signals and limitation contents
+match the accepted fix. JSON v2 sorts limitations by path and code.
+The external acceptance driver initially compared the old limitation order and
+incorrectly required a rebuild when a valid generation already existed. Those
+assertions were corrected; product source did not change during verification.
+
+Integration evidence, reproducible drivers, command logs, exact commit and tree
+IDs, and postcommit CLI results are in
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage2-main-integration/run-20261023T1210/`.
+The receipt is `integration-receipt.json`. These are implementation checks.
+Stage2 acceptance remains `under_review` until the parent's fresh independent
+review of the committed SHA. Historical stage1 FAIL and exact-499 PASS remain.

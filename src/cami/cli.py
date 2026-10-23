@@ -13,13 +13,15 @@ from cami.errors import IncompleteError, InputError, ResourceError
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="cami")
     sub = parser.add_subparsers(dest="command", required=True)
-    find = sub.add_parser("find", help="find Python definitions in a committed Git snapshot")
+    find = sub.add_parser("find", help="find Python definitions in the worktree or an explicit Git revision")
     find.add_argument("symbol")
     find.add_argument("--repo", type=Path, required=True)
-    find.add_argument("--revision", default="HEAD")
+    find.add_argument("--revision", help="read Git objects instead of the working tree")
     find.add_argument("--format", choices=("text", "json"), default="text")
     find.add_argument("--source-root", action="append", dest="source_roots",
                       help="repository-relative Python source root; repeat for multiple roots")
+    find.add_argument("--exclude", action="append", default=[],
+                      help="exclude a repository-relative worktree path and its descendants; repeatable")
     check = sub.add_parser("check-inputs")
     check.add_argument("--config", type=Path, required=True)
     run = sub.add_parser("run")
@@ -71,7 +73,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "find":
             from cami.symbol_search import find_symbols, format_text
             result = find_symbols(args.repo, args.symbol, args.revision,
-                                  tuple(args.source_roots) if args.source_roots else None)
+                                  tuple(args.source_roots) if args.source_roots else None,
+                                  tuple(args.exclude))
             print(json.dumps(result.model_dump(mode="json"), ensure_ascii=True, sort_keys=True)
                   if args.format == "json" else format_text(result))
         elif args.command == "check-inputs":

@@ -3,6 +3,14 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
+Текущий интеграционный snapshot stage2 от 2026-10-23 заменяет прежние ожидания ниже.
+Implementation перенесена в исходную main, self-tests пройдены, acceptance `under_review`.
+Точный integration commit указан во внешнем `stage2-main-integration.json`.
+Main code/index/commit принадлежит текущему integration worker по прямому заданию.
+Прежние docs-only scope и launch snapshots ниже являются историческими.
+Stage1 принят только на exact `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
+Stage3 CLI integration, product memory и watch этим переносом не приняты.
+
 ## Исходное состояние
 
 На чтении 2026-10-23 HEAD равен `dcd67fa`, ветка `main`, рабочее дерево чистое.
@@ -80,7 +88,8 @@ Acceptance этапа:
 
 ### 2. Worktree snapshots и persistent index
 
-Статус реализации `in_progress`, acceptance `not_accepted`. Зависимость интеграции от acceptance этапа 1.
+Статус реализации `implementation_completed`, acceptance `under_review`. Stage1 принят.
+Исторический launch до интеграции описан следующим абзацем.
 Implementation запущена параллельно в T3 isolation worktree, БЕЗ КОММИТОВ.
 Проверенный patch и evidence передаются свежему parent-assigned main integrator; он сохраняет
 исправление stage1, повторяет acceptance после переноса и коммитит в исходной main.
@@ -243,7 +252,8 @@ Reset указан как `2026-10-29 18:36:49 UTC`. Эти значения п�
 
 Точка продолжения задаётся этим планом и append-only [decisions.tsv](../reports/orchestration/decisions.tsv).
 Stage1 `accepted` после независимого `PASS` r2 для `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
-Stage2 implementation `in_progress`, `not_accepted`. Stage3 core `in_progress`, integration `pending`, `not_accepted`.
+Stage2 implementation `implementation_completed`, acceptance `under_review`; self-tests пройдены.
+Последний переданный Stage3 core snapshot `in_progress`, integration `pending`, `not_accepted`.
 Этапы 4 и 5 `pending`. Итого пять продуктовых этапов: один принят, два в работе, два ожидают.
 Runtime units включают отдельные implementation, design, review и docs runs. Их число не означает число готовых этапов.
 Исторический независимый `FAIL` сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4`.
@@ -265,3 +275,37 @@ PR frontier seed пропущен: пользователь выбрал лок�
 Docs-only commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a` завершён: terminal clean,
 2 files, +255; receipt `docs-integration.json` во внешнем store. Это исторический
 переданный snapshot, не утверждение о текущем состоянии main.
+
+## Проверка интеграции stage2 в main
+
+Patch SHA-256 `9a62a9c4395521eb059071a2fdf517b3dc5fa157364f2fe47e53448d63529294`
+проверен перед применением к чистой main `14572ebd470d7c246c52d860b6957635a32a0a64`.
+Трёхстороннее применение прошло без конфликтов. P2 resolver helpers не изменились;
+все 27 исправляющих регрессий сохранены. Research contracts и inputs не менялись.
+Main self-tests дали 95 targeted и 408 non-Docker passed, 4 deselected.
+Ruff и strict mypy `src/cami scripts/demo_structural_closure.py` прошли.
+Реальные CLI-процессы проверили 15 lifecycle и 13 дополнительных сценариев,
+включая исходный P2 repro с нулём ложных incoming в worktree и Git-режимах.
+Сортировка limitations в JSON v2 изменилась, их содержимое и unresolved signals сохранены.
+
+Полные commands, драйверы и receipt находятся во внешнем store в
+`outputs/stage2-main-integration/run-20261023T1210/`.
+Точный commit, source/test tree IDs и postcommit self-query сохранены после commit.
+Это implementation verification, не independent review. Свежий reviewer той же
+настроенной модели назначается родителем; до его verdict stage2 остаётся `under_review`.
+Следующая продуктовая работа требует полной TS find integration и отдельной приемки Next.js.
+PR не создавался, PR ledger не заполняется фиктивным номером.
+
+### Новые component events из parent handoff
+
+TS core завершён как tested component: переданы 50 targeted и 422 full tests.
+Это результаты изолированного worker, не проверка `cami find` и не acceptance этапа 3.
+Patch находится в
+`/root/.t3/worktrees/change-aware-memory-invalidation/t3-b16d8453/outputs/stage3-typescript-core/patch.diff`.
+Переданный SHA-256 равен `8b987029866d4b9292f8c81da9395345552f2c34491b9d0589c9fb7dfae9b40c`.
+TS product integration запущена в отдельном worktree без коммитов.
+Memory architecture завершена с SQLite, provenance и claim freshness design.
+Memory core implementation также запущена изолированно без коммитов и пока не принята.
+Полная TS/memory CLI-приемка ожидает подключения TS find.
+Task/thread handles сохранены в `runtime-handles.json` внешнего store.
+Эти parent-transferred события уточняют прежние launch snapshots, не расширяют scope Stage2.

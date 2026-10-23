@@ -1,14 +1,19 @@
 # Контракт поиска символов CAMI
 
-`cami find SYMBOL --repo PATH --revision HEAD --format json` ищет определения
-Python в зафиксированном Git snapshot. Формат по умолчанию `text` содержит пути,
-строки, читаемую сигнатуру, связи и ограничения. Репозиторий не импортируется,
-checkout и Git index не меняются. Незакоммиченные и staged изменения не участвуют
-в поиске. Разрешение Git revision не требует сетевого доступа.
+`cami find SYMBOL --repo PATH` по умолчанию ищет определения Python в текущем
+рабочем дереве, включая незакоммиченные изменения и untracked-файлы.
+Явный `--revision HEAD` или SHA выбирает Git objects независимо от dirty checkout.
+Формат по умолчанию `text` содержит пути, строки, читаемую сигнатуру, связи и
+ограничения. Поиск не импортирует репозиторий и не меняет checkout или Git index.
+Разрешение Git revision не требует сетевого доступа.
+
+[Контракт worktree index](worktree_index_ru.md) описывает проверяемый capture,
+исключения и постоянные поколения. Git-режим не использует product state.
 
 ## Аргументы и matching
 
-`SYMBOL` и `--repo` обязательны. `--revision` по умолчанию равен `HEAD`.
+`SYMBOL` и `--repo` обязательны. Отсутствие `--revision` выбирает worktree.
+Повторяемый `--exclude PATH` исключает путь и его потомков только в worktree-режиме.
 `--format` принимает `text` и `json`. Повторяемый `--source-root` задаёт
 репозиторные POSIX-пути корней Python. Без этого аргумента корни равны `src`, `.`,
 если snapshot содержит Python-файлы под `src/`, иначе `.`. Более глубокий корень
@@ -34,22 +39,35 @@ re-export имена и TypeScript не являются результатам�
 `not_found` означает отсутствие определения в поддерживаемой части выбранного
 индекса. Ошибка разбора файла остаётся видна в `limitations` даже при `not_found`.
 
-## JSON версии 1
+## JSON версии 2
 
-Stdout содержит один JSON-объект и завершающий перевод строки. Диагностика ошибок
-идёт в stderr. Ключи JSON сортируются. Для одного запроса, Git snapshot, корней
-и версии анализатора stdout детерминирован, включая порядок массивов. В ответе
-нет времени запуска, абсолютного пути checkout или случайного идентификатора.
+Stdout содержит ровно один JSON document. Объекты сериализуются с отсортированными
+ключами, списки matches, limitations и связей имеют стабильный семантический порядок.
+Operational warnings и ошибки идут в stderr. Git-ответ воспроизводится побайтово.
+Worktree-ответ воспроизводится без верхнего поля `observation`, которое содержит
+интервал проверки и факт reuse. Эти значения не участвуют в content identity.
 
 Поля верхнего уровня имеют следующий смысл:
 
-- `schema_version` равен целому числу `1`.
-- `query` и `requested_revision` сохраняют исходные строки запроса.
-- `snapshot.kind` равен `git`. `revision` содержит полный commit object ID,
-  `tree` содержит Git tree object ID. Длина object ID зависит от формата Git.
+- `schema_version` равен целому числу `2`. Research Record v1 не меняется.
+- `query` сохраняет исходный запрос. `requested_revision` равен исходной строке
+  revision в Git-режиме или `null` в worktree-режиме.
+- `snapshot.kind` различает `git` и `worktree`. Git snapshot содержит `revision`
+  с полным commit ID и `tree` с Git tree ID. Длина зависит от формата Git.
+  Worktree snapshot содержит `snapshot_id`, `generation_id`, `base_commit`,
+  `consistency: verified_readset`, capture `policy` и analyzer `fingerprint`.
+  `base_commit` может быть `null` у нового репозитория без коммитов.
 - `snapshot.source_roots` фиксирует корни индекса. `index_version`,
   `search_version` и `python_version` различают версии AST-индекса,
-  продуктового разрешения связей и Python. На текущем этапе search version равен `1`.
+  продуктового поиска и Python. Search version равен `2`.
+- `coverage` равен `complete` для успешно прочитанных и разобранных включённых
+  Python-входов или `partial` при файловом ограничении. Исключённые пути и
+  неподдерживаемые языки не входят в эту область покрытия.
+- `absence_confirmed` равен `true` только при `not_found` и `coverage: complete`.
+  Это отсутствие определения в поддерживаемой области поиска, не доказательство
+  отсутствия runtime binding или определения на другом языке.
+- `observation` равен `null` в Git-режиме. Для worktree он содержит
+  `capture_started_at`, `verified_at` в UTC и `cache_reused`.
 - `status` равен `found` при одном однозначном определении, `not_found` при пустом
   `matches`, `ambiguous` при нескольких определениях или неоднозначной привязке.
 - `matches` содержит все определения, отсортированные по `path`, `qualname`,
@@ -132,8 +150,9 @@ Relative import выше корня пакета не создаёт связь,
 Вызовы непосредственно в теле модуля не индексируются.
 
 Файловые ограничения включают `parse_error`, `file_too_large`,
-`symlink_unsupported`, `submodule_unsupported`, `lfs_unsupported`. Превышение
+`symlink_unsupported`, `submodule_unsupported`, `lfs_unsupported`. В Git-режиме превышение
 лимита 2 MiB и неподдерживаемые объекты не замещаются содержимым рабочего дерева.
+Worktree также сообщает `special_file_unsupported` без чтения FIFO или устройств.
 
 ## Воспроизводимые acceptance checks
 
@@ -161,23 +180,16 @@ rename и delete на разных revision, сохранность staged и un
 прямые связи обоих направлений, локальные импорты и перекрытие имён, parse errors,
 разные `PYTHONHASHSEED`, ошибочные входы и собственный CLI CAMI.
 
-## Основа следующего этапа
+## Граница продукта и research
 
-`FindResult` принадлежит продуктовому поиску. Research records не расширяются
-новыми продуктовыми полями. `Node(path, qualname)` остаётся идентификатором
-графа, а диапазон строк различает повторные определения в результатах.
-Альтернатива с изменением общего resolver отклонена, потому что она изменила бы
-research selection. Продуктовый resolver версионируется отдельно.
+`FindResult` и persistent manifest принадлежат `cami.product`. Research records,
+selector и протоколы не расширяются продуктовыми типами. `Node(path, qualname)`
+остаётся идентификатором графа, а диапазон строк различает повторные определения.
+Продуктовый resolver версионируется отдельно. Неизменяемый `CodeIndex` строится из
+Git blobs либо из захваченных bytes рабочего дерева через один адаптер.
+Worktree token `worktree:<snapshot_id>` остаётся внутри продуктового адаптера и
+не подставляется в commit-поля research records.
 
-Сейчас snapshot всегда имеет `kind: git`, индекс строится заново для каждого
-процесса. Чтение Git объектов сохраняет точную revision независимо от рабочего
-дерева. Поддержке рабочего дерева потребуется отдельная идентичность snapshot,
-включая dirty content, удаления и staged policy. Подмена commit ID значением
-`HEAD` для таких данных нарушит текущий контракт.
-
-Постоянному индексу нужны ключи по content, Python, index version, search version,
-пути и имени модуля с учётом source roots. Существующий AST cache учитывает blob,
-Python, index version, путь и module name. Граф локальных импортов зависит от
-набора модулей всего snapshot и требует отдельной инвалидации. TypeScript,
-хранилище индекса, поиск рабочего дерева и полное разрешение Python не входят
-в реализованный этап.
+TypeScript, product memory и watch не входят в этот этап. Отсутствующий Node
+или TypeScript toolchain не мешает Python-поиску. Конфигурация target-репозитория
+не исполняется. Research `cami run` сохраняет прежний интерфейс.

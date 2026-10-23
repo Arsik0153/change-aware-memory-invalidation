@@ -13,6 +13,11 @@ from cami.models import RepoLocation
 from cami.repository import read_snapshot
 
 
+@pytest.fixture(autouse=True)
+def isolated_product_state(tmp_path, monkeypatch):
+    monkeypatch.setenv("XDG_STATE_HOME", str(tmp_path / "state"))
+
+
 def cli(root, symbol, *args, seed="1"):
     return subprocess.run(
         [sys.executable, "-m", "cami.cli", "find", symbol, "--repo", str(root), *args],
@@ -34,11 +39,11 @@ def test_cli_contract_signature_and_both_directions(repo):
                   "def helper(x): return x\n",
         "caller.py": "from api import target as selected\ndef caller(): return selected()\n",
     })
-    data = lookup(repo.root, "target")
+    data = lookup(repo.root, "target", "--revision", "HEAD")
     assert set(data) == {"schema_version", "query", "requested_revision", "snapshot", "status",
                          "matches", "graph_complete", "limitations", "unresolved",
-                         "global_unresolved"}
-    assert data["schema_version"] == 1
+                         "global_unresolved", "coverage", "absence_confirmed", "observation"}
+    assert data["schema_version"] == 2
     assert data["status"] == "found"
     assert data["snapshot"]["kind"] == "git"
     assert data["snapshot"]["revision"] == revision
@@ -119,11 +124,23 @@ def test_revision_rename_delete_and_dirty_checkout_are_independent(repo):
     absent = lookup(repo.root, "renamed", "--revision", deleted)
     assert absent["status"] == "not_found"
     assert absent["matches"] == []
-    assert lookup(repo.root, "original")["status"] == "not_found"
+    assert lookup(repo.root, "original")["status"] == "found"
     assert repo.git("rev-parse", "HEAD") == deleted
     assert repo.git("status", "--porcelain") == status_before
     assert (repo.root / ".git/index").read_bytes() == index_before
     assert "unstaged" in (repo.root / "new.py").read_text()
+
+
+def test_explicit_git_revision_does_not_require_worktree_backend(repo):
+    repo.commit({"a.py": "def target(): pass\n"})
+    script = ("import sys\nsys.modules['fcntl'] = None\n"
+              "from cami.cli import main\n"
+              f"raise SystemExit(main(['find', 'target', '--repo', {str(repo.root)!r}, "
+              "'--revision', 'HEAD', '--format', 'json']))")
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True,
+                            text=True, check=False, timeout=20)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)["status"] == "found"
 
 
 def test_source_roots_and_paths_with_spaces(repo):
@@ -287,8 +304,8 @@ def test_local_import_does_not_choose_between_colliding_module_names(repo):
 def test_json_is_byte_deterministic_across_hash_seeds(repo):
     repo.commit({"a.py": "def target(): return helper()\ndef helper(): pass\n",
                  "b.py": "from a import target\ndef caller(): return target()\n"})
-    first = cli(repo.root, "target", "--format", "json", seed="11")
-    second = cli(repo.root, "target", "--format", "json", seed="97")
+    first = cli(repo.root, "target", "--revision", "HEAD", "--format", "json", seed="11")
+    second = cli(repo.root, "target", "--revision", "HEAD", "--format", "json", seed="97")
     assert first.returncode == second.returncode == 0
     assert first.stdout == second.stdout
     json.loads(first.stdout)
@@ -320,12 +337,14 @@ def test_invalid_arguments_report_stderr(repo, extra):
 
 def test_invalid_repo_empty_symbol_and_empty_history(tmp_path, repo):
     for root, symbol in [(tmp_path / "absent", "x"), (tmp_path, "x"),
-                         (repo.root, "x"), (repo.root, " ")]:
+                         (repo.root, " ")]:
         result = cli(root, symbol)
         assert result.returncode == 2
         assert result.stdout == ""
         assert "input error:" in result.stderr
         assert "Traceback" not in result.stderr
+    assert lookup(repo.root, "x")["status"] == "not_found"
+    assert cli(repo.root, "x", "--revision", "HEAD").returncode == 2
 
 
 def test_cami_finds_static_call_from_its_own_cli():

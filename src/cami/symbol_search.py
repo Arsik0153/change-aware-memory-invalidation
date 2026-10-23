@@ -2,55 +2,17 @@ from __future__ import annotations
 
 import ast
 import platform
+from dataclasses import replace
 from pathlib import Path
 from typing import Literal
 
 from cami.errors import InputError
 from cami.index import INDEX_VERSION, CodeIndex, IndexConfig, Module, bound_names, build_index, scope_nodes
-from cami.models import Dependency, Node, Record, RepoLocation, Signature, Value
-from cami.repository import git, read_snapshot
-
-
-class SearchSnapshot(Value):
-    kind: Literal["git"] = "git"
-    revision: str
-    tree: str
-    source_roots: tuple[str, ...]
-    index_version: str = INDEX_VERSION
-    search_version: Literal["1"] = "1"
-    python_version: str
-
-
-class SearchLimitation(Value):
-    code: str
-    path: str | None = None
-
-
-class SymbolMatch(Value):
-    path: str
-    qualname: str
-    module: str
-    qualified_name: str
-    node_kind: str
-    start_line: int
-    end_line: int
-    signature: Signature
-    signature_text: str
-    ambiguous: bool
-    incoming: tuple[Dependency, ...]
-    outgoing: tuple[Dependency, ...]
-
-
-class FindResult(Record):
-    query: str
-    requested_revision: str
-    snapshot: SearchSnapshot
-    status: Literal["found", "not_found", "ambiguous"]
-    matches: tuple[SymbolMatch, ...]
-    graph_complete: Literal[False] = False
-    limitations: tuple[SearchLimitation, ...]
-    unresolved: tuple[Node, ...]
-    global_unresolved: bool
+from cami.models import Dependency, Node, RepoLocation, safe_path
+from cami.product.models import (
+    FindResult, GitSnapshot, Observation, SearchLimitation, SymbolMatch, WorktreeSnapshot,
+)
+from cami.repository import Snapshot, git, read_snapshot
 
 
 def _edge_key(edge: Dependency) -> tuple[str, str, str, str, str]:
@@ -136,20 +98,52 @@ def _signature_text(source: str) -> str:
     return f"{prefix} {function.name}{type_params}({ast.unparse(function.args)}){returns}"
 
 
-def find_symbols(repo: Path, query: str, revision: str = "HEAD",
-                 source_roots: tuple[str, ...] | None = None) -> FindResult:
+def _search_index(snapshot: Snapshot, config: IndexConfig) -> CodeIndex:
+    index = build_index(snapshot, config)
+    edges = tuple(sorted(set(index.edges) | _local_import_edges(index), key=_edge_key))
+    return replace(index, edges=edges)
+
+
+def find_symbols(repo: Path, query: str, revision: str | None = None,
+                 source_roots: tuple[str, ...] | None = None,
+                 excluded_paths: tuple[str, ...] = ()) -> FindResult:
     if not query.strip() or "\x00" in query:
         raise InputError("symbol must be nonempty and contain no NUL characters")
+    for path in (*(source_roots or ()), *excluded_paths):
+        safe_path(path)
     if not repo.is_dir():
         raise InputError(f"repository directory does not exist: {repo}")
-    snapshot = read_snapshot(RepoLocation(repo_id="symbol-search", path=str(repo)), revision)
-    if source_roots is None:
-        source_roots = (("src", ".") if any(blob.path.startswith("src/")
-                                              and blob.path.endswith(".py")
-                                              for blob in snapshot.blobs) else (".",))
-    location = RepoLocation(repo_id="symbol-search", path=str(repo), source_roots=source_roots)
-    index = build_index(snapshot, IndexConfig(location.source_roots))
-    edges = tuple(sorted(set(index.edges) | _local_import_edges(index), key=_edge_key))
+    observation: Observation | None = None
+    source: GitSnapshot | WorktreeSnapshot
+    if revision is not None:
+        if excluded_paths:
+            raise InputError("--exclude applies only to worktree search")
+        snapshot = read_snapshot(RepoLocation(repo_id="symbol-search", path=str(repo)), revision)
+        if source_roots is None:
+            source_roots = (("src", ".") if any(blob.path.startswith("src/")
+                                                  and blob.path.endswith(".py")
+                                                  for blob in snapshot.blobs) else (".",))
+        index = _search_index(snapshot, IndexConfig(source_roots))
+        source = GitSnapshot(
+            revision=snapshot.revision,
+            tree=git(repo, "rev-parse", snapshot.revision + "^{tree}").decode().strip(),
+            source_roots=source_roots, index_version=INDEX_VERSION,
+            python_version=platform.python_version())
+    else:
+        from cami.product.store import refresh
+        from cami.product.worktree import repository_root
+
+        indexed = refresh(repository_root(repo), source_roots, excluded_paths, _search_index)
+        snapshot = indexed.capture.as_snapshot()
+        index = indexed.generation.index
+        observation = indexed.observation
+        source = WorktreeSnapshot(
+            snapshot_id=indexed.capture.snapshot_id,
+            generation_id=indexed.generation.manifest.generation_id,
+            base_commit=indexed.capture.base_commit, source_roots=indexed.capture.policy.source_roots,
+            policy=indexed.capture.policy, fingerprint=indexed.generation.manifest.fingerprint,
+            index_version=INDEX_VERSION, python_version=platform.python_version())
+    edges = index.edges
     matches: list[SymbolMatch] = []
     for module in index.modules:
         for definition in module.definitions:
@@ -181,19 +175,29 @@ def find_symbols(repo: Path, query: str, revision: str = "HEAD",
     limitations.extend(SearchLimitation(code=blob.limitation, path=blob.path)
                        for blob in snapshot.blobs if blob.limitation
                        and blob.path not in index.limitations())
+    limitations = sorted(set(limitations), key=lambda item: (item.path or "", item.code))
+    limited = bool(index.limitations()) or any(blob.limitation for blob in snapshot.blobs)
     return FindResult(
-        query=query, requested_revision=revision,
-        snapshot=SearchSnapshot(revision=snapshot.revision,
-                                tree=git(repo, "rev-parse", snapshot.revision + "^{tree}").decode().strip(),
-                                source_roots=source_roots, python_version=platform.python_version()),
-        status=status, matches=tuple(matches), limitations=tuple(limitations),
+        query=query, requested_revision=revision, snapshot=source, observation=observation,
+        status=status, coverage="partial" if limited else "complete",
+        absence_confirmed=status == "not_found" and not limited,
+        matches=tuple(matches), limitations=tuple(limitations),
         unresolved=tuple(sorted(index.unresolved, key=lambda node: (node.path, node.qualname or ""))),
         global_unresolved=index.global_unresolved)
 
 
 def format_text(result: FindResult) -> str:
-    lines = [f"{result.status}: {result.query}",
-             f"Git revision: {result.snapshot.revision}", f"Snapshot tree: {result.snapshot.tree}"]
+    lines = [f"{result.status}: {result.query}"]
+    if isinstance(result.snapshot, GitSnapshot):
+        lines.extend((f"Git revision: {result.snapshot.revision}",
+                      f"Snapshot tree: {result.snapshot.tree}"))
+    else:
+        lines.extend((f"Worktree snapshot: {result.snapshot.snapshot_id}",
+                      f"Generation: {result.snapshot.generation_id}",
+                      "Consistency: verified_readset (verified reads, not an atomic filesystem snapshot)"))
+    lines.append(f"Coverage: {result.coverage}")
+    if result.status == "not_found" and not result.absence_confirmed:
+        lines.append("Absence is not confirmed because some inputs could not be indexed.")
     for match in result.matches:
         lines.append(f"{match.path}:{match.start_line}-{match.end_line} {match.qualname}"
                      + (" [ambiguous binding]" if match.ambiguous else ""))
