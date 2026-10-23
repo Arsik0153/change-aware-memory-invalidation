@@ -10,12 +10,10 @@ from typing import Literal
 
 from cami.errors import IncompleteError, InputError, ResourceError
 from cami.models import safe_path
+from cami.product.inputs import EXCLUDED_DIRS, ROOT_OUTPUTS, code_input, configuration_inputs
 from cami.product.models import Capture, CapturePolicy, InputEntry, digest
 from cami.repository import MAX_FILE_BYTES, Blob, git
 
-EXCLUDED_DIRS = (".git", ".venv", "venv", "node_modules", "__pycache__", ".pytest_cache",
-                 ".mypy_cache", ".ruff_cache", ".cache", ".tox", ".nox")
-ROOT_OUTPUTS = ("runs", "reports", "output", "cache")
 LiteralKind = Literal["file", "symlink", "submodule", "special"]
 
 
@@ -175,6 +173,17 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
     entries: list[InputEntry] = []
     blobs: list[Blob] = []
 
+    def record_config(fd: int, name: str, path: str) -> bytes | None:
+        content, sha, info = _read_file(fd, name)
+        limitation = "file_too_large" if content is None else None
+        if content is not None and content.startswith(b"version https://git-lfs.github.com/spec/v1"):
+            content, limitation = None, "lfs_unsupported"
+        mode = format(info.st_mode, "o")
+        entries.append(InputEntry(path=path, kind="file", mode=mode, sha256=sha,
+                                  size=info.st_size, limitation=limitation))
+        blobs.append(Blob(path, sha, mode, content, limitation))
+        return content
+
     def walk(fd: int, prefix: str) -> None:
         before = os.fstat(fd)
         with os.scandir(fd) as scan:
@@ -220,6 +229,12 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
             sha: str | None = None
             size = info.st_size
             kind: LiteralKind
+            uncertain_input = ((stat.S_ISLNK(info.st_mode) and not path.endswith(".json"))
+                               or path in submodules)
+            if (not stat.S_ISDIR(info.st_mode) and not code_input(path, roots)
+                    and not (uncertain_input and any(_within(path, item) or _within(item, path)
+                                                     for item in roots))):
+                continue
             if path in submodules:
                 kind, limitation, size = "submodule", "submodule_unsupported", 0
             elif stat.S_ISLNK(info.st_mode):
@@ -234,8 +249,6 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
                     walk(nested_fd, path)
                 finally:
                     os.close(nested_fd)
-                continue
-            elif not any(_within(path, item) for item in roots) or not path.endswith(".py"):
                 continue
             elif stat.S_ISREG(info.st_mode):
                 kind = "file"
@@ -257,6 +270,50 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
     root_fd = os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
     try:
         walk(root_fd, "")
+
+        def metadata_parent(path: str) -> int:
+            parent_fd = os.dup(root_fd)
+            try:
+                for part in path.split("/")[:-1]:
+                    child_fd = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW,
+                                       dir_fd=parent_fd)
+                    os.close(parent_fd)
+                    parent_fd = child_fd
+                return parent_fd
+            except OSError:
+                os.close(parent_fd)
+                raise
+
+        def metadata_exists(path: str) -> bool:
+            try:
+                parent_fd = metadata_parent(path)
+            except (FileNotFoundError, NotADirectoryError):
+                return False
+            try:
+                os.stat(path.rsplit("/", 1)[-1], dir_fd=parent_fd, follow_symlinks=False)
+                return True
+            except FileNotFoundError:
+                return False
+            finally:
+                os.close(parent_fd)
+
+        def read_config(path: str) -> bytes | None:
+            parent_fd = metadata_parent(path)
+            name = path.rsplit("/", 1)[-1]
+            try:
+                info = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+                if not stat.S_ISREG(info.st_mode):
+                    limitation = "symlink_unsupported" if stat.S_ISLNK(info.st_mode) else "special_file_unsupported"
+                    entries.append(InputEntry(path=path, kind="symlink" if stat.S_ISLNK(info.st_mode)
+                                              else "special", mode=format(info.st_mode, "o"),
+                                              sha256=None, size=info.st_size, limitation=limitation))
+                    blobs.append(Blob(path, digest([path, limitation]), "", None, limitation))
+                    return None
+                return record_config(parent_fd, name, path)
+            finally:
+                os.close(parent_fd)
+
+        configuration_inputs((blob.path for blob in blobs), metadata_exists, read_config)
     finally:
         os.close(root_fd)
     entries.sort(key=lambda item: item.path)

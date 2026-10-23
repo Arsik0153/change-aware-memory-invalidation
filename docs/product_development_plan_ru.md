@@ -3,6 +3,14 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
+Актуальное состояние на 2026-10-23 после Stage2 R3 и TypeScript artifact R2:
+Stage2 принят только на `6037294831fc0cde5525986cab043ea21af27dd3`.
+TypeScript artifact `741ef6de1b68519354f73259b25731d5c37c1735d0cfeaa443786decafa9e145`
+получил независимый PASS. Его интеграция в MAIN проверяется отдельно и остаётся
+`under_review` до свежей проверки итогового коммита. Memory component R3 работает
+read-only над candidate f0bb, Stage4 не принят. Watch design завершён как proposal,
+Stage5 не реализован. Последующие старые snapshots сохранены как история.
+
 Текущий интеграционный snapshot stage2 от 2026-10-23 заменяет прежние ожидания ниже.
 Implementation перенесена в исходную main, self-tests пройдены, acceptance `under_review`.
 Точный integration commit указан во внешнем `stage2-main-integration.json`.
@@ -379,3 +387,34 @@ Fresh memory component review r2 запущен read-only; verdict ещё отс
 Оба новых task/thread handles сохранены во внешнем `runtime-handles.json`.
 TS и memory не имеют PASS; full TS/memory CLI gate остаётся pending.
 Это transferred evidence, без новых проверок или code integration в main.
+
+### Stage2 R3 и интеграция TypeScript в MAIN
+
+Независимый Stage2 R3 дал PASS exact
+`6037294831fc0cde5525986cab043ea21af27dd3`: 148 targeted tests и 76 CLI checks.
+Report сохранён в `/tmp/cami-stage2-review-r3-ncph5p29/review-report.json`.
+Этот verdict заменяет pending R3 выше. Исторические FAIL exact1ad и exact26d
+сохранены вместе с исходными evidence.
+
+TypeScript artifact R2 дал PASS полному patch SHA-256
+`741ef6de1b68519354f73259b25731d5c37c1735d0cfeaa443786decafa9e145`.
+Все три R1 P2 закрыты, новых findings нет. Независимый report находится в
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage3-typescript-review/t3-7e700358-20261023T1343-r2/review.json`.
+Это artifact acceptance, не exact-MAIN acceptance.
+
+Patch перенесён трёхсторонне в MAIN с сохранением принятых socket и ignore
+исправлений. Конфликт был только в implementation status и разрешён сохранением
+обоих исторических разделов. Combined self-checks дали 256 targeted и 569
+non-Docker tests, 4 deselected. Сохранены все 53 Stage2 и 27 relative-import cases.
+Ruff, strict mypy38, Node, реальные combined CLI и установленный read-only wheel
+под uid65534 прошли. Полные команды и receipt находятся в external
+`outputs/stage3-main-integration/run-20261023T140732Z/`.
+Stage3 остаётся `under_review` до fresh independent review итогового MAIN commit.
+
+Parent сообщил о fresh memory component R3 над candidate f0bb. Переданы self-checks
+583 full и 72 memory tests; это не Stage4 acceptance. Memory R2 исторический FAIL
+и его database-open-race finding сохраняются. Полная TS/memory CLI integration
+ещё pending. Task/thread handles записаны в external runtime-handles.
+Watch design завершён как proposal. Точный terminal brief сохранён вне repo в
+`/root/.claude/orchestrate/change-aware-memory-invalidation/briefs/stage5-watch-implementation-20261023-v1.txt`.
+Stage5 не реализован. PR не создавался, PR ledger не получает фиктивной записи.

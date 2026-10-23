@@ -7,6 +7,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from cami.ecma_models import EcmaAnalysis, EcmaRelation, EcmaSignature, EcmaSymbolKey, EvidenceSite
 from cami.index import CodeIndex
 from cami.models import Dependency, Node, Signature, safe_path
 from cami.repository import Blob, Snapshot
@@ -33,7 +34,7 @@ class CapturePolicy(ProductValue):
     excluded_dirs: tuple[str, ...]
     root_outputs: tuple[str, ...]
     ignore_fingerprint: Digest
-    language: Literal["python"] = "python"
+    language: Literal["python_js_ts"] = "python_js_ts"
 
 
 class InputEntry(ProductValue):
@@ -47,13 +48,13 @@ class InputEntry(ProductValue):
 
 
 class StoreRecord(ProductValue):
-    schema_version: Literal[1] = 1
+    schema_version: Literal[2] = 2
 
     @field_validator("schema_version", mode="before")
     @classmethod
     def exact_version(cls, value: object) -> object:
-        if type(value) is not int or value != 1:
-            raise ValueError("schema_version must be integer 1")
+        if type(value) is not int or value != 2:
+            raise ValueError("schema_version must be integer 2")
         return value
 
 
@@ -82,7 +83,7 @@ class GitSnapshot(ProductValue):
     tree: str
     source_roots: tuple[str, ...]
     index_version: str
-    search_version: Literal["2"] = "2"
+    search_version: Literal["3"] = "3"
     python_version: str
 
 
@@ -96,7 +97,7 @@ class WorktreeSnapshot(ProductValue):
     policy: CapturePolicy
     fingerprint: Digest
     index_version: str
-    search_version: Literal["2"] = "2"
+    search_version: Literal["3"] = "3"
     python_version: str
 
 
@@ -107,6 +108,7 @@ class Observation(ProductValue):
 
 
 class SymbolMatch(ProductValue):
+    language: Literal["python"] = "python"
     path: str
     qualname: str
     module: str
@@ -121,8 +123,48 @@ class SymbolMatch(ProductValue):
     outgoing: tuple[Dependency, ...]
 
 
+class EcmaMatch(ProductValue):
+    language: Literal["js", "jsx", "ts", "tsx"]
+    path: str
+    qualname: str
+    module: str
+    qualified_name: str
+    node_kind: str
+    start_line: int
+    end_line: int
+    signature: EcmaSignature
+    signature_text: str
+    ambiguous: bool
+    occurrence_id: str
+    key: EcmaSymbolKey
+    site: EvidenceSite
+    syntax_hash: Digest
+    ast_hash: Digest
+    implementation: bool
+    incoming: tuple[EcmaRelation, ...]
+    outgoing: tuple[EcmaRelation, ...]
+
+
+class EcmaReady(ProductValue):
+    status: Literal["ready"] = "ready"
+    analysis: EcmaAnalysis
+
+
+class EcmaUnavailable(ProductValue):
+    status: Literal["unavailable"] = "unavailable"
+    message: str
+
+
+class EcmaNotPresent(ProductValue):
+    status: Literal["not_present"] = "not_present"
+
+
+EcmaState = Annotated[EcmaReady | EcmaUnavailable | EcmaNotPresent, Field(discriminator="status")]
+SearchMatch = Annotated[SymbolMatch | EcmaMatch, Field(discriminator="language")]
+
+
 class FindResult(ProductValue):
-    schema_version: Literal[2] = 2
+    schema_version: Literal[3] = 3
     query: str
     requested_revision: str | None
     snapshot: Annotated[GitSnapshot | WorktreeSnapshot, Field(discriminator="kind")]
@@ -130,7 +172,8 @@ class FindResult(ProductValue):
     status: Literal["found", "not_found", "ambiguous"]
     coverage: Literal["complete", "partial"]
     absence_confirmed: bool
-    matches: tuple[SymbolMatch, ...]
+    matches: tuple[SearchMatch, ...]
+    typescript: EcmaState
     graph_complete: Literal[False] = False
     limitations: tuple[SearchLimitation, ...]
     unresolved: tuple[Node, ...]
@@ -153,6 +196,13 @@ class Capture:
 class Generation:
     manifest: Manifest
     index: CodeIndex
+    typescript: EcmaState
+
+
+@dataclass(frozen=True)
+class ProductAnalysis:
+    python: CodeIndex
+    typescript: EcmaState
 
 
 @dataclass(frozen=True)

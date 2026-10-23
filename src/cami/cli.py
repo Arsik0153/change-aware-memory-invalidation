@@ -13,15 +13,16 @@ from cami.errors import IncompleteError, InputError, ResourceError
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="cami")
     sub = parser.add_subparsers(dest="command", required=True)
-    find = sub.add_parser("find", help="find Python definitions in the worktree or an explicit Git revision")
+    find = sub.add_parser("find", help="find Python, JS, and TS definitions in worktree or Git snapshots")
     find.add_argument("symbol")
     find.add_argument("--repo", type=Path, required=True)
     find.add_argument("--revision", help="read Git objects instead of the working tree")
     find.add_argument("--format", choices=("text", "json"), default="text")
     find.add_argument("--source-root", action="append", dest="source_roots",
-                      help="repository-relative Python source root; repeat for multiple roots")
+                      help="repository-relative source root; repeat for multiple roots")
     find.add_argument("--exclude", action="append", default=[],
-                      help="exclude a repository-relative worktree path and its descendants; repeatable")
+                      help="exclude worktree sources under a relative path; effective config metadata remains captured")
+    sub.add_parser("setup-typescript", help="install the pinned trusted compiler in your user cache")
     check = sub.add_parser("check-inputs")
     check.add_argument("--config", type=Path, required=True)
     run = sub.add_parser("run")
@@ -70,7 +71,14 @@ def main(argv: list[str] | None = None) -> int:
     analyze.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
-        if args.command == "find":
+        if args.command == "setup-typescript":
+            from cami.typescript_runtime import TypeScriptSetupError, setup_typescript
+            try:
+                directory = setup_typescript()
+            except TypeScriptSetupError as error:
+                raise ResourceError(str(error)) from error
+            print(f"TypeScript 6.0.3 ready: {directory}")
+        elif args.command == "find":
             from cami.symbol_search import find_symbols, format_text
             result = find_symbols(args.repo, args.symbol, args.revision,
                                   tuple(args.source_roots) if args.source_roots else None,

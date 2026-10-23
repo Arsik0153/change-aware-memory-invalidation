@@ -1,14 +1,14 @@
 # Контракт рабочего дерева и постоянного индекса
 
 `cami find SYMBOL --repo PATH` читает рабочее дерево. Staged и unstaged версии
-не объединяются: анализируются текущие bytes файла на диске. Untracked `.py`
+не объединяются: анализируются текущие bytes файла на диске. Untracked `.py`, `.js`, `.jsx`, `.ts`, `.tsx`
 участвуют без `git add`; delete удаляет определения; rename меняет путь и
 пересчитывает граф. Явный `--revision HEAD` или SHA читает только Git objects.
 Ни один режим не запускает target Python или target-конфигурацию.
 
 ## Идентичность и покрытие
 
-Product JSON имеет schema version 2. Research Record v1 остаётся прежним.
+Product JSON имеет schema version 3; manifest/pointer имеют schema version 2. Research Record v1 остаётся прежним.
 `snapshot.kind` различает `worktree` и `git`; поля commit и tree относятся
 только к Git. `base_commit` у worktree является контекстом capture и может
 быть `null`. Он не служит идентичностью незакоммиченного содержимого.
@@ -20,19 +20,18 @@ Hash вычисляется по полному прочитанному сод�
 меняет snapshot и строки результатов. Возврат тех же bytes и policy позволяет
 переиспользовать прежнее поколение независимо от staged-состояния и commit.
 
-`generation_id` дополнительно включает fingerprint schema, Python, Pydantic,
+`generation_id` дополнительно включает fingerprint schema, Python, Pydantic, compiler availability/version, trusted manifests,
 AST-индекса и продуктового кода. Корни, исключения и ignore-policy входят в
 snapshot identity. Код продукта меняет fingerprint автоматически. Изменение
 корней пересчитывает имена модулей и связи, даже если bytes файлов прежние.
 
-`coverage: complete` относится к включённым поддерживаемым Python-входам.
+`coverage: complete` относится к включённым поддерживаемым Python/JS/TS-входам.
 Синтаксическая ошибка, symlink, submodule, специальный или слишком большой
 файл дают `partial`. Healthy-файлы доступны. Определения и связи повреждённого
 файла из старого поколения не переносятся. `not_found` при `partial` имеет
 `absence_confirmed: false`; он не доказывает отсутствие определения.
 Статические связи всегда неполны, в том числе при `coverage: complete`.
-Неподдерживаемые языки обозначены общим limitation
-`python_functions_and_methods_only`. JavaScript и TypeScript пока не индексируются.
+Область поиска ограничена functions/methods. Compiler не выполняет typechecking.
 
 ## Проверяемый набор прочитанных входов
 
@@ -65,8 +64,9 @@ payload находятся UTC-поля `capture_started_at`, `verified_at` и `
 
 `--source-root` принимает повторяемые repository-relative POSIX-пути.
 Без него корни равны `src`, `.` при наличии включённых `.py` под `src/`, иначе
-`.`. Более глубокий корень задаёт имя модуля. `--exclude PATH` исключает точный
-путь и его потомков, включая tracked-файлы. Пустые, абсолютные пути и `..`
+`.`. Более глубокий корень задаёт имя модуля. `--exclude PATH` исключает исходники по точному
+пути и его потомкам, включая tracked-файлы. Действующие compiler configs и
+package metadata читаются отдельно от source exclusions и Git ignore. Пустые, абсолютные пути и `..`
 недопустимы. Эти CLI-параметры не исполняют target-конфигурацию.
 
 Git ignore rules применяются к untracked-входам с обычными Git negation и
@@ -89,8 +89,9 @@ symlinks к обычным ignore-файлам разрешены; провер�
 Source symlinks по-прежнему не читаются и дают честное `partial`.
 
 До спуска исключаются `.git`, `.venv`, `venv`, `node_modules`, `__pycache__`,
-`.pytest_cache`, `.mypy_cache`, `.ruff_cache`, `.cache`, `.tox`, `.nox`.
-Корневые `runs`, `reports`, `output`, `cache` также исключены. Product state
+`.pytest_cache`, `.mypy_cache`, `.ruff_cache`, `.cache`, `.tox`, `.nox`, `.next`,
+`dist`, `build`, `out`, `coverage`, `.cami`.
+Корневые `runs`, `reports`, `output`, `cache`, `state` также исключены. Product state
 исключён целиком, если находится под target root. Эта политика действует
 даже для tracked-файлов. В submodules и directory symlinks обход не входит.
 Symlink и special-file limitations видны явно. Лимит разбора равен 2 MiB;
@@ -113,8 +114,10 @@ generations/<generation-id>/manifest.json
 generations/<generation-id>/index.json
 ```
 
-Manifest хранит policy и hashes входов. Index содержит неизменяемый `CodeIndex`
-со source, определениями, static edges и unresolved signals. Pickle не используется.
+Manifest хранит policy и hashes входов. Index содержит ProductAnalysis с отдельными
+Python CodeIndex и TypeScript state. Research CodeIndex не получает TS records.
+Compiler analysis сохраняет definitions, sites, relations, diagnostics и unresolved.
+Pickle не используется.
 Готовое поколение повторно используется между процессами только после нового
 capture и его проверки. Это свидетельство reuse, не измерение ускорения.
 
@@ -151,7 +154,8 @@ quarantine соответствующего собственного артеф�
 Из корня CAMI выполняются следующие команды:
 
 ```bash
-uv run --locked pytest -q tests/test_worktree_search.py tests/test_symbol_search.py tests/test_index.py
+uv run --locked cami setup-typescript
+uv run --locked pytest -q tests/test_worktree_search.py tests/test_symbol_search.py tests/test_typescript_search.py tests/test_typescript_setup.py tests/test_typescript_analyzer.py tests/test_index.py
 uv run --locked pytest -q -m 'not docker'
 uv run --locked ruff check .
 uv run --locked mypy src/cami scripts/demo_structural_closure.py
@@ -169,3 +173,32 @@ hooks меняют входы между capture и verification, имитиру
 Эти тесты проверяют достижимый readset contract. Они не доказывают атомарность
 произвольных внешних изменений файловой системы. Docker, реальные heldout
 Requests/pytest и scientific freeze для этого этапа не требуются.
+
+## Compiler inputs и setup cache
+
+Capture включает root tsconfig.json либо jsconfig.json, его relative extends
+цепочку и package.json в ancestors включённых JS/TS sources. JSONC допускает
+comments и trailing commas. Capture selector читает только эту цепочку; финальную
+валидацию и options parsing выполняет TypeScript compiler. Невалидный или missing
+config виден в diagnostics и отключает resolver вместо fallback к live checkout.
+Config может находиться вне `--source-root` или под source exclusion. Он остаётся
+в readset, если влияет на выбранные исходники. Это также относится к ignored
+untracked configs и package metadata. Fixed exclusions вроде `.git` и
+`node_modules` не обходятся.
+Unrelated JSON и исключённые пути не отравляют absence через file-size limitations.
+Создание root config или missing extends файла меняет readset и snapshot identity.
+
+Config, barrel, source inventory, parser или compiler availability changes
+перестраивают generation целиком. При cache hit анализ читается из проверенного
+index.json. Unavailable state не публикуется в generations и не меняет current pointer.
+Его ephemeral generation ID дополнительно включает hash analysis payload.
+Recovery при том же snapshot/fingerprint получает другой healthy generation ID.
+Следующий процесс переиспользует healthy graph без source edit.
+
+`cami setup-typescript` устанавливает exact dependency отдельно от index writers.
+Cache находится в `${XDG_CACHE_HOME:-~/.cache}/cami/typescript/6.0.3-<manifest-hash>`.
+Setup создаёт temporary directory с собственными CAMI manifest/lockfile, запускает
+`npm ci --ignore-scripts`, проверяет version и публикует каталог rename. Find
+использует только опубликованный absolute compiler path, очищает NODE_OPTIONS
+и NODE_PATH и не запускает npm. Старый usable cache при failed setup сохраняется.
+Package directory не служит местом установки dependency.

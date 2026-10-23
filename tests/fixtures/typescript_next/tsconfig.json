@@ -1,0 +1,10 @@
+{
+  // Captured config only. No Next runtime is installed.
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "jsx": "preserve"
+  }
+}

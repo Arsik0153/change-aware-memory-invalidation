@@ -29,3 +29,7 @@ strict = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["docker: executes prepared Docker images"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cami"]
+exclude = ["src/cami/_typescript/node_modules/**"]

@@ -21,20 +21,24 @@ from pydantic import TypeAdapter, ValidationError
 from cami.artifacts import parse
 from cami.errors import IncompleteError
 from cami.index import INDEX_VERSION, CodeIndex, IndexConfig
+from cami.product.ecma import analyze_snapshot
 from cami.product.models import (
     Capture,
+    EcmaUnavailable,
     Generation,
     IndexedWorktree,
     Manifest,
     Observation,
     Pointer,
+    ProductAnalysis,
     canonical_json,
     digest,
 )
 from cami.product.worktree import CaptureChanged, capture
 from cami.repository import Snapshot
+from cami.typescript_runtime import runtime_identity
 
-INDEX_ADAPTER = TypeAdapter(CodeIndex)
+INDEX_ADAPTER = TypeAdapter(ProductAnalysis)
 MAX_CAPTURE_ATTEMPTS = 3
 MAX_CACHE_BYTES = 256 * 1024 * 1024
 
@@ -55,10 +59,13 @@ def worktree_key(root: Path) -> str:
 def index_fingerprint() -> str:
     package = Path(__file__).parent.parent
     sources = [package / name for name in ("index.py", "symbol_search.py", "models.py",
-                                           "repository.py")]
+                                           "repository.py", "typescript_analyzer.py",
+                                           "typescript_runtime.py", "ecma_models.py",
+                                           "_typescript/analyze.cjs")]
     sources.extend(sorted(
         (package / "product").glob("*.py")))
-    return digest({"schema_version": 1, "index_version": INDEX_VERSION,
+    return digest({"schema_version": 2, "index_version": INDEX_VERSION,
+                   "typescript_runtime": runtime_identity(),
                    "python": sys.version, "implementation": platform.python_implementation(),
                    "pydantic": PYDANTIC_VERSION,
                    "sources": {path.relative_to(package).as_posix(): hashlib.sha256(
@@ -210,10 +217,12 @@ class GenerationStore:
             if hashlib.sha256(raw_index).hexdigest() != manifest.index_sha256:
                 raise ValueError("index checksum mismatch")
             parse(raw_index.decode("utf-8"))
-            index = INDEX_ADAPTER.validate_json(raw_index, strict=True)
-            if index.revision != "worktree:" + captured.snapshot_id:
+            analysis = INDEX_ADAPTER.validate_json(raw_index, strict=True)
+            if analysis.python.revision != "worktree:" + captured.snapshot_id:
                 raise ValueError("index refers to a different snapshot")
-            return Generation(manifest, index)
+            if isinstance(analysis.typescript, EcmaUnavailable):
+                return None
+            return Generation(manifest, analysis.python, analysis.typescript)
         except FileNotFoundError:
             return None
         except (ValidationError, ValueError) as exc:
@@ -297,13 +306,18 @@ def refresh(root: Path, source_roots: tuple[str, ...] | None, excluded_paths: tu
                     index_bytes = None
                     if generation is None:
                         index = build(captured.as_snapshot(), IndexConfig(captured.policy.source_roots))
-                        index_bytes = INDEX_ADAPTER.dump_json(index)
+                        typescript = analyze_snapshot(captured.as_snapshot())
+                        index_bytes = INDEX_ADAPTER.dump_json(ProductAnalysis(index, typescript),
+                                                             by_alias=True)
+                        if isinstance(typescript, EcmaUnavailable):
+                            generation_id = digest([generation_id,
+                                                    hashlib.sha256(index_bytes).hexdigest()])
                         manifest = Manifest(
                             worktree_key=store.key, snapshot_id=captured.snapshot_id,
                             generation_id=generation_id, fingerprint=fingerprint,
                             policy=captured.policy, entries=captured.entries,
                             index_sha256=hashlib.sha256(index_bytes).hexdigest())
-                        generation = Generation(manifest, index)
+                        generation = Generation(manifest, index, typescript)
                     verified = capture(root, source_roots, excluded_paths, base)
                     if (verified.snapshot_id != captured.snapshot_id
                             or verified.base_commit != captured.base_commit):
@@ -311,7 +325,8 @@ def refresh(root: Path, source_roots: tuple[str, ...] | None, excluded_paths: tu
                     observation = Observation(capture_started_at=started,
                                               verified_at=datetime.now(UTC).isoformat(),
                                               cache_reused=reused)
-                    store.publish(generation, index_bytes)
+                    if not isinstance(generation.typescript, EcmaUnavailable):
+                        store.publish(generation, index_bytes)
                     return IndexedWorktree(captured, generation, observation)
                 except CaptureChanged:
                     continue

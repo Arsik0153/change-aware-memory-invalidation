@@ -42,8 +42,8 @@ def test_cli_contract_signature_and_both_directions(repo):
     data = lookup(repo.root, "target", "--revision", "HEAD")
     assert set(data) == {"schema_version", "query", "requested_revision", "snapshot", "status",
                          "matches", "graph_complete", "limitations", "unresolved",
-                         "global_unresolved", "coverage", "absence_confirmed", "observation"}
-    assert data["schema_version"] == 2
+                         "global_unresolved", "coverage", "absence_confirmed", "observation", "typescript"}
+    assert data["schema_version"] == 3
     assert data["status"] == "found"
     assert data["snapshot"]["kind"] == "git"
     assert data["snapshot"]["revision"] == revision
@@ -167,9 +167,11 @@ def test_partial_graph_and_parse_limits_are_explicit(repo):
     assert {"path": "a.py", "qualname": "dynamic"} in data["unresolved"]
     assert data["global_unresolved"] is True
     assert {"code": "parse_error", "path": "broken.py"} in data["limitations"]
-    absent = lookup(repo.root, "absent")
-    assert absent["status"] == "not_found"
-    assert {"code": "python_functions_and_methods_only", "path": None} in absent["limitations"]
+    ecma = lookup(repo.root, "absent")
+    assert ecma["status"] == "found"
+    assert ecma["matches"][0]["language"] == "ts"
+    assert ecma["coverage"] == "partial"
+    assert {"code": "functions_and_methods_only", "path": None} in ecma["limitations"]
 
 
 def test_generic_async_signature_keeps_type_parameters_and_decorators(repo):

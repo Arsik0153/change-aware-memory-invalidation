@@ -388,3 +388,78 @@ the parent's fresh independent R3. Both exact-SHA historical FAIL verdicts remai
 No real block or character devices were created or exercised. Controlled races
 and regular-file I/O errors supplement actual socket, FIFO, directory and symlink
 cases. No Docker, heldout execution, freeze or TS/memory integration was performed.
+### Stage2 independent R3 acceptance
+
+Independent R3 accepted exact MAIN
+`6037294831fc0cde5525986cab043ea21af27dd3`. It passed 148 targeted tests and
+76 actual CLI checks. The report is
+`/tmp/cami-stage2-review-r3-ncph5p29/review-report.json`.
+This verdict supersedes the pending R3 status above. Both earlier FAIL verdicts
+remain bound to their original commits. Combined TypeScript integration requires
+fresh checks and independent acceptance at its own MAIN commit.
+
+## 2026-10-23: JS and TypeScript product search
+
+`cami find createUser --repo PATH` searches JS, JSX, TS, and TSX in working trees
+and explicit Git revisions. Product schema v3 adds language-discriminated matches
+and a typed compiler state. Python signatures and dependency fields retain their
+previous meaning. Research records and the research index schema remain separate.
+
+`cami setup-typescript` installs TypeScript 6.0.3 from the packaged exact lockfile
+into a versioned user cache. Node 24 and npm 11 are required. Query execution
+never runs npm or target scripts. Capture includes the selected root JSONC config,
+relative extends, and source ancestor package manifests. Compiler availability,
+parser changes, configs, barrels, and source inventory invalidate generations.
+
+The [TypeScript contract](typescript_analyzer_ru.md) records supported syntax,
+static resolution, diagnostics, exclusions, and unresolved references. Signatures
+are syntax evidence without type inference or consumer typechecking. One root
+config, named reexports, and captured-only resolution are supported. Export-star,
+general runtime alias/member/dynamic/CommonJS resolution, project references,
+watch, memory maintenance, and generation GC remain outside this implementation.
+
+Validation commands are `cami setup-typescript`, the search/compiler/setup test
+modules, `pytest -q -m 'not docker'`, Ruff, mypy, Node syntax checking, and
+`git diff --check`. The implementation handoff carries exact outputs and wheel
+acceptance evidence; main integration must repeat the relevant checks.
+
+### Combined MAIN implementation verification
+
+The exact R2 artifact patch SHA-256 is
+`741ef6de1b68519354f73259b25731d5c37c1735d0cfeaa443786decafa9e145`.
+Independent artifact R2 passed 197 focused tests and the CLI and wheel checks.
+That verdict applies to the artifact, not the combined MAIN commit.
+
+Integration started from clean MAIN
+`6037294831fc0cde5525986cab043ea21af27dd3`. Three-way application preserved
+the accepted pre-open regular-file check, socket quarantine, bounded reads, and
+effective ignore policy. The only conflict joined two status-document additions.
+No source conflict required replacement of an accepted helper.
+
+After the final source edit, 256 targeted tests and 569 non-Docker tests passed,
+with 4 Docker tests deselected. The targeted results include all 53 Stage2
+cache/ignore/socket cases and all 27 Python relative-import cases. Ruff, strict
+mypy for 38 source files, and Node syntax checking passed. Existing test functions
+remain present. Schema v3 and the hybrid stored index require three existing
+test adaptations. All other pre-existing source/test files outside the seven
+integration paths remain unchanged.
+
+Separate CLI processes passed 22 Next-like scenarios, 18 P2 commands, three
+transient-failure/recovery/reuse calls, 72 Stage2 calls across 21 groups, eight
+extension probes in worktree/Git modes, and three own-source probes checking
+`run_experiment` caller, line range, and signature. These are implementation
+checks. Cache reuse is not a speedup measurement.
+
+The freshly built wheel passed 29 recorded setup and query commands. It ran as
+uid 65534 from a foreign working directory after environment relocation, with
+read-only package files. Five compiler-cache damage cases and concurrent repair
+passed. All 42 packaged source and sidecar files match MAIN, including the
+lockfile. The wheel contains no `node_modules`. Initial offline wheel build
+could not resolve uncached hatchling; ordinary build succeeded. Both logs remain.
+
+Commands, JSON outputs, integrity hashes, drivers, and the final commit receipt
+are under
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage3-main-integration/run-20261023T140732Z/`.
+The combined MAIN commit remains `under_review` until fresh independent review.
+Memory component R3 is read-only and pending. Watch design is a proposal saved
+outside this repository; neither Stage4 nor Stage5 is accepted here.

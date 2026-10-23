@@ -1,6 +1,6 @@
 # Контракт поиска символов CAMI
 
-`cami find SYMBOL --repo PATH` по умолчанию ищет определения Python в текущем
+`cami find SYMBOL --repo PATH` по умолчанию ищет определения Python, JS, JSX, TS и TSX в текущем
 рабочем дереве, включая незакоммиченные изменения и untracked-файлы.
 Явный `--revision HEAD` или SHA выбирает Git objects независимо от dirty checkout.
 Формат по умолчанию `text` содержит пути, строки, читаемую сигнатуру, связи и
@@ -13,9 +13,11 @@
 ## Аргументы и matching
 
 `SYMBOL` и `--repo` обязательны. Отсутствие `--revision` выбирает worktree.
-Повторяемый `--exclude PATH` исключает путь и его потомков только в worktree-режиме.
+Повторяемый `--exclude PATH` исключает исходники по пути и его потомкам только
+в worktree-режиме. Эффективные compiler configs и package metadata остаются
+в capture независимо от source exclusion и Git ignore.
 `--format` принимает `text` и `json`. Повторяемый `--source-root` задаёт
-репозиторные POSIX-пути корней Python. Без этого аргумента корни равны `src`, `.`,
+репозиторные POSIX-пути корней исходников. Без этого аргумента корни равны `src`, `.`,
 если snapshot содержит Python-файлы под `src/`, иначе `.`. Более глубокий корень
 имеет приоритет. Явный `--source-root .` отключает автоматическое снятие `src/`.
 Корни и имена модулей выводятся в JSON.
@@ -34,12 +36,14 @@ Matching чувствителен к регистру и не используе
 Путь в идентификаторе должен совпадать с репозиторным POSIX-путём без `./`.
 Суффиксы вроде `engine.run_experiment` не сокращают `cami.engine.run_experiment`.
 
-Индекс содержит функции, async-функции и методы. Классы, переменные, импортированные
-re-export имена и TypeScript не являются результатами поиска этого этапа.
+Индекс содержит функции, async-функции и методы. JS/TS также включает именованные
+arrow functions и function expressions. Имена named reexports и `default` находят
+исходное определение. `src/lib/index.ts:registerUser` задаёт путь export site.
+Классы и обычные переменные не являются отдельными результатами.
 `not_found` означает отсутствие определения в поддерживаемой части выбранного
 индекса. Ошибка разбора файла остаётся видна в `limitations` даже при `not_found`.
 
-## JSON версии 2
+## JSON версии 3
 
 Stdout содержит ровно один JSON document. Объекты сериализуются с отсортированными
 ключами, списки matches, limitations и связей имеют стабильный семантический порядок.
@@ -49,7 +53,7 @@ Worktree-ответ воспроизводится без верхнего по�
 
 Поля верхнего уровня имеют следующий смысл:
 
-- `schema_version` равен целому числу `2`. Research Record v1 не меняется.
+- `schema_version` равен целому числу `3`. Research Record v1 не меняется.
 - `query` сохраняет исходный запрос. `requested_revision` равен исходной строке
   revision в Git-режиме или `null` в worktree-режиме.
 - `snapshot.kind` различает `git` и `worktree`. Git snapshot содержит `revision`
@@ -59,9 +63,9 @@ Worktree-ответ воспроизводится без верхнего по�
   `base_commit` может быть `null` у нового репозитория без коммитов.
 - `snapshot.source_roots` фиксирует корни индекса. `index_version`,
   `search_version` и `python_version` различают версии AST-индекса,
-  продуктового поиска и Python. Search version равен `2`.
+  продуктового поиска и Python. Search version равен `3`.
 - `coverage` равен `complete` для успешно прочитанных и разобранных включённых
-  Python-входов или `partial` при файловом ограничении. Исключённые пути и
+  Python/JS/TS-входов или `partial` при файловом или compiler-ограничении. Исключённые пути и
   неподдерживаемые языки не входят в эту область покрытия.
 - `absence_confirmed` равен `true` только при `not_found` и `coverage: complete`.
   Это отсутствие определения в поддерживаемой области поиска, не доказательство
@@ -83,10 +87,11 @@ Worktree-ответ воспроизводится без верхнего по�
   символа. `qualname: null` обозначает модуль. `global_unresolved` означает наличие
   такого модульного сигнала. Значение `false` не доказывает полноту графа.
 
-Каждое определение содержит `path`, `qualname`, `module`, `qualified_name`,
+Каждое определение содержит discriminator `language` и `path`, `qualname`, `module`, `qualified_name`,
 `node_kind`, `start_line`, `end_line`, `signature`, `signature_text`, `ambiguous`,
 `incoming`, `outgoing`. Строки нумеруются с единицы и включают обе границы.
-Начало соответствует строке `def`, а не предшествующему декоратору.
+Для Python начало соответствует строке `def`, а не предшествующему декоратору.
+Следующие поля signature и relations описывают Python matches с `language: python`.
 `node_kind` равен `function` или `method`. `signature` сохраняет AST-контракт
 существующего индекса:
 
@@ -190,6 +195,45 @@ Git blobs либо из захваченных bytes рабочего дерев
 Worktree token `worktree:<snapshot_id>` остаётся внутри продуктового адаптера и
 не подставляется в commit-поля research records.
 
-TypeScript, product memory и watch не входят в этот этап. Отсутствующий Node
-или TypeScript toolchain не мешает Python-поиску. Конфигурация target-репозитория
-не исполняется. Research `cami run` сохраняет прежний интерфейс.
+Product memory и watch не входят в этот этап. Python-only поиск не требует Node.
+В mixed repository healthy Python matches доступны с partial coverage, если
+TS toolchain недоступен. Без matches такой запрос даёт resource unavailable, exit 3,
+и пустой stdout вместо false absence. Конфигурация target-репозитория не исполняется.
+Research `cami run` сохраняет прежний интерфейс.
+
+## JS и TypeScript в JSON v3
+
+`typescript.status` равен `not_present`, `ready` или `unavailable`. При `ready`
+`typescript.analysis` содержит полный типизированный EcmaAnalysis, включая
+configuration, definitions, exports, relations, exclusions, diagnostics и unresolved.
+При `unavailable` поле `message` содержит причину и команду setup. Этот state
+виден в ответе с отдельным ephemeral result ID, но не публикуется в immutable
+generations и не меняет current pointer. Следующий find повторяет анализ.
+
+`language` у compiler matches равен `js`, `jsx`, `ts` или `tsx`. `signature`
+содержит parameters, type_parameters, return_annotation, `async` и generator.
+`signature_text` является нормализованной синтаксической сигнатурой. Изменение
+annotation не означает typechecking потребителей.
+
+`key` содержит path, qualname и kind. Для сопоставления между generations key
+пригоден только при уникальности. `occurrence_id` различает все повторные
+объявления внутри generation и может измениться при сдвиге source offsets.
+`site` содержит start/end offsets и line/column. Offsets и columns измеряются
+в UTF-16 code units; строки и columns начинаются с единицы. End offset исключён.
+`syntax_hash`, `ast_hash` и `implementation` сохраняются без вывода типов.
+
+Compiler relations имеют kind `calls`, `uses`, `imports` или `reexports`, source
+occurrence ID либо null, target occurrence ID, scope, type_only и site.
+Incoming/outgoing сохраняют отдельные sites, включая repeated calls.
+Полный список definitions позволяет разрешить endpoints без нового запроса.
+Внешний import остаётся unresolved и не создаёт фиктивную function target.
+Python `unresolved` сохраняет прежние Node values; compiler unresolved находится
+в `typescript.analysis.unresolved`. `global_unresolved` также учитывает compiler
+module-scope unresolved и недоступность compiler.
+
+Syntax exclusions и compiler/config warnings дают partial coverage. Healthy
+definitions остаются доступны. Declaration files `.d.ts` отмечены как исключённые
+implementations и сами по себе не делают input coverage частичным.
+
+Установка, resolver limits и typed contract описаны в
+[контракте TypeScript](typescript_analyzer_ru.md).

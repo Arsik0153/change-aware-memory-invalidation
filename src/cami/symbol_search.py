@@ -6,13 +6,17 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Literal
 
-from cami.errors import InputError
+from cami.ecma_models import EcmaRelation
+from cami.errors import InputError, ResourceError
 from cami.index import INDEX_VERSION, CodeIndex, IndexConfig, Module, bound_names, build_index, scope_nodes
-from cami.models import Dependency, Node, RepoLocation, safe_path
+from cami.models import Dependency, Node, safe_path
 from cami.product.models import (
-    FindResult, GitSnapshot, Observation, SearchLimitation, SymbolMatch, WorktreeSnapshot,
+    EcmaMatch, EcmaNotPresent, EcmaReady, EcmaUnavailable, FindResult, GitSnapshot, Observation,
+    SearchLimitation, SearchMatch, SymbolMatch, WorktreeSnapshot,
 )
-from cami.repository import Snapshot, git, read_snapshot
+from cami.product.ecma import analyze_snapshot, find_matches
+from cami.product.git_snapshot import read_product_snapshot
+from cami.repository import Snapshot, git
 
 
 def _edge_key(edge: Dependency) -> tuple[str, str, str, str, str]:
@@ -118,12 +122,13 @@ def find_symbols(repo: Path, query: str, revision: str | None = None,
     if revision is not None:
         if excluded_paths:
             raise InputError("--exclude applies only to worktree search")
-        snapshot = read_snapshot(RepoLocation(repo_id="symbol-search", path=str(repo)), revision)
+        snapshot = read_product_snapshot(repo, revision, source_roots)
         if source_roots is None:
             source_roots = (("src", ".") if any(blob.path.startswith("src/")
                                                   and blob.path.endswith(".py")
                                                   for blob in snapshot.blobs) else (".",))
         index = _search_index(snapshot, IndexConfig(source_roots))
+        typescript = analyze_snapshot(snapshot)
         source = GitSnapshot(
             revision=snapshot.revision,
             tree=git(repo, "rev-parse", snapshot.revision + "^{tree}").decode().strip(),
@@ -136,6 +141,7 @@ def find_symbols(repo: Path, query: str, revision: str | None = None,
         indexed = refresh(repository_root(repo), source_roots, excluded_paths, _search_index)
         snapshot = indexed.capture.as_snapshot()
         index = indexed.generation.index
+        typescript = indexed.generation.typescript
         observation = indexed.observation
         source = WorktreeSnapshot(
             snapshot_id=indexed.capture.snapshot_id,
@@ -144,7 +150,7 @@ def find_symbols(repo: Path, query: str, revision: str | None = None,
             policy=indexed.capture.policy, fingerprint=indexed.generation.manifest.fingerprint,
             index_version=INDEX_VERSION, python_version=platform.python_version())
     edges = index.edges
-    matches: list[SymbolMatch] = []
+    matches: list[SearchMatch] = []
     for module in index.modules:
         for definition in module.definitions:
             qualname = definition.node.qualname or ""
@@ -162,12 +168,18 @@ def find_symbols(repo: Path, query: str, revision: str | None = None,
                 ambiguous=definition.ambiguous,
                 incoming=tuple(edge for edge in edges if edge.target == definition.node),
                 outgoing=tuple(edge for edge in edges if edge.source == definition.node)))
-    matches.sort(key=lambda match: (match.path, match.qualname, match.start_line, match.end_line))
+    if isinstance(typescript, EcmaReady):
+        matches.extend(find_matches(typescript.analysis, query))
+    if isinstance(typescript, EcmaUnavailable) and not matches:
+        raise ResourceError(typescript.message)
+    matches.sort(key=lambda match: (match.path, match.qualname, match.start_line, match.end_line,
+                                    match.occurrence_id if isinstance(match, EcmaMatch) else ""))
     status: Literal["found", "not_found", "ambiguous"] = "not_found"
     if matches:
         status = "ambiguous" if len(matches) > 1 or any(m.ambiguous for m in matches) else "found"
     limitations = [SearchLimitation(code=code) for code in (
-        "python_functions_and_methods_only", "static_graph_is_partial",
+        "python_functions_and_methods_only" if isinstance(typescript, EcmaNotPresent)
+        else "functions_and_methods_only", "static_graph_is_partial",
         "calls_may_include_nested_scopes", "unresolved_is_conservative",
         "runtime_binding_not_evaluated")]
     limitations.extend(SearchLimitation(code=code, path=path)
@@ -175,15 +187,30 @@ def find_symbols(repo: Path, query: str, revision: str | None = None,
     limitations.extend(SearchLimitation(code=blob.limitation, path=blob.path)
                        for blob in snapshot.blobs if blob.limitation
                        and blob.path not in index.limitations())
+    ecma_limited = isinstance(typescript, EcmaUnavailable)
+    if isinstance(typescript, EcmaUnavailable):
+        limitations.append(SearchLimitation(code="typescript_unavailable"))
+    if isinstance(typescript, EcmaReady):
+        analysis = typescript.analysis
+        limitations.extend(SearchLimitation(code=item.reason, path=item.path)
+                           for item in analysis.excluded_files)
+        limitations.extend(SearchLimitation(code="typescript_" + item.code,
+                                           path=item.site.path if item.site else None)
+                           for item in analysis.diagnostics if item.severity != "info")
+        ecma_limited = (not analysis.configuration.valid
+                        or any(item.reason != "declaration_file" for item in analysis.excluded_files)
+                        or any(item.severity != "info" for item in analysis.diagnostics))
     limitations = sorted(set(limitations), key=lambda item: (item.path or "", item.code))
-    limited = bool(index.limitations()) or any(blob.limitation for blob in snapshot.blobs)
+    limited = ecma_limited or bool(index.limitations()) or any(blob.limitation for blob in snapshot.blobs)
     return FindResult(
         query=query, requested_revision=revision, snapshot=source, observation=observation,
         status=status, coverage="partial" if limited else "complete",
         absence_confirmed=status == "not_found" and not limited,
-        matches=tuple(matches), limitations=tuple(limitations),
+        matches=tuple(matches), typescript=typescript, limitations=tuple(limitations),
         unresolved=tuple(sorted(index.unresolved, key=lambda node: (node.path, node.qualname or ""))),
-        global_unresolved=index.global_unresolved)
+        global_unresolved=index.global_unresolved or isinstance(typescript, EcmaUnavailable)
+        or (isinstance(typescript, EcmaReady)
+            and any(item.scope.endswith(":module") for item in typescript.analysis.unresolved)))
 
 
 def format_text(result: FindResult) -> str:
@@ -205,9 +232,20 @@ def format_text(result: FindResult) -> str:
         for label, edges in (("incoming", match.incoming), ("outgoing", match.outgoing)):
             lines.append(f"  {label}: {len(edges)} static relations")
             for edge in edges:
-                lines.append(f"    {edge.source.path}:{edge.source.qualname or '<module>'}"
+                if isinstance(edge, EcmaRelation):
+                    lines.append(f"    {edge.source or '<module>'} --{edge.kind}--> {edge.target}"
+                                 f" at {edge.site.path}:{edge.site.line}:{edge.site.column}")
+                else:
+                    lines.append(f"    {edge.source.path}:{edge.source.qualname or '<module>'}"
                              f" --{edge.relation}--> "
                              f"{edge.target.path}:{edge.target.qualname or '<module>'}")
+    if isinstance(result.typescript, EcmaReady):
+        analysis = result.typescript.analysis
+        lines.append(f"TypeScript compiler: {analysis.compiler_version}; offsets: {analysis.offset_unit}")
+        lines.append(f"TypeScript unresolved: {len(analysis.unresolved)}")
+        lines.extend(f"Diagnostic: {item.code}: {item.message}" for item in analysis.diagnostics)
+    elif isinstance(result.typescript, EcmaUnavailable):
+        lines.append(result.typescript.message)
     lines.append("Graph is partial; relations are static candidates, not runtime guarantees.")
     lines.append(f"Unresolved nodes: {len(result.unresolved)}; "
                  f"global unresolved: {str(result.global_unresolved).lower()}")

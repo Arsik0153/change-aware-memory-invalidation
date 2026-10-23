@@ -1,8 +1,8 @@
 # CAMI
 
-CAMI finds Python definitions in working trees and Git revisions without importing target code. Its research engine maintains a fixed cohort of repository claims and measures how Git-aware selection changes validation cost and memory availability. Synthetic demonstrations are separate from real datasets.
+CAMI finds Python, JavaScript, and TypeScript definitions in working trees and Git revisions without importing target code. Its research engine maintains a fixed cohort of repository claims and measures how Git-aware selection changes validation cost and memory availability. Synthetic demonstrations are separate from real datasets.
 
-## Find Python definitions in the worktree or a Git revision
+## Find definitions in the worktree or a Git revision
 
 ```bash
 uv run cami find run_experiment --repo .
@@ -12,18 +12,36 @@ uv run cami find src/cami/engine.py:run_experiment --repo . --source-root src --
 ```
 
 Without `--revision`, `find` reads live working tree bytes, including unstaged
-changes and untracked Python files. Explicit `--revision HEAD` or a commit ID
+changes and untracked source files. Explicit `--revision HEAD` or a commit ID
 reads Git objects even in a dirty checkout. Neither mode imports target code or
 changes the Git index.
 
 `find` returns definitions, signatures, and incoming and outgoing static relations.
-JSON schema version 2 reports `found`, `not_found`, or `ambiguous`, preserves
+JSON schema version 3 reports `found`, `not_found`, or `ambiguous`, preserves
 duplicate definitions, and distinguishes complete from partial input coverage.
 Worktree content IDs are separate from commits. Persistent immutable generations
 are reused across processes after fresh capture verification. The worktree
 consistency contract is `verified_readset` over an interval, not an atomic
 filesystem snapshot. Runtime observations are separate from the deterministic
-search payload. The static graph remains partial; TypeScript is not yet indexed.
+search payload. The static graph remains partial.
+
+For `.js`, `.jsx`, `.ts`, and `.tsx`, install Node.js 24 and npm 11, then run
+`cami setup-typescript` once in the active Python environment. Setup installs the
+pinned TypeScript 6.0.3 compiler from CAMI's own lockfile into your user cache.
+It supports read-only packages and relocated environments. `find` never runs npm
+or project scripts.
+
+```bash
+cami setup-typescript
+cami find createUser --repo /path/to/next-app --format json
+cami find registerUser --repo /path/to/next-app --revision HEAD
+```
+
+The compiler returns syntax signatures, evidence sites, imports, named reexports,
+calls, JSX uses, diagnostics, and unresolved references. It does not typecheck or
+infer types. Missing compiler resources return an actionable error. Healthy
+Python matches remain available with partial coverage in a mixed repository.
+See the [TypeScript contract](docs/typescript_analyzer_ru.md) for supported resolution and limits.
 
 See the [symbol search contract](docs/symbol_search_ru.md) for matching and exit
 codes and the [worktree index contract](docs/worktree_index_ru.md) for capture,

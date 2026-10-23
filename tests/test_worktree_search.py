@@ -450,7 +450,7 @@ def test_directory_replaced_by_symlink_never_reads_the_target(repo, tmp_path, mo
     assert result.status == "not_found" and result.coverage == "partial"
     assert all(module.path != "pkg/a.py" for module in store.INDEX_ADAPTER.validate_json(
         (state_path(repo.root) / "generations" / json.loads(current(repo.root))["generation_id"]
-         / "index.json").read_bytes()).modules)
+         / "index.json").read_bytes()).python.modules)
 
 
 @pytest.mark.parametrize("phase", ["before_generation", "after_generation", "before_pointer", "after_pointer"])
