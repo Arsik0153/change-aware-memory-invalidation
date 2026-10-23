@@ -69,3 +69,62 @@ Quota 73% на 2026-10-23T14:31:27.347Z передана из review, здесь
 Независимый review этого docs run не выполнен: явное задание запрещает nested agents.
 Проверка ограничена своими строками, supporting reports, docs diff и state readback. История целиком повторно не проверялась.
 Результаты проверок и commit blobs: `/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/milestone-docs/run-20261023T143501Z-stage3-acceptance/receipt.json`.
+
+## Возобновление после cleanup и приёмка Stage4
+
+Этот docs run начался на clean `83f6aea2178b7ace167102b668cedb78c04dca17`.
+Первые 82 строки canonical TSV, включая header, сохранены побайтно.
+Новые записи начинаются строкой 83 с phase `start`; предыдущие pending и FAIL не переписаны.
+Нынешний статус программы `resumed` следует новому поручению пользователя.
+Paused cleanup snapshot остаётся историческим; goal-tool resume не вызывался.
+
+Прочитаны [cleanup REPORT](/root/.claude/orchestrate/change-aware-memory-invalidation/cleanup/20261023-cleanup/REPORT.md)
+и [continuation RESUME](/root/.claude/orchestrate/change-aware-memory-invalidation/cleanup/20261023-cleanup/RESUME.md).
+18,21 GiB относятся к allocated-byte deletion manifest. Переход df с 96% до 68%
+относится ко всему filesystem; прирост free space не приписан только CAMI cleanup.
+Новые evidence не копируют большие logs, environments или fixtures.
+USER resource correction записана во внешних preferences, пункты 14–18.
+
+[Независимый R3 report](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T165329Z-r3/REVIEW.md),
+[results](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T165329Z-r3/results.json)
+и [immutability](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T165329Z-r3/immutability.json)
+подтверждают Stage4 PASS exact `83f6aea2178b7ace167102b668cedb78c04dca17`.
+Source TREE `250d9626baca8ea1938cbdd1d9194f75594adde6`, tests TREE `908c748870f8782f67723c4eee8b2620071802c0`.
+111 distinct targeted cases, immediate actual SQLite state, authentic old62 upgrade
+с сохранением восьми immutable tables и source CAS, representative hot-journal controls
+относятся к независимому R3. Reviewer cache collision и исправленный oracle сохранены в отчёте.
+777 full и 4 deselected остаются `FROM_IDENTICAL_ARTIFACT`, full suite R3 не повторял.
+Прежние R1, MAIN62 R2 и component FAIL сохранены, scoped R4 PASS не подменяет Stage4 verdict.
+
+[Corrected OPT report](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/context-gap-review/20261023T164400Z-r1/REPORT.md)
+даёт conditional PASS частной composition, не MAIN delivery.
+3,67 до 1,69 s являются CPU medians synthetic 1000-file warm workload.
+Пересечение wall ranges исключает вывод об универсальной latency.
+Исторические [union HANDOFF](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/corrected-watch-union/t3-da33a434-20261023T164335Z/HANDOFF.md),
+`full.log/xml`, `targeted.log/xml` и patch прочитаны, hash patch подтверждён как
+`84e1d10bd513da67d97c8b7d6353765808d8682b6a0b3d81edc3864073801937`.
+819 full, 4 deselected и 497 focused являются writer evidence. Saved Ruff/mypy/checks-result
+содержат success, но interrupted final workflow и independent union acceptance не объявлены завершёнными.
+Новый reviewer handle не получен и не выдуман. Другие задачи не опрашивались.
+
+Старый pointer `outputs/memory-scope-main-integration/run-20261023T1640Z/receipts/integration.json`
+после cleanup недоступен по исходному пути. Сохранённый HANDOFF и свежие R3 results
+использованы как доступные источники, содержимое отсутствующего receipt не заявлено прочитанным.
+Большой continuation archive заново не распаковывался.
+
+Fresh structured quota `limit_id=codex`, `window_minutes=10080` измерена локально.
+Actual event timestamp `2026-10-23T17:36:25.093Z`, remaining `58%`, reset `2026-10-29T18:36:49+00:00`.
+Baseline на `2026-10-23T17:36:27.721292+00:00` содержит disk free `25318260736` bytes,
+MemAvailable `906715136` bytes и raw index SHA-256 `26568d1d485775350a1194a4c32f9e4c5084b66780275483e6fc01c31aa69dba`.
+Before/after telemetry и resources, manifest всех tracked files, schema/prefix/link checks,
+сопоставление строк этого run с его действиями и postcommit receipt находятся в
+[run evidence](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/milestone-docs/run-20261023T173403Z-stage4-resume/).
+Проверка скриптом [check_docs.py](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/milestone-docs/run-20261023T173403Z-stage4-resume/check_docs.py)
+сравнивает реальные source/test trees, tracked hashes вне трёх разрешённых docs и Git index entries.
+Disposable check directory очищается в finally, продуктовые tests и Node не запускаются.
+
+Это self-readback docs worker той же `codex:gpt-6.1-sol` high/default.
+Независимый docs review и cross-model audit не выполнялись по явному запрету nested agents.
+Неподтверждённые historical task workstates не восстановлены как live; PR ledger и frontier не изменены.
+Статус четырёх принятых этапов не означает завершение vision. Следующий gate есть fresh union review,
+затем MAIN integration commit и exact-MAIN review. Symbol-domain unit и реальный agent demo следуют после них.
