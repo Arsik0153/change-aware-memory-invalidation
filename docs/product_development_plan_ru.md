@@ -3,16 +3,16 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
-Актуальное состояние на 2026-10-23 после независимого Stage3 MAIN review:
-Stage1 принят на `499acfad48b2d62e37b0f57a3b051bc09eaf847b`,
-Stage2 на `6037294831fc0cde5525986cab043ea21af27dd3`,
-Stage3 на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
-Итого три продуктовых этапа приняты, Stage4 `in_progress`, Stage5 `pending`.
-Memory component f0bb получил R3 FAIL. Изолированные journal-boundary fix и
-mixed-language memory integration активны без коммитов. Memory и watch не приняты.
-Watch design завершён как proposal, implementation не начата.
-Исторические ожидания в конце документа и старый recorder snapshot от 14:24:36 UTC
-не описывают текущее состояние. Task counts не являются числом принятых этапов.
+Актуальный снимок на 2026-10-23T15:10:29.819Z: Stage1 принят на
+`499acfad48b2d62e37b0f57a3b051bc09eaf847b`, Stage2 на
+`6037294831fc0cde5525986cab043ea21af27dd3`, Stage3 на
+`c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
+Три этапа приняты, Stage4 и Stage5 `in_progress`, оба `not_accepted`.
+Исходники main остаются на принятом Stage3. Memory и watch ещё не интегрированы.
+Storage component получил R4 PASS. Hybrid memory получил R1 FAIL с одним P1.
+Изолированные исправление имён и watcher implementation активны без коммитов.
+Исторические snapshots ниже не описывают текущее состояние.
+Task counts не являются числом принятых этапов.
 
 ## Исходное состояние
 
@@ -162,17 +162,27 @@ Acceptance этапа:
 ### 4. Product memory и lifecycle structural claims
 
 Статус `in_progress`, acceptance `not_accepted`. Этап 3 принят.
-Component patch `f0bb2dd9adad63878e3613cec9c6ccac661c68fb0bb90f76dcdfe99e49b7d937`
-получил [R3 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-review/t3-2a8e7cd2-20261023T1400-r3/REVIEW.md).
-SQLite может потребить исходный hot journal до post-open validation подменённой базы.
-Следующие обычные history/context не восстанавливают доступность. Исходные три findings
-и ordinary ABA исправлены, но combined crash/ABA требует отдельного boundary fix.
+[Storage component R4 PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-review/t3-42ee661d-20261023T1452Z-r4/REVIEW.md)
+привязан к full feature SHA-256
+`98f131ac10a9e54a12c205d4d3b13d9cc180daf4b405c6e520aafa71958ee8e2`
+и fix-only `2b0e04c595d42d2287a37b73ca7c0f86e72e502bf695fef4226123ad8f7f3586`.
+Независимо прошли 97 memory tests, 21 publication crash/failure case и 18 damaged inputs.
+Source, index и patches не изменились за review. Writer отдельно сообщил 608 full и 4 deselected.
+Это PASS компонента хранения, а не всего Stage4 или main.
+Исторический [f0bb R3 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-review/t3-2a8e7cd2-20261023T1400-r3/REVIEW.md)
+сохранён. Его hot-journal boundary finding закрыт новым storage artifact.
 
-`memoryJournalFixTask` исправляет только эту границу в изолированном worktree без коммитов.
-Отдельный `hybridMemoryTask` интегрирует mixed-language memory, также isolated без коммитов.
-В нём `memory/store.py` зафиксирован на f0bb до boundaryfix-only overlay.
-Его обязательные gates включают unsupported-binding false-absence gap и реальный TS/TSX memory CLI.
-Stage4 требует main integration и независимого review после завершения обеих активных задач.
+[Hybrid memory R1 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-hybrid-review/t3-149a13ec-20261023T145431Z-r1/REVIEW.md)
+относится к exact patch `7ca9534027645c03c6bcfd216f6b7f860c5bc4a2818dc20cbafd0a886d3ec5db`.
+Один P1: quoted method names и quoted unsupported fields дают ложные `subject_absent` witnesses.
+Runtime prototype и dynamic-scope observations не блокируют принятый static/syntax contract.
+Независимо прошли 326 focused tests, 254 installed CLI-команды и 51 additional probe.
+Writer 648 full и 4 deselected остаются отдельным evidence.
+
+`hybridNameFixTask` активен isolated без коммитов. Он восстанавливает hybrid feature
+с принятым storage fix и готовит full patch и fix-only patch. Эти patches ещё ожидаются.
+Main integration не начата. После исправления нужны combined TS/TSX memory CLI на main
+и свежий независимый Stage4 MAIN review.
 Полная [карта memory/TS integration](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/memory-ts-merge-map-20261023-v1.md)
 хранится вне репозитория.
 
@@ -202,9 +212,13 @@ Acceptance этапа:
 
 ### 5. Watch и интеграция агента
 
-Статус `pending`. Зависимость от этапа 4. Design готов только как
-[proposal](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/watcher-design-20261023-v1.md),
-implementation не начата. Финальный ABI нужно сверить после memory integration.
+Статус `in_progress`, acceptance `not_accepted`. `watchImplementationTask` уже
+работает в изолированном worktree без коммитов, на собственной сборке hybrid и storage fix.
+[Design proposal](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/watcher-design-20261023-v1.md)
+остаётся reference. Задача охватывает foreground polling, status, stop и restart.
+Acceptance требует доказать обновление persisted state до запроса, который сам мог бы обновить данные.
+Позже нужны upstream name fix, Stage4 MAIN PASS и свежий watcher review.
+Финальная поставка ещё не подтверждена.
 
 Задачи этапа:
 
@@ -254,9 +268,9 @@ M0–M5 описывают исследовательские инструмен
 
 Один code-writer работает в каждом checkout. По прямому поручению пользователя текущий docs worker
 единолично владеет Git index и docs commit в исходной `main`.
-Два активных memory workers работают в отдельных app-owned worktrees БЕЗ КОММИТОВ по standing rule 13.
+Активные name-fix и watcher workers работают в отдельных app-owned worktrees БЕЗ КОММИТОВ по standing rule 13.
 Все фактические интеграции и коммиты выполняются последовательно в исходной `main`.
-Этот drain меняет только план, canonical trail, компактный аудит trail и external store.
+Этот recorder меняет только план, canonical trail и external store. Исторический аудит не расширяется.
 Source, tests, README, pyproject, protocols, datasets и seals остаются прежними.
 
 Модель оркестрации и отдельного reviewer задана как `codex:gpt-6.1-sol`,
@@ -268,11 +282,12 @@ Source, tests, README, pyproject, protocols, datasets и seals остаются 
 Условие автономного продолжения задано пользователем как недельный остаток Codex `>10%`.
 Источник указанного снимка бюджета находится в `/root/.codex/sessions`,
 structured `event_msg` с `token_count.rate_limits`, `limit_id=codex`, окно `10080` минут.
-Последний переданный snapshot из Stage3 MAIN review даёт remaining `73%`
-на `2026-10-23T14:31:27.347Z`, `limit_id=codex`, `window_minutes=10080`.
-Источник: `quota_after` в независимом отчёте Stage3. Этот docs worker не измерял quota.
-Reset указан как `2026-10-29 18:36:49 UTC`. Эти значения переданы оркестратором,
-здесь они не представлены как новое измерение или текущий остаток.
+Hybrid R1 передал remaining `70%` на `2026-10-23T15:06:40.103Z`, до review было `71%`.
+Этот recorder отдельно прочитал свежую локальную structured telemetry: remaining `70%`
+на `2026-10-23T15:09:38.514Z`, reset `2026-10-29T18:36:49+00:00`.
+Измерения начала и конца run сохраняются во внешнем receipt
+`outputs/milestone-docs/run-20261023T1510Z-storage-hybrid-watch/receipt.json`.
+Остаток не вычисляется по tokens. Работа продолжается до фактического недельного остатка `<=10%`.
 Перед продолжением волн и после крупного этапа оркестратор обновляет quota evidence.
 При остатке `<=10%` новая автономная работа не начинается, состояние передаётся для продолжения.
 Без свежей доступной telemetry условие продолжения остаётся неподтверждённым.
@@ -283,12 +298,15 @@ Reset указан как `2026-10-29 18:36:49 UTC`. Эти значения п�
 Stage1 `accepted` после независимого `PASS` r2 для `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
 Stage2 `accepted` на `6037294831fc0cde5525986cab043ea21af27dd3`.
 Stage3 `accepted` на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838` после independent MAIN PASS.
-Stage4 `in_progress`, `not_accepted`; Stage5 `pending`, implementation не начата.
-Итого пять продуктовых этапов: три приняты, один в работе, один ожидает.
+Stage4 и Stage5 `in_progress`, оба `not_accepted`.
+Итого пять продуктовых этапов: три приняты, два в работе. Main содержит принятый Stage3 source.
+Storage R4 PASS не принимает весь Stage4. Hybrid R1 FAIL требует name fix и свежего MAIN review.
 Runtime units включают отдельные implementation, design, review и docs runs. Их число не означает число готовых этапов.
 Исторический независимый `FAIL` сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4`.
-Активны `memoryJournalFixTask` и `hybridMemoryTask`. Runtime handles сохранены в store
-из parent transfer, без ожидания их завершения или нового утверждения о текущей liveness.
+На снимке `2026-10-23T15:10:29.819Z` активны `hybridNameFixTask` и `watchImplementationTask`.
+Storage R4 и hybrid R1 review завершены. Полные parent handles сохранены вместе с исходными
+running labels и отдельными свежими backing-thread observations. `task_status` недоступен sibling worker.
+Активные задачи не ожидались. Этот снимок не обновляет будущие состояния автоматически.
 Исторический recorder snapshot завершён в 14:29:18 UTC и не обновляется автоматически.
 Только подтверждённый acceptance меняет статус этапа на принятый.
 
@@ -300,8 +318,9 @@ Canonical decision trail остаётся `reports/orchestration/decisions.tsv`;
 PR frontier seed пропущен: пользователь выбрал локальные коммиты на main без PR.
 Текущий docs integrator коммитит только разрешённые документы в main, без push и PR. Новых агентов не запускает.
 [Аудит журнала](../reports/orchestration/trail_audit_ru.md) указывает проверенный диапазон, слабые pointers и пределы проверки.
-Полный SHA этого docs commit и результаты readback сохраняются во внешнем receipt
-`outputs/milestone-docs/run-20261023T143501Z-stage3-acceptance/receipt.json`.
+Полный SHA этого docs commit и результаты self-readback сохраняются во внешнем receipt
+`outputs/milestone-docs/run-20261023T1510Z-storage-hybrid-watch/receipt.json`.
+Независимый docs review в этом bounded run не проводился.
 
 Docs-only commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a` завершён: terminal clean,
 2 files, +255; receipt `docs-integration.json` во внешнем store. Это исторический
