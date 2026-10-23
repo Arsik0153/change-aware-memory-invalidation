@@ -354,3 +354,37 @@ Before/after logs, drivers, quota, exact committed SHA, and receipt are under
 `/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage2-storage-fix/run-20261023T123409Z/`.
 The repair is `under_review` pending the parent's fresh independent review r2.
 The historical r1 FAIL remains attached to `1adf399f38e38b98b16b405359287e8a28884d8e`.
+
+### Stage2 review r2 and socket cache repair
+
+Independent r2 returned **FAIL** for exact main SHA
+`26d9188ab75784ca1c2a9d4a55b1381ab07bbdde`. It confirmed all four original P2
+fixes with 133 targeted tests and 224 CLI calls. One new P2 remained. A UNIX
+socket replacing `current.json`, `manifest.json`, or `index.json` caused repeated
+exit 4 with `ENXIO`, leaving the invalid inode in place. The report remains at
+`/tmp/cami-stage2-review-r2-461q7d91/review-report.json`.
+
+The cache data reader now checks regular-file type before opening, compares the
+descriptor with the pre-open inode before reading, and rechecks actual type when
+opening fails. Regular-file permission and I/O errors remain explicit. Invalid
+pointer nodes join generation artifacts in quarantine before atomic publication.
+Existing bounded reads, no-follow descriptors, source coverage and ignore policy
+remain. No schema or index version changes are needed.
+
+Before the fix, nine actual CLI calls confirmed persistent failure for all three
+roles. Socket regressions gave 3 failures and 2 passes; corrected boundary tests
+gave 2 failures and 9 passes. After the fix, 34 focused, **148 targeted** and
+**461 non-Docker tests passed, 4 Docker tests deselected**. Ruff, strict mypy for
+32 files and diff checks passed. All previous 38 cache/ignore and 27 relative-import
+cases remain covered. Fifteen CLI calls verified quarantine, valid JSON files,
+builder-free next-process reuse and real kernel `EACCES` for each JSON role.
+Ten further CLI calls checked the original relative-import P2, valid local calls
+and own-source queries in worktree, HEAD and explicit SHA modes.
+
+Evidence, drivers, hashes, command logs and the committed SHA are in
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage2-socket-fix/run-20261023T1318Z/implementation-receipt.json`.
+This is implementation verification. The new commit is `under_review` pending
+the parent's fresh independent R3. Both exact-SHA historical FAIL verdicts remain.
+No real block or character devices were created or exercised. Controlled races
+and regular-file I/O errors supplement actual socket, FIFO, directory and symlink
+cases. No Docker, heldout execution, freeze or TS/memory integration was performed.

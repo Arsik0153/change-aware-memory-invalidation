@@ -336,3 +336,32 @@ Memory core завершён как tested component. Parent передал 477 
 Это не main integration и не PASS memory acceptance. Полный TS CLI gate остаётся pending.
 Независимый read-only component review r1 запущен для завершённого memory candidate.
 Task/thread handles сохранены во внешнем `runtime-handles.json`; verdict пока отсутствует.
+
+### Stage2 review r2 и UNIX socket cache repair
+
+Независимый r2 дал FAIL exact main
+`26d9188ab75784ca1c2a9d4a55b1381ab07bbdde`. Все четыре прежних P2 независимо
+подтверждены как исправленные, 133 targeted tests и 224 CLI вызова прошли.
+Оставшийся P2 касается UNIX socket вместо `current.json`, `manifest.json` или
+`index.json`. Два новых CLI-процесса повторяли exit 4 с `ENXIO` без repair.
+Полный report сохранён в `/tmp/cami-stage2-review-r2-461q7d91/review-report.json`.
+
+Узкая правка проверяет regular-file invariant до open и descriptor identity перед
+bounded read. Ошибка open требует подтверждения неверного фактического типа;
+ошибки обычного файла остаются явными. Неверные pointer nodes также quarantined.
+Source coverage, Gitignore handling, query semantics и research inputs не менялись.
+До правки actual CLI9 подтвердил дефект всех трёх ролей; regression matrix дала
+3 FAIL и 2 PASS, corrected boundary tests дали 2 FAIL и 9 PASS. После правки
+focused34, targeted148, full461 non-Docker +4deselected, Ruff, strict mypy32 прошли.
+Сохранены прежние 38 cache/ignore и 27 relative-import regressions.
+Actual CLI15 проверил quarantine, correct query, valid regular JSON, reuse новым
+процессом без builder и настоящий kernel EACCES для всех трёх ролей. Ещё CLI10
+проверил relative-import P2, valid imports и own-source worktree/HEAD/SHA queries.
+
+Новый main commit остаётся `under_review` до свежего independent R3 от parent.
+Исторические FAIL exact1ad и exact26d сохранены. SHA, commands, hashes и receipt
+находятся в external `outputs/stage2-socket-fix/run-20261023T1318Z/`.
+По текущему parent handoff TS artifact является read-only candidate under review,
+а memory component имеет FAIL с тремя findings и исправляется isolated без
+коммитов. Эти события заменяют старые running/no-verdict snapshots, но не означают
+TS или memory acceptance. Их интеграция в main этой правкой не выполнялась.

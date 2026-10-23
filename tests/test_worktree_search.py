@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import errno
 import hashlib
 import json
 import os
 import shutil
+import socket
+import stat
 import subprocess
 import sys
 import time
@@ -627,7 +630,7 @@ def test_source_exclusion_does_not_hide_active_ignore_policy(repo, prefix):
 
 
 @pytest.mark.parametrize("artifact", ["index.json", "manifest.json", "current.json", "generation", "generations"])
-@pytest.mark.parametrize("kind", ["fifo", "directory", "symlink"])
+@pytest.mark.parametrize("kind", ["fifo", "directory", "symlink", "socket"])
 def test_cache_artifact_types_repair_persistently_without_following_targets(repo, tmp_path, artifact, kind):
     repo.commit({"a.py": "def target(): pass\n"})
     first = lookup(repo.root, "target")
@@ -646,6 +649,13 @@ def test_cache_artifact_types_repair_persistently_without_following_targets(repo
         damaged.unlink()
     if kind == "fifo":
         os.mkfifo(damaged)
+    elif kind == "socket":
+        fd = os.open(damaged.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            with socket.socket(socket.AF_UNIX) as node:
+                node.bind(f"/proc/self/fd/{fd}/{damaged.name}")
+        finally:
+            os.close(fd)
     elif kind == "symlink":
         damaged.symlink_to(outside, target_is_directory=True)
     elif artifact in ("generation", "generations"):
@@ -664,6 +674,14 @@ def test_cache_artifact_types_repair_persistently_without_following_targets(repo
     assert sentinel.read_text() == "outside must remain untouched"
     assert list(outside.iterdir()) == [sentinel]
     assert lookup(repo.root, "target")["observation"]["cache_reused"]
+    if kind == "socket":
+        assert any(stat.S_ISSOCK(path.lstat().st_mode)
+                   for path in state.rglob("*") if ".corrupt-" in str(path))
+        reused = run_hook(repo.root, "def forbidden(*args, **kwargs):\n"
+                          "    raise AssertionError('repaired cache must be reused')\n"
+                          "search.build_index = forbidden")
+        assert reused.returncode == 0, reused.stderr
+        assert json.loads(reused.stdout)["observation"]["cache_reused"]
 
 
 def test_repaired_fifo_index_releases_lock_for_concurrent_process_reuse(repo):
@@ -773,7 +791,8 @@ def test_oversized_cache_index_repairs_before_reading_bytes(repo):
     assert lookup(repo.root, "target")["observation"]["cache_reused"]
 
 
-def test_cache_open_race_to_fifo_is_bounded_and_repairs(repo, monkeypatch):
+@pytest.mark.parametrize("kind", ["fifo", "socket", "directory", "symlink"])
+def test_cache_open_race_to_invalid_type_is_bounded_and_repairs(repo, monkeypatch, kind):
     repo.commit({"a.py": "def target(): pass\n"})
     first = lookup(repo.root, "target")
     index = state_path(repo.root) / "generations" / first["snapshot"]["generation_id"] / "index.json"
@@ -784,7 +803,15 @@ def test_cache_open_race_to_fifo_is_bounded_and_repairs(repo, monkeypatch):
         if name == "index.json" and not swaps:
             swaps.append(True)
             index.unlink()
-            os.mkfifo(index)
+            if kind == "fifo":
+                os.mkfifo(index)
+            elif kind == "socket":
+                with socket.socket(socket.AF_UNIX) as node:
+                    node.bind(f"/proc/self/fd/{parent_fd}/index.json")
+            elif kind == "directory":
+                index.mkdir()
+            else:
+                index.symlink_to(index.parent / "manifest.json")
         return opened(name, flags, parent_fd)
 
     monkeypatch.setattr(store, "_cache_open", swapping)
@@ -792,6 +819,62 @@ def test_cache_open_race_to_fifo_is_bounded_and_repairs(repo, monkeypatch):
     assert swaps and not result.observation.cache_reused
     assert index.is_file()
     assert lookup(repo.root, "target")["observation"]["cache_reused"]
+
+
+@pytest.mark.parametrize("error", [errno.EACCES, errno.EIO, errno.ENXIO])
+@pytest.mark.parametrize("operation", ["open", "read"])
+def test_regular_cache_io_errors_remain_fatal_without_repair(repo, monkeypatch, capsys, error, operation):
+    repo.commit({"a.py": "def target(): pass\n"})
+    first = lookup(repo.root, "target")
+    state = state_path(repo.root)
+    files = {path: path.read_bytes() for path in state.rglob("*") if path.is_file()}
+    opened = store.os.open
+    read = store.os.read
+    index = state / "generations" / first["snapshot"]["generation_id"] / "index.json"
+    identity = index.stat()
+
+    def denied_open(name, *args, **kwargs):
+        if name == "index.json":
+            raise OSError(error, "controlled regular cache open failure")
+        return opened(name, *args, **kwargs)
+
+    def denied_read(fd, size):
+        info = os.fstat(fd)
+        if (info.st_dev, info.st_ino) == (identity.st_dev, identity.st_ino):
+            raise OSError(error, "controlled regular cache read failure")
+        return read(fd, size)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(store.os, operation, denied_open if operation == "open" else denied_read)
+        assert main(["find", "target", "--repo", str(repo.root), "--format", "json"]) == 4
+    output = capsys.readouterr()
+    assert not output.out and "product_state_io_error" in output.err
+    assert f"Errno {error}" in output.err
+    assert files == {path: path.read_bytes() for path in state.rglob("*") if path.is_file()}
+    assert not list(state.glob(".corrupt-*"))
+    reused = lookup(repo.root, "target")
+    assert payload(reused) == payload(first) and reused["observation"]["cache_reused"]
+
+
+def test_cache_replacement_before_open_is_rejected_before_read(tmp_path, monkeypatch):
+    path = tmp_path / "index.json"
+    path.write_bytes(b"old")
+    replacement = tmp_path / "replacement.json"
+    replacement.write_bytes(b"new")
+    opened = store._cache_open
+
+    def swapping(name, flags, parent_fd=None):
+        replacement.replace(path)
+        return opened(name, flags, parent_fd)
+
+    def forbidden(fd, size):
+        raise AssertionError("a replaced file must be rejected before reading bytes")
+
+    with store._cache_directory(tmp_path) as fd:
+        monkeypatch.setattr(store, "_cache_open", swapping)
+        monkeypatch.setattr(store.os, "read", forbidden)
+        with pytest.raises(store.CacheCorrupt, match="changed before read"):
+            store._cache_read(fd, "index.json")
 
 
 def test_cache_read_growth_stops_at_initial_size(tmp_path, monkeypatch):

@@ -105,11 +105,23 @@ def _cache_directory(name: str | Path, parent_fd: int | None = None) -> Iterator
 
 
 def _cache_read(parent_fd: int, name: str, limit: int = MAX_CACHE_BYTES) -> bytes:
-    fd = _cache_open(name, os.O_RDONLY, parent_fd)
+    expected = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+    if not stat.S_ISREG(expected.st_mode):
+        raise CacheCorrupt(f"invalid cache file type: {name}")
+    try:
+        fd = _cache_open(name, os.O_RDONLY, parent_fd)
+    except OSError as exc:
+        linked = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+        if not stat.S_ISREG(linked.st_mode):
+            raise CacheCorrupt(f"invalid cache file type: {name}") from exc
+        raise
     try:
         before = os.fstat(fd)
         if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
             raise CacheCorrupt(f"invalid cache file type or size: {name}")
+        fields = ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")
+        if any(getattr(expected, field) != getattr(before, field) for field in fields):
+            raise CacheCorrupt(f"cache file changed before read: {name}")
         chunks = []
         size = 0
         while size <= before.st_size:
@@ -120,7 +132,6 @@ def _cache_read(parent_fd: int, name: str, limit: int = MAX_CACHE_BYTES) -> byte
             size += len(chunk)
         after = os.fstat(fd)
         linked = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
-        fields = ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")
         if size != before.st_size or any(
             getattr(before, field) != getattr(info, field)
             for info in (after, linked) for field in fields
@@ -221,7 +232,7 @@ class GenerationStore:
                 self._publish_generation(generation, index_bytes, root_fd, generations_fd)
             try:
                 info = os.stat("current.json", dir_fd=root_fd, follow_symlinks=False)
-                if stat.S_ISDIR(info.st_mode):
+                if not stat.S_ISREG(info.st_mode):
                     self._quarantine(root_fd, "current.json", root_fd)
             except FileNotFoundError:
                 pass
