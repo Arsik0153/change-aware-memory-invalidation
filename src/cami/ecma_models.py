@@ -144,8 +144,9 @@ class EcmaIdentityGap(EcmaValue):
     reason: str
 
     def covers(self, path: str, qualname: str, node_kind: str) -> bool:
-        return path == self.path and node_kind in self.node_kinds and (
-            qualname == self.qualname or self.descendants and (
+        # Binding kinds restrict the exact identity; an unknown owner affects every child kind.
+        return path == self.path and (
+            qualname == self.qualname and node_kind in self.node_kinds or self.descendants and (
                 not self.qualname or qualname.startswith(self.qualname + ".")))
 
 

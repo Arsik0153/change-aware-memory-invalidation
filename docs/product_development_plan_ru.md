@@ -3,16 +3,21 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
-Актуальный снимок при интеграции на 2026-10-23T15:57:36.825126+00:00: Stage1 принят на
+Актуальный снимок интеграции на 2026-10-23T16:45:49.018469+00:00: Stage1 принят на
 `499acfad48b2d62e37b0f57a3b051bc09eaf847b`, Stage2 на
 `6037294831fc0cde5525986cab043ea21af27dd3`, Stage3 на
 `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
 Три этапа приняты. Stage4 реализован в MAIN, acceptance `under_review`.
-Stage5 остаётся `in_progress`, `not_accepted`, в изолированном worktree.
-Combined memory patch включает принятый storage R4 и исправление quoted member names.
-MAIN self-checks прошли. Fresh independent MAIN R2 ещё не назначен родителем.
-Watcher R1 завершён с FAIL. Cleanup writer завершил все три исправления, fresh R2 активен.
-Исторические snapshots ниже не описывают текущее состояние.
+Independent MAIN R2 завершён с FAIL на `62b0ab85ca19810af06ff575e4ade9620ede8e4b`.
+Единственный P1 касается ложного отсутствия вложенных функций под неизвестным computed owner.
+Scope repair интегрирован без storage, watch или optimization изменений.
+Fresh independent exact-MAIN R3 после commit назначает родитель. Stage4 ещё не принят.
+Watcher artifact R2 имеет conditional PASS. Stage5 остаётся `not_accepted`, isolated.
+Старая partial union сохранила unresolved focused timeout. Новый corrected union
+проверяет fixed scope, WATCH и OPT отдельно от MAIN; его результат ещё не получен.
+Optimizer terminal по parent transfer. Fresh `contextGapReviewTask` проверяет corrected model
+и optimization; `correctedWatchUnionTask` проверяет новый union. Эти задачи не расширяют данный commit.
+Objects, values и classes остаются design-only. Исторические snapshots ниже сохранены.
 Task counts не являются числом принятых этапов.
 
 ## Исходное состояние
@@ -187,9 +192,10 @@ Patch применён к чистой MAIN `9ff15cb307829ee6784aa8e203af8b2e8dd
 через `git apply --3way --index` без конфликтов. Production и tests побайтно
 совпадают с проверенным artifact. R4 `memory/database.py` и `memory/store.py` сохранены.
 Нормализация quoted, escaped, numeric и direct literal-computed keys выполняется
-в compiler traversal. Unsupported fields и nested gaps дают uncertainty вместо deletion.
+в compiler traversal. Известные unsupported fields дают uncertainty. Неизвестный computed owner
+оставался дефектом покрытия вложенных identities, обнаруженным в следующем MAIN R2.
 
-MAIN self-checks: 444 targeted, 766 full non-Docker, 4 deselected, Ruff,
+Исторические MAIN62 self-checks: 444 targeted, 766 full non-Docker, 4 deselected, Ruff,
 strict mypy и два Node syntax checks. Все прежние 53 cache/ignore и 27 relative-import
 регрессий сохранены без изменений. Actual MAIN CLI: 215 lifecycle, 140 member-name
 и 41 дополнительный mixed Python/TSX command. R4 replay: 19 publication cases,
@@ -199,8 +205,41 @@ Read-only relocated wheel под UID65534 прошёл 41 новую CLI-ком�
 его прежние 394 installed CLI остаются отдельным evidence, а не повтором этого run.
 Exact MAIN SHA, tree hashes, commands и postcommit checks находятся в
 [receipt](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json).
-Это self-verification. Fresh independent MAIN R2 нужен после commit.
+Это self-verification прежнего MAIN62. Следующий independent R2 завершён с FAIL.
 Stage4 не принят, исторические component и hybrid FAIL сохранены.
+
+[Independent MAIN R2 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-review/20261023T160421Z-r2/REVIEW.md)
+на `62b0ab85ca19810af06ff575e4ade9620ede8e4b` подтвердил один P1.
+Неизвестный computed method сохранял nested function и arrow в source,
+но persisted memory ошибочно получала `contradicted / subject_absent`.
+353 focused и 394 installed CLI прошли отдельно от этого finding.
+Прежние quoted-name closures и storage R4 PASS остаются отдельными результатами.
+
+Repair patch SHA-256 `be8021d7d5aae2092ac54935c612c026dc48777049639ba94414bc3759019ef1`
+изменяет только `ecma_models.py`, `memory/validation.py` и новый `test_identity_scopes.py`.
+Kind filter применяется к exact binding. Descendant scope покрывает все виды вложенных identities
+в том же path и полном owner prefix. Validator fingerprint теперь включает model closure.
+Index fingerprint уже включал model. Storage, CAS, compiler, watch и optimization bytes не изменены.
+Pre-doc full TREE `4f8108498abe5b0355df25777e207c04c86b408e` точно совпал с immutable artifact.
+Production, tests, fixtures, config, dependency locks и toolchain сверены независимо.
+Worker receipt 777 full non-Docker, 4 deselected, 111 focused, strict mypy и Node checks
+использован как `FROM_IDENTICAL_ARTIFACT`. На MAIN эти полные suites заново не запускались.
+
+Новые MAIN проверки прошли: 11 scope regressions, Ruff, два Node checks, wheel build
+и 29 команд R2 CLI с immediate SQLite inspection до следующего context или history.
+Initial probe ошибочно требовал support внутри unknown owner `C`; исправлен только oracle.
+Nested function и arrow withheld; внешний scope, path prefix и другой файл остаются supported.
+Reversion создаёт новые checks, covered deletion противоречит claim, история сохраняется.
+Authentic old MAIN62 installed wheel обновлён до actual MAIN source на прежних repo, state
+и source snapshot без DB reset. Все прежние immutable SQL rows и source CAS сохранены.
+Новые index и validator IDs исправили false absence на `binding_unresolved`.
+Свежий relocated read-only MAIN wheel совпадает с artifact по всем 51 package assets.
+UID65534 с собственным trusted compiler прошёл 30 scope CLI и upgrade из old wheel
+с 17 old и 14 fixed CLI. Прежние 209 worker installed CLI остаются inherited evidence.
+[Integration receipt](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/memory-scope-main-integration/run-20261023T1640Z/receipts/integration.json) фиксирует patch, trees, toolchain и новые проверки отдельно от reused receipts.
+Repair implementation завершён `UNDER_REVIEW`; fresh exact-MAIN R3 pending.
+Это не acceptance Stage4 и не разрешение на интеграцию WATCH или OPT.
+
 Полная [карта memory/TS integration](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/memory-ts-merge-map-20261023-v1.md)
 хранится вне репозитория.
 
@@ -236,19 +275,24 @@ Acceptance этапа:
 Три findings: P1 Node orphan после stop, P1 startup worker и lease ownership,
 P2 unlink replacement socket. `watchCleanupFixTask` завершён по parent transfer.
 Переданы 714 full tests, 41 watch tests, 18 installed cleanup и 39 CLI в 24 phases.
-Fresh `watchReview2Task` активен на corrected patch
-`cdb2dca34eebd15497895bf7c83b2f4f35475b09d1edfe16c30183203d13d6eb`,
-fix `431d9a72b8502d989a0ade8fda3878cbf7b67ea49449c6bc908f81db3b439fb8`,
-tree `b479f5d8c46c4790a6c473d603705ef4ca9946e3`. Его verdict ещё не получен.
+[Watcher artifact R2 conditional PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-watch-review/t3-75e7932c-20261023T1553Z-r2/REVIEW.md)
+закрыл три R1 findings на corrected patch
+`cdb2dca34eebd15497895bf7c83b2f4f35475b09d1edfe16c30183203d13d6eb`.
+Fix-only `431d9a72b8502d989a0ade8fda3878cbf7b67ea49449c6bc908f81db3b439fb8`,
+TREE `b479f5d8c46c4790a6c473d603705ef4ca9946e3` сохранены как artifact binding.
+Это artifact verdict, не MAIN acceptance. Watch не включён в scope repair.
 [Cleanup handoff](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-watch-cleanup-fix/t3-75e7932c-20261023T1530Z/INTEGRATION.md)
-описывает tested implementation, а не independent PASS.
-Его handle сохранён без потери предыдущих snapshot. В Stage4 source watch не включён.
+сохранён отдельно. Старая partial union завершена с unresolved focused timeout.
+Новый `correctedWatchUnionTask` отдельно проверяет corrected scope, WATCH и OPT
+и должен разрешить timeout. Результат этой проверки ещё не получен.
+Дальнейшая интеграция заблокирована до принятия scope repair и свежего combined review.
+Optimizer terminal по parent transfer: 767 full, 445 focused и 410 installed.
+Эти переданные числа не являются проверками данного MAIN commit.
+Fresh `contextGapReviewTask` проверяет corrected model и optimization в изоляции.
+Objects, values и classes остаются design-only. Общего acceptance продукта ещё нет.
 [Design proposal](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/watcher-design-20261023-v1.md)
-остаётся reference. Foreground polling, status, stop и restart требуют отдельной приёмки.
-Acceptance требует обновления persisted state до запроса, который сам мог бы обновить данные.
-После cleanup нужны upstream name fix, Stage4 MAIN PASS и свежий combined watcher review.
-Отдельная performance baseline работает с frozen artifact и private install,
-не меняет MAIN и shared metadata. Финальная поставка ещё не подтверждена.
+остаётся reference. Foreground polling, status, stop и restart требуют combined приёмки.
+Acceptance требует проверки persisted state до запроса, который сам мог бы обновить данные.
 
 Задачи этапа:
 
@@ -296,12 +340,13 @@ M0–M5 описывают исследовательские инструмен
 
 ## Оркестрация и бюджет
 
-Один code-writer работает в каждом checkout. По прямому поручению пользователя текущий docs worker
-единолично владеет Git index и docs commit в исходной `main`.
-Активные name-fix и watcher workers работают в отдельных app-owned worktrees БЕЗ КОММИТОВ по standing rule 13.
+Один code-writer работает в каждом checkout. Текущий integrator единолично владеет
+исходной MAIN, Git index и commit scope repair. Другие code workers завершены или isolated.
+В commit входят только три feature files, этот план и append-only canonical trail.
+External recorder завершён и освободил shared store по parent transfer.
+Новые независимые review и union runs не меняют MAIN. Source storage, compiler, WATCH,
+optimization, research protocols, datasets и seals этим repair не изменяются.
 Все фактические интеграции и коммиты выполняются последовательно в исходной `main`.
-Этот recorder меняет только план, canonical trail и external store. Исторический аудит не расширяется.
-Source, tests, README, pyproject, protocols, datasets и seals остаются прежними.
 
 Модель оркестрации и отдельного reviewer задана как `codex:gpt-6.1-sol`,
 `reasoningEffort=high`, `serviceTier=default`. Это отдельные проверки одной моделью.
@@ -313,7 +358,7 @@ Source, tests, README, pyproject, protocols, datasets и seals остаются 
 Источник указанного снимка бюджета находится в `/root/.codex/sessions`,
 structured `event_msg` с `token_count.rate_limits`, `limit_id=codex`, окно `10080` минут.
 Hybrid R1 передал remaining `70%` на `2026-10-23T15:06:40.103Z`, до review было `71%`.
-Этот recorder отдельно прочитал свежую локальную structured telemetry: remaining `70%`
+Исторический recorder отдельно прочитал локальную structured telemetry: remaining `70%`
 на `2026-10-23T15:09:38.514Z`, reset `2026-10-29T18:36:49+00:00`.
 Измерения начала и конца run сохраняются во внешнем receipt
 `outputs/milestone-docs/run-20261023T1510Z-storage-hybrid-watch/receipt.json`.
@@ -330,11 +375,13 @@ Stage2 `accepted` на `6037294831fc0cde5525986cab043ea21af27dd3`.
 Stage3 `accepted` на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838` после independent MAIN PASS.
 Stage4 `implementation_completed`, acceptance `under_review`; Stage5 `in_progress`, `not_accepted`.
 Итого пять продуктовых этапов: три приняты, два ещё не приняты.
-MAIN содержит combined product memory с принятым R4 storage и name fix.
-Fresh independent MAIN R2 остаётся следующим шагом. Self-checks не заменяют review.
+MAIN содержит product memory с прежним R4 storage, name fix и scope repair.
+MAIN62 R2 FAIL сохранён. Следующий gate после commit: fresh independent exact-MAIN R3.
+Self-checks и identical-artifact receipts не заменяют независимый review.
 Runtime units включают отдельные implementation, design, review и docs runs.
 Исторический FAIL сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4` и обоих memory artifacts.
-Watcher R1 terminal FAIL сохранён. Cleanup writer terminal, fresh R2 активен по parent transfer.
+Watcher R1 terminal FAIL сохранён. Cleanup terminal, artifact R2 conditional PASS.
+Новый corrected union активен по parent transfer. Старый partial timeout остаётся unresolved.
 Полные переданные task/thread/run/node handles и прежние running snapshots сохранены.
 Текущий integrator не опрашивал watcher и не запускал nested agents.
 Исторический recorder snapshot завершён в 14:29:18 UTC и не обновляется автоматически.
@@ -349,8 +396,8 @@ PR frontier seed пропущен: пользователь выбрал лок�
 Текущий MAIN integrator коммитит только разрешённые feature files и program docs, без push и PR. Новых агентов не запускает.
 [Аудит журнала](../reports/orchestration/trail_audit_ru.md) указывает проверенный диапазон, слабые pointers и пределы проверки.
 Полный SHA integration commit и результаты self-checks сохраняются во внешнем receipt
-`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json`.
-Fresh independent review назначает родитель после commit.
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/memory-scope-main-integration/run-20261023T1640Z/receipts/integration.json`.
+Fresh independent exact-MAIN R3 назначает родитель после commit.
 
 Docs-only commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a` завершён: terminal clean,
 2 files, +255; receipt `docs-integration.json` во внешнем store. Это исторический

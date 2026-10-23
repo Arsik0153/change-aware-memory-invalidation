@@ -14,8 +14,9 @@ from cami.product.memory.models import (
 
 VALIDATOR_FINGERPRINT = digest([
     "product-memory-structural/2",
-    {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest()
-     for name in ("models.py", "adapters.py", "validation.py", "_ecma_syntax.cjs")},
+    {name: hashlib.sha256((Path(__file__).parents[2] / name).read_bytes()).hexdigest()
+     for name in ("ecma_models.py", "product/memory/models.py", "product/memory/adapters.py",
+                  "product/memory/validation.py", "product/memory/_ecma_syntax.cjs")},
 ])
 
 
