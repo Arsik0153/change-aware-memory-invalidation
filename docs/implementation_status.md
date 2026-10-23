@@ -106,3 +106,78 @@ Final audit corrections: graph-free file policies now use an explicit repository
 Final verification result: **99 tests passed**, including actual Docker tests; Ruff passed; strict mypy passed for 24 source files. `git diff --check` passed. Final real pilot measurements are in `reports/click-verified/`, including `selection_reasons.json`. The final rerun again selected 120/120 claims for each validating policy.
 
 A further held-out integration regression freezes two policies for the same population, runs both against real Git, and analyzes them together. Analysis merges equivalent policy declarations into one population only when input hashes, claim hashes and cluster/sequence declarations agree, and requires all explicitly declared variants. Duplicate or conflicting declarations remain errors.
+
+## 2026-10-01: independent audit and next experiment preparation
+
+This section supersedes the readiness statements above where noted; historical
+results and their files remain unchanged. The starting commit was
+`f8e6054c1d243d464c2765ffe7117e0e4493a27e`. Full Russian findings and reproduction
+commands are in [next_stage_report_ru.md](next_stage_report_ru.md).
+
+Baseline evidence was reproduced in new directories: 99 original tests passed after
+restoring Docker, static analysis passed, the synthetic demo again used 8 symbol
+validations versus 15 all validations, and the unchanged Click pilot selected
+120/120 for all three validating policies. A separate Click environment rerun
+completed 72 finite probe executions. These are operational observations, not
+independent truth labels.
+
+The quantitative audit found zero changed sampled subject ASTs, five changed
+subject files, module-level unresolved support for all 120 claims, and direct
+subject unresolved support for 108. All symbol selections and 115 file selections
+were fallback-only. File fallback expanded uncertainty across the repository;
+symbol fallback reached the whole sampled cohort through module support. Full
+counts, overlap sets and examples are in
+`reports/next-stage-20261001/baseline-diagnostics/selection_diagnostics.json`.
+
+Confirmed implementation fixes cover rebinding and unknown global reads, a more
+conservative tokenizer parent oracle, shared-cache semantic invalidation, full-run
+costs and Pareto accounting, cold-parent index timing, and rejection of historical
+source collisions with preloaded probe infrastructure. Failing-before evidence is
+preserved in `reports/next-stage-20261001/reproductions/`. Index version is 2;
+validator version is 3. Final source verification passed **182 tests**, including
+Docker, Ruff and strict mypy for 24 source files, recorded in
+`reports/next-stage-20261001/frozen-code-verification/`.
+
+The structural selection change is a separate protocol extension, not a claimed
+implementation correction. [Protocol 1.1](protocol_1_1.md) narrows inferred graph
+support only for exact existence/signature claims without explicit dependencies;
+unknown provenance, parse limitations, explicit support, anchors and retries remain
+conservative. Protocol 1.0 and its original cohort are preserved. No quality claim
+is justified without independent child labels.
+
+Actual preparation now includes 60 main pairs with 600 draft claims and three
+10-transition replay sequences with 30 initial draft claims across Click,
+Requests and pytest. Click is development; Requests and pytest are heldout.
+Selection recipes and object IDs are in `data/manifests/main-20261001.*`.
+`runs/next-stage-20261001/main-ready/` contains source evidence and blank forms for
+1530 primary and 306 secondary tasks; child main and replay populations are separate.
+Three generation runs produced identical claim hashes. There are **zero admitted
+claims, independent receipts or child labels** so far. The final scientific seal
+has deliberately not been created on empty receipts. These facts replace the older
+statement that no main/replay candidate set had been assembled.
+
+[Annotation instructions](annotation_next_stage_ru.md) give the exact packets,
+answer format, parent import, child import and remaining freeze steps. Prose stays
+outside the offline cohort; this leaves at most 540 main candidates, or 480 without
+behavior admission. Historical behavior environments still require verification,
+especially pytest, where the new runner rejects a collision with installed `_pytest`.
+Human review, provenance completion and final cohort admission are outstanding.
+No heldout policies, truth-quality metrics, M6 or paid API calls were run. Memory
+scaling and population inference remain research work, not completed results.
+
+The completed paired benchmark contains **1188 successful runs**: three seeded
+repetitions, unchanged pilot inputs, seven uncached policies, and separate verdict
+cache fill/measurement. Protocol 1.0 retains 120/120 after fixes. Protocol 1.1 uses
+120 all, 5 file and 0 symbol validations, but selective policies remain slower than
+all_validate in full-process medians: 11.637 s file and 12.977 s symbol versus
+11.289 s all, per 12 transitions. All counts and verdicts repeat exactly. There are
+no independent quality labels. Full data, source hashes, schedule, ranges and plots
+are in `reports/next-stage-20261001/timing-verified/`; preliminary interrupted
+series are excluded. This replaces the old limitation of a single fixed-order
+timing run, but does not establish population inference or a break-even point.
+
+After timing, the final code also reran the demo (15 all versus 8 symbol validations)
+and all 72 Click smoke executions (24 combined supported verdicts, no exclusions).
+Ruff, mypy and diff checks passed again. Logs and exact commands are in
+`reports/next-stage-20261001/completion/`. This final smoke includes the new runner
+collision guard; it does not remove the documented pytest environment limitation.

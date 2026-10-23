@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_global_value_dependency_is_conservative_for_behavior ___________
+
+repo = <conftest.GitFixture object at 0x10928bec0>
+
+    def test_global_value_dependency_is_conservative_for_behavior(repo):
+        from cami.artifacts import load_jsonl
+        from cami.index import build_index, compare_indexes
+        from cami.models import Claim, MemoryState, PolicyConfig, Prose, Provenance
+        from cami.policies import SelectionContext, select_claims
+        from test_index import snapshot
+    
+        a = repo.commit({'module.py': 'X = 1\ndef f(): return X\n'})
+        b = repo.commit({'module.py': 'X = 2\ndef f(): return X\n'})
+        config = repo.config(a, [b])
+        original = load_jsonl(config.parent / 'claims.jsonl', Claim)[0]
+        claim = original.model_copy(update={'kind': 'prose', 'predicate': Prose(type='prose')})
+        provenance = load_jsonl(config.parent / 'provenance.jsonl', Provenance)[0]
+        previous = MemoryState(claim_id=claim.claim_id, revision=a, state='valid',
+                               last_checked_commit=a, last_supported_commit=a,
+                               last_verdict='supported', basis='validated',
+                               current_provenance=provenance, available=True)
+        old, new = snapshot(repo, a), snapshot(repo, b)
+        changes = compare_indexes(build_index(old), build_index(new), old, new)
+        context = SelectionContext(b, (claim,), (provenance,), (previous,), changes)
+        decision = select_claims(context, PolicyConfig(id='symbol_validate'))[0]
+>       assert decision.selected
+E       AssertionError: assert False
+E        +  where False = Selection(schema_version=1, claim_id='f', commit='116b1a9dbc4bde39d00bdf662978ca6a2644e127', selected=False, reasons=()).selected
+
+tests/test_predicate_scope.py:109: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior
+1 failed, 10 deselected in 0.24s

@@ -1,0 +1,147 @@
+...........FFF.......................................................... [ 72%]
+...........................                                              [100%]
+=================================== FAILURES ===================================
+______________ test_docker_real_git_parent_child_and_environment _______________
+
+repo = <conftest.GitFixture object at 0x10e433290>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_docker_real_git_parent_child_and_environment(repo):
+        a = repo.commit({"module.py": "def f(): return 1\n"})
+        b = repo.commit({"module.py": "def f(): return 2\n"})
+        c = repo.commit({"module.py": "import nonexistent_dependency\ndef f(): return 1\n"})
+        config = repo.config(a, [b, c], policy="all_validate")
+        probe = config.parent / "test_probe.py"
+        probe.write_text("from module import f\ndef test_f():\n    assert f() == 1\n")
+        claims_path = config.parent / "claims.jsonl"
+        claim = json.loads(claims_path.read_text())
+        claim.update(kind="behavior_test", predicate={"type": "behavior_test", "probe_path": probe.name,
+                     "probe_sha256": file_hash(probe), "node_id": "test_probe.py::test_f", "environment_id": "test"})
+        claims_path.write_text(json.dumps(claim) + "\n")
+        data = read_json(config)
+        data["validation"]["execution"] = "docker"
+        data["environment_profiles"] = {"test": {"image": os.environ["CAMI_TEST_IMAGE"], "python_version": "3.12.12"}}
+        config.write_text(json.dumps(data))
+        out = config.parent / "out"
+>       run_experiment(config, out)
+
+tests/test_behavior.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/engine.py:82: in run_experiment
+    _execute(inputs, output_dir, manifest, frozen_run)
+src/cami/engine.py:106: in _execute
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='docker.io/library/cami-probes@sha256:120054cdb5169f81dce7ecf88b644f6879911981a2b5e1df750752d..._paths=('.',), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def check_docker(profile: EnvironmentProfile) -> None:
+        try:
+            info = subprocess.run(["docker", "info", "--format", "{{.ServerVersion}}"],
+                                  capture_output=True, timeout=15)
+            image = subprocess.run(["docker", "image", "inspect", profile.image], capture_output=True, timeout=15)
+        except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
+            raise ResourceError(f"Docker unavailable: {exc}") from exc
+        if info.returncode or image.returncode:
+>           raise ResourceError("Docker daemon or pinned image unavailable; prepare the image before run")
+E           cami.errors.ResourceError: Docker daemon or pinned image unavailable; prepare the image before run
+
+src/cami/behavior.py:61: ResourceError
+______________________ test_docker_timeout_is_uncertainty ______________________
+
+repo = <conftest.GitFixture object at 0x10e32db50>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_docker_timeout_is_uncertainty(repo):
+        from cami.artifacts import load_jsonl
+        from cami.behavior import ProbeContext, execute_probe
+        from cami.models import Claim, EnvironmentProfile
+        from test_index import snapshot
+        a = repo.commit({"module.py": "def f(): pass\n"})
+        b = repo.commit({})
+        config = repo.config(a, [b])
+        probe = config.parent / "test_slow.py"
+        probe.write_text("import time\ndef test_slow():\n    time.sleep(10)\n")
+        path = config.parent / "claims.jsonl"
+        row = json.loads(path.read_text())
+        row.update(kind="behavior_test", predicate={"type":"behavior_test", "probe_path":probe.name,
+            "probe_sha256":file_hash(probe), "node_id":"test_slow.py::test_slow", "environment_id":"test"})
+        path.write_text(json.dumps(row) + "\n")
+        claim = load_jsonl(path, Claim)[0]
+        profile = EnvironmentProfile(image=os.environ["CAMI_TEST_IMAGE"], python_version="3.12.12", timeout_seconds=1)
+        result = execute_probe(claim, ProbeContext(snapshot(repo, b), profile, config.parent, config.parent / "timeout"))
+>       assert (result.verdict, result.reason, result.test_executions) == ("insufficient_evidence", "timeout", 3)
+E       AssertionError: assert ('insufficien...ent_error', 3) == ('insufficien... 'timeout', 3)
+E         
+E         At index 1 diff: 'environment_error' != 'timeout'
+E         Use -v to get more diff
+
+tests/test_behavior.py:76: AssertionError
+___________ test_behavior_hidden_dependency_masks_real_contradiction ___________
+
+repo = <conftest.GitFixture object at 0x10e2e5820>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_behavior_hidden_dependency_masks_real_contradiction(repo):
+        from cami.artifacts import write_json
+        from cami.evaluation import score_run
+        from cami.models import Dependency, Node
+        from cami.scenarios import edge_fraction, prepare_scenario
+        from test_scenarios import dataset_for
+        a = repo.commit({"module.py":"def f(): return g()\ndef g(): return 1\n"})
+        b = repo.commit({"module.py":"def f(): return g()\ndef g(): return 2\n"})
+        config = repo.config(a,[b])
+        probe = config.parent / "test_dependency.py"
+        probe.write_text("from module import f\ndef test_result():\n    assert f() == 1\n")
+        path = config.parent / "claims.jsonl"
+        claim = json.loads(path.read_text())
+        claim.update(kind="behavior_test",predicate={"type":"behavior_test","probe_path":probe.name,
+            "probe_sha256":file_hash(probe),"node_id":"test_dependency.py::test_result","environment_id":"test"})
+        path.write_text(json.dumps(claim)+"\n")
+        data = read_json(config)
+        data["validation"]["execution"] = "docker"
+        data["environment_profiles"] = {"test":{"image":os.environ["CAMI_TEST_IMAGE"],"python_version":"3.12.12"}}
+        write_json(config,data)
+        labels = config.parent / "independent_labels.jsonl"
+        labels.write_text(json.dumps({"schema_version":1,"claim_id":"f","commit":b,"label":"contradicted",
+            "annotator_id":"synthetic-scenario-author","evidence":["Manually authored scenario changes g return value from 1 to 2; f calls g."],
+            "confirmation_type":"synthetic_manual","adjudication_status":"not_required"})+"\n")
+        dataset = dataset_for(config)
+        edge = Dependency(source=Node(path="module.py",qualname="f"),target=Node(path="module.py",qualname="g"),relation="calls",origin="static")
+        seed = next(seed for seed in [17,42,73] if edge_fraction("fixture",edge,seed)<0.75)
+        for mode, expected in [("known_missing",0.0),("hidden_missing",1.0)]:
+            out = config.parent / mode
+            public = prepare_scenario(dataset,mode,0.75,seed,out)
+            manifest = read_json(public)
+>           run_experiment(public.parent / manifest["runs"][0]["config_path"],out / "run")
+
+tests/test_behavior.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/engine.py:82: in run_experiment
+    _execute(inputs, output_dir, manifest, frozen_run)
+src/cami/engine.py:106: in _execute
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='docker.io/library/cami-probes@sha256:120054cdb5169f81dce7ecf88b644f6879911981a2b5e1df750752d..._paths=('.',), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def check_docker(profile: EnvironmentProfile) -> None:
+        try:
+            info = subprocess.run(["docker", "info", "--format", "{{.ServerVersion}}"],
+                                  capture_output=True, timeout=15)
+            image = subprocess.run(["docker", "image", "inspect", profile.image], capture_output=True, timeout=15)
+        except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
+            raise ResourceError(f"Docker unavailable: {exc}") from exc
+        if info.returncode or image.returncode:
+>           raise ResourceError("Docker daemon or pinned image unavailable; prepare the image before run")
+E           cami.errors.ResourceError: Docker daemon or pinned image unavailable; prepare the image before run
+
+src/cami/behavior.py:61: ResourceError
+=========================== short test summary info ============================
+FAILED tests/test_behavior.py::test_docker_real_git_parent_child_and_environment
+FAILED tests/test_behavior.py::test_docker_timeout_is_uncertainty - Assertion...
+FAILED tests/test_behavior.py::test_behavior_hidden_dependency_masks_real_contradiction
+3 failed, 96 passed in 38.89s

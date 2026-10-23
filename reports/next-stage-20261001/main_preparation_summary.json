@@ -1,0 +1,67 @@
+{
+  "groups": 63,
+  "by_repo_stratum": {
+    "click/chronological": 10,
+    "click/enriched": 10,
+    "requests/chronological": 10,
+    "requests/enriched": 10,
+    "requests/replay": 2,
+    "pytest/chronological": 10,
+    "pytest/enriched": 10,
+    "pytest/replay": 1
+  },
+  "draft_kinds": {
+    "symbol_exists": 252,
+    "signature_equals": 252,
+    "behavior_test": 63,
+    "prose": 63
+  },
+  "clusters_by_repo": {
+    "click": 16,
+    "requests": 17,
+    "pytest": 20
+  },
+  "primary_form_items": 1530,
+  "second_form_items": 306,
+  "child_main_population": 600,
+  "child_replay_population": 300,
+  "parent_receipts": 0,
+  "reproducible_claim_hashes": true,
+  "resolved_repositories": [
+    {
+      "end_commit": "934813e4d421071a1b3db3973c02fe2721359a6e",
+      "end_ref": "8.1.8",
+      "path": "/Users/zhanarys/Projects/change-aware-memory-invalidation/data/corpora/click",
+      "repo_id": "click",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development",
+      "url": "https://github.com/pallets/click.git"
+    },
+    {
+      "end_commit": "0e322af87745eff34caffe4df68456ebc20d9068",
+      "end_ref": "v2.32.3",
+      "path": "/Users/zhanarys/Projects/change-aware-memory-invalidation/data/corpora/requests",
+      "repo_id": "requests",
+      "source_roots": [
+        "src",
+        "requests"
+      ],
+      "split": "heldout",
+      "url": "https://github.com/psf/requests.git"
+    },
+    {
+      "end_commit": "b55ab2aabb68c0ce94c3903139b062d0c2790152",
+      "end_ref": "8.3.5",
+      "path": "/Users/zhanarys/Projects/change-aware-memory-invalidation/data/corpora/pytest",
+      "repo_id": "pytest",
+      "source_roots": [
+        "src"
+      ],
+      "split": "heldout",
+      "url": "https://github.com/pytest-dev/pytest.git"
+    }
+  ]
+}

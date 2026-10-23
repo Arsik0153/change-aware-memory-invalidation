@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_aggregate.py",
+      "tests/test_behavior.py",
+      "tests/test_dataset.py",
+      "tests/test_engine.py",
+      "tests/test_evaluation.py",
+      "tests/test_index.py",
+      "tests/test_inputs.py",
+      "tests/test_models.py",
+      "tests/test_pilot.py",
+      "tests/test_scenarios.py",
+      "tests/test_structural.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 40.03655716701178,
+    "log": "baseline_pytest.log"
+  },
+  {
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+      "-m",
+      "cami.cli",
+      "pilot-environments",
+      "--dataset",
+      "data/pilot/click-8.1.8/dataset.json",
+      "--image",
+      "docker.io/library/cami-probes@sha256:120054cdb5169f81dce7ecf88b644f6879911981a2b5e1df750752d095e0d636",
+      "--out",
+      "runs/next-stage-20261001/click-environments"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 51.57057970800088,
+    "log": "click_environments.log"
+  }
+]

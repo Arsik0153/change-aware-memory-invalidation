@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "scripts/prepare_main.py",
+        "generate",
+        "--parents",
+        "runs/next-stage-20261001/main-selection/parent_inputs.jsonl",
+        "--out",
+        "runs/next-stage-20261001/main-candidates-verified"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 14.641689042007783,
+      "stdout": "/Users/zhanarys/Projects/change-aware-memory-invalidation/runs/next-stage-20261001/main-candidates-verified/generation.json\n",
+      "stderr": "<unknown>:15: SyntaxWarning: invalid escape sequence '\\['\n<parent-claim-source>:15: SyntaxWarning: invalid escape sequence '\\['\n<unknown>:1234: SyntaxWarning: invalid escape sequence '\\s'\n<parent-claim-source>:1234: SyntaxWarning: invalid escape sequence '\\s'\n<unknown>:95: SyntaxWarning: invalid escape sequence '\\s'\n<parent-claim-source>:95: SyntaxWarning: invalid escape sequence '\\s'\n<unknown>:12: SyntaxWarning: invalid escape sequence '\\o'\n<parent-claim-source>:12: SyntaxWarning: invalid escape sequence '\\o'\n<unknown>:12: SyntaxWarning: invalid escape sequence '\\o'\n<parent-claim-source>:12: SyntaxWarning: invalid escape sequence '\\o'\n"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "scripts/prepare_main.py",
+        "assemble",
+        "--selection",
+        "runs/next-stage-20261001/main-selection/selection.json",
+        "--candidates",
+        "runs/next-stage-20261001/main-candidates-verified",
+        "--out",
+        "runs/next-stage-20261001/main-ready"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 22.944857333000982,
+      "stdout": "/Users/zhanarys/Projects/change-aware-memory-invalidation/runs/next-stage-20261001/main-ready/dataset.json\n",
+      "stderr": ""
+    }
+  ],
+  "code_sha256": {
+    "scripts/prepare_main.py": "0aeb63dd834a6a85bbb4d9c7c31088684aa3a10b37c84e68e65fb93726119d39",
+    "src/cami/pilot.py": "1f7b88d0c65345e0538f3419b8f4b915c9e330006891b7d5b88284fcc5a89e27",
+    "src/cami/index.py": "55fc9c21795312340bfdca5e2fe420988a7ae5bda9d81361f5484478a2f25696"
+  },
+  "python": "3.12.14 (main, Sep 29 2026, 14:50:19) [Clang 22.1.3 ]"
+}

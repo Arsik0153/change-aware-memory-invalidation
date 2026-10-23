@@ -53,6 +53,9 @@ class ScoredManifest(Record):
     validator_version: str | None = None
     failure: str | None = None
     resource_notes: tuple[str, ...] = ()
+    end_to_end_seconds: float | None = Field(default=None, ge=0)
+    end_to_end_cpu_seconds: float | None = Field(default=None, ge=0)
+    overhead_seconds: float | None = None
 
 
 class Metric(Record):
@@ -94,6 +97,8 @@ class EvaluationReport(Record):
     by_claim_kind: tuple[MetricGroup, ...]
     by_validator: tuple[MetricGroup, ...]
     costs: dict[str, CostSummary]
+    end_to_end_seconds: float | None = None
+    overhead_seconds: float | None = None
     label_counts: dict[str, int]
     validator_reasons: dict[str, int]
     selection_reasons: dict[str, int]
@@ -348,7 +353,8 @@ def _score(run_dir: Path, labels: tuple[Label, ...], labels_hash: str) -> Scored
         by_claim_kind=tuple(compute_metrics(tuple(row for row in observations
                                                  if row.claim.kind == kind), policy, kind)
                             for kind in sorted({row.claim.kind for row in observations})),
-        by_validator=by_validator,
+        by_validator=by_validator, end_to_end_seconds=manifest.end_to_end_seconds,
+        overhead_seconds=manifest.overhead_seconds,
         costs={phase: _cost_summary(tuple(row for row in costs if row.phase == phase),
                                    len(selected) if phase == "maintenance" else 0)
                for phase in ("preflight", "maintenance")},
@@ -478,14 +484,22 @@ def compare_runs(run_dirs: list[Path], labels_path: Path, output_dir: Path) -> C
     return report
 
 
+def reconstructed_run_seconds(report: EvaluationReport) -> float | None:
+    components = [cost.totals for cost in report.costs.values()]
+    if any(row.get(key) is None for row in components for key in
+           ("wall_seconds", "actual_validation_seconds", "reconstructed_validation_seconds")):
+        return None
+    wall = report.end_to_end_seconds
+    if wall is None:
+        wall = sum(float(row["wall_seconds"] or 0) for row in components)
+    return wall + sum(float(row["reconstructed_validation_seconds"] or 0)
+                      - float(row["actual_validation_seconds"] or 0) for row in components)
+
+
 def _pareto_values(report: EvaluationReport) -> tuple[float, float, float] | None:
-    costs = report.costs["maintenance"].totals
-    wall, actual = costs.get("wall_seconds"), costs.get("actual_validation_seconds")
-    reconstructed = costs.get("reconstructed_validation_seconds")
+    total = reconstructed_run_seconds(report)
     exposure = report.overall.metrics["stale_exposure"].value
     retention = report.overall.metrics["valid_retention"].value
-    if any(value is None for value in (wall, actual, reconstructed, exposure, retention)):
+    if total is None or exposure is None or retention is None:
         return None
-    assert wall is not None and actual is not None and reconstructed is not None
-    assert exposure is not None and retention is not None
-    return float(wall - actual + reconstructed), float(exposure), -float(retention)
+    return total, float(exposure), -float(retention)

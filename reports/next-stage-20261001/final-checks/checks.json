@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-01T07:46:06.555174+00:00",
+  "python": "3.12.14 (main, Sep 29 2026, 14:50:19) [Clang 22.1.3 ]",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "docker_image": "docker.io/library/cami-probes@sha256:120054cdb5169f81dce7ecf88b644f6879911981a2b5e1df750752d095e0d636",
+  "checks": [
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 58.69212100000004,
+      "log": "pytest.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.0995057919935789,
+      "log": "ruff.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "mypy",
+        "src/cami"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.126506041007815,
+      "log": "mypy.log"
+    }
+  ]
+}

@@ -61,6 +61,9 @@ def write_score(report: EvaluationReport, observations: tuple[Observation, ...],
         lines += [f"- {phase}: {cost.totals}"]
         if cost.unavailable_reasons:
             lines += [f"- Unavailable {phase} costs: {cost.unavailable_reasons}"]
+    lines += ["", f"Measured run wall seconds: {report.end_to_end_seconds}. "
+              f"Serialization and accounting overhead seconds: {report.overhead_seconds}.",
+              "Historical runs without end-to-end telemetry use phase components only."]
     lines += ["", "Cached runtime reconstruction estimates policy validation cost; "
               "it is not a measured end-to-end runtime.", "", "Limitations:", ""]
     lines += [f"- {limitation}" for limitation in report.limitations]
@@ -68,9 +71,11 @@ def write_score(report: EvaluationReport, observations: tuple[Observation, ...],
 
 
 def write_comparison(report: ComparisonReport, output_dir: Path) -> None:
+    from cami.evaluation import reconstructed_run_seconds
+
     fields = ["policy", "dataset_kind", "repo_id", "stratum", "scenario_id", "metric", "value",
               "numerator", "denominator", "reason", "wall_seconds", "actual_validation_seconds",
-              "reconstructed_validation_seconds"]
+              "reconstructed_validation_seconds", "reconstructed_run_seconds", "end_to_end_seconds"]
     rows: list[dict[str, object]] = []
     for run in report.reports:
         costs = run.costs["maintenance"].totals
@@ -82,10 +87,12 @@ def write_comparison(report: ComparisonReport, output_dir: Path) -> None:
                          "reason": metric.reason, "wall_seconds": costs["wall_seconds"],
                          "actual_validation_seconds": costs["actual_validation_seconds"],
                          "reconstructed_validation_seconds":
-                         costs["reconstructed_validation_seconds"]})
+                         costs["reconstructed_validation_seconds"],
+                         "reconstructed_run_seconds": reconstructed_run_seconds(run),
+                         "end_to_end_seconds": run.end_to_end_seconds})
     _csv(output_dir / "comparison.csv", fields, rows)
     lines = ["# Policy comparison", "", "Each policy has a separate summary and per-claim report.",
-             "", "Observed Pareto dominance uses reconstructed maintenance cost, stale exposure, "
+             "", "Observed Pareto dominance uses reconstructed full-run cost, stale exposure, "
              "and valid retention.", ""]
     for policy, peers in report.pareto_dominated_by.items():
         lines.append(f"- {policy}: dominated by {', '.join(peers) if peers else 'none observed'}.")
@@ -96,6 +103,8 @@ def write_comparison(report: ComparisonReport, output_dir: Path) -> None:
 
 
 def _plot_comparison(report: ComparisonReport, output_dir: Path) -> None:
+    from cami.evaluation import reconstructed_run_seconds
+
     import matplotlib
 
     matplotlib.use("Agg")
@@ -104,17 +113,12 @@ def _plot_comparison(report: ComparisonReport, output_dir: Path) -> None:
     fig, axes = plt.subplots(1, 3, figsize=(12, 4))
     policies = [run.policy for run in report.reports]
     for axis, metric, title in zip(axes, ["cost", "stale_exposure", "valid_retention"],
-                                   ["Reconstructed maintenance seconds", "Stale exposure",
+                                   ["Reconstructed run seconds", "Stale exposure",
                                     "Valid retention"], strict=True):
         values: list[float] = []
         for run in report.reports:
             if metric == "cost":
-                totals = run.costs["maintenance"].totals
-                wall, actual = totals["wall_seconds"], totals["actual_validation_seconds"]
-                reconstructed = totals["reconstructed_validation_seconds"]
-                value = (wall - actual + reconstructed
-                         if wall is not None and actual is not None and reconstructed is not None
-                         else None)
+                value = reconstructed_run_seconds(run)
             else:
                 value = run.overall.metrics[metric].value
             values.append(float(value) if value is not None else float("nan"))

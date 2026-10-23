@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 39.48778037499869,
+      "log": "pytest.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.06227450000005774,
+      "log": "ruff.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "mypy",
+        "src/cami"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.3402770840039011,
+      "log": "mypy.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "demo",
+        "--out",
+        "runs/next-stage-20261001/baseline-demo"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 17.663168416998815,
+      "log": "demo.log"
+    },
+    {
+      "command": [
+        "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "pilot-run",
+        "--dataset",
+        "data/pilot/click-8.1.8/dataset.json",
+        "--out",
+        "runs/next-stage-20261001/baseline-pilot"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 52.24535962502705,
+      "log": "pilot.log"
+    }
+  ],
+  "docker_image": "docker.io/library/cami-probes@sha256:120054cdb5169f81dce7ecf88b644f6879911981a2b5e1df750752d095e0d636"
+}

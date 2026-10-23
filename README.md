@@ -85,3 +85,25 @@ Costs separate actual validations, logical validations, cache hits, preflight, i
 M6 is not enabled or implemented. No paid requests are made. It requires a separate model, API key, explicit budget and frozen protocol. The executable M0–M5 prototype and pilot do not complete independent annotation or establish the research hypothesis.
 
 Exit codes are 0 for a completed operation, 2 for invalid inputs, 3 for a missing required resource and 4 for an interrupted or incomplete operation.
+
+## Аудит и подготовка следующего эксперимента (2026-10-01)
+
+Подробный результат, ограничения и команды: [русский отчёт](docs/next_stage_report_ru.md).
+Исходный протокол 1.0 сохранён; [вариант 1.1](docs/protocol_1_1.md) отдельно проверяет
+правило отбора для точных структурных утверждений. Это development-абляция, а не
+подтверждение качества без независимых labels.
+
+Новые инструменты:
+
+- `scripts/diagnose_selection.py` — причины и пересечения fallback на фиксированном пилоте.
+- `scripts/benchmark_pilot.py` — исходный код 1.0, исправленный 1.0 и вариант 1.1;
+  три повторения, seed 42, отдельное заполнение и использование кеша.
+- `scripts/prepare_main.py` — фиксированная выборка, parent-only генерация, пакеты
+  разметки и импорт независимых parent-подтверждений.
+- `scripts/verify_cami.py --out NEW_DIRECTORY` — тесты и статический анализ без
+  перезаписи прежних журналов.
+
+Подготовлены 600 основных кандидатов и три replay-последовательности; независимые
+receipts и labels ещё не получены. Формы и дальнейшие действия описаны в
+[инструкции разметчикам](docs/annotation_next_stage_ru.md). Held-out оценка и M6
+не запускались.

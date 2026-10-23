@@ -1,0 +1,3 @@
+'def f(): pass\nfrom other import f\n' supported
+'def f(): pass\ndel f\n' supported
+'class C:\n    def f(self): pass\nC = factory()\n' contradicted

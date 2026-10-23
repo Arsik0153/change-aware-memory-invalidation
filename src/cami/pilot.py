@@ -18,28 +18,57 @@ from cami.repository import chain, git, read_snapshot, resolve
 
 
 def parent_candidates(source: str) -> tuple[tuple[str, int], ...]:
-    tokens = list(tokenize.generate_tokens(io.StringIO(source).readline))
+    """Find conservative parent candidates without invoking CAMI's AST analyzer."""
+    try:
+        compile(source, "<parent-claim-source>", "exec", dont_inherit=True)
+        tokens = list(tokenize.generate_tokens(io.StringIO(source).readline))
+    except (SyntaxError, ValueError, tokenize.TokenError, IndentationError):
+        return ()
     indent = 0
     definitions: list[tuple[str, int]] = []
-    bindings: dict[str, int] = {}
+    definition_counts: dict[str, int] = {}
+    statements: list[list[tokenize.TokenInfo]] = []
+    statement: list[tokenize.TokenInfo] = []
     for i, token in enumerate(tokens):
         if token.type == tokenize.INDENT:
             indent += 1
         elif token.type == tokenize.DEDENT:
             indent -= 1
-        elif indent == 0 and token.type == tokenize.NAME:
-            if token.string == "def" and i + 1 < len(tokens):
-                name = tokens[i + 1].string
+        elif token.type == tokenize.NEWLINE or token.string == ";":
+            statements.append(statement)
+            statement = []
+        elif token.type not in {tokenize.NL, tokenize.COMMENT, tokenize.ENDMARKER}:
+            statement.append(token)
+        if token.type == tokenize.NAME and token.string in {"def", "class"}:
+            name = tokens[i + 1].string
+            definition_counts[name] = definition_counts.get(name, 0) + 1
+            if token.string == "def" and indent == 0:
                 definitions.append((name, token.start[0]))
-                bindings[name] = bindings.get(name, 0) + 1
-            elif token.start[1] == 0 and i + 1 < len(tokens) and tokens[i + 1].string in {"=", ":", "+=", "-="}:
-                bindings[token.string] = bindings.get(token.string, 0) + 1
-            elif token.string in {"class", "import", "from"}:
-                # Imports and classes are conservatively excluded if they bind a candidate name.
-                line_names = {t.string for t in tokens[i+1:] if t.start[0] == token.start[0] and t.type == tokenize.NAME}
-                for name in line_names:
-                    bindings[name] = bindings.get(name, 0) + 1
-    return tuple((name, line) for name, line in definitions if bindings.get(name) == 1)
+    rebound: set[str] = set()
+    assignment_operators = {"=", ":=", "+=", "-=", "*=", "/=", "//=", "%=",
+                            "**=", "<<=", ">>=", "&=", "^=", "|="}
+    binding_keywords = {"import", "from", "del", "for", "as", "global", "nonlocal", "case"}
+    for row in statements:
+        names = {token.string for token in row if token.type == tokenize.NAME}
+        if names & {"import", "from"} and any(token.string == "*" for token in row):
+            return ()
+        if names & binding_keywords:
+            rebound.update(names)
+        for i, token in enumerate(row):
+            if token.string == ":=" and i and row[i - 1].type == tokenize.NAME:
+                rebound.add(row[i - 1].string)
+        if not row or row[0].string in {"def", "class", "async"}:
+            continue
+        seen_names: set[str] = set()
+        for token in row:
+            if token.type == tokenize.NAME:
+                seen_names.add(token.string)
+            elif token.string in assignment_operators:
+                rebound.update(seen_names)
+        if len(row) > 1 and row[0].type == tokenize.NAME and row[1].string == ":":
+            rebound.add(row[0].string)
+    return tuple((name, line) for name, line in definitions
+                 if definition_counts[name] == 1 and name not in rebound)
 
 
 def prepare_pilot(repo_path: Path, output: Path, end_ref: str = "8.1.8", count: int = 12,
@@ -148,7 +177,6 @@ def run_pilot(dataset_path: Path, output: Path) -> None:
                 "claims_path":str(original.parent / config.claims_path),
                 "provenance_path":str(original.parent / config.provenance_path),
                 "parent_receipts_path":str(original.parent / config.parent_receipts_path)})
-            # Parent evidence paths are relative to the receipt's run directory.
             temporary_config = original.parent / f"pilot-{policy}.json"
             if temporary_config.exists():
                 if load(temporary_config, RunConfig) != changed:

@@ -1,0 +1,31 @@
+{
+  "audit_scope": "Read-only source and development-pilot audit; no held-out evaluation, no child ground-truth labels created.",
+  "original_pilot_claims": 120,
+  "conservative_tokenizer_rejected_existing_claims": 23,
+  "rejection_interpretation": "New conservative eligibility rule only. Several exclusions are ordinary callable reads, local import aliases, or names in assignment expressions. This is not evidence that old parent receipts or claims are false.",
+  "audit_only_parent_ast_ambiguity_flags": 0,
+  "audit_only_parent_parse_limitations": 0,
+  "original_first_parent_candidate_count": 108,
+  "conservative_first_parent_candidate_count": 84,
+  "isolated_parent_regression_tests_passed": 26,
+  "ruff": "passed",
+  "measured_timing_reproduction": {
+    "simulated_end_to_end_seconds": 9.0,
+    "recorded_phase_wall_seconds": 3.0,
+    "recorded_maintenance_wall_seconds": 0.0,
+    "simulation": "One second per mocked JSON sink call; no physical output files written."
+  },
+  "pareto_preflight_reproduction": {
+    "original_pareto_values": [
+      0.10903508399496786,
+      0.0,
+      -1.0
+    ],
+    "after_setting_preflight_wall_to_1000": [
+      0.10903508399496786,
+      0.0,
+      -1.0
+    ]
+  },
+  "legacy_pilot_cohort_action": "Preserve all120 original claims and receipts. Main-generation candidates await human parent confirmation."
+}

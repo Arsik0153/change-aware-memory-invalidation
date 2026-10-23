@@ -3,13 +3,14 @@ from __future__ import annotations
 import ast
 import hashlib
 import sys
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from pathlib import PurePosixPath
 
 from cami.models import Dependency, Node, Parameter, Signature
 from cami.repository import Blob, Snapshot, changed_files
 
-INDEX_VERSION = "1"
+INDEX_VERSION = "2"
 
 
 @dataclass(frozen=True)
@@ -24,6 +25,7 @@ class Definition:
     ambiguous: bool
     calls: tuple[str, ...]
     local_bindings: frozenset[str]
+    loaded_names: frozenset[str]
 
 
 @dataclass(frozen=True)
@@ -106,6 +108,42 @@ def _module_name(path: str, roots: tuple[str, ...]) -> str | None:
     return None
 
 
+def scope_nodes(nodes: Iterable[ast.AST]) -> Iterator[ast.AST]:
+    for node in nodes:
+        yield node
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+            expressions = [*node.args.defaults, *(value for value in node.args.kw_defaults if value is not None)]
+            if not isinstance(node, ast.Lambda):
+                expressions.extend(node.decorator_list)
+                expressions.extend(arg.annotation for arg in ast.walk(node.args)
+                                   if isinstance(arg, ast.arg) and arg.annotation is not None)
+                if node.returns is not None:
+                    expressions.append(node.returns)
+            yield from scope_nodes(expressions)
+            continue
+        if isinstance(node, ast.ClassDef):
+            yield from scope_nodes([*node.decorator_list, *node.bases, *(item.value for item in node.keywords)])
+            continue
+        if isinstance(node, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+            yield from (part for part in ast.walk(node) if isinstance(part, ast.NamedExpr))
+            continue
+        yield from scope_nodes(ast.iter_child_nodes(node))
+
+
+def bound_names(nodes: Iterable[ast.AST]) -> set[str]:
+    names: set[str] = set()
+    for node in nodes:
+        if isinstance(node, ast.Name) and isinstance(node.ctx, (ast.Store, ast.Del)):
+            names.add(node.id)
+        elif isinstance(node, ast.NamedExpr) and isinstance(node.target, ast.Name):
+            names.add(node.target.id)
+        elif isinstance(node, (ast.ExceptHandler, ast.MatchAs, ast.MatchStar)) and node.name:
+            names.add(node.name)
+        elif isinstance(node, ast.MatchMapping) and node.rest:
+            names.add(node.rest)
+    return names
+
+
 def parse_module(blob: Blob, name: str) -> Module:
     if blob.limitation:
         return Module(blob.path, name, (), (), (), blob.limitation, "")
@@ -122,26 +160,38 @@ def parse_module(blob: Blob, name: str) -> Module:
 
     def visit(body: list[ast.stmt], prefix: str, in_class: bool, conditional: bool) -> None:
         for statement in body:
+            assignments.update(prefix + name for name in bound_names(scope_nodes((statement,))))
             if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 qualname = prefix + statement.name
                 scope_counts[qualname] = scope_counts.get(qualname, 0) + 1
                 node = Node(path=blob.path, qualname=qualname)
                 calls: list[str] = []
+                outer_expressions = [*statement.decorator_list, *statement.args.defaults,
+                                     *(value for value in statement.args.kw_defaults if value is not None)]
+                if any(isinstance(part, ast.Name) for expression in outer_expressions
+                       for part in ast.walk(expression)):
+                    unresolved.add(node)
                 bindings = {arg.arg for arg in ast.walk(statement.args) if isinstance(arg, ast.arg)}
-                bindings.update(n.id for n in ast.walk(statement) if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store))
-                bindings.update(n.name for n in ast.walk(statement) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and n is not statement)
+                lexical = tuple(scope_nodes(statement.body))
+                bindings.update(bound_names(lexical))
+                bindings.update(n.name for n in lexical
+                                if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)))
+                bindings.difference_update(name for n in lexical
+                                           if isinstance(n, (ast.Global, ast.Nonlocal)) for name in n.names)
                 for part in ast.walk(statement):
                     if isinstance(part, ast.Call):
                         if isinstance(part.func, ast.Name):
                             calls.append(part.func.id)
                         else:
                             unresolved.add(node)
-                    if isinstance(part, (ast.Import, ast.ImportFrom)):
+                    if isinstance(part, (ast.Import, ast.ImportFrom, ast.Global, ast.Nonlocal)):
                         unresolved.add(node)
                 definitions.append(Definition(node, "method" if in_class else "function", signature(statement),
                     hashlib.sha256(ast.dump(statement, include_attributes=False).encode()).hexdigest(),
                     statement.lineno, statement.end_lineno or statement.lineno,
-                    ast.get_source_segment(source, statement) or "", conditional, tuple(calls), frozenset(bindings)))
+                    ast.get_source_segment(source, statement) or "", conditional, tuple(calls), frozenset(bindings),
+                    frozenset(n.id for n in ast.walk(statement)
+                              if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load))))
                 visit(statement.body, qualname + ".<locals>.", False, conditional)
             elif isinstance(statement, ast.ClassDef):
                 scope_name = prefix + statement.name
@@ -151,7 +201,18 @@ def parse_module(blob: Blob, name: str) -> Module:
                 targets = statement.targets if isinstance(statement, ast.Assign) else [statement.target]
                 for target in targets:
                     assignments.update(prefix + n.id for n in ast.walk(target) if isinstance(n, ast.Name))
-            elif isinstance(statement, (ast.Import, ast.ImportFrom)) and not prefix:
+            elif isinstance(statement, ast.Delete):
+                for target in statement.targets:
+                    assignments.update(prefix + n.id for n in ast.walk(target)
+                                       if isinstance(n, ast.Name))
+            elif isinstance(statement, (ast.Import, ast.ImportFrom)):
+                for alias in statement.names:
+                    bound = alias.asname or (alias.name.split(".")[0]
+                                             if isinstance(statement, ast.Import) else alias.name)
+                    scope = prefix + bound
+                    scope_counts[scope] = scope_counts.get(scope, 0) + 1
+                if prefix:
+                    continue
                 if isinstance(statement, ast.ImportFrom):
                     module = statement.module or ""
                     if statement.level:
@@ -181,7 +242,8 @@ def parse_module(blob: Blob, name: str) -> Module:
         counts[definition.node] = counts.get(definition.node, 0) + 1
     from dataclasses import replace
     ambiguous_scopes = {name for name, count in scope_counts.items() if count > 1} | assignments
-    definitions = [replace(d, ambiguous=d.ambiguous or counts[d.node] > 1 or any(
+    definitions = [replace(d, ambiguous=d.ambiguous or counts[d.node] > 1
+                          or any(symbol == "*" for _, _, symbol in imports) or any(
         d.node.qualname == scope or (d.node.qualname or "").startswith(scope + ".") for scope in ambiguous_scopes))
                    for d in definitions]
     for name_assigned in assignments:
@@ -227,6 +289,8 @@ def build_index(snapshot: Snapshot, config: IndexConfig = IndexConfig(),
             else:
                 unresolved.add(Node(path=module.path))
         for definition in module.definitions:
+            if definition.loaded_names - definition.local_bindings - set(definition.calls):
+                unresolved.add(definition.node)
             for call in definition.calls:
                 if call in definition.local_bindings or Node(path=module.path, qualname=call) in module.unresolved:
                     unresolved.add(definition.node)

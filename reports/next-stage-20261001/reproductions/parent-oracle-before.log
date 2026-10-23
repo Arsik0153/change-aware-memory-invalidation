@@ -1,0 +1,555 @@
+F.FF..FFFFFFF.F..FFFFFFF..F                                              [100%]
+=================================== FAILURES ===================================
+_ test_rebinding_or_other_definition_is_excluded[if True:\n    def f(): pass\n] _
+
+tail = 'if True:\n    def f(): pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_ test_rebinding_or_other_definition_is_excluded[def outer():\n    def f(): pass\n] _
+
+tail = 'def outer():\n    def f(): pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f', 'outer'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_ test_rebinding_or_other_definition_is_excluded[class C:\n    def f(): pass\n] _
+
+tail = 'class C:\n    def f(): pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_____ test_rebinding_or_other_definition_is_excluded[f, other = (1, 2)\n] ______
+
+tail = 'f, other = (1, 2)\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+____ test_rebinding_or_other_definition_is_excluded[(f, other) = (1, 2)\n] _____
+
+tail = '(f, other) = (1, 2)\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+____ test_rebinding_or_other_definition_is_excluded[[other, f] = (1, 2)\n] _____
+
+tail = '[other, f] = (1, 2)\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_______ test_rebinding_or_other_definition_is_excluded[other = f = 1\n] ________
+
+tail = 'other = f = 1\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+___________ test_rebinding_or_other_definition_is_excluded[f /= 2\n] ___________
+
+tail = 'f /= 2\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+__________ test_rebinding_or_other_definition_is_excluded[f //= 2\n] ___________
+
+tail = 'f //= 2\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+__________ test_rebinding_or_other_definition_is_excluded[f **= 2\n] ___________
+
+tail = 'f **= 2\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+___________ test_rebinding_or_other_definition_is_excluded[del f\n] ____________
+
+tail = 'del f\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_____ test_rebinding_or_other_definition_is_excluded[for f in []: pass\n] ______
+
+tail = 'for f in []: pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+___ test_rebinding_or_other_definition_is_excluded[with other as f: pass\n] ____
+
+tail = 'with other as f: pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_____ test_rebinding_or_other_definition_is_excluded[if (f := 1): pass\n] ______
+
+tail = 'if (f := 1): pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+_ test_rebinding_or_other_definition_is_excluded[try:\n    pass\nexcept Exception as f:\n    pass\n] _
+
+tail = 'try:\n    pass\nexcept Exception as f:\n    pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:30: AssertionError
+______ test_malformed_parent_cannot_receive_confirmation[def f() pass\n] _______
+
+source = 'def f() pass\n'
+
+    @pytest.mark.parametrize('source', ['def f() pass\n', 'def 123(): pass\n',
+                                        'def f(): pass\nx =\n'])
+    def test_malformed_parent_cannot_receive_confirmation(source):
+>       assert parent_candidates(source) == ()
+E       AssertionError: assert (('f', 1),) == ()
+E         
+E         Left contains one more item: ('f', 1)
+E         Use -v to get more diff
+
+tests/test_parent_candidates.py:36: AssertionError
+_____ test_malformed_parent_cannot_receive_confirmation[def 123(): pass\n] _____
+
+source = 'def 123(): pass\n'
+
+    @pytest.mark.parametrize('source', ['def f() pass\n', 'def 123(): pass\n',
+                                        'def f(): pass\nx =\n'])
+    def test_malformed_parent_cannot_receive_confirmation(source):
+>       assert parent_candidates(source) == ()
+E       AssertionError: assert (('123', 1),) == ()
+E         
+E         Left contains one more item: ('123', 1)
+E         Use -v to get more diff
+
+tests/test_parent_candidates.py:36: AssertionError
+___ test_malformed_parent_cannot_receive_confirmation[def f(): pass\nx =\n] ____
+
+source = 'def f(): pass\nx =\n'
+
+    @pytest.mark.parametrize('source', ['def f() pass\n', 'def 123(): pass\n',
+                                        'def f(): pass\nx =\n'])
+    def test_malformed_parent_cannot_receive_confirmation(source):
+>       assert parent_candidates(source) == ()
+E       AssertionError: assert (('f', 1),) == ()
+E         
+E         Left contains one more item: ('f', 1)
+E         Use -v to get more diff
+
+tests/test_parent_candidates.py:36: AssertionError
+______________________ test_inline_rebinding_is_excluded _______________________
+
+    def test_inline_rebinding_is_excluded():
+>       assert parent_candidates("def f(): pass; f = 1\n") == ()
+E       AssertionError: assert (('f', 1),) == ()
+E         
+E         Left contains one more item: ('f', 1)
+E         Use -v to get more diff
+
+tests/test_parent_candidates.py:54: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[if True:\n    def f(): pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[def outer():\n    def f(): pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[class C:\n    def f(): pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f, other = (1, 2)\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[(f, other) = (1, 2)\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[[other, f] = (1, 2)\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[other = f = 1\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f /= 2\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f //= 2\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f **= 2\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[del f\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[for f in []: pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[with other as f: pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[if (f := 1): pass\n]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[try:\n    pass\nexcept Exception as f:\n    pass\n]
+FAILED tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def f() pass\n]
+FAILED tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def 123(): pass\n]
+FAILED tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def f(): pass\nx =\n]
+FAILED tests/test_parent_candidates.py::test_inline_rebinding_is_excluded - A...
+19 failed, 8 passed in 0.12s

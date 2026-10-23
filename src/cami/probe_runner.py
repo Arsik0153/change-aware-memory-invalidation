@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+from pathlib import Path
 from typing import Any
 
 
@@ -13,6 +14,13 @@ def main() -> None:
     reports: list[dict[str, Any]] = []
     collected: list[str] = []
     target = sys.argv[1]
+    source_roots = [Path(value) for value in sys.argv[2:]]
+    loaded_roots = {name.split(".")[0] for name in sys.modules}
+    collisions = sorted(name for name in loaded_roots if any(
+        (root / f"{name}.py").is_file() or (root / name).is_dir() for root in source_roots))
+    if collisions:
+        raise RuntimeError("repository modules collide with preloaded probe infrastructure: "
+                           + ", ".join(collisions))
     sys.path[0:0] = sys.argv[2:]
 
     class Recorder:

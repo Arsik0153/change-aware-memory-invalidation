@@ -1,0 +1,118 @@
+F..F...FFF                                                               [100%]
+=================================== FAILURES ===================================
+___ test_exact_syntax_ignores_unrelated_unresolved_calls[symbol_validate-0] ____
+
+repo = <conftest.GitFixture object at 0x10b927cb0>, policy = 'symbol_validate'
+expected = 0
+
+    @pytest.mark.parametrize('policy, expected', [('symbol_validate', 0), ('file_validate', 1)])
+    def test_exact_syntax_ignores_unrelated_unresolved_calls(repo, policy, expected):
+        a = repo.commit({'module.py': 'import sys\ndef f(): return sys.missing()\n'})
+        b = repo.commit({'module.py': '# comment\nimport sys\ndef f(): return sys.missing()\n'})
+        config = repo.config(a, [b], policy=policy)
+        use_protocol(config, '1.1')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+>       assert len(read_jsonl(out / 'validations.jsonl')) == expected
+E       AssertionError: assert 1 == 0
+E        +  where 1 = len([{'cache_hit': False, 'claim_id': 'f', 'commit': '1e6f888774146322c5b2307413e5637ceaf92584', 'cpu_seconds': 3.300000000000525e-05, ...}])
+E        +    where [{'cache_hit': False, 'claim_id': 'f', 'commit': '1e6f888774146322c5b2307413e5637ceaf92584', 'cpu_seconds': 3.300000000000525e-05, ...}] = read_jsonl((PosixPath('/private/var/folders/jp/r7lflnbn4jq4gxm0rwmy89gw0000gn/T/pytest-of-zhanarys/pytest-37/test_exact_syntax_ignores_unre0/out') / 'validations.jsonl'))
+
+tests/test_predicate_scope.py:23: AssertionError
+_________ test_exact_syntax_selects_deletion_uncertainty_and_recovery __________
+
+repo = <conftest.GitFixture object at 0x10b9a7a10>
+
+    def test_exact_syntax_selects_deletion_uncertainty_and_recovery(repo):
+        source = 'import sys\ndef f(): return sys.missing()\n'
+        a = repo.commit({'module.py': source})
+        b = repo.commit({'module.py': 'import sys\n'})
+        c = repo.commit({'module.py': 'def f(\n'})
+        d = repo.commit({'module.py': source})
+        e = repo.commit({'notes.txt': 'unrelated'})
+        config = repo.config(a, [b, c, d, e])
+        use_protocol(config, '1.1')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        states = read_jsonl(out / 'states.jsonl')
+        assert [s['state'] for s in states] == ['retired', 'needs_validation', 'valid', 'valid']
+>       assert states[-1]['last_checked_commit'] == d
+E       AssertionError: assert 'ce1589e65848...a261a5c2d474a' == '1dbbe30dd6e6...7ca1f7e1e9630'
+E         
+E         - 1dbbe30dd6e644aa1495c0031617ca1f7e1e9630
+E         + ce1589e6584851636d1d7515e0ba261a5c2d474a
+
+tests/test_predicate_scope.py:49: AssertionError
+__ test_rebound_definition_is_uncertain[def f(): pass\nfrom other import f\n] __
+
+repo = <conftest.GitFixture object at 0x10b9a4110>
+source = 'def f(): pass\nfrom other import f\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:85: AssertionError
+___ test_rebound_definition_is_uncertain[def f(): pass\nimport other as f\n] ___
+
+repo = <conftest.GitFixture object at 0x10b9a5d00>
+source = 'def f(): pass\nimport other as f\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:85: AssertionError
+_________ test_rebound_definition_is_uncertain[def f(): pass\ndel f\n] _________
+
+repo = <conftest.GitFixture object at 0x10b9a7fe0>
+source = 'def f(): pass\ndel f\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:85: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_predicate_scope.py::test_exact_syntax_ignores_unrelated_unresolved_calls[symbol_validate-0]
+FAILED tests/test_predicate_scope.py::test_exact_syntax_selects_deletion_uncertainty_and_recovery
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfrom other import f\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nimport other as f\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\ndel f\n]
+5 failed, 5 passed in 2.79s

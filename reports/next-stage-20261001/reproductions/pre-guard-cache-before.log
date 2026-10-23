@@ -1,0 +1,30 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+_________ test_old_validator_cache_is_not_reused_after_semantic_fix[2] _________
+
+repo = <conftest.GitFixture object at 0x107723410>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107723260>
+old_version = '2'
+
+    @pytest.mark.parametrize("old_version", ["1", "2"])
+    def test_old_validator_cache_is_not_reused_after_semantic_fix(repo, monkeypatch, old_version):
+        from cami.artifacts import write_json
+    
+        a = repo.commit({'module.py': 'def f(): return 1\n'})
+        b = repo.commit({'notes.txt': 'unrelated'})
+        config = repo.config(a, [b], policy='all_validate')
+        data = read_json(config)
+        data['cache_dir'] = 'cache'
+        write_json(config, data)
+        with monkeypatch.context() as legacy:
+            legacy.setattr(engine, 'VALIDATOR_VERSION', old_version)
+            engine.run_experiment(config, config.parent / 'legacy')
+        out = config.parent / 'current'
+        engine.run_experiment(config, out)
+>       assert read_jsonl(out / 'costs.jsonl')[-1]['actual_validations'] == 1
+E       assert 0 == 1
+
+tests/test_cost_accounting.py:70: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cost_accounting.py::test_old_validator_cache_is_not_reused_after_semantic_fix[2]
+1 failed, 1 passed, 3 deselected in 0.71s

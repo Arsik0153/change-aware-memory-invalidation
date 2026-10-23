@@ -1,0 +1,435 @@
+[
+  {
+    "claim_id": "click-pilot-00-02",
+    "path": "src/click/_compat.py",
+    "qualname": "_force_correct_text_stream",
+    "mentions": [
+      [
+        234,
+        "def _force_correct_text_stream("
+      ],
+      [
+        286,
+        "return _force_correct_text_stream("
+      ],
+      [
+        302,
+        "return _force_correct_text_stream("
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-00-08",
+    "path": "src/click/termui.py",
+    "qualname": "getchar",
+    "mentions": [
+      [
+        717,
+        "def getchar(echo: bool = False) -> str:"
+      ],
+      [
+        740,
+        "from ._termui_impl import getchar as f"
+      ],
+      [
+        779,
+        "getchar()"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-01-02",
+    "path": "src/click/core.py",
+    "qualname": "iter_params_for_processing",
+    "mentions": [
+      [
+        115,
+        "def iter_params_for_processing("
+      ],
+      [
+        1403,
+        "for param in iter_params_for_processing(param_order, self.get_params(ctx)):"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-01-05",
+    "path": "src/click/formatting.py",
+    "qualname": "wrap_text",
+    "mentions": [
+      [
+        29,
+        "def wrap_text("
+      ],
+      [
+        165,
+        "wrap_text("
+      ],
+      [
+        178,
+        "wrap_text("
+      ],
+      [
+        200,
+        "wrap_text("
+      ],
+      [
+        243,
+        "wrapped_text = wrap_text(second, text_width, preserve_paragraphs=True)"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-01-09",
+    "path": "src/click/types.py",
+    "qualname": "convert_type",
+    "mentions": [
+      [
+        965,
+        "self.types: t.Sequence[ParamType] = [convert_type(ty) for ty in types]"
+      ],
+      [
+        1000,
+        "def convert_type(ty: t.Optional[t.Any], default: t.Optional[t.Any] = None) -> ParamType:"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-02-01",
+    "path": "src/click/_compat.py",
+    "qualname": "get_text_stdin",
+    "mentions": [
+      [
+        333,
+        "def get_text_stdin("
+      ],
+      [
+        392,
+        "return get_text_stdin(encoding=encoding, errors=errors), False"
+      ],
+      [
+        606,
+        "_default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)"
+      ],
+      [
+        620,
+        "\"stdin\": get_text_stdin,"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-02-05",
+    "path": "src/click/parser.py",
+    "qualname": "_unpack_args",
+    "mentions": [
+      [
+        51,
+        "def _unpack_args("
+      ],
+      [
+        347,
+        "pargs, args = _unpack_args("
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-03-02",
+    "path": "src/click/core.py",
+    "qualname": "_complete_visible_commands",
+    "mentions": [
+      [
+        49,
+        "def _complete_visible_commands("
+      ],
+      [
+        980,
+        "for name, command in _complete_visible_commands(ctx, incomplete)"
+      ],
+      [
+        1771,
+        "for name, command in _complete_visible_commands(ctx, incomplete)"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-04-00",
+    "path": "src/click/_compat.py",
+    "qualname": "get_text_stdin",
+    "mentions": [
+      [
+        333,
+        "def get_text_stdin("
+      ],
+      [
+        392,
+        "return get_text_stdin(encoding=encoding, errors=errors), False"
+      ],
+      [
+        606,
+        "_default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)"
+      ],
+      [
+        620,
+        "\"stdin\": get_text_stdin,"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-04-04",
+    "path": "src/click/formatting.py",
+    "qualname": "iter_rows",
+    "mentions": [
+      [
+        22,
+        "def iter_rows("
+      ],
+      [
+        231,
+        "for first, second in iter_rows(rows, len(widths)):"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-05-00",
+    "path": "src/click/_compat.py",
+    "qualname": "_make_text_stream",
+    "mentions": [
+      [
+        15,
+        "def _make_text_stream("
+      ],
+      [
+        271,
+        "return _make_text_stream("
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-06-00",
+    "path": "src/click/_compat.py",
+    "qualname": "_is_binary_reader",
+    "mentions": [
+      [
+        147,
+        "def _is_binary_reader(stream: t.IO[t.Any], default: bool = False) -> bool:"
+      ],
+      [
+        174,
+        "if _is_binary_reader(stream, False):"
+      ],
+      [
+        181,
+        "if buf is not None and _is_binary_reader(buf, True):"
+      ],
+      [
+        290,
+        "_is_binary_reader,"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-06-01",
+    "path": "src/click/_compat.py",
+    "qualname": "_force_correct_text_reader",
+    "mentions": [
+      [
+        280,
+        "def _force_correct_text_reader("
+      ],
+      [
+        339,
+        "return _force_correct_text_reader(sys.stdin, encoding, errors, force_readable=True)"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-06-03",
+    "path": "src/click/_compat.py",
+    "qualname": "isatty",
+    "mentions": [
+      [
+        73,
+        "def isatty(self) -> bool:"
+      ],
+      [
+        75,
+        "return self._stream.isatty()"
+      ],
+      [
+        502,
+        "return not isatty(stream) and not _is_jupyter_kernel_output(stream)"
+      ],
+      [
+        571,
+        "def isatty(stream: t.IO[t.Any]) -> bool:"
+      ],
+      [
+        573,
+        "return stream.isatty()"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-07-00",
+    "path": "src/click/_compat.py",
+    "qualname": "_is_binary_reader",
+    "mentions": [
+      [
+        147,
+        "def _is_binary_reader(stream: t.IO[t.Any], default: bool = False) -> bool:"
+      ],
+      [
+        174,
+        "if _is_binary_reader(stream, False):"
+      ],
+      [
+        181,
+        "if buf is not None and _is_binary_reader(buf, True):"
+      ],
+      [
+        290,
+        "_is_binary_reader,"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-07-06",
+    "path": "src/click/exceptions.py",
+    "qualname": "_join_param_hints",
+    "mentions": [
+      [
+        16,
+        "def _join_param_hints("
+      ],
+      [
+        132,
+        "param_hint=_join_param_hints(param_hint), message=self.message"
+      ],
+      [
+        167,
+        "param_hint = _join_param_hints(param_hint)"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-08-04",
+    "path": "src/click/formatting.py",
+    "qualname": "iter_rows",
+    "mentions": [
+      [
+        22,
+        "def iter_rows("
+      ],
+      [
+        231,
+        "for first, second in iter_rows(rows, len(widths)):"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-08-08",
+    "path": "src/click/termui.py",
+    "qualname": "raw_terminal",
+    "mentions": [
+      [
+        747,
+        "def raw_terminal() -> t.ContextManager[int]:"
+      ],
+      [
+        748,
+        "from ._termui_impl import raw_terminal as f"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-09-01",
+    "path": "src/click/_compat.py",
+    "qualname": "get_text_stdin",
+    "mentions": [
+      [
+        333,
+        "def get_text_stdin("
+      ],
+      [
+        392,
+        "return get_text_stdin(encoding=encoding, errors=errors), False"
+      ],
+      [
+        606,
+        "_default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)"
+      ],
+      [
+        620,
+        "\"stdin\": get_text_stdin,"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-09-08",
+    "path": "src/click/types.py",
+    "qualname": "convert_type",
+    "mentions": [
+      [
+        965,
+        "self.types: t.Sequence[ParamType] = [convert_type(ty) for ty in types]"
+      ],
+      [
+        1000,
+        "def convert_type(ty: t.Optional[t.Any], default: t.Optional[t.Any] = None) -> ParamType:"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-10-01",
+    "path": "src/click/_compat.py",
+    "qualname": "_force_correct_text_writer",
+    "mentions": [
+      [
+        296,
+        "def _force_correct_text_writer("
+      ],
+      [
+        348,
+        "return _force_correct_text_writer(sys.stdout, encoding, errors, force_writable=True)"
+      ],
+      [
+        357,
+        "return _force_correct_text_writer(sys.stderr, encoding, errors, force_writable=True)"
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-10-05",
+    "path": "src/click/parser.py",
+    "qualname": "_unpack_args",
+    "mentions": [
+      [
+        51,
+        "def _unpack_args("
+      ],
+      [
+        347,
+        "pargs, args = _unpack_args("
+      ]
+    ]
+  },
+  {
+    "claim_id": "click-pilot-11-01",
+    "path": "src/click/_compat.py",
+    "qualname": "_force_correct_text_stream",
+    "mentions": [
+      [
+        234,
+        "def _force_correct_text_stream("
+      ],
+      [
+        286,
+        "return _force_correct_text_stream("
+      ],
+      [
+        302,
+        "return _force_correct_text_stream("
+      ]
+    ]
+  }
+]

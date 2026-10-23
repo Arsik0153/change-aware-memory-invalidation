@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+      "scripts/verify_cami.py",
+      "--out",
+      "reports/next-stage-20261001/final-verification"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 66.48005462501897,
+    "log": "checks.log"
+  },
+  {
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+      "-m",
+      "cami.cli",
+      "demo",
+      "--out",
+      "runs/next-stage-20261001/final-demo"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.652182833000552,
+    "log": "demo.log"
+  },
+  {
+    "command": [
+      "/Users/zhanarys/Projects/change-aware-memory-invalidation/.venv/bin/python",
+      "-m",
+      "cami.cli",
+      "pilot-run",
+      "--dataset",
+      "data/pilot/click-8.1.8/dataset.json",
+      "--out",
+      "runs/next-stage-20261001/fixed-pilot"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 58.77674100000877,
+    "log": "fixed_pilot.log"
+  }
+]

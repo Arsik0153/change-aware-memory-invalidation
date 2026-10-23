@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from cami import __version__
-from cami.artifacts import digest, file_hash, load, reserve, within, write_bytes, write_immutable, write_json, write_jsonl
+from cami.artifacts import digest, file_hash, load, load_jsonl, reserve, within, write_bytes, write_immutable, write_json, write_jsonl
 from cami.errors import IncompleteError, ResourceError
 from cami.index import ChangeSet, CodeIndex, IndexConfig, Module, build_index, compare_indexes
 from cami.inputs import Inputs, check_inputs
@@ -80,6 +80,16 @@ def run_experiment(config_path: Path, output_dir: Path) -> dict[str, Any]:
         manifest["input_preflight_seconds"] = time.perf_counter() - preflight_start
         manifest["input_preflight_cpu_seconds"] = time.process_time() - preflight_cpu
         _execute(inputs, output_dir, manifest, frozen_run)
+        phase_costs = load_jsonl(output_dir / "costs.jsonl", Cost)
+        manifest["end_to_end_seconds"] = time.perf_counter() - preflight_start
+        manifest["end_to_end_cpu_seconds"] = time.process_time() - preflight_cpu
+        manifest["overhead_seconds"] = (manifest["end_to_end_seconds"]
+                                        - sum(cost.wall_seconds for cost in phase_costs))
+        manifest["resource_notes"].append(
+            "end_to_end_seconds includes input checks, run output serialization and artifact hashing; "
+            "it excludes the final accounting manifest rewrite. overhead_seconds is the measured "
+            "difference from the preflight and maintenance phase components.")
+        write_json(output_dir / "manifest.json", manifest)
     except BaseException as exc:
         manifest.update(status="failed", finished_at=now(), failure=f"{type(exc).__name__}: {exc}")
         write_json(output_dir / "manifest.json", manifest)
@@ -182,13 +192,14 @@ def _execute(inputs: Inputs, output: Path, manifest: dict[str, Any],
         if symbol_policy or file_policy or checking:
             assert snap is not None
             tick = time.perf_counter()
+            if symbol_policy and old_index is None:
+                assert before is not None
+                initial_tick = time.perf_counter()
+                old_index = _graph(inputs, build_index(before, index_config, ast_cache))
+                initial_index_seconds = time.perf_counter() - initial_tick
             index = _graph(inputs, build_index(snap, index_config, ast_cache))
             if symbol_policy:
-                assert before is not None
-                if old_index is None:
-                    initial_tick = time.perf_counter()
-                    old_index = _graph(inputs, build_index(before, index_config, ast_cache))
-                    initial_index_seconds = time.perf_counter() - initial_tick
+                assert before is not None and old_index is not None
                 changes = compare_indexes(old_index, index, before, snap)
                 edges = set(changes.edges)
                 for p in provenance:
@@ -203,7 +214,7 @@ def _execute(inputs: Inputs, output: Path, manifest: dict[str, Any],
                 initial_index_seconds = index_seconds
         tick = time.perf_counter()
         selected = select_claims(SelectionContext(commit, claims, provenance, previous, changes,
-                                 config.extra_environment_paths), config.policy)
+                                 config.extra_environment_paths, config.protocol_version), config.policy)
         selection_seconds = time.perf_counter() - tick
         selections.extend(selected)
         results: dict[str, ValidationResult] = {}

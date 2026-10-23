@@ -1,0 +1,87 @@
+........F.............F.................F...........                     [100%]
+=================================== FAILURES ===================================
+__ test_rebound_definition_is_uncertain[def f(): pass\nfrom other import *\n] __
+
+repo = <conftest.GitFixture object at 0x10c03f8f0>
+source = 'def f(): pass\nfrom other import *\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nfrom other import *\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:91: AssertionError
+___________ test_default_expression_global_is_not_a_local_parameter ____________
+
+repo = <conftest.GitFixture object at 0x10c059910>
+
+    def test_default_expression_global_is_not_a_local_parameter(repo):
+        from cami.index import build_index
+        from cami.models import Node
+        from test_index import snapshot
+    
+        a = repo.commit({'module.py': 'X = 1\ndef f(X=X): return X\n'})
+>       assert Node(path='module.py', qualname='f') in build_index(snapshot(repo, a)).unresolved
+E       AssertionError: assert Node(path='module.py', qualname='f') in frozenset({Node(path='module.py', qualname='X')})
+E        +  where Node(path='module.py', qualname='f') = <class 'cami.models.Node'>(path='module.py', qualname='f')
+E        +  and   frozenset({Node(path='module.py', qualname='X')}) = CodeIndex(revision='8304d884522e6464b611d7b55f7f26d259808021', modules=(Module(path='module.py', module_name='module',...(X=X): return X\n'),), edges=(), unresolved=frozenset({Node(path='module.py', qualname='X')}), global_unresolved=False).unresolved
+E        +    where CodeIndex(revision='8304d884522e6464b611d7b55f7f26d259808021', modules=(Module(path='module.py', module_name='module',...(X=X): return X\n'),), edges=(), unresolved=frozenset({Node(path='module.py', qualname='X')}), global_unresolved=False) = <function build_index at 0x10b85e0c0>(Snapshot(repo_id='fixture', revision='8304d884522e6464b611d7b55f7f26d259808021', blobs=(Blob(path='module.py', object_...905a68b0b8146fb5cf34c5d1aebdedb2f2309450', mode='100644', content=b'X = 1\ndef f(X=X): return X\n', limitation=None),)))
+E        +      where Snapshot(repo_id='fixture', revision='8304d884522e6464b611d7b55f7f26d259808021', blobs=(Blob(path='module.py', object_...905a68b0b8146fb5cf34c5d1aebdedb2f2309450', mode='100644', content=b'X = 1\ndef f(X=X): return X\n', limitation=None),)) = <function snapshot at 0x10c06ad40>(<conftest.GitFixture object at 0x10c059910>, '8304d884522e6464b611d7b55f7f26d259808021')
+
+tests/test_predicate_scope.py:161: AssertionError
+____ test_rebinding_or_other_definition_is_excluded[from other import *\n] _____
+
+tail = 'from other import *\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'from other import *\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+        'match 1:\n    case f: pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfrom other import *\n]
+FAILED tests/test_predicate_scope.py::test_default_expression_global_is_not_a_local_parameter
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[from other import *\n]
+3 failed, 49 passed in 6.61s

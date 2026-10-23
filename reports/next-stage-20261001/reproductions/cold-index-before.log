@@ -1,0 +1,31 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_initial_index_cost_is_the_cold_parent_build _______________
+
+repo = <conftest.GitFixture object at 0x1097ffbc0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x109111280>
+
+    def test_initial_index_cost_is_the_cold_parent_build(repo, monkeypatch):
+        a = repo.commit({'module.py': 'def f(): return 1\n'})
+        b = repo.commit({'module.py': 'def f(): return 2\n'})
+        config = repo.config(a, [b])
+        clock = [0.0]
+        original = engine.build_index
+    
+        def measured_build(*args, **kwargs):
+            result = original(*args, **kwargs)
+            clock[0] += 20.0 if clock[0] == 0 else 1.0
+            return result
+    
+        monkeypatch.setattr(engine.time, 'perf_counter', lambda: clock[0])
+        monkeypatch.setattr(engine, 'build_index', measured_build)
+        out = config.parent / 'out'
+        engine.run_experiment(config, out)
+        cost = read_jsonl(out / 'costs.jsonl')[-1]
+>       assert cost['initial_index_seconds'] == 20.0
+E       assert 1.0 == 20.0
+
+tests/test_cost_accounting.py:87: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cost_accounting.py::test_initial_index_cost_is_the_cold_parent_build
+1 failed, 3 deselected in 0.34s

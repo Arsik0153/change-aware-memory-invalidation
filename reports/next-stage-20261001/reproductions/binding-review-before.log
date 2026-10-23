@@ -1,0 +1,250 @@
+..........FFFFF.FF........................F......                        [100%]
+=================================== FAILURES ===================================
+__ test_rebound_definition_is_uncertain[def f(): pass\nfor f in [1]: pass\n] ___
+
+repo = <conftest.GitFixture object at 0x10b73fa70>
+source = 'def f(): pass\nfor f in [1]: pass\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:90: AssertionError
+_ test_rebound_definition_is_uncertain[def f(): pass\nwith thing as f: pass\n] _
+
+repo = <conftest.GitFixture object at 0x10b73f620>
+source = 'def f(): pass\nwith thing as f: pass\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:90: AssertionError
+___ test_rebound_definition_is_uncertain[def f(): pass\nif (f := 1): pass\n] ___
+
+repo = <conftest.GitFixture object at 0x10b73ea80>
+source = 'def f(): pass\nif (f := 1): pass\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:90: AssertionError
+_ test_rebound_definition_is_uncertain[def f(): pass\nmatch 1:\n    case f: pass\n] _
+
+repo = <conftest.GitFixture object at 0x10b791a00>
+source = 'def f(): pass\nmatch 1:\n    case f: pass\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:90: AssertionError
+_ test_rebound_definition_is_uncertain[def f(): pass\ntry: pass\nexcept Exception as f: pass\n] _
+
+repo = <conftest.GitFixture object at 0x10b793620>
+source = 'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'
+
+    @pytest.mark.parametrize('source', ['def f(): pass\nfrom other import f\n',
+                                        'def f(): pass\nimport other as f\n',
+                                        'def f(): pass\ndel f\n',
+                                        'def f(): pass\nfor f in [1]: pass\n',
+                                        'def f(): pass\nwith thing as f: pass\n',
+                                        'def f(): pass\nif (f := 1): pass\n',
+                                        'def f(): pass\nmatch 1:\n    case f: pass\n',
+                                        'def f(): pass\ntry: pass\nexcept Exception as f: pass\n'])
+    def test_rebound_definition_is_uncertain(repo, source):
+        a = repo.commit({'module.py': 'def f(): pass\n'})
+        b = repo.commit({'module.py': source})
+        config = repo.config(a, [b], policy='all_validate')
+        out = config.parent / 'out'
+        run_experiment(config, out)
+        result = read_jsonl(out / 'validations.jsonl')[0]
+>       assert (result['verdict'], result['reason']) == ('insufficient_evidence', 'ambiguous_subject')
+E       AssertionError: assert ('supported',...cate_matches') == ('insufficien...uous_subject')
+E         
+E         At index 0 diff: 'supported' != 'insufficient_evidence'
+E         Use -v to get more diff
+
+tests/test_predicate_scope.py:90: AssertionError
+_ test_global_value_dependency_is_conservative_for_behavior[def nested():\n        X = 9\n    return X] _
+
+repo = <conftest.GitFixture object at 0x10b7923c0>
+body = 'def nested():\n        X = 9\n    return X'
+
+    @pytest.mark.parametrize('body', ['return X',
+        'def nested():\n        X = 9\n    return X',
+        'global X\n    X += 1\n    return X',
+        'values = [X for X in range(3)]\n    return X'])
+    def test_global_value_dependency_is_conservative_for_behavior(repo, body):
+        from cami.artifacts import load_jsonl
+        from cami.index import build_index, compare_indexes
+        from cami.models import Claim, MemoryState, PolicyConfig, Prose, Provenance
+        from cami.policies import SelectionContext, select_claims
+        from test_index import snapshot
+    
+        a = repo.commit({'module.py': f'X = 1\ndef f():\n    {body}\n'})
+        b = repo.commit({'module.py': f'X = 2\ndef f():\n    {body}\n'})
+        config = repo.config(a, [b])
+        original = load_jsonl(config.parent / 'claims.jsonl', Claim)[0]
+        claim = original.model_copy(update={'kind': 'prose', 'predicate': Prose(type='prose')})
+        provenance = load_jsonl(config.parent / 'provenance.jsonl', Provenance)[0]
+        previous = MemoryState(claim_id=claim.claim_id, revision=a, state='valid',
+                               last_checked_commit=a, last_supported_commit=a,
+                               last_verdict='supported', basis='validated',
+                               current_provenance=provenance, available=True)
+        old, new = snapshot(repo, a), snapshot(repo, b)
+        changes = compare_indexes(build_index(old), build_index(new), old, new)
+        context = SelectionContext(b, (claim,), (provenance,), (previous,), changes)
+        decision = select_claims(context, PolicyConfig(id='symbol_validate'))[0]
+>       assert decision.selected
+E       AssertionError: assert False
+E        +  where False = Selection(schema_version=1, claim_id='f', commit='725ebd877c47ea2b7a22e88d193d9bc7a5310f5a', selected=False, reasons=()).selected
+
+tests/test_predicate_scope.py:118: AssertionError
+_ test_global_value_dependency_is_conservative_for_behavior[global X\n    X += 1\n    return X] _
+
+repo = <conftest.GitFixture object at 0x10b793590>
+body = 'global X\n    X += 1\n    return X'
+
+    @pytest.mark.parametrize('body', ['return X',
+        'def nested():\n        X = 9\n    return X',
+        'global X\n    X += 1\n    return X',
+        'values = [X for X in range(3)]\n    return X'])
+    def test_global_value_dependency_is_conservative_for_behavior(repo, body):
+        from cami.artifacts import load_jsonl
+        from cami.index import build_index, compare_indexes
+        from cami.models import Claim, MemoryState, PolicyConfig, Prose, Provenance
+        from cami.policies import SelectionContext, select_claims
+        from test_index import snapshot
+    
+        a = repo.commit({'module.py': f'X = 1\ndef f():\n    {body}\n'})
+        b = repo.commit({'module.py': f'X = 2\ndef f():\n    {body}\n'})
+        config = repo.config(a, [b])
+        original = load_jsonl(config.parent / 'claims.jsonl', Claim)[0]
+        claim = original.model_copy(update={'kind': 'prose', 'predicate': Prose(type='prose')})
+        provenance = load_jsonl(config.parent / 'provenance.jsonl', Provenance)[0]
+        previous = MemoryState(claim_id=claim.claim_id, revision=a, state='valid',
+                               last_checked_commit=a, last_supported_commit=a,
+                               last_verdict='supported', basis='validated',
+                               current_provenance=provenance, available=True)
+        old, new = snapshot(repo, a), snapshot(repo, b)
+        changes = compare_indexes(build_index(old), build_index(new), old, new)
+        context = SelectionContext(b, (claim,), (provenance,), (previous,), changes)
+        decision = select_claims(context, PolicyConfig(id='symbol_validate'))[0]
+>       assert decision.selected
+E       AssertionError: assert False
+E        +  where False = Selection(schema_version=1, claim_id='f', commit='cfabcbaa659dabc25c93641e2904c7f7726717b0', selected=False, reasons=()).selected
+
+tests/test_predicate_scope.py:118: AssertionError
+_ test_rebinding_or_other_definition_is_excluded[match 1:\n    case f: pass\n] _
+
+tail = 'match 1:\n    case f: pass\n'
+
+    @pytest.mark.parametrize('tail', [
+        'if True:\n    def f(): pass\n',
+        'def f(): pass\n',
+        'def outer():\n    def f(): pass\n',
+        'class C:\n    def f(): pass\n',
+        'class f: pass\n',
+        'f = 1\n',
+        'f, other = (1, 2)\n',
+        '(f, other) = (1, 2)\n',
+        '[other, f] = (1, 2)\n',
+        'other = f = 1\n',
+        'f /= 2\n',
+        'f //= 2\n',
+        'f **= 2\n',
+        'f: int\n',
+        'del f\n',
+        'import other as f\n',
+        'from other import f\n',
+        'for f in []: pass\n',
+        'with other as f: pass\n',
+        'if (f := 1): pass\n',
+        'try:\n    pass\nexcept Exception as f:\n    pass\n',
+        'match 1:\n    case f: pass\n',
+    ])
+    def test_rebinding_or_other_definition_is_excluded(tail):
+>       assert 'f' not in {name for name, _ in parent_candidates('def f(): pass\n' + tail)}
+E       AssertionError: assert 'f' not in {'f'}
+
+tests/test_parent_candidates.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfor f in [1]: pass\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nwith thing as f: pass\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nif (f := 1): pass\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nmatch 1:\n    case f: pass\n]
+FAILED tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\ntry: pass\nexcept Exception as f: pass\n]
+FAILED tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[def nested():\n        X = 9\n    return X]
+FAILED tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[global X\n    X += 1\n    return X]
+FAILED tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[match 1:\n    case f: pass\n]
+8 failed, 41 passed in 6.06s

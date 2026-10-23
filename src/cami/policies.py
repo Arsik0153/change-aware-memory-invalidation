@@ -15,6 +15,7 @@ class SelectionContext:
     previous: tuple[MemoryState, ...]
     changes: ChangeSet
     extra_environment_paths: tuple[str, ...] = ()
+    protocol_version: str = "1.0"
 
 
 def environment_changed(paths: frozenset[str], extra: tuple[str, ...]) -> bool:
@@ -40,7 +41,11 @@ def select_claims(context: SelectionContext, policy: PolicyConfig) -> tuple[Sele
             nodes = {Node(path=a.path, qualname=a.qualname) for a in p.anchors}
             nodes.add(Node(path=claim.subject.path, qualname=claim.subject.qualname))
             nodes.update(d.target for d in p.dependencies)
-            frontier = set(nodes)
+            exact_syntax = (context.protocol_version == "1.1"
+                            and claim.kind in {"symbol_exists", "signature_equals"}
+                            and not p.dependencies)
+            relevant = context.changes.symbols if exact_syntax else affected
+            frontier = set() if exact_syntax else set(nodes)
             while frontier:
                 dependencies = {edge.target for edge in context.changes.edges if edge.source in frontier}
                 frontier = dependencies - nodes
@@ -50,9 +55,10 @@ def select_claims(context: SelectionContext, policy: PolicyConfig) -> tuple[Sele
                 reasons.append("known_incomplete")
             if paths & context.changes.limited_paths:
                 reasons.append("analysis_limitation")
-            if nodes & context.changes.unresolved or any(Node(path=path) in context.changes.unresolved for path in paths):
+            if not exact_syntax and (nodes & context.changes.unresolved or any(
+                    Node(path=path) in context.changes.unresolved for path in paths)):
                 reasons.append("unresolved_dependency")
-            if not symbol and context.changes.unresolved:
+            if not exact_syntax and not symbol and context.changes.unresolved:
                 reasons.append("graph_free_unresolved_fallback")
             if claim.kind in {"behavior_test", "prose"}:
                 if context.changes.global_unresolved:
@@ -60,7 +66,7 @@ def select_claims(context: SelectionContext, policy: PolicyConfig) -> tuple[Sele
                 if environment_changed(context.changes.files, context.extra_environment_paths):
                     reasons.append("environment_changed")
             subject_node = Node(path=claim.subject.path, qualname=claim.subject.qualname)
-            if symbol and subject_node in affected:
+            if symbol and subject_node in relevant:
                 reasons.append("subject_changed")
             elif not symbol and claim.subject.path in context.changes.files:
                 reasons.append("subject_file_changed")
@@ -68,7 +74,7 @@ def select_claims(context: SelectionContext, policy: PolicyConfig) -> tuple[Sele
                 node = Node(path=anchor.path, qualname=anchor.qualname)
                 if (not symbol or anchor.scope == "file") and anchor.path in context.changes.files:
                     reasons.append("anchor_file_changed")
-                elif symbol and node in affected:
+                elif symbol and node in relevant:
                     reasons.append("symbol_or_dependency_changed")
             if symbol and any(d.target in affected for d in p.dependencies):
                 reasons.append("explicit_dependency_changed")
