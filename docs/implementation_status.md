@@ -463,3 +463,37 @@ are under
 The combined MAIN commit remains `under_review` until fresh independent review.
 Memory component R3 is read-only and pending. Watch design is a proposal saved
 outside this repository; neither Stage4 nor Stage5 is accepted here.
+
+## 2026-10-23: combined product memory in MAIN
+
+`cami memory context`, `remember`, `update`, `refresh`, and `history` now use the
+same captured Python and JS/JSX/TS/TSX index. Structural existence and syntax
+signatures have immutable provenance and checks. Carried facts retain their
+check ID, time, and source evidence. Notes require explicit review after a source
+change. The [memory contract](product_memory_ru.md) describes scope and CLI use.
+
+MAIN preserves the accepted R4 private SQLite image and durable publication
+intent. Quoted, escaped, numeric, and direct literal-computed member names share
+one compiler identity. Unsupported fields protect nested subjects from false
+absence. Method signatures and runtime dispatch remain outside the syntax contract.
+
+Integration applied the authenticated complete patch `cb31ae6e` with three-way
+indexed application to clean `9ff15cb`, without conflicts or production/test edits.
+All prior test files, including the 53 cache/ignore and 27 relative-import cases,
+remain byte-identical. Targeted 444 and full 766 non-Docker tests passed, with
+4 Docker tests deselected. Ruff, strict mypy on 45 source files, both Node syntax
+checks, and diff checks passed on this final source.
+
+Actual MAIN verification passed 396 memory CLI commands. Storage replay passed
+19 publication crash/failure cases with 118 CLI commands and both R3 hot-journal
+controls. A freshly built, relocated, read-only wheel passed another 41 commands
+as UID 65534. Every package asset matches MAIN, and the wheel is byte-identical
+to the fixed writer's wheel. Its earlier 394 commands remain separate evidence.
+
+Three product stages are accepted at their prior exact commits. Stage4 is
+implemented and `under_review`, pending fresh independent MAIN R2. Stage5 remains
+isolated after watcher R1 FAIL. Its cleanup writer is terminal with all three
+fixes implemented, and fresh watcher R2 is active according to the parent transfer.
+Watch code is absent from this commit. These self-checks do not accept Stage4. The exact commit, trees,
+commands, outputs, limits, and postcommit checks are in
+[the integration receipt](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json).

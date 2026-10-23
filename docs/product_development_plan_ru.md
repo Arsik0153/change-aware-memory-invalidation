@@ -3,14 +3,15 @@
 План задаёт пять последовательных этапов по [vision](final_product_vision.md).
 Статусы относятся к продуктовой работе, а не к исследовательским M0–M5.
 
-Актуальный снимок на 2026-10-23T15:10:29.819Z: Stage1 принят на
+Актуальный снимок при интеграции на 2026-10-23T15:57:36.825126+00:00: Stage1 принят на
 `499acfad48b2d62e37b0f57a3b051bc09eaf847b`, Stage2 на
 `6037294831fc0cde5525986cab043ea21af27dd3`, Stage3 на
 `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838`.
-Три этапа приняты, Stage4 и Stage5 `in_progress`, оба `not_accepted`.
-Исходники main остаются на принятом Stage3. Memory и watch ещё не интегрированы.
-Storage component получил R4 PASS. Hybrid memory получил R1 FAIL с одним P1.
-Изолированные исправление имён и watcher implementation активны без коммитов.
+Три этапа приняты. Stage4 реализован в MAIN, acceptance `under_review`.
+Stage5 остаётся `in_progress`, `not_accepted`, в изолированном worktree.
+Combined memory patch включает принятый storage R4 и исправление quoted member names.
+MAIN self-checks прошли. Fresh independent MAIN R2 ещё не назначен родителем.
+Watcher R1 завершён с FAIL. Cleanup writer завершил все три исправления, fresh R2 активен.
 Исторические snapshots ниже не описывают текущее состояние.
 Task counts не являются числом принятых этапов.
 
@@ -161,7 +162,7 @@ Acceptance этапа:
 
 ### 4. Product memory и lifecycle structural claims
 
-Статус `in_progress`, acceptance `not_accepted`. Этап 3 принят.
+Статус реализации `implementation_completed`, acceptance `under_review`. Этап 3 принят.
 [Storage component R4 PASS](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-memory-review/t3-42ee661d-20261023T1452Z-r4/REVIEW.md)
 привязан к full feature SHA-256
 `98f131ac10a9e54a12c205d4d3b13d9cc180daf4b405c6e520aafa71958ee8e2`
@@ -179,10 +180,27 @@ Runtime prototype и dynamic-scope observations не блокируют прин
 Независимо прошли 326 focused tests, 254 installed CLI-команды и 51 additional probe.
 Writer 648 full и 4 deselected остаются отдельным evidence.
 
-`hybridNameFixTask` активен isolated без коммитов. Он восстанавливает hybrid feature
-с принятым storage fix и готовит full patch и fix-only patch. Эти patches ещё ожидаются.
-Main integration не начата. После исправления нужны combined TS/TSX memory CLI на main
-и свежий независимый Stage4 MAIN review.
+`hybridNameFixTask` доставил combined feature SHA-256
+`cb31ae6edb989edf5257654240f63b3295a5ba46872178e0ce292e597ccdd66f`.
+Проверены handoff, оба apply/reverse roundtrip и hashes всех файлов.
+Patch применён к чистой MAIN `9ff15cb307829ee6784aa8e203af8b2e8ddcb84f`
+через `git apply --3way --index` без конфликтов. Production и tests побайтно
+совпадают с проверенным artifact. R4 `memory/database.py` и `memory/store.py` сохранены.
+Нормализация quoted, escaped, numeric и direct literal-computed keys выполняется
+в compiler traversal. Unsupported fields и nested gaps дают uncertainty вместо deletion.
+
+MAIN self-checks: 444 targeted, 766 full non-Docker, 4 deselected, Ruff,
+strict mypy и два Node syntax checks. Все прежние 53 cache/ignore и 27 relative-import
+регрессий сохранены без изменений. Actual MAIN CLI: 215 lifecycle, 140 member-name
+и 41 дополнительный mixed Python/TSX command. R4 replay: 19 publication cases,
+118 CLI, live-interception и private-open hot-journal controls.
+Read-only relocated wheel под UID65534 прошёл 41 новую CLI-команду.
+Все package assets совпадают с MAIN. Wheel побайтно совпадает с wheel writer,
+его прежние 394 installed CLI остаются отдельным evidence, а не повтором этого run.
+Exact MAIN SHA, tree hashes, commands и postcommit checks находятся в
+[receipt](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json).
+Это self-verification. Fresh independent MAIN R2 нужен после commit.
+Stage4 не принят, исторические component и hybrid FAIL сохранены.
 Полная [карта memory/TS integration](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/memory-ts-merge-map-20261023-v1.md)
 хранится вне репозитория.
 
@@ -212,13 +230,25 @@ Acceptance этапа:
 
 ### 5. Watch и интеграция агента
 
-Статус `in_progress`, acceptance `not_accepted`. `watchImplementationTask` уже
-работает в изолированном worktree без коммитов, на собственной сборке hybrid и storage fix.
+Статус `in_progress`, acceptance `not_accepted`. Watch остаётся isolated.
+[Watcher R1 FAIL](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-watch-review/t3-08f708c7-20261023T152115Z-r1/REVIEW.md)
+относится к original artifact `fb5018509d87a2116eb25c45d6af6212875ee1c814a7b9e9494ae6d978f65d0b`.
+Три findings: P1 Node orphan после stop, P1 startup worker и lease ownership,
+P2 unlink replacement socket. `watchCleanupFixTask` завершён по parent transfer.
+Переданы 714 full tests, 41 watch tests, 18 installed cleanup и 39 CLI в 24 phases.
+Fresh `watchReview2Task` активен на corrected patch
+`cdb2dca34eebd15497895bf7c83b2f4f35475b09d1edfe16c30183203d13d6eb`,
+fix `431d9a72b8502d989a0ade8fda3878cbf7b67ea49449c6bc908f81db3b439fb8`,
+tree `b479f5d8c46c4790a6c473d603705ef4ca9946e3`. Его verdict ещё не получен.
+[Cleanup handoff](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-watch-cleanup-fix/t3-75e7932c-20261023T1530Z/INTEGRATION.md)
+описывает tested implementation, а не independent PASS.
+Его handle сохранён без потери предыдущих snapshot. В Stage4 source watch не включён.
 [Design proposal](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/references/watcher-design-20261023-v1.md)
-остаётся reference. Задача охватывает foreground polling, status, stop и restart.
-Acceptance требует доказать обновление persisted state до запроса, который сам мог бы обновить данные.
-Позже нужны upstream name fix, Stage4 MAIN PASS и свежий watcher review.
-Финальная поставка ещё не подтверждена.
+остаётся reference. Foreground polling, status, stop и restart требуют отдельной приёмки.
+Acceptance требует обновления persisted state до запроса, который сам мог бы обновить данные.
+После cleanup нужны upstream name fix, Stage4 MAIN PASS и свежий combined watcher review.
+Отдельная performance baseline работает с frozen artifact и private install,
+не меняет MAIN и shared metadata. Финальная поставка ещё не подтверждена.
 
 Задачи этапа:
 
@@ -298,15 +328,15 @@ Hybrid R1 передал remaining `70%` на `2026-10-23T15:06:40.103Z`, до r
 Stage1 `accepted` после независимого `PASS` r2 для `499acfad48b2d62e37b0f57a3b051bc09eaf847b`.
 Stage2 `accepted` на `6037294831fc0cde5525986cab043ea21af27dd3`.
 Stage3 `accepted` на `c9a94f7effeb6033f2cea5233e9f5f06fb7ab838` после independent MAIN PASS.
-Stage4 и Stage5 `in_progress`, оба `not_accepted`.
-Итого пять продуктовых этапов: три приняты, два в работе. Main содержит принятый Stage3 source.
-Storage R4 PASS не принимает весь Stage4. Hybrid R1 FAIL требует name fix и свежего MAIN review.
-Runtime units включают отдельные implementation, design, review и docs runs. Их число не означает число готовых этапов.
-Исторический независимый `FAIL` сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4`.
-На снимке `2026-10-23T15:10:29.819Z` активны `hybridNameFixTask` и `watchImplementationTask`.
-Storage R4 и hybrid R1 review завершены. Полные parent handles сохранены вместе с исходными
-running labels и отдельными свежими backing-thread observations. `task_status` недоступен sibling worker.
-Активные задачи не ожидались. Этот снимок не обновляет будущие состояния автоматически.
+Stage4 `implementation_completed`, acceptance `under_review`; Stage5 `in_progress`, `not_accepted`.
+Итого пять продуктовых этапов: три приняты, два ещё не приняты.
+MAIN содержит combined product memory с принятым R4 storage и name fix.
+Fresh independent MAIN R2 остаётся следующим шагом. Self-checks не заменяют review.
+Runtime units включают отдельные implementation, design, review и docs runs.
+Исторический FAIL сохранён для `dea30002cdce4aa5e859d0a3ff6a5124c32bdbe4` и обоих memory artifacts.
+Watcher R1 terminal FAIL сохранён. Cleanup writer terminal, fresh R2 активен по parent transfer.
+Полные переданные task/thread/run/node handles и прежние running snapshots сохранены.
+Текущий integrator не опрашивал watcher и не запускал nested agents.
 Исторический recorder snapshot завершён в 14:29:18 UTC и не обновляется автоматически.
 Только подтверждённый acceptance меняет статус этапа на принятый.
 
@@ -316,11 +346,11 @@ Standing orders хранятся в `preferences.md`; runtime handles и ист�
 Canonical decision trail остаётся `reports/orchestration/decisions.tsv`; store содержит только ссылку на него.
 Исходные plugin paths перечислены в `references.md` внешнего store. Временная vendor-копия удалена.
 PR frontier seed пропущен: пользователь выбрал локальные коммиты на main без PR.
-Текущий docs integrator коммитит только разрешённые документы в main, без push и PR. Новых агентов не запускает.
+Текущий MAIN integrator коммитит только разрешённые feature files и program docs, без push и PR. Новых агентов не запускает.
 [Аудит журнала](../reports/orchestration/trail_audit_ru.md) указывает проверенный диапазон, слабые pointers и пределы проверки.
-Полный SHA этого docs commit и результаты self-readback сохраняются во внешнем receipt
-`outputs/milestone-docs/run-20261023T1510Z-storage-hybrid-watch/receipt.json`.
-Независимый docs review в этом bounded run не проводился.
+Полный SHA integration commit и результаты self-checks сохраняются во внешнем receipt
+`/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage4-main-integration/run-20261023T1540Z/integration-receipt.json`.
+Fresh independent review назначает родитель после commit.
 
 Docs-only commit `60d631ffd89cb447eb2f530cb74fc27e22d8ab7a` завершён: terminal clean,
 2 files, +255; receipt `docs-integration.json` во внешнем store. Это исторический

@@ -113,6 +113,10 @@ def _validate_analysis(result: EcmaAnalysis, files: dict[str, str], request_id: 
             raise ValueError("Export resolution state is inconsistent")
         if export.target is not None and export.target not in ids:
             raise ValueError("Export target is unknown")
+    for gap in result.identity_gaps:
+        captured_path(gap.path)
+        if gap.path not in analyzed:
+            raise ValueError("Identity gap refers to an unanalyzed file")
     for diagnostic in result.diagnostics:
         if diagnostic.site is not None:
             check_site(diagnostic.site)

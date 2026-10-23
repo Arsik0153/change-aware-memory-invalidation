@@ -13,6 +13,8 @@ from cami.errors import IncompleteError, InputError, ResourceError
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="cami")
     sub = parser.add_subparsers(dest="command", required=True)
+    from cami.product.memory.cli import add_parser as add_memory_parser
+    add_memory_parser(sub)
     find = sub.add_parser("find", help="find Python, JS, and TS definitions in worktree or Git snapshots")
     find.add_argument("symbol")
     find.add_argument("--repo", type=Path, required=True)
@@ -78,6 +80,9 @@ def main(argv: list[str] | None = None) -> int:
             except TypeScriptSetupError as error:
                 raise ResourceError(str(error)) from error
             print(f"TypeScript 6.0.3 ready: {directory}")
+        elif args.command == "memory":
+            from cami.product.memory.cli import execute
+            execute(args)
         elif args.command == "find":
             from cami.symbol_search import find_symbols, format_text
             result = find_symbols(args.repo, args.symbol, args.revision,

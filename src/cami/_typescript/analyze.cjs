@@ -23,6 +23,25 @@ const isFunction = node => ts.isFunctionDeclaration(node) || ts.isFunctionExpres
 const isCode = name => ['.js', '.jsx', '.ts', '.tsx'].some(ext => name.endsWith(ext));
 const declarationFile = name => name.endsWith('.d.ts');
 
+/** @typedef {{kind: 'known', name: string} | {kind: 'dynamic'}} MemberIdentity */
+
+/**
+ * @param {import('typescript').PropertyName} node
+ * @returns {MemberIdentity}
+ */
+function memberIdentity(node) {
+  if (ts.isIdentifier(node) || ts.isPrivateIdentifier(node)) {
+    return {kind: 'known', name: node.text};
+  }
+  const key = ts.isComputedPropertyName(node) ? node.expression : node;
+  if (!ts.isStringLiteral(key) && !ts.isNumericLiteral(key)) return {kind: 'dynamic'};
+  const value = ts.isNumericLiteral(key) ? String(Number(key.text)) : key.text;
+  // Quote non-segments so public "#x" and "a.b" cannot alias private/nested names.
+  const name = ts.isIdentifierText(value, ts.ScriptTarget.Latest) || /^(0|[1-9][0-9]*)$/.test(value)
+    ? value : JSON.stringify(value);
+  return {kind: 'known', name};
+}
+
 function analyze(request) {
   if (request.schema_version !== 1 || typeof request.request_id !== 'string' ||
       !request.files || typeof request.files !== 'object' || Array.isArray(request.files)) {
@@ -56,6 +75,12 @@ function analyze(request) {
   }
   const diagnostics = [];
   const definitions = [];
+  const identityGaps = [];
+  function identityGap(node, qualname, descendants, reason,
+    nodeKinds = ['function', 'arrow', 'function_expression', 'method']) {
+    identityGaps.push({path: relative(node.getSourceFile().fileName), qualname, descendants,
+      node_kinds: nodeKinds, reason});
+  }
   const relations = [];
   const unresolved = [];
   const exports = [];
@@ -194,11 +219,11 @@ function analyze(request) {
     modules.set(name, {sf, scope: null, exports: new Map(), sideEffects: []});
   }
   function scope(parent, node, owner, kind) {
-    return {parent, owner, kind, bindings: new Map(), id: `${relative(node.getSourceFile().fileName)}:${node.pos}:${kind}`};
+    return {parent, owner, kind, qualname: parent?.qualname || '', bindings: new Map(), id: `${relative(node.getSourceFile().fileName)}:${node.pos}:${kind}`};
   }
   function bind(s, name, entry) {
     if (!s.bindings.has(name)) {
-      const b = {name, entries: [], writes: false};
+      const b = {name, scope: s, entries: [], writes: false};
       s.bindings.set(name, b); allBindings.push(b);
     }
     s.bindings.get(name).entries.push(entry);
@@ -293,6 +318,9 @@ function analyze(request) {
       return;
     }
     if (ts.isExportAssignment(node)) {
+      if (node.isExportEquals || !isFunction(node.expression)) {
+        identityGap(node, '<default>', true, 'export_expression_unsupported');
+      }
       if (!node.isExportEquals && ts.isIdentifier(node.expression)) {
         addExport(module, 'default', {kind: 'local', name: node.expression.text, typeOnly: false, node});
       } else if (!node.isExportEquals && isFunction(node.expression)) {
@@ -337,10 +365,28 @@ function analyze(request) {
       return;
     }
     if (isFunction(node)) {
-      const namedMethod = ts.isMethodDeclaration(node) && !ts.isComputedPropertyName(node.name);
-      if (namedMethod) collectFunction(node, s, module, node.name.getText(), 'method', parentName, conditional);
-      else collectFunction(node, s, module, null, null, parentName, conditional);
+      const identity = node.name ? memberIdentity(node.name) : {kind: 'dynamic'};
+      if (ts.isMethodDeclaration(node) && identity.kind === 'known') {
+        collectFunction(node, s, module, identity.name, 'method', parentName, conditional);
+      }
+      else {
+        if (ts.isMethodDeclaration(node) || ts.isGetAccessorDeclaration(node) || ts.isSetAccessorDeclaration(node)) {
+          const name = identity.kind === 'known' ? identity.name : null;
+          identityGap(node, name ? (parentName ? `${parentName}.${name}` : name) : parentName,
+            true, 'computed_or_accessor_identity', name ? undefined : ['method']);
+        }
+        collectFunction(node, s, module, null, null, parentName, conditional);
+      }
       return;
+    }
+    if (ts.isPropertyDeclaration(node) || ts.isPropertyAssignment(node) || ts.isShorthandPropertyAssignment(node)) {
+      const identity = memberIdentity(node.name);
+      if (identity.kind === 'dynamic') {
+        identityGap(node, parentName, true, 'computed_property_identity', ['method']);
+      } else {
+        identityGap(node, parentName ? `${parentName}.${identity.name}` : identity.name,
+          true, 'unsupported_property_binding');
+      }
     }
     if (ts.isClassDeclaration(node) || ts.isClassExpression(node)) {
       if (ts.isClassDeclaration(node) && node.name) bind(s, node.name.text,
@@ -348,6 +394,7 @@ function analyze(request) {
       const classScope = scope(s, node, s.owner, 'class');
       nodeScopes.set(node, classScope);
       const className = node.name?.text || '<class>';
+      classScope.qualname = parentName ? `${parentName}.${className}` : className;
       if (node.name) bind(classScope, node.name.text,
         {kind: 'unknown', reason: 'class_dispatch_unsupported', node});
       ts.forEachChild(node, child => collect(child, classScope, module,
@@ -372,6 +419,8 @@ function analyze(request) {
     if (ts.isEnumDeclaration(node) || ts.isModuleDeclaration(node)) {
       if (node.name && ts.isIdentifier(node.name)) bind(s, node.name.text,
         {kind: 'unknown', reason: 'namespace_or_enum_unsupported', node});
+      identityGap(node, parentName ? `${parentName}.${node.name.text}` : node.name.text, true,
+        'namespace_or_enum_unsupported');
       diagnostic('namespace_or_enum_unsupported', 'Namespace and enum bodies are excluded', 'warning', site(node));
       return;
     }
@@ -389,9 +438,14 @@ function analyze(request) {
     if (!ts.isArrowFunction(node)) bind(s, 'arguments',
       {kind: 'unknown', reason: 'implicit_arguments_binding', node});
     for (const parameter of node.parameters) {
+      if (ts.isConstructorDeclaration(node) && ts.isParameterPropertyDeclaration(parameter, node)) {
+        bindingNames(parameter.name, name => identityGap(parameter, `${parentName}.${name}`,
+          true, 'parameter_property_unsupported', ['method']));
+      }
       bindingNames(parameter.name, n => bind(s, n, {kind: 'unknown', reason: 'parameter_binding', node: parameter}));
     }
     const nextName = d?.key.qualname || `${parentName ? `${parentName}.` : ''}<callback@${node.getStart()}>`;
+    s.qualname = nextName;
     ts.forEachChild(node, child => {
       const environment = child === node.body ? scope(s, child, s.owner, 'function') : s;
       collect(child, environment, module, nextName, false);
@@ -444,6 +498,12 @@ function analyze(request) {
   for (const group of keys.values()) if (group.length > 1) group.forEach(d => { d.ambiguous = true; });
   for (const b of allBindings) if (b.writes || b.entries.length > 1) {
     b.entries.forEach(e => { if (e.definition) e.definition.ambiguous = true; });
+  }
+  for (const b of allBindings) {
+    for (const entry of b.entries) if (entry.kind !== 'definition') {
+      identityGap(entry.node, b.scope.qualname ? `${b.scope.qualname}.${b.name}` : b.name,
+        entry.reason !== 'class_dispatch_unsupported', entry.reason || 'unsupported_binding');
+    }
   }
   const failure = (reason, candidates = []) => ({reason, candidates: [...new Set(candidates)].sort()});
   const success = d => d.ambiguous || !d.implementation ? failure('ambiguous_declaration', [d.id]) :
@@ -596,7 +656,7 @@ function analyze(request) {
   return {schema_version: 1, analyzer_version: '1.0.0', compiler_version: ts.version,
     request_id: request.request_id, offset_unit: 'utf16_code_units', configuration,
     analyzed_files: [...modules.keys()].map(relative).sort(), excluded_files: excluded.sort(order),
-    definitions: definitions.sort(order), exports: exports.sort(order), relations: relations.sort(order),
+    definitions: definitions.sort(order), identity_gaps: identityGaps.sort(order), exports: exports.sort(order), relations: relations.sort(order),
     unresolved: unresolved.sort(order), diagnostics: diagnostics.sort(order)};
 }
 

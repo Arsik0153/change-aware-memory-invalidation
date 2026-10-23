@@ -136,6 +136,19 @@ class EcmaExcludedFile(EcmaValue):
     reason: Literal["syntax_error", "case_collision", "declaration_file"]
 
 
+class EcmaIdentityGap(EcmaValue):
+    path: RelativePath
+    qualname: str
+    descendants: bool
+    node_kinds: tuple[Literal["function", "arrow", "function_expression", "method"], ...]
+    reason: str
+
+    def covers(self, path: str, qualname: str, node_kind: str) -> bool:
+        return path == self.path and node_kind in self.node_kinds and (
+            qualname == self.qualname or self.descendants and (
+                not self.qualname or qualname.startswith(self.qualname + ".")))
+
+
 class EcmaAnalysis(EcmaValue):
     schema_version: Literal[1]
     analyzer_version: Literal["1.0.0"]
@@ -146,6 +159,7 @@ class EcmaAnalysis(EcmaValue):
     analyzed_files: tuple[RelativePath, ...]
     excluded_files: tuple[EcmaExcludedFile, ...]
     definitions: tuple[EcmaDefinition, ...]
+    identity_gaps: tuple[EcmaIdentityGap, ...]
     exports: tuple[EcmaExport, ...]
     relations: tuple[EcmaRelation, ...]
     unresolved: tuple[EcmaUnresolved, ...]

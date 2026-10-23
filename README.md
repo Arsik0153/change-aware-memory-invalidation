@@ -172,3 +172,6 @@ and the remaining experiment requirements.
 receipts и labels ещё не получены. Формы и дальнейшие действия описаны в
 [инструкции разметчикам](docs/annotation_next_stage_ru.md). Held-out оценка и M6
 не запускались.
+
+Product memory commands and the agent consumption flow are described in
+[Рабочая память для CLI-агента](docs/product_memory_ru.md).

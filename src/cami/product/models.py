@@ -58,6 +58,12 @@ class StoreRecord(ProductValue):
         return value
 
 
+class CapturedPath(ProductValue):
+    path: str
+    status: Literal["present", "absent", "excluded", "ignored", "unavailable"]
+    _path = field_validator("path")(safe_path)
+
+
 class Manifest(StoreRecord):
     worktree_key: Digest
     snapshot_id: Digest
@@ -66,6 +72,7 @@ class Manifest(StoreRecord):
     policy: CapturePolicy
     entries: tuple[InputEntry, ...]
     index_sha256: Digest
+    path_coverage: tuple[CapturedPath, ...] = ()
 
 
 class Pointer(StoreRecord):
@@ -187,6 +194,7 @@ class Capture:
     policy: CapturePolicy
     entries: tuple[InputEntry, ...]
     blobs: tuple[Blob, ...]
+    path_coverage: tuple[CapturedPath, ...] = ()
 
     def as_snapshot(self) -> Snapshot:
         return Snapshot("product-worktree", "worktree:" + self.snapshot_id, self.blobs)

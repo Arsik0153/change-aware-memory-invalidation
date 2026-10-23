@@ -62,8 +62,9 @@ def index_fingerprint() -> str:
                                            "repository.py", "typescript_analyzer.py",
                                            "typescript_runtime.py", "ecma_models.py",
                                            "_typescript/analyze.cjs")]
-    sources.extend(sorted(
-        (package / "product").glob("*.py")))
+    sources.extend(sorted((package / "product").glob("*.py")))
+    sources.extend(package / "product" / "memory" / name for name in
+                   ("adapters.py", "models.py", "_ecma_syntax.cjs"))
     return digest({"schema_version": 2, "index_version": INDEX_VERSION,
                    "typescript_runtime": runtime_identity(),
                    "python": sys.version, "implementation": platform.python_implementation(),
@@ -212,7 +213,8 @@ class GenerationStore:
             if (manifest.worktree_key != self.key or manifest.generation_id != generation_id
                     or manifest.fingerprint != fingerprint
                     or manifest.snapshot_id != captured.snapshot_id
-                    or manifest.policy != captured.policy or manifest.entries != captured.entries):
+                    or manifest.policy != captured.policy or manifest.entries != captured.entries
+                    or manifest.path_coverage != captured.path_coverage):
                 raise ValueError("generation identity is incompatible")
             if hashlib.sha256(raw_index).hexdigest() != manifest.index_sha256:
                 raise ValueError("index checksum mismatch")
@@ -290,46 +292,54 @@ class GenerationStore:
 
 def refresh(root: Path, source_roots: tuple[str, ...] | None, excluded_paths: tuple[str, ...],
             build: Callable[[Snapshot, IndexConfig], CodeIndex]) -> IndexedWorktree:
-    base = state_base()
-    store = GenerationStore(root, base)
+    store = GenerationStore(root, state_base())
     try:
         with store.writer():
-            fingerprint = index_fingerprint()
-            store.check_pointer(fingerprint)
-            for _ in range(MAX_CAPTURE_ATTEMPTS):
-                started = datetime.now(UTC).isoformat()
-                try:
-                    captured = capture(root, source_roots, excluded_paths, base)
-                    generation_id = digest([captured.snapshot_id, fingerprint])
-                    generation = store.load(generation_id, captured, fingerprint)
-                    reused = generation is not None
-                    index_bytes = None
-                    if generation is None:
-                        index = build(captured.as_snapshot(), IndexConfig(captured.policy.source_roots))
-                        typescript = analyze_snapshot(captured.as_snapshot())
-                        index_bytes = INDEX_ADAPTER.dump_json(ProductAnalysis(index, typescript),
-                                                             by_alias=True)
-                        if isinstance(typescript, EcmaUnavailable):
-                            generation_id = digest([generation_id,
-                                                    hashlib.sha256(index_bytes).hexdigest()])
-                        manifest = Manifest(
-                            worktree_key=store.key, snapshot_id=captured.snapshot_id,
-                            generation_id=generation_id, fingerprint=fingerprint,
-                            policy=captured.policy, entries=captured.entries,
-                            index_sha256=hashlib.sha256(index_bytes).hexdigest())
-                        generation = Generation(manifest, index, typescript)
-                    verified = capture(root, source_roots, excluded_paths, base)
-                    if (verified.snapshot_id != captured.snapshot_id
-                            or verified.base_commit != captured.base_commit):
-                        raise CaptureChanged("inputs, policy, or HEAD changed during indexing")
-                    observation = Observation(capture_started_at=started,
-                                              verified_at=datetime.now(UTC).isoformat(),
-                                              cache_reused=reused)
-                    if not isinstance(generation.typescript, EcmaUnavailable):
-                        store.publish(generation, index_bytes)
-                    return IndexedWorktree(captured, generation, observation)
-                except CaptureChanged:
-                    continue
-            raise IncompleteError("capture_unstable: worktree changed during all three capture attempts")
+            return refresh_locked(store, root, source_roots, excluded_paths, build)
     except (OSError, CacheCorrupt) as exc:
         raise IncompleteError(f"product_state_io_error: {exc}") from exc
+
+
+def refresh_locked(store: GenerationStore, root: Path, source_roots: tuple[str, ...] | None,
+                   excluded_paths: tuple[str, ...],
+                   build: Callable[[Snapshot, IndexConfig], CodeIndex],
+                   probe_paths: tuple[str, ...] = ()) -> IndexedWorktree:
+    """Prepare and publish while the caller holds this store's writer lock."""
+    base = state_base()
+    fingerprint = index_fingerprint()
+    store.check_pointer(fingerprint)
+    for _ in range(MAX_CAPTURE_ATTEMPTS):
+        started = datetime.now(UTC).isoformat()
+        try:
+            captured = capture(root, source_roots, excluded_paths, base, probe_paths)
+            generation_id = digest([captured.snapshot_id, fingerprint])
+            generation = store.load(generation_id, captured, fingerprint)
+            reused = generation is not None
+            index_bytes = None
+            if generation is None:
+                index = build(captured.as_snapshot(), IndexConfig(captured.policy.source_roots))
+                typescript = analyze_snapshot(captured.as_snapshot())
+                index_bytes = INDEX_ADAPTER.dump_json(ProductAnalysis(index, typescript),
+                                                     by_alias=True)
+                if isinstance(typescript, EcmaUnavailable):
+                    generation_id = digest([generation_id, hashlib.sha256(index_bytes).hexdigest()])
+                manifest = Manifest(
+                    worktree_key=store.key, snapshot_id=captured.snapshot_id,
+                    generation_id=generation_id, fingerprint=fingerprint,
+                    policy=captured.policy, entries=captured.entries,
+                    index_sha256=hashlib.sha256(index_bytes).hexdigest(),
+                    path_coverage=captured.path_coverage)
+                generation = Generation(manifest, index, typescript)
+            verified = capture(root, source_roots, excluded_paths, base, probe_paths)
+            if (verified.snapshot_id != captured.snapshot_id
+                    or verified.base_commit != captured.base_commit):
+                raise CaptureChanged("inputs, policy, or HEAD changed during indexing")
+            observation = Observation(capture_started_at=started,
+                                      verified_at=datetime.now(UTC).isoformat(),
+                                      cache_reused=reused)
+            if not isinstance(generation.typescript, EcmaUnavailable):
+                store.publish(generation, index_bytes)
+            return IndexedWorktree(captured, generation, observation)
+        except CaptureChanged:
+            continue
+    raise IncompleteError("capture_unstable: worktree changed during all three capture attempts")

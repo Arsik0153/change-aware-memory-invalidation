@@ -11,7 +11,7 @@ from typing import Literal
 from cami.errors import IncompleteError, InputError, ResourceError
 from cami.models import safe_path
 from cami.product.inputs import EXCLUDED_DIRS, ROOT_OUTPUTS, code_input, configuration_inputs
-from cami.product.models import Capture, CapturePolicy, InputEntry, digest
+from cami.product.models import Capture, CapturedPath, CapturePolicy, InputEntry, digest
 from cami.repository import MAX_FILE_BYTES, Blob, git
 
 LiteralKind = Literal["file", "symlink", "submodule", "special"]
@@ -121,10 +121,11 @@ def _ignored_paths(root: Path, paths: tuple[str, ...]) -> set[str]:
 
 
 def capture(root: Path, source_roots: tuple[str, ...] | None,
-            excluded_paths: tuple[str, ...], state_base: Path) -> Capture:
+            excluded_paths: tuple[str, ...], state_base: Path,
+            probe_paths: tuple[str, ...] = ()) -> Capture:
     """Read supported inputs without following worktree symlinks or executing target code."""
     try:
-        return _capture(root, source_roots, excluded_paths, state_base)
+        return _capture(root, source_roots, excluded_paths, state_base, probe_paths)
     except OSError as exc:
         if exc.errno in (errno.ENOENT, errno.ENOTDIR, errno.ELOOP, errno.ESTALE):
             raise CaptureChanged(str(exc)) from exc
@@ -132,11 +133,12 @@ def capture(root: Path, source_roots: tuple[str, ...] | None,
 
 
 def _capture(root: Path, source_roots: tuple[str, ...] | None,
-             excluded_paths: tuple[str, ...], state_base: Path) -> Capture:
+             excluded_paths: tuple[str, ...], state_base: Path,
+             probe_paths: tuple[str, ...]) -> Capture:
     roots = tuple(sorted(set(source_roots))) if source_roots is not None else (".",)
     if not roots:
         raise InputError("at least one source root is required")
-    for path in (*roots, *excluded_paths):
+    for path in (*roots, *excluded_paths, *probe_paths):
         safe_path(path)
     excluded = set(excluded_paths)
     if state_base.is_relative_to(root):
@@ -172,6 +174,8 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
     ignore_case = git(root, "config", "--get", "--default", "", "core.ignorecase").decode()
     entries: list[InputEntry] = []
     blobs: list[Blob] = []
+    directories: dict[str, set[str]] = {}
+    ignored_prefixes: set[str] = set()
 
     def record_config(fd: int, name: str, path: str) -> bytes | None:
         content, sha, info = _read_file(fd, name)
@@ -188,6 +192,7 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
         before = os.fstat(fd)
         with os.scandir(fd) as scan:
             children = sorted(scan, key=lambda entry: entry.name)
+        directories[prefix] = {child.name for child in children}
         candidates: list[tuple[str, os.DirEntry[str]]] = []
         for child in children:
             path = f"{prefix}/{child.name}" if prefix else child.name
@@ -221,6 +226,7 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
             ignored = _ignored_paths(root, tuple(path for path, _ in candidates))
         for path, child in candidates:
             if path in ignored and path not in tracked and path not in tracked_parents:
+                ignored_prefixes.add(path)
                 continue
             info = child.stat(follow_symlinks=False)
             mode = format(info.st_mode, "o")
@@ -324,6 +330,34 @@ def _capture(root: Path, source_roots: tuple[str, ...] | None,
     policy = CapturePolicy(source_roots=roots, excluded_paths=tuple(sorted(excluded)),
                            excluded_dirs=EXCLUDED_DIRS, root_outputs=ROOT_OUTPUTS,
                            ignore_fingerprint=digest([sorted(ignore_inputs), ignore_case]))
-    snapshot_id = digest({"policy": policy.model_dump(mode="json"),
-                          "entries": [entry.model_dump(mode="json") for entry in entries]})
-    return Capture(snapshot_id, base_commit, policy, tuple(entries), tuple(blobs))
+    coverage: list[CapturedPath] = []
+    present = {entry.path for entry in entries if entry.kind == "file" and not entry.limitation}
+    ignored_probes = _ignored_paths(root, tuple(sorted(set(probe_paths)))) if probe_paths else set()
+    for path in sorted(set(probe_paths)):
+        parts = PurePosixPath(path).parts
+        status: Literal["present", "absent", "excluded", "ignored", "unavailable"]
+        if (not code_input(path, roots)
+                or any(_within(path, item) for item in excluded)
+                or any(part in EXCLUDED_DIRS for part in parts)
+                or parts[0] in ROOT_OUTPUTS):
+            status = "excluded"
+        elif (any(_within(path, item) for item in ignored_prefixes)
+              or (path in ignored_probes and path not in tracked)):
+            status = "ignored"
+        elif path in present:
+            status = "present"
+        else:
+            status = "unavailable"
+            for offset, part in enumerate(parts):
+                parent = "/".join(parts[:offset])
+                if parent in directories and part not in directories[parent]:
+                    status = "absent"
+                    break
+        coverage.append(CapturedPath(path=path, status=status))
+    identity: dict[str, object] = {
+        "policy": policy.model_dump(mode="json"),
+        "entries": [entry.model_dump(mode="json") for entry in entries]}
+    if coverage:
+        identity["path_coverage"] = [item.model_dump(mode="json") for item in coverage]
+    snapshot_id = digest(identity)
+    return Capture(snapshot_id, base_commit, policy, tuple(entries), tuple(blobs), tuple(coverage))
