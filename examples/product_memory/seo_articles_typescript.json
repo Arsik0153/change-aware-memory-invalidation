@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "subject": "src/shared/lib/format-count.ts:formatCount",
+  "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+  "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+  "source_roots": [
+    "src/shared/lib"
+  ],
+  "body": {
+    "old": "return `${count} ${word}`;",
+    "new": "return \"CAMI development mutation\";"
+  },
+  "signature": {
+    "old": "count: number,",
+    "new": "count: number | string,"
+  },
+  "parse_suffix": "\nexport function camiInvalid(:\n"
+}

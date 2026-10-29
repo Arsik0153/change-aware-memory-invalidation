@@ -73,3 +73,25 @@ git -C runs/product-click-repeat checkout --detach 934813e4d421071a1b3db3973c02f
 Для Requests используйте соответствующий pinned revision и subject из таблицы.
 Driver принимает однозначную top-level функцию с однострочной сигнатурой; общая
 поддержка произвольных Python/TypeScript субъектов этой проверкой не заявляется.
+
+
+## Расширение на TypeScript: план до запуска мутаций
+
+Pinned локальный seo-articles: `85070f607449b32dc3d039a81a5951749ec2aa34`.
+Subject: `src/shared/lib/format-count.ts:formatCount`; SHA-256 исходного файла
+`dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d`.
+Первичный context уже подтвердил однозначный статический symbol. Это exploratory
+выбор функции после Python checks, не предварительная регистрация исследования.
+
+До первого применения мутаций зафиксирован профиль
+`examples/product_memory/seo_articles_typescript.json`. Он заменяет return в теле,
+расширяет явный тип count до number | string, отдельно добавляет syntax error.
+Ожидания шести фаз и ручного review те же, что в таблице выше. TypeScript predicate
+проверяет написанную сигнатуру, не inferred types и не поведение runtime.
+Область capture — src/shared/lib; unrelated-файл будет создан внутри этой области.
+Target code не запускается, зависимости приложения не устанавливаются.
+
+State изолирован; установленный compiler cache используется явно, с фиксацией
+Node/TypeScript identity. Исходная рабочая копия пользователя не меняется; опыт
+идёт в отдельном disposable clone. Полные локальные contexts остаются в runs,
+в Git попадут компактные результаты и hashes, без копирования исходников приложения.
