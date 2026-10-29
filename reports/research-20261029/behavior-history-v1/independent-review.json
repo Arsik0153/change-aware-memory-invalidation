@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "review_id": "behavior-history-v1-independent-scientific-and-implementation-review",
+  "reviewer": {
+    "agent": "/root/review_behavior_history",
+    "model": "gpt-6.1-sol",
+    "independent_of_experiment_implementation": true,
+    "independent_human_review": false,
+    "delegates_used": false
+  },
+  "reviewed_at": "2026-10-29T18:24:53.388792+00:00",
+  "status": "accepted_with_scope_limitations",
+  "blocking_findings": [],
+  "material_result_or_integrity_findings": [],
+  "runtime_commit": "0c2f04da99ff02d64f2d573f73927355e75c968c",
+  "frozen_protocol_commit": "1aceb7f8976c1d6a770f1143e8a19ecdf4ff9314",
+  "scope": {
+    "run_directory": "runs/behavior-history-20261029-v1",
+    "protocol": "examples/behavior_dependency/protocol.json",
+    "implementation": [
+      "scripts/check_behavior_history.py",
+      "scripts/finite_behavior_oracle.py",
+      "src/cami/behavior.py",
+      "src/cami/engine.py",
+      "scripts/verify_cami.py"
+    ],
+    "focused_test_log": "reports/research-20261029/behavior-history-focused-v2.log",
+    "focused_log_result": "19 passed in 0.95s; log inspected, not rerun by reviewer",
+    "full_suite_rerun": false,
+    "new_policy_runs": false,
+    "new_docker_executions": false,
+    "paid_apis_used": false,
+    "source_or_raw_run_outputs_modified": false
+  },
+  "methods": [
+    "Used a separate standard-library audit script without importing CAMI, its driver, or its finite oracle.",
+    "Checked frozen protocol ancestry and contents against commit 1aceb7f; checked implementation source hashes against runtime commit 0c2f04d instead of assuming current HEAD was the runtime source.",
+    "Verified all recorded outer and nested SHA-256 artifact/input hashes, full outer artifact inventory, configuration digests, and the source snapshot digest; compared all 166 source files to their runtime Git blobs.",
+    "Read all seven actual Git module.py and unrelated.py blobs and their commit ancestry. Restricted independent evaluation to the three inspected literal source forms, then executed them with empty builtins. The result did not use the submitted oracle implementation.",
+    "Checked both masks at every revision against original and removed-edge research files, public graphs, provenance markers, parent-only receipts and absence of child truth files in public scenario directories.",
+    "Checked all 24 persisted child states, availability, basis, last verdict, withheld reason, current provenance marker, last_checked_commit and last_supported_commit against independently reconstructed state histories.",
+    "Checked all 23 validation records and all 69 raw CAMI_RESULT payloads plus repetition JSON records, collection identity, Python version, setup/call/teardown outcomes, failure values and fingerprints, and cost accounting.",
+    "Checked four recorded production run CLI commands and four score CLI commands, complete run manifests, no cache use, raw label counts, score label hashes and independently recomputed stale-exposure/retention counts.",
+    "Inspected Docker execution implementation and read-only inspected the currently available pinned image digest. Historical container invocations are inferred from the committed production implementation, run configuration, raw pytest outputs and per-repetition records; there is no separate daemon event audit."
+  ],
+  "verified_results": {
+    "status": "passed",
+    "source_files_verified_against_runtime_git": 166,
+    "outer_artifact_hashes": 312,
+    "outer_input_hashes": 74,
+    "nested_artifact_hashes": 197,
+    "nested_input_hashes": 34,
+    "runtime_commit": "0c2f04da99ff02d64f2d573f73927355e75c968c",
+    "frozen_protocol_commit": "1aceb7f8976c1d6a770f1143e8a19ecdf4ff9314",
+    "source_before_after_equal": true,
+    "sources": [
+      {
+        "step": "parent",
+        "commit": "f66e6dbaf41dc27b163e66dc2f31daa2809f3ead",
+        "value": 1,
+        "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+        "unrelated": "VALUE = 0"
+      },
+      {
+        "step": "dependency_break",
+        "commit": "80b92d079c00c306be4a031d0120b98316b85c03",
+        "value": 2,
+        "module_sha256": "1fec5fd14bf657e2ad8a7998fb5ee31d191f9e85d875f3f97549adadb0c8885e",
+        "unrelated": "VALUE = 0"
+      },
+      {
+        "step": "unrelated_while_false",
+        "commit": "5ade8946b7b29407758c6e065575cce25d73e1ae",
+        "value": 2,
+        "module_sha256": "1fec5fd14bf657e2ad8a7998fb5ee31d191f9e85d875f3f97549adadb0c8885e",
+        "unrelated": "VALUE = 1"
+      },
+      {
+        "step": "dependency_restore",
+        "commit": "b50a245ea33d6b103f79fb6e6dd3c09c37fd5c07",
+        "value": 1,
+        "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+        "unrelated": "VALUE = 1"
+      },
+      {
+        "step": "direct_break",
+        "commit": "1e96397e739ba847d8222d0498452a66ccee4a67",
+        "value": 3,
+        "module_sha256": "693052ed82da42ec02ac4ab74fc147758dfd2500b45f1f8a109552c52bddeca7",
+        "unrelated": "VALUE = 1"
+      },
+      {
+        "step": "direct_restore",
+        "commit": "42e7de4e4d506cb50c021a528d0d0d99e5f19bf4",
+        "value": 1,
+        "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+        "unrelated": "VALUE = 1"
+      },
+      {
+        "step": "unrelated_while_true",
+        "commit": "8faedd0ae45edf61b4dd3c67a49255ff25652715",
+        "value": 1,
+        "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+        "unrelated": "VALUE = 2"
+      }
+    ],
+    "mask_checks": {
+      "known_missing": {
+        "unique_removed_edges": 1,
+        "edge_occurrences_removed": 6,
+        "known_incomplete": true,
+        "public_graphs": 7
+      },
+      "hidden_missing": {
+        "unique_removed_edges": 1,
+        "edge_occurrences_removed": 6,
+        "known_incomplete": false,
+        "public_graphs": 7
+      }
+    },
+    "variants": {
+      "all_validate": {
+        "maintenance_validations": 6,
+        "maintenance_test_executions": 18,
+        "preflight_test_executions": 3,
+        "availability_mismatches": 0,
+        "stale_exposure": [
+          0,
+          3
+        ],
+        "valid_retention": [
+          3,
+          3
+        ],
+        "end_to_end_seconds": 11.725605918094516,
+        "maintenance_wall_seconds": 9.222544770105742,
+        "preflight_wall_seconds": 2.4547339651035145,
+        "selection_reasons": [
+          [
+            "all_claims"
+          ],
+          [
+            "all_claims",
+            "previously_unavailable"
+          ],
+          [
+            "all_claims",
+            "previously_unavailable"
+          ],
+          [
+            "all_claims"
+          ],
+          [
+            "all_claims",
+            "previously_unavailable"
+          ],
+          [
+            "all_claims"
+          ]
+        ]
+      },
+      "intact": {
+        "maintenance_validations": 5,
+        "maintenance_test_executions": 15,
+        "preflight_test_executions": 3,
+        "availability_mismatches": 0,
+        "stale_exposure": [
+          0,
+          3
+        ],
+        "valid_retention": [
+          3,
+          3
+        ],
+        "end_to_end_seconds": 9.117441084934399,
+        "maintenance_wall_seconds": 7.447454781155102,
+        "preflight_wall_seconds": 1.6144551589386538,
+        "selection_reasons": [
+          [
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          [
+            "previously_unavailable"
+          ],
+          [
+            "previously_unavailable",
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          [
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          [
+            "previously_unavailable",
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          []
+        ]
+      },
+      "known_missing": {
+        "maintenance_validations": 6,
+        "maintenance_test_executions": 18,
+        "preflight_test_executions": 3,
+        "availability_mismatches": 0,
+        "stale_exposure": [
+          0,
+          3
+        ],
+        "valid_retention": [
+          3,
+          3
+        ],
+        "end_to_end_seconds": 10.196842100005597,
+        "maintenance_wall_seconds": 8.509559333091602,
+        "preflight_wall_seconds": 1.6353356681065634,
+        "selection_reasons": [
+          [
+            "known_incomplete",
+            "unresolved_dependency"
+          ],
+          [
+            "known_incomplete",
+            "previously_unavailable",
+            "unresolved_dependency"
+          ],
+          [
+            "known_incomplete",
+            "previously_unavailable",
+            "unresolved_dependency"
+          ],
+          [
+            "known_incomplete",
+            "subject_changed",
+            "symbol_or_dependency_changed",
+            "unresolved_dependency"
+          ],
+          [
+            "known_incomplete",
+            "previously_unavailable",
+            "subject_changed",
+            "symbol_or_dependency_changed",
+            "unresolved_dependency"
+          ],
+          [
+            "known_incomplete",
+            "unresolved_dependency"
+          ]
+        ]
+      },
+      "hidden_missing": {
+        "maintenance_validations": 2,
+        "maintenance_test_executions": 6,
+        "preflight_test_executions": 3,
+        "availability_mismatches": 2,
+        "stale_exposure": [
+          2,
+          3
+        ],
+        "valid_retention": [
+          3,
+          3
+        ],
+        "end_to_end_seconds": 4.540474928915501,
+        "maintenance_wall_seconds": 2.936759250005707,
+        "preflight_wall_seconds": 1.5588131248950958,
+        "selection_reasons": [
+          [],
+          [],
+          [],
+          [
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          [
+            "previously_unavailable",
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          []
+        ]
+      }
+    },
+    "repetition_count": 69,
+    "repetition_outcomes": {
+      "passed": 39,
+      "assertion_failure": 30
+    },
+    "states_checked": 24
+  },
+  "findings": [
+    {
+      "id": "BH-SCOPE-1",
+      "severity": "nonblocking_design_limitation",
+      "title": "Successful recovery is observed, but its cause is not isolated to previous unavailability",
+      "evidence": [
+        "runs/behavior-history-20261029-v1/runs/intact/selections.jsonl",
+        "runs/behavior-history-20261029-v1/runs/hidden_missing/selections.jsonl",
+        "examples/behavior_dependency/protocol.json"
+      ],
+      "detail": "The intact unrelated_while_false transition is selected solely for previously_unavailable, demonstrating that the rule forces another check while the predicate stays false. Every successful recovery transition also has subject_changed/symbol_or_dependency_changed, or known_incomplete, selection triggers. The observed recovery and its metadata are correct, but this history does not identify previous unavailability as the uniquely necessary cause of successful recovery.",
+      "required_claim_boundary": "Describe forced revalidation while unavailable and observed recovery separately. A causal claim that recovery depended on the unavailability override requires an additional separately frozen history or ablation."
+    }
+  ],
+  "scientific_limits": [
+    "Synthetic authored finite predicate f() == 1, one zero-argument claim and one six-transition development history. This is a controlled mechanism demonstration, not real-repository effectiveness evidence.",
+    "The AST oracle is independently implemented relative to CAMI validation, but protocol expectations and truth labels are authored for this fixture. It is not independent human annotation, held-out testing, or independent population ground truth.",
+    "All three supported and three contradicted child observations are dependent within the same history. Four policy variants are paired interventions on that history, not four independent histories. No population confidence interval is warranted.",
+    "Three Docker repetitions per validation assess deterministic agreement in this fixed environment; they are not three independent scientific samples or uncached whole-experiment timing replicates.",
+    "Maintenance validations and container counts are descriptive costs: 19 validations/57 executions plus four preflights/12 executions. Timings come from one fixed-order run per variant and do not support a speedup claim; process CPU excludes Docker container and child-process CPU.",
+    "Known and hidden masking intentionally remove the same single f->g dependency. Mask drop0.75 is the requested threshold; realized removal is1/1edges, not evidence about a75percent population deletion regime.",
+    "Raw artifacts and recorded command arrays support the historical execution account, but this review did not independently rerun production experiments or use an external execution attestation."
+  ],
+  "conclusion": "The frozen protocol, actual Git sources, independent finite values, masks, 24 persisted states, 69 repetition outcomes, costs and score counts agree. Hidden missingness carries the false claim at the first two child revisions, while the other variants have zero observed availability mismatches. No blocking implementation, arithmetic or provenance-integrity finding was found within the reviewed scope.",
+  "review_artifacts": {
+    "audit_script": "runs/behavior-history-independent-audit-20261029/audit.py",
+    "audit_script_sha256": "62bf765af86be6828edd62a187c97f2b2ee437df1fab0bc48346b84b615fc63e",
+    "audit_results": "runs/behavior-history-independent-audit-20261029/results.json",
+    "audit_results_sha256": "562122819f24cf4510e512ddcc05b6d7b48a24a320bff183675124e690d0f354"
+  }
+}

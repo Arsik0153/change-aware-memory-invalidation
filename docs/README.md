@@ -28,6 +28,9 @@ the historical submission checks do not establish their current status.
   controlled source mutations in pinned local Click, Requests and TypeScript repositories.
 - [Background memory check](product_watch_real_repository_2026-10-29.md) verifies
   persisted watcher updates before foreground queries on a real TypeScript source tree.
+- [Synthetic behavior history](behavior_dependency_history_2026-10-29.md) checks
+  persistent false availability when a dependency is hidden, using a separate finite
+  oracle and 69 actual Docker probe executions. It follows the portable report's cutoff.
 
 The implemented system has been tested; the main empirical thesis hypothesis
 still requires independent annotation, cohort admission, provenance review, and

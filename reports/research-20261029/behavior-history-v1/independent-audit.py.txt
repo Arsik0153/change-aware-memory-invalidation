@@ -1,0 +1,129 @@
+from pathlib import Path
+import hashlib,json,subprocess,collections
+ROOT=Path('/root/apps/change-aware-memory-invalidation')
+RUN=ROOT/'runs/behavior-history-20261029-v1'
+def j(p):return json.loads(p.read_text())
+def rows(p):return [json.loads(x) for x in p.read_text().splitlines() if x]
+def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def gh(rev,path,repo=ROOT):return subprocess.check_output(['git','--no-replace-objects','-C',str(repo),'show',f'{rev}:{path}'])
+def git(*args,repo=ROOT):return subprocess.check_output(['git','--no-replace-objects','-C',str(repo),*args]).decode().strip()
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()
+manifest=j(RUN/'manifest.json'); plan=j(RUN/'protocol.json')
+assert manifest['status']=='complete'
+assert manifest['source_before']==manifest['source_after']
+snap=manifest['source_before']; runtime=snap['git_head']; assert runtime.startswith('0c2f04d') and not snap['source_status']
+assert hashlib.sha256(json.dumps(snap['files'],sort_keys=True,ensure_ascii=True).encode()).hexdigest()==snap['sha256']
+for p,d in snap['files'].items():assert hashlib.sha256(gh(runtime,p)).hexdigest()==d,p
+frozen='1aceb7f8976c1d6a770f1143e8a19ecdf4ff9314'
+assert git('merge-base','--is-ancestor',frozen,runtime)==''
+assert j(ROOT/'examples/behavior_dependency/protocol.json')==plan==json.loads(gh(frozen,'examples/behavior_dependency/protocol.json'))
+assert hashlib.sha256(gh(frozen,'examples/behavior_dependency/protocol.json')).hexdigest()==manifest['protocol_sha256']
+assert manifest['protocol_sha256']==h(ROOT/'examples/behavior_dependency/protocol.json')
+for kind in ['artifact_hashes','input_hashes']:
+ for p,d in manifest[kind].items():assert h(RUN/p)==d,(kind,p)
+actual={p.relative_to(RUN).as_posix() for p in RUN.rglob('*') if p.is_file() and 'repo' not in p.relative_to(RUN).parts and p!=RUN/'manifest.json'}
+assert actual==set(manifest['artifact_hashes'])
+oracle=j(RUN/'oracle.json'); assert oracle['synthetic'] and oracle['human_annotation'] is False and oracle['cami_validator_used'] is False
+assert oracle['implementation_sha256']==hashlib.sha256(gh(runtime,'scripts/finite_behavior_oracle.py')).hexdigest()
+repo=RUN/'repo'; obs=oracle['observations']; values=[]; sources=[]
+for index,o in enumerate(obs):
+ b=gh(o['commit'],'module.py',repo); src=b.decode(); namespace={}
+ # Independently execute only inspected fixture functions; never import CAMI or its oracle.
+ assert src in ['def f():\n    return g()\n\ndef g():\n    return 1\n','def f():\n    return g()\n\ndef g():\n    return 2\n','def f():\n    return 3\n\ndef g():\n    return 1\n']
+ namespace={'__builtins__':{}};exec(compile(src,'<independent-fixture>','exec'),namespace);value=namespace['f']()
+ assert value==o['value'] and o['label']==('supported' if value==1 else 'contradicted')
+ assert git('rev-parse',f"{o['commit']}:module.py",repo=repo)==o['source_blob']
+ expected_source=plan['parent_source'] if index==0 else f"def f():\n    return {plan['steps'][index-1]['f']}\n\ndef g():\n    return {plan['steps'][index-1]['g']}\n"
+ assert src==expected_source
+ expected_unrelated=plan['parent_unrelated'] if index==0 else f"VALUE = {plan['steps'][index-1]['unrelated']}\n"
+ assert gh(o['commit'],'unrelated.py',repo).decode()==expected_unrelated
+ assert git('show','-s','--format=%P',o['commit'],repo=repo)==('' if index==0 else obs[index-1]['commit'])
+ values.append(value);sources.append({'step':o['step'],'commit':o['commit'],'value':value,'module_sha256':hashlib.sha256(b).hexdigest(),'unrelated':expected_unrelated.strip()})
+assert values==[1,2,2,1,3,1,1]
+assert git('status','--porcelain',repo=repo)==''
+labels=rows(RUN/'labels.jsonl'); assert len(labels)==6
+for l,o in zip(labels,obs[1:]):
+ assert l['commit']==o['commit'] and l['label']==o['label'] and l['confirmation_type']=='synthetic_authored_finite_oracle'
+assert (RUN/'test_behavior.py').read_text()==plan['probe']
+claim=rows(RUN/'claims.jsonl')[0];assert claim['predicate']['probe_sha256']==h(RUN/'test_behavior.py')
+assert claim['scope']=='Only this authored zero-argument finite predicate, not general behavior correctness.'
+maskchecks={}
+for name in ['known_missing','hidden_missing']:
+ base=next((RUN/'scenarios'/name/'public/runs').iterdir()); prov=rows(base/'provenance.jsonl')[0]
+ assert prov['known_incomplete']==(name=='known_missing') and not prov['dependencies']
+ public_config=j(base/'run.json'); assert 'labels' not in public_config and not (base/'labels.jsonl').exists() and not (base/'oracle.json').exists()
+ parent_oracle=j(base/'parent_oracle.json'); assert 'observations' not in parent_oracle and parent_oracle['human_annotation'] is False and parent_oracle['observation']['commit']==obs[0]['commit']
+ report=j(RUN/'scenarios'/name/'research/mask_report.json');assert report['unique_edges']==report['removed_edges']==1 and report['actual_removed_fraction']==1 and report['seed']==17
+ edgecount=0
+ for o in obs:
+  graph=j(base/'graphs'/f"{o['commit']}.json");assert not graph['edges']; assert (bool(graph['known_incomplete_nodes']))==(name=='known_missing' and o['step']!='direct_break')
+  research=RUN/'scenarios'/name/'research'/base.name
+  original=j(research/f"{o['commit']}.json")['edges'];removed=j(research/f"{o['commit']}-removed.json")['edges']
+  assert original==removed
+  for e in removed:assert e=={'from':{'path':'module.py','qualname':'f'},'to':{'path':'module.py','qualname':'g'},'origin':'static','relation':'calls'}
+  assert len(original)==(0 if o['step']=='direct_break' else 1);edgecount+=len(original)
+ maskchecks[name]={'unique_removed_edges':1,'edge_occurrences_removed':edgecount,'known_incomplete':prov['known_incomplete'],'public_graphs':7}
+summary={}; repetition_count=0; outcomes=collections.Counter();nestedhashes=0; nestedinputs=0
+for variant in plan['variants']:
+ name=variant['id']; run=RUN/'runs'/name;m=j(run/'manifest.json');c=m['config'];assert m['status']=='complete' and not m['excluded'] and m['cohort']==['f-returns-one']
+ assert c['dataset_kind']=='synthetic' and c['split']=='development' and c['cache_dir'] is None and c['validation']=={'execution':'docker','llm':'disabled'}
+ assert hashlib.sha256(canon(c)).hexdigest()==m['configuration_hash']
+ for p,d in m['artifact_hashes'].items():assert h(run/p)==d;nestedhashes+=1
+ command=j(RUN/f'{name}.command.json'); assert command[1:4]==['-m','cami.cli','run'];base=Path(command[command.index('--config')+1]).parent
+ assert command[-2:]==['--out',str(run)]
+ assert j(RUN/f'{name}.score-command.json')[1:4]==['-m','cami.cli','score']
+ for key,d in m['input_hashes'].items():
+  if key=='claims':p=base/c['claims_path']
+  elif key=='provenance':p=base/c['provenance_path']
+  elif key=='parent_receipts':p=base/c['parent_receipts_path']
+  elif key.startswith('graph/'):p=base/c['graph_views_path']/(key.split('/')[1]+'.json')
+  elif key.startswith('probe/'):p=base/claim['predicate']['probe_path']
+  elif key.startswith('parent_evidence/'):p=base/rows(base/c['parent_receipts_path'])[0]['evidence_path']
+  else:raise AssertionError(key)
+  assert h(p)==d,(name,key);nestedinputs+=1
+ selections=rows(run/'selections.jsonl');states=rows(run/'states.jsonl');validations=rows(run/'validations.jsonl');preflight=rows(run/'preflight_validations.jsonl');costs=rows(run/'costs.jsonl')
+ assert len(selections)==len(states)==6 and len(preflight)==1
+ assert [s['selected'] for s in selections]==variant['selected_steps']
+ assert [s['revision'] for s in states]==[o['commit'] for o in obs[1:]]
+ assert [v['commit'] for v in validations]==[o['commit'] for o,b in zip(obs[1:],variant['selected_steps']) if b]
+ by_commit={v['commit']:v for v in validations};checked=supported=obs[0]['commit'];last='supported';available=True;mismatches=0
+ for i,(s,sel,o) in enumerate(zip(states,selections,obs[1:])):
+  assert sel['commit']==o['commit']
+  if sel['selected']:
+   v=by_commit[o['commit']]; assert v['verdict']==o['label'];checked=o['commit'];last=v['verdict'];available=last=='supported'
+   if available:supported=checked
+  assert s['available']==available and s['state']==('valid' if available else 'stale') and s['last_checked_commit']==checked and s['last_supported_commit']==supported and s['last_verdict']==last and s['basis']==('validated' if sel['selected'] else 'carried_forward')
+  assert s['withheld_reason']==(None if available else 'predicate_mismatch')
+  assert s['current_provenance']['known_incomplete']==(name=='known_missing')
+  mismatches+=available!=(o['value']==1)
+ for v in preflight+validations:
+  assert v['validator']=='behavior' and not v['cache_hit'] and v['test_executions']==3 and len(v['logs'])==3
+  value=values[[o['commit'] for o in obs].index(v['commit'])]
+  assert v['verdict']==('supported' if value==1 else 'contradicted')
+  fps=[]
+  for lp in v['logs']:
+   raw=(run/lp).read_text();payload=json.loads([x[len('CAMI_RESULT='):] for x in raw.splitlines() if x.startswith('CAMI_RESULT=')][0]);record=j((run/lp).with_suffix('.json'))
+   assert payload['python_version']==c['environment_profiles']['fixture']['python_version']=='3.12.12'
+   assert payload['collected']==['test_behavior.py::test_f'] and len(payload['reports'])==3
+   assert {x['when'] for x in payload['reports']}=={'setup','call','teardown'}
+   assert all(x['nodeid']=='test_behavior.py::test_f' for x in payload['reports'])
+   assert all(x['outcome']=='passed' for x in payload['reports'] if x['when']!='call')
+   call=next(x for x in payload['reports'] if x['when']=='call')
+   assert call['outcome']==('passed' if value==1 else 'failed') and payload['exit_code']==(0 if value==1 else 1)
+   assert record['outcome']==('passed' if value==1 else 'assertion_failure') and record['reason']==('test_passed' if value==1 else 'predicate_mismatch')
+   if value!=1:assert call['assertion'] and f'assert {value} == 1' in raw
+   assert record['duration_seconds']>0;fps.append(call['fingerprint']);repetition_count+=1;outcomes[record['outcome']]+=1
+  assert len(set(fps))==1
+ maintenance=[x for x in costs if x['phase']=='maintenance'];pre=[x for x in costs if x['phase']=='preflight']
+ assert len(maintenance)==6 and len(pre)==1 and len(validations)==plan['expected_maintenance_validations'][name]
+ assert sum(x['actual_validations'] for x in maintenance)==len(validations) and sum(x['test_executions'] for x in maintenance)==3*len(validations)
+ assert sum(x['actual_validations'] for x in pre)==1 and sum(x['test_executions'] for x in pre)==3
+ assert all(x['cache_hits']==0 for x in costs) and mismatches==plan['expected_mismatches'][name]
+ score=j(RUN/'scores'/name/'metrics.json');assert score['labels_sha256']==h(RUN/'labels.jsonl') and score['label_counts']=={'supported':3,'contradicted':3,'uncertain':0}
+ metrics=score['overall']['metrics'];assert score['overall']['independent_clusters']==1 and score['overall']['exploratory']
+ stale=sum(s['available'] for s,o in zip(states,obs[1:]) if o['value']!=1);retain=sum(s['available'] for s,o in zip(states,obs[1:]) if o['value']==1)
+ for key,n in [('stale_exposure',stale),('valid_retention',retain)]:assert (metrics[key]['numerator'],metrics[key]['denominator'],metrics[key]['value'])==(n,3,n/3)
+ summary[name]={'maintenance_validations':len(validations),'maintenance_test_executions':3*len(validations),'preflight_test_executions':3,'availability_mismatches':mismatches,'stale_exposure':[stale,3],'valid_retention':[retain,3],'end_to_end_seconds':m['end_to_end_seconds'],'maintenance_wall_seconds':sum(x['wall_seconds'] for x in maintenance),'preflight_wall_seconds':pre[0]['wall_seconds'],'selection_reasons':[s['reasons'] for s in selections]}
+assert repetition_count==69
+result={'status':'passed','source_files_verified_against_runtime_git':len(snap['files']),'outer_artifact_hashes':len(manifest['artifact_hashes']),'outer_input_hashes':len(manifest['input_hashes']),'nested_artifact_hashes':nestedhashes,'nested_input_hashes':nestedinputs,'runtime_commit':runtime,'frozen_protocol_commit':frozen,'source_before_after_equal':True,'sources':sources,'mask_checks':maskchecks,'variants':summary,'repetition_count':repetition_count,'repetition_outcomes':dict(outcomes),'states_checked':24}
+print(json.dumps(result,indent=2))

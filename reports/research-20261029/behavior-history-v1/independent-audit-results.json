@@ -1,0 +1,247 @@
+{
+  "status": "passed",
+  "source_files_verified_against_runtime_git": 166,
+  "outer_artifact_hashes": 312,
+  "outer_input_hashes": 74,
+  "nested_artifact_hashes": 197,
+  "nested_input_hashes": 34,
+  "runtime_commit": "0c2f04da99ff02d64f2d573f73927355e75c968c",
+  "frozen_protocol_commit": "1aceb7f8976c1d6a770f1143e8a19ecdf4ff9314",
+  "source_before_after_equal": true,
+  "sources": [
+    {
+      "step": "parent",
+      "commit": "f66e6dbaf41dc27b163e66dc2f31daa2809f3ead",
+      "value": 1,
+      "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+      "unrelated": "VALUE = 0"
+    },
+    {
+      "step": "dependency_break",
+      "commit": "80b92d079c00c306be4a031d0120b98316b85c03",
+      "value": 2,
+      "module_sha256": "1fec5fd14bf657e2ad8a7998fb5ee31d191f9e85d875f3f97549adadb0c8885e",
+      "unrelated": "VALUE = 0"
+    },
+    {
+      "step": "unrelated_while_false",
+      "commit": "5ade8946b7b29407758c6e065575cce25d73e1ae",
+      "value": 2,
+      "module_sha256": "1fec5fd14bf657e2ad8a7998fb5ee31d191f9e85d875f3f97549adadb0c8885e",
+      "unrelated": "VALUE = 1"
+    },
+    {
+      "step": "dependency_restore",
+      "commit": "b50a245ea33d6b103f79fb6e6dd3c09c37fd5c07",
+      "value": 1,
+      "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+      "unrelated": "VALUE = 1"
+    },
+    {
+      "step": "direct_break",
+      "commit": "1e96397e739ba847d8222d0498452a66ccee4a67",
+      "value": 3,
+      "module_sha256": "693052ed82da42ec02ac4ab74fc147758dfd2500b45f1f8a109552c52bddeca7",
+      "unrelated": "VALUE = 1"
+    },
+    {
+      "step": "direct_restore",
+      "commit": "42e7de4e4d506cb50c021a528d0d0d99e5f19bf4",
+      "value": 1,
+      "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+      "unrelated": "VALUE = 1"
+    },
+    {
+      "step": "unrelated_while_true",
+      "commit": "8faedd0ae45edf61b4dd3c67a49255ff25652715",
+      "value": 1,
+      "module_sha256": "c2637ebba09a283dca9beb96cabe9a4d029a2f6bd12f850fc40d59a90f230c60",
+      "unrelated": "VALUE = 2"
+    }
+  ],
+  "mask_checks": {
+    "known_missing": {
+      "unique_removed_edges": 1,
+      "edge_occurrences_removed": 6,
+      "known_incomplete": true,
+      "public_graphs": 7
+    },
+    "hidden_missing": {
+      "unique_removed_edges": 1,
+      "edge_occurrences_removed": 6,
+      "known_incomplete": false,
+      "public_graphs": 7
+    }
+  },
+  "variants": {
+    "all_validate": {
+      "maintenance_validations": 6,
+      "maintenance_test_executions": 18,
+      "preflight_test_executions": 3,
+      "availability_mismatches": 0,
+      "stale_exposure": [
+        0,
+        3
+      ],
+      "valid_retention": [
+        3,
+        3
+      ],
+      "end_to_end_seconds": 11.725605918094516,
+      "maintenance_wall_seconds": 9.222544770105742,
+      "preflight_wall_seconds": 2.4547339651035145,
+      "selection_reasons": [
+        [
+          "all_claims"
+        ],
+        [
+          "all_claims",
+          "previously_unavailable"
+        ],
+        [
+          "all_claims",
+          "previously_unavailable"
+        ],
+        [
+          "all_claims"
+        ],
+        [
+          "all_claims",
+          "previously_unavailable"
+        ],
+        [
+          "all_claims"
+        ]
+      ]
+    },
+    "intact": {
+      "maintenance_validations": 5,
+      "maintenance_test_executions": 15,
+      "preflight_test_executions": 3,
+      "availability_mismatches": 0,
+      "stale_exposure": [
+        0,
+        3
+      ],
+      "valid_retention": [
+        3,
+        3
+      ],
+      "end_to_end_seconds": 9.117441084934399,
+      "maintenance_wall_seconds": 7.447454781155102,
+      "preflight_wall_seconds": 1.6144551589386538,
+      "selection_reasons": [
+        [
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        [
+          "previously_unavailable"
+        ],
+        [
+          "previously_unavailable",
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        [
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        [
+          "previously_unavailable",
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        []
+      ]
+    },
+    "known_missing": {
+      "maintenance_validations": 6,
+      "maintenance_test_executions": 18,
+      "preflight_test_executions": 3,
+      "availability_mismatches": 0,
+      "stale_exposure": [
+        0,
+        3
+      ],
+      "valid_retention": [
+        3,
+        3
+      ],
+      "end_to_end_seconds": 10.196842100005597,
+      "maintenance_wall_seconds": 8.509559333091602,
+      "preflight_wall_seconds": 1.6353356681065634,
+      "selection_reasons": [
+        [
+          "known_incomplete",
+          "unresolved_dependency"
+        ],
+        [
+          "known_incomplete",
+          "previously_unavailable",
+          "unresolved_dependency"
+        ],
+        [
+          "known_incomplete",
+          "previously_unavailable",
+          "unresolved_dependency"
+        ],
+        [
+          "known_incomplete",
+          "subject_changed",
+          "symbol_or_dependency_changed",
+          "unresolved_dependency"
+        ],
+        [
+          "known_incomplete",
+          "previously_unavailable",
+          "subject_changed",
+          "symbol_or_dependency_changed",
+          "unresolved_dependency"
+        ],
+        [
+          "known_incomplete",
+          "unresolved_dependency"
+        ]
+      ]
+    },
+    "hidden_missing": {
+      "maintenance_validations": 2,
+      "maintenance_test_executions": 6,
+      "preflight_test_executions": 3,
+      "availability_mismatches": 2,
+      "stale_exposure": [
+        2,
+        3
+      ],
+      "valid_retention": [
+        3,
+        3
+      ],
+      "end_to_end_seconds": 4.540474928915501,
+      "maintenance_wall_seconds": 2.936759250005707,
+      "preflight_wall_seconds": 1.5588131248950958,
+      "selection_reasons": [
+        [],
+        [],
+        [],
+        [
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        [
+          "previously_unavailable",
+          "subject_changed",
+          "symbol_or_dependency_changed"
+        ],
+        []
+      ]
+    }
+  },
+  "repetition_count": 69,
+  "repetition_outcomes": {
+    "passed": 39,
+    "assertion_failure": 30
+  },
+  "states_checked": 24
+}

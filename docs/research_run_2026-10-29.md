@@ -889,3 +889,35 @@ README объясняет, что компактный пакет не вклю�
 и есть ли полезный проверяемый пробел за пределами existence/signature stress.
 Новый эксперимент, если нужен, сначала фиксирует oracle и протокол; основная
 разметка, held-out и платные API остаются вне разрешённого выполнения.
+
+## Двадцать четвёртый этап: поведенческая история со скрытой зависимостью
+
+План1aceb7f зафиксировал6переходов×4варианта для одного synthetic behavior claim
+f()==1. Driver и отдельный finite AST oracle запущены на0c2f04d. Oracle прочитал
+реальные Git blobs и подтвердил значения1,2,2,1,3,1,1; никакой ответ CAMI не
+использовался для truth labels. Parent receipts и labels явно synthetic authored;
+реальные человеческие ответы не создавались.
+
+Все4production run CLI и4score CLI завершены. Maintenance validations:
+all_validate6,intact5,known_missing6,hidden_missing2; preflight по1накаждыйвариант.
+69реальных Docker probe executions:39passed и30assertion failures. Проверены
+24states,selection,carry metadata,costs и descriptive metrics. Hidden_missing
+сохранил ложную доступность на2из3contradicted items;остальные0/3;retention3/3везде.
+Меньше проверок у hidden_missing здесь означает ошибку, не безопасную экономию.
+
+19focused tests иRuffpassed. Независимый gpt-6.1-sol проверил312raw artifact hashes,
+74input hashes,197nested artifact hashes,34nested inputs,166runtime source files,
+7sourcevalues ивсе69payloads. Source snapshots совпали; blocking findings нет.
+Принято ограничениеBH-SCOPE-1: второй переход изолирует revalidation из-за
+previously_unavailable, но успешные восстановления имеют и другие change triggers.
+Поэтому причинное объяснение recovery одним fallback не заявляется.
+
+Документ:docs/behavior_dependency_history_2026-10-29.md.
+Raw:runs/behavior-history-20261029-v1; компактные evidence:behavior-history-v1.
+Figure/CSV/HTML:behavior-history-figure-v1;PNG просмотрен,24CSVrows и5hashes сверены.
+HTMLshown; headless Chrome preview failedexit1, это не скрыто как successfulpreview.
+Никаких populationCI,таймингового ускорения или real-effectiveness conclusions.
+
+Далее: проверить один из оставшихся пробелов реального рабочего процесса —
+полноту и пригодность пакета независимой разметки для передачи человеку —
+без заполнения форм за разметчика и без запуска основного held-out.
