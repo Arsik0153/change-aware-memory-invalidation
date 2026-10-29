@@ -90,3 +90,23 @@ def test_invalid_parent_inputs_rejected_before_execution(repo, monkeypatch, corr
     with pytest.raises((InputError, ValidationError)):
         checker.check_parents(parents, base.parent, IMAGE, output)
     assert not output.exists()
+
+
+def test_explicit_capture_limit_preserves_full_large_blob(repo):
+    from cami.models import RepoLocation
+    from cami.repository import MAX_FILE_BYTES, materialize, read_snapshot
+
+    content = 'x' * (MAX_FILE_BYTES + 1)
+    revision = repo.commit({'module.py': 'def f(): return 1\n', 'asset.bin': content})
+    location = RepoLocation(repo_id='fixture', path=str(repo.root))
+    bounded = read_snapshot(location, revision)
+    assert bounded.by_path()['asset.bin'].limitation == 'file_too_large'
+    expanded = read_snapshot(location, revision, max_file_bytes=len(content))
+    assert expanded.by_path()['asset.bin'].content == content.encode()
+    assert expanded.by_path()['asset.bin'].limitation is None
+    target = repo.root.parent / 'materialized'
+    materialize(expanded, target)
+    assert (target / 'asset.bin').read_bytes() == content.encode()
+    assert read_snapshot(location, revision).by_path()['asset.bin'].limitation == 'file_too_large'
+    with pytest.raises(InputError, match='positive'):
+        read_snapshot(location, revision, max_file_bytes=0)

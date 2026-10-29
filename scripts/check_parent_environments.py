@@ -11,7 +11,7 @@ from cami.artifacts import (
 from cami.behavior import ProbeContext, check_docker, execute_probe
 from cami.errors import InputError
 from cami.models import Behavior, Claim, EnvironmentProfile, Record, RepoLocation
-from cami.repository import read_snapshot
+from cami.repository import MAX_FILE_BYTES, read_snapshot
 
 
 class ParentInput(Record):
@@ -23,7 +23,10 @@ class ParentInput(Record):
     seed: int
 
 
-def check_parents(parents_path: Path, candidates: Path, image: str, output: Path) -> None:
+def check_parents(parents_path: Path, candidates: Path, image: str, output: Path, *,
+                  max_file_bytes: int = MAX_FILE_BYTES) -> None:
+    if max_file_bytes < 1:
+        raise InputError('max_file_bytes must be positive')
     parents = load_jsonl(parents_path, ParentInput, unique='group_id')
     if not parents:
         raise InputError('no parent inputs')
@@ -51,19 +54,21 @@ def check_parents(parents_path: Path, candidates: Path, image: str, output: Path
     check_docker(profile)
     reserve(output)
     manifest = {'status': 'running', 'scope': 'automated parent-only environment diagnostic',
-                'parent_inputs_sha256': file_hash(parents_path),
+                'parent_inputs_sha256': file_hash(parents_path), 'max_file_bytes': max_file_bytes,
                 'profile': profile.model_dump(mode='json'), 'groups': len(prepared),
                 'produces_independent_receipts': False, 'produces_child_labels': False,
                 'claim_hashes': {claim.claim_id: digest(claim) for _, _, claim in prepared},
                 'implementation_hashes': {str(path.relative_to(Path(__file__).resolve().parents[1])):
                     file_hash(path) for path in [Path(__file__).resolve(),
                     Path(__file__).resolve().parents[1] / 'src/cami/behavior.py',
+                    Path(__file__).resolve().parents[1] / 'src/cami/repository.py',
                     Path(__file__).resolve().parents[1] / 'src/cami/probe_runner.py']}}
     write_json(output / 'manifest.json', manifest)
     observations = []
     for parent, base, claim in prepared:
         snapshot = read_snapshot(RepoLocation(repo_id=parent.repo_id, path=parent.repo_path,
-                                  source_roots=parent.source_roots), parent.parent_commit)
+                                  source_roots=parent.source_roots), parent.parent_commit,
+                                 max_file_bytes=max_file_bytes)
         target = output / parent.group_id
         result = execute_probe(claim, ProbeContext(snapshot, profile, base, target, phase='preflight'))
         write_json(target / 'observation.json', result)
@@ -92,5 +97,7 @@ if __name__ == '__main__':
     parser.add_argument('--candidates', type=Path, required=True)
     parser.add_argument('--image', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--max-file-bytes', type=int, default=MAX_FILE_BYTES)
     args = parser.parse_args()
-    check_parents(args.parents, args.candidates, args.image, args.out)
+    check_parents(args.parents, args.candidates, args.image, args.out,
+                  max_file_bytes=args.max_file_bytes)

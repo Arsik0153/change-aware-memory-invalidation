@@ -69,7 +69,10 @@ def chain(repo: Path, parent: str, children: tuple[str, ...]) -> tuple[str, tupl
     return base, revisions
 
 
-def read_snapshot(repo: RepoLocation, revision: str) -> Snapshot:
+def read_snapshot(repo: RepoLocation, revision: str, *,
+                  max_file_bytes: int = MAX_FILE_BYTES) -> Snapshot:
+    if max_file_bytes < 1:
+        raise InputError("max_file_bytes must be positive")
     root = Path(repo.path)
     oid = resolve(root, revision)
     entries: list[tuple[str, str, str, str | None]] = []
@@ -88,7 +91,7 @@ def read_snapshot(repo: RepoLocation, revision: str) -> Snapshot:
             limitation = "submodule_unsupported"
         elif mode == "120000":
             limitation = "symlink_unsupported"
-        elif int(size) > MAX_FILE_BYTES:
+        elif int(size) > max_file_bytes:
             limitation = "file_too_large"
         else:
             readable.add(blob_id)
