@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+  "subject": "src/shared/lib/format-count.ts:formatCount",
+  "phases": [
+    {
+      "phase": "unrelated",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+      "notes_available": 1
+    },
+    {
+      "phase": "body",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "ba4a24feababa104a39cca6133cdad9d8faba05ce2f46c676603f6312d1c1316",
+      "notes_available": 0
+    },
+    {
+      "phase": "signature",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "source_sha256": "cf245170230c614f409229207cbaf8d934256b6a3342dae7367e6f2a7ab11a4b",
+      "notes_available": 0
+    },
+    {
+      "phase": "parse",
+      "expected": {
+        "symbol_exists": "parse_error",
+        "signature_equals": "parse_error"
+      },
+      "observed": {
+        "signature_equals": "parse_error",
+        "symbol_exists": "parse_error"
+      },
+      "source_sha256": "6ef13e03262f8f762dd0f900be8da3941480d5979aa68bed239d6fdb59eee40c",
+      "notes_available": 0
+    },
+    {
+      "phase": "delete",
+      "expected": {
+        "symbol_exists": "subject_absent",
+        "signature_equals": "subject_absent"
+      },
+      "observed": {
+        "signature_equals": "subject_absent",
+        "symbol_exists": "subject_absent"
+      },
+      "source_sha256": null,
+      "notes_available": 0
+    },
+    {
+      "phase": "revert",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+      "notes_available": 0
+    }
+  ]
+}

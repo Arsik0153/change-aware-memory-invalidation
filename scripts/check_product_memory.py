@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import stat
 import subprocess
 import sys
 
@@ -15,16 +16,30 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def run(repo: Path, subject: str, out: Path):
-    repo = repo.resolve()
-    out = out.resolve()
-    if subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']):
-        raise ValueError('Development fixture must be clean before the experiment')
-    out.mkdir(parents=True, exist_ok=False)
-    relative, name = subject.split(':')
-    source = repo / relative
-    original = source.read_bytes()
-    text = original.decode()
+def contained_path(repo: Path, relative: str) -> Path:
+    path = Path(relative)
+    if path.is_absolute() or '..' in path.parts:
+        raise ValueError('Fixture paths must be relative and cannot traverse parents')
+    candidate = repo / path
+    if candidate.resolve() != candidate or not candidate.is_relative_to(repo):
+        raise ValueError('Fixture paths cannot contain symlinks or escape the repository')
+    return candidate
+
+
+def mutations(text: str, name: str, profile: dict | None):
+    if profile is not None:
+        result = {}
+        for phase in ('body', 'signature'):
+            replacement = profile[phase]
+            if (not isinstance(replacement, dict) or set(replacement) != {'old', 'new'}
+                    or not all(isinstance(v, str) and v for v in replacement.values())
+                    or replacement['old'] == replacement['new']
+                    or text.count(replacement['old']) != 1):
+                raise ValueError(f'{phase} mutation requires one unique, changing anchor')
+            result[phase] = text.replace(replacement['old'], replacement['new'], 1)
+        if not isinstance(profile['parse_suffix'], str) or not profile['parse_suffix']:
+            raise ValueError('parse_suffix must be a nonempty string')
+        return result['body'], result['signature'], text + profile['parse_suffix']
     function = next(n for n in ast.parse(text).body
                     if isinstance(n, ast.FunctionDef) and n.name == name)
     lines = text.splitlines(keepends=True)
@@ -36,15 +51,72 @@ def run(repo: Path, subject: str, out: Path):
     signature = ''.join(lines[:function.lineno - 1] +
                         [definition.replace(')', ', cami_development_flag=False)', 1)] +
                         lines[function.lineno:])
+    return body, signature, text + '\ndef cami_invalid(:\n'
+
+
+def run(repo: Path, subject: str, out: Path, *, mutation_spec: Path | None = None,
+        cache_dir: Path | None = None):
+    repo = repo.resolve()
+    out = out.resolve()
+    cache = cache_dir.resolve() if cache_dir is not None else out / 'cache'
+    if out.is_relative_to(repo) or cache.is_relative_to(repo):
+        raise ValueError('Evidence and cache directories must be outside the fixture repository')
+    if out.exists():
+        raise ValueError('Evidence directory must be new')
+    top = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', '--show-toplevel'])
+    if Path(top.decode().strip()).resolve() != repo:
+        raise ValueError('Fixture must be the repository root')
+    if subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']):
+        raise ValueError('Development fixture must be clean before the experiment')
+    relative, name = subject.split(':')
+    source = contained_path(repo, relative)
+    subprocess.check_output(['git', '-C', str(repo), 'ls-files', '--error-unmatch', '--', relative])
+    original = source.read_bytes()
+    original_mode = stat.S_IMODE(source.stat().st_mode)
+    text = original.decode()
+    head = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD']).decode().strip()
+    profile = json.loads(mutation_spec.read_text()) if mutation_spec is not None else None
+    source_roots = []
+    if mutation_spec is not None:
+        if (not isinstance(profile, dict) or set(profile) != {
+                'schema_version', 'subject', 'repo_head', 'source_sha256', 'source_roots',
+                'body', 'signature', 'parse_suffix'} or type(profile['schema_version']) is not int
+                or profile['schema_version'] != 1 or profile['subject'] != subject
+                or profile['repo_head'] != head or profile['source_sha256'] != sha(source)):
+            raise ValueError('Mutation profile must match the pinned subject, revision and bytes')
+        source_roots = profile['source_roots']
+        if (not isinstance(source_roots, list) or not source_roots
+                or not all(isinstance(root, str) and root for root in source_roots)):
+            raise ValueError('Mutation profile requires nonempty source_roots')
+        roots = [contained_path(repo, root) for root in source_roots]
+        if not all(root.is_dir() for root in roots) or not any(source.is_relative_to(r) for r in roots):
+            raise ValueError('Source roots must be existing directories covering the subject')
+    body, signature, parse_error = mutations(text, name, profile)
+    unrelated = contained_path(repo, source_roots[0] if source_roots else '.') / (
+        'cami_development_unrelated' + source.suffix)
+    if unrelated.exists() or unrelated.is_symlink():
+        raise ValueError('Unrelated development fixture path already exists')
     environment = {**os.environ, 'XDG_STATE_HOME': str(out / 'state'),
-                   'XDG_CACHE_HOME': str(out / 'cache')}
+                   'XDG_CACHE_HOME': str(cache)}
+    runtime = None
+    if source.suffix in ('.ts', '.tsx', '.js', '.jsx'):
+        runtime = json.loads(subprocess.check_output([
+            sys.executable, '-c', 'import json; from cami.typescript_runtime import runtime_identity; '
+            'print(json.dumps(runtime_identity()))'], env=environment))
+        if not runtime['compiler'] or not runtime['node_version']:
+            raise ValueError('A prepared TypeScript compiler and Node runtime are required')
+    out.mkdir(parents=True, exist_ok=False)
     commands = []
     phases = []
-    manifest = dict(schema_version=1, purpose='development_product_check_not_research_labels',
+    manifest = dict(schema_version=2, purpose='development_product_check_not_research_labels',
                     repo=str(repo), subject=subject,
-                    repo_head=subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD']).decode().strip(),
+                    repo_head=head, source_roots=source_roots, cache_directory=str(cache),
+                    mutation_profile=profile,
+                    mutation_profile_sha256=sha(mutation_spec) if mutation_spec else None,
+                    typescript_runtime=runtime,
                     cami_head=subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip(),
                     driver_sha256=sha(Path(__file__)), original_source_sha256=sha(source),
+                    original_source_mode=original_mode,
                     commands=commands, phases=phases, status='running')
 
     def save():
@@ -53,6 +125,8 @@ def run(repo: Path, subject: str, out: Path):
     def cli(label, *args, expected_exit=0):
         command = [sys.executable, '-m', 'cami.cli', 'memory', *args,
                    '--repo', str(repo), '--format', 'json']
+        for root in source_roots:
+            command.extend(['--source-root', root])
         process = subprocess.run(command, capture_output=True, env=environment)
         stdout = out / f'{label}.stdout.json'
         stderr = out / f'{label}.stderr.txt'
@@ -64,9 +138,6 @@ def run(repo: Path, subject: str, out: Path):
         assert process.returncode == expected_exit, (label, process.returncode, process.stderr)
         return json.loads(process.stdout)
 
-    unrelated = repo / 'cami_development_unrelated.py'
-    if unrelated.exists():
-        raise ValueError('Unrelated development fixture path already exists')
     try:
         context = cli('origin', 'context', subject)
         assert len(context['code']) == 1
@@ -91,13 +162,14 @@ def run(repo: Path, subject: str, out: Path):
             ('unrelated', text, 'fact', 'fact'),
             ('body', body, 'fact', 'fact'),
             ('signature', signature, 'fact', 'signature_mismatch'),
-            ('parse', text + '\ndef cami_invalid(:\n', 'parse_error', 'parse_error'),
+            ('parse', parse_error, 'parse_error', 'parse_error'),
             ('delete', None, 'subject_absent', 'subject_absent'),
             ('revert', text, 'fact', 'fact'),
         ]
         for phase, content, existence, sig in scenarios:
             if phase == 'unrelated':
-                unrelated.write_text('def unrelated():\n    return 1\n')
+                unrelated.write_text('def unrelated():\n    return 1\n' if source.suffix == '.py'
+                                     else 'export function unrelated() { return 1; }\n')
             elif unrelated.exists():
                 unrelated.unlink()
             if content is None:
@@ -111,6 +183,8 @@ def run(repo: Path, subject: str, out: Path):
             expected = {'symbol_exists': existence, 'signature_equals': sig}
             assert actual == expected, (phase, actual, expected)
             if phase == 'unrelated':
+                assert any(c['path'] == unrelated.relative_to(repo).as_posix()
+                           and c['status'] == 'present' for c in result['coverage'])
                 assert len(result['notes']) == 1 and not result['withheld']
             else:
                 assert not result['notes']
@@ -142,11 +216,14 @@ def run(repo: Path, subject: str, out: Path):
     finally:
         try:
             source.write_bytes(original)
+            source.chmod(original_mode)
             if unrelated.exists():
                 unrelated.unlink()
             manifest['restored_source_sha256'] = sha(source)
+            manifest['restored_source_mode'] = stat.S_IMODE(source.stat().st_mode)
             manifest['final_git_status'] = subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']).decode()
             assert manifest['restored_source_sha256'] == manifest['original_source_sha256']
+            assert manifest['restored_source_mode'] == original_mode
             assert not manifest['final_git_status']
         except BaseException:
             manifest['status'] = 'failed'
@@ -162,6 +239,9 @@ if __name__ == '__main__':
     parser.add_argument('--repo', type=Path, required=True)
     parser.add_argument('--subject', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--mutation-spec', type=Path)
+    parser.add_argument('--cache-dir', type=Path)
     args = parser.parse_args()
-    result = run(args.repo, args.subject, args.out)
+    result = run(args.repo, args.subject, args.out,
+                 mutation_spec=args.mutation_spec, cache_dir=args.cache_dir)
     print(json.dumps({k: result[k] for k in ('status', 'repo_head', 'subject', 'phases')}, indent=2))

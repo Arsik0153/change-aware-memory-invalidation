@@ -1,0 +1,197 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_python_cli_lifecycle_and_restoration[True] ________________
+
+fixture_repo = PosixPath('/tmp/pytest-of-root/pytest-169/test_python_cli_lifecycle_and_0/repo')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-169/test_python_cli_lifecycle_and_0')
+executable = True
+
+    @pytest.mark.parametrize("executable", [False, True])
+    def test_python_cli_lifecycle_and_restoration(fixture_repo, tmp_path, executable):
+        if executable:
+            (fixture_repo / "subject.py").chmod(0o755)
+            subprocess.run(["git", "-C", str(fixture_repo), "add", "."], check=True)
+            subprocess.run(["git", "-C", str(fixture_repo), "-c", "user.name=Fixture",
+                            "-c", "user.email=fixture@example.invalid", "commit", "-qm", "executable"],
+                           check=True)
+>       result = memory_driver.run(fixture_repo, 'subject.py:sample', tmp_path / 'evidence')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_product_memory_driver.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repo = PosixPath('/tmp/pytest-of-root/pytest-169/test_python_cli_lifecycle_and_0/repo')
+subject = 'subject.py:sample'
+out = PosixPath('/tmp/pytest-of-root/pytest-169/test_python_cli_lifecycle_and_0/evidence')
+
+    def run(repo: Path, subject: str, out: Path, *, mutation_spec: Path | None = None,
+            cache_dir: Path | None = None):
+        repo = repo.resolve()
+        out = out.resolve()
+        cache = cache_dir.resolve() if cache_dir is not None else out / 'cache'
+        if out.is_relative_to(repo) or cache.is_relative_to(repo):
+            raise ValueError('Evidence and cache directories must be outside the fixture repository')
+        if out.exists():
+            raise ValueError('Evidence directory must be new')
+        top = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', '--show-toplevel'])
+        if Path(top.decode().strip()).resolve() != repo:
+            raise ValueError('Fixture must be the repository root')
+        if subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']):
+            raise ValueError('Development fixture must be clean before the experiment')
+        relative, name = subject.split(':')
+        source = contained_path(repo, relative)
+        subprocess.check_output(['git', '-C', str(repo), 'ls-files', '--error-unmatch', '--', relative])
+        original = source.read_bytes()
+        text = original.decode()
+        head = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD']).decode().strip()
+        profile = json.loads(mutation_spec.read_text()) if mutation_spec is not None else None
+        source_roots = []
+        if mutation_spec is not None:
+            if (not isinstance(profile, dict) or set(profile) != {
+                    'schema_version', 'subject', 'repo_head', 'source_sha256', 'source_roots',
+                    'body', 'signature', 'parse_suffix'} or type(profile['schema_version']) is not int
+                    or profile['schema_version'] != 1 or profile['subject'] != subject
+                    or profile['repo_head'] != head or profile['source_sha256'] != sha(source)):
+                raise ValueError('Mutation profile must match the pinned subject, revision and bytes')
+            source_roots = profile['source_roots']
+            if (not isinstance(source_roots, list) or not source_roots
+                    or not all(isinstance(root, str) and root for root in source_roots)):
+                raise ValueError('Mutation profile requires nonempty source_roots')
+            roots = [contained_path(repo, root) for root in source_roots]
+            if not all(root.is_dir() for root in roots) or not any(source.is_relative_to(r) for r in roots):
+                raise ValueError('Source roots must be existing directories covering the subject')
+        body, signature, parse_error = mutations(text, name, profile)
+        unrelated = contained_path(repo, source_roots[0] if source_roots else '.') / (
+            'cami_development_unrelated' + source.suffix)
+        if unrelated.exists() or unrelated.is_symlink():
+            raise ValueError('Unrelated development fixture path already exists')
+        environment = {**os.environ, 'XDG_STATE_HOME': str(out / 'state'),
+                       'XDG_CACHE_HOME': str(cache)}
+        runtime = None
+        if source.suffix in ('.ts', '.tsx', '.js', '.jsx'):
+            runtime = json.loads(subprocess.check_output([
+                sys.executable, '-c', 'import json; from cami.typescript_runtime import runtime_identity; '
+                'print(json.dumps(runtime_identity()))'], env=environment))
+            if not runtime['compiler'] or not runtime['node_version']:
+                raise ValueError('A prepared TypeScript compiler and Node runtime are required')
+        out.mkdir(parents=True, exist_ok=False)
+        commands = []
+        phases = []
+        manifest = dict(schema_version=2, purpose='development_product_check_not_research_labels',
+                        repo=str(repo), subject=subject,
+                        repo_head=head, source_roots=source_roots, cache_directory=str(cache),
+                        mutation_profile=profile,
+                        mutation_profile_sha256=sha(mutation_spec) if mutation_spec else None,
+                        typescript_runtime=runtime,
+                        cami_head=subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip(),
+                        driver_sha256=sha(Path(__file__)), original_source_sha256=sha(source),
+                        commands=commands, phases=phases, status='running')
+    
+        def save():
+            (out / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+    
+        def cli(label, *args, expected_exit=0):
+            command = [sys.executable, '-m', 'cami.cli', 'memory', *args,
+                       '--repo', str(repo), '--format', 'json']
+            for root in source_roots:
+                command.extend(['--source-root', root])
+            process = subprocess.run(command, capture_output=True, env=environment)
+            stdout = out / f'{label}.stdout.json'
+            stderr = out / f'{label}.stderr.txt'
+            stdout.write_bytes(process.stdout)
+            stderr.write_bytes(process.stderr)
+            commands.append(dict(label=label, command=command, exit_code=process.returncode,
+                                 stdout_sha256=sha(stdout), stderr_sha256=sha(stderr)))
+            save()
+            assert process.returncode == expected_exit, (label, process.returncode, process.stderr)
+            return json.loads(process.stdout)
+    
+        try:
+            context = cli('origin', 'context', subject)
+            assert len(context['code']) == 1
+            origin = str(out / 'origin.stdout.json')
+            ids = {}
+            for kind in ('symbol_exists', 'signature_equals', 'note'):
+                extra = ['--note-key', 'development-source-review', '--text',
+                         'Development-only manual note bound to the original source.'] if kind == 'note' else []
+                receipt = cli(f'remember-{kind}', 'remember', kind, subject,
+                              '--from-context', origin, '--request-id', f'dev-{kind}', *extra)
+                ids[kind] = receipt['memory_id']
+                assert cli(f'retry-{kind}', 'remember', kind, subject, '--from-context', origin,
+                           '--request-id', f'dev-{kind}', *extra) == receipt
+            initial = cli('initial', 'context', subject)
+            checks = {f['record']['payload']['type']: f['state']['check'] for f in initial['facts']}
+            assert set(checks) == {'symbol_exists', 'signature_equals'}
+            assert not initial['withheld'] and len(initial['notes']) == 1
+            stable = cli('stable', 'context', subject)
+            assert stable['memory_generation_id'] == initial['memory_generation_id']
+            assert stable['facts'] == initial['facts']
+            scenarios = [
+                ('unrelated', text, 'fact', 'fact'),
+                ('body', body, 'fact', 'fact'),
+                ('signature', signature, 'fact', 'signature_mismatch'),
+                ('parse', parse_error, 'parse_error', 'parse_error'),
+                ('delete', None, 'subject_absent', 'subject_absent'),
+                ('revert', text, 'fact', 'fact'),
+            ]
+            for phase, content, existence, sig in scenarios:
+                if phase == 'unrelated':
+                    unrelated.write_text('def unrelated():\n    return 1\n' if source.suffix == '.py'
+                                         else 'export function unrelated() { return 1; }\n')
+                elif unrelated.exists():
+                    unrelated.unlink()
+                if content is None:
+                    source.unlink()
+                else:
+                    source.write_bytes(content.encode())
+                result = cli(phase, 'context', subject)
+                actual = {f['record']['payload']['type']: 'fact' for f in result['facts']}
+                actual.update({f['record']['payload']['type']: f['reason'] for f in result['withheld']
+                               if f['record']['payload']['type'] != 'note'})
+                expected = {'symbol_exists': existence, 'signature_equals': sig}
+                assert actual == expected, (phase, actual, expected)
+                if phase == 'unrelated':
+                    assert len(result['notes']) == 1 and not result['withheld']
+                else:
+                    assert not result['notes']
+                    note = next(f for f in result['withheld'] if f['record']['payload']['type'] == 'note')
+                    assert note['reason'] == 'manual_review_required'
+                if phase in ('unrelated', 'body'):
+                    assert all(f['state']['type'] == 'carried' and
+                               f['state']['check'] == checks[f['record']['payload']['type']]
+                               for f in result['facts'])
+                if phase in ('signature', 'parse', 'delete'):
+                    verdict = 'insufficient_evidence' if phase == 'parse' else 'contradicted'
+                    assert all(f['state']['check']['verdict'] == verdict
+                               for f in result['withheld'] if f['record']['payload']['type'] != 'note')
+                phases.append(dict(phase=phase, expected=expected, observed=actual,
+                                   source_sha256=sha(source) if source.exists() else None,
+                                   notes_available=len(result['notes'])))
+                save()
+            update = cli('review-note', 'update', ids['note'], '--if-revision', '1',
+                         '--from-context', str(out / 'revert.stdout.json'), '--request-id', 'dev-review',
+                         '--text', 'Development-only note explicitly reviewed against restored bytes.')
+            assert update['revision'] == 2
+            reviewed = cli('reviewed', 'context', subject)
+            assert len(reviewed['notes']) == 1 and not reviewed['withheld']
+            assert reviewed['notes'][0]['state']['label'] == 'manual_assertion'
+            history = cli('signature-history', 'history', ids['signature_equals'])
+            assert [c['reason'] for c in history['checks']] == [
+                'predicate_matches', 'signature_mismatch', 'parse_error', 'subject_absent', 'predicate_matches']
+            manifest['status'] = 'checks_passed_cleanup_pending'
+        finally:
+            try:
+                source.write_bytes(original)
+                if unrelated.exists():
+                    unrelated.unlink()
+                manifest['restored_source_sha256'] = sha(source)
+                manifest['final_git_status'] = subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']).decode()
+                assert manifest['restored_source_sha256'] == manifest['original_source_sha256']
+>               assert not manifest['final_git_status']
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError
+
+scripts/check_product_memory.py:219: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_product_memory_driver.py::test_python_cli_lifecycle_and_restoration[True]
+1 failed, 13 deselected in 5.53s

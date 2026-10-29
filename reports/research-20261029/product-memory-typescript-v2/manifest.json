@@ -1,0 +1,532 @@
+{
+  "schema_version": 2,
+  "purpose": "development_product_check_not_research_labels",
+  "repo": "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+  "subject": "src/shared/lib/format-count.ts:formatCount",
+  "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+  "source_roots": [
+    "src/shared/lib"
+  ],
+  "cache_directory": "/root/.cache",
+  "mutation_profile": {
+    "schema_version": 1,
+    "subject": "src/shared/lib/format-count.ts:formatCount",
+    "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+    "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+    "source_roots": [
+      "src/shared/lib"
+    ],
+    "body": {
+      "old": "return `${count} ${word}`;",
+      "new": "return \"CAMI development mutation\";"
+    },
+    "signature": {
+      "old": "count: number,",
+      "new": "count: number | string,"
+    },
+    "parse_suffix": "\nexport function camiInvalid(:\n"
+  },
+  "mutation_profile_sha256": "bcea95f1d534148ee1c6ddea1882be62715133e81a01e658ded5f9628e2b15a9",
+  "typescript_runtime": {
+    "manifest": "27f1d58fb04e5856b060799c4705a2048f5017824ee04dc71acd8fa73a66d452",
+    "node": "/root/.nvm/versions/node/v24.15.0/bin/node",
+    "compiler": "569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39",
+    "node_version": "v24.15.0"
+  },
+  "cami_head": "64b280ffda0a84e9e240530deeb60183be4e5298",
+  "driver_sha256": "097736e2013c6d1bd899c01b9ee78d7657541ba4bb124438d0aa97f405f2628e",
+  "original_source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+  "original_source_mode": 420,
+  "commands": [
+    {
+      "label": "origin",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f4af29dd10c5a98fe32db08c761c9367827a0ed310e3c1d1b43b962af4b83e7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-symbol_exists",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "symbol_exists",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-symbol_exists",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "daf7afecfd4e8163f6ca02acf46508307c263da4c79045c5c4813b4ea0776928",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-symbol_exists",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "symbol_exists",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-symbol_exists",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "daf7afecfd4e8163f6ca02acf46508307c263da4c79045c5c4813b4ea0776928",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-signature_equals",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "signature_equals",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-signature_equals",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "432106d4a562d01e1de6ecf2420824204140f1c4b7793888efefc5e106f8f9a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-signature_equals",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "signature_equals",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-signature_equals",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "432106d4a562d01e1de6ecf2420824204140f1c4b7793888efefc5e106f8f9a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "note",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-note",
+        "--note-key",
+        "development-source-review",
+        "--text",
+        "Development-only manual note bound to the original source.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "729349bd3e0b81d37e020824edaa90448e132e3fcf49650013b395a25f1abae9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "note",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/origin.stdout.json",
+        "--request-id",
+        "dev-note",
+        "--note-key",
+        "development-source-review",
+        "--text",
+        "Development-only manual note bound to the original source.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "729349bd3e0b81d37e020824edaa90448e132e3fcf49650013b395a25f1abae9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "initial",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f81bedd5a898a4115c526fc1612d955b953f29056f44eff6d47e3454e662507d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "stable",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "625731bc5cf14214687510be7bdf89296aa6ebbabb8e243a3e11bf337faf6d26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "unrelated",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c130ecd84e81276405a9f6c6b62a3f91f79b09f39122541e94a482586de53a63",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "body",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "69ba1c5e65fb1a5bef1af4d4073925c3c9d9d2d99cda8d7d8d042468fa8ae1fc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "signature",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "2501f8a7a8c315f75cf0fcf523e9a67f0da5f95c7100c4c3889ed63b67631869",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "parse",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "713f0f3ca27666cbe8288dde31324f04f21b440123f37fd50c1e2c9a21bdba3b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "delete",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7acf14ac45f557e688effb0f35df0524b65b479a0997db17a603907ea0f31a07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "revert",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7aec06a172196e83124758e3f262a48881acd0aa8258c0ebcb0e97c8dd8367a6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "review-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "update",
+        "80aa7296c12783850fca9d7bbff65fa4626254d401b2a5a3c01c7c4f3b50430b",
+        "--if-revision",
+        "1",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/evidence-v2/revert.stdout.json",
+        "--request-id",
+        "dev-review",
+        "--text",
+        "Development-only note explicitly reviewed against restored bytes.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7d7b56d2afbbbb63fd414bec380b18a9b87ccb329be08579a6d496e0e36a8872",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "reviewed",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/shared/lib/format-count.ts:formatCount",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6b7e2ae20703a3dd6281f79c8b9d2caec9c5fd7816dec2d6cce99be475d59939",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "signature-history",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "history",
+        "6c1d7582971c50b5917a29420772f6ffbaefe494011ee089f8d0d3b177ebe6cd",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-typescript-20261029/repo",
+        "--format",
+        "json",
+        "--source-root",
+        "src/shared/lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "066f0bbe2503c9edc4c5a3e4710a922b66400eb5c593eeb6ed7f5b8fe0eb7d27",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "phases": [
+    {
+      "phase": "unrelated",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+      "notes_available": 1
+    },
+    {
+      "phase": "body",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "ba4a24feababa104a39cca6133cdad9d8faba05ce2f46c676603f6312d1c1316",
+      "notes_available": 0
+    },
+    {
+      "phase": "signature",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "source_sha256": "cf245170230c614f409229207cbaf8d934256b6a3342dae7367e6f2a7ab11a4b",
+      "notes_available": 0
+    },
+    {
+      "phase": "parse",
+      "expected": {
+        "symbol_exists": "parse_error",
+        "signature_equals": "parse_error"
+      },
+      "observed": {
+        "signature_equals": "parse_error",
+        "symbol_exists": "parse_error"
+      },
+      "source_sha256": "6ef13e03262f8f762dd0f900be8da3941480d5979aa68bed239d6fdb59eee40c",
+      "notes_available": 0
+    },
+    {
+      "phase": "delete",
+      "expected": {
+        "symbol_exists": "subject_absent",
+        "signature_equals": "subject_absent"
+      },
+      "observed": {
+        "signature_equals": "subject_absent",
+        "symbol_exists": "subject_absent"
+      },
+      "source_sha256": null,
+      "notes_available": 0
+    },
+    {
+      "phase": "revert",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "signature_equals": "fact",
+        "symbol_exists": "fact"
+      },
+      "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+      "notes_available": 0
+    }
+  ],
+  "status": "passed",
+  "restored_source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+  "restored_source_mode": 420,
+  "final_git_status": ""
+}

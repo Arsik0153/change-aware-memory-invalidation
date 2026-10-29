@@ -542,3 +542,24 @@ Read-only check_dataset на restored real dataset также прошёл: 63 r
 0 supplied receipts, 63 preview runs, 630 known_incomplete provenance, labels_path=null.
 Это проверка согласованности входов, без policy execution и без научного admission.
 Evidence: confirmation-boundary-full-verification и restored-input-integrity-v2.json.
+
+## Четырнадцатый этап: product memory на настоящем TypeScript-репозитории
+
+В отдельном clone локального seo-articles (HEAD 85070f607449b32dc3d039a81a5951749ec2aa34)
+выбран format-count.ts:formatCount. После исходного context и до мутаций профиль
+зафиксирован коммитом 64b280f. Шесть authored mutations проверяют те же predicates,
+что Python checks: unrelated/body carry, signature contradiction, parse uncertainty,
+delete contradiction, restored facts и sticky manual-review. Target code не исполняется.
+
+Driver получил frozen profile с HEAD/source hash/unique anchors, source roots и явный
+compiler cache; output/cache не могут оказаться внутри repo, traversal/symlinks запрещены.
+Оба TypeScript прогона прошли по18CLI commands. Reviewer независимо проверил v1,
+36stream hashes,21source objects и все actual verdicts. Найденная потеря executable
+mode при delete/recreate воспроизведена отдельным failing test и исправлена;14tests pass.
+Повтор v2 также passed,36hashes verified,исходные bytes/mode восстановлены.
+Оригинальная рабочая копия пользователя осталась чистой. Реальных labels/receipts нет.
+
+Подробнее: product_memory_real_repositories_2026-10-29.md. Raw contexts приватного
+локального приложения остаются в ignored runs; committed manifests содержат hashes.
+Следующий шаг — проверить полную совместимость и продолжить аудит исследовательских
+границ/готовности независимой разметки; эта product проверка не снимает main admission.

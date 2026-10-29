@@ -95,3 +95,45 @@ State изолирован; установленный compiler cache испол
 Node/TypeScript identity. Исходная рабочая копия пользователя не меняется; опыт
 идёт в отдельном disposable clone. Полные локальные contexts остаются в runs,
 в Git попадут компактные результаты и hashes, без копирования исходников приложения.
+
+### Результат TypeScript
+
+Оба запуска завершены: по 18 CLI-команд, все exit 0. Независимый reviewer
+(gpt-6.1-sol) проверил v1: 36 hashes stdout/stderr, 21 сохранённый source object,
+точные bytes всех мутаций, фактические verdicts, carried check IDs, sticky review
+заметки и revision 2 после явного обновления. Clone и исходная рабочая копия
+чисты. В отдельном executable Python fixture reviewer воспроизвёл потерю mode
+после delete/recreate. Driver исправлен: сохраняет и восстанавливает stat mode;
+регрессионный тест сначала упал, после исправления весь driver suite — 14 passed.
+
+Повтор TypeScript v2 с исправленным driver также прошёл все 18 команд. Проверены
+36 stream hashes и совпадение driver/profile hashes; source SHA и mode восстановлены.
+Дополнительно unrelated-файл должен присутствовать в capture coverage: проверяется
+реальное изменение захваченной области, а не файл за её пределами. Более широкий
+полный suite на этом этапе ещё не запускался; предыдущий результат 982 passed
+относится к HEAD 042de36 до расширения driver.
+
+Использован TypeScript 6.0.3 с Node v24.15.0. Manifest сохраняет compiler SHA-256,
+lockfile fingerprint, source roots и явный путь cache. Shared cache нужен только
+для уже установленного trusted compiler; durable memory state изолирован на запуск.
+Это не повторение Python с иным runtime приложения: target TypeScript не исполнялся.
+
+```bash
+.venv/bin/python scripts/check_product_memory.py \
+  --repo runs/product-typescript-20261029/repo \
+  --subject src/shared/lib/format-count.ts:formatCount \
+  --mutation-spec examples/product_memory/seo_articles_typescript.json \
+  --cache-dir /root/.cache \
+  --out runs/product-typescript-repeat-evidence
+```
+
+Путь cache заменяется на локальный каталог с подготовленным compiler; установки
+по сети driver не выполняет. Mutation profile должен совпасть с Git HEAD, subject,
+source hash и уникальными anchors. Без profile сохранён прежний Python сценарий.
+Output/cache внутри repo, parent traversal и symlink subjects отклоняются до записи.
+
+Evidence: `reports/research-20261029/product-memory-typescript-{v1,v2}` и
+`product-memory-typescript-review.json`. Raw application contexts и state сохранены
+только локально в `runs/product-typescript-20261029/evidence-{v1,v2}`; в Git находятся
+компактные manifests с hashes. Эта проверка охватывает одну намеренно выбранную
+TypeScript функцию и не оценивает точность на популяции репозиториев.

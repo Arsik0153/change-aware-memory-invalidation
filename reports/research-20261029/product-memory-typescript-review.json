@@ -1,0 +1,15 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "scope": "driver, tests, TypeScript evidence-v1, pinned profile, restoration",
+  "result": "No blocking findings for pinned TypeScript fixture",
+  "independent_checks": [
+    "13 tests passed",
+    "18 exit-0 commands, 36 stream hashes",
+    "frozen profile bytes and driver hash",
+    "21 persisted source objects and exact mutated bytes",
+    "actual verdicts, carried check identity, note review, clean fixture and original worktree"
+  ],
+  "finding": "Executable source mode lost after delete/recreate on a separate 0755 fixture",
+  "resolution": "Preserve original stat mode; regression reproduced failing before fix, 14 tests pass afterward; TypeScript rerun v2 passed",
+  "post_fix_independent_review": false
+}
