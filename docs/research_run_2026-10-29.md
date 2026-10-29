@@ -724,3 +724,28 @@ inputs и clean source snapshots до/после совпали. Это инъе
 Далее: связать полученные development результаты с вопросами исследования и явно
 отделить инженерную проверку, synthetic cost observations и недостающую независимую
 оценку качества на реальных переходах.
+
+## Девятнадцатый этап: научный разбор накопленных результатов
+
+Добавлен research_findings_2026-10-29_ru.md: вопросы исследования, определения
+exposure/retention, synthetic structural результаты, статистические ограничения,
+product checks, исторические environments и условия допуска основного cohort.
+Это development synthesis, не заявление о подтверждении основной гипотезы.
+Исходное исследовательское предложение и submission documents не переписаны.
+
+Машинная проверка сверяет арифметику, шесть строк bootstrap-таблицы, counts
+product CLI/parent functions/cohort, привязку полного suite к44c77d3 и13локальных
+ссылок. Сохранены hashes16источников. Первая попытка checker предположила одинаковую
+схему v1/v2 audit и остановилась на KeyError attempts; исправлен путь к существующему
+v1 summary.container_attempts, log ошибки сохранён. Данные не менялись.
+
+Независимый reviewer повторил checker и проверил математическую интерпретацию,
+границы oracle independence, единицы измерения, admission и хронологию: существенных
+замечаний нет. Проверка текста не повторяет исходные эксперименты и quantiles.
+Evidence: reports/research-20261029/research-synthesis-v1. В docs/README.md добавлена
+ссылка на связный разбор, чтобы важные выводы не требовали чтения всей хронологии.
+
+Далее: проверить фоновое обслуживание product memory на настоящем локальном
+TypeScript repository, читая persisted state до любого foreground context,
+который сам мог бы обновить память. План мутаций и границы проверки будут
+зафиксированы до запуска; это engineering development, не real-label experiment.

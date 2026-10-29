@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "scope": "Retained report extraction, arithmetic, bootstrap table cells, local link destinations; not a new experiment",
+  "sources_sha256": {
+    "docs/research_findings_2026-10-29_ru.md": "8addfb4d841d226ea2161bf806e4f39958dab9212c4810a645fc7eb6aac36c3b",
+    "reports/research-20261029/structural-stress-v1/results.json": "5f9940fe6e23729a74184eb795703221ef8b32c392b2af2d4e11a379df6fb5cc",
+    "reports/research-20261029/bootstrap-study-v1/summary.json": "306acb3e87d3af29e8e47c9c66993e190f743ef7cb9066c29ecfaf1acb95fd4d",
+    "reports/research-20261029/product-memory-real/click-v2/manifest.json": "6bf9b62915802d175d69cc100ef85a2fdc6cdaf2efa06246ccf38feab0bbbe4f",
+    "reports/research-20261029/product-memory-real/requests-v2/manifest.json": "58fafa1744636bf37864c430bf8a835eda9b4cdab2ef68898b9574d94844ea05",
+    "reports/research-20261029/product-memory-typescript-v2/manifest.json": "88f097e39433f6ac693bd12a4e8fbe8cd5827f3d0ca2457daf77fc8d09cf3b57",
+    "reports/research-20261029/parent-functions-v1/audit.json": "c58723476d2a1726fab1cc3c4d2e49cc555740dc5c82dd706ab5c865b0537582",
+    "reports/research-20261029/parent-functions-v2/audit.json": "01a6004d2192d04d82d3f646acb3fbe2d22aa1d66ece7ac7f7acd067c426e059",
+    "reports/research-20261029/restoration-readiness.json": "7d44a6ce131067f763246712c3844ea41d89c57ec796d07c588101fe8c8cbcf8",
+    "reports/research-20261029/provenance-restoration-v1/summary.json": "28e0c89e8bcac51a3c067c55918f815545331fa32778d29ee31e79227d3427ae",
+    "reports/research-20261029/parent-function-full-verification/checks.json": "9ab4b56500f717348bad2fe4fd59a1ae20eaa472008a66fe26a8f9d89e785b76",
+    "reports/research-20261029/parent-function-full-verification/pytest.log": "c2d8f4fbb0090f66e27ec81945341f6c4018687f022ecef9cbd76f90d4b5bc74",
+    "reports/research-20261029/parent-function-full-verification/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "reports/research-20261029/parent-function-full-verification/mypy.log": "0f0451a70963ae73be675ad208919e74e8bf1cfecdd4689aabe892085d717fc7",
+    "reports/research-20261029/parent-environment-progress-tests.log": "94bd42911e67507e79cb0f0b50bb162c92a1ce4467075009d51756f67fc0faaa",
+    "reports/research-20261029/parent-environment-progress-v1/audit.json": "984354e2d88918495a288d98b8a1ad019f80369ae2b27bc234124079120cdbb6"
+  },
+  "structural_stress": {
+    "status": "passed",
+    "source_head": "0242dfd3e6feca141005eaf8b6e5cc229e3af114",
+    "seeds": 12,
+    "policy_runs": 36,
+    "child_claim_revision_items_per_variant": 5184,
+    "checked_states_all_variants": 15552,
+    "parent_and_child_oracle_checks": 5472,
+    "mismatches": 0,
+    "maintenance_validations": {
+      "all_validate": 5184,
+      "original_incomplete": 5184,
+      "closed_structural": 1736
+    },
+    "saved_calls": 3448,
+    "saved_fraction": 0.6651234567901234,
+    "scheduled_events": {
+      "unrelated": 22,
+      "body": 32,
+      "signature": 21,
+      "duplicate": 19,
+      "restore": 43,
+      "remove": 18,
+      "parse": 18,
+      "file_delete": 25,
+      "no_change": 18
+    },
+    "effective_events": {
+      "unrelated": 22,
+      "body": 31,
+      "signature": 21,
+      "duplicate": 19,
+      "restore": 32,
+      "remove": 18,
+      "parse": 18,
+      "file_delete": 24,
+      "no_change": 0
+    },
+    "oracle_child_truth": {
+      "supported": 3761,
+      "contradicted": 751,
+      "uncertain": 672
+    },
+    "artifact_hashes_verified": 13153,
+    "source_snapshots_match": true,
+    "limitations": [
+      "Synthetic authored grammar; common parent fixture and some shared history prefixes",
+      "Implementation-independent oracle shares CPython syntax frontend; not independent human authorship",
+      "Counts exclude provenance preparation, oracle work, indexing and Git I/O; no speedup or population inference",
+      "Scheduled operations can be no-ops; effective changes separately counted",
+      "No real labels, real heldout execution or real-cohort admission"
+    ]
+  },
+  "bootstrap_scenarios": {
+    "dense-k20": {
+      "availability": 1.0,
+      "available": 100,
+      "bias_when_estimate_defined": -0.002776594968522811,
+      "conditional_coverage": 0.97,
+      "covered": 97,
+      "defined_estimates": 100,
+      "expected_unavailable_count": 0.0,
+      "joint_available_and_covered": 0.97,
+      "max_mcse_conditional": 0.05,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": 0.07147688268784484,
+      "trials": 100,
+      "unavailable_reasons": {}
+    },
+    "dense-k5": {
+      "availability": 1.0,
+      "available": 100,
+      "bias_when_estimate_defined": -0.0004992122405696187,
+      "conditional_coverage": 0.84,
+      "covered": 84,
+      "defined_estimates": 100,
+      "expected_unavailable_count": 0.0,
+      "joint_available_and_covered": 0.84,
+      "max_mcse_conditional": 0.05,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": 0.1318956180502954,
+      "trials": 100,
+      "unavailable_reasons": {}
+    },
+    "dense-k50": {
+      "availability": 1.0,
+      "available": 100,
+      "bias_when_estimate_defined": -0.0010576418039363183,
+      "conditional_coverage": 0.98,
+      "covered": 98,
+      "defined_estimates": 100,
+      "expected_unavailable_count": 0.0,
+      "joint_available_and_covered": 0.98,
+      "max_mcse_conditional": 0.05,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": 0.04611649939293452,
+      "trials": 100,
+      "unavailable_reasons": {}
+    },
+    "sparse-k20": {
+      "availability": 0.01,
+      "available": 1,
+      "bias_when_estimate_defined": 0.005844938003858519,
+      "conditional_coverage": 1.0,
+      "covered": 1,
+      "defined_estimates": 87,
+      "expected_unavailable_count": 99.79216488055128,
+      "joint_available_and_covered": 0.01,
+      "max_mcse_conditional": 0.5,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": 0.2,
+      "trials": 100,
+      "unavailable_reasons": {
+        "zero_denominator": 13,
+        "zero_denominator_in_resample": 86
+      }
+    },
+    "sparse-k5": {
+      "availability": 0.0,
+      "available": 0,
+      "bias_when_estimate_defined": -0.017844155844155843,
+      "conditional_coverage": null,
+      "covered": 0,
+      "defined_estimates": 40,
+      "expected_unavailable_count": 99.99999999885239,
+      "joint_available_and_covered": 0.0,
+      "max_mcse_conditional": null,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": null,
+      "trials": 100,
+      "unavailable_reasons": {
+        "zero_denominator": 60,
+        "zero_denominator_in_resample": 40
+      }
+    },
+    "sparse-k50": {
+      "availability": 0.2,
+      "available": 20,
+      "bias_when_estimate_defined": 0.007634172790386931,
+      "conditional_coverage": 0.95,
+      "covered": 19,
+      "defined_estimates": 100,
+      "expected_unavailable_count": 78.68086009743737,
+      "joint_available_and_covered": 0.19,
+      "max_mcse_conditional": 0.11180339887498948,
+      "max_mcse_unconditional": 0.05,
+      "mean_width_when_available": 0.12691645366888793,
+      "trials": 100,
+      "unavailable_reasons": {
+        "zero_denominator_in_resample": 80
+      }
+    }
+  },
+  "product": {
+    "click": {
+      "commands": 18,
+      "repo_head": "934813e4d421071a1b3db3973c02fe2721359a6e",
+      "subject": "src/click/utils.py:_posixify"
+    },
+    "requests": {
+      "commands": 18,
+      "repo_head": "0e322af87745eff34caffe4df68456ebc20d9068",
+      "subject": "src/requests/utils.py:get_encoding_from_headers"
+    },
+    "typescript": {
+      "commands": 18,
+      "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+      "subject": "src/shared/lib/format-count.ts:formatCount"
+    }
+  },
+  "parent_function_calls": {
+    "v1_returned": 60,
+    "v2_returned": 63,
+    "attempts_each": 63
+  },
+  "real_cohort": {
+    "parent_candidates": 630,
+    "main_child_items": 600,
+    "replay_child_items": 300,
+    "independent_answers": 0,
+    "incomplete": 630
+  },
+  "local_link_destinations_checked": [
+    "../research_proposal.md",
+    "IMPLEMENTATION_SPEC.md#11-метрики-и-честное-сравнение",
+    "../examples/structural_stress/protocol.json",
+    "protocol_1_1_structural_closure_v1.md",
+    "../reports/research-20261029/structural-stress-v1/results.json",
+    "structural_closure_demo_ru.md",
+    "bootstrap_study_2026-10-29.md",
+    "bootstrap_availability_mechanism_2026-10-29.md",
+    "product_memory_real_repositories_2026-10-29.md",
+    "annotation_restoration_2026-10-29.md",
+    "parent_review_instructions_ru.md",
+    "../reports/research-20261029/research-synthesis-v1/",
+    "research_run_2026-10-29.md"
+  ],
+  "limitations": [
+    "Does not rerun bootstrap quantiles, policy runs or Docker probes.",
+    "Narrative interpretation requires separate review; file hashes alone do not establish truth.",
+    "Link fragments are not validated; local destination files/directories are checked."
+  ]
+}

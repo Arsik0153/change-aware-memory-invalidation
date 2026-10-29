@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/root/apps/change-aware-memory-invalidation/reports/research-20261029/research-synthesis-v1/check_sources.py.txt", line 59, in <module>
+    assert parent1['direct_calls_returned'] == 60 and parent1['attempts'] == 63
+                                                      ~~~~~~~^^^^^^^^^^^^
+KeyError: 'attempts'

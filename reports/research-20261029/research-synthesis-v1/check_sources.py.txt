@@ -1,0 +1,100 @@
+"""Check synthesis arithmetic, table cells, local links and retained source hashes.
+
+Run from repository root with --out pointing to a new JSON file.
+This does not rerun experiments or certify labels/independence.
+"""
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--out', type=Path, required=True)
+args = parser.parse_args()
+root = Path.cwd()
+report = root / 'reports/research-20261029'
+article = root / 'docs/research_findings_2026-10-29_ru.md'
+sources = {}
+
+def retain(path):
+    sources[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return path
+
+def load(name):
+    return json.loads(retain(report / name).read_text())
+
+text = retain(article).read_text()
+stress = load('structural-stress-v1/results.json')
+assert stress['status'] == 'passed'
+assert stress['checked_states_all_variants'] == 3 * stress['child_claim_revision_items_per_variant'] == 15552
+assert stress['child_claim_revision_items_per_variant'] == 12 * 18 * 24 == 5184
+assert stress['maintenance_validations'] == {'all_validate':5184, 'original_incomplete':5184, 'closed_structural':1736}
+assert stress['saved_calls'] == 5184 - 1736 == 3448
+assert abs(stress['saved_fraction'] - 3448/5184) < 1e-15
+assert sum(stress['scheduled_events'].values()) == 216
+assert sum(stress['effective_events'].values()) == 185
+assert stress['scheduled_events']['no_change'] == 18
+assert stress['oracle_child_truth'] == {'supported':3761, 'contradicted':751, 'uncertain':672}
+assert sum(stress['oracle_child_truth'].values()) == 5184
+assert stress['mismatches'] == 0 and stress['artifact_hashes_verified'] == 13153
+bootstrap = load('bootstrap-study-v1/summary.json')
+assert bootstrap['truth'] == .1
+assert sum(s['trials'] for s in bootstrap['scenarios'].values()) == 600
+for scenario, s in bootstrap['scenarios'].items():
+    coverage = f"{s['covered']}/{s['available']}" if s['available'] else 'не определено'
+    row = f"| {scenario} | {s['available']}/{s['trials']} | {coverage} | {s['covered']}/{s['trials']} |"
+    assert row in text, row
+product = {}
+for project, name in [('click','product-memory-real/click-v2/manifest.json'),
+                      ('requests','product-memory-real/requests-v2/manifest.json'),
+                      ('typescript','product-memory-typescript-v2/manifest.json')]:
+    d = load(name)
+    assert d['status'] == 'passed' and not d['final_git_status']
+    assert len(d['commands']) == 18 and all(c['exit_code'] == 0 for c in d['commands'])
+    assert d['original_source_sha256'] == d['restored_source_sha256']
+    product[project] = {'commands':18, 'repo_head':d['repo_head'], 'subject':d['subject']}
+parent1 = load('parent-functions-v1/audit.json')
+parent2 = load('parent-functions-v2/audit.json')
+assert parent1['direct_calls_returned'] == 60 and parent1['summary']['container_attempts'] == 63
+assert parent2['direct_calls_returned'] == parent2['attempts'] == 63
+assert parent1['groups'] == parent2['groups'] == 21
+readiness = load('restoration-readiness.json')
+assert readiness['packets'] == readiness['forms']['parent_confirmation_form'] == 630
+assert readiness['forms']['main_population'] == 600
+assert readiness['forms']['replay_population'] == 300
+assert readiness['completed_annotations'] == readiness['parent_receipts'] == 0
+provenance = load('provenance-restoration-v1/summary.json')
+assert sum(provenance[k]['known_incomplete'] for k in ('main','replay')) == 630
+verification = load('parent-function-full-verification/checks.json')
+assert verification['status'] == 'passed' and verification['source_before'] == verification['source_after']
+assert not verification['source_before']['source_status']
+assert verification['source_before']['git_head'].startswith('44c77d3')
+for check in verification['checks']:
+    log = retain(report / 'parent-function-full-verification' / check['log'])
+    assert check['exit_code'] == 0 and sources[str(log.relative_to(root))] == check['log_sha256']
+assert '1046 passed in 459.98s' in (report / 'parent-function-full-verification/pytest.log').read_text()
+assert '51 passed' in retain(report / 'parent-environment-progress-tests.log').read_text()
+progress = load('parent-environment-progress-v1/audit.json')
+assert progress['status'] == 'passed' and progress['fault_injection']
+assert progress['real_docker_executions_completed'] == 3
+assert progress['source_snapshots_match']
+links = []
+for target in re.findall(r'\]\(([^)]+)\)', text):
+    if '://' in target or target.startswith('#'):
+        continue
+    path = (article.parent / target.split('#',1)[0]).resolve()
+    assert path.exists(), target
+    links.append(target)
+result = {'status':'passed', 'scope':'Retained report extraction, arithmetic, bootstrap table cells, local link destinations; not a new experiment',
+          'sources_sha256':sources, 'structural_stress':stress, 'bootstrap_scenarios':bootstrap['scenarios'],
+          'product':product, 'parent_function_calls':{'v1_returned':60,'v2_returned':63,'attempts_each':63},
+          'real_cohort':{'parent_candidates':630,'main_child_items':600,'replay_child_items':300,'independent_answers':0,'incomplete':630},
+          'local_link_destinations_checked':links,
+          'limitations':['Does not rerun bootstrap quantiles, policy runs or Docker probes.',
+                         'Narrative interpretation requires separate review; file hashes alone do not establish truth.',
+                         'Link fragments are not validated; local destination files/directories are checked.']}
+with args.out.open('x') as f:
+    json.dump(result, f, ensure_ascii=False, indent=2)
+    f.write('\n')
+print(f'PASS: {len(sources)} sources retained; 6 bootstrap table rows and {len(links)} local destinations verified')
