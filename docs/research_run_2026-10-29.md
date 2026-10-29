@@ -383,3 +383,28 @@ behavior-uncertainty-before.log, test-authorship-before.log.
 без skipped, ruff и mypy passed. Включён исходный pinned Python3.12 Docker image.
 Начальный и конечный source snapshots совпали; source status пустой, hashes всех
 logs проверены. Evidence: reports/research-20261029/parent-review-full-verification.
+
+## Девятый этап: product memory на реальных локальных исходниках
+
+Гипотеза проверена через публичный CLI на отдельных clean clones Click8.1.8 и
+Requestsv2.32.3: изменение тела сохраняет structural predicates, signature change
+скрывает signature expectation, parse error не доказывает отсутствие, deletion
+доказывает отсутствие в захваченном view. Ручная заметка остаётся needs_review
+после точного byte revert и возвращается только после явного CAS update.
+
+Для каждого repo выполнены 18 команд, включая idempotent registration retries,
+шесть authored mutation phases, history и ручное review. Первый результат независимо
+проверен reviewer gpt-6.1-sol: реальные verdicts, source-object и log hashes, mutation
+bytes и чистые восстановленные clones. Два замечания к driver исправлены: проверка
+contradicted verdict и запись passed только после cleanup. Усиленный v2 повторён
+на обоих repo, 36 exit0; все log hashes и source restoration проверены.
+
+Воспроизводимый инструмент scripts/check_product_memory.py побайтно совпадает с
+проверенным v2 driver. Исходный v1 driver восстановлен из точного текста до исправления
+и сверён с hash, записанным в обоих manifests. Evidence и ограничения:
+[product_memory_real_repositories_2026-10-29.md](product_memory_real_repositories_2026-10-29.md).
+Никаких research labels, child policy runs или API-запросов этот этап не создаёт.
+
+Следующий этап: общий resolver для raw annotations/adjudications и parent batch
+import, который сохраняет оба ответа, disagreement и history. Проверять только
+synthetic fixtures до получения настоящих ответов; реальный пакет остаётся пустым.

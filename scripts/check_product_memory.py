@@ -1,0 +1,167 @@
+"""Development memory checks on real Git fixtures; never creates research labels."""
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def run(repo: Path, subject: str, out: Path):
+    repo = repo.resolve()
+    out = out.resolve()
+    if subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']):
+        raise ValueError('Development fixture must be clean before the experiment')
+    out.mkdir(parents=True, exist_ok=False)
+    relative, name = subject.split(':')
+    source = repo / relative
+    original = source.read_bytes()
+    text = original.decode()
+    function = next(n for n in ast.parse(text).body
+                    if isinstance(n, ast.FunctionDef) and n.name == name)
+    lines = text.splitlines(keepends=True)
+    definition = lines[function.lineno - 1]
+    if definition.count(')') != 1 or not definition.startswith(f'def {name}('):
+        raise ValueError('This development check requires a single-line function signature')
+    body = ''.join(lines[:function.lineno] + ['    return None  # CAMI development mutation\n']
+                   + lines[function.lineno:])
+    signature = ''.join(lines[:function.lineno - 1] +
+                        [definition.replace(')', ', cami_development_flag=False)', 1)] +
+                        lines[function.lineno:])
+    environment = {**os.environ, 'XDG_STATE_HOME': str(out / 'state'),
+                   'XDG_CACHE_HOME': str(out / 'cache')}
+    commands = []
+    phases = []
+    manifest = dict(schema_version=1, purpose='development_product_check_not_research_labels',
+                    repo=str(repo), subject=subject,
+                    repo_head=subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD']).decode().strip(),
+                    cami_head=subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip(),
+                    driver_sha256=sha(Path(__file__)), original_source_sha256=sha(source),
+                    commands=commands, phases=phases, status='running')
+
+    def save():
+        (out / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+
+    def cli(label, *args, expected_exit=0):
+        command = [sys.executable, '-m', 'cami.cli', 'memory', *args,
+                   '--repo', str(repo), '--format', 'json']
+        process = subprocess.run(command, capture_output=True, env=environment)
+        stdout = out / f'{label}.stdout.json'
+        stderr = out / f'{label}.stderr.txt'
+        stdout.write_bytes(process.stdout)
+        stderr.write_bytes(process.stderr)
+        commands.append(dict(label=label, command=command, exit_code=process.returncode,
+                             stdout_sha256=sha(stdout), stderr_sha256=sha(stderr)))
+        save()
+        assert process.returncode == expected_exit, (label, process.returncode, process.stderr)
+        return json.loads(process.stdout)
+
+    unrelated = repo / 'cami_development_unrelated.py'
+    if unrelated.exists():
+        raise ValueError('Unrelated development fixture path already exists')
+    try:
+        context = cli('origin', 'context', subject)
+        assert len(context['code']) == 1
+        origin = str(out / 'origin.stdout.json')
+        ids = {}
+        for kind in ('symbol_exists', 'signature_equals', 'note'):
+            extra = ['--note-key', 'development-source-review', '--text',
+                     'Development-only manual note bound to the original source.'] if kind == 'note' else []
+            receipt = cli(f'remember-{kind}', 'remember', kind, subject,
+                          '--from-context', origin, '--request-id', f'dev-{kind}', *extra)
+            ids[kind] = receipt['memory_id']
+            assert cli(f'retry-{kind}', 'remember', kind, subject, '--from-context', origin,
+                       '--request-id', f'dev-{kind}', *extra) == receipt
+        initial = cli('initial', 'context', subject)
+        checks = {f['record']['payload']['type']: f['state']['check'] for f in initial['facts']}
+        assert set(checks) == {'symbol_exists', 'signature_equals'}
+        assert not initial['withheld'] and len(initial['notes']) == 1
+        stable = cli('stable', 'context', subject)
+        assert stable['memory_generation_id'] == initial['memory_generation_id']
+        assert stable['facts'] == initial['facts']
+        scenarios = [
+            ('unrelated', text, 'fact', 'fact'),
+            ('body', body, 'fact', 'fact'),
+            ('signature', signature, 'fact', 'signature_mismatch'),
+            ('parse', text + '\ndef cami_invalid(:\n', 'parse_error', 'parse_error'),
+            ('delete', None, 'subject_absent', 'subject_absent'),
+            ('revert', text, 'fact', 'fact'),
+        ]
+        for phase, content, existence, sig in scenarios:
+            if phase == 'unrelated':
+                unrelated.write_text('def unrelated():\n    return 1\n')
+            elif unrelated.exists():
+                unrelated.unlink()
+            if content is None:
+                source.unlink()
+            else:
+                source.write_bytes(content.encode())
+            result = cli(phase, 'context', subject)
+            actual = {f['record']['payload']['type']: 'fact' for f in result['facts']}
+            actual.update({f['record']['payload']['type']: f['reason'] for f in result['withheld']
+                           if f['record']['payload']['type'] != 'note'})
+            expected = {'symbol_exists': existence, 'signature_equals': sig}
+            assert actual == expected, (phase, actual, expected)
+            if phase == 'unrelated':
+                assert len(result['notes']) == 1 and not result['withheld']
+            else:
+                assert not result['notes']
+                note = next(f for f in result['withheld'] if f['record']['payload']['type'] == 'note')
+                assert note['reason'] == 'manual_review_required'
+            if phase in ('unrelated', 'body'):
+                assert all(f['state']['type'] == 'carried' and
+                           f['state']['check'] == checks[f['record']['payload']['type']]
+                           for f in result['facts'])
+            if phase in ('signature', 'parse', 'delete'):
+                verdict = 'insufficient_evidence' if phase == 'parse' else 'contradicted'
+                assert all(f['state']['check']['verdict'] == verdict
+                           for f in result['withheld'] if f['record']['payload']['type'] != 'note')
+            phases.append(dict(phase=phase, expected=expected, observed=actual,
+                               source_sha256=sha(source) if source.exists() else None,
+                               notes_available=len(result['notes'])))
+            save()
+        update = cli('review-note', 'update', ids['note'], '--if-revision', '1',
+                     '--from-context', str(out / 'revert.stdout.json'), '--request-id', 'dev-review',
+                     '--text', 'Development-only note explicitly reviewed against restored bytes.')
+        assert update['revision'] == 2
+        reviewed = cli('reviewed', 'context', subject)
+        assert len(reviewed['notes']) == 1 and not reviewed['withheld']
+        assert reviewed['notes'][0]['state']['label'] == 'manual_assertion'
+        history = cli('signature-history', 'history', ids['signature_equals'])
+        assert [c['reason'] for c in history['checks']] == [
+            'predicate_matches', 'signature_mismatch', 'parse_error', 'subject_absent', 'predicate_matches']
+        manifest['status'] = 'checks_passed_cleanup_pending'
+    finally:
+        try:
+            source.write_bytes(original)
+            if unrelated.exists():
+                unrelated.unlink()
+            manifest['restored_source_sha256'] = sha(source)
+            manifest['final_git_status'] = subprocess.check_output(['git', '-C', str(repo), 'status', '--porcelain']).decode()
+            assert manifest['restored_source_sha256'] == manifest['original_source_sha256']
+            assert not manifest['final_git_status']
+        except BaseException:
+            manifest['status'] = 'failed'
+            save()
+            raise
+        manifest['status'] = 'passed' if manifest['status'] == 'checks_passed_cleanup_pending' else 'failed'
+        save()
+    return manifest
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--repo', type=Path, required=True)
+    parser.add_argument('--subject', required=True)
+    parser.add_argument('--out', type=Path, required=True)
+    args = parser.parse_args()
+    result = run(args.repo, args.subject, args.out)
+    print(json.dumps({k: result[k] for k in ('status', 'repo_head', 'subject', 'phases')}, indent=2))

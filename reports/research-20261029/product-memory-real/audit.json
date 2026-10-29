@@ -1,0 +1,28 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "reviewed_run": "v1",
+  "review_result": "no blockers for development-only claim",
+  "reviewed_checks": [
+    "pinned HEADs and clean clones",
+    "all CLI log hashes",
+    "all source object hashes",
+    "independently reconstructed mutation bytes",
+    "actual verdicts and carried check IDs/timestamps",
+    "sticky manual review after revert",
+    "exact signature history"
+  ],
+  "driver_corrections": [
+    "assert contradicted verdict for signature and deletion",
+    "record passed only after restoration and Git cleanliness checks"
+  ],
+  "v2_parent_checks": {
+    "commands_per_repository": 18,
+    "both_exit_codes": 0,
+    "all_log_hashes_verified": true,
+    "both_source_restorations_verified": true
+  },
+  "limitations": [
+    "Two deliberately chosen functions and authored changes; no effectiveness estimate.",
+    "No independent human labels, policy comparison or held-out cohort execution."
+  ]
+}

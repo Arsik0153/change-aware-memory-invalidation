@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "purpose": "development_product_check_not_research_labels",
+  "repo": "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+  "subject": "src/requests/utils.py:get_encoding_from_headers",
+  "repo_head": "0e322af87745eff34caffe4df68456ebc20d9068",
+  "cami_head": "55be9d6d04c824dab1a48649e85317d9beb8ed1a",
+  "driver_sha256": "87c6b4f3e12658423de7cc27f72969650102bb2689d9023504a656baffa6fc60",
+  "original_source_sha256": "1e2402e8dabf0dade4b5a32217342487e7429378901c7284b184b990373ef02c",
+  "commands": [
+    {
+      "label": "origin",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "b19f60856b772d0f29ed60159d547c154330268cd04263fcf133aca09b2dc896",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-symbol_exists",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "symbol_exists",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-symbol_exists",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8794c218b4c567fc6cd3183c85f4affc3878085339419c92430e0086c6f7641a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-symbol_exists",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "symbol_exists",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-symbol_exists",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8794c218b4c567fc6cd3183c85f4affc3878085339419c92430e0086c6f7641a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-signature_equals",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "signature_equals",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-signature_equals",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "b7de4a461d106cd46bec99de4572642e9dfc0f1d8aee994108dc829c8c22d1e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-signature_equals",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "signature_equals",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-signature_equals",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "b7de4a461d106cd46bec99de4572642e9dfc0f1d8aee994108dc829c8c22d1e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "remember-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "note",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-note",
+        "--note-key",
+        "development-source-review",
+        "--text",
+        "Development-only manual note bound to the original source.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e8bf6eac16e98f0ba53bdf8df2827b184211f7e90fe5ac572a0aad1b332d47b9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "retry-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "remember",
+        "note",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/origin.stdout.json",
+        "--request-id",
+        "dev-note",
+        "--note-key",
+        "development-source-review",
+        "--text",
+        "Development-only manual note bound to the original source.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e8bf6eac16e98f0ba53bdf8df2827b184211f7e90fe5ac572a0aad1b332d47b9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "initial",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a96046a7d29c1d0ed0fbe756b2e669846d43695641df8efc5afb3dc0d1cf6632",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "stable",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c493c929368972e0054b02c174cc9bf15c2e731c2a537c739bdbd5afeac454f3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "unrelated",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "25062d0ef9172d6a3d28b88d769db25d0c5fc3122c865ebe07b807b2b1957575",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "body",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5107247eade173db4174f0a12bdce53e5d834c09102b286bbaf34d48077a13e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "signature",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4b8b58ad9921fcb7e5369d8c87f261a4c84fbde3ad0caca2f9ccccea4146f2cb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "parse",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "894505c913bbbdc1521f4f18e9964273c9774f0a23a51a3ce01dcd7902b415ad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "delete",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "0599f76d92385ab9ea2f0c5724cfe6aa9ff2a69521dc5328807c93be7765a4a6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "revert",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "020a293138d22a4fae99c2a64d0d3c4b2d009a8e4e561e4f3fd09151b07aa461",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "review-note",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "update",
+        "383a4b40f397cdcf7c0d641b11708c460458734e21af5f87a7626be942db7d1f",
+        "--if-revision",
+        "1",
+        "--from-context",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests-evidence-v1/revert.stdout.json",
+        "--request-id",
+        "dev-review",
+        "--text",
+        "Development-only note explicitly reviewed against restored bytes.",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "bbd17b43b6b766cf52ffa6cdd42630e92a9a33156a72276a0c7841dc94bbca48",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "reviewed",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "context",
+        "src/requests/utils.py:get_encoding_from_headers",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e029dd272bcc314c72f8fb47c12697a74bdf7b848373c9eef4dea8b5cad93a56",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "signature-history",
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "cami.cli",
+        "memory",
+        "history",
+        "c6fa0b024a15de6ada9047fec0bb960d30e0c04ccf1a86a70be904f46094df77",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/product-real-20261029/requests",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1d95f61b2568c1de30996b36afe89d965e7fc66b7c28e1c4edf5d3ba075da7aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "phases": [
+    {
+      "phase": "unrelated",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "source_sha256": "1e2402e8dabf0dade4b5a32217342487e7429378901c7284b184b990373ef02c",
+      "notes_available": 1
+    },
+    {
+      "phase": "body",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "source_sha256": "28c925be3d1d79843b33ed6e4bd9061bc62a30c41f258456cdd1250a7b3d3583",
+      "notes_available": 0
+    },
+    {
+      "phase": "signature",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "signature_mismatch"
+      },
+      "source_sha256": "20ed333bafdd56d687a63d95d379a2023095a289760d3cfba3b038e6f61f58a2",
+      "notes_available": 0
+    },
+    {
+      "phase": "parse",
+      "expected": {
+        "symbol_exists": "parse_error",
+        "signature_equals": "parse_error"
+      },
+      "observed": {
+        "symbol_exists": "parse_error",
+        "signature_equals": "parse_error"
+      },
+      "source_sha256": "d8b960825d4cd8f03ce56c7f007c2637259f307f4f8821595eb1560736486404",
+      "notes_available": 0
+    },
+    {
+      "phase": "delete",
+      "expected": {
+        "symbol_exists": "subject_absent",
+        "signature_equals": "subject_absent"
+      },
+      "observed": {
+        "symbol_exists": "subject_absent",
+        "signature_equals": "subject_absent"
+      },
+      "source_sha256": null,
+      "notes_available": 0
+    },
+    {
+      "phase": "revert",
+      "expected": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "observed": {
+        "symbol_exists": "fact",
+        "signature_equals": "fact"
+      },
+      "source_sha256": "1e2402e8dabf0dade4b5a32217342487e7429378901c7284b184b990373ef02c",
+      "notes_available": 0
+    }
+  ],
+  "status": "passed",
+  "restored_source_sha256": "1e2402e8dabf0dade4b5a32217342487e7429378901c7284b184b990373ef02c",
+  "final_git_status": ""
+}
