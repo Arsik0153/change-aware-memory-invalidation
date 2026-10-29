@@ -459,3 +459,19 @@ CRC и каждый извлечённый файл сверены с источ
 Полный suite после десятого этапа: HEAD 4fcbdfd, 901 passed за 441.40 s, 0 skipped,
 ruff/mypy passed. Source snapshots совпали, исходное scoped дерево было чистым;
 hashes всех logs сверены. Evidence: parent-batch-full-verification.
+
+## Одиннадцатый этап: независимая проверка всех bootstrap summaries
+
+Воспроизведена неполнота report validation: на отдельной synthetic fixture bias=999.0
+проходил после обновления summary hash. Теперь scripts/report_bootstrap_study.py
+независимо пересчитывает все summary fields, проверяет analytic truth, paired counts,
+generator support, empty probabilities, interval metadata и denominator diagnostics.
+Валидатор не вызывает generator summarize и не использует production estimator.
+
+Reviewer gpt-6.1-sol выявил valid floating-boundary false rejection и acceptance
+невозможных endpoint counters. Исправлены verified-saved-truth boundary comparison
+и multinomial-category support; regression tests покрывают оба случая. Финально
+37 passed, ruff/mypy passed. Намеренно изменённый bias теперь отклоняется до output.
+Все оригинальные 600 trials повторно validated без изменения данных/численных выводов.
+Report v3 содержит hash validator и явно исключает random-stream/quantile replay
+из заявленной области проверки. Подробнее в bootstrap_study_2026-10-29.md.
