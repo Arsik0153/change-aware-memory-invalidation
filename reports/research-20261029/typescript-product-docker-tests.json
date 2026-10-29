@@ -1,0 +1,14 @@
+{
+  "git_head": "98f6dbe43c2204c7ab71f24814556b3b1e7c3191",
+  "command": [
+    ".venv/bin/pytest",
+    "-q",
+    "-m",
+    "docker"
+  ],
+  "CAMI_TEST_IMAGE": "cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6",
+  "exit_code": 0,
+  "result": "4 passed,992 deselected",
+  "log_sha256": "199af0899ea023de37a176977f7c133ee51dd2c4bb634a328865b106db7397ce",
+  "source_status": ""
+}

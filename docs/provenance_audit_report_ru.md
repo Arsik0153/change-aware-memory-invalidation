@@ -107,3 +107,41 @@ adjudication, окончательное решение о cohort и после�
 Принцип Model the Domain определил отдельную строгую запись review вместо расширения
 ParentReceipt. Принцип Prove It Works определил проверку реального пакета, hashes
 исходных файлов и фактического поведения отбора.
+
+## Восстановление пакета на новой машине, 29 октября 2026
+
+Аудит повторён штатным parent-only CLI на восстановленном
+`runs/main-restored-20261029/ready/dataset.json`; новый пакет находится в
+`runs/provenance-restored-20261029-v1`. Он восстанавливает доступность доказательств
+для review и не расширяет прежние научные выводы. Сводки main/replay точно совпали
+с отчётом 23 октября: 600+30 claims, все subjects/anchors автоматически verified,
+63 совпавших frozen probe hashes, 630 unreviewed и 630 known_incomplete.
+
+Перепроверены 643 hashes пакета, совпадение group/root rows и точные копии исходных
+claims/provenance. Напрямую через `git show` сверены 389 различных parent blobs.
+Все 1739 файлов prepared dataset сохранили состав и SHA-256. Это проверка целостности
+доказательств, а не независимый semantic oracle или человеческий review.
+
+Готов локальный архив `output/provenance-review-20261029.zip`: 645 entries, включая
+630 пустых форм и отдельную инструкцию. SHA-256:
+`ac9cf70d910f3a8b8e5fbd3b04b97a39b8f0d617d42a316fc4ff0a21c1b20b09`.
+Архив не отправлялся внешним адресатам. В нём нет независимых ответов; положительное
+автоматическое наблюдение не разрешает снимать флаг неполноты. После получения
+реальных review используйте штатный import-provenance-review в новый каталог.
+
+Метаданные, воспроизводимый integrity checker, журнал CLI и summary:
+`reports/research-20261029/provenance-restoration-v1/`. Raw пакет и ZIP остаются
+локальными; независимо проверенные counts и hashes сохранены в Git.
+
+Независимый audit reviewer (gpt-6.1-sol) повторно подтвердил hashes, canonical
+claim/provenance digests, ZIP inventory/CRC и 1260 subject/anchor observations,
+включая Git object IDs. Он отметил, что сохранённая поддержка — не полный parent
+snapshot. Поэтому создан отдельный архив **v2**:
+`output/provenance-review-20261029-v2.zip`, 646 entries, SHA-256
+`2a804d5be0bd5209e276c7e70088ce97bc5f3118ca8951d0f088b7c3ee1923f7`.
+Добавлены repository_access.json с URLs/локальными bare paths/63 parent commits
+и инструкция чтения полного дерева только на parent. Все643evidence hashes снова
+проверены. V1 не изменён. Для нового review передавайте v2.
+
+Оставшиеся ограничения review: целостность не доказывает полноту зависимостей;
+source-before — локально записанный snapshot, не внешняя заверенная копия.

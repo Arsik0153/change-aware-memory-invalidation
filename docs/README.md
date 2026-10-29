@@ -15,10 +15,12 @@ the historical submission checks do not establish their current status.
   coverage. These are estimator diagnostics, not real-policy effectiveness results.
 - [Restored annotation material](annotation_restoration_2026-10-29.md) describes
   630 candidate claims in 63 groups. Independent answers and admission remain pending.
+- [Restored provenance review package](provenance_audit_report_ru.md) provides parent-only
+  support evidence and 630 blank review forms; all incompleteness flags remain set.
 - [Parent review instructions](parent_review_instructions_ru.md) describe blank
   assignments, independent test authorship, double review, and adjudication import.
 - [Product memory checks](product_memory_real_repositories_2026-10-29.md) record
-  controlled source mutations in pinned local Click and Requests repositories.
+  controlled source mutations in pinned local Click, Requests and TypeScript repositories.
 
 The implemented system has been tested; the main empirical thesis hypothesis
 still requires independent annotation, cohort admission, provenance review, and

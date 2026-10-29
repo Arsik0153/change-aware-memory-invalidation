@@ -1,0 +1,14 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/prepare_main.py",
+    "audit-provenance",
+    "--dataset",
+    "runs/main-restored-20261029/ready/dataset.json",
+    "--out",
+    "runs/provenance-restored-20261029-v1"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 88.56144229997881,
+  "git_head": "98f6dbe43c2204c7ab71f24814556b3b1e7c3191"
+}

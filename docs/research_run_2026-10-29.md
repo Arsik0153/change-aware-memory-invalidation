@@ -563,3 +563,38 @@ mode при delete/recreate воспроизведена отдельным fail
 локального приложения остаются в ignored runs; committed manifests содержат hashes.
 Следующий шаг — проверить полную совместимость и продолжить аудит исследовательских
 границ/готовности независимой разметки; эта product проверка не снимает main admission.
+
+Полный suite на неизменном HEAD 98f6dbe: 992 passed, 4 skipped за447.00s;
+ruff/mypy passed. Scoped source snapshots совпали и были clean, все log hashes
+проверены. В этой invocation не был задан CAMI_TEST_IMAGE, поэтому четыре Docker
+checks запущены отдельно с ранее подготовленным pinned image; результат будет
+записан после завершения. Результат 992 не включает пропущенные Docker checks.
+
+## Пятнадцатый этап: восстановление независимого provenance-review пакета
+
+Штатный parent-only audit повторён на restored dataset в новый каталог. Все630claims,
+63groups и summary main/replay совпали с историческими counts. Проверены643hashes,
+точное равенство root/group rows и source copies,389parentGitblobs;1739исходных файлов
+не изменились. Новых semantic labels нет, ни один known_incomplete не снят.
+
+Архив output/provenance-review-20261029.zip содержит645entries и630пустых forms;
+включена инструкция, явно отделяющая automated verified от независимого решения.
+Архив проверен после записи; source/raw evidence остаются локально. Свежий пакет
+убирает зависимость review от отсутствовавших путей прежней машины. Подробнее в
+provenance_audit_report_ru.md и reports/research-20261029/provenance-restoration-v1.
+
+Отдельный Docker suite завершён:4passed,992deselected за15.84s на том же HEAD98f6dbe
+и pinned original image. Таким образом все996тестов выполнены успешно двумя
+запусками; не следует называть это одним full run без skipped. Evidence отдельно
+в typescript-product-docker-tests.{json,log}.
+
+Независимый reviewer provenance подтвердил hashes,630digest bindings,ZIP CRC/inventory,
+389Gitblobs и1260subject/anchor observations. Замечание о неполных parent trees
+устранено в новом ZIPv2: добавлены URLs,local paths,63parent IDs и инструкция
+исследования пропущенной поддержки вне сохранённых файлов. V1 не перезаписан.
+Все643evidence hashes v2 проверены. Целостность не является semantic review,
+а source-before остаётся локальной записью, не внешним сертификатом.
+
+Далее: расширить synthetic development проверку селективного engine на заранее
+описанные истории с отдельным oracle. Это позволит проверять carried states при
+смешанных изменениях, не подменяя отсутствующую независимую real-разметку.

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "purpose": "Access to full parent trees for independent provenance review",
+  "repositories": [
+    {
+      "repo_id": "click",
+      "url": "https://github.com/pallets/click.git",
+      "local_bare_repository": "/root/apps/change-aware-memory-invalidation/data/corpora/click",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "parent_commits": [
+        "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+        "3480d2c0d7259a73bca9358d30ebbe9d3fffd395",
+        "5a42c3160b499de5ed20d36e679374aed50961a9",
+        "7404b066ec59cd21d6af0d7106c56988e0e2029c",
+        "763f3eb7a0c3c493ff11bb80df6811cc8ecbc256",
+        "82ec44e46d558df6feca900a00a8fea7c05a9ec1",
+        "9c6f032681e38a60ce526335f2abf166191f692d",
+        "a936b99212c69a36a2cc2828252b2c4280c0c88c",
+        "aca1a0cea2eeb6c8181152beb2113b6be7fbc19d",
+        "b0c7523494a9f2f7a7be43ee8a8b22157a33b696",
+        "b5280c608574d867e5e76c8f295c99868f18d763",
+        "bce4ea4ba54e15959cb412d6793634e0c9b24491",
+        "c78265ad51b426ef6c2a9ae39d92c172d30ade82",
+        "d09ef712972df060080a43cade589405f777369d",
+        "d97c93fa8628dad5527478e644fcc219f3c3242a",
+        "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+        "e934b4191f897df00d0cc0b216ebf5a63c700a9e",
+        "eb1d760fb433d08278816d7ba49477ce86b691a7",
+        "f20395dfe397be7746380bd8768553ce4065752b",
+        "f24a9fb3617972b317f0c01a06973aa75dd44467"
+      ]
+    },
+    {
+      "repo_id": "requests",
+      "url": "https://github.com/psf/requests.git",
+      "local_bare_repository": "/root/apps/change-aware-memory-invalidation/data/corpora/requests",
+      "source_roots": [
+        "src",
+        "requests"
+      ],
+      "parent_commits": [
+        "005571d1180835eb5266a3fdbdbe8fdae57d90c2",
+        "02eb5a2cd34d36548ebb08528c73ca66c2a398d9",
+        "147c8511ddbfa5e8f71bbf5c18ede0c4ceb3bba4",
+        "17e6e27a93131b7295165408e69b4cadb098b0d7",
+        "24092b11d74af0a766d9cc616622f38adb0044b9",
+        "266d17c4def3edd1d02cd7ee1f8987dc429c10c1",
+        "2ad18e0e10e7d7ecd5384c378f25ec8821a10a29",
+        "2d120e32dbb511bcabee02277d31d26fa986f576",
+        "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+        "428f7a275914f60a8f1e76a7d69516d617433d30",
+        "46188256ee5955147cce4c0af91958b1681b47b1",
+        "75bdc998e2d430a35d869b2abf1779bd0d34890e",
+        "7d4fc04a6fe64a524c2db9b177ed4758c01bd3fd",
+        "80011a7917afe2cd6a5fa8359e7ea90203880b3c",
+        "9866277c03188d92f4ab609d12da8a160bd72294",
+        "9b51d7c4f2f3e0b1425e72ca01ec520a1eae0c5c",
+        "a9ee0eef5a70acb9ed35622b3675574b11f92cb4",
+        "afad1aab149d3ff1306816916269401eed7fe4c7",
+        "b227e3cb82c8d42ea27790d615ecafe12528d3bc",
+        "bdc00eb0978dd3cdd43f7cd1f95ced7aa75fab39",
+        "e18879932287c2bf4bcee4ddf6ccb8a69b6fc656",
+        "ee93fac6b2f715151f1aa9a1a06ddba9f7dcc59a"
+      ]
+    },
+    {
+      "repo_id": "pytest",
+      "url": "https://github.com/pytest-dev/pytest.git",
+      "local_bare_repository": "/root/apps/change-aware-memory-invalidation/data/corpora/pytest",
+      "source_roots": [
+        "src"
+      ],
+      "parent_commits": [
+        "0c80a1c836616b0206a4af2fe72001ff797a5f8f",
+        "2982753d807b8a2acc3dd6b23ec560384970da7e",
+        "2c934232b5d880b69b76dae74f72fe5a0bae0e43",
+        "2f7415cfbc4b6ca62f9013f1abd27136f46b9653",
+        "300d13d2231db85186729c2091ea33480cb39c1a",
+        "35df3e68d57fcd62a60b2a8568b09fa3674f36a8",
+        "496196b15c2c115899044353e053f1c159d8c65b",
+        "4a46ee8bc957b06265c016cc837862447dde79d2",
+        "4dbb29431ae38b6906c6ca254b4ed18cad7b5f7e",
+        "5d539afd6cfb5ed8282021ca6c36b048478d251b",
+        "69fa9bae43cd8cea0e9b6dc6327b3f4203ac2870",
+        "70d3d0f3907788769cbe7cae14680f6bd29b0ba7",
+        "72c9c350cb1ea4449122c52030880a62628967d6",
+        "85c5bd26b6d94dca423c2c0c54717750eac81cae",
+        "88cc636c181f7283acb19b2e6154dca187124b8f",
+        "b95991aeeab28be6af94e24668414360e4d3a630",
+        "bec2b8ee3a317b2b4bbb067a1c9cab6d8208f80c",
+        "de161f87914e5e01d76564246d60ca6a9cf1b619",
+        "e217726d2a0edfaf58eae95bf835b85834b96da3",
+        "ef395e1c383a8e07adf61be61ea6f5ae30eea067",
+        "fb3a46dd8a943554c0659c156fa7026d2ddca84d"
+      ]
+    }
+  ],
+  "restriction": "Review only listed parent commits. Source bundles retain recorded support, not complete trees. Other repository history is outside this parent review."
+}

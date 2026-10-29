@@ -1,0 +1,97 @@
+import hashlib,json,subprocess,zipfile
+from collections import Counter
+from pathlib import Path
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def rows(p):return [json.loads(line) for line in p.read_text().splitlines()]
+source=Path('runs/main-restored-20261029/ready')
+packet=Path('runs/provenance-restored-20261029-v1')
+out=Path('reports/research-20261029/provenance-restoration-v1')
+manifest=json.loads((packet/'audit_manifest.json').read_text())
+assert manifest['parent_only'] and not manifest['child_data_used']
+assert manifest['known_incomplete_cleared']==0
+assert json.loads((out/'source-before.json').read_text())=={str(p.relative_to(source)):sha(p) for p in sorted(source.rglob('*')) if p.is_file()}
+for name,h in manifest['files'].items():assert sha(packet/name)==h,name
+for name,h in manifest['implementation_sha256'].items():assert sha(Path(name))==h,name
+allrows=rows(packet/'provenance_audit.jsonl')
+form=rows(packet/'review_form.jsonl')
+assert len(form)==len(allrows)==630
+assert all(r['reviewer_id'] is r['independent'] is r['status'] is None and not r['evidence'] for r in form)
+manifest_source=json.loads((source/'dataset.json').read_text())
+configs={r['run_id']:source/r['config_path'] for r in manifest_source['runs']}
+strata={};blobs={}
+for g in manifest['groups']:
+ rid=g['run_id'];cp=configs[rid];config=json.loads(cp.read_text());strata[rid]=config['stratum']
+ group=packet/'groups'/rid
+ assert rows(group/'provenance_audit.jsonl')==[r for r in allrows if r['run_id']==rid]
+ for key,name in [('claims_path','claims.jsonl'),('provenance_path','provenance.jsonl')]:assert (cp.parent/config[key]).read_bytes()==(group/'source_inputs'/name).read_bytes()
+ for row in rows(group/'provenance_audit.jsonl'):
+  assert row['independent_review'] is None and row['known_incomplete'] and row['review_status']=='unreviewed'
+  assert row['claim']['origin_commit']==g['parent_commit']
+  for a in row['anchors']:
+   anchor=a['anchor'];obs=a['observation'];assert anchor['observed_commit']==g['parent_commit']
+   key=(config['repo']['path'],g['parent_commit'],anchor['path'])
+   if key not in blobs:blobs[key]=subprocess.check_output(['git','-C',str((cp.parent/config['repo']['path']).resolve()),'show',g['parent_commit']+':'+anchor['path']])
+   raw=blobs[key];assert hashlib.sha256(raw).hexdigest()==anchor['content_hash']==obs['content_sha256']
+   assert raw==(group/obs['source_evidence_path']).read_bytes()
+summary={}
+for label in ('main','replay'):
+ selected=[r for r in allrows if (strata[r['run_id']]=='replay')==(label=='replay')]
+ summary[label]={'claims':len(selected),'kind_counts':dict(Counter(r['claim_kind'] for r in selected)),
+ 'known_incomplete':sum(r['known_incomplete'] for r in selected),
+ 'subject_statuses':dict(Counter(r['automatic_checks']['subject']['status'] for r in selected)),
+ 'anchor_statuses':dict(Counter(a['status'] for r in selected for a in r['anchors'])),
+ 'explicit_dependencies':sum(len(r['dependencies']) for r in selected),
+ 'claims_with_indexed_unresolved_in_recorded_support':sum(bool(r['automatic_checks']['indexed_unresolved_in_recorded_support']) for r in selected),
+ 'claims_with_indexed_limitations_in_recorded_support':sum(bool(r['automatic_checks']['indexed_limitations_in_recorded_support']) for r in selected),
+ 'frozen_probe_statuses':dict(Counter(r['automatic_checks']['frozen_probe']['status'] for r in selected if r['automatic_checks']['frozen_probe'])),
+ 'review_statuses':dict(Counter(r['review_status'] for r in selected)),
+ 'blocking_reasons':dict(Counter(reason for r in selected for reason in r['incompleteness_reasons']))}
+historical=json.loads(Path('reports/provenance-audit-20261023-001/summary.json').read_text())
+assert all(summary[k]==historical[k] for k in ('main','replay'))
+summary['verification']={'source_files_unchanged':len(json.loads((out/'source-before.json').read_text())),
+'audit_files_hash_verified':len(manifest['files']),'groups':len(manifest['groups']),
+'blank_forms':len(form),'direct_git_parent_blobs_verified':len(blobs),'group_rows_and_source_copies_verified':True,
+'implementation_hashes_match':True,'historical_main_and_replay_summary_exact_match':True,
+'known_incomplete_cleared':0,'independent_review_supplied':False,'child_execution':False}
+(out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+(out/'audit_manifest.json').write_bytes((packet/'audit_manifest.json').read_bytes())
+instructions='''Независимый review provenance: parent-only пакет, 29 октября 2026.
+
+В review_form.jsonl 630 ПУСТЫХ строк. Автоматические observations со status=verified
+означают проверку записанного источника и не являются вашим ответом или label.
+Сначала прочитайте соответствующий claim, scope, source_provenance и parent source
+в provenance_audit.jsonl / groups/RUN. Проверьте записанную поддержку и возможные
+пропуски. Parent truth confirmation выполняется отдельным процессом.
+
+Сохраните идентификаторы, commit и hashes формы. Заполните reviewer_id,
+independent=true только при фактической независимости, status confirmed/incomplete/
+uncertain, confirmed_dependencies, omitted_dependencies, evidence и notes.
+Evidence — реальные файлы с относительными путями к каталогу completed JSONL.
+Один свободный текст вместо файла не принимается. Для confirmed список omissions
+должен быть пуст; confirmed dependencies должны быть записаны в source provenance.
+Не дописывайте guessed relationships и не меняйте исходные candidates.
+
+Положительный review НЕ снимает known_incomplete, НЕ создаёт parent receipt,
+НЕ допускает cohort и НЕ разрешает held-out execution. Критерий реального закрытия
+требует отдельного заранее принятого решения; automatic_fixture на real запрещён.
+
+Импорт реально полученных ответов в новый каталог:
+.venv/bin/python scripts/prepare_main.py import-provenance-review --audit /PATH/audit_manifest.json --reviews /PATH/completed.jsonl --out /PATH/new-output
+
+No independent reviews, child labels or execution results are included.
+Original evidence files are hash-listed in audit_manifest.json; this instruction
+is an extra archive entry. Original packet lives in runs/provenance-restored-20261029-v1.
+'''
+archive=Path('output/provenance-review-20261029.zip')
+with zipfile.ZipFile(archive,'x',compression=zipfile.ZIP_DEFLATED) as z:
+ for p in sorted(packet.rglob('*')):
+  if p.is_file():z.write(p,p.relative_to(packet).as_posix())
+ z.writestr('REVIEW_INSTRUCTIONS.txt',instructions)
+with zipfile.ZipFile(archive) as z:
+ assert len(z.namelist())==len(manifest['files'])+2
+ for name,h in manifest['files'].items():assert hashlib.sha256(z.read(name)).hexdigest()==h
+ assert z.read('audit_manifest.json')==(packet/'audit_manifest.json').read_bytes()
+package={'path':str(archive),'sha256':sha(archive),'bytes':archive.stat().st_size,'entries':len(manifest['files'])+2,'evidence_files_verified':len(manifest['files']),'blank_forms':len(form),'independent_review_supplied':False}
+(out/'package.json').write_text(json.dumps(package,indent=2)+'\n')
+print(json.dumps(summary['verification'],indent=2));print(json.dumps(package,indent=2))
