@@ -1,0 +1,23 @@
+{
+  "study_id": "bootstrap-availability-mechanism-20261029-v1",
+  "analysis_kind": "post_pilot_exact_probability_sensitivity",
+  "generator": "paired_nested_bernoulli_v1",
+  "bootstrap_repetitions": [50, 100, 500, 2000, 10000],
+  "scenarios": [
+    {"id": "dense-k5", "clusters": 5, "active_probability": 1.0},
+    {"id": "dense-k20", "clusters": 20, "active_probability": 1.0},
+    {"id": "dense-k50", "clusters": 50, "active_probability": 1.0},
+    {"id": "sparse-k5", "clusters": 5, "active_probability": 0.1},
+    {"id": "sparse-k20", "clusters": 20, "active_probability": 0.1},
+    {"id": "sparse-k50", "clusters": 50, "active_probability": 0.1}
+  ],
+  "simulation_source": "reports/research-20261029/bootstrap-study-v1",
+  "outputs": ["population_interval_availability", "zero_sample_denominator_probability", "zero_resample_denominator_probability", "expected_resample_iterations", "saved_pilot_comparison_at_B2000"],
+  "constraints": [
+    "Same positive denominators for both paired policies in each active cluster.",
+    "Independent cluster activity with probability q; K is at least 2.",
+    "Each resample draws K clusters independently and uniformly with replacement.",
+    "Any zero denominator resample makes the entire interval unavailable.",
+    "No estimator change, seed search, new labels, or real-policy execution."
+  ]
+}
