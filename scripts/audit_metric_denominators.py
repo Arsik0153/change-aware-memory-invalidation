@@ -101,7 +101,9 @@ def run(out: Path):
                     for name in ('selection_recall','false_invalidation','invalidation_precision',
                                  'invalidation_recall','invalidation_f1'):
                         metric = baseline[name]
-                        assert metric.reason == 'not_applicable' and metric.denominator is None
+                        assert metric.reason == 'not_applicable' and metric.value is None, (
+                            labels, states, policy, name, metric)
+                        assert (metric.numerator, metric.denominator) == expected[name]
                         not_applicable_checks += 1
                 cases.append({'labels':labels,'states':states,
                               'metrics':{name:metric.model_dump(mode='json') for name,metric in actual.items()}})

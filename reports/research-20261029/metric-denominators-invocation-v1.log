@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/apps/change-aware-memory-invalidation/scripts/audit_metric_denominators.py", line 140, in <module>
+    run(parser.parse_args().out)
+  File "/root/apps/change-aware-memory-invalidation/scripts/audit_metric_denominators.py", line 104, in run
+    assert metric.reason == 'not_applicable' and metric.denominator is None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
