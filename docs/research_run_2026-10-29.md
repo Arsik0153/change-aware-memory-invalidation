@@ -378,3 +378,8 @@ behavior-uncertainty-before.log, test-authorship-before.log.
 Следующие шаги: полная проверка с Docker на неизменном HEAD, затем product memory
 на настоящем локальном репозитории с явно авторскими development mutations.
 Двойные parent answers/adjudication остаются отдельной незакрытой задачей.
+
+Полная проверка восьмого этапа завершена на HEAD 55be9d6: 876 passed за 446.92 s,
+без skipped, ruff и mypy passed. Включён исходный pinned Python3.12 Docker image.
+Начальный и конечный source snapshots совпали; source status пустой, hashes всех
+logs проверены. Evidence: reports/research-20261029/parent-review-full-verification.
