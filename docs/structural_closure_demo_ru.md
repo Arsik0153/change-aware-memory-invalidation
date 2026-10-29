@@ -195,3 +195,61 @@ structural-stress-design-review.json. Основной12seed запуск пок
 Maintenance validation counts не включают подготовку/проверку provenance, oracle,
 Git I/O и индексацию. Их уменьшение не является измерением общего ускорения или
 экономии труда при real annotation. Все состояния и результаты остаются synthetic.
+
+### Результаты полного synthetic stress, 29 октября 2026
+
+Полный план выполнен на неизменном HEAD `0242dfd`: все12seeds и36policy runs
+завершены. На каждый вариант приходится5184child claim-revision items
+(12×18×24). Проверены15552сохранённых состояний и5472parent+child oracle observations.
+Выбранные verdicts совпали с oracle; доступность всех состояний, last_checked,
+last_supported, last_verdict и basis прошли предусмотренные проверки.
+Расхождений не обнаружено. Это не оценка нулевой вероятности ошибки: observations
+зависимы, имеют общий parent fixture и местами общие prefixes историй.
+
+| Вариант | Maintenance validator calls | Items без повторной validation |
+| --- | ---: | ---: |
+| all_validate | 5184 | 0 |
+| symbol_validate, исходная неполная provenance | 5184 | 0 |
+| symbol_validate, fixture-only closure | 1736 | 3448 |
+
+Разность относительно каждого baseline —3448вызовов, или66.5123% от5184.
+Это эффект конкретного сочетания закрытой fixture provenance и выборочной политики,
+а не результат для исходной неполной provenance. В каждой истории baseline делает432
+проверки, closed variant — от80до195. Затраты closure и oracle не включены в эти
+maintenance counts, поэтому сокращение не является оценкой end-to-end ускорения.
+Для реальных630claims флаги incomplete по-прежнему сохранены: вывод на них не перенесён.
+
+По oracle имеется3761supported,751contradicted и672uncertain child items. Последние
+связаны с неоднозначными или синтаксически повреждёнными определениями; uncertain
+не заменён отрицательной истиной. Из216scheduled событий185реально изменили Git tree.
+Остальные31 —18явных no_change и13операций, оставивших bytes прежними. В CSV записаны
+actual changed_paths для каждого перехода, а не только название запрошенной операции.
+
+Проверены13153hashes raw artifacts, точные variant configs/input hashes и сохранность
+исходных inputs. Source snapshots совпали и были clean. Полные артефакты находятся
+в `runs/structural-stress-20261029-v1`; compact report, raw manifest, protocol,
+seeds.csv, transitions.csv, PNG/SVG и integrity record — в
+`reports/research-20261029/structural-stress-v1`. График проверен по PNG и показан
+через html_render; headless html_preview завершился exit1, как и ранее в этой среде.
+
+Поле engine evaluation_eligible=true у этих запусков означает возможность оценивать
+synthetic development output. Оно не предоставляет real-cohort admission: closure
+отдельно фиксирует real_experiment_eligible=false. Независимых человеческих labels,
+реального held-out execution и допуска основного исследования здесь нет.
+
+Для повторения из корня установленного проекта используйте новый каталог:
+
+```bash
+.venv/bin/python -m scripts.stress_structural_memory \
+  --out runs/structural-stress-repeat
+```
+
+Ошибочные seeds/variants сохраняются; exit1 означает неуспешное исследование или
+изменение implementation/protocol во время запуска. Existing output не перезаписывается.
+
+Независимый empirical reviewer (gpt-6.1-sol) пересчитал все5472oracle observations
+непосредственно из Git с tokenizer и отдельной AST-классификацией, проверил все15552
+state rows и selected verdicts,36configs и12closure packages. Counts,CSV и13153hashes
+совпали; материальных расхождений нет. Full suite с Docker на unchanged0242dfd:
+**1020 passed,0skipped за466.94s**,ruff/mypy passed. Source snapshots совпали и
+все log hashes проверены. Evidence: structural-stress-full-verification/checks.json.

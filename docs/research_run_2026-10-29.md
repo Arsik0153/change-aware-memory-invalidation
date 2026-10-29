@@ -598,3 +598,42 @@ provenance_audit_report_ru.md и reports/research-20261029/provenance-restoratio
 Далее: расширить synthetic development проверку селективного engine на заранее
 описанные истории с отдельным oracle. Это позволит проверять carried states при
 смешанных изменениях, не подменяя отсутствующую независимую real-разметку.
+
+## Шестнадцатый этап: mixed-history synthetic structural stress
+
+План12seeds×18transitions×24claims зафиксирован в16e539f до генерации;
+реализация и проверки —0242dfd. Авторские ожидания generator сверяются отдельным
+stdlib tokenize/compile-only oracle на actual Git blobs. Closure выполняется до
+child commits и только под automatic_fixture independent=false. Human labels нет.
+
+Design review выявил недостаточный контроль config/hash inventories и state metadata,
+смешение planned/effective mutations и пропуск variants после verifier exception.
+Все четыре исправлены до полного запуска;24focused tests passed. Hash-inventory
+обход сначала воспроизведён failing regression. Tests с обновлёнными hashes также
+ловят подмену policy/provenance/state/cost. Ошибка одного verifier не скрывает остальные
+variants. Ошибочный strict dict compare optional provenance fields исправлен нормализацией;
+исходные bytes отдельно hash-bound. Все промежуточные test logs сохранены.
+
+Полный запуск на0242dfd:12seeds,36completed CLI runs,5184child items наvariant,
+15552проверенных memory states,5472oracle observations;0mismatches. Maintenance calls:
+all_validate5184,original_incomplete5184,closed_structural1736. Разность3448(66.5123%)
+относится к этому authored fixture и не включает closure/oracle/index/Git costs.
+Из216scheduled events185меняют Git tree. Supported/contradicted/uncertain:3761/751/672.
+
+Независимый reviewer gpt-6.1-sol заново проверил actual Git blobs tokenizer+AST,
+всеstates/selectedverdicts/lineage,CSV rows,36configs/input inventories/provenance,
+12closure packages и13153raw hashes. Материальных расхождений нет. Все151source files
+snapshot совпали с clean scopedHEAD. Общий parent и частично общие history prefixes
+исключают трактовку15552rows как независимых samples. Synthetic evaluation_eligible=true
+не является real admission;real_experiment_eligible остаётсяfalse.
+
+Evidence: reports/research-20261029/structural-stress-v1;raw runs отдельно ignored.
+Текст и повторение: structural_closure_demo_ru.md. График показан через html_render;
+PNG inspected,headless html_preview снова exit1. Full suite с Docker ещё выполняется
+на том же unchangedHEAD; итог будет добавлен после проверки snapshots/log hashes.
+
+Полный suite этапа16 завершён на0242dfd:1020passed,0skipped за466.94s, включая Docker;
+ruff/mypy passed. Source snapshots clean и совпали; hashes каждого журнала проверены.
+Следующий этап — отдельная parent-only диагностика frozen pytest probe без заранее
+импортированного pytest runner. Она не изменит production validator, protocol admission
+или claim/probe bytes; сначала будет зафиксирован самостоятельный diagnostic plan.

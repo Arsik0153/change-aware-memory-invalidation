@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "source_head": "0242dfd3e6feca141005eaf8b6e5cc229e3af114",
+  "seeds": 12,
+  "policy_runs": 36,
+  "child_claim_revision_items_per_variant": 5184,
+  "checked_states_all_variants": 15552,
+  "parent_and_child_oracle_checks": 5472,
+  "mismatches": 0,
+  "maintenance_validations": {
+    "all_validate": 5184,
+    "original_incomplete": 5184,
+    "closed_structural": 1736
+  },
+  "saved_calls": 3448,
+  "saved_fraction": 0.6651234567901234,
+  "scheduled_events": {
+    "unrelated": 22,
+    "body": 32,
+    "signature": 21,
+    "duplicate": 19,
+    "restore": 43,
+    "remove": 18,
+    "parse": 18,
+    "file_delete": 25,
+    "no_change": 18
+  },
+  "effective_events": {
+    "unrelated": 22,
+    "body": 31,
+    "signature": 21,
+    "duplicate": 19,
+    "restore": 32,
+    "remove": 18,
+    "parse": 18,
+    "file_delete": 24,
+    "no_change": 0
+  },
+  "oracle_child_truth": {
+    "supported": 3761,
+    "contradicted": 751,
+    "uncertain": 672
+  },
+  "artifact_hashes_verified": 13153,
+  "source_snapshots_match": true,
+  "limitations": [
+    "Synthetic authored grammar; common parent fixture and some shared history prefixes",
+    "Implementation-independent oracle shares CPython syntax frontend; not independent human authorship",
+    "Counts exclude provenance preparation, oracle work, indexing and Git I/O; no speedup or population inference",
+    "Scheduled operations can be no-ops; effective changes separately counted",
+    "No real labels, real heldout execution or real-cohort admission"
+  ]
+}

@@ -1,0 +1,71 @@
+import csv,hashlib,json
+from collections import Counter
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+base=Path('runs/structural-stress-20261029-v1')
+out=Path('reports/research-20261029/structural-stress-v1')
+m=json.loads((base/'summary.json').read_text());protocol=json.loads((base/'protocol.json').read_text())
+assert m['status']=='passed' and m['source_snapshots_match'] and not m['source_before']['source_status']
+assert [r['seed'] for r in m['seeds']]==protocol['seeds']
+for path,h in m['artifact_hashes'].items():assert hashlib.sha256((base/path).read_bytes()).hexdigest()==h,path
+assert hashlib.sha256(Path('examples/structural_stress/protocol.json').read_bytes()).hexdigest()==m['protocol_sha256']
+seeds=[];transitions=[];events=Counter();effective=Counter();truth=Counter();total=Counter()
+for s in m['seeds']:
+ assert s['status']=='passed' and len(s['variants'])==3
+ variants={v['variant']:v for v in s['variants']};assert set(variants)==set(protocol['variants'])
+ assert all(v['status']=='passed' and v['exit_code']==0 and not v['mismatches'] for v in variants.values())
+ expected=protocol['files']*protocol['functions_per_file']*2*(len(protocol['fixed_events'])+protocol['random_events_per_history'])
+ assert all(v['states_checked']==expected for v in variants.values())
+ assert all(variants[v]['actual_validations']==expected for v in ['all_validate','original_incomplete'])
+ for variant,v in variants.items():
+  total[variant]+=v['actual_validations']
+  for row in v['transitions']:transitions.append({'seed':s['seed'],'variant':variant,**row})
+ closed=variants['closed_structural']
+ seeds.append({'seed':s['seed'],'all_validate':expected,'original_incomplete':expected,
+  'closed_structural':closed['actual_validations'],'saved_calls':expected-closed['actual_validations'],
+  'saved_fraction':1-closed['actual_validations']/expected,
+  'scheduled_transitions':len(closed['transitions']),
+  'effective_transitions':sum(r['effective_change'] for r in closed['transitions']),
+  'mismatches':0})
+ for r in closed['transitions']:
+  events[r['event']]+=1;effective[r['event']]+=r['effective_change']
+  for kind in ['supported','contradicted','uncertain']:truth[kind]+=r['oracle_'+kind]
+assert sum(truth.values())==5184
+out.mkdir(parents=True,exist_ok=False)
+(out/'run-summary.json').write_bytes((base/'summary.json').read_bytes())
+(out/'protocol.json').write_bytes((base/'protocol.json').read_bytes())
+for name,rows in [('seeds.csv',seeds),('transitions.csv',transitions)]:
+ with (out/name).open('w') as f:
+  w=csv.DictWriter(f,fieldnames=rows[0].keys());w.writeheader();w.writerows(rows)
+result={'status':'passed','source_head':m['git_head'],'seeds':len(seeds),'policy_runs':36,
+ 'child_claim_revision_items_per_variant':5184,'checked_states_all_variants':15552,
+ 'parent_and_child_oracle_checks':sum(s['oracle_checks'] for s in m['seeds']),
+ 'mismatches':0,'maintenance_validations':dict(total),'saved_calls':total['all_validate']-total['closed_structural'],
+ 'saved_fraction':1-total['closed_structural']/total['all_validate'],
+ 'scheduled_events':dict(events),'effective_events':dict(effective),'oracle_child_truth':dict(truth),
+ 'artifact_hashes_verified':len(m['artifact_hashes']),'source_snapshots_match':True,
+ 'limitations':['Synthetic authored grammar; common parent fixture and some shared history prefixes',
+ 'Implementation-independent oracle shares CPython syntax frontend; not independent human authorship',
+ 'Counts exclude provenance preparation, oracle work, indexing and Git I/O; no speedup or population inference',
+ 'Scheduled operations can be no-ops; effective changes separately counted',
+ 'No real labels, real heldout execution or real-cohort admission']}
+(out/'results.json').write_text(json.dumps(result,indent=2)+'\n')
+fig,ax=plt.subplots(figsize=(9,5.8),layout='constrained')
+y=list(range(len(seeds)));checked=[s['closed_structural'] for s in seeds];saved=[s['saved_calls'] for s in seeds]
+ax.barh(y,checked,color='#147d92',label='Validated after fixture closure')
+ax.barh(y,saved,left=checked,color='#dce7eb',label='Carried without validation')
+for index,row in enumerate(seeds):ax.text(row['closed_structural']-5,index,str(row['closed_structural']),va='center',ha='right',color='white',fontsize=9)
+ax.set_yticks(y,[str(s['seed']) for s in seeds]);ax.invert_yaxis();ax.set_ylabel('Synthetic history seed')
+ax.set_xlabel('Maintenance validator calls / carried claim-revision items')
+ax.set_title('Synthetic structural stress: 432 items per history\nBoth baselines validate all 432; availability mismatches: 0',loc='left',fontsize=12)
+ax.legend(loc='lower right',fontsize=8);ax.spines[['top','right']].set_visible(False)
+fig.savefig(out/'validation_counts.png',dpi=180);fig.savefig(out/'validation_counts.svg')
+html='''<!doctype html><html lang="ru"><meta charset="utf-8"><style>body{margin:0;font-family:var(--font-sans);color:var(--foreground)}img{width:100%;height:470px;object-fit:contain}p{line-height:1.5}.note{color:var(--muted-foreground)}</style><img src="'''+str((out/'validation_counts.png').resolve())+'''" alt="Число проверок по двенадцати историям"><p>36 запусков; 15 552 проверенных состояния памяти; расхождений с отдельным oracle — 0.</p><p class="note">Здесь считаются только maintenance validator calls. Подготовка provenance, oracle, индексирование и Git I/O в эти числа не входят. Это development fixtures, а не доказательство ускорения или качества на реальных проектах.</p></html>'''
+(out/'chart.html').write_text(html)
+(out/'artifact-audit.json').write_text(json.dumps({'verified_raw_artifacts':len(m['artifact_hashes']),
+ 'reporting_driver_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+ 'files':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.is_file()}},indent=2)+'\n')
+print(json.dumps(result,indent=2))

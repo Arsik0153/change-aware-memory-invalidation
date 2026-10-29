@@ -1,0 +1,33 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "result": "No material discrepancy",
+  "source_head": "0242dfd",
+  "independent_checks": {
+    "seeds": 12,
+    "completed_cli_runs": 36,
+    "raw_states": 15552,
+    "oracle_observations_from_git_tokenizer_and_ast": 5472,
+    "mismatches": 0,
+    "maintenance_validations": [
+      5184,
+      5184,
+      1736
+    ],
+    "saved_calls": 3448,
+    "saved_fraction": 0.6651234567901234,
+    "scheduled_events": 216,
+    "effective_events": 185,
+    "raw_hashes_verified": 13153,
+    "source_files_verified": 151,
+    "config_and_input_and_provenance_and_closure_checks": "all36runs and12closure manifests",
+    "csv_rows": "all",
+    "frozen_protocol": "exact16e539fbytes"
+  },
+  "limitations": [
+    "Common parent and shared prefixes; no independent-sample inference",
+    "Oracle uses common CPython syntax frontend; no independent human authorship",
+    "No runtime speedup, population performance or real-project quality established",
+    "evaluation_eligible is synthetic scoring eligibility, not real-cohort admission"
+  ],
+  "full_suite_at_review": "still running; not counted as passed"
+}

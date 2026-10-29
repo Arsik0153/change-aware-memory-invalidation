@@ -83,8 +83,12 @@ Ruff и mypy прошли. Полный suite после добавления т
 - Реальные независимые parent reviews; назначения второго человека ещё не означают
   выполненную двойную разметку.
 - Проверка и утверждение provenance. Известная неполнота не снимается автоматически.
-- Проверенные исторические behavior environments. На этой машине нет образа CAMI
-  probes в локальном Docker inventory; исторические behavior claims не исполнялись.
+- Независимое подтверждение исторических behavior environments. После восстановления
+  подготовлены pinned образы и выполнены parent-only diagnostics: в v3 из63групп
+  41дали положительные автоматические observations,21pytest-группа остановлена
+  конфликтом runner modules,1Requests-группа — неподдерживаемым snapshot.
+  Эти observations не создают receipts; см. research_run_2026-10-29.md и
+  reports/research-20261029/parent-environments-v3/summary.json.
 - Независимые child labels, adjudication и фактическое время работы разметчиков.
 - Окончательное решение о допустимых kinds и cohort, затем final protocol seal.
 
