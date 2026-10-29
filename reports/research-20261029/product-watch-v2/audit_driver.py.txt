@@ -1,0 +1,107 @@
+"""Audit retained real-source watcher observations without querying CAMI."""
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+
+root = Path.cwd()
+raw = root / 'runs/product-watch-20261029/evidence-v2'
+report = root / 'reports/research-20261029/product-watch-v2'
+manifest = json.loads((raw / 'manifest.json').read_text())
+assert manifest['status'] == 'passed' and not manifest['cleanup_errors']
+assert manifest['source_before'] == manifest['source_after']
+assert not manifest['source_before']['source_status']
+assert manifest['runtime_before'] == manifest['runtime_after']
+assert manifest['watcher']['exit_code'] == 0
+assert manifest['phases'][-1]['ownership'] == 'lease_free'
+assert not manifest['final_git_status']
+assert manifest['restored_source_mode'] == manifest['original_source_mode']
+assert manifest['restored_source_sha256'] == 'dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+for name, expected in manifest['artifact_hashes'].items():
+    assert sha(raw / name) == expected
+for name, expected in manifest['input_hashes'].items():
+    assert sha(Path(name)) == expected
+for command in manifest['commands']:
+    assert command['exit_code'] == 0 and not command['timed_out']
+    assert sha(raw / command['stdout']) == command['stdout_sha256']
+    assert sha(raw / command['stderr']) == command['stderr_sha256']
+    assert not ('watch' in command['argv'] and 'stop' in command['argv'])
+protocol = json.loads((raw / 'protocol.json').read_text())
+assert [p['label'] for p in manifest['phases']] == protocol['phases']
+assert len(manifest['phases']) == 12
+profile = json.loads((raw / 'mutation_profile.json').read_text())
+repo = Path(manifest['repo'])
+relative = manifest['subject'].split(':')[0]
+original = subprocess.check_output(['git','-C',str(repo),'show',manifest['repo_head']+':'+relative])
+assert hashlib.sha256(original).hexdigest() == profile['source_sha256']
+content = {name: original for name in ['initial','unchanged','untracked_create','untracked_rename','untracked_delete','revert','note_review']}
+for phase in ('body','signature'):
+    change = profile[phase]
+    assert original.count(change['old'].encode()) == 1
+    content[phase] = original.replace(change['old'].encode(), change['new'].encode(), 1)
+content['parse'] = original + profile['parse_suffix'].encode()
+content['delete'] = None
+proofs = {}
+checks = None
+for phase in protocol['phases'][:-1]:
+    proof = json.loads((raw / (phase + '.persisted.json')).read_text())
+    proofs[phase] = proof
+    states = {s['record']['payload']['type']: s for s in proof['head']['states']}
+    assert set(states) == {'symbol_exists','signature_equals','note'}
+    blob = content[phase]
+    expected_hash = hashlib.sha256(blob).hexdigest() if blob is not None else None
+    assert proof['sources'].get(relative,{}).get('sha256') == expected_hash
+    current = {k:states[k]['state']['check'] for k in ('symbol_exists','signature_equals')}
+    if phase == 'initial':
+        checks = current
+    if phase in ('initial','unchanged','untracked_create','untracked_rename','untracked_delete','body'):
+        assert current == checks
+    for kind, check in current.items():
+        expected = 'insufficient_evidence' if phase == 'parse' else (
+            'contradicted' if phase == 'delete' or (phase == 'signature' and kind == 'signature_equals') else 'supported')
+        assert check['verdict'] == expected
+    needs_review = phase in ('body','signature','parse','delete','revert')
+    assert states['note']['state']['review_state'] == ('needs_review' if needs_review else 'not_requested')
+    assert states['note']['record']['revision'] == (2 if phase == 'note_review' else 1)
+    context_command = next(c for c in manifest['commands'] if c['label'] == phase+'-context')
+    context = json.loads((raw / context_command['stdout']).read_text())
+    assert context['memory_generation_id'] == proof['head']['memory_generation_id']
+    assert context['index'] == proof['head']['index']
+    expected_facts = {k for k,c in current.items() if c['verdict'] == 'supported'}
+    assert {v['record']['payload']['type'] for v in context['facts']} == expected_facts
+    assert len(context['notes']) == int(not needs_review)
+    assert len(context['withheld']) == 3 - len(expected_facts) - int(not needs_review)
+    statuses = [json.loads((raw / c['stdout']).read_text()) for c in manifest['commands'] if c['label']==phase+'-status']
+    assert statuses[-1]['session_id'] == manifest['watcher']['session_id']
+    phase_record = next(p for p in manifest['phases'] if p['label'] == phase)
+    assert phase_record['publication_actor'] == protocol['publication_expectations'][phase]
+    if phase != 'note_review':
+        assert statuses[-1]['latest_successful']['memory_generation_id'] == proof['head']['memory_generation_id']
+    else:
+        assert phase_record['publication_actor'] == 'foreground_explicit_update'
+        assert statuses[-1]['latest_successful']['memory_generation_id'] == proofs['revert']['head']['memory_generation_id']
+assert proofs['initial']['head'] == proofs['unchanged']['head']
+assert proofs['initial']['counts'] == proofs['unchanged']['counts']
+assert len(proofs['initial']['sources']) == 492
+assert (repo / relative).read_bytes() == original
+assert subprocess.check_output(['git','-C',str(repo),'status','--porcelain']) == b''
+report.mkdir()
+shutil.copyfile(raw / 'manifest.json',report / 'manifest.json')
+shutil.copyfile(raw / 'protocol.json',report / 'protocol.json')
+shutil.copyfile(__file__,report / 'audit_driver.py.txt')
+result = {'status':'passed', 'raw_directory':str(raw.relative_to(root)),
+          'source_head':manifest['source_before']['git_head'], 'phases':manifest['phases'],
+          'foreground_commands':len(manifest['commands']), 'persisted_phases_before_query':11, 'background_source_mutation_phases':8,
+          'foreground_note_updates':1,
+          'initial_source_references':492, 'raw_artifact_hashes_verified':len(manifest['artifact_hashes']),
+          'source_snapshots_match':True,'runtime_identity':manifest['runtime_before'],
+          'watcher_owned_session':manifest['watcher']['session_id'],
+          'restored_clean_clone':True,'owned_watcher_exited':True,
+          'limitations':['Single selected subject and authored mutations on a real source tree.',
+                         'No runtime acceleration, real labels or admission claimed.',
+                         'Historical persisted JSON and DB hashes retained; per-phase raw SQLite byte copies not archived.',
+                         'Full source objects and raw contexts remain in local ignored run directory.']}
+(report/'audit.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps({k:result[k] for k in ('status','foreground_commands','persisted_phases_before_query','raw_artifact_hashes_verified')}))

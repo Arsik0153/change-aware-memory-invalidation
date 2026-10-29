@@ -23,6 +23,8 @@ the historical submission checks do not establish their current status.
   assignments, independent test authorship, double review, and adjudication import.
 - [Product memory checks](product_memory_real_repositories_2026-10-29.md) record
   controlled source mutations in pinned local Click, Requests and TypeScript repositories.
+- [Background memory check](product_watch_real_repository_2026-10-29.md) verifies
+  persisted watcher updates before foreground queries on a real TypeScript source tree.
 
 The implemented system has been tested; the main empirical thesis hypothesis
 still requires independent annotation, cohort admission, provenance review, and

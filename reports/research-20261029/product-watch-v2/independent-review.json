@@ -1,0 +1,29 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "material_findings": [],
+  "verification": {
+    "v2_artifact_hashes": 85,
+    "v1_artifact_hashes": 339,
+    "cami_source_files": 158,
+    "persisted_phases": 11,
+    "unique_source_objects": 496,
+    "historical_heads_states_and_source_refs_in_final_sqlite": 11,
+    "all_context_records_and_states_match": true,
+    "source_bytes_mode_and_clean_clone": true,
+    "owned_session_start_stop": true,
+    "v2_plan_committed_before_launch": true
+  },
+  "scope": [
+    "Frozen plans and phase attribution",
+    "Independent bounded final SQLite read, deserialized query-only in memory",
+    "Actual Git blobs/source mutations and retained index artifacts",
+    "No foreground product query or target application execution"
+  ],
+  "limitations": [
+    "Historical per-phase raw SQLite byte copies not archived",
+    "Earlier timing relies on retained logs and frozen driver",
+    "Raw repository/source artifacts local and ignored",
+    "27focused tests;no new full suite",
+    "Results paragraphs added by primary while review ran"
+  ]
+}

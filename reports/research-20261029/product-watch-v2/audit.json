@@ -1,0 +1,188 @@
+{
+  "status": "passed",
+  "raw_directory": "runs/product-watch-20261029/evidence-v2",
+  "source_head": "892695e46b9e6259d893d15c458bda2f49652cea",
+  "phases": [
+    {
+      "label": "initial",
+      "sequence": 4,
+      "generation": "61df0aac9fad9fec410660096d4d4acaf8be6d796f39306003ed1db23d24db04",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "61df0aac9fad9fec410660096d4d4acaf8be6d796f39306003ed1db23d24db04",
+      "counts": {
+        "memory_generation": 4,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "unchanged",
+      "sequence": 4,
+      "generation": "61df0aac9fad9fec410660096d4d4acaf8be6d796f39306003ed1db23d24db04",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "61df0aac9fad9fec410660096d4d4acaf8be6d796f39306003ed1db23d24db04",
+      "counts": {
+        "memory_generation": 4,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "untracked_create",
+      "sequence": 5,
+      "generation": "3e68509e83289af27c4d21916354136ba3b10d94939a3d3da25303b3e5fb42dd",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "3e68509e83289af27c4d21916354136ba3b10d94939a3d3da25303b3e5fb42dd",
+      "counts": {
+        "memory_generation": 5,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "untracked_rename",
+      "sequence": 6,
+      "generation": "07e88e8882eb46743d564fe86fa78cfc0a3a0534047e5e56578a1fd1ae602ded",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "07e88e8882eb46743d564fe86fa78cfc0a3a0534047e5e56578a1fd1ae602ded",
+      "counts": {
+        "memory_generation": 6,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "untracked_delete",
+      "sequence": 7,
+      "generation": "21cb726237d50b5dd21a64e6fa975ef957c8862a6af02c55d58c7f52bbeba115",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "21cb726237d50b5dd21a64e6fa975ef957c8862a6af02c55d58c7f52bbeba115",
+      "counts": {
+        "memory_generation": 7,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "body",
+      "sequence": 8,
+      "generation": "301a83b90ae163712944c1c5e4fdee7666d18ac5c645369dd27f924cdfab84c7",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "301a83b90ae163712944c1c5e4fdee7666d18ac5c645369dd27f924cdfab84c7",
+      "counts": {
+        "memory_generation": 8,
+        "validation_event": 2,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "signature",
+      "sequence": 9,
+      "generation": "93ef68a0b138b6e3bd54fe2c52f5a2163273d035b0c437ae346c9559f22db86b",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "93ef68a0b138b6e3bd54fe2c52f5a2163273d035b0c437ae346c9559f22db86b",
+      "counts": {
+        "memory_generation": 9,
+        "validation_event": 3,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "parse",
+      "sequence": 10,
+      "generation": "dc1f3a4a66934c5343d9193d7fa5e8a725fdaa930ab94b121db6541cf65a9d19",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "dc1f3a4a66934c5343d9193d7fa5e8a725fdaa930ab94b121db6541cf65a9d19",
+      "counts": {
+        "memory_generation": 10,
+        "validation_event": 5,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "delete",
+      "sequence": 11,
+      "generation": "f6cedb8a5a76038722c52500efc743277d7b77a4c6637bc4b6385830c2d08511",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "f6cedb8a5a76038722c52500efc743277d7b77a4c6637bc4b6385830c2d08511",
+      "counts": {
+        "memory_generation": 11,
+        "validation_event": 7,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "revert",
+      "sequence": 12,
+      "generation": "81413ee4f28465736c54f4489fe1696a53d6455d36eb4d01d682d6e06c987550",
+      "persisted_before_query": true,
+      "publication_actor": "watcher_verified",
+      "watcher_latest_successful_generation": "81413ee4f28465736c54f4489fe1696a53d6455d36eb4d01d682d6e06c987550",
+      "counts": {
+        "memory_generation": 12,
+        "validation_event": 9,
+        "record_revision": 3,
+        "operation_receipt": 3
+      }
+    },
+    {
+      "label": "note_review",
+      "sequence": 13,
+      "generation": "cf740d677d0dab5af5582a48ab8fe53666012c3c3f71eb5570507f5a3e0a3c45",
+      "persisted_before_query": true,
+      "publication_actor": "foreground_explicit_update",
+      "watcher_latest_successful_generation": "81413ee4f28465736c54f4489fe1696a53d6455d36eb4d01d682d6e06c987550",
+      "counts": {
+        "memory_generation": 13,
+        "validation_event": 9,
+        "record_revision": 4,
+        "operation_receipt": 4
+      }
+    },
+    {
+      "label": "stopped",
+      "watcher_exit_code": 0,
+      "ownership": "lease_free"
+    }
+  ],
+  "foreground_commands": 35,
+  "persisted_phases_before_query": 11,
+  "background_source_mutation_phases": 8,
+  "foreground_note_updates": 1,
+  "initial_source_references": 492,
+  "raw_artifact_hashes_verified": 85,
+  "source_snapshots_match": true,
+  "runtime_identity": {
+    "manifest": "27f1d58fb04e5856b060799c4705a2048f5017824ee04dc71acd8fa73a66d452",
+    "node": "/root/.nvm/versions/node/v24.15.0/bin/node",
+    "compiler": "569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39",
+    "node_version": "v24.15.0"
+  },
+  "watcher_owned_session": "464a354ec57261ccce62d78eaed2fced",
+  "restored_clean_clone": true,
+  "owned_watcher_exited": true,
+  "limitations": [
+    "Single selected subject and authored mutations on a real source tree.",
+    "No runtime acceleration, real labels or admission claimed.",
+    "Historical persisted JSON and DB hashes retained; per-phase raw SQLite byte copies not archived.",
+    "Full source objects and raw contexts remain in local ignored run directory."
+  ]
+}

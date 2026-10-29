@@ -9,6 +9,8 @@
 
 - Последний завершённый полный suite: **1046 passed, без пропусков**, на `44c77d3`;
   Ruff и mypy прошли. Source snapshots до и после совпали; hashes журналов проверены.
+  Позднейшие diagnostic/watch drivers проверены профильными suites и реальными
+  запусками; новый полный suite для этих commits пока не заявляется.
 - Синтетическая проверка смешанных историй: 36 запусков политик, 15 552 проверенных
   состояния памяти, без расхождений с отдельным oracle. Число вызовов валидатора:
   5184 / 5184 / 1736. Сокращение на 66,5123% относится только к этим fixtures,
@@ -749,3 +751,43 @@ Evidence: reports/research-20261029/research-synthesis-v1. В docs/README.md д�
 TypeScript repository, читая persisted state до любого foreground context,
 который сам мог бы обновить память. План мутаций и границы проверки будут
 зафиксированы до запуска; это engineering development, не real-label experiment.
+
+## Двадцатый этап: фоновое обновление на реальном TypeScript source tree
+
+План891bec9 расширил предыдущий foreground memory check до watcher со scope src
+в pinned seo-articles clone. Ключевой критерий: persisted SQLite state читается
+независимым stdlib reader до context, который сам мог бы обновить память. После
+context head/counts не должны меняться. Frozen expected mutations сохранены.
+
+До запуска независимый reviewer обнаружил ownership bug драйвера: watch stop после
+проигранного launch мог остановить чужую сессию. Исправлено: свободный lease до
+старта, привязка к started event собственной сессии, cleanup только через SIGTERM
+owned Popen. Tests покрыли уже занятую копию и проигранную гонку. Protocol stop
+не вызывается даже после предварительной проверки, чтобы убрать race смены session.
+
+V1 на61f0ca0 сохранил восемь background source-mutation phases, но завершился failed:
+после успешного foreground note CAS driver ошибочно требовал эту generation в
+historical latest_successful watcher. Failure и integrity audit сохранены;
+owned process остановлен, clone восстановлен. В c4a55e2 зафиксирован v2-план до
+повтора: все phases сохранены, меняется только явная атрибуция note publication.
+Реализация892695e,27focused tests passed, Ruff passed.
+
+V2 на892695e прошёл12phases:11persisted-before-query proofs, из них8source mutations,
+2начальное/стабильное состояние и1foreground note update; последний этап — stop.
+35foregroundCLI exit0,492initial source references. Проверены85raw hashes, Git bytes,
+context/persisted equality, session attribution, inputs, runtime и clean source
+snapshots. Nodev24.15.0, прежний доверенный compiler. Исходный repo и clone чистые.
+Ruff всего проекта и mypy52files passed; full suite повторно не заявляется.
+
+Подробности: product_watch_real_repository_2026-10-29.md. Evidence: product-watch-v2,
+failed-v1 и invocation logs. Это authored engineering check, не performance или
+real-label experiment. Historical JSON/DB hashes сохранены; raw SQLite bytes
+каждой промежуточной phase отдельно не архивировались. Независимый reviewer
+подтвердил85v2/339v1 artifact hashes,158source files,496source objects,все11phase
+states/context outputs и исторические поколения в конечной SQLite. Существенных
+замечаний нет; старое время публикаций опирается на logs и frozen driver.
+
+Следующий научный вопрос: как различие и пересечение denominator support двух
+политик влияет на доступность paired bootstrap. Предыдущая точная формула
+охватывала совпадающие знаменатели. Новый условный разбор не будет менять estimator
+или использовать реальную разметку; план фиксируется до расчёта таблиц.
