@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "purpose": "development_watch_check_on_real_sources_not_research_labels",
+  "repo_head": "85070f607449b32dc3d039a81a5951749ec2aa34",
+  "subject": "src/shared/lib/format-count.ts:formatCount",
+  "source_sha256": "dd3827bb67849e1dfa8ed3eb72bf80d618bded1d6266a45b97b5e231cc59fb0d",
+  "source_roots": [
+    "src"
+  ],
+  "mutation_profile_path": "examples/product_memory/seo_articles_typescript.json",
+  "mutation_profile_sha256": "bcea95f1d534148ee1c6ddea1882be62715133e81a01e658ded5f9628e2b15a9",
+  "phases": [
+    "initial",
+    "unchanged",
+    "untracked_create",
+    "untracked_rename",
+    "untracked_delete",
+    "body",
+    "signature",
+    "parse",
+    "delete",
+    "revert",
+    "note_review",
+    "stopped"
+  ],
+  "wait_seconds_per_phase": 60,
+  "foreground_command_timeout_seconds": 60,
+  "check_persisted_before_query": true,
+  "record_types": [
+    "symbol_exists",
+    "signature_equals",
+    "note"
+  ],
+  "oracle": "Explicit expected states plus independent stdlib SQLite reader from tests/watch/cli_driver.py; never CAMI ProductMemory reads",
+  "expected": {
+    "untracked_changes": "original structural checks preserved; note available",
+    "body": "original structural checks preserved; note needs_review",
+    "signature": "existence supported; signature contradicted/signature_mismatch; note needs_review",
+    "parse": "both structural facts insufficient_evidence/parse_error; note needs_review",
+    "delete": "both structural facts contradicted/subject_absent; note needs_review",
+    "revert": "both structural facts supported; note still needs_review",
+    "note_review": "explicit CAS revision1 update yields revision2",
+    "stopped": "owned watcher exits and status lease_free"
+  },
+  "failure_policy": "Retain logs and completed phases, stop owned process, restore original bytes and mode, mark failed; no result-driven phase exclusion",
+  "limitations": [
+    "Single selected subject and authored mutations",
+    "Real source tree, not real historical-error sample",
+    "No target application execution, performance claim, labels, receipts or admission",
+    "Foreground context may refresh itself; only earlier persisted proof establishes background work"
+  ]
+}
