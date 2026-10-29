@@ -139,3 +139,30 @@ Model the Domain определил строгие записи запроса, 
 Prove It Works определил фактические CLI-запуски и проверку их артефактов.
 Архитектурные разборы выполнены той же настроенной моделью; они не являются
 независимым человеческим подтверждением научного эксперимента.
+
+## Расширенная development-проверка, план от 29 октября 2026
+
+До генерации данных и запуска новых policy runs зафиксирован
+`examples/structural_stress/protocol.json`. План расширяет узкую демонстрацию:
+12 seeds, по3файла с4функциями,24immutable claims на parent и18последовательных
+изменений. В каждом history есть unrelated/body/signature/duplicate/remove/parse/
+file_delete/restore/no_change; ещё6событий выбираются из фиксированного списка.
+Ожидается5184child claim-revision items на variant, без повторных timing trials.
+
+Три variants остаются all_validate, symbol_validate с исходной known_incomplete
+и symbol_validate после автоматического fixture-only closure. Real data и допуски
+не используются. Parent receipts явно synthetic; labels человеческой разметки
+не создаются. Closed provenance готовится на parent до создания child commits.
+
+Oracle задаётся двумя путями: состоянием генератора и отдельным tokenize обходом
+фактических Git blobs с compile-only проверкой синтаксиса. Он не вызывает CAMI
+parser/index/validator и проверяет только намеренно узкую грамматику top-level
+functions. CPython syntax checking — общая базовая зависимость; это независимость
+реализации проверок, не независимость авторов и не доказательство для любого Python.
+
+Будут проверены actual verdicts, availability всех states, carry lineage, неизменность
+cohort и учёт validations. Exact selector minimality не предполагается: parser
+uncertainty может консервативно расширять selection. Числа savings описывают только
+этот authored generator; population confidence intervals и ускорение не заявляются.
+Каждый seed сохраняется, включая ошибки. Изменения плана/исправления oracle после
+наблюдения результатов отмечаются явно и требуют нового каталога прогона.
