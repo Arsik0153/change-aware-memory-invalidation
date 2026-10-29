@@ -1,0 +1,15 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "review_stage": "before real experiment",
+  "material_finding": "Cleanup could call public watch stop after owned launch exited already_running, affecting another session.",
+  "reviewer_reproduced": true,
+  "resolution": "Preflight lease_free required; owned started-event session bound; cleanup uses SIGTERM only on owned Popen, never public watch stop; exited-child race regression added.",
+  "other_findings": [],
+  "strengthening": "Untracked bytes now hash-checked; protocol/profile hashes and runtime identities checked before/after.",
+  "verification_after_fixes": "10 driver tests passed, Ruff passed; preceding combined22 included8driver+14memory tests before ownership additions",
+  "limitations": [
+    "Reviewer reviewed original design; parent implemented and tested fixes",
+    "Local Git calls lack explicit timeout",
+    "No actual watcher result yet"
+  ]
+}
