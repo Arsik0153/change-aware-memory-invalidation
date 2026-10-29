@@ -1,0 +1,60 @@
+.............F.........F                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_real_cli_history_matches_oracle_and_detects_corrupt_states ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-177/test_real_cli_history_matches_0')
+
+    def test_real_cli_history_matches_oracle_and_detects_corrupt_states(tmp_path):
+        spec = stress.read_json(stress.PROTOCOL)
+        spec.update(seeds=[1], files=1, functions_per_file=2, random_events_per_history=0)
+        protocol = tmp_path / 'test-protocol.json'
+        stress.write_json(protocol, spec)
+        out = tmp_path / 'study'
+        result = stress.run_study(out, protocol)
+>       assert result['status'] == 'passed'
+E       AssertionError: assert 'failed' == 'passed'
+E         
+E         - passed
+E         + failed
+
+tests/test_structural_stress.py:57: AssertionError
+----------------------------- Captured stdout call -----------------------------
+seed=1: failed
+______ test_verifier_failure_is_reported_and_other_variants_still_execute ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-177/test_verifier_failure_is_repor0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7065eb8b0680>
+
+    def test_verifier_failure_is_reported_and_other_variants_still_execute(tmp_path, monkeypatch):
+        spec = stress.read_json(stress.PROTOCOL)
+        spec.update(seeds=[1], files=1, functions_per_file=1, fixed_events=['body'], random_events_per_history=0)
+        protocol = tmp_path / 'protocol.json'
+        stress.write_json(protocol, spec)
+        verify = stress.verify_run
+    
+        def fail_first(base, variant, *args):
+            if variant == 'original_incomplete':
+                raise ValueError('injected verifier failure')
+            return verify(base, variant, *args)
+    
+        monkeypatch.setattr(stress, 'verify_run', fail_first)
+        result = stress.run_study(tmp_path / 'study', protocol)
+        assert result['status'] == 'failed'
+        variants = result['seeds'][0]['variants']
+        assert len(variants) == 3 and all(r['exit_code'] == 0 for r in variants)
+>       assert {r['variant']: r['status'] for r in variants} == {
+            'original_incomplete': 'failed', 'all_validate': 'passed', 'closed_structural': 'passed'}
+E       AssertionError: assert {'all_validat...te': 'failed'} == {'all_validat...te': 'failed'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'all_validate': 'failed'} != {'all_validate': 'passed'}
+E         Use -v to get more diff
+
+tests/test_structural_stress.py:162: AssertionError
+----------------------------- Captured stdout call -----------------------------
+seed=1: failed
+=========================== short test summary info ============================
+FAILED tests/test_structural_stress.py::test_real_cli_history_matches_oracle_and_detects_corrupt_states
+FAILED tests/test_structural_stress.py::test_verifier_failure_is_reported_and_other_variants_still_execute
+2 failed, 22 passed in 3.98s

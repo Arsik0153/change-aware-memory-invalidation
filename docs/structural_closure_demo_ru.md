@@ -166,3 +166,32 @@ uncertainty может консервативно расширять selection. 
 этот authored generator; population confidence intervals и ускорение не заявляются.
 Каждый seed сохраняется, включая ошибки. Изменения плана/исправления oracle после
 наблюдения результатов отмечаются явно и требуют нового каталога прогона.
+
+### Проверка драйвера до полного запуска
+
+Драйвер `python -m scripts.stress_structural_memory` и отдельный stdlib-only oracle
+реализованы. Генератор выбирает file/function равномерно через random.Random(seed);
+состояния остальных функций сохраняются. Restore сбрасывает выбранный файл, поэтому
+может не затронуть другой ранее повреждённый файл. Операции могут быть no-op.
+Для каждого перехода сохраняются Git tree и фактический changed_paths; scheduled
+и effective изменения будут посчитаны отдельно. Это уточнение реализации заданного
+генератора до полного запуска, не отбор удачных результатов.
+
+Независимый design reviewer нашёл четыре проблемы в verification/reporting, до
+основных12seed runs: неполную проверку manifest/config hashes; непроверенные поля
+last_verdict/state; смешение scheduled/effective событий; пропуск оставшихся variants
+при ошибке verifier. Исправлены все четыре. Пустой hash inventory сначала принят
+старым verifier (failing regression), затем отклонён. Tests также намеренно меняют
+policy, provenance, availability, state, last_verdict и costs с обновлёнными hashes.
+Инъекция verifier exception не мешает выполнению двух остальных variants.
+
+Focused suite:24passed,ruff passed. Это включает небольшой настоящий CLI prototype
+(1file,2functions,12transitions), не полный experiment. При усилении verifier был
+исправлен его false positive: отсутствующие optional anchor fields нормализуются
+через модель перед сравнением, а исходные bytes отдельно связываются hashes.
+Evidence: structural-stress-tests-v1..v5.log, structural-stress-attestation-before.log,
+structural-stress-design-review.json. Основной12seed запуск пока не выполнен.
+
+Maintenance validation counts не включают подготовку/проверку provenance, oracle,
+Git I/O и индексацию. Их уменьшение не является измерением общего ускорения или
+экономии труда при real annotation. Все состояния и результаты остаются synthetic.

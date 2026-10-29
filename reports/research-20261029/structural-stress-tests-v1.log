@@ -1,0 +1,39 @@
+.............F                                                           [100%]
+=================================== FAILURES ===================================
+_______ test_real_cli_history_matches_oracle_and_detects_corrupt_states ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-173/test_real_cli_history_matches_0')
+
+    def test_real_cli_history_matches_oracle_and_detects_corrupt_states(tmp_path):
+        spec = stress.read_json(stress.PROTOCOL)
+        spec.update(seeds=[1], files=1, functions_per_file=2, random_events_per_history=0)
+        protocol = tmp_path / 'test-protocol.json'
+        stress.write_json(protocol, spec)
+        out = tmp_path / 'study'
+        result = stress.run_study(out, protocol)
+        assert result['status'] == 'passed'
+        seed = result['seeds'][0]
+        assert len(seed['variants']) == 3
+        assert all(v['states_checked'] == 48 for v in seed['variants'])
+        assert all(v['actual_validations'] == 48 for v in seed['variants'] if v['variant'] != 'closed_structural')
+        assert next(v['actual_validations'] for v in seed['variants'] if v['variant'] == 'closed_structural') < 48
+        # Stored artifacts are verified before the outcome can be trusted.
+        run = out / 'seed-01/runs/closed_structural'
+        with (run / 'states.jsonl').open('a') as stream:
+            stream.write('\n')
+>       claims = [stress.Claim.model_validate(r) for r in stress.read_jsonl(out / 'seed-01/parent/claims.jsonl')]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 2 validation errors for Claim
+E       predicate.signature_equals.expected_signature.parameters
+E         Input should be a valid tuple [type=tuple_type, input_value=[{'annotation_ast': None,..._keyword', 'name': 'x'}], input_type=list]
+E           For further information visit https://errors.pydantic.dev/2.12/v/tuple_type
+E       predicate.signature_equals.expected_signature.decorators_ast
+E         Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+E           For further information visit https://errors.pydantic.dev/2.12/v/tuple_type
+
+tests/test_structural_stress.py:67: ValidationError
+----------------------------- Captured stdout call -----------------------------
+seed=1: passed
+=========================== short test summary info ============================
+FAILED tests/test_structural_stress.py::test_real_cli_history_matches_oracle_and_detects_corrupt_states
+1 failed, 13 passed in 2.54s

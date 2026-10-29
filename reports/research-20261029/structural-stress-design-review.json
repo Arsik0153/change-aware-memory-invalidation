@@ -1,0 +1,26 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "scope": "Frozen protocol and implementation before full12seed experiment",
+  "independent_tests": "23passed",
+  "findings": [
+    {
+      "finding": "Verifier accepted incomplete hash inventories or wrong declared policy",
+      "reproduction": "structural-stress-attestation-before.log; independent reviewer reproduced",
+      "resolution": "Require exact config and configuration hash, input/claim hashes, complete artifact inventory, normalized source provenance and expected incomplete flags"
+    },
+    {
+      "finding": "Availability/last_checked checks did not verify last_verdict or state category",
+      "resolution": "Check last_verdict, last_supported, basis and compatible state category; rehashed semantic tamper regression"
+    },
+    {
+      "finding": "Scheduled body/restore/delete operations may leave source unchanged",
+      "resolution": "Save actual Git trees and changed_paths; report effective_change separately"
+    },
+    {
+      "finding": "Verifier failure skipped remaining variants within seed",
+      "resolution": "Per-variant exception recording and continuation; initial not_run statuses; injected failure test proves other variants execute"
+    }
+  ],
+  "verification_after_fixes": "24passed;ruff passed;full12seed study not yet executed",
+  "oracle_limits": "Separate implementation uses stdlib tokenize and compile-only syntax check; shared CPython syntax dependency, not independent human authorship"
+}
