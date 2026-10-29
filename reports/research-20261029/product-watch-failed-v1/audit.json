@@ -1,0 +1,27 @@
+{
+  "status": "failed_run_integrity_verified",
+  "raw_directory": "runs/product-watch-20261029/evidence-v1",
+  "source_snapshots_match": true,
+  "all_artifact_hashes_verified": 339,
+  "owned_process_exited": true,
+  "clone_restored_clean": true,
+  "completed_phase_labels": [
+    "initial",
+    "unchanged",
+    "untracked_create",
+    "untracked_rename",
+    "untracked_delete",
+    "body",
+    "signature",
+    "parse",
+    "delete",
+    "revert",
+    "stopped"
+  ],
+  "note_update_observed_revision": 2,
+  "failure": {
+    "type": "AssertionError",
+    "message": "('note_review', 'watcher did not attest persisted generation')"
+  },
+  "interpretation": "Driver falsely required background latest_successful to acknowledge an explicit foreground CAS update; no background re-publication is required by watch contract."
+}

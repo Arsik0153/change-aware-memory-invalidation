@@ -1,0 +1,21 @@
+initial: persisted before query, generation 4
+unchanged: persisted before query, generation 4
+untracked_create: persisted before query, generation 5
+untracked_rename: persisted before query, generation 6
+untracked_delete: persisted before query, generation 7
+body: persisted before query, generation 8
+signature: persisted before query, generation 9
+parse: persisted before query, generation 10
+delete: persisted before query, generation 11
+revert: persisted before query, generation 12
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/apps/change-aware-memory-invalidation/scripts/check_product_watch.py", line 376, in <module>
+    result = run(args.repo, args.protocol, args.out, args.cache_dir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/scripts/check_product_watch.py", line 304, in run
+    completed('note_review', reviewed)
+  File "/root/apps/change-aware-memory-invalidation/scripts/check_product_watch.py", line 180, in completed
+    raise AssertionError((label, 'watcher did not attest persisted generation'))
+AssertionError: ('note_review', 'watcher did not attest persisted generation')
