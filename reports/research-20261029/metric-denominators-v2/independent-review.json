@@ -1,0 +1,22 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "material_findings": [],
+  "cases_recomputed": 729,
+  "applicability_checks": 14580,
+  "artifact_hashes_verified": 2,
+  "source_snapshots_match": true,
+  "source_head": "749f01c",
+  "production_changes": false,
+  "direct_guard_checks": [
+    "not_applicable rate has no ordinary CI",
+    "raw count has no ordinary CI",
+    "replay has no population CI"
+  ],
+  "scientific_nuance": "F1 denominator is |P_binary|+|C|; support can vary only where C is empty.",
+  "limitations": [
+    "Fixture excludes retired and freshness mismatches",
+    "87-test log predates auditor correction; corrected v2 actual run independently recomputed",
+    "Synthetic scorer algebra is not policy effectiveness or coverage"
+  ],
+  "trail_clarification": "V1 failure source was unchanged at observation; V1-to-V2 changes the auditor only, not production."
+}

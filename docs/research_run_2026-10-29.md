@@ -823,3 +823,36 @@ bootstrap_availability_mechanism_2026-10-29.md, evidence paired-support-v1/v2.
 поля отчёта для объяснения отказа CI без повторного исполнения политик. Если
 добавляется такой diagnostic, он должен явно сохранять not_applicable/zero_sample
 и не переименовывать теоретическую availability в наблюдаемую частоту или coverage.
+
+## Двадцать второй этап: область применимости denominator-support анализа
+
+Прямой аудит compute_metrics и aggregate._intervals показал, что основные exposure
+и retention имеют одинаковые label denominators у политик на общем cohort.
+Проверены729synthetic scorer combinations:3labels×3states для3claims, set-cardinality
+oracle отдельно от scorer loops. Шесть rate denominators фиксированы labels;
+contamination,precision,F1 могут иметь зависимую от состояния поддержку. Для F1
+D=|P_binary|+|C|, поэтому support меняется только в кластерах с C пустым.
+
+V1audit5995df0 ошибочно ожидал denominator=null при not_applicable и завершился
+failed с0completed cases. Scorer сохраняет raw counts, но value=null; aggregate
+проверяет reason до bootstrap. Исправлен только auditor в749f01c. V2 прошёл729cases
+и14580applicability checks; оба artifact hashes и source snapshots совпали.
+Synthetic labels явно authored oracle; policy algorithms не запускались.
+
+Независимый reviewer перепроверил всеcases/counts, source history и прямые aggregate
+отказы для not_applicable,raw count,replay. Существенных замечаний нет. Перебор
+не охватывает retired/freshness mismatches; это не доказательство всего scorer.
+87focused tests passed на5995df0; после двухстрочной коррекции auditor выполнен
+v2 и его independent recomputation. Между версиями production не менялась;
+фраза source unchanged в прежней строке журнала относилась к проверке сразу
+после v1failure, а не к тождеству всего исходного дерева v1/v2.
+
+Таблица знаменателей и научная интерпретация добавлены в
+bootstrap_availability_mechanism_2026-10-29.md. Evidence:metric-denominators-v1/v2,
+metric-denominators-focused.log. Новый механизм overlap нельзя выдавать за
+дополнительный источник различий availability primary exposure/retention,
+если их cohort/labels корректно совпадают.
+
+Далее: собрать переносимый научный отчёт из проверенных выводов и графиков,
+с сохранившейся границей между development evidence и pending real experiment.
+Исходные proposal/submission и старые output/intermediate_report* сохраняются.
