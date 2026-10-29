@@ -1,0 +1,8 @@
+
+STDERR:
+Traceback (most recent call last):
+  File "/runner.py", line 46, in <module>
+    main()
+  File "/runner.py", line 22, in main
+    raise RuntimeError("repository modules collide with preloaded probe infrastructure: "
+RuntimeError: repository modules collide with preloaded probe infrastructure: _pytest, pytest

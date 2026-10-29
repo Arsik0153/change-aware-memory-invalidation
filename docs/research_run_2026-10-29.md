@@ -277,3 +277,21 @@ parent receipts, child labels, final seal и не меняет claims. Ошиб�
 эксперимент. Независимость будущих reviewers остаётся отдельным требованием.
 Тесты runner: 4 passed; проверены parent snapshot вместо HEAD-child, отсутствие
 receipts/labels, immutability inputs и отказ при подмене probe/hash или child fields.
+
+### Итог первого parent environment diagnostic
+
+Все 63 группы обработаны; фактических контейнерных попыток 123. Click: 20 supported
+после 60 повторений. Requests: 22 environment_error до контейнерного исполнения
+(0 попыток), поскольку ext/requests-logo.ai имеет 2189478 bytes при capture limit
+2097152. pytest: 21 environment_error после 63 попыток; обнаружен preloaded
+pytest/_pytest collision. Это не labels и не опровержения claims.
+
+Независимый reviewer gpt-6.1-sol подтвердил соответствие всех 63 planned groups,
+проверил 333 artifact hashes и 4 focused runner tests. Полные исходные логи
+остаются в runs/parent-environments-20261029-v1; manifest, summary, observations
+и по одному полному примеру на repo сохранены в reports/research-20261029/parent-environments-v1.
+
+Следующий диагностический запуск заранее меняет только явно заданный предел
+размера Git blob на 4 MiB, сохраняя прежний default 2 MiB. Все 63 parent группы,
+образ, probes и assertions сохраняются. Это проверка materialization blocker,
+а не исправление показателя путём исключения неудачных групп. Первый опыт сохранён.

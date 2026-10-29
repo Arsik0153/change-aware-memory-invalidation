@@ -1,0 +1,15 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/check_parent_environments.py",
+    "--parents",
+    "runs/main-restored-20261029/parent_inputs.jsonl",
+    "--candidates",
+    "runs/main-restored-20261029/candidates",
+    "--image",
+    "cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6",
+    "--out",
+    "runs/parent-environments-20261029-v1"
+  ],
+  "exit_code": 0
+}
