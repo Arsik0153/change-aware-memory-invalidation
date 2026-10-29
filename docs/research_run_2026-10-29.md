@@ -241,3 +241,39 @@ passed. Он воспроизводит те же relocated bytes. Production к
 исполнение held-out behavior claims. Сначала изучить Dockerfile.probes и тесты,
 использовать реальный digest построенного образа, сохранить журналы. Затем можно
 планировать historical environment pilot отдельно от независимой разметки.
+
+## Изменение режима по указанию пользователя
+
+Пользователь сообщил, что удалил автоматизацию, и поручил продолжать работу
+до его явной остановки. Прежнее ограничение 19:00 UTC отменено. Новые таймеры
+не создаются; работа продолжается в активной сессии. Исторические записи выше
+сохраняют прежний план, но не задают текущий срок.
+
+## Шестой этап: Docker восстановлен
+
+Собран docker/Dockerfile.probes с закреплённой Python 3.12.12 base и package
+versions. Реальный локальный digest сохранён в docker-image.json. Четыре ранее
+пропускавшихся Docker tests теперь прошли: `4 passed, 852 deselected`. Это
+интеграционные synthetic tests, не повтор полного suite и не real-data labels.
+
+Run inputs и raw per-repetition evidence сохранены в runs/docker-fixture-20261029,
+команда, digest, exit code и hash pytest log — в docker-tests.json. Дополнительно
+пересчитаны реальные repeat outcome files в docker-repeat-audit.json.
+
+### Следующий опыт: только parent environments
+
+Добавлен scripts/check_parent_environments.py. Он принимает строгие parent-only
+inputs и frozen candidates, проверяет hashes и происхождение claims, выполняет
+по одному заранее заданному behavior probe на parent каждой из 63 групп.
+Child commits, labels и policy outcomes не являются входом. Child-поля отклоняются.
+
+Весь заранее заданный parent набор проверяется на одном pinned probe image.
+Source paths заданы явно `.` и `src`, чтобы поддержать оба исторических layout.
+Успех означает только автоматическое наблюдение в данной среде. Script не пишет
+parent receipts, child labels, final seal и не меняет claims. Ошибки среды
+сохраняются как insufficient_evidence. Никакая группа не заменяется по результату.
+
+Это environment-preparation diagnostic, не admission review и не held-out policy
+эксперимент. Независимость будущих reviewers остаётся отдельным требованием.
+Тесты runner: 4 passed; проверены parent snapshot вместо HEAD-child, отсутствие
+receipts/labels, immutability inputs и отказ при подмене probe/hash или child fields.
