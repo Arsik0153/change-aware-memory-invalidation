@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/apps/change-aware-memory-invalidation/scripts/build_research_report.py", line 258, in <module>
+    build(args.source,args.out)
+  File "/root/apps/change-aware-memory-invalidation/scripts/build_research_report.py", line 237, in build
+    assert not missing, f'{len(missing)} text blocks missing from PDF extraction'
+           ^^^^^^^^^^^
+AssertionError: 3 text blocks missing from PDF extraction

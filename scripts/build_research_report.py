@@ -225,14 +225,18 @@ def build(source: Path, out: Path):
         pdf = docx_path.with_suffix('.pdf')
         assert pdf.is_file() and pdf.stat().st_size > 1000
         subprocess.run(['pdftotext','-layout',str(pdf),str(out/'extracted.txt')],check=True,timeout=30)
-        extracted = (out/'extracted.txt').read_text()
+        # Layout mode interleaves lines from adjacent, wrapped table cells.
+        # Content-stream order preserves each cell for semantic text comparison.
+        subprocess.run(['pdftotext','-raw',str(pdf),str(out/'extracted-raw.txt')],check=True,timeout=30)
+        extracted = (out/'extracted-raw.txt').read_text()
         cleaned = '\n'.join(line for line in extracted.splitlines()
                             if line.strip() != HEADER and not re.match(r'^\s*Стр\.\s*\d+\s*$',line))
         def normalize(value):
             return re.sub(r'\s+','',unicodedata.normalize('NFKC',value))
         joined = normalize(cleaned)
         missing = [text for text in expected_text if normalize(text) not in joined]
-        write(out/'text-check.json',{'paragraphs_and_cells':len(expected_text),'missing':missing,
+        write(out/'text-check.json',{'extraction_mode':'raw','layout_extraction':'extracted.txt',
+                                    'paragraphs_and_cells':len(expected_text),'missing':missing,
                                     'status':'passed' if not missing else 'failed'})
         assert not missing, f'{len(missing)} text blocks missing from PDF extraction'
         manifest.update(status='rendered_pending_visual_review',text_blocks_checked=len(expected_text),
