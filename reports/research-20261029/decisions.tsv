@@ -1,0 +1,5 @@
+ts	phase	decision	why	evidence	result
+2026-10-29T13:06:56Z	frame	Начать с воспроизводимости проверки исходников	Нельзя связать прежний checks.json с точными bytes проверенного кода	scripts/verify_cami.py	open
+2026-10-29T13:10:39Z	verification	Добавить fingerprints исходников и журналов в checks.json schema 2	Связать результат проверки с наблюдаемыми входами; отклонить несовпадающие снимки	tests/test_verification_manifest.py	5 focused tests passed
+2026-10-29T13:10:39Z	review	Учесть root configs и ограничить смысл endpoint equality после review gpt-6.1-sol	Root conftest влияет на pytest; временные изменения между снимками не наблюдаются	docs/research_run_2026-10-29.md	Замечания исправлены; transient edits остаются явным ограничением
+2026-10-29T13:10:39Z	baseline	Не считать legacy baseline доказательством точного commit	Исходники script и tests изменились после начала запуска	reports/research-20261029/baseline	Диагностический запуск ещё выполняется
