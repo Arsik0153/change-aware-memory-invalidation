@@ -694,3 +694,33 @@ parent-functions-v1/v2 и parent-function-results-review.json. Подробно�
 Далее: исправить сохранение частичного прогресса старого parent-environment
 диагностического driver при исключении между группами. Сейчас завершённые
 observations могут остаться без сводки, а manifest — со статусом running.
+
+## Восемнадцатый этап: сохранение незавершённых parent diagnostics
+
+В старом check_parent_environments.py исключение между группами оставляло manifest
+running и не публиковало накопленные observations/summary. Семь новых проверок
+сначала упали: snapshot failure, probe failure, KeyboardInterrupt и четыре случая
+output внутри исходных данных/репозитория, включая symlink. После исправления
+51 профильный тест прошёл. Реализация в a217a3b; production validator не изменён.
+
+Теперь каждая завершённая группа сохраняется до начала следующей. Обрабатываемое
+исключение сохраняет failed status, группу и тип ошибки, hashes накопленных файлов.
+В failed/running summary test_executions=null: внутри незавершённой группы могли
+исполняться контейнеры. Отдельный completed_group_test_executions описывает только
+законченные наблюдения. Output проверяется до Docker и не может быть внутри inputs,
+candidates или репозиториев. Это не гарантия восстановления после SIGKILL/сбоя диска.
+
+Реальный smoke на a217a3b: frozen probe первого Click parent выполнен в трёх Docker
+контейнерах, supported. Затем driver намеренно прерывает чтение второго parent.
+Сохранён failed manifest, одно завершённое observation, все artifact hashes сходятся,
+inputs и clean source snapshots до/после совпали. Это инъекция сбоя, а не естественное
+падение исторического parent. Evidence: parent-environment-progress-v1 и docker.log.
+
+Независимое ревью gpt-6.1-sol не выявило существенных дефектов; reviewer отдельно
+выполнил13tests. Предыдущий полный1046suite относится к44c77d3; после a217a3b выполнены
+51focused tests и реальный Docker smoke, а не новый полный suite. Ни labels,
+ни parent receipts, ни child executions не создавались.
+
+Далее: связать полученные development результаты с вопросами исследования и явно
+отделить инженерную проверку, synthetic cost observations и недостающую независимую
+оценку качества на реальных переходах.

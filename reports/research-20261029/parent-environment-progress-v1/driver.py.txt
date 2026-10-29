@@ -1,0 +1,77 @@
+"""Real parent Docker observations followed by an explicitly injected snapshot failure."""
+import json
+import shutil
+from pathlib import Path
+from scripts import check_parent_environments as checker
+from scripts.verify_cami import source_snapshot
+from cami.artifacts import file_hash, read_json, write_json
+from cami.errors import ResourceError
+
+root = Path.cwd()
+source = root / 'runs/main-restored-20261029'
+run = root / 'runs/parent-progress-20261029-v1'
+report = root / 'reports/research-20261029/parent-environment-progress-v1'
+run.mkdir()
+report.mkdir()
+inputs = run / 'inputs'
+inputs.mkdir()
+lines = (source / 'parent_inputs.jsonl').read_text().splitlines()
+selected = [line for line in lines if json.loads(line)['repo_id'] == 'click'][:2]
+parents = inputs / 'parent_inputs.jsonl'
+parents.write_text('\n'.join(selected) + '\n')
+ids = [json.loads(line)['group_id'] for line in selected]
+assert len(ids) == 2
+bound_inputs = [source / 'parent_inputs.jsonl']
+for group in ids:
+    bound_inputs.extend(p for p in (source / 'candidates' / group).rglob('*') if p.is_file())
+hashes = {str(p.relative_to(root)): file_hash(p) for p in bound_inputs}
+before = source_snapshot(root)
+assert not before['source_status']
+real_snapshot = checker.read_snapshot
+calls = 0
+
+def fail_second(*args, **kwargs):
+    global calls
+    calls += 1
+    if calls == 2:
+        raise ResourceError('deliberately injected second-parent snapshot failure')
+    return real_snapshot(*args, **kwargs)
+
+checker.read_snapshot = fail_second
+image = 'cami-parent-probes@sha256:4b6d3d7c0cf8a19e9c3574f9acc19a1876bda76da9544b6e7a81216fd0f0e916'
+output = run / 'observations'
+try:
+    checker.check_parents(parents, source / 'candidates', image, output,
+                          max_file_bytes=4*1024*1024, python_version='3.9.25')
+except ResourceError as exc:
+    assert str(exc) == 'deliberately injected second-parent snapshot failure'
+else:
+    raise AssertionError('injected failure was swallowed')
+finally:
+    checker.read_snapshot = real_snapshot
+manifest = read_json(output / 'manifest.json')
+summary = read_json(output / 'summary.json')
+assert manifest['status'] == summary['status'] == 'failed'
+assert manifest['completed_groups'] == summary['groups'] == 1
+assert manifest['failure']['group_id'] == ids[1]
+assert summary['test_executions'] is None
+assert summary['completed_group_test_executions'] == 3
+assert read_json(output / ids[0] / 'observation.json')['verdict'] == 'supported'
+for name, expected in manifest['artifact_hashes'].items():
+    assert file_hash(output / name) == expected
+assert hashes == {str(p.relative_to(root)): file_hash(p) for p in bound_inputs}
+after = source_snapshot(root)
+assert before == after
+shutil.copytree(output, report / 'observations')
+shutil.copyfile(parents, report / 'parent_inputs.jsonl')
+shutil.copyfile(__file__, report / 'driver.py.txt')
+write_json(report / 'audit.json', {'status': 'passed', 'fault_injection': True,
+    'fault': 'Snapshot read on second parent deliberately raises ResourceError',
+    'groups_requested': 2, 'completed_groups': 1, 'real_docker_executions_completed': 3,
+    'driver_total_is_unknown_on_failed_run': True,
+    'artifact_hashes_verified': len(manifest['artifact_hashes']),
+    'source_inputs_sha256': hashes, 'source_before': before, 'source_after': after,
+    'source_snapshots_match': before == after,
+    'limitations': ['Fault intentionally injected; this is a recovery test, not a natural failure.',
+                    'No independent review, admission or child execution was performed.']})
+print('PASS: real first-parent observations retained; injected second-parent failure reported honestly')
