@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "experiment": "synthetic-behavior-dependency-history-v1",
+  "dataset_kind": "synthetic",
+  "split": "development",
+  "protocol_version": "1.0",
+  "hypothesis": "Hiding a dependency can carry a behavior claim after its finite predicate becomes false; known missingness forces validation; prior unavailability forces revalidation and recovery.",
+  "parent_source": "def f():\n    return g()\n\ndef g():\n    return 1\n",
+  "parent_unrelated": "VALUE = 0\n",
+  "probe": "from module import f\n\ndef test_f():\n    assert f() == 1\n",
+  "steps": [
+    {
+      "id": "dependency_break",
+      "f": "g()",
+      "g": 2,
+      "unrelated": 0,
+      "oracle_value": 2
+    },
+    {
+      "id": "unrelated_while_false",
+      "f": "g()",
+      "g": 2,
+      "unrelated": 1,
+      "oracle_value": 2
+    },
+    {
+      "id": "dependency_restore",
+      "f": "g()",
+      "g": 1,
+      "unrelated": 1,
+      "oracle_value": 1
+    },
+    {
+      "id": "direct_break",
+      "f": "3",
+      "g": 1,
+      "unrelated": 1,
+      "oracle_value": 3
+    },
+    {
+      "id": "direct_restore",
+      "f": "g()",
+      "g": 1,
+      "unrelated": 1,
+      "oracle_value": 1
+    },
+    {
+      "id": "unrelated_while_true",
+      "f": "g()",
+      "g": 1,
+      "unrelated": 2,
+      "oracle_value": 1
+    }
+  ],
+  "variants": [
+    {
+      "id": "all_validate",
+      "policy": "all_validate",
+      "mask": null,
+      "selected_steps": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "intact",
+      "policy": "symbol_validate",
+      "mask": null,
+      "selected_steps": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "known_missing",
+      "policy": "symbol_validate",
+      "mask": "known_missing",
+      "selected_steps": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "hidden_missing",
+      "policy": "symbol_validate",
+      "mask": "hidden_missing",
+      "selected_steps": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ]
+    }
+  ],
+  "schedule": [
+    "all_validate",
+    "intact",
+    "known_missing",
+    "hidden_missing"
+  ],
+  "mask": {
+    "drop": 0.75,
+    "seed": 17,
+    "selection": "First allowed seed, fixed before execution; f->g edge fraction 0.5329981976520891, so the single dependency is removed."
+  },
+  "environment": {
+    "image": "cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6",
+    "python_version": "3.12.12"
+  },
+  "oracle": "Separate standard-library AST interpreter of the actual Git blob, supporting only zero-argument functions with one return of an integer literal or a zero-argument named call. No CAMI indexer, policy, validator or probe execution is used by the oracle.",
+  "checks": [
+    "All child values equal authored protocol expectations before any policy execution",
+    "Four production CLI runs with Docker validation and no verdict cache",
+    "All 24 persisted child states and last_checked/last_supported metadata",
+    "All maintenance selections, validator verdicts and Docker execution counts",
+    "Masks remove exactly f->g; known marker visible only in known_missing",
+    "Truth labels explicitly synthetic_authored_finite_oracle, not human labels",
+    "Raw hashes and before/after source/input identity"
+  ],
+  "expected_maintenance_validations": {
+    "all_validate": 6,
+    "intact": 5,
+    "known_missing": 6,
+    "hidden_missing": 2
+  },
+  "expected_mismatches": {
+    "all_validate": 0,
+    "intact": 0,
+    "known_missing": 0,
+    "hidden_missing": 2
+  },
+  "analysis": "Descriptive fixed sequence; no population CI, speedup or real-world effectiveness claim. Preflight and maintenance costs reported separately. Failed runs retained, no silent scenario removal."
+}
