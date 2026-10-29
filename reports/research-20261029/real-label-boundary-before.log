@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_real_scoring_rejects_synthetic_reference_labels _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-155/test_real_scoring_rejects_synt0')
+
+    def test_real_scoring_rejects_synthetic_reference_labels(tmp_path):
+        """A synthetic artifact fixture tests the real-mode boundary without a real experiment."""
+        from cami.artifacts import read_json
+        run, labels = fixture_run(tmp_path / 'run')
+        manifest = read_json(run / 'manifest.json')
+        manifest['config']['dataset_kind'] = 'real'
+        write_json(run / 'manifest.json', manifest)
+>       with pytest.raises(InputError, match='independent confirmation'):
+E       Failed: DID NOT RAISE <class 'cami.errors.InputError'>
+
+tests/test_evaluation.py:257: Failed
+=========================== short test summary info ============================
+FAILED tests/test_evaluation.py::test_real_scoring_rejects_synthetic_reference_labels
+1 failed, 15 deselected in 0.23s

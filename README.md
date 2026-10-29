@@ -103,7 +103,14 @@ uv run cami annotate-export --dataset data/pilot/click-new/dataset.json --out re
 uv run cami freeze --dataset data/pilot/click-new/dataset.json --out runs/click-protocol-new
 ```
 
-The pilot selects the last 12 non-merge first-parent transitions through Click 8.1.8. Up to ten exact top-level function claims per parent are sampled with seed 42 before reading child source. An independent tokenizer supplies parent structural evidence. No child labels are generated. These adjacent pairs share one episode cluster. The environment pilot checks one finite Click invocation, not every historical test.
+The pilot selects the last 12 non-merge first-parent transitions through Click 8.1.8. Up to ten exact top-level function claims per parent are sampled with seed 42 before reading child source. An independent tokenizer supplies parent structural evidence. No child labels are generated. These adjacent pairs share one episode cluster.
+
+`pilot-environments` checks one finite Click invocation on each parent only. It
+writes observations and an `environment_report.json` with schema version 2; it
+does not execute children, generate confirmation receipts, or admit claims.
+Failed runs retain completed parent observations and a failure record. Earlier
+environment reports remain historical artifacts. This smoke check does not
+establish full historical test compatibility or independent parent truth.
 
 ## Annotate, freeze and analyze
 

@@ -5,7 +5,9 @@ from pathlib import Path
 
 from cami.artifacts import file_hash, load, load_jsonl, within
 from cami.errors import InputError
-from cami.models import Behavior, Claim, GraphView, ParentReceipt, Provenance, RunConfig
+from cami.models import (
+    INDEPENDENT_CONFIRMATIONS, Behavior, Claim, GraphView, ParentReceipt, Provenance, RunConfig,
+)
 from cami.repository import chain, git, resolve
 
 
@@ -30,7 +32,8 @@ def check_inputs(config_path: Path) -> Inputs:
     claims = load_jsonl(base / config.claims_path, Claim, "claim_id")
     provenance = load_jsonl(base / config.provenance_path, Provenance, "claim_id")
     receipts = load_jsonl(base / config.parent_receipts_path, ParentReceipt, "claim_id")
-    ids = {claim.claim_id for claim in claims}
+    claim_by_id = {claim.claim_id: claim for claim in claims}
+    ids = set(claim_by_id)
     if not ids:
         raise InputError("empty cohort")
     if {p.claim_id for p in provenance} != ids:
@@ -64,6 +67,16 @@ def check_inputs(config_path: Path) -> Inputs:
     for receipt in receipts:
         if receipt.origin_commit != parent:
             raise InputError("parent receipt revision mismatch")
+        if config.dataset_kind == "real":
+            claim = claim_by_id[receipt.claim_id]
+            tokenizer = (claim.kind == "symbol_exists"
+                         and receipt.confirmation_type == "independent_tokenizer_parent_oracle")
+            if receipt.confirmation_type not in INDEPENDENT_CONFIRMATIONS and not tokenizer:
+                raise InputError("real parent receipts require independent confirmation")
+            if claim.kind == "behavior_test" and receipt.confirmation_type != "independent_test":
+                raise InputError("real behavior parent receipts require independent frozen-probe testing")
+            if claim.kind == "prose" and receipt.confirmation_type != "human_review":
+                raise InputError("real prose parent receipts require human review")
         if file_hash(within(base, receipt.evidence_path)) != receipt.evidence_sha256:
             raise InputError("parent evidence hash mismatch")
     if config.graph_views_path is not None:

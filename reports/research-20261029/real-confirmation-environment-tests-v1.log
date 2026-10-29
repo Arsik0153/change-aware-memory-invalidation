@@ -1,0 +1,163 @@
+FFF.F................................................................... [ 57%]
+.....................................................                    [100%]
+=================================== FAILURES ===================================
+_ test_environment_pilot_observes_only_parent_and_never_admits[supported-test_passed] _
+
+repo = <conftest.GitFixture object at 0x727f76e3cce0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x727f75e854c0>
+verdict = 'supported', reason = 'test_passed'
+
+    @pytest.mark.parametrize('verdict,reason', [('supported', 'test_passed'),
+        ('contradicted', 'assertion_failed'), ('insufficient_evidence', 'collection_error')])
+    def test_environment_pilot_observes_only_parent_and_never_admits(repo, tmp_path, monkeypatch, verdict, reason):
+        dataset, config, parent = source_dataset(repo)
+        output = tmp_path.parent / (tmp_path.name + '-environment')
+        original = config.read_bytes()
+        calls = []
+        monkeypatch.setattr(environment, 'check_docker', lambda profile: None)
+    
+        def observe(claim, context):
+            calls.append(context.snapshot.revision)
+            assert claim.origin_commit == parent and context.phase == 'preflight'
+            assert context.profile.image == IMAGE
+            assert file_hash(context.base_dir / claim.predicate.probe_path) == claim.predicate.probe_sha256
+            assert context.snapshot.revision == parent
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict=verdict, reason=reason, input_hash='fixture', test_executions=3)
+    
+        monkeypatch.setattr(environment, 'execute_probe', observe)
+>       assert main(['pilot-environments', '--dataset', str(dataset), '--image', IMAGE, '--out', str(output)]) == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = main(['pilot-environments', '--dataset', '/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe0/dataset.json', '--image', 'cami-probes@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '--out', ...])
+
+tests/test_environment_pilot.py:56: AssertionError
+----------------------------- Captured stderr call -----------------------------
+input error: 1 validation error for ValidationResult
+duration_seconds
+  Field required [type=missing, input_value={'claim_id': 'fixture-par...', 'test_executions': 3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+_ test_environment_pilot_observes_only_parent_and_never_admits[contradicted-assertion_failed] _
+
+repo = <conftest.GitFixture object at 0x727f6e2dfc20>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x727f6e2dfad0>
+verdict = 'contradicted', reason = 'assertion_failed'
+
+    @pytest.mark.parametrize('verdict,reason', [('supported', 'test_passed'),
+        ('contradicted', 'assertion_failed'), ('insufficient_evidence', 'collection_error')])
+    def test_environment_pilot_observes_only_parent_and_never_admits(repo, tmp_path, monkeypatch, verdict, reason):
+        dataset, config, parent = source_dataset(repo)
+        output = tmp_path.parent / (tmp_path.name + '-environment')
+        original = config.read_bytes()
+        calls = []
+        monkeypatch.setattr(environment, 'check_docker', lambda profile: None)
+    
+        def observe(claim, context):
+            calls.append(context.snapshot.revision)
+            assert claim.origin_commit == parent and context.phase == 'preflight'
+            assert context.profile.image == IMAGE
+            assert file_hash(context.base_dir / claim.predicate.probe_path) == claim.predicate.probe_sha256
+            assert context.snapshot.revision == parent
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict=verdict, reason=reason, input_hash='fixture', test_executions=3)
+    
+        monkeypatch.setattr(environment, 'execute_probe', observe)
+>       assert main(['pilot-environments', '--dataset', str(dataset), '--image', IMAGE, '--out', str(output)]) == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = main(['pilot-environments', '--dataset', '/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe1/dataset.json', '--image', 'cami-probes@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '--out', ...])
+
+tests/test_environment_pilot.py:56: AssertionError
+----------------------------- Captured stderr call -----------------------------
+input error: 1 validation error for ValidationResult
+duration_seconds
+  Field required [type=missing, input_value={'claim_id': 'fixture-par...', 'test_executions': 3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+_ test_environment_pilot_observes_only_parent_and_never_admits[insufficient_evidence-collection_error] _
+
+repo = <conftest.GitFixture object at 0x727f6e26e270>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x727f6e26faa0>
+verdict = 'insufficient_evidence', reason = 'collection_error'
+
+    @pytest.mark.parametrize('verdict,reason', [('supported', 'test_passed'),
+        ('contradicted', 'assertion_failed'), ('insufficient_evidence', 'collection_error')])
+    def test_environment_pilot_observes_only_parent_and_never_admits(repo, tmp_path, monkeypatch, verdict, reason):
+        dataset, config, parent = source_dataset(repo)
+        output = tmp_path.parent / (tmp_path.name + '-environment')
+        original = config.read_bytes()
+        calls = []
+        monkeypatch.setattr(environment, 'check_docker', lambda profile: None)
+    
+        def observe(claim, context):
+            calls.append(context.snapshot.revision)
+            assert claim.origin_commit == parent and context.phase == 'preflight'
+            assert context.profile.image == IMAGE
+            assert file_hash(context.base_dir / claim.predicate.probe_path) == claim.predicate.probe_sha256
+            assert context.snapshot.revision == parent
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict=verdict, reason=reason, input_hash='fixture', test_executions=3)
+    
+        monkeypatch.setattr(environment, 'execute_probe', observe)
+>       assert main(['pilot-environments', '--dataset', str(dataset), '--image', IMAGE, '--out', str(output)]) == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = main(['pilot-environments', '--dataset', '/tmp/pytest-of-root/pytest-161/test_environment_pilot_observe2/dataset.json', '--image', 'cami-probes@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '--out', ...])
+
+tests/test_environment_pilot.py:56: AssertionError
+----------------------------- Captured stderr call -----------------------------
+input error: 1 validation error for ValidationResult
+duration_seconds
+  Field required [type=missing, input_value={'claim_id': 'fixture-par...', 'test_executions': 3}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+__ test_environment_pilot_rejects_invalid_parent_inputs_before_output[escape] __
+
+repo = <conftest.GitFixture object at 0x727f6e138650>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-161/test_environment_pilot_rejects1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x727f6e13a930>
+damage = 'escape'
+
+    @pytest.mark.parametrize('damage', ['duplicate', 'escape', 'wrong_repo', 'wrong_parent'])
+    def test_environment_pilot_rejects_invalid_parent_inputs_before_output(repo, tmp_path, monkeypatch, damage):
+        dataset, config, _ = source_dataset(repo)
+        output = tmp_path.parent / (tmp_path.name + '-rejected')
+        if damage in ('duplicate', 'escape'):
+            value = read_json(dataset)
+            if damage == 'duplicate':
+                value['runs'].append(value['runs'][0])
+            else:
+                value['runs'][0]['run_id'] = '../escape'
+            write_json(dataset, value)
+        else:
+            value = read_json(config)
+            if damage == 'wrong_repo':
+                value['repo']['repo_id'] = 'not-click'
+            else:
+                value['parent_commit'] = 'unresolvable-parent'
+            write_json(config, value)
+        monkeypatch.setattr(environment, 'check_docker', lambda profile: pytest.fail('Docker not expected'))
+        with pytest.raises((InputError, ResourceError)):
+>           pilot_environments(dataset, IMAGE, output)
+
+tests/test_environment_pilot.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/environment_pilot.py:36: in pilot_environments
+    within(output / "inputs", entry.run_id)
+src/cami/artifacts.py:101: in within
+    safe_path(relative)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '../escape'
+
+    def safe_path(value: str) -> str:
+        p = PurePosixPath(value)
+        if not value or p.is_absolute() or ".." in p.parts or "\\" in value or "\x00" in value:
+>           raise ValueError(f"unsafe repository path: {value!r}")
+E           ValueError: unsafe repository path: '../escape'
+
+src/cami/models.py:32: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[supported-test_passed]
+FAILED tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[contradicted-assertion_failed]
+FAILED tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[insufficient_evidence-collection_error]
+FAILED tests/test_environment_pilot.py::test_environment_pilot_rejects_invalid_parent_inputs_before_output[escape]
+4 failed, 121 passed in 14.34s

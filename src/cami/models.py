@@ -6,6 +6,9 @@ from typing import Annotated, Literal, Self
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
+INDEPENDENT_CONFIRMATIONS = frozenset({"human_review", "independent_oracle", "independent_test"})
+
+
 class Record(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True, frozen=True, allow_inf_nan=False)
     schema_version: Literal[1] = 1

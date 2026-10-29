@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_real_input_rejects_synthetic_parent_confirmation _____________
+
+repo = <conftest.GitFixture object at 0x7c46799aeba0>
+
+    def test_real_input_rejects_synthetic_parent_confirmation(repo):
+        """Synthetic fixture exercising a real-mode boundary; no real cohort is executed."""
+        parent = repo.commit({'module.py': 'def f(): return 1\n'})
+        child = repo.commit({'module.py': 'def f(): return 2\n'})
+        config = repo.config(parent, [child])
+        data = json.loads(config.read_text())
+        data['dataset_kind'] = 'real'
+        config.write_text(json.dumps(data))
+>       assert main(['check-inputs', '--config', str(config)]) == 2
+E       AssertionError: assert 0 == 2
+E        +  where 0 = main(['check-inputs', '--config', '/tmp/pytest-of-root/pytest-154/test_real_input_rejects_synthe0/run.json'])
+
+tests/test_inputs.py:80: AssertionError
+----------------------------- Captured stdout call -----------------------------
+valid: 1 claims, 1 transitions
+=========================== short test summary info ============================
+FAILED tests/test_inputs.py::test_real_input_rejects_synthetic_parent_confirmation
+1 failed, 5 deselected in 0.24s

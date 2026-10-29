@@ -1,0 +1,118 @@
+...................F.......................................              [100%]
+=================================== FAILURES ===================================
+______________________ test_population_mismatch_rejected _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-156/test_population_mismatch_rejec0')
+
+    def test_population_mismatch_rejected(tmp_path: Path) -> None:
+        from cami.artifacts import read_json
+    
+        left, labels = fixture_run(tmp_path / "left", "keep_all")
+        right, _ = fixture_run(tmp_path / "right", "clear_all", all_withheld=True)
+        manifest = read_json(right / "manifest.json")
+        manifest["config"]["dataset_kind"] = "real"
+        write_json(right / "manifest.json", manifest)
+        with pytest.raises(InputError, match="incompatible populations"):
+>           compare_runs([left, right], labels, tmp_path / "comparison")
+
+tests/test_evaluation.py:232: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/evaluation.py:455: in compare_runs
+    runs = tuple(_score(path, labels, labels_hash) for path in run_dirs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/cami/evaluation.py:455: in <genexpr>
+    runs = tuple(_score(path, labels, labels_hash) for path in run_dirs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run_dir = PosixPath('/tmp/pytest-of-root/pytest-156/test_population_mismatch_rejec0/right')
+labels = (Label(schema_version=1, claim_id='0', commit='child', label='supported', annotator_id='manual_fixture', evidence=('fi...l_fixture', evidence=('fixture narrative',), confirmation_type='synthetic_manual', adjudication_status='not_required'))
+labels_hash = '28b11a3fe420f5e2c16a519b0aafeb045d3b2a4a5c5b92edbbd795a17083f84f'
+
+    def _score(run_dir: Path, labels: tuple[Label, ...], labels_hash: str) -> ScoredRun:
+        raw_manifest = read_json(run_dir / "manifest.json")
+        if isinstance(raw_manifest, dict) and raw_manifest.get("status") != "complete":
+            raise IncompleteError("scoring requires a complete run")
+        manifest = load(run_dir / "manifest.json", ScoredManifest)
+        if manifest.status != "complete" or manifest.finished_at is None:
+            raise IncompleteError("scoring requires a complete run")
+        if not manifest.evaluation_eligible or manifest.config.preview:
+            raise InputError("run is not evaluation eligible")
+        if (manifest.protocol_version != manifest.config.protocol_version
+                or manifest.parent_commit != manifest.config.parent_commit
+                or manifest.child_commits != manifest.config.child_commits):
+            raise InputError("manifest and resolved configuration disagree")
+        if not _REQUIRED_ARTIFACTS.issubset(manifest.artifact_hashes):
+            raise InputError("manifest missing required artifact hashes")
+        for name, expected_hash in manifest.artifact_hashes.items():
+            if file_hash(within(run_dir, name)) != expected_hash:
+                raise InputError(f"artifact hash mismatch: {name}")
+        if manifest.configuration_hash is not None:
+            if manifest.configuration_hash != digest(raw_manifest["config"]):
+                raise InputError("configuration hash mismatch")
+        claims = load_jsonl(run_dir / "claims.jsonl", Claim, unique="claim_id")
+        claim_map = {claim.claim_id: claim for claim in claims}
+        if any(manifest.claim_hashes.get(claim.claim_id) != digest(claim) for claim in claims):
+            raise InputError("claim content hash mismatch")
+        provenance = load_jsonl(run_dir / "provenance.jsonl", Provenance, unique="claim_id")
+        if {row.claim_id for row in provenance} != set(claim_map):
+            raise InputError("provenance population differs from claims")
+        cohort = set(manifest.cohort)
+        excluded = {row.claim_id for row in manifest.excluded}
+        if (len(cohort) != len(manifest.cohort) or len(excluded) != len(manifest.excluded)
+                or cohort & excluded or cohort | excluded != set(manifest.claim_hashes)
+                or not cohort.issubset(claim_map)
+                or not set(claim_map).issubset(manifest.claim_hashes)):
+            raise InputError("invalid cohort or excluded population")
+        revisions = manifest.child_commits
+        if len(set(revisions)) != len(revisions):
+            raise InputError("duplicate child revision")
+        expected = {(claim_id, commit) for commit in revisions for claim_id in cohort}
+        states = load_jsonl(run_dir / "states.jsonl", MemoryState)
+        state_map = {(row.claim_id, row.revision): row for row in states}
+        selections = load_jsonl(run_dir / "selections.jsonl", Selection)
+        selection_map = {(row.claim_id, row.commit): row for row in selections}
+        if len(state_map) != len(states) or set(state_map) != expected:
+            raise InputError("states must contain exactly one cohort claim per child revision")
+        if len(selection_map) != len(selections) or set(selection_map) != expected:
+            raise InputError("selections must contain exactly one cohort claim per child revision")
+        validations = load_jsonl(run_dir / "validations.jsonl", ValidationResult)
+        validation_map = {(row.claim_id, row.commit): row for row in validations}
+        selected = {key for key, selection in selection_map.items() if selection.selected}
+        validating = manifest.config.policy.id in _VALIDATING
+        if (len(validation_map) != len(validations)
+                or set(validation_map) != (selected if validating else set())):
+            raise InputError("validation results do not match selected claims")
+        label_map = {(row.claim_id, row.commit): row for row in labels}
+        missing = expected - set(label_map)
+        if missing:
+            raise InputError(f"missing_label_coverage: {len(missing)} cohort claim/revision pairs")
+        if manifest.config.dataset_kind == "real" and any(
+            label_map[key].confirmation_type not in INDEPENDENT_CONFIRMATIONS for key in expected
+        ):
+>           raise InputError("real reference labels require independent confirmation")
+E           cami.errors.InputError: real reference labels require independent confirmation
+
+src/cami/evaluation.py:317: InputError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-156/test_population_mismatch_rejec0')
+
+    def test_population_mismatch_rejected(tmp_path: Path) -> None:
+        from cami.artifacts import read_json
+    
+        left, labels = fixture_run(tmp_path / "left", "keep_all")
+        right, _ = fixture_run(tmp_path / "right", "clear_all", all_withheld=True)
+        manifest = read_json(right / "manifest.json")
+        manifest["config"]["dataset_kind"] = "real"
+        write_json(right / "manifest.json", manifest)
+>       with pytest.raises(InputError, match="incompatible populations"):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'incompatible populations'
+E        Input: 'real reference labels require independent confirmation'
+
+tests/test_evaluation.py:231: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_evaluation.py::test_population_mismatch_rejected - Assertio...
+1 failed, 58 passed in 3.20s

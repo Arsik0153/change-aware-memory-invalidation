@@ -115,3 +115,21 @@ the protocol seal, configuration and cohort membership, and all associated execu
 input hashes. The seal digest excludes this locator field to avoid a circular hash.
 This check never opens or hashes label files. Scoring remains a separate operation.
 Freeze and annotation commands reject an existing output directory.
+
+## Real-data confirmation boundaries
+
+`check-inputs` and the research run input reader reject `synthetic_manual`, production
+validator methods, and unrecognized confirmation types in real parent receipts.
+Accepted declared methods are `human_review`, `independent_oracle`, and
+`independent_test`. A real behavior parent requires `independent_test`; prose
+requires `human_review`. The historical `independent_tokenizer_parent_oracle`
+method remains accepted only for `symbol_exists`, the predicate it actually checks.
+Preview does not bypass these metadata checks. A missing receipt remains a separate
+admission limitation; passing input validation does not admit a cohort.
+
+For real runs, scoring accepts only those three declared independent methods in
+reference labels used by the scored cohort. Unrelated rows in a shared label file
+are not treated as evidence for that cohort. Synthetic datasets retain their
+explicit synthetic confirmation workflow. These checks do not verify evidence
+content, author identity, actual human participation, or independence; external
+review and the retained original annotation history remain necessary.

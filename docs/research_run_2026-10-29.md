@@ -496,3 +496,33 @@ observed20; generator expected count14.322. Ожидания разделены 
 График проверен по PNG и показан через html_render. html_preview не смог запустить
 headless Chrome (exit1); это ограничение preview среды, не ошибка численного расчёта.
 Артефакты и review record сохранены отдельно, исходный pilot не изменён.
+
+## Тринадцатый этап: confirmation boundaries и честный environment pilot
+
+Прямой check-inputs принимал synthetic_manual parent receipt в dataset_kind=real;
+scorer аналогично принимал synthetic reference labels для real run. Оба случая
+воспроизведены synthetic fixtures до исправления (real-confirmation-boundary-before.log,
+real-label-boundary-before.log). Теперь real input принимает объявленные independent
+methods, с independent_test для behavior и human_review для prose. Старый tokenizer
+oracle разрешён только для symbol_exists. Real scoring проверяет методы child labels,
+которые действительно входят в метрики; посторонние строки общего файла не используются.
+Synthetic workflows сохранены. Эти metadata checks не доказывают реальное авторство.
+
+Reviewer gpt-6.1-sol нашёл старый producer, несовместимый с честной границей:
+pilot-environments автоматически создавал receipt из текста smoke probe и вызывал
+research run. Метод не добавлен в allowlist. Команда переведена на execute_probe
+только для pinned parents; теперь это automated observations, без receipts, labels,
+admission и child execution. Report schema2 отдельно фиксирует eligibility=false.
+Сохранены probe и pinned Docker profile; поддерживаются root/src layouts Click.
+
+Независимый review новой orchestration подтвердил authority boundary, но указал,
+что fatal exception оставлял status=running. Исправлено: после каждого parent
+сохраняется progress; исключение записывает failed, run ID, причину и prefix artifacts.
+При failed общий test_executions=null, отдельно известны completed-parent attempts.
+Тест с успешным первым parent и ошибкой второго сохраняет правильный partial report.
+
+Focused suite после migration:129 passed; тесты используют mocked execute_probe и
+проверяют orchestration, не контейнеры. Более ранний набор core/input/scoring/aggregate:
+166 passed. Подготовлен отдельный byte-identical config view20Click parents без изменения
+исходного prepared dataset. Следующие проверки — настоящий CLI с Docker и полный suite
+на неизменном HEAD. Ни один реальный child не будет исполнен.

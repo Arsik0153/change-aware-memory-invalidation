@@ -4,7 +4,9 @@
 
 ## Что передать разметчикам
 
-Передайте `annotation/packets.jsonl`, каталог `annotation/sources/`, `annotation/probes/` и пустые формы. Не передавайте каталоги policy runs, selections, validations или сравнение политик.
+Для первого этапа используйте [parent-only пакет и инструкцию](parent_review_instructions_ru.md),
+чтобы parent reviewer не видел child revisions. После завершения parent-review
+передайте `annotation/packets.jsonl`, каталог `annotation/sources/`, `annotation/probes/` и пустые формы. Не передавайте каталоги policy runs, selections, validations или сравнение политик.
 
 - `primary_form.jsonl` содержит 1530 заданий. Из них 630 относятся к parent, 600 к child основных пар и 300 к child replay.
 - `parent_confirmation_form.jsonl` содержит только 630 parent-заданий.
@@ -33,13 +35,21 @@
 После независимого подтверждения импортируйте завершённые parent-строки в новый каталог:
 
 ```bash
-.venv/bin/python scripts/prepare_main.py import-parent \
-  --dataset runs/next-stage-20261001/main-ready/dataset.json \
-  --annotations /absolute/path/to/completed-parent-reviews.jsonl \
+.venv/bin/python scripts/prepare_main.py import-parent-batch \
+  --dataset runs/main-restored-20261029/ready/dataset.json \
+  --reviews /absolute/path/to/completed-parent-review-batch.json \
   --out runs/main-parent-reviewed-001
 ```
 
-Команда принимает один окончательный независимый ответ на claim. Сохраните ответы второго человека и протокол разрешения разногласий отдельно до выбора окончательного parent-подтверждения. Импорт не заменяет adjudication. Неподтверждённый parent не становится примером устаревания. Команда сохраняет все переданные исходные строки, но создаёт receipt только для supported. Для behavior нужен независимый test receipt, для prose человеческий review. Контейнерный preflight остаётся отдельной проверкой допуска.
+Batch содержит JSON с annotations всех ответивших и adjudications всей истории
+согласования. Importer сохраняет каждый исходный ответ; нельзя удалять несогласный
+ответ или подменять двух авторов одним окончательным reviewer. Неразрешённое
+разногласие не создаёт receipt. Полный denominator берётся из candidate population;
+отдельно проверяется выполнение назначенных вторых reviews. Подробный формат и
+способ повторного импорта — в parent_review_instructions_ru.md. Неподтверждённый
+parent не становится примером устаревания. Для supported behavior нужен независимый
+test, для prose — человеческий review. Контейнерный preflight остаётся отдельной
+проверкой допуска.
 
 ## Импорт child labels
 

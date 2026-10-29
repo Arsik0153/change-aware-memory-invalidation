@@ -10,7 +10,8 @@ from pydantic import Field
 from cami.artifacts import digest, file_hash, load, load_jsonl, read_json, reserve, within, write_json
 from cami.errors import IncompleteError, InputError
 from cami.models import (
-    Claim, Cost, MemoryState, Provenance, Record, RunConfig, Selection, ValidationResult,
+    INDEPENDENT_CONFIRMATIONS, Claim, Cost, MemoryState, Provenance, Record, RunConfig,
+    Selection, ValidationResult,
 )
 
 
@@ -310,6 +311,10 @@ def _score(run_dir: Path, labels: tuple[Label, ...], labels_hash: str) -> Scored
     missing = expected - set(label_map)
     if missing:
         raise InputError(f"missing_label_coverage: {len(missing)} cohort claim/revision pairs")
+    if manifest.config.dataset_kind == "real" and any(
+        label_map[key].confirmation_type not in INDEPENDENT_CONFIRMATIONS for key in expected
+    ):
+        raise InputError("real reference labels require independent confirmation")
     for claim_id in cohort:
         parent_label = label_map.get((claim_id, manifest.parent_commit))
         if parent_label is not None and parent_label.label != "supported":

@@ -221,13 +221,18 @@ def test_uncertain_not_counted_as_false_positive(tmp_path: Path) -> None:
 
 
 def test_population_mismatch_rejected(tmp_path: Path) -> None:
-    from cami.artifacts import read_json
+    from cami.artifacts import read_json, read_jsonl
 
     left, labels = fixture_run(tmp_path / "left", "keep_all")
     right, _ = fixture_run(tmp_path / "right", "clear_all", all_withheld=True)
     manifest = read_json(right / "manifest.json")
     manifest["config"]["dataset_kind"] = "real"
     write_json(right / "manifest.json", manifest)
+    # Valid declared methods isolate the population-compatibility check in this fixture.
+    rows = read_jsonl(labels)
+    for row in rows:
+        row['confirmation_type'] = 'independent_oracle'
+    write_jsonl(labels, rows)
     with pytest.raises(InputError, match="incompatible populations"):
         compare_runs([left, right], labels, tmp_path / "comparison")
     assert not (tmp_path / "comparison").exists()
@@ -245,3 +250,54 @@ def test_duplicate_states_rejected_even_with_valid_hash(tmp_path: Path) -> None:
     write_json(run / "manifest.json", manifest)
     with pytest.raises(InputError, match="exactly one cohort"):
         score_run(run, labels, tmp_path / "report")
+
+
+def test_real_scoring_rejects_synthetic_reference_labels(tmp_path):
+    """A synthetic artifact fixture tests the real-mode boundary without a real experiment."""
+    from cami.artifacts import read_json
+    run, labels = fixture_run(tmp_path / 'run')
+    manifest = read_json(run / 'manifest.json')
+    manifest['config']['dataset_kind'] = 'real'
+    write_json(run / 'manifest.json', manifest)
+    with pytest.raises(InputError, match='independent confirmation'):
+        score_run(run, labels, tmp_path / 'rejected')
+    assert not (tmp_path / 'rejected').exists()
+
+
+@pytest.mark.parametrize('method,accepted', [
+    ('human_review', True), ('independent_oracle', True), ('independent_test', True),
+    ('synthetic_manual', False), ('production_validator', False), ('unknown_method', False),
+])
+def test_real_scoring_confirmation_methods(tmp_path, method, accepted):
+    from cami.artifacts import read_json, read_jsonl
+    run, labels = fixture_run(tmp_path / 'run')
+    manifest = read_json(run / 'manifest.json')
+    manifest['config']['dataset_kind'] = 'real'
+    write_json(run / 'manifest.json', manifest)
+    rows = read_jsonl(labels)
+    for row in rows:
+        row['confirmation_type'] = method
+    write_jsonl(labels, rows)
+    output = tmp_path / 'score'
+    if accepted:
+        result = score_run(run, labels, output)
+        assert result.dataset_kind == 'real'
+    else:
+        with pytest.raises(InputError, match='independent confirmation'):
+            score_run(run, labels, output)
+        assert not output.exists()
+
+
+def test_real_score_checks_only_labels_used_for_its_cohort(tmp_path):
+    from cami.artifacts import read_json, read_jsonl
+    run, labels = fixture_run(tmp_path / 'run')
+    manifest = read_json(run / 'manifest.json')
+    manifest['config']['dataset_kind'] = 'real'
+    write_json(run / 'manifest.json', manifest)
+    rows = read_jsonl(labels)
+    irrelevant = dict(rows[0], claim_id='unrelated-synthetic-fixture')
+    for row in rows:
+        row['confirmation_type'] = 'independent_oracle'
+    write_jsonl(labels, [*rows, irrelevant])
+    counters = score_run(run, labels, tmp_path / 'score').overall.counters
+    assert sum(counters[label] for label in ('supported', 'contradicted', 'uncertain')) == 5
