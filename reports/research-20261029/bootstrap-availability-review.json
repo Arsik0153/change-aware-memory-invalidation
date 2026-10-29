@@ -1,0 +1,30 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "status": "verified_no_blocking_findings",
+  "verified_rows": 30,
+  "independent_decimal_precision_digits": 100,
+  "max_error_scaled_by_max_one_value": 2.12e-15,
+  "independent_tests_passed": 19,
+  "exact_enumeration": {
+    "K": 2,
+    "B": 2,
+    "q": "1/2",
+    "availability": "17/32",
+    "zero_sample": "1/4",
+    "zero_resample": "7/32",
+    "expected_iterations": "11/8"
+  },
+  "checked": [
+    "finite probability formula",
+    "strict monotonicity for interior q",
+    "limit q^K",
+    "early stopping iteration convention",
+    "all artifact and upstream pilot hashes",
+    "conditional vs population expectations"
+  ],
+  "limits": [
+    "Ideal independent sampling model.",
+    "Floating-point evaluation of exact finite formula.",
+    "No coverage or real-policy effectiveness inference."
+  ]
+}

@@ -475,3 +475,24 @@ Reviewer gpt-6.1-sol выявил valid floating-boundary false rejection и acc
 Все оригинальные 600 trials повторно validated без изменения данных/численных выводов.
 Report v3 содержит hash validator и явно исключает random-stream/quantile replay
 из заявленной области проверки. Подробнее в bootstrap_study_2026-10-29.md.
+
+## Двенадцатый этап: точная механика доступности bootstrap CI
+
+Post-pilot план зафиксирован до расчёта в f87015d, реализация с19tests — d205f08.
+Для прежних шести сценариев и B50/100/500/2000/10000 вычислены30 точных конечных
+вероятностных выражений, без новой Monte Carlo выборки. При фиксированном Z
+вероятность available=(1−(Z/K)^K)^B; интегрирование по Binomial(K,1−q) даёт
+безусловную вероятность. Предел при B→∞ равен q^K. Итерации считают failed draw,
+а исходный zero denominator означает0iterations.
+
+Reviewer gpt-6.1-sol независимо подтвердил формулы,19tests,все hashes и30строк
+100-digit Decimal (максимальная scaled разница2.12e-15). K2/B2/q.5 проверен точным
+перебором: availability17/32,iterations11/8. Для K50/q.1 availability снижается
+с60.75% приB50 до14.32% приB2000 и5.57% приB10000. Это не рекомендация менять B
+и не оценка coverage. У сохранённых100 datasets K50 conditional expected count21.319,
+observed20; generator expected count14.322. Ожидания разделены явно.
+
+Научный текст и ограничения: bootstrap_availability_mechanism_2026-10-29.md.
+График проверен по PNG и показан через html_render. html_preview не смог запустить
+headless Chrome (exit1); это ограничение preview среды, не ошибка численного расчёта.
+Артефакты и review record сохранены отдельно, исходный pilot не изменён.
