@@ -120,3 +120,17 @@ _pytest origins и target source hash проверяются в том же пр
 вызов не означает, что standard pytest validator стал доступен, не выдаёт independent
 receipt и не разрешает real held-out execution. Все failures сохраняются; ошибки
 импорта/среды не превращаются в contradicted labels. Claims/probes не меняются.
+
+До21parent запуска реализованы scripts/check_parent_functions.py и отдельный
+container runner. Образ:
+`cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4`.
+Проверенный runtime:Python3.9.25,attrs23.2.0,py1.11.0;pytest/_pytest не установлены.
+Runner использует Python -I -B и требует optimize=0, чтобы assert не был отключён.
+Host сверяет target source и все loaded_pytest origins с parent Git blobs.
+
+Independent design review обнаружил потерю прогресса при timeout команды очистки
+контейнера; отказ воспроизведён и исправлен. Partial stdout/stderr и timeout outcome
+сохраняются даже при cleanup error. Сводка отдельно считает завершённые попытки,
+полученные function observations и groups с одними техническими ошибками.
+Focused suite новых и прежних parent diagnostics:43passed;ruff passed.
+Полный21parent опыт ещё не выполнен на этом checkpoint.

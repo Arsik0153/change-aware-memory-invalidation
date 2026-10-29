@@ -1,0 +1,27 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "scope": "Direct-function parent diagnostic design,21focused tests before final additions",
+  "findings": [
+    {
+      "finding": "Cleanup TimeoutExpired discarded original attempt and stopped remaining groups",
+      "reproduced": "parent-function-cleanup-before.log and independent reviewer synthetic Snapshot reproduction",
+      "resolution": "Persist original stdout/stderr/outcome and cleanup_error; three-attempt regression; per-group SubprocessError handling"
+    },
+    {
+      "finding": "All-technical groups could look like completed semantic observations",
+      "resolution": "Rename group status attempts_recorded; separate all_calls_returned/no_function_observation/incomplete_schedule/orchestration_error counts"
+    }
+  ],
+  "confirmed": [
+    "Parent-only snapshots",
+    "Exact frozen probe binding",
+    "Same-process target module origins and parent blob hashes",
+    "No receipts,labels,real admission or production validator change"
+  ],
+  "additional_parent_checks": [
+    "Output outside parent repositories",
+    "Isolated Python -I -B with optimize=0 to keep assertions enabled"
+  ],
+  "actual21parent_experiment_at_review": "not yet run",
+  "post_fix_verification": "focused suite and static lint recorded separately"
+}

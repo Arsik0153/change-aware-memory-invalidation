@@ -1,0 +1,48 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_cleanup_timeout_retains_each_attempt_and_partial_stdout _________
+
+command = ['docker', 'run', '--rm', '--pull', 'never', '--name', ...]
+kwargs = {'capture_output': True, 'timeout': 60}
+
+    def time_out(command, **kwargs):
+>       raise subprocess.TimeoutExpired(command, 1, output=b'partial stdout', stderr=b'partial stderr')
+E       subprocess.TimeoutExpired: Command '['docker', 'run', '--rm', '--pull', 'never', '--name', 'cami-function-6c56e97b5a7c42ba81b2ee5891d4f845', '--network', 'none', '--read-only', '--user', '65534:65534', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', '--cpus', '2', '--memory', '2048m', '--memory-swap', '2048m', '--pids-limit', '128', '--tmpfs', '/tmp:rw,nosuid,nodev,size=256m', '--workdir', '/tmp', '--env', 'PYTHONDONTWRITEBYTECODE=1', '--env', 'PYTHONNOUSERSITE=1', '--mount', 'type=bind,src=/tmp/cami-parent-function-6um68ka7/repo,dst=/repo,readonly', '--mount', 'type=bind,src=/tmp/cami-parent-function-6um68ka7/probe,dst=/probe,readonly', '--mount', 'type=bind,src=/tmp/cami-parent-function-6um68ka7/runner.py,dst=/runner.py,readonly', 'test@sha256:1111111111111111111111111111111111111111111111111111111111111111', 'python', '/runner.py']' timed out after 1 seconds
+
+tests/test_parent_function_diagnostics.py:158: TimeoutExpired
+
+During handling of the above exception, another exception occurred:
+
+repo = <conftest.GitFixture object at 0x725149030440>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x72514800d820>
+
+    def test_cleanup_timeout_retains_each_attempt_and_partial_stdout(repo, monkeypatch):
+        parents, base, protocol, parent = prepare_fixture(repo)
+        snapshot = checker.read_snapshot(checker.RepoLocation(repo_id='pytest', path=str(repo.root), source_roots=('src',)), parent)
+        output = repo.root.parent / 'attempts'
+        output.mkdir()
+    
+        def time_out(command, **kwargs):
+            raise subprocess.TimeoutExpired(command, 1, output=b'partial stdout', stderr=b'partial stderr')
+    
+        monkeypatch.setattr(checker.subprocess, 'run', time_out)
+>       attempts = checker.observe(snapshot, checker.EnvironmentProfile(image=IMAGE, python_version='3.9.25'),
+                                   base / 'test_frozen_probe.py', output)
+
+tests/test_parent_function_diagnostics.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_functions.py:123: in observe
+    subprocess.run(['docker', 'rm', '-f', name], capture_output=True, timeout=15)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+command = ['docker', 'rm', '-f', 'cami-function-6c56e97b5a7c42ba81b2ee5891d4f845']
+kwargs = {'capture_output': True, 'timeout': 15}
+
+    def time_out(command, **kwargs):
+>       raise subprocess.TimeoutExpired(command, 1, output=b'partial stdout', stderr=b'partial stderr')
+E       subprocess.TimeoutExpired: Command '['docker', 'rm', '-f', 'cami-function-6c56e97b5a7c42ba81b2ee5891d4f845']' timed out after 1 seconds
+
+tests/test_parent_function_diagnostics.py:158: TimeoutExpired
+=========================== short test summary info ============================
+FAILED tests/test_parent_function_diagnostics.py::test_cleanup_timeout_retains_each_attempt_and_partial_stdout
+1 failed, 21 deselected in 0.18s

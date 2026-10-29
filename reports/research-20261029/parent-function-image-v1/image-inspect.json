@@ -1,0 +1,59 @@
+[
+    {
+        "Id": "sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4",
+        "RepoTags": [
+            "cami-parent-function:20261029"
+        ],
+        "RepoDigests": [
+            "cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-29T16:41:12.027165507Z",
+        "Config": {
+            "User": "65534:65534",
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568",
+                "PYTHON_VERSION=3.9.25",
+                "PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee84d2a40dae404a99303e3f97701c10966c91834",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONNOUSERSITE=1"
+            ],
+            "Cmd": [
+                "python3"
+            ],
+            "WorkingDir": "/tmp"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 195577921,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:d7c97cb6f1fe7cae982649e9f55efe201212e8acaa64bd668c083b204e4efd4c",
+                "sha256:4f237755fbae41472cb9e0f874fa97abb8d684f8fdcc6bd485edc8b6267a9c93",
+                "sha256:298992e09a0315a8f26375a553f216f5fad3decf392956fd2de5ef7aa1f8dfea",
+                "sha256:c8f6b54339a8b44071408bd33dd69a9dc7db2ed9cdbf7c533ba09efecda5f33f",
+                "sha256:48f93b81b4e130d7787f890ea49d27b981a0ec2e37ebf763819edcf7c793bba9",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-29T16:41:12.461586878Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "5u9rrtvy83ytn9rdj6ihh9v64",
+                    "CreatedAt": "2026-10-29T16:41:12.646315738Z"
+                }
+            ]
+        }
+    }
+]
