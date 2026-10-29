@@ -22,6 +22,9 @@ from scripts.verify_cami import source_snapshot
 ROOT = Path(__file__).resolve().parents[1]
 PHASES = ['initial', 'unchanged', 'untracked_create', 'untracked_rename', 'untracked_delete',
           'body', 'signature', 'parse', 'delete', 'revert', 'note_review', 'stopped']
+PUBLICATIONS = {phase: ('foreground_explicit_update' if phase == 'note_review' else
+                       'owned_process_exit' if phase == 'stopped' else 'watcher_verified')
+                for phase in PHASES}
 
 
 def sha(path):
@@ -43,9 +46,14 @@ def prepare(repo, protocol, out, cache):
     if out.exists() or out.is_relative_to(repo) or cache.is_relative_to(repo):
         raise ValueError('New output and cache must be outside the fixture repository')
     plan = json.loads(protocol.read_text())
-    if (plan['schema_version'] != 1 or plan['phases'] != PHASES
+    if (type(plan['schema_version']) is not int or plan['schema_version'] not in (1, 2)
+            or plan['phases'] != PHASES
             or plan['source_roots'] != ['src'] or not plan['check_persisted_before_query']):
         raise ValueError('Unsupported watcher protocol')
+    if plan['schema_version'] == 2 and plan.get('publication_expectations') != PUBLICATIONS:
+        raise ValueError('Only explicit note update may bypass watcher publication attestation')
+    if plan['schema_version'] == 1 and 'publication_expectations' in plan:
+        raise ValueError('Publication attribution requires protocol version 2')
     mutation_path = ROOT / plan['mutation_profile_path']
     if sha(mutation_path) != plan['mutation_profile_sha256']:
         raise ValueError('Mutation profile hash differs from protocol')
@@ -167,13 +175,15 @@ def run(repo: Path, protocol: Path, out: Path, cache: Path):
         return next(s for s in proof['head']['states'] if s['record']['payload']['type'] == kind)
 
     def completed(label, proof):
+        actor = plan.get('publication_expectations', {}).get(label, 'watcher_verified')
         deadline = time.monotonic() + plan['wait_seconds_per_phase']
         while time.monotonic() < deadline:
             status, _ = cli(label + '-status', 'watch', 'status', scope=False)
             assert status['session_id'] == owned_session
             assert status['ownership'] == 'lease_and_session_verified'
             success = status['latest_successful']
-            if success and success['memory_generation_id'] == proof['head']['memory_generation_id']:
+            if (actor == 'foreground_explicit_update' or
+                    (success and success['memory_generation_id'] == proof['head']['memory_generation_id'])):
                 break
             time.sleep(.2)
         else:
@@ -195,9 +205,11 @@ def run(repo: Path, protocol: Path, out: Path, cache: Path):
         assert after['head'] == proof['head'] and after['counts'] == proof['counts']
         phases.append(dict(label=label, sequence=proof['head']['sequence'],
                            generation=proof['head']['memory_generation_id'],
-                           persisted_before_query=True, counts=proof['counts']))
+                           persisted_before_query=True, publication_actor=actor,
+                           watcher_latest_successful_generation=(success['memory_generation_id'] if success else None),
+                           counts=proof['counts']))
         save()
-        print(f'{label}: persisted before query, generation {proof["head"]["sequence"]}', flush=True)
+        print(f'{label}: {actor}, persisted before query, generation {proof["head"]["sequence"]}', flush=True)
         return context, path
 
     save()

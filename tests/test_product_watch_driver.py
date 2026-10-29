@@ -157,3 +157,19 @@ def test_lost_start_race_never_stops_another_session(repo, monkeypatch):
     assert manifest['watcher']['exit_code'] == 0
     assert not manifest['phases']
     assert manifest['final_git_status'] == ''
+
+
+@pytest.mark.parametrize('weakened_phase', [None, 'signature', 'note_review'])
+def test_v2_only_separates_explicit_note_publication(repo, monkeypatch, weakened_phase):
+    protocol, out, cache, _ = setup(repo, monkeypatch)
+    plan = json.loads(protocol.read_text())
+    plan.update(schema_version=2, publication_expectations=dict(driver.PUBLICATIONS))
+    if weakened_phase:
+        plan['publication_expectations'][weakened_phase] = 'skip'
+    protocol.write_text(json.dumps(plan))
+    if weakened_phase:
+        with pytest.raises(ValueError, match='Only explicit note update'):
+            driver.prepare(repo.root, protocol, out, cache)
+    else:
+        driver.prepare(repo.root, protocol, out, cache)
+    assert not out.exists()
