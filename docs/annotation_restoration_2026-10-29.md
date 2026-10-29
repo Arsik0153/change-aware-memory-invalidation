@@ -99,3 +99,24 @@ M6 и платные запросы не запускались. Prose оста�
 и явно ограничил выводы. Отчёт: `reports/research-20261029/restoration-review.md`.
 Переносчик добавлен после этого review, проверен родителем через tests и побайтное
 сравнение входов; отдельного независимого code review переносчика не было.
+
+## Дополнительная диагностика pytest: план до запуска
+
+Все21pytest parent-группы имеют одинаковый frozen probe SHA-256
+`609844de252a2ed01c153c8862703c6d492376de668033f56cac82b4aaa820f8`.
+Он импортирует safe_getattr и проверяет единственный вызов с object(), отсутствующим
+атрибутом и fallback. Production runner сначала импортирует свой pytest, поэтому
+честно отказывает из-за пересечения `_pytest` modules с целевым репозиторием.
+Отключать эту защиту или принимать системный pytest за target нельзя.
+
+Отдельный план `examples/parent_function_diagnostics/pytest_protocol.json`
+проверит неизменённую frozen function прямым вызовом в новом процессе, без pytest
+framework/fixtures/plugins/assertion rewriting. Будут закреплены Python3.9.25,
+attrs23.2.0 иpy1.11.0; целевой код читается только из parent mount. Все loaded
+_pytest origins и target source hash проверяются в том же процессе. По3контейнера
+на каждый parent, без сети, с readonly mounts и ограничениями ресурсов.
+
+Это иной execution profile для узкой дополнительной диагностики. Даже успешный
+вызов не означает, что standard pytest validator стал доступен, не выдаёт independent
+receipt и не разрешает real held-out execution. Все failures сохраняются; ошибки
+импорта/среды не превращаются в contradicted labels. Claims/probes не меняются.
