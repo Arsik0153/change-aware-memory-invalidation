@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-29T13:12:40.920427+00:00",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "docker_image": null,
+  "checks": [
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 428.6155453460524,
+      "log": "pytest.log"
+    },
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.027835011947900057,
+      "log": "ruff.log"
+    },
+    {
+      "command": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "mypy",
+        "src/cami"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.23785072506871074,
+      "log": "mypy.log"
+    }
+  ]
+}
