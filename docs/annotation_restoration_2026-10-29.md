@@ -160,3 +160,30 @@ Driver сохраняет оба frozen dependency profiles. Новая metadata
 только при явном v2 protocol; её отсутствие или незаявленное наличие отклоняется.
 Focused suite после этого изменения:44passed,ruff passed. Все21parents будут
 повторены с --protocol examples/parent_function_diagnostics/pytest_protocol_v2.json.
+
+Полный v2 прогон завершён на44c77d3:21parents,63attempts,все returned. Проверены147
+artifact hashes,65input hashes,366same-process origin records и122distinct parentGit
+blobs. Source snapshots clean и совпали; исходные claims/probes не менялись.
+Результат не отменяет v1 failure: недостающая dependency выявлена и добавлена после
+наблюдения. V1 иv2 — два явно различных профиля; старый production runner не изменён.
+
+Команда воспроизведения с новым output:
+
+```bash
+.venv/bin/python -m scripts.check_parent_functions \
+  --parents runs/main-restored-20261029/parent_inputs.jsonl \
+  --candidates runs/main-restored-20261029/candidates \
+  --protocol examples/parent_function_diagnostics/pytest_protocol_v2.json \
+  --image cami-parent-function@sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6 \
+  --out runs/parent-functions-repeat
+```
+
+Reports с raw stdout/stderr и parsed attempts:parent-functions-v1 иparent-functions-v2.
+Эти технические observations могут сопровождать независимый review frozen case,
+но не заменяют фактическое независимое авторство теста/решения.
+
+Независимый reviewer проверил оба профиля по сохранённым stdout/payloads, inputs,
+parent Git blobs и слоям образов: материальных расхождений нет. Review не заменяет
+независимое авторство frozen test case. После review полный suite на44c77d3:
+1046passed,0skipped за459.98s; Ruff/mypy passed. Source snapshots clean и равны,
+все три log hashes проверены. Evidence: parent-function-full-verification/checks.json.

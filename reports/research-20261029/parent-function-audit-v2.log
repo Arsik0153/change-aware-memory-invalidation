@@ -1,0 +1,30 @@
+{
+  "status": "integrity_verified",
+  "groups": 21,
+  "attempts": 63,
+  "direct_calls_returned": 63,
+  "raw_artifact_hashes_verified": 147,
+  "input_hashes_verified": 65,
+  "same_process_target_origin_observations_verified": 366,
+  "distinct_parent_git_blobs_verified": 122,
+  "source_snapshots_match": true,
+  "source_status_clean": true,
+  "summary": {
+    "container_attempts": 63,
+    "groups": 21,
+    "groups_with_all_calls_returned": 21,
+    "groups_with_incomplete_attempt_schedule": 0,
+    "groups_with_no_function_observation": 0,
+    "groups_with_orchestration_error": 0,
+    "outcomes": {
+      "returned": 63
+    }
+  },
+  "checker_sha256": "59d9e0d0e438d23920e8536cada6ef4d103d627fd65e7e9d140cb0ba04abc50c",
+  "limitations": [
+    "Different execution profile from production pytest validator",
+    "Automated finite-case observation, not independent human review",
+    "No receipts,child labels,real heldout execution or real-cohort admission",
+    "V2 is post-diagnostic dependency restoration; v1 remains preserved"
+  ]
+}

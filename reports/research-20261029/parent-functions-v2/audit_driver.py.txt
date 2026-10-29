@@ -1,0 +1,38 @@
+import hashlib,json,shutil,subprocess
+from pathlib import Path
+base=Path('runs/parent-functions-20261029-v2');out=Path('reports/research-20261029/parent-functions-v2')
+m=json.loads((base/'manifest.json').read_text())
+assert m['status']=='complete' and m['source_snapshots_match'] and m['source_inputs_unchanged']
+assert not m['source_before']['source_status']
+for name,h in m['artifact_hashes'].items():assert hashlib.sha256((base/name).read_bytes()).hexdigest()==h
+for name,h in m['input_hashes'].items():assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==h
+parents={r['group_id']:r for r in map(json.loads,Path('runs/main-restored-20261029/parent_inputs.jsonl').read_text().splitlines())}
+blobs={};origin_observations=0;attempts=0;returned=0
+for row in m['groups']:
+ parent=parents[row['group_id']]
+ for attempt in json.loads((base/row['group_id']/'attempts.json').read_text()):
+  attempts+=1;returned+=attempt['status']=='returned';p=attempt['payload']
+  assert p['python_flags']=={'isolated':1,'optimize':0,'dont_write_bytecode':1}
+  assert p['dependencies']==m['plan']['dependencies'] and p['preloaded_framework_modules']==[]
+  for module,origin in p['module_origins'].items():
+   assert module=='_pytest' or module.startswith('_pytest.')
+   relative=origin['path'].removeprefix('/repo/');assert relative!=origin['path']
+   key=(row['parent_commit'],relative)
+   if key not in blobs:blobs[key]=subprocess.check_output(['git','--no-replace-objects','-C',parent['repo_path'],'show',row['parent_commit']+':'+relative])
+   assert hashlib.sha256(blobs[key]).hexdigest()==origin['sha256']
+   origin_observations+=1
+  if attempt['status']=='returned':
+   assert p['target']['path']==p['target']['function_filename']=='/repo/src/_pytest/compat.py'
+   assert p['target']['sha256']==p['module_origins']['_pytest.compat']['sha256']
+assert attempts==m['summary']['container_attempts']==63
+assert returned==m['summary']['outcomes'].get('returned',0)
+shutil.copytree(base,out)
+audit={'status':'integrity_verified','groups':len(m['groups']),'attempts':attempts,'direct_calls_returned':returned,
+'raw_artifact_hashes_verified':len(m['artifact_hashes']),'input_hashes_verified':len(m['input_hashes']),
+'same_process_target_origin_observations_verified':origin_observations,'distinct_parent_git_blobs_verified':len(blobs),
+'source_snapshots_match':True,'source_status_clean':True,'summary':m['summary'],
+'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+'limitations':['Different execution profile from production pytest validator','Automated finite-case observation, not independent human review','No receipts,child labels,real heldout execution or real-cohort admission','V2 is post-diagnostic dependency restoration; v1 remains preserved']}
+(out/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+(out/'audit_driver.py.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps(audit,indent=2))
