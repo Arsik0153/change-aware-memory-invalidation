@@ -526,3 +526,19 @@ Focused suite после migration:129 passed; тесты используют m
 166 passed. Подготовлен отдельный byte-identical config view20Click parents без изменения
 исходного prepared dataset. Следующие проверки — настоящий CLI с Docker и полный suite
 на неизменном HEAD. Ни один реальный child не будет исполнен.
+
+Реальный CLI после migration завершён на всех 20 Click parents. Выполнено 60
+контейнерных повторов frozen smoke probe: все passed. Все 200 artifact hashes
+environment_report.json проверены; receipts, labels и child execution отсутствуют.
+В отдельных 20 контейнерах с тем же image/profile после загрузки pytest проверено,
+что образ сам не содержит Click, а click/click.core/click.testing загружены из /repo
+и совпадают по SHA-256 с соответствующими Git blobs. Это отдельная проверка origins,
+не telemetry из исходных 60 повторов. Все raw outputs и воспроизводимый audit driver
+сохранены в reports/research-20261029/click-parent-{smoke,origins}-v1.
+
+Полная проверка HEAD 042de36: 982 passed за 450.09 s, без skipped; ruff/mypy passed.
+Source snapshots совпали, scoped source status пустой, все hashes logs проверены.
+Read-only check_dataset на restored real dataset также прошёл: 63 runs, 630 candidates,
+0 supplied receipts, 63 preview runs, 630 known_incomplete provenance, labels_path=null.
+Это проверка согласованности входов, без policy execution и без научного admission.
+Evidence: confirmation-boundary-full-verification и restored-input-integrity-v2.json.

@@ -1,0 +1,19 @@
+.                                                                        [100%]
+=============================== warnings summary ===============================
+../repo/click/core.py:1234
+  /repo/click/core.py:1234: SyntaxWarning: invalid escape sequence '\s'
+    :class:`Option`\s or :class:`Argument`\s.  Other subclasses are currently
+
+../repo/click/_compat.py:15
+  /repo/click/_compat.py:15: SyntaxWarning: invalid escape sequence '\['
+    _ansi_re = re.compile('\033\[((?:\d|;)*)([a-zA-Z])')
+
+../repo/click/decorators.py:95
+  /repo/click/decorators.py:95: SyntaxWarning: invalid escape sequence '\s'
+    :func:`option`\s and :func:`argument`\s as parameters to the command.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 3 warnings in 0.03s
+CAMI_RESULT={"python_version": "3.12.12", "exit_code": 0, "collected": ["test_environment.py::test_echo_invocation"], "reports": [{"nodeid": "test_environment.py::test_echo_invocation", "when": "setup", "outcome": "passed", "assertion": false, "fingerprint": null}, {"nodeid": "test_environment.py::test_echo_invocation", "when": "call", "outcome": "passed", "assertion": false, "fingerprint": null}, {"nodeid": "test_environment.py::test_echo_invocation", "when": "teardown", "outcome": "passed", "assertion": false, "fingerprint": null}]}
+
+STDERR:

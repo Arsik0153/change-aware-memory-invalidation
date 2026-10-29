@@ -1,0 +1,27 @@
+{
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "cami.cli",
+    "pilot-environments",
+    "--dataset",
+    "runs/click-parent-smoke-inputs-20261029/dataset.json",
+    "--image",
+    "cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6",
+    "--out",
+    "runs/click-parent-smoke-20261029-v1"
+  ],
+  "exit_code": 0,
+  "code_commit": "042de36",
+  "cli_parent_count": 20,
+  "original_probe_repetitions": 60,
+  "repeat_outcomes": {
+    "passed": 60
+  },
+  "separate_origin_audit_containers": 20,
+  "separate_origin_audit_note": "Separate fresh processes under the same image/profile; not original-repeat telemetry.",
+  "verified_environment_artifact_hashes": 200,
+  "produced_receipts": 0,
+  "produced_labels": 0,
+  "executed_children": 0
+}

@@ -1,0 +1,71 @@
+"""Separate import-origin audit, not telemetry from the original probe repeats."""
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+import uuid
+
+from cami.artifacts import canonical, file_hash, read_json, write_json
+from cami.models import RepoLocation
+from cami.repository import read_snapshot, materialize
+
+SOURCE = Path('runs/click-parent-smoke-20261029-v1')
+OUT = Path('runs/click-parent-origins-20261029-v1')
+OUT.mkdir(exist_ok=False)
+report = read_json(SOURCE / 'environment_report.json')
+assert report['status'] == 'complete'
+profile = report['profile']
+CODE = '''import hashlib, importlib.util, json, pathlib, sys
+import pytest
+assert importlib.util.find_spec('click') is None, 'image unexpectedly contains Click'
+sys.path[:0] = ['/repo', '/repo/src']
+import click, click.core, click.testing
+result = {}
+for module in (click, click.core, click.testing):
+    path = pathlib.Path(module.__file__).resolve()
+    assert path.is_relative_to('/repo'), str(path)
+    result[module.__name__] = {'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+print(json.dumps({'python': sys.version.split()[0], 'modules': result}, sort_keys=True))
+'''
+rows = []
+for parent in report['parents']:
+    base = SOURCE / 'inputs' / parent['run_id']
+    source = read_json(base / 'parent_input.json')
+    repo = RepoLocation.model_validate_json(canonical(source['repo']))
+    snapshot = read_snapshot(repo, source['parent_commit'])
+    target = OUT / parent['run_id']
+    target.mkdir()
+    with tempfile.TemporaryDirectory(prefix='cami-origin-audit-') as tmp:
+        directory = Path(tmp) / 'repo'
+        materialize(snapshot, directory)
+        name = 'cami-origin-' + uuid.uuid4().hex
+        command = ['docker', 'run', '--rm', '--pull', 'never', '--name', name,
+            '--network', 'none', '--read-only', '--user', profile['user'],
+            '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+            '--cpus', str(profile['cpus']), '--memory', f"{profile['memory_mib']}m",
+            '--memory-swap', f"{profile['memory_mib']}m", '--pids-limit', str(profile['pids_limit']),
+            '--tmpfs', '/tmp:rw,nosuid,nodev,size=256m', '--workdir', '/tmp',
+            '--env', 'PYTHONDONTWRITEBYTECODE=1', '--env', 'PYTEST_DISABLE_PLUGIN_AUTOLOAD=1',
+            '--mount', f'type=bind,src={directory},dst=/repo,readonly', profile['image'], 'python', '-c', CODE]
+        try:
+            process = subprocess.run(command, capture_output=True, timeout=profile['timeout_seconds'])
+        finally:
+            subprocess.run(['docker', 'rm', '-f', name], capture_output=True, timeout=15)
+        (target / 'stdout.json').write_bytes(process.stdout)
+        (target / 'stderr.txt').write_bytes(process.stderr)
+        assert process.returncode == 0, (parent['run_id'], process.stderr.decode())
+    result = json.loads(process.stdout)
+    assert result['python'] == profile['python_version']
+    for record in result['modules'].values():
+        relative = str(Path(record['path']).relative_to('/repo'))
+        blob = snapshot.by_path()[relative]
+        assert blob.content is not None
+        assert hashlib.sha256(blob.content).hexdigest() == record['sha256']
+    rows.append({'run_id': parent['run_id'], 'parent': source['parent_commit'],
+                 'exit_code': process.returncode, 'modules': result['modules']})
+write_json(OUT / 'audit.json', {'status': 'passed', 'scope': __doc__, 'parents': rows,
+    'containers': len(rows), 'profile': profile, 'script_sha256': file_hash(Path(__file__)),
+    'original_report_sha256': file_hash(SOURCE / 'environment_report.json'),
+    'artifact_hashes': {p.relative_to(OUT).as_posix(): file_hash(p) for p in OUT.rglob('*') if p.is_file()}})
+print('Verified separate import origins against Git bytes for',len(rows),'parents')
