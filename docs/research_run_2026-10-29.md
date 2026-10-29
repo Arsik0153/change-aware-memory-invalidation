@@ -791,3 +791,35 @@ states/context outputs и исторические поколения в кон�
 политик влияет на доступность paired bootstrap. Предыдущая точная формула
 охватывала совпадающие знаменатели. Новый условный разбор не будет менять estimator
 или использовать реальную разметку; план фиксируется до расчёта таблиц.
+
+## Двадцать первый этап: разные denominator support sets в paired bootstrap
+
+Планea263dd зафиксировал15support configurations×4B до расчёта. Формула недопустимого
+resample выведена включением-исключением: ((K-L)/K)^K+((K-R)/K)^K-
+((K-L-R+J)/K)^K. При ненулевых исходных знаменателях availability=(1-r)^B.
+Это условный анализ фиксированных support sets, не новый Monte Carlo dataset.
+
+Реализация600d379: exact Fraction для одного resample и Decimal100 для конечного B.
+23tests прошли: полный перебор masks/draws K2..4,144production sequences,
+shared-support reduction, границы, симметрия, монотонность и сохранение tiny values.
+Рассчитаны все60rows; минимальная положительная вероятность8.709809816e-603.
+Основной estimator не менялся, real labels/admission не использовались.
+
+Независимый reviewer использовал integer four-state DP, exact rational power
+и Decimal160. Все60rows согласованы: maxrelative error3.014e-100, максимум0.469
+serialized ulp. Перепроверены336support assignments,67328resamples,144production
+sequences,7zero-support cases,160source hashes и6artifact hashes. Математических
+замечаний нет. Первичная plot autoscale выше1 исправлена в374fb8a; v2таблицы
+побайтно равныv1, source snapshots обеих версий clean/equal. PNG inspected и HTML
+показан; headless preview вновь Chrome exit1.
+
+При K20,L=R8,B2000 полное пересечение даёт92.948510% availability, отсутствие
+пересечения86.394024%. Это не coverage и не unconditional population probability.
+При K2,L=R1,J0,B2 availability1/4: отсутствие совместно положительного кластера
+само по себе не делает интервал недоступным. Подробности и воспроизведение —
+bootstrap_availability_mechanism_2026-10-29.md, evidence paired-support-v1/v2.
+
+Далее: проверить, можно ли использовать уже сохранённые denominator-support
+поля отчёта для объяснения отказа CI без повторного исполнения политик. Если
+добавляется такой diagnostic, он должен явно сохранять not_applicable/zero_sample
+и не переименовывать теоретическую availability в наблюдаемую частоту или coverage.

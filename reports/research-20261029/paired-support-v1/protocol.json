@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "analysis_kind": "post_pilot_conditional_paired_denominator_support",
+  "purpose": "Explain interval availability when left/right metric denominator supports differ; do not change estimator",
+  "conditioning": "Fixed K clusters and fixed support sets, probability over ideal independent uniform bootstrap draws; no randomness attributed to a fixed seed",
+  "scenarios": [
+    {
+      "id": "minimal-shared",
+      "clusters": 2,
+      "left_nonzero": 1,
+      "right_nonzero": 1,
+      "joint_nonzero": 1
+    },
+    {
+      "id": "minimal-disjoint",
+      "clusters": 2,
+      "left_nonzero": 1,
+      "right_nonzero": 1,
+      "joint_nonzero": 0
+    },
+    {
+      "id": "dense",
+      "clusters": 20,
+      "left_nonzero": 20,
+      "right_nonzero": 20,
+      "joint_nonzero": 20
+    },
+    {
+      "id": "dense-left",
+      "clusters": 20,
+      "left_nonzero": 20,
+      "right_nonzero": 2,
+      "joint_nonzero": 2
+    },
+    {
+      "id": "sparse-shared",
+      "clusters": 20,
+      "left_nonzero": 2,
+      "right_nonzero": 2,
+      "joint_nonzero": 2
+    },
+    {
+      "id": "sparse-partial",
+      "clusters": 20,
+      "left_nonzero": 2,
+      "right_nonzero": 2,
+      "joint_nonzero": 1
+    },
+    {
+      "id": "sparse-disjoint",
+      "clusters": 20,
+      "left_nonzero": 2,
+      "right_nonzero": 2,
+      "joint_nonzero": 0
+    },
+    {
+      "id": "moderate-shared",
+      "clusters": 20,
+      "left_nonzero": 8,
+      "right_nonzero": 8,
+      "joint_nonzero": 8
+    },
+    {
+      "id": "moderate-partial",
+      "clusters": 20,
+      "left_nonzero": 8,
+      "right_nonzero": 8,
+      "joint_nonzero": 4
+    },
+    {
+      "id": "moderate-disjoint",
+      "clusters": 20,
+      "left_nonzero": 8,
+      "right_nonzero": 8,
+      "joint_nonzero": 0
+    },
+    {
+      "id": "asymmetric-shared",
+      "clusters": 20,
+      "left_nonzero": 5,
+      "right_nonzero": 8,
+      "joint_nonzero": 5
+    },
+    {
+      "id": "asymmetric-partial",
+      "clusters": 20,
+      "left_nonzero": 5,
+      "right_nonzero": 8,
+      "joint_nonzero": 3
+    },
+    {
+      "id": "asymmetric-disjoint",
+      "clusters": 20,
+      "left_nonzero": 5,
+      "right_nonzero": 8,
+      "joint_nonzero": 0
+    },
+    {
+      "id": "zero-left",
+      "clusters": 20,
+      "left_nonzero": 0,
+      "right_nonzero": 2,
+      "joint_nonzero": 0
+    },
+    {
+      "id": "zero-both",
+      "clusters": 20,
+      "left_nonzero": 0,
+      "right_nonzero": 0,
+      "joint_nonzero": 0
+    }
+  ],
+  "bootstrap_repetitions": [
+    1,
+    10,
+    50,
+    2000
+  ],
+  "arithmetic": {
+    "single_resample": "exact integer Fraction",
+    "finite_B": "Decimal precision100, serialize nonzero scientific notation without float underflow"
+  },
+  "formula": "bad=((K-L)/K)^K+((K-R)/K)^K-((K-L-R+J)/K)^K; available=(1-bad)^B if L>0,R>0,K>=2; otherwise zero_sample",
+  "checks": [
+    "Exhaustive binary support assignments and all K-draw resamples for K2..4",
+    "Exhaustive K2 B2 bootstrap sequences compared with production routine under supplied draws",
+    "Shared-support reduction to earlier conditional formula",
+    "Probability normalization, zero-support boundaries, increasing J and B effects",
+    "100-digit independent calculation for all output rows"
+  ],
+  "changes_to_production_estimator": false,
+  "new_random_datasets": false,
+  "real_labels_or_admission": false,
+  "limitations": [
+    "Availability is not coverage",
+    "Conditional on supplied support sets; no inferred population distribution",
+    "Joint-positive count zero does not itself imply unavailable interval",
+    "Decimal finite-B outputs are numerical approximations to exact rational expressions"
+  ]
+}
