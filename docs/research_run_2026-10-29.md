@@ -208,3 +208,36 @@ replay. Итоговый расширенный профильный набор 
 Проверить существующие main/replay пакеты, наличие независимых parent receipts,
 неизменность seal и реальные ограничения historical behavior environments.
 Результат должен быть проверяемым readiness-отчётом, не выдуманной разметкой.
+
+Четвёртый этап сохранён commit `29dcd56`. Итоговый профильный набор: **48 passed**.
+Полный прогон запущен новым verifier в `reports/research-20261029/diagnostics-full-verification/`,
+harness session 67150. На этой контрольной точке он ещё выполняется.
+До завершения не менять source и HEAD. Следующее продолжение сначала читает
+checks.json и проверяет журналы; при отсутствии завершения выполняет только
+чтение существующих annotation пакетов. После завершения фиксирует результат.
+
+## Пятый этап: восстановлены реальные материалы разметки
+
+Полный прогон `29dcd56` завершён: **847 passed, 4 skipped**, ruff/mypy passed.
+Проверены manifest status, source_snapshots_match и hashes всех журналов.
+Ограничение на source/HEAD снято до добавления следующего инструмента.
+
+На VPS не было старых corpora и ready пакетов. Восстановлены три pinned bare
+репозитория, проверены 63 revision chains, перенесены только пути без reselection.
+Все 63 regenerated claim files совпали с историческими hashes. Собраны реальные
+материалы для 630 parent и 900 child заданий; все формы остаются пустыми.
+
+[Отчёт восстановления](annotation_restoration_2026-10-29.md) содержит команды,
+проверки и ограничения. Пользовательский архив: `output/annotation-restored-20261029.zip`.
+Это новый наш файл; старые output/intermediate_report* и artifacts/ не затронуты.
+Архив остаётся локальным вне Git; hash и состав сохранены в annotation-package.json.
+
+Независимый reviewer подтвердил hashes, Git object bindings и отсутствие готовых
+ответов. Добавлен переносчик fixed manifests, 5 targeted tests passed; ruff и mypy
+passed. Он воспроизводит те же relocated bytes. Production код не менялся.
+
+Следующий этап: восстановить Docker fixture environment и запустить четыре
+до сих пор пропускавшихся Docker tests на синтетических данных. Это не разрешает
+исполнение held-out behavior claims. Сначала изучить Dockerfile.probes и тесты,
+использовать реальный digest построенного образа, сохранить журналы. Затем можно
+планировать historical environment pilot отдельно от независимой разметки.
