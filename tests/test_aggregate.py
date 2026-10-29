@@ -206,6 +206,7 @@ def test_replay_sequences_separate_without_population_ci(tmp_path: Path) -> None
     for group in groups:
         assert group.intervals["keep_all-minus-all_validate"]["stale_exposure"].reason == (
             "replay_no_population_interval")
+        assert group.intervals["keep_all-minus-all_validate"]["stale_exposure"].denominator_support is None
     assert all(len(cost.cumulative) == 2 for cost in report.costs)
     for cost in report.costs:
         assert cost.cumulative[-1].measured_total_seconds == pytest.approx(1.8)
@@ -288,3 +289,58 @@ def test_break_even_observed_only(tmp_path: Path) -> None:
                         if item.dataset_run_id == "population0" and item.policy.startswith("symbol"))
     assert changed_cost.initial_index_seconds == 0.1
     assert changed_cost.later_index_seconds == 0.05
+
+
+def test_cli_exports_interval_support_and_unavailable_reasons(tmp_path: Path) -> None:
+    import csv
+    import sys
+
+    dataset, runs, labels = dataset_fixture(tmp_path / 'dataset')
+    output = tmp_path / 'report'
+    subprocess.run([sys.executable, '-m', 'cami.cli', 'analyze', '--dataset', str(dataset),
+                    '--runs', *map(str, runs), '--labels', str(labels), '--out', str(output)],
+                   check=True, capture_output=True, text=True)
+    with (output / 'intervals.csv').open() as stream:
+        rows = list(csv.DictReader(stream))
+    pooled = [row for row in rows if not row['repo_id'] and not row['claim_kind']]
+    stale = next(row for row in pooled if row['metric'] == 'stale_exposure')
+    assert stale['comparison'] == 'keep_all-minus-all_validate'
+    assert stale['clusters'] == stale['left_nonzero_clusters'] == '2'
+    assert stale['right_nonzero_clusters'] == stale['joint_nonzero_clusters'] == '2'
+    assert float(stale['lower']) == float(stale['upper']) == 1
+    assert stale['reason'] == ''
+    not_applicable = next(row for row in pooled if row['reason'] == 'not_applicable')
+    assert not_applicable['left_nonzero_clusters'] == ''
+    assert not_applicable['right_nonzero_clusters'] == ''
+    assert 'intervals.csv' in (output / 'summary.md').read_text()
+    serialized = read_json(output / 'intervals.json')
+    overall_group = next(row for row in serialized if row['dimensions']['repo_id'] is None
+                         and row['dimensions']['claim_kind'] is None)
+    interval = overall_group['intervals']['keep_all-minus-all_validate']['stale_exposure']
+    assert interval['denominator_support']['joint_nonzero_clusters'] == 2
+
+
+def test_sparse_metric_reports_support_without_dropping_empty_cluster(tmp_path: Path) -> None:
+    import csv
+
+    dataset, runs, labels = dataset_fixture(tmp_path / 'dataset')
+    from cami.artifacts import load_jsonl
+    original = load_jsonl(labels, Label)
+    write_jsonl(labels, [label.model_copy(update={'label': 'supported'})
+                        if label.claim_id.startswith('population1-') else label
+                        for label in original])
+    output = tmp_path / 'report'
+    analysis = analyze_dataset(dataset, runs, labels, output)
+    interval = overall(analysis)[0].intervals['keep_all-minus-all_validate']['stale_exposure']
+    assert interval.clusters == 2
+    assert interval.denominator_support is not None
+    assert interval.denominator_support.joint_nonzero_clusters == 1
+    assert interval.reason == 'zero_denominator_in_resample'
+    assert interval.lower is None and interval.upper is None
+    with (output / 'intervals.csv').open() as stream:
+        row = next(row for row in csv.DictReader(stream)
+                   if row['metric'] == 'stale_exposure' and not row['repo_id']
+                   and not row['claim_kind'])
+    assert row['joint_nonzero_clusters'] == '1'
+    assert row['clusters'] == '2'
+    assert row['reason'] == 'zero_denominator_in_resample'

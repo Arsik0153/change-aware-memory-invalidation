@@ -505,6 +505,22 @@ def _write_csv(path: Path, fields: list[str], rows: list[dict[str, object]]) -> 
 def _write_analysis(report: DatasetAnalysis, runs: tuple[AssignedRun, ...], output: Path) -> None:
     write_json(output / "metrics.json", report)
     write_json(output / "intervals.json", [group.model_dump(mode="json") for group in report.groups])
+    interval_rows: list[dict[str, object]] = []
+    dimension_fields = ["dataset_kind", "split", "stratum", "scenario_id", "validator_settings",
+                        "sequence_id", "repo_id", "claim_kind"]
+    for group in report.groups:
+        dimensions = group.dimensions.model_dump(mode="json", exclude={"schema_version"})
+        for comparison, intervals in group.intervals.items():
+            for metric_name, interval in intervals.items():
+                support = (interval.denominator_support.model_dump(
+                    mode="json", exclude={"schema_version"}) if interval.denominator_support else {})
+                interval_rows.append({**dimensions, "comparison": comparison, "metric": metric_name,
+                    "estimate": interval.estimate, "lower": interval.lower, "upper": interval.upper,
+                    "reason": interval.reason, "clusters": interval.clusters,
+                    "repetitions": interval.repetitions, "seed": interval.seed, **support})
+    _write_csv(output / "intervals.csv", [*dimension_fields, "comparison", "metric", "estimate",
+        "lower", "upper", "reason", "clusters", "repetitions", "seed", "left_nonzero_clusters",
+        "right_nonzero_clusters", "joint_nonzero_clusters"], interval_rows)
     rows: list[dict[str, object]] = []
     fields = ["dataset_kind", "split", "stratum", "scenario_id", "validator_settings", "sequence_id",
               "repo_id", "claim_kind", "policy", "aggregation", "metric", "value", "numerator",
@@ -568,6 +584,14 @@ def _write_analysis(report: DatasetAnalysis, runs: tuple[AssignedRun, ...], outp
                      f"unchecked at current revision {counts['unchecked_current_revision']}.")
         for reason, count in sorted(run.scored.report.validator_reasons.items()):
             lines.append(f"- {run.declaration.run_id}/{run.policy} validator reason {reason}: {count}.")
+    lines += ["", "Bootstrap interval diagnostics:", "",
+        "See [intervals.csv](intervals.csv) for every metric/group comparison, interval bounds, "
+        "unavailable reason, and numbers of clusters with positive denominators on the left, "
+        "right, and both sides. Left-minus-right follows the comparison name.", "",
+        "Blank support counts mean diagnostics were not computed, not zero support. "
+        "Replay and not-applicable metrics do not run bootstrap. Repetitions is the configured "
+        "maximum, not a count of completed resamples. More clusters do not by themselves "
+        "guarantee an available or calibrated interval."]
     lines += ["", "Observed break-even against all_validate:", ""]
     lines.extend([f"- {item.dataset_run_id}/{item.policy}: "
                   f"{item.first_observed_transition if item.first_observed_transition else item.reason}."

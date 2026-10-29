@@ -162,3 +162,49 @@ Product и research production код не изменялся. Вывод огр
 на реальном CLI артефакте, затем добавить минимальную диагностику без изменения
 оценивателя и held-out правил. Это полезнее немедленного подбора другого estimator
 по уже увиденным synthetic результатам.
+
+## Четвёртый этап: диагностика bootstrap в отчётах
+
+На реальном `cami analyze` для authored synthetic fixture подтверждён пробел:
+старый JSON показывал общее число кластеров, а число ненулевых знаменателей
+отсутствовало; отдельного intervals.csv не было. Артефакт до изменения:
+`reports/research-20261029/diagnostics-before/`.
+
+В `BootstrapInterval` добавлено optional `denominator_support` с числами кластеров
+с положительным знаменателем слева, справа и одновременно с обеих сторон.
+Это характеристика исходной парной выборки, не число resamples, не эффективный
+размер выборки и не критерий допуска. Общие пустые кластеры остаются в выборке.
+Диагностика вычисляется и при недоступной оценке или интервале.
+
+`cami analyze` теперь пишет `intervals.csv` с dimensions, направлением сравнения,
+оценкой, границами, причиной недоступности и support counts. Summary объясняет
+значения и ссылается на CSV. Для replay и not_applicable bootstrap не запускается,
+поэтому support остаётся null в JSON и пустым в CSV. Исторические JSON без поля
+читаются новым кодом как unknown; из общего количества кластеров support не
+выдумывается. Чтение новых расширенных JSON старой strict-версией не гарантируется.
+
+Не менялись estimator, RNG, правила resampling, допуска и held-out. Проверено:
+
+- Все прежние поля 600 сохранённых synthetic интервалов совпадают точно с
+  результатом нового кода. Воспроизводимая команда:
+  `.venv/bin/python scripts/verify_bootstrap_equivalence.py --study reports/research-20261029/bootstrap-study-v1 --out NEW_DIRECTORY`.
+- Полный CLI metrics.json совпал после удаления только новых diagnostic fields
+  при одинаковых входах и порядке runs. Артефакты `diagnostics-before/` и
+  `diagnostics-after-ordered/`, результат `diagnostics-cli-equivalence.json`.
+- Первая проверка CLI использовала сортировку runs вместо прежнего порядка.
+  Отличался только порядок run_directories. Этот запуск сохранён в diagnostics-after;
+  для строгого сравнения выполнен отдельный запуск с исходным порядком.
+- Тест sparse metric сохраняет 2 общих кластера при 1 ненулевом и показывает
+  zero_denominator_in_resample; пустой кластер не удаляется.
+- Тесты проверяют разделение сторон, legacy JSON, replay и публичный CLI export.
+
+Независимый reviewer gpt-6.1-sol не нашёл блокирующих замечаний и выполнил
+22 focused tests. По его предложению дополнительно закреплён null support для
+replay. Итоговый расширенный профильный набор и static checks записаны в
+`diagnostics-tests-final-reviewed.log`, `diagnostics-ruff.log`, `diagnostics-mypy.log`.
+Полный прогон будет запущен после commit; до его завершения не менять source/HEAD.
+
+Следующий этап после полного прогона: аудит готовности независимой разметки.
+Проверить существующие main/replay пакеты, наличие независимых parent receipts,
+неизменность seal и реальные ограничения historical behavior environments.
+Результат должен быть проверяемым readiness-отчётом, не выдуманной разметкой.

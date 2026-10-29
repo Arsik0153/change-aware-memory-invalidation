@@ -105,6 +105,12 @@ class EvaluationReport(Record):
     limitations: tuple[str, ...]
 
 
+class DenominatorSupport(Record):
+    left_nonzero_clusters: int = Field(ge=0)
+    right_nonzero_clusters: int = Field(ge=0)
+    joint_nonzero_clusters: int = Field(ge=0)
+
+
 class BootstrapInterval(Record):
     estimate: float | None
     lower: float | None
@@ -113,6 +119,7 @@ class BootstrapInterval(Record):
     clusters: int
     repetitions: int = 2000
     seed: int = 42
+    denominator_support: DenominatorSupport | None = None
 
 
 class ComparisonReport(Record):
@@ -386,6 +393,11 @@ def paired_cluster_bootstrap(
     keys = sorted(left)
     if any(num < 0 or den < 0 or num > den for num, den in (*left.values(), *right.values())):
         raise InputError("bootstrap counters require 0 <= numerator <= denominator")
+    support = DenominatorSupport(
+        left_nonzero_clusters=sum(left[k][1] > 0 for k in keys),
+        right_nonzero_clusters=sum(right[k][1] > 0 for k in keys),
+        joint_nonzero_clusters=sum(left[k][1] > 0 and right[k][1] > 0 for k in keys),
+    )
     left_den, right_den = sum(left[k][1] for k in keys), sum(right[k][1] for k in keys)
     estimate = (sum(left[k][0] for k in keys) / left_den
                 - sum(right[k][0] for k in keys) / right_den) if left_den and right_den else None
@@ -394,7 +406,8 @@ def paired_cluster_bootstrap(
         reason = "zero_denominator"
     if reason:
         return BootstrapInterval(estimate=estimate, lower=None, upper=None, reason=reason,
-                                 clusters=len(keys), repetitions=repetitions, seed=seed)
+                                 clusters=len(keys), repetitions=repetitions, seed=seed,
+                             denominator_support=support)
     rng = np.random.default_rng(seed)
     differences: list[float] = []
     for _ in range(repetitions):
@@ -403,12 +416,14 @@ def paired_cluster_bootstrap(
         if not ld or not rd:
             return BootstrapInterval(estimate=estimate, lower=None, upper=None,
                                      reason="zero_denominator_in_resample", clusters=len(keys),
-                                     repetitions=repetitions, seed=seed)
+                                     repetitions=repetitions, seed=seed,
+                                     denominator_support=support)
         differences.append(sum(left[k][0] for k in sampled) / ld
                            - sum(right[k][0] for k in sampled) / rd)
     lower, upper = np.quantile(differences, [0.025, 0.975])
     return BootstrapInterval(estimate=estimate, lower=float(lower), upper=float(upper), reason=None,
-                             clusters=len(keys), repetitions=repetitions, seed=seed)
+                             clusters=len(keys), repetitions=repetitions, seed=seed,
+                             denominator_support=support)
 
 
 def _comparison_key(run: ScoredRun) -> str:

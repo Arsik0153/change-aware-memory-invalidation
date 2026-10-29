@@ -57,3 +57,33 @@ def test_undefined_resample_does_not_silently_condition_interval() -> None:
 def test_invalid_counters_are_rejected(counts: tuple[int, int]) -> None:
     with pytest.raises(InputError, match='counters'):
         paired_cluster_bootstrap({'a': counts, 'b': (0, 1)}, {'a': (0, 1), 'b': (0, 1)})
+
+
+def test_denominator_support_keeps_policy_sides_separate() -> None:
+    result = paired_cluster_bootstrap(
+        {'a': (1, 1), 'b': (0, 0), 'c': (1, 2)},
+        {'a': (0, 0), 'b': (0, 3), 'c': (0, 0)},
+    )
+    support = result.denominator_support
+    assert support is not None
+    assert support.left_nonzero_clusters == 2
+    assert support.right_nonzero_clusters == 1
+    assert support.joint_nonzero_clusters == 0
+    assert result.clusters == 3
+    assert result.reason == 'zero_denominator_in_resample'
+
+
+def test_support_remains_visible_when_estimate_undefined() -> None:
+    result = paired_cluster_bootstrap({'a': (0, 0)}, {'a': (0, 2)})
+    assert result.denominator_support is not None
+    assert result.denominator_support.left_nonzero_clusters == 0
+    assert result.denominator_support.right_nonzero_clusters == 1
+    assert result.reason == 'zero_denominator'
+
+
+def test_historical_interval_does_not_invent_support() -> None:
+    from cami.evaluation import BootstrapInterval
+
+    result = BootstrapInterval.model_validate_json(
+        '{"estimate":0.1,"lower":0.0,"upper":0.2,"reason":null,"clusters":20}')
+    assert result.denominator_support is None

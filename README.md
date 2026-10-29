@@ -177,3 +177,12 @@ Product memory commands and the agent consumption flow are described in
 [Рабочая память для CLI-агента](docs/product_memory_ru.md).
 
 Product background refresh and agent workflow: [cami watch](docs/watch.md).
+
+`cami analyze` also writes `intervals.csv`: interval estimates and bounds, unavailable
+reasons, and counts of original clusters with positive metric denominators for the
+left policy, right policy, and both. Comparison names specify left minus right.
+The same counts appear as `denominator_support` in JSON. Blank CSV counts (JSON
+null) mean diagnostics were not computed, including replay and not-applicable
+metrics; they do not mean zero support. These counts do not establish interval
+calibration. The [synthetic development study](docs/bootstrap_study_2026-10-29.md)
+explains why interval availability must be reported alongside conditional coverage.
