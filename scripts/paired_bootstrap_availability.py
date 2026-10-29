@@ -81,11 +81,16 @@ def plot(rows: list[dict], out: Path) -> None:
         axis.set_title(f'K=20, L=R={count}')
         axis.grid(alpha=.25)
     axes[0].set_yscale('log')
+    sparse_values = [float(row['available']) for row in rows if row['id'].startswith('sparse-')]
+    axes[0].set_ylim(min(sparse_values) / 10, 1)
+    axes[0].set_yticks([1, 1e-50, 1e-100, 1e-150, 1e-200])
     axes[0].set_title('K=20, L=R=2 (log probability scale)')
     axes[1].set_ylim(.8, 1.005)
     axes[1].legend(fontsize=8)
-    figure.suptitle('Support overlap affects availability, not evidence of coverage')
-    figure.tight_layout()
+    figure.suptitle('Conditional interval availability for fixed denominator support')
+    figure.text(.5, .01, 'Markers are computed protocol points; connecting lines guide the eye.',
+                ha='center', fontsize=8)
+    figure.tight_layout(rect=(0, .04, 1, 1))
     figure.savefig(out / 'availability.png', dpi=180)
     figure.savefig(out / 'availability.svg')
     plt.close(figure)
