@@ -1,10 +1,34 @@
 # Change-Aware Memory Invalidation for LLM Coding Agents
 
-This project contains the research plan for Sairanbekov Zhanarys, advised by 김진대 at SeoulTech. The current deliverable is a thesis research proposal prepared for advisor review on 1 October 2026 and the research-plan submission window ending 2 October 2026. Advisor approval and submission have not yet occurred.
+This repository contains the master's research proposal and the implemented CAMI
+research engine and product memory CLI. The proposal was prepared for advisor
+review on 1 October 2026. Submission and advisor approval are external steps;
+the historical submission checks do not establish their current status.
 
-## Current documents
+## Implementation and research evidence, 29 October 2026
 
-- [Research proposal](../research_proposal.md) is the authoritative content source.
+- [Project README](../README.md) documents installation and executable commands.
+- [Research run record](research_run_2026-10-29.md) records tested changes, commits,
+  outstanding work, and the continuing autonomous research session.
+- [Bootstrap development study](bootstrap_study_2026-10-29.md) reports 600 synthetic
+  datasets with analytically known truth, interval availability, and conditional
+  coverage. These are estimator diagnostics, not real-policy effectiveness results.
+- [Restored annotation material](annotation_restoration_2026-10-29.md) describes
+  630 candidate claims in 63 groups. Independent answers and admission remain pending.
+- [Parent review instructions](parent_review_instructions_ru.md) describe blank
+  assignments, independent test authorship, double review, and adjudication import.
+- [Product memory checks](product_memory_real_repositories_2026-10-29.md) record
+  controlled source mutations in pinned local Click and Requests repositories.
+
+The implemented system has been tested; the main empirical thesis hypothesis
+still requires independent annotation, cohort admission, provenance review, and
+protocol fixation before held-out policy execution. Automated parent environment
+observations do not supply independent confirmation receipts.
+
+## Proposal and submission documents
+
+- [Research proposal](../research_proposal.md) is the authoritative content source
+  for the submission document, not a current implementation status report.
 - [Submission DOCX](../output/submission/thesis_research_plan.docx) is the completed form based on the official email attachment.
 - [Print PDF](../output/submission/thesis_research_plan.pdf) is rendered from that DOCX.
 - [Submission guide](../output/submission/SUBMISSION_GUIDE_RU.md) explains the advisor meeting, signatures, titles, and SUIS steps in Russian.
@@ -18,7 +42,11 @@ The proposed Python system stores claims with evidence and revision identifiers.
 
 The planned evaluation includes approximately 600 claim-transition pairs, three sequential replays, provenance ablations, and an optional code-localization experiment. Actual sample sizes and resources will be fixed after a pilot. The contribution is framed as an extension of existing claim-relative invalidation research, with attention to sequential maintenance, provenance cost, and incomplete evidence links.
 
-No indexer, memory engine, dataset, benchmark results, or deployed service is implemented in this repository. The only executable tooling currently included builds and checks the submission document. Planned research is not reported as completed work.
+The repository now implements an indexer, research engine, dataset preparation,
+annotation import, and persistent product memory. Synthetic demonstrations and
+development checks are documented separately from the pending real experiment.
+The earlier proposal describes planned research; its hypotheses are not treated
+as established results.
 
 ## Rebuilding the document
 

@@ -443,3 +443,19 @@ child decisions, неполный population, source/probe drift и защита
 Следующие шаги: полный suite на новом неизменном HEAD; обновить локальный ZIP
 parent-review актуальной инструкцией, сохраняя все исходные blank assignments.
 После этого продолжить научный аудит и воспроизводимость результатов.
+
+Parent review archive обновлён отдельным файлом output/parent-review-20261029-v2.zip.
+Все 456 файлов исходного blank packet сохранены побайтно; изменены только две
+добавляемые инструкции. В архиве 458 файлов, 630primary/126secondary пустых заданий;
+CRC и каждый извлечённый файл сверены с источником. Hash:
+25da88d670536e0faf5ae5e7de126c377d7b55ce162d4a7410991bd2d9f49074.
+Первый ZIP не изменён. Manifest: parent-review-package-v2.json.
+
+В docs/README.md устранено устаревшее утверждение, что indexer/memory/engine ещё
+не реализованы. Submission proposal оставлен историческим источником формы,
+а актуальные development evidence и pending empirical requirements теперь
+имеют прямые ссылки. Внешний статус подписи и подачи не предполагается.
+
+Полный suite после десятого этапа: HEAD 4fcbdfd, 901 passed за 441.40 s, 0 skipped,
+ruff/mypy passed. Source snapshots совпали, исходное scoped дерево было чистым;
+hashes всех logs сверены. Evidence: parent-batch-full-verification.
