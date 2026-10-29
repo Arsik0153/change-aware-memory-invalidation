@@ -474,7 +474,8 @@ def import_parent(dataset_path: Path, annotations_path: Path, output: Path) -> P
             raise InputError("real cohort rejects synthetic confirmation")
         if claim.kind == "prose" and annotation.confirmation_type != "human_review":
             raise InputError("prose parent confirmation requires human review")
-        if claim.kind == "behavior_test" and annotation.confirmation_type != "independent_test":
+        if (claim.kind == "behavior_test" and annotation.label == "supported"
+                and annotation.confirmation_type != "independent_test"):
             raise InputError("behavior parent confirmation requires independent frozen-probe testing")
         reviewed.add(annotation.claim_id)
     if output.resolve().is_relative_to(base):

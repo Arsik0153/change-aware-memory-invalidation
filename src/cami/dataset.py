@@ -171,9 +171,10 @@ class RawAnnotation(Record):
 
     @model_validator(mode="after")
     def authorship(self) -> RawAnnotation:
-        kinds = {"human_review": "human", "independent_oracle": "independent_oracle",
-                 "independent_test": "independent_oracle", "synthetic_manual": "synthetic_author"}
-        if self.annotator_kind != kinds[self.confirmation_type]:
+        kinds = {"human_review": {"human"}, "independent_oracle": {"independent_oracle"},
+                 "independent_test": {"human", "independent_oracle"},
+                 "synthetic_manual": {"synthetic_author"}}
+        if self.annotator_kind not in kinds[self.confirmation_type]:
             raise ValueError("confirmation type contradicts annotator kind")
         if any(not evidence.strip() for evidence in self.evidence):
             raise ValueError("annotation evidence must not be empty")

@@ -480,3 +480,34 @@ def test_review_rejects_nested_output_and_tampered_audit(parent_repo, tmp_path):
     (audit.parent / "provenance_audit.jsonl").write_bytes(b"tampered\n")
     with pytest.raises(InputError, match="hash mismatch"):
         prepare.import_provenance_review(audit, reviews_path, tmp_path / "rejected")
+
+
+@pytest.mark.parametrize('label', ['uncertain', 'contradicted'])
+def test_nonpositive_behavior_parent_review_is_retained_without_receipt(parent_repo, tmp_path, label):
+    dataset = assemble_fixture(parent_repo, tmp_path)
+    group = dataset.parent / 'groups' / parent_repo[0]['group_id']
+    behavior = next(row for row in read_jsonl(group / 'claims.jsonl') if row['kind'] == 'behavior_test')
+    reviews = tmp_path / 'external_test_reviews.jsonl'
+    write_jsonl(reviews, [review_for(behavior, label=label,
+        evidence=['Synthetic fixture for preserving nonpositive independent reviewer decisions.'])])
+    imported = prepare.import_parent(dataset, reviews, tmp_path / 'reviewed')
+    target = imported.parent / 'groups' / parent_repo[0]['group_id']
+    assert read_jsonl(target / 'parent_receipts.jsonl') == []
+    raw = read_jsonl(imported.parent / 'parent_raw_annotations.jsonl')
+    assert len(raw) == 1 and raw[0]['label'] == label
+    assert read_json(imported.parent / 'parent_review_status.json')['supported_receipts'] == 0
+
+
+def test_human_independent_behavior_test_can_confirm_parent(parent_repo, tmp_path):
+    dataset = assemble_fixture(parent_repo, tmp_path)
+    group = dataset.parent / 'groups' / parent_repo[0]['group_id']
+    behavior = next(row for row in read_jsonl(group / 'claims.jsonl') if row['kind'] == 'behavior_test')
+    reviews = tmp_path / 'external_test_reviews.jsonl'
+    write_jsonl(reviews, [review_for(behavior, confirmation_type='independent_test',
+        evidence=['Synthetic fixture of a human independently executing the frozen probe.'])])
+    imported = prepare.import_parent(dataset, reviews, tmp_path / 'reviewed')
+    target = imported.parent / 'groups' / parent_repo[0]['group_id']
+    receipts = read_jsonl(target / 'parent_receipts.jsonl')
+    assert len(receipts) == 1 and receipts[0]['confirmation_type'] == 'independent_test'
+    assert read_jsonl(imported.parent / 'parent_raw_annotations.jsonl')[0]['annotator_kind'] == 'human'
+    assert read_json(target / 'run.json')['preview'] is True

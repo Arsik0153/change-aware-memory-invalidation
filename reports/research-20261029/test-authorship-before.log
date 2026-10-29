@@ -1,0 +1,82 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_independent_test_keeps_actual_reviewer_kind[human-1] ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-138/test_independent_test_keeps_ac0')
+second_kind = 'human', human_double = 1
+
+    @pytest.mark.parametrize('second_kind,human_double', [('human', 1), ('independent_oracle', 0)])
+    def test_independent_test_keeps_actual_reviewer_kind(tmp_path, second_kind, human_double):
+        rows = [annotation('fixture-a', 'fixture-human'), annotation('fixture-b', 'fixture-second')]
+        for row in rows:
+            row['confirmation_type'] = 'independent_test'
+            row['evidence'] = ['Synthetic fixture of independently executed frozen test evidence.']
+        rows[1]['annotator_kind'] = second_kind
+        source = import_file(tmp_path, rows, population=[('f', 'a' * 40)])
+        output = tmp_path / 'imported'
+>       annotate_import(source, output)
+
+tests/test_dataset.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/dataset.py:263: in annotate_import
+    data = load(input_path, AnnotationImport)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-root/pytest-138/test_independent_test_keeps_ac0/annotations.json')
+model = <class 'cami.dataset.AnnotationImport'>
+
+    def load(path: Path, model: type[T]) -> T:
+>       return model.model_validate_json(canonical(read_json(path)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 3 validation errors for AnnotationImport
+E       annotations.0
+E         Value error, confirmation type contradicts annotator kind [type=value_error, input_value={'annotation_id': 'fixtur...d', 'schema_version': 1}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.12/v/value_error
+E       annotations.1
+E         Value error, confirmation type contradicts annotator kind [type=value_error, input_value={'annotation_id': 'fixtur...d', 'schema_version': 1}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.12/v/value_error
+E       annotations
+E         Tuple should have at least 1 item after validation, not 0 [type=too_short, input_value=[{'annotation_id': 'fixtu...', 'schema_version': 1}], input_type=list]
+E           For further information visit https://errors.pydantic.dev/2.12/v/too_short
+
+src/cami/artifacts.py:54: ValidationError
+____ test_independent_test_keeps_actual_reviewer_kind[independent_oracle-0] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-138/test_independent_test_keeps_ac1')
+second_kind = 'independent_oracle', human_double = 0
+
+    @pytest.mark.parametrize('second_kind,human_double', [('human', 1), ('independent_oracle', 0)])
+    def test_independent_test_keeps_actual_reviewer_kind(tmp_path, second_kind, human_double):
+        rows = [annotation('fixture-a', 'fixture-human'), annotation('fixture-b', 'fixture-second')]
+        for row in rows:
+            row['confirmation_type'] = 'independent_test'
+            row['evidence'] = ['Synthetic fixture of independently executed frozen test evidence.']
+        rows[1]['annotator_kind'] = second_kind
+        source = import_file(tmp_path, rows, population=[('f', 'a' * 40)])
+        output = tmp_path / 'imported'
+>       annotate_import(source, output)
+
+tests/test_dataset.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/dataset.py:263: in annotate_import
+    data = load(input_path, AnnotationImport)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-root/pytest-138/test_independent_test_keeps_ac1/annotations.json')
+model = <class 'cami.dataset.AnnotationImport'>
+
+    def load(path: Path, model: type[T]) -> T:
+>       return model.model_validate_json(canonical(read_json(path)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for AnnotationImport
+E       annotations.0
+E         Value error, confirmation type contradicts annotator kind [type=value_error, input_value={'annotation_id': 'fixtur...d', 'schema_version': 1}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.12/v/value_error
+
+src/cami/artifacts.py:54: ValidationError
+=========================== short test summary info ============================
+FAILED tests/test_dataset.py::test_independent_test_keeps_actual_reviewer_kind[human-1]
+FAILED tests/test_dataset.py::test_independent_test_keeps_actual_reviewer_kind[independent_oracle-0]
+2 failed in 0.26s

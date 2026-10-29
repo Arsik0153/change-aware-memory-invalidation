@@ -1,0 +1,60 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_uncertain_behavior_parent_review_is_retained_without_receipt _______
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '17c56fdc5958ad1b868e8ade020487e8e0096c5f', 'repo_id': 'click', ...test-of-root/pytest-136/test_uncertain_behavior_parent0/source repo', ...}, 'a2705adb0ffd058e9dbd6674a9d5c54dd79b7991')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-136/test_uncertain_behavior_parent0')
+
+    def test_uncertain_behavior_parent_review_is_retained_without_receipt(parent_repo, tmp_path):
+        dataset = assemble_fixture(parent_repo, tmp_path)
+        group = dataset.parent / 'groups' / parent_repo[0]['group_id']
+        behavior = next(row for row in read_jsonl(group / 'claims.jsonl') if row['kind'] == 'behavior_test')
+        reviews = tmp_path / 'external_test_reviews.jsonl'
+        write_jsonl(reviews, [review_for(behavior, label='uncertain',
+            evidence=['Synthetic fixture reviewer could not restore the required historical environment.'])])
+>       imported = prepare.import_parent(dataset, reviews, tmp_path / 'reviewed')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_prepare_main.py:492: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+dataset_path = PosixPath('/tmp/pytest-of-root/pytest-136/test_uncertain_behavior_parent0/assembled/dataset.json')
+annotations_path = PosixPath('/tmp/pytest-of-root/pytest-136/test_uncertain_behavior_parent0/external_test_reviews.jsonl')
+output = PosixPath('/tmp/pytest-of-root/pytest-136/test_uncertain_behavior_parent0/reviewed')
+
+    def import_parent(dataset_path: Path, annotations_path: Path, output: Path) -> Path:
+        """Import actual independent parent decisions into a fresh copy; never synthesize them."""
+        manifest = load(dataset_path, DatasetManifest)
+        base = dataset_path.resolve().parent
+        annotations = load_jsonl(annotations_path, RawAnnotation, "annotation_id")
+        if not annotations:
+            raise InputError("parent import requires actual completed independent reviews")
+        claims_by_id = {}
+        for entry in manifest.runs:
+            config_path = within(base, entry.config_path)
+            config = load(config_path, RunConfig)
+            if load_jsonl(config_path.parent / config.parent_receipts_path, ParentReceipt):
+                raise InputError("import requires original empty receipts; combine reviews explicitly before importing")
+            for claim in load_jsonl(config_path.parent / config.claims_path, Claim, "claim_id"):
+                if claim.claim_id in claims_by_id:
+                    raise InputError("duplicate cohort claim")
+                claims_by_id[claim.claim_id] = (claim, config_path.parent.relative_to(base), config)
+        reviewed = set()
+        for annotation in annotations:
+            if annotation.claim_id in reviewed or annotation.claim_id not in claims_by_id:
+                raise InputError("duplicate or unknown parent annotation")
+            claim, _, _ = claims_by_id[annotation.claim_id]
+            if annotation.commit != claim.origin_commit:
+                raise InputError("parent import rejects child decisions")
+            if annotation.confirmation_type == "synthetic_manual":
+                raise InputError("real cohort rejects synthetic confirmation")
+            if claim.kind == "prose" and annotation.confirmation_type != "human_review":
+                raise InputError("prose parent confirmation requires human review")
+            if claim.kind == "behavior_test" and annotation.confirmation_type != "independent_test":
+>               raise InputError("behavior parent confirmation requires independent frozen-probe testing")
+E               cami.errors.InputError: behavior parent confirmation requires independent frozen-probe testing
+
+scripts/prepare_main.py:478: InputError
+=========================== short test summary info ============================
+FAILED tests/test_prepare_main.py::test_uncertain_behavior_parent_review_is_retained_without_receipt
+1 failed in 0.39s

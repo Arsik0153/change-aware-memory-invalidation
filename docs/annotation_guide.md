@@ -47,11 +47,20 @@ Each annotation has these fields:
 
 `annotator_kind` accepts `human`, `independent_oracle`, and `synthetic_author`.
 `confirmation_type` accepts `human_review`, `independent_oracle`, `independent_test`,
-and `synthetic_manual`. Human review requires `human`; independent oracle or test
-requires `independent_oracle`; synthetic manual requires `synthetic_author`.
+and `synthetic_manual`. Human review requires `human`; independent oracle requires
+`independent_oracle`; synthetic manual requires `synthetic_author`. An independent
+test accepts `human` or `independent_oracle`: record who actually authored the review,
+separately from the method used. Only actual declared human reviews count toward
+human double-review coverage.
 Production validator types are rejected. These fields are declarations. Software
 cannot verify that an author is a human or prove that an oracle is independent.
 Review authorship and independence outside the tool.
+
+For parent behavior claims, a `supported` decision requires `independent_test`.
+If the required environment cannot be restored, record `uncertain` with the actual
+review method and evidence of the limitation. Parent import retains nonpositive
+decisions without creating confirmation receipts. Environment failure alone does
+not justify `contradicted`.
 
 An adjudication record has `schema_version`, `adjudication_id`, `claim_id`, `commit`,
 `annotation_ids`, `adjudicator_id`, `status`, `label`, `evidence`, `confirmation_type`,

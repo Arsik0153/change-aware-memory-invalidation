@@ -31,5 +31,10 @@ uncertain. Полные типы описаны в annotation_guide.md. Верн
 должно быть отдельным явным шагом. Поведенческие положительные подтверждения
 требуют independent_test; простой human_review их не допускает.
 
+Если человек самостоятельно исполнил frozen probe, укажите annotator_kind=human
+и confirmation_type=independent_test. Тип метода не меняет авторство. Если среду
+восстановить не удалось, сохраните uncertain с evidence и фактическим методом
+review. Такой ответ сохраняется без receipt; ошибка среды не означает contradicted.
+
 Импорт parent reviews сам по себе не завершает cohort admission, provenance review
 или final protocol freeze. Child-разметка и evaluation остаются следующими этапами.

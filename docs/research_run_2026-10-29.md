@@ -355,3 +355,26 @@ schema boundary и закреплено отдельным тестом. Нек�
 двойной разметки и adjudication перед фактической передачей пакета людям. Кроме того,
 проверить, сохраняет ли importer uncertain человеческое решение о behavior при
 невозможности выполнить probe, не создавая supported receipt.
+
+## Восьмой этап: сохранение неопределённости и авторства parent-review
+
+Гипотеза аудита: importer смешивает требование к положительному behavior receipt
+с требованием к любому ответу и смешивает способ проверки с авторством. Оба дефекта
+воспроизведены failing tests до исправления. Теперь uncertain/contradicted behavior
+ответ сохраняется без receipt; supported по-прежнему требует independent_test.
+Ошибка среды сама по себе не служит основанием contradicted.
+
+RawAnnotation допускает independent_test от human либо independent_oracle, сохраняя
+фактический объявленный тип автора. Human double-review coverage считает только
+human, включая человека, самостоятельно выполнившего тест. Программная валидация
+не доказывает независимость или личность автора. Реальные формы остаются пустыми.
+
+Независимый reviewer gpt-6.1-sol не нашёл blockers, проверил 82 теста. После его
+предложения добавлен contradicted case: финальный focused suite 83 passed;
+ruff и mypy (52 source files) passed. Все новые ответы — явно synthetic fixtures.
+Preview, admission и heldout gates сохранены. Evidence: parent-review-import-reviewed-tests.log,
+behavior-uncertainty-before.log, test-authorship-before.log.
+
+Следующие шаги: полная проверка с Docker на неизменном HEAD, затем product memory
+на настоящем локальном репозитории с явно авторскими development mutations.
+Двойные parent answers/adjudication остаются отдельной незакрытой задачей.

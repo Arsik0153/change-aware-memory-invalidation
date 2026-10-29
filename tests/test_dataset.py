@@ -425,3 +425,20 @@ def test_heldout_multiple_frozen_policies_analyze_as_one_population(repo):
     assert len({row.dataset_run_id for row in report.costs}) == 1
     with pytest.raises(InputError, match="declared policy variants"):
         analyze_dataset(dataset, outputs[:1], labels, dataset.parent / "partial")
+
+
+@pytest.mark.parametrize('second_kind,human_double', [('human', 1), ('independent_oracle', 0)])
+def test_independent_test_keeps_actual_reviewer_kind(tmp_path, second_kind, human_double):
+    rows = [annotation('fixture-a', 'fixture-human'), annotation('fixture-b', 'fixture-second')]
+    for row in rows:
+        row['confirmation_type'] = 'independent_test'
+        row['evidence'] = ['Synthetic fixture of independently executed frozen test evidence.']
+    rows[1]['annotator_kind'] = second_kind
+    source = import_file(tmp_path, rows, population=[('f', 'a' * 40)])
+    output = tmp_path / 'imported'
+    annotate_import(source, output)
+    report = read_json(output / 'annotation_report.json')
+    assert report['agreement']['human_double_annotated_items'] == human_double
+    assert report['agreement']['double_annotated_items'] == 1
+    raw = read_jsonl(output / 'raw_annotations.jsonl')
+    assert [row['annotator_kind'] for row in raw] == ['human', second_kind]
