@@ -134,3 +134,15 @@ Independent design review обнаружил потерю прогресса п�
 полученные function observations и groups с одними техническими ошибками.
 Focused suite новых и прежних parent diagnostics:43passed;ruff passed.
 Полный21parent опыт ещё не выполнен на этом checkpoint.
+
+Первый полный direct-function прогон v1 завершён:63attempts,60returned и3technical
+errors. Все20успешных parent прошли3повтора;pytest-9e3890bf108b на каждом повторе
+остановился до assert с ModuleNotFoundError:packaging, импортируемым в
+parent `_pytest.outcomes`. Claims/probes не изменены;147artifact hashes и65input
+hashes проверены, source snapshots clean и совпали. V1 сохранён полностью.
+
+До повторного запуска зафиксирован pytest_protocol_v2.json: к точному image v1
+добавляется только packaging26.0. Это явно post-diagnostic восстановление зависимости,
+не независимый подтверждающий эксперимент. Все21parents и3повтора сохраняются;
+неуспешный parent не исключён. Новый output будет отдельным, исходный protocol v1
+и результаты не перезаписываются. Стандартный pytest validator остаётся прежним.

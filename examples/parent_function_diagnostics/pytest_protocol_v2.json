@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "diagnostic_id": "pytest-parent-function-20261029-v2",
+  "purpose": "Supplementary automated parent-only environment observation; not the production pytest validator",
+  "parent_inputs_sha256": "e22ed2fb8f43265527f8be248ec4d329f8a4cfce4a33bd74ad355ae567727e0e",
+  "groups": [
+    "pytest-c79eed374d2f",
+    "pytest-32e8b0046233",
+    "pytest-9e3890bf108b",
+    "pytest-071e87a59fec",
+    "pytest-956033f62599",
+    "pytest-f8b27141a6de",
+    "pytest-4b88ad960bdd",
+    "pytest-80d1dc3bf0dc",
+    "pytest-d277030565b4",
+    "pytest-03c6ec19d0d8",
+    "pytest-17c98d264ece",
+    "pytest-3b57c69d2eec",
+    "pytest-46e3c9e417e0",
+    "pytest-d0c621537302",
+    "pytest-bd658a839ce3",
+    "pytest-ef6d563ecc17",
+    "pytest-192a80c5f1cc",
+    "pytest-9c60262fb839",
+    "pytest-cc5bb8da90e5",
+    "pytest-ae0ddaca9159",
+    "pytest-1d2c8c9b9f30"
+  ],
+  "probe_sha256": "609844de252a2ed01c153c8862703c6d492376de668033f56cac82b4aaa820f8",
+  "entry_point": "test_frozen_case",
+  "target_module": "_pytest.compat",
+  "target_function": "safe_getattr",
+  "base_image": "cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4",
+  "python_version": "3.9.25",
+  "dependencies": {
+    "attrs": "23.2.0",
+    "py": "1.11.0",
+    "packaging": "26.0"
+  },
+  "repetitions": 3,
+  "execution": "Direct call of unchanged frozen zero-argument test function; no pytest framework, plugins, conftest, fixtures or assertion rewriting",
+  "constraints": [
+    "Only frozen parent commits; no child read or execution",
+    "Unchanged exact probe bytes, fixed import plus one zero-argument assert function",
+    "Record all loaded _pytest module origins and target source SHA256; require origins under mounted parent source",
+    "Network none, read-only filesystem and mounts, unprivileged user, dropped capabilities, resource/time limits",
+    "No parent receipts, human labels, admission or production validator changes",
+    "Report every selected parent and failed attempt; do not reinterpret import errors as contradicted truth"
+  ],
+  "interpretation": "A completed direct call is an observation about this finite case in this alternate profile. It does not establish the original pytest runner works or supply independent test authorship.",
+  "amendment": {
+    "previous_protocol_sha256": "b0083bc2b09136603dfb2f02b7cbfcb3f405064e1521a18e96db4b6ebe89f3c4",
+    "observed_reason": "All3attempts for pytest-9e3890bf108b failed before test execution: _pytest.outcomes imports packaging.version.Version. Other20parents returned in all3attempts.",
+    "change": "Add packaging26.0 on top of exactv1image; retain Python,attrs,py,probes,parent selection and execution mode",
+    "scope": "Parent-only environment restoration after observed import failure; not a new independent confirmatory experiment"
+  }
+}

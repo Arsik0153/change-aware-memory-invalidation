@@ -1,0 +1,43 @@
+{
+  "status": "integrity_verified",
+  "raw_artifact_hashes_verified": 147,
+  "input_hashes_verified": 65,
+  "source_snapshots_match": true,
+  "source_status_clean": true,
+  "groups": 21,
+  "direct_calls_returned": 60,
+  "same_process_origin_records": 360,
+  "technical_errors": [
+    {
+      "group_id": "pytest-9e3890bf108b",
+      "repeat": 0,
+      "error_type": "ModuleNotFoundError",
+      "error": "No module named 'packaging'"
+    },
+    {
+      "group_id": "pytest-9e3890bf108b",
+      "repeat": 1,
+      "error_type": "ModuleNotFoundError",
+      "error": "No module named 'packaging'"
+    },
+    {
+      "group_id": "pytest-9e3890bf108b",
+      "repeat": 2,
+      "error_type": "ModuleNotFoundError",
+      "error": "No module named 'packaging'"
+    }
+  ],
+  "summary": {
+    "container_attempts": 63,
+    "groups": 21,
+    "groups_with_all_calls_returned": 20,
+    "groups_with_incomplete_attempt_schedule": 0,
+    "groups_with_no_function_observation": 1,
+    "groups_with_orchestration_error": 0,
+    "outcomes": {
+      "returned": 60,
+      "technical_error": 3
+    }
+  },
+  "limitation": "Supplementary alternate-profile observations. Production pytest runner remains blocked; no independent receipts or real-cohort admission."
+}
