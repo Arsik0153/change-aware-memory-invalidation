@@ -24,13 +24,13 @@ class ParentInput(Record):
 
 
 def check_parents(parents_path: Path, candidates: Path, image: str, output: Path, *,
-                  max_file_bytes: int = MAX_FILE_BYTES) -> None:
+                  max_file_bytes: int = MAX_FILE_BYTES, python_version: str = '3.12.12') -> None:
     if max_file_bytes < 1:
         raise InputError('max_file_bytes must be positive')
     parents = load_jsonl(parents_path, ParentInput, unique='group_id')
     if not parents:
         raise InputError('no parent inputs')
-    profile = EnvironmentProfile(image=image, python_version='3.12.12', source_paths=('.', 'src'))
+    profile = EnvironmentProfile(image=image, python_version=python_version, source_paths=('.', 'src'))
     prepared = []
     for parent in parents:
         base = within(candidates, parent.group_id)
@@ -98,6 +98,7 @@ if __name__ == '__main__':
     parser.add_argument('--image', required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--max-file-bytes', type=int, default=MAX_FILE_BYTES)
+    parser.add_argument('--python-version', default='3.12.12')
     args = parser.parse_args()
     check_parents(args.parents, args.candidates, args.image, args.out,
-                  max_file_bytes=args.max_file_bytes)
+                  max_file_bytes=args.max_file_bytes, python_version=args.python_version)

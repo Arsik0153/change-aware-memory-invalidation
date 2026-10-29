@@ -43,12 +43,14 @@ def prepare(repo):
     return parents, base, parent
 
 
-def test_only_parent_snapshot_is_observed_without_receipts(repo, monkeypatch):
+@pytest.mark.parametrize('python_version', ['3.12.12', '3.9.25'])
+def test_only_parent_snapshot_is_observed_without_receipts(repo, monkeypatch, python_version):
     parents, base, parent = prepare(repo)
     original = file_hash(parents), file_hash(base / 'claims.jsonl'), file_hash(base / 'probe.py')
     monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
 
     def execute(claim, context):
+        assert context.profile.python_version == python_version
         assert context.snapshot.revision == parent
         assert context.snapshot.by_path()['module.py'].content == b'def f(): return 1\n'
         return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
@@ -57,7 +59,7 @@ def test_only_parent_snapshot_is_observed_without_receipts(repo, monkeypatch):
 
     monkeypatch.setattr(checker, 'execute_probe', execute)
     output = repo.root.parent / 'result'
-    checker.check_parents(parents, base.parent, IMAGE, output)
+    checker.check_parents(parents, base.parent, IMAGE, output, python_version=python_version)
     assert read_json(output / 'summary.json')['test_executions'] == 3
     manifest = read_json(output / 'manifest.json')
     assert manifest['status'] == 'complete'

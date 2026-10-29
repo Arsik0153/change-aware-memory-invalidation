@@ -295,3 +295,28 @@ pytest/_pytest collision. Это не labels и не опровержения cl
 размера Git blob на 4 MiB, сохраняя прежний default 2 MiB. Все 63 parent группы,
 образ, probes и assertions сохраняются. Это проверка materialization blocker,
 а не исправление показателя путём исключения неудачных групп. Первый опыт сохранён.
+
+Второй parent diagnostic (4 MiB, прежний image) завершён: 63 группы, 186
+контейнерных попыток. 21 Requests-группа дошла до collection и выявила отсутствие
+urllib3. Ещё одна не материализована из-за symlink tests/certs/mtls/client/ca.
+Click остаётся 20 supported, pytest 21 environment_error. Все ограничения
+сохраняются; symlink не заменён пустым файлом и не проигнорирован.
+
+Для третьего diagnostic заранее подготовлен отдельный image на Python 3.9.25
+с точным digest base. AST-чтение setup.py всех 22 Requests parents подтвердило
+совместимость выбранных runtime dependency pins с каждым объявленным constraint.
+Setup-код на хосте не исполнялся. Выбран urllib3 1.22 и idna 2.6, чтобы удовлетворить
+ограничениям ранних parents; Python 3.9 позволяет сохранить исторические imports
+из collections, несовместимые с Python 3.12. Тестовый runner остаётся pytest 8.4.2.
+Requests как установленный пакет в image отсутствует; импортируется Git-снимок.
+
+Изменяются сразу Python и installed dependencies. Следовательно, возможное
+изменение результата относится к комбинированному environment profile, а не к
+отдельной библиотеке. Frozen probes, parent выборка и 4 MiB limit сохраняются.
+Точный image и установленный package inventory сохранены в parent-image.json,
+проверка pip check прошла. Это finite probe compatibility, не общая пригодность
+старых библиотек для production или сети. Контейнеры probe остаются без сети.
+
+Независимый review gpt-6.1-sol не нашёл blockers в capture override и profile;
+подтвердил сохранение default2MiB и ограничений symlink/LFS/submodule, проверил
+requirements audit. Финальный профильный набор 125 passed, ruff/mypy passed.

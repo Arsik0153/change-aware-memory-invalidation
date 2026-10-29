@@ -1,0 +1,22 @@
+
+==================================== ERRORS ====================================
+____________________ ERROR collecting test_frozen_probe.py _____________________
+ImportError while importing test module '/probe/test_frozen_probe.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/probe/test_frozen_probe.py:1: in <module>
+    from requests.utils import unquote_unreserved
+/repo/requests/__init__.py:43: in <module>
+    import urllib3
+E   ModuleNotFoundError: No module named 'urllib3'
+=========================== short test summary info ============================
+ERROR ../probe/test_frozen_probe.py
+1 error in 0.02s
+CAMI_RESULT={"python_version": "3.12.12", "exit_code": 4, "collected": [], "reports": []}
+
+STDERR:
+ERROR: found no collectors for /probe/test_frozen_probe.py::test_frozen_case
+
