@@ -1,0 +1,389 @@
+......FFFFFFF                                                            [100%]
+=================================== FAILURES ===================================
+_ test_failed_run_preserves_completed_observations_and_partial_logs[snapshot] __
+
+repo = <conftest.GitFixture object at 0x70aa3a21ab40>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a21a9c0>
+failure_stage = 'snapshot'
+
+    @pytest.mark.parametrize('failure_stage', ['snapshot', 'probe', 'interrupt'])
+    def test_failed_run_preserves_completed_observations_and_partial_logs(repo, monkeypatch, failure_stage):
+        import shutil
+    
+        parents, base, parent = prepare(repo)
+        second = base.with_name('second')
+        shutil.copytree(base, second)
+        spec = read_json(parents)
+        second_spec = dict(spec, group_id='second')
+        claim = read_json(second / 'claims.jsonl')
+        claim['claim_id'] += '-second'
+        write_jsonl(second / 'claims.jsonl', [claim])
+        write_json(second / 'draft.json', {'parent_input': second_spec,
+            'claims_sha256': file_hash(second / 'claims.jsonl')})
+        write_jsonl(parents, [spec, second_spec])
+        monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
+        real_snapshot = checker.read_snapshot
+        snapshots = 0
+    
+        def snapshot(*args, **kwargs):
+            nonlocal snapshots
+            snapshots += 1
+            if snapshots == 2 and failure_stage == 'snapshot':
+                raise ResourceError('injected Git failure')
+            return real_snapshot(*args, **kwargs)
+    
+        output = repo.root.parent / 'failed'
+    
+        def execute(claim, context):
+            if snapshots == 2:
+                checkpoint = read_json(output / 'manifest.json')
+                assert checkpoint['status'] == 'running'
+                assert checkpoint['completed_groups'] == 1
+                partial = output / 'second/partial.stdout.log'
+                partial.parent.mkdir(parents=True)
+                partial.write_text('partial container output\n')
+                if failure_stage == 'interrupt':
+                    raise KeyboardInterrupt('injected interruption')
+                raise ResourceError('injected probe failure')
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict='supported', reason='test_passed', input_hash=digest(claim),
+                duration_seconds=0, test_executions=3)
+    
+        monkeypatch.setattr(checker, 'read_snapshot', snapshot)
+        monkeypatch.setattr(checker, 'execute_probe', execute)
+        expected_error = KeyboardInterrupt if failure_stage == 'interrupt' else ResourceError
+        with pytest.raises(expected_error, match='injected'):
+            checker.check_parents(parents, base.parent, IMAGE, output)
+        manifest = read_json(output / 'manifest.json')
+>       summary = read_json(output / 'summary.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_parent_environments.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/artifacts.py:50: in read_json
+    return parse(path.read_text(encoding="utf-8"))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/pathlib.py:1029: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/tmp/pytest-of-root/pytest-189/test_failed_run_preserves_comp0/failed/summary.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/tmp/pytest-of-root/pytest-189/test_failed_run_preserves_comp0/failed/summary.json'
+
+/usr/lib/python3.12/pathlib.py:1015: FileNotFoundError
+----------------------------- Captured stdout call -----------------------------
+group: supported (test_passed)
+___ test_failed_run_preserves_completed_observations_and_partial_logs[probe] ___
+
+repo = <conftest.GitFixture object at 0x70aa3a242c00>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a240440>
+failure_stage = 'probe'
+
+    @pytest.mark.parametrize('failure_stage', ['snapshot', 'probe', 'interrupt'])
+    def test_failed_run_preserves_completed_observations_and_partial_logs(repo, monkeypatch, failure_stage):
+        import shutil
+    
+        parents, base, parent = prepare(repo)
+        second = base.with_name('second')
+        shutil.copytree(base, second)
+        spec = read_json(parents)
+        second_spec = dict(spec, group_id='second')
+        claim = read_json(second / 'claims.jsonl')
+        claim['claim_id'] += '-second'
+        write_jsonl(second / 'claims.jsonl', [claim])
+        write_json(second / 'draft.json', {'parent_input': second_spec,
+            'claims_sha256': file_hash(second / 'claims.jsonl')})
+        write_jsonl(parents, [spec, second_spec])
+        monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
+        real_snapshot = checker.read_snapshot
+        snapshots = 0
+    
+        def snapshot(*args, **kwargs):
+            nonlocal snapshots
+            snapshots += 1
+            if snapshots == 2 and failure_stage == 'snapshot':
+                raise ResourceError('injected Git failure')
+            return real_snapshot(*args, **kwargs)
+    
+        output = repo.root.parent / 'failed'
+    
+        def execute(claim, context):
+            if snapshots == 2:
+                checkpoint = read_json(output / 'manifest.json')
+                assert checkpoint['status'] == 'running'
+                assert checkpoint['completed_groups'] == 1
+                partial = output / 'second/partial.stdout.log'
+                partial.parent.mkdir(parents=True)
+                partial.write_text('partial container output\n')
+                if failure_stage == 'interrupt':
+                    raise KeyboardInterrupt('injected interruption')
+                raise ResourceError('injected probe failure')
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict='supported', reason='test_passed', input_hash=digest(claim),
+                duration_seconds=0, test_executions=3)
+    
+        monkeypatch.setattr(checker, 'read_snapshot', snapshot)
+        monkeypatch.setattr(checker, 'execute_probe', execute)
+        expected_error = KeyboardInterrupt if failure_stage == 'interrupt' else ResourceError
+        with pytest.raises(expected_error, match='injected'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:73: in check_parents
+    result = execute_probe(claim, ProbeContext(snapshot, profile, base, target, phase='preflight'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+claim = Claim(schema_version=1, claim_id='f-second', repo_id='fixture', origin_commit='2ccfc9a24f5fa1bb023e226903c5cdeafb06457...8c4dbc6faaa9a9786e8c84a1782f21021861', node_id='probe.py::test_f', environment_id='pending'), scope='exact definition')
+context = ProbeContext(snapshot=Snapshot(repo_id='fixture', revision='2ccfc9a24f5fa1bb023e226903c5cdeafb06457f', blobs=(Blob(pat...utput_dir=PosixPath('/tmp/pytest-of-root/pytest-189/test_failed_run_preserves_comp1/failed/second'), phase='preflight')
+
+    def execute(claim, context):
+        if snapshots == 2:
+            checkpoint = read_json(output / 'manifest.json')
+            assert checkpoint['status'] == 'running'
+>           assert checkpoint['completed_groups'] == 1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'completed_groups'
+
+tests/test_parent_environments.py:149: KeyError
+----------------------------- Captured stdout call -----------------------------
+group: supported (test_passed)
+_ test_failed_run_preserves_completed_observations_and_partial_logs[interrupt] _
+
+repo = <conftest.GitFixture object at 0x70aa3a242d50>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a241430>
+failure_stage = 'interrupt'
+
+    @pytest.mark.parametrize('failure_stage', ['snapshot', 'probe', 'interrupt'])
+    def test_failed_run_preserves_completed_observations_and_partial_logs(repo, monkeypatch, failure_stage):
+        import shutil
+    
+        parents, base, parent = prepare(repo)
+        second = base.with_name('second')
+        shutil.copytree(base, second)
+        spec = read_json(parents)
+        second_spec = dict(spec, group_id='second')
+        claim = read_json(second / 'claims.jsonl')
+        claim['claim_id'] += '-second'
+        write_jsonl(second / 'claims.jsonl', [claim])
+        write_json(second / 'draft.json', {'parent_input': second_spec,
+            'claims_sha256': file_hash(second / 'claims.jsonl')})
+        write_jsonl(parents, [spec, second_spec])
+        monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
+        real_snapshot = checker.read_snapshot
+        snapshots = 0
+    
+        def snapshot(*args, **kwargs):
+            nonlocal snapshots
+            snapshots += 1
+            if snapshots == 2 and failure_stage == 'snapshot':
+                raise ResourceError('injected Git failure')
+            return real_snapshot(*args, **kwargs)
+    
+        output = repo.root.parent / 'failed'
+    
+        def execute(claim, context):
+            if snapshots == 2:
+                checkpoint = read_json(output / 'manifest.json')
+                assert checkpoint['status'] == 'running'
+                assert checkpoint['completed_groups'] == 1
+                partial = output / 'second/partial.stdout.log'
+                partial.parent.mkdir(parents=True)
+                partial.write_text('partial container output\n')
+                if failure_stage == 'interrupt':
+                    raise KeyboardInterrupt('injected interruption')
+                raise ResourceError('injected probe failure')
+            return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+                verdict='supported', reason='test_passed', input_hash=digest(claim),
+                duration_seconds=0, test_executions=3)
+    
+        monkeypatch.setattr(checker, 'read_snapshot', snapshot)
+        monkeypatch.setattr(checker, 'execute_probe', execute)
+        expected_error = KeyboardInterrupt if failure_stage == 'interrupt' else ResourceError
+        with pytest.raises(expected_error, match='injected'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:73: in check_parents
+    result = execute_probe(claim, ProbeContext(snapshot, profile, base, target, phase='preflight'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+claim = Claim(schema_version=1, claim_id='f-second', repo_id='fixture', origin_commit='2ccfc9a24f5fa1bb023e226903c5cdeafb06457...8c4dbc6faaa9a9786e8c84a1782f21021861', node_id='probe.py::test_f', environment_id='pending'), scope='exact definition')
+context = ProbeContext(snapshot=Snapshot(repo_id='fixture', revision='2ccfc9a24f5fa1bb023e226903c5cdeafb06457f', blobs=(Blob(pat...utput_dir=PosixPath('/tmp/pytest-of-root/pytest-189/test_failed_run_preserves_comp2/failed/second'), phase='preflight')
+
+    def execute(claim, context):
+        if snapshots == 2:
+            checkpoint = read_json(output / 'manifest.json')
+            assert checkpoint['status'] == 'running'
+>           assert checkpoint['completed_groups'] == 1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'completed_groups'
+
+tests/test_parent_environments.py:149: KeyError
+----------------------------- Captured stdout call -----------------------------
+group: supported (test_passed)
+_________ test_output_inside_inputs_rejected_before_docker[candidates] _________
+
+repo = <conftest.GitFixture object at 0x70aa3a21b230>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a21baa0>
+location = 'candidates'
+
+    @pytest.mark.parametrize('location', ['candidates', 'inputs', 'repository', 'symlink'])
+    def test_output_inside_inputs_rejected_before_docker(repo, monkeypatch, location):
+        parents, base, _ = prepare(repo)
+        targets = {'candidates': base.parent, 'inputs': parents.parent, 'repository': repo.root}
+        link = repo.root.parent / 'linked-inputs'
+        link.symlink_to(parents.parent, target_is_directory=True)
+        targets['symlink'] = link
+        output = targets[location] / 'result'
+    
+        def forbidden(profile):
+            pytest.fail('Docker must not run before output boundaries are validated')
+    
+        monkeypatch.setattr(checker, 'check_docker', forbidden)
+        with pytest.raises(InputError, match='outside'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:54: in check_parents
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='test@sha256:1111111111111111111111111111111111111111111111111111111111111111', python_versio...=('.', 'src'), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def forbidden(profile):
+>       pytest.fail('Docker must not run before output boundaries are validated')
+E       Failed: Docker must not run before output boundaries are validated
+
+tests/test_parent_environments.py:192: Failed
+___________ test_output_inside_inputs_rejected_before_docker[inputs] ___________
+
+repo = <conftest.GitFixture object at 0x70aa3a243080>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a242120>
+location = 'inputs'
+
+    @pytest.mark.parametrize('location', ['candidates', 'inputs', 'repository', 'symlink'])
+    def test_output_inside_inputs_rejected_before_docker(repo, monkeypatch, location):
+        parents, base, _ = prepare(repo)
+        targets = {'candidates': base.parent, 'inputs': parents.parent, 'repository': repo.root}
+        link = repo.root.parent / 'linked-inputs'
+        link.symlink_to(parents.parent, target_is_directory=True)
+        targets['symlink'] = link
+        output = targets[location] / 'result'
+    
+        def forbidden(profile):
+            pytest.fail('Docker must not run before output boundaries are validated')
+    
+        monkeypatch.setattr(checker, 'check_docker', forbidden)
+        with pytest.raises(InputError, match='outside'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:54: in check_parents
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='test@sha256:1111111111111111111111111111111111111111111111111111111111111111', python_versio...=('.', 'src'), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def forbidden(profile):
+>       pytest.fail('Docker must not run before output boundaries are validated')
+E       Failed: Docker must not run before output boundaries are validated
+
+tests/test_parent_environments.py:192: Failed
+_________ test_output_inside_inputs_rejected_before_docker[repository] _________
+
+repo = <conftest.GitFixture object at 0x70aa3a242ed0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a243320>
+location = 'repository'
+
+    @pytest.mark.parametrize('location', ['candidates', 'inputs', 'repository', 'symlink'])
+    def test_output_inside_inputs_rejected_before_docker(repo, monkeypatch, location):
+        parents, base, _ = prepare(repo)
+        targets = {'candidates': base.parent, 'inputs': parents.parent, 'repository': repo.root}
+        link = repo.root.parent / 'linked-inputs'
+        link.symlink_to(parents.parent, target_is_directory=True)
+        targets['symlink'] = link
+        output = targets[location] / 'result'
+    
+        def forbidden(profile):
+            pytest.fail('Docker must not run before output boundaries are validated')
+    
+        monkeypatch.setattr(checker, 'check_docker', forbidden)
+        with pytest.raises(InputError, match='outside'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:54: in check_parents
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='test@sha256:1111111111111111111111111111111111111111111111111111111111111111', python_versio...=('.', 'src'), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def forbidden(profile):
+>       pytest.fail('Docker must not run before output boundaries are validated')
+E       Failed: Docker must not run before output boundaries are validated
+
+tests/test_parent_environments.py:192: Failed
+__________ test_output_inside_inputs_rejected_before_docker[symlink] ___________
+
+repo = <conftest.GitFixture object at 0x70aa3a21bb30>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x70aa3a21b050>
+location = 'symlink'
+
+    @pytest.mark.parametrize('location', ['candidates', 'inputs', 'repository', 'symlink'])
+    def test_output_inside_inputs_rejected_before_docker(repo, monkeypatch, location):
+        parents, base, _ = prepare(repo)
+        targets = {'candidates': base.parent, 'inputs': parents.parent, 'repository': repo.root}
+        link = repo.root.parent / 'linked-inputs'
+        link.symlink_to(parents.parent, target_is_directory=True)
+        targets['symlink'] = link
+        output = targets[location] / 'result'
+    
+        def forbidden(profile):
+            pytest.fail('Docker must not run before output boundaries are validated')
+    
+        monkeypatch.setattr(checker, 'check_docker', forbidden)
+        with pytest.raises(InputError, match='outside'):
+>           checker.check_parents(parents, base.parent, IMAGE, output)
+
+tests/test_parent_environments.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/check_parent_environments.py:54: in check_parents
+    check_docker(profile)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+profile = EnvironmentProfile(image='test@sha256:1111111111111111111111111111111111111111111111111111111111111111', python_versio...=('.', 'src'), cpus=2, memory_mib=2048, pids_limit=128, timeout_seconds=60, user='65534:65534', mount_mode='read_only')
+
+    def forbidden(profile):
+>       pytest.fail('Docker must not run before output boundaries are validated')
+E       Failed: Docker must not run before output boundaries are validated
+
+tests/test_parent_environments.py:192: Failed
+=========================== short test summary info ============================
+FAILED tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[snapshot]
+FAILED tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[probe]
+FAILED tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[interrupt]
+FAILED tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[candidates]
+FAILED tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[inputs]
+FAILED tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[repository]
+FAILED tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[symlink]
+7 failed, 6 passed in 0.78s

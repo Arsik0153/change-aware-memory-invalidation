@@ -30,6 +30,10 @@ def check_parents(parents_path: Path, candidates: Path, image: str, output: Path
     parents = load_jsonl(parents_path, ParentInput, unique='group_id')
     if not parents:
         raise InputError('no parent inputs')
+    protected = [parents_path.resolve().parent, candidates.resolve(),
+                 *(Path(parent.repo_path).resolve() for parent in parents)]
+    if any(output.resolve().is_relative_to(path) for path in protected):
+        raise InputError('diagnostic output must be outside parent inputs, candidates and repositories')
     profile = EnvironmentProfile(image=image, python_version=python_version, source_paths=('.', 'src'))
     prepared = []
     for parent in parents:
@@ -53,7 +57,8 @@ def check_parents(parents_path: Path, candidates: Path, image: str, output: Path
         prepared.append((parent, base, claim))
     check_docker(profile)
     reserve(output)
-    manifest = {'status': 'running', 'scope': 'automated parent-only environment diagnostic',
+    manifest = {'schema_version': 2, 'status': 'running',
+                'scope': 'automated parent-only environment diagnostic',
                 'parent_inputs_sha256': file_hash(parents_path), 'max_file_bytes': max_file_bytes,
                 'profile': profile.model_dump(mode='json'), 'groups': len(prepared),
                 'produces_independent_receipts': False, 'produces_child_labels': False,
@@ -63,32 +68,49 @@ def check_parents(parents_path: Path, candidates: Path, image: str, output: Path
                     Path(__file__).resolve().parents[1] / 'src/cami/behavior.py',
                     Path(__file__).resolve().parents[1] / 'src/cami/repository.py',
                     Path(__file__).resolve().parents[1] / 'src/cami/probe_runner.py']}}
-    write_json(output / 'manifest.json', manifest)
     observations = []
-    for parent, base, claim in prepared:
-        snapshot = read_snapshot(RepoLocation(repo_id=parent.repo_id, path=parent.repo_path,
-                                  source_roots=parent.source_roots), parent.parent_commit,
-                                 max_file_bytes=max_file_bytes)
-        target = output / parent.group_id
-        result = execute_probe(claim, ProbeContext(snapshot, profile, base, target, phase='preflight'))
-        write_json(target / 'observation.json', result)
-        observations.append({'group_id': parent.group_id, 'repo_id': parent.repo_id,
-            'parent_commit': parent.parent_commit, 'claim_id': claim.claim_id,
-            'verdict': result.verdict, 'reason': result.reason,
-            'test_executions': result.test_executions,
-            'observation_path': f'{parent.group_id}/observation.json'})
-        print(f'{parent.group_id}: {result.verdict} ({result.reason})', flush=True)
-    write_jsonl(output / 'observations.jsonl', observations)
-    write_json(output / 'summary.json', {
-        'groups': len(observations), 'test_executions': sum(o['test_executions'] for o in observations),
-        'outcomes': dict(Counter(f"{o['repo_id']}/{o['verdict']}/{o['reason']}"
-                                 for o in observations)),
-        'limitation': 'Automated observations do not supply independent parent review or admission.',
-    })
-    manifest.update({'status': 'complete', 'artifact_hashes': {
-        path.relative_to(output).as_posix(): file_hash(path)
-        for path in sorted(output.rglob('*')) if path.is_file() and path.name != 'manifest.json'}})
-    write_json(output / 'manifest.json', manifest)
+
+    def save(status: str, failure: dict[str, str] | None = None) -> None:
+        completed_executions = sum(o['test_executions'] for o in observations)
+        write_jsonl(output / 'observations.jsonl', observations)
+        write_json(output / 'summary.json', {
+            'status': status, 'groups': len(observations),
+            'test_executions': completed_executions if status == 'complete' else None,
+            'completed_group_test_executions': completed_executions,
+            'outcomes': dict(Counter(f"{o['repo_id']}/{o['verdict']}/{o['reason']}"
+                                     for o in observations)),
+            'limitation': ('Automated observations do not supply independent parent review or admission. '
+                           'Incomplete groups may have executed probes not counted in completed groups.'),
+        })
+        manifest.update({'status': status, 'completed_groups': len(observations),
+                         'failure': failure, 'artifact_hashes': {
+            path.relative_to(output).as_posix(): file_hash(path)
+            for path in sorted(output.rglob('*'))
+            if path.is_file() and path != output / 'manifest.json'}})
+        write_json(output / 'manifest.json', manifest)
+
+    save('running')
+    current_group = ''
+    try:
+        for parent, base, claim in prepared:
+            current_group = parent.group_id
+            snapshot = read_snapshot(RepoLocation(repo_id=parent.repo_id, path=parent.repo_path,
+                                      source_roots=parent.source_roots), parent.parent_commit,
+                                     max_file_bytes=max_file_bytes)
+            target = output / parent.group_id
+            result = execute_probe(claim, ProbeContext(snapshot, profile, base, target, phase='preflight'))
+            write_json(target / 'observation.json', result)
+            observations.append({'group_id': parent.group_id, 'repo_id': parent.repo_id,
+                'parent_commit': parent.parent_commit, 'claim_id': claim.claim_id,
+                'verdict': result.verdict, 'reason': result.reason,
+                'test_executions': result.test_executions,
+                'observation_path': f'{parent.group_id}/observation.json'})
+            save('running')
+            print(f'{parent.group_id}: {result.verdict} ({result.reason})', flush=True)
+    except (Exception, KeyboardInterrupt) as exc:
+        save('failed', {'group_id': current_group, 'type': type(exc).__name__, 'message': str(exc)})
+        raise
+    save('complete')
 
 
 if __name__ == '__main__':

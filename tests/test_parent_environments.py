@@ -8,7 +8,7 @@ import pytest
 from pydantic import ValidationError
 
 from cami.artifacts import digest, file_hash, read_json, write_json, write_jsonl
-from cami.errors import InputError
+from cami.errors import InputError, ResourceError
 from cami.models import ValidationResult
 
 SPEC = importlib.util.spec_from_file_location(
@@ -24,7 +24,7 @@ def prepare(repo):
     parent = repo.commit({'module.py': 'def f(): return 1\n'})
     repo.commit({'module.py': 'def f(): return 2\n'})
     config = repo.config(parent, [])
-    root = repo.root.parent
+    root = repo.root.parent / 'inputs'
     base = root / 'candidates/group'
     base.mkdir(parents=True)
     probe = base / 'probe.py'
@@ -112,3 +112,86 @@ def test_explicit_capture_limit_preserves_full_large_blob(repo):
     assert read_snapshot(location, revision).by_path()['asset.bin'].limitation == 'file_too_large'
     with pytest.raises(InputError, match='positive'):
         read_snapshot(location, revision, max_file_bytes=0)
+
+
+@pytest.mark.parametrize('failure_stage', ['snapshot', 'probe', 'interrupt'])
+def test_failed_run_preserves_completed_observations_and_partial_logs(repo, monkeypatch, failure_stage):
+    import shutil
+
+    parents, base, parent = prepare(repo)
+    second = base.with_name('second')
+    shutil.copytree(base, second)
+    spec = read_json(parents)
+    second_spec = dict(spec, group_id='second')
+    claim = read_json(second / 'claims.jsonl')
+    claim['claim_id'] += '-second'
+    write_jsonl(second / 'claims.jsonl', [claim])
+    write_json(second / 'draft.json', {'parent_input': second_spec,
+        'claims_sha256': file_hash(second / 'claims.jsonl')})
+    write_jsonl(parents, [spec, second_spec])
+    monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
+    real_snapshot = checker.read_snapshot
+    snapshots = 0
+
+    def snapshot(*args, **kwargs):
+        nonlocal snapshots
+        snapshots += 1
+        if snapshots == 2 and failure_stage == 'snapshot':
+            raise ResourceError('injected Git failure')
+        return real_snapshot(*args, **kwargs)
+
+    output = repo.root.parent / 'failed'
+
+    def execute(claim, context):
+        if snapshots == 2:
+            checkpoint = read_json(output / 'manifest.json')
+            assert checkpoint['status'] == 'running'
+            assert checkpoint['completed_groups'] == 1
+            partial = output / 'second/partial.stdout.log'
+            partial.parent.mkdir(parents=True)
+            partial.write_text('partial container output\n')
+            if failure_stage == 'interrupt':
+                raise KeyboardInterrupt('injected interruption')
+            raise ResourceError('injected probe failure')
+        return ValidationResult(claim_id=claim.claim_id, commit=parent, validator='behavior',
+            verdict='supported', reason='test_passed', input_hash=digest(claim),
+            duration_seconds=0, test_executions=3)
+
+    monkeypatch.setattr(checker, 'read_snapshot', snapshot)
+    monkeypatch.setattr(checker, 'execute_probe', execute)
+    expected_error = KeyboardInterrupt if failure_stage == 'interrupt' else ResourceError
+    with pytest.raises(expected_error, match='injected'):
+        checker.check_parents(parents, base.parent, IMAGE, output)
+    manifest = read_json(output / 'manifest.json')
+    summary = read_json(output / 'summary.json')
+    assert manifest['status'] == summary['status'] == 'failed'
+    assert manifest['groups'] == 2
+    assert manifest['completed_groups'] == summary['groups'] == 1
+    assert manifest['failure']['group_id'] == 'second'
+    assert manifest['failure']['type'] == expected_error.__name__
+    assert summary['test_executions'] is None
+    assert summary['completed_group_test_executions'] == 3
+    assert read_json(output / 'observations.jsonl')['group_id'] == 'group'
+    assert read_json(output / 'group/observation.json')['test_executions'] == 3
+    if failure_stage != 'snapshot':
+        assert 'second/partial.stdout.log' in manifest['artifact_hashes']
+    for name, expected in manifest['artifact_hashes'].items():
+        assert file_hash(output / name) == expected
+
+
+@pytest.mark.parametrize('location', ['candidates', 'inputs', 'repository', 'symlink'])
+def test_output_inside_inputs_rejected_before_docker(repo, monkeypatch, location):
+    parents, base, _ = prepare(repo)
+    targets = {'candidates': base.parent, 'inputs': parents.parent, 'repository': repo.root}
+    link = repo.root.parent / 'linked-inputs'
+    link.symlink_to(parents.parent, target_is_directory=True)
+    targets['symlink'] = link
+    output = targets[location] / 'result'
+
+    def forbidden(profile):
+        pytest.fail('Docker must not run before output boundaries are validated')
+
+    monkeypatch.setattr(checker, 'check_docker', forbidden)
+    with pytest.raises(InputError, match='outside'):
+        checker.check_parents(parents, base.parent, IMAGE, output)
+    assert not output.exists()
