@@ -320,3 +320,38 @@ Requests как установленный пакет в image отсутств�
 Независимый review gpt-6.1-sol не нашёл blockers в capture override и profile;
 подтвердил сохранение default2MiB и ограничений symlink/LFS/submodule, проверил
 requirements audit. Финальный профильный набор 125 passed, ruff/mypy passed.
+
+Третий parent diagnostic завершён: 63 группы, 186 попыток. Click20 и Requests21
+получили supported в новом профиле. Requests1 остаётся symlink_unsupported до
+исполнения. pytest21 остаются infrastructure collisions. Независимый reviewer
+проверил 438 artifact hashes, одинаковые populations/claim hashes v2 и v3 и
+Python3.9.25 в успешных logs. Репрезентативные повторные imports в exact image
+подтвердили, что click.utils и requests.utils читаются из /repo, а не site-packages.
+Эти повторные imports не были telemetry оригинальных logs. Никаких receipts,
+labels или admission из этих результатов не создано.
+
+## Седьмой этап: отдельный parent-only review packet
+
+Добавлен scripts/export_parent_review.py, который отбрасывает child revisions,
+child source evidence и child assignments, сохраняя исходный parent population.
+В самостоятельном пакете 630 primary и 126 previously assigned secondary rows.
+В него не входят automated parent observations или policy metadata.
+
+Reviewer gpt-6.1-sol нашёл недопустимое прохождение неизвестных form/source полей
+(потенциальная передача child metadata). Исправлено проверкой точного набора полей
+форм, source entries и probes, плюс Claim schema validation. Добавлены regression
+tests для неизвестных metadata. При проверке реальных signature claims обнаружено,
+что strict Python validation отвергает JSON arrays; исправлено чтением через JSON
+schema boundary и закреплено отдельным тестом. Некорректный export не создал output.
+
+Итог: 9 tests passed. Исправленным exporter создан runs/parent-review-20261029-v2;
+все 456 файлов совпали с независимо проверенным чистым исходным export. Пользователю
+доступен output/parent-review-20261029.zip; hash и состав в parent-review-package.json.
+Это новый локальный архив, в Git сохранены инструмент, инструкции и evidence.
+[Инструкция parent-review](parent_review_instructions_ru.md).
+
+Обнаруженное следующее ограничение: import-parent принимает одно решение на claim
+и не поддерживает прямой импорт двух parent answers. Нужно проверить путь сохранения
+двойной разметки и adjudication перед фактической передачей пакета людям. Кроме того,
+проверить, сохраняет ли importer uncertain человеческое решение о behavior при
+невозможности выполнить probe, не создавая supported receipt.

@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/check_parent_environments.py",
+    "--parents",
+    "runs/main-restored-20261029/parent_inputs.jsonl",
+    "--candidates",
+    "runs/main-restored-20261029/candidates",
+    "--image",
+    "cami-parent-probes@sha256:4b6d3d7c0cf8a19e9c3574f9acc19a1876bda76da9544b6e7a81216fd0f0e916",
+    "--max-file-bytes",
+    "4194304",
+    "--python-version",
+    "3.9.25",
+    "--out",
+    "runs/parent-environments-20261029-v3"
+  ],
+  "exit_code": 0
+}
