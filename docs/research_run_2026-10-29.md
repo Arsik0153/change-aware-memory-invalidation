@@ -856,3 +856,36 @@ metric-denominators-focused.log. Новый механизм overlap нельз�
 Далее: собрать переносимый научный отчёт из проверенных выводов и графиков,
 с сохранившейся границей между development evidence и pending real experiment.
 Исходные proposal/submission и старые output/intermediate_report* сохраняются.
+
+## Двадцать третий этап: переносимый научный отчёт
+
+Подготовлен отдельный русский progress report на семь страниц с двумя графиками,
+формулами, результатами и ограничениями. Его evidence cutoff — 4e13583; builder
+зафиксирован в6a284aa и исправлен в9f071d3. Исходные proposal/submission и старые
+output/intermediate_report* не изменялись. Зависимости документов закреплены в
+requirements/report.txt и установлены в отдельной среде; production среда сохранена.
+
+Первая сборка корректно создала PDF, но получила failed из-за трёх ложных
+пропусков текста: pdftotext -layout перемешивал строки соседних ячеек. Сохранены
+её manifest, ошибка и исходная сборка. Во второй сборке semantic check использует
+-raw, а layout extraction остаётся для чтения. Все118абзацев/ячеек присутствуют.
+Все7страниц v1 осмотрены; PNG всех7страниц v2 побайтово совпадают с ними.
+
+Отдельный reviewer gpt-6.1-sol сверил31artifact hashes,20evidence sources,
+118ordered Markdown/DOCX/PDF blocks,162source hashes,72production/schema files
+относительно1046-test snapshot44c77d3 и все60paired-support probabilities.
+Существенных замечаний нет. Проверка не заменяет human annotation; основная
+эмпирическая гипотеза остаётся pending. Текущий полный suite не заявляется.
+
+Пакет output/research-progress-20261029-v2.zip содержит36files, проверены35hashes
+и CRC. Размер592072bytes;SHA256:
+d02fd0702937dfaaf4593161b9f6a505d0eed69a97847ab92437c94c85d5eca4.
+README объясняет, что компактный пакет не включает все raw runs/corpora/images.
+Исходный текст:docs/research_progress_report_2026-10-29_ru.md;
+инструкции:docs/research_report_delivery_2026-10-29_ru.md;
+доказательства:reports/research-20261029/report-build-v1/ и report-build-v2/.
+
+Далее: проверить, какие поведенческие свойства уже покрыты development fixtures
+и есть ли полезный проверяемый пробел за пределами existence/signature stress.
+Новый эксперимент, если нужен, сначала фиксирует oracle и протокол; основная
+разметка, held-out и платные API остаются вне разрешённого выполнения.

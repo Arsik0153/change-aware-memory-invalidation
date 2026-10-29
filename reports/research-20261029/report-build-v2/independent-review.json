@@ -1,0 +1,60 @@
+{
+  "reviewer": "gpt-6.1-sol@high",
+  "review_type": "Independent model review of scientific reporting and portable artifact integrity; not human annotation",
+  "source_head": "9f071d31d29d10cbfa4aeb0c4057769e8723872c",
+  "source_report": "docs/research_progress_report_2026-10-29_ru.md",
+  "source_sha256": "ae1b6eac2b44291d39118d8e1e91d56407b03e79d7d5bab71711e6b3cf53f6a0",
+  "package": "output/research-progress-20261029-v2",
+  "result": "No material findings within reviewed scope",
+  "material_findings": [],
+  "method": [
+    "Read the full Russian source report, portable package manifest, builder, saved result summaries and technical reviews; compared substantive numbers and scientific qualifications to original repository evidence.",
+    "Independently recomputed SHA-256 for every manifest artifact, original and packaged evidence source, source image, source report and source snapshot file.",
+    "Parsed source Markdown with markdown-it and DOCX XML with stdlib zipfile/ElementTree; compared all nonempty source paragraphs, table cells and code blocks in document order.",
+    "Fresh read-only pdftotext -raw extraction of the actual PDF; verified all source blocks appear in order, and fresh extraction equals the packaged raw extraction.",
+    "Independently recomputed every paired-support probability using exact Fraction arithmetic and 170-digit Decimal division, checking the saved 100-digit output against a half-last-place rounding bound.",
+    "Read production scorer and aggregation guards to validate common label denominators, F1 support qualification and applicability/replay restrictions.",
+    "Compared current production/schema hashes with both snapshots from the saved last full verification and git diff from 44c77d3; read original pytest/Ruff/mypy logs."
+  ],
+  "verification": {
+    "artifact_hashes_verified": 31,
+    "original_and_packaged_evidence_sources_verified": 20,
+    "source_images_verified": 2,
+    "docx_embedded_image_hashes_match_packaged": true,
+    "source_and_source_original_byte_equal": true,
+    "portable_markdown_changes_only_two_image_paths": true,
+    "before_after_snapshots_equal": true,
+    "current_source_files_verified_per_snapshot": 162,
+    "source_markdown_docx_ordered_blocks_equal": 118,
+    "source_blocks_present_in_fresh_pdf_in_order": 118,
+    "fresh_pdf_raw_text_equals_saved": true,
+    "pdf_pages": 7,
+    "paired_probability_rows_recomputed": 60,
+    "paired_probability_rows_outside_half_serialized_ulp": 0,
+    "production_schema_files_matching_both_last_full_suite_snapshots": 72,
+    "production_schema_git_diff_from_44c77d3_empty": true,
+    "saved_last_full_suite": "1046 passed; no skipped tests in summary; Ruff passed; mypy passed for 52 source files",
+    "saved_focused_suite": "87 passed; explicitly described as focused, not a new full HEAD suite",
+    "failed_v1_retained": true,
+    "failed_v1_same_source_hash_as_v2": true,
+    "v1_failure": "3 table text blocks failed layout-mode extraction; v2 adds raw extraction without changing report source or numerical evidence"
+  },
+  "substantive_claim_checks": [
+    "Structural stress: 12 seeds, 36 policy runs, 5184 child items per variant, 15552 checked states, 0 observed mismatches; 5184/5184/1736 validations; 3448 avoided calls = 66.512345679%; truth counts 3761/751/672; 216 scheduled and 185 effective events agree with saved results.",
+    "Pilot: six artificial scenarios of 100 datasets; dense available/covered 100/84, 100/97, 100/98; sparse 0/0, 1/1, 20/19. Availability, conditional coverage and joint coverage use the stated denominators. Truth 0.1 and maximum Monte Carlo SE 0.05 or 0.5 are consistent.",
+    "Paired support: all 60 rows agree with independent exact recomputation; K20,L=R8,B2000 percentages round to 92.948510%, 86.395923%, 86.394024%; disjoint K2 support gives 1/4 for B2 and about 8.709809816e-603 for B2000.",
+    "Metric applicability: saved 729 scorer cases and 14580 applicability checks agree with source claims; primary exposure/retention denominators depend on labels, not policy; F1 denominator is |P_binary|+|C| and support can vary only where C is empty. not_applicable counters do not establish metric applicability; replay population CI is blocked.",
+    "Product evidence: final Click, Requests and TypeScript series each have 18 CLI commands. Watcher audit records 492 initial references, 8 background source mutations, 12 phases, 11 persisted proofs, 35 foreground commands and 1 separately attributed foreground note update.",
+    "Restoration evidence: 600 main and 30 replay parent claims in 63 groups; child main/replay populations 600/300; known_incomplete retained, blank forms and no independent review supplied. Parent direct-function v2 has 21 parents and 63 returned calls, with v1 errors retained.",
+    "Report explicitly distinguishes separate-model technical checking from human labels, synthetic development observations from real held-out policy evaluation, availability theory from coverage/effectiveness, and call counts from end-to-end speedup or labor savings."
+  ],
+  "portable_evidence_limits": "The report explicitly states that the package contains selected compact evidence and that full raw runs and local repositories remain separate inputs. Relative figure links in report.md resolve to included assets. Hashes establish identity rather than scientific truth or authorship. Package does not claim self-contained replay of local source repositories or raw SQLite histories.",
+  "limitations": [
+    "No production/test/document/output changes; only this review file created. No full suite rerun, paid APIs, target application execution, real held-out policies or timers.",
+    "No independent human annotation or claim admission performed; review is another model technical review.",
+    "Structural/product/watch/restoration conclusions were checked against original saved summaries, manifests, logs and existing technical reviews; this review did not re-execute every original experiment or exhaustively re-audit all raw local run artifacts.",
+    "Independent paired-support recomputation validates numerical availability rows, not coverage or policy effectiveness.",
+    "This reviewer did not render or visually inspect pages; actual PDF semantic text and embedded images were verified. Root owns the separate visual review and v1/v2 pixel comparison.",
+    "Manifest status rendered_pending_visual_review correctly leaves final visual acceptance to the separate visual review; it is not itself a scientific validation claim."
+  ]
+}

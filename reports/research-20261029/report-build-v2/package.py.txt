@@ -1,0 +1,50 @@
+"""Package the verified dated report; run from the CAMI repository root."""
+import hashlib
+import json
+from pathlib import Path
+import zipfile
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+build = Path('output/research-progress-20261029-v2')
+audit = Path('reports/research-20261029/report-build-v2')
+target = Path('output/research-progress-20261029-v2.zip')
+assert not target.exists()
+manifest = json.loads((build / 'manifest.json').read_text())
+assert manifest['status'] == 'rendered_pending_visual_review'
+payload = {p.relative_to(build).as_posix(): p.read_bytes()
+           for p in sorted(build.rglob('*')) if p.is_file()}
+assert {name: sha(data) for name, data in payload.items()
+        if name != 'manifest.json'} == manifest['artifact_hashes']
+assert json.loads(payload['text-check.json'])['status'] == 'passed'
+assert json.loads((audit / 'visual-review.json').read_text())['status'] == 'passed'
+review = json.loads((audit / 'independent-review.json').read_text())
+assert review['material_findings'] == []
+assert review['source_sha256'] == manifest['source_sha256']
+for name in ('visual-review.json', 'independent-review.json'):
+    payload['verification/' + name] = (audit / name).read_bytes()
+payload['README_RU.md'] = Path('docs/research_report_delivery_2026-10-29_ru.md').read_bytes()
+inventory = {name: sha(data) for name, data in sorted(payload.items())}
+payload['package-files.json'] = (json.dumps(inventory, indent=2) + '\n').encode()
+with zipfile.ZipFile(target, 'x', compression=zipfile.ZIP_DEFLATED) as archive:
+    for name, data in sorted(payload.items()):
+        info = zipfile.ZipInfo(name, date_time=(2026, 10, 29, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o100644 << 16
+        archive.writestr(info, data)
+with zipfile.ZipFile(target) as archive:
+    assert archive.testzip() is None
+    assert sorted(archive.namelist()) == sorted(payload)
+    assert all(archive.read(name) == data for name, data in payload.items())
+    checked = {name: sha(archive.read(name)) for name in inventory}
+    assert checked == json.loads(archive.read('package-files.json'))
+result = {'status': 'passed', 'archive': str(target), 'sha256': sha(target.read_bytes()),
+          'bytes': target.stat().st_size, 'members': len(payload),
+          'file_hashes_verified': len(inventory), 'crc': 'passed',
+          'build_manifest_sha256': sha(payload['manifest.json']),
+          'scope': 'Portable report and selected evidence; not all raw experiment inputs'}
+(audit / 'package-audit.json').write_text(json.dumps(result, indent=2) + '\n')
+print(json.dumps(result, indent=2))

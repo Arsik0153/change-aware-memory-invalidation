@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "method": "Root inspected all seven v1 pages; all v2 rendered PNGs byte-identical",
+  "pages": [
+    {
+      "page": "page-1.png",
+      "sha256": "3dcc2ec851d308ab6a52d346d1f33f2609dae371c187e68a551134dd64e42480",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-2.png",
+      "sha256": "a94ac140fc1346171f86551b1370a2066273ebf70118a8ebc2237402e1bd4043",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-3.png",
+      "sha256": "b385631e4ccc9ce11d3ff45e5a85e45ec2c196caf06d5dd49559001b54d3a240",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-4.png",
+      "sha256": "a314d500225561b81ed8dd1797bccd5b89527d2185ed9daf22b690aa76658d88",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-5.png",
+      "sha256": "9323c70c19b930f79e3c5d75aa12d70da8d58320530167d02d68e460b62cf007",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-6.png",
+      "sha256": "3ecf4f86ba25490fe8e13061b7222ebff807a0cf710742bfc681bd4899848de9",
+      "identical_to_visually_reviewed_v1": true
+    },
+    {
+      "page": "page-7.png",
+      "sha256": "06bb611742c11aad605e1cc9886d2343abe82a81599a2ff5ada920c14992cb41",
+      "identical_to_visually_reviewed_v1": true
+    }
+  ],
+  "scope": "Readable text, figures, equations, tables; no clipping or content/footer collision observed"
+}

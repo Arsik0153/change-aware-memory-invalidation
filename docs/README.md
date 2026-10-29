@@ -8,6 +8,9 @@ the historical submission checks do not establish their current status.
 ## Implementation and research evidence, 29 October 2026
 
 - [Project README](../README.md) documents installation and executable commands.
+- [Portable progress report](research_progress_report_2026-10-29_ru.md) presents the
+  verified results and limitations in Russian; the [delivery guide](research_report_delivery_2026-10-29_ru.md)
+  explains the PDF, DOCX, selected evidence package, and document rebuild.
 - [Scientific interpretation](research_findings_2026-10-29_ru.md) connects the verified
   development results to the thesis questions, their limits, and the pending real experiment.
 - [Research run record](research_run_2026-10-29.md) records tested changes, commits,
