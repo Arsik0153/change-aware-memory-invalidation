@@ -1,0 +1,18 @@
+{
+  "study_id": "bootstrap-development-20261029-v1",
+  "generator": "paired_nested_bernoulli_v1",
+  "seed": 20261029,
+  "trials_per_scenario": 100,
+  "bootstrap_repetitions": 2000,
+  "cluster_sizes": [5, 50],
+  "left_probabilities": [0.1, 0.3],
+  "right_probability_multiplier": 0.5,
+  "scenarios": [
+    {"id": "dense-k5", "clusters": 5, "active_probability": 1.0},
+    {"id": "dense-k20", "clusters": 20, "active_probability": 1.0},
+    {"id": "dense-k50", "clusters": 50, "active_probability": 1.0},
+    {"id": "sparse-k5", "clusters": 5, "active_probability": 0.1},
+    {"id": "sparse-k20", "clusters": 20, "active_probability": 0.1},
+    {"id": "sparse-k50", "clusters": 50, "active_probability": 0.1}
+  ]
+}

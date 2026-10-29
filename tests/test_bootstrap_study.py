@@ -97,3 +97,27 @@ def test_runner_artifacts_and_no_overwrite(tmp_path):
 def test_invalid_protocol_rejected(changes):
     with pytest.raises(ValidationError):
         protocol(**changes)
+
+
+def test_report_rechecks_counts_even_if_summary_hash_updated(tmp_path):
+    spec = importlib.util.spec_from_file_location(
+        'report_bootstrap_study', ROOT / 'scripts/report_bootstrap_study.py')
+    assert spec and spec.loader
+    reporter = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(reporter)
+    path = tmp_path / 'protocol.json'
+    write_json(path, protocol(trials_per_scenario=2, bootstrap_repetitions=20))
+    source = tmp_path / 'source'
+    study.run(path, source)
+    reporter.report(source, tmp_path / 'report')
+    assert read_json(tmp_path / 'report/validation.json')['validated_trials'] == 12
+    assert (tmp_path / 'report/coverage.png').stat().st_size > 0
+    summary = read_json(source / 'summary.json')
+    summary['scenarios']['dense-k5']['available'] = 0
+    write_json(source / 'summary.json', summary)
+    manifest = read_json(source / 'manifest.json')
+    manifest['artifact_hashes']['summary.json'] = file_hash(source / 'summary.json')
+    write_json(source / 'manifest.json', manifest)
+    with pytest.raises(ValueError, match='summary disagrees'):
+        reporter.report(source, tmp_path / 'rejected')
+    assert not (tmp_path / 'rejected').exists()
