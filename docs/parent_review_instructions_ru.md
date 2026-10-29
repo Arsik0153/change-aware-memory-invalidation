@@ -24,11 +24,11 @@ evidence, confirmation_type и annotation_minutes. Не оставляйте п�
 uncertain. Полные типы описаны в annotation_guide.md. Верните исходные ответы
 координатору без слияния с ответами второго человека.
 
-Координатор сохраняет обе исходные формы. Текущая команда import-parent принимает
-одно решение на claim и отвергает повторные claim IDs; передача объединённых
-двойных ответов напрямую не поддерживается. Нельзя удалять один ответ для создания
-видимости согласия. Согласование и сохранение происхождения итоговых решений
-должно быть отдельным явным шагом. Поведенческие положительные подтверждения
+Координатор сохраняет обе исходные формы. Для их совместного импорта используйте
+`import-parent-batch`: он сохраняет каждый ответ и всю историю adjudication.
+Старый `import-parent` по-прежнему принимает одно решение на claim. Нельзя удалять
+один ответ для создания видимости согласия. Неразрешённое разногласие не создаёт
+receipt. Поведенческие положительные подтверждения, включая adjudication,
 требуют independent_test; простой human_review их не допускает.
 
 Если человек самостоятельно исполнил frozen probe, укажите annotator_kind=human
@@ -38,3 +38,47 @@ review. Такой ответ сохраняется без receipt; ошибк�
 
 Импорт parent reviews сам по себе не завершает cohort admission, provenance review
 или final protocol freeze. Child-разметка и evaluation остаются следующими этапами.
+
+## Импорт координатором
+
+После получения настоящих ответов сформируйте JSON с `schema_version: 1`, массивом
+`annotations` из всех исходных ответов и массивом `adjudications` (пустым, если
+согласование не проводилось). Формат каждой записи и цепочки описан в
+annotation_guide.md. Импортировать пустые формы нельзя. Сохраните оригинальные
+файлы от каждого человека отдельно; importer дополнительно сохраняет точные bytes
+совместного входного JSON и нормализованные записи, но не получает исходные файлы
+от каждого человека автоматически.
+
+```bash
+.venv/bin/python scripts/prepare_main.py import-parent-batch \
+  --dataset runs/main-restored-20261029/ready/dataset.json \
+  --reviews /path/to/actual-parent-reviews.json \
+  --out runs/parent-reviewed-NEW
+```
+
+Output должен быть новым каталогом. Для добавления ответов или нового adjudication
+используйте исходный unreviewed dataset и новый полный batch, включающий все прежние
+ответы и всю цепочку adjudication. Повторный импорт поверх reviewed dataset запрещён,
+включая наборы, где были только uncertain ответы и не появилось ни одного receipt.
+
+Importer проверяет parent commits, preview, неизменность claims, probes и экспортированных
+parent source files относительно подготовленного packet. Передача child decisions,
+synthetic confirmations, повторного ответа того же автора или неполной цепочки
+adjudication отклоняется до создания output. Эти проверки сохраняют согласованность
+локальных материалов; они не удостоверяют личность человека или независимость review.
+
+Полный denominator выводится из всех candidate parent claims, а не из полученных
+ответов. Если передан annotation_population, он должен точно совпасть с этим набором.
+Отчёт содержит отдельно общий охват второго human-review и выполнение назначенных
+126 parent-заданий: два произвольных ответа на другие claims не закрывают назначение.
+Agreement считается до adjudication; unresolved и annotation/adjudication minutes
+сохраняются отдельно. Новые файлы:
+
+- `parent_raw_annotations.jsonl` — все исходные решения;
+- `parent_adjudications.jsonl` — полная история согласования;
+- `parent_resolved_decisions.jsonl` — только разрешённые parent decisions;
+- `parent_review_status.json` — coverage, unresolved, hashes и ограничения;
+- `groups/*/parent_review/*.json` — evidence разрешённого решения и его источники.
+
+Наличие supported receipts или достижение coverage не меняет preview и не разрешает
+held-out execution. Cohort admission, provenance и protocol freeze остаются отдельными.

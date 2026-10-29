@@ -20,11 +20,11 @@ from cami.artifacts import (
     canonical, digest, file_hash, load, load_jsonl, read_json, read_jsonl, reserve,
     within, write_bytes, write_json, write_jsonl,
 )
-from cami.dataset import RawAnnotation, annotate_export
+from cami.dataset import AnnotationImport, AnnotationItem, RawAnnotation, annotate_export, resolve_annotations
 from cami.dataset_models import DatasetManifest, DatasetRepository, DatasetRun
 from cami.errors import InputError
 from cami.index import signature
-from cami.models import Claim, ParentReceipt, Provenance, RepoLocation, RunConfig
+from cami.models import Behavior, Claim, ParentReceipt, Provenance, RepoLocation, RunConfig
 from cami.pilot import parent_candidates
 from cami.provenance_audit import audit_provenance, import_provenance_review
 from cami.repository import git, read_snapshot, resolve
@@ -447,67 +447,149 @@ def assemble(selection_path: Path, candidates: Path, output: Path) -> Path:
 
 
 def import_parent(dataset_path: Path, annotations_path: Path, output: Path) -> Path:
-    """Import actual independent parent decisions into a fresh copy; never synthesize them."""
-    manifest = load(dataset_path, DatasetManifest)
-    base = dataset_path.resolve().parent
+    """Import one external decision per parent claim; use batch import for multiple answers."""
     annotations = load_jsonl(annotations_path, RawAnnotation, "annotation_id")
     if not annotations:
         raise InputError("parent import requires actual completed independent reviews")
+    if len({row.claim_id for row in annotations}) != len(annotations):
+        raise InputError("duplicate parent annotation; use import-parent-batch to retain multiple answers")
+    return _import_parent(dataset_path, AnnotationImport(annotations=annotations),
+                          annotations_path, output)
+
+
+def import_parent_batch(dataset_path: Path, reviews_path: Path, output: Path) -> Path:
+    """Retain original answers and adjudication chains without granting cohort admission."""
+    return _import_parent(dataset_path, load(reviews_path, AnnotationImport), reviews_path, output)
+
+
+def _import_parent(dataset_path: Path, data: AnnotationImport, source: Path, output: Path) -> Path:
+    manifest = load(dataset_path, DatasetManifest)
+    base = dataset_path.resolve().parent
+    if (base / "parent_raw_annotations.jsonl").exists():
+        raise InputError("parent import requires original unreviewed dataset; retain all answers in one batch")
     claims_by_id = {}
     for entry in manifest.runs:
         config_path = within(base, entry.config_path)
         config = load(config_path, RunConfig)
+        if not config.preview:
+            raise InputError("parent review import requires preview preparation")
         if load_jsonl(config_path.parent / config.parent_receipts_path, ParentReceipt):
             raise InputError("import requires original empty receipts; combine reviews explicitly before importing")
         for claim in load_jsonl(config_path.parent / config.claims_path, Claim, "claim_id"):
+            if claim.origin_commit != config.parent_commit:
+                raise InputError("parent claim origin differs from prepared run parent")
             if claim.claim_id in claims_by_id:
                 raise InputError("duplicate cohort claim")
             claims_by_id[claim.claim_id] = (claim, config_path.parent.relative_to(base), config)
-    reviewed = set()
-    for annotation in annotations:
-        if annotation.claim_id in reviewed or annotation.claim_id not in claims_by_id:
-            raise InputError("duplicate or unknown parent annotation")
-        claim, _, _ = claims_by_id[annotation.claim_id]
-        if annotation.commit != claim.origin_commit:
+    expected = {(claim.claim_id, claim.origin_commit) for claim, _, _ in claims_by_id.values()}
+    preparation_hashes = read_json(base / "preparation_hashes.json")
+    packets_path = base / "annotation/packets.jsonl"
+    if file_hash(packets_path) != preparation_hashes["annotation/packets.jsonl"]:
+        raise InputError("prepared review packet hash mismatch")
+    packets = read_jsonl(packets_path)
+    if (len(packets) != len(expected)
+            or {(row["claim"]["claim_id"], row["parent_commit"]) for row in packets} != expected):
+        raise InputError("prepared review packet differs from candidate population")
+    for packet in packets:
+        claim, relative, _ = claims_by_id[packet["claim"]["claim_id"]]
+        if digest(claim) != packet["claim_sha256"] or digest(packet["claim"]) != digest(claim):
+            raise InputError("parent claim differs from frozen review packet")
+        for record in packet["source_evidence"][claim.origin_commit]:
+            if record["commit"] != claim.origin_commit:
+                raise InputError("parent source evidence names a different revision")
+            if record["evidence_path"] is not None:
+                evidence = within(base / "annotation", record["evidence_path"])
+                if file_hash(evidence) != record["sha256"]:
+                    raise InputError("parent source evidence differs from frozen review packet")
+        if isinstance(claim.predicate, Behavior):
+            probe = within(base / relative, claim.predicate.probe_path)
+            exported_probe = within(base / "annotation", packet["probe"]["path"])
+            if (file_hash(probe) != packet["probe"]["sha256"]
+                    or file_hash(exported_probe) != packet["probe"]["sha256"]):
+                raise InputError("parent probe differs from frozen review packet")
+    if data.annotation_population is not None:
+        supplied = {(row.claim_id, row.commit) for row in data.annotation_population}
+        if supplied != expected or len(supplied) != len(data.annotation_population):
+            raise InputError("parent annotation population must equal the complete candidate population")
+    data = AnnotationImport(annotations=data.annotations, adjudications=data.adjudications,
+        annotation_population=tuple(AnnotationItem(claim_id=claim, commit=commit)
+                                    for claim, commit in sorted(expected)))
+    for decision in (*data.annotations, *data.adjudications):
+        if decision.claim_id not in claims_by_id:
+            raise InputError("unknown parent annotation")
+        claim, _, _ = claims_by_id[decision.claim_id]
+        if decision.commit != claim.origin_commit:
             raise InputError("parent import rejects child decisions")
-        if annotation.confirmation_type == "synthetic_manual":
+        if decision.confirmation_type == "synthetic_manual":
             raise InputError("real cohort rejects synthetic confirmation")
-        if claim.kind == "prose" and annotation.confirmation_type != "human_review":
+        if claim.kind == "prose" and decision.confirmation_type != "human_review":
             raise InputError("prose parent confirmation requires human review")
-        if (claim.kind == "behavior_test" and annotation.label == "supported"
-                and annotation.confirmation_type != "independent_test"):
+        if (claim.kind == "behavior_test" and decision.label == "supported"
+                and decision.confirmation_type != "independent_test"):
             raise InputError("behavior parent confirmation requires independent frozen-probe testing")
-        reviewed.add(annotation.claim_id)
+    resolution = resolve_annotations(data)
+    second_form = base / "annotation/second_form.jsonl"
+    if file_hash(second_form) != preparation_hashes["annotation/second_form.jsonl"]:
+        raise InputError("prepared second-review assignments hash mismatch")
+    assigned = {(row["claim_id"], row["commit"]) for row in read_jsonl(second_form)} & expected
+    human_authors: dict[tuple[str, str], set[str]] = {}
+    for row in data.annotations:
+        if row.annotator_kind == "human":
+            human_authors.setdefault((row.claim_id, row.commit), set()).add(row.annotator_id)
+    missing_second = sorted(key for key in assigned if len(human_authors.get(key, set())) < 2)
     if output.resolve().is_relative_to(base):
         raise InputError("parent import output must not be inside source dataset")
     reserve(output)
     shutil.copytree(base, output, dirs_exist_ok=True)
-    receipts_by_dir: dict[Path, list[ParentReceipt]] = {}
-    for annotation in annotations:
-        claim, relative, config = claims_by_id[annotation.claim_id]
+    shutil.copyfile(source, output / "parent_review_original_input.txt")
+    receipts_by_path: dict[Path, list[ParentReceipt]] = {}
+    for label in resolution.labels:
+        claim, relative, config = claims_by_id[label.claim_id]
+        originals = [row for row in data.annotations if row.claim_id == label.claim_id]
+        history = [row for row in data.adjudications if row.claim_id == label.claim_id]
         target = output / relative
-        # Retain every actual raw parent decision, including contradicted/uncertain.
-        evidence_path = f"parent_review/{digest(annotation.annotation_id)}.json"
+        evidence_path = f"parent_review/{digest(claim.claim_id)}.json"
         evidence = {"schema_version": 1, "claim_sha256": digest(claim),
-                    "annotation": annotation.model_dump(mode="json"), "source": "external_independent_review"}
+                    "annotations": [row.model_dump(mode="json") for row in originals],
+                    "adjudications": [row.model_dump(mode="json") for row in history],
+                    "resolution": label.model_dump(mode="json"),
+                    "source": "external_independent_review"}
         write_json(target / evidence_path, evidence)
-        if annotation.label == "supported":
-            receipts_by_dir.setdefault(target, []).append(ParentReceipt(claim_id=claim.claim_id,
+        if label.label == "supported":
+            receipts_by_path.setdefault(within(target, config.parent_receipts_path), []).append(ParentReceipt(claim_id=claim.claim_id,
                 origin_commit=claim.origin_commit, status="supported",
-                confirmation_type=annotation.confirmation_type, evidence_path=evidence_path,
-                evidence_sha256=file_hash(target / evidence_path), annotation_minutes=annotation.annotation_minutes))
-    for directory, receipts in receipts_by_dir.items():
-        write_jsonl(directory / "parent_receipts.jsonl", receipts)
-    write_jsonl(output / "parent_raw_annotations.jsonl", annotations)
+                confirmation_type=label.confirmation_type, evidence_path=evidence_path,
+                evidence_sha256=file_hash(target / evidence_path),
+                annotation_minutes=sum(row.annotation_minutes for row in [*originals, *history])))
+    for receipts_path, receipts in receipts_by_path.items():
+        write_jsonl(receipts_path, receipts)
+    write_jsonl(output / "parent_raw_annotations.jsonl", data.annotations)
+    write_jsonl(output / "parent_adjudications.jsonl", data.adjudications)
+    write_jsonl(output / "parent_resolved_decisions.jsonl", resolution.labels)
     status = read_json(output / "preparation_status.json")
     status.update({"status": "parent_decisions_imported_preview_preserved",
-                   "parent_receipts": sum(map(len, receipts_by_dir.values())), "admitted_claims": 0})
+                   "parent_receipts": sum(map(len, receipts_by_path.values())), "admitted_claims": 0})
     write_json(output / "preparation_status.json", status)
     write_json(output / "parent_review_status.json", {"schema_version": 1,
-        "reviewed": len(annotations), "supported_receipts": sum(map(len, receipts_by_dir.values())),
-        "unreviewed_claims": len(claims_by_id) - len(reviewed),
-        "source_annotations_sha256": file_hash(annotations_path), "evaluation_eligible": False,
+        "reviewed": len(data.annotations), "reviewed_claims": len({r.claim_id for r in data.annotations}),
+        "supported_receipts": sum(map(len, receipts_by_path.values())),
+        "unreviewed_claims": len(claims_by_id) - len({r.claim_id for r in data.annotations}),
+        "unresolved": resolution.unresolved, "agreement": resolution.agreement,
+        "assigned_second_review": {"assigned_parent_items": len(assigned),
+            "completed_parent_items": len(assigned) - len(missing_second),
+            "missing": [{"claim_id": claim, "commit": commit} for claim, commit in missing_second],
+            "requirement_met": bool(assigned) and not missing_second,
+            "assignments_sha256": file_hash(second_form)},
+        "annotation_minutes": sum(row.annotation_minutes for row in data.annotations),
+        "adjudication_minutes": sum(row.annotation_minutes for row in data.adjudications),
+        "source_annotations_sha256": file_hash(source), "evaluation_eligible": False,
+        "prepared_packet_sha256": file_hash(packets_path),
+        "artifact_hashes": {name: file_hash(output / name) for name in (
+            "parent_review_original_input.txt", "parent_raw_annotations.jsonl",
+            "parent_adjudications.jsonl", "parent_resolved_decisions.jsonl")},
         "status": "parent_decisions_imported_preview_preserved", "final_protocol_frozen": False,
+        "limitations": ["Authorship and independence are declared, not verified by software.",
+                        "Review coverage does not admit a cohort or authorize heldout execution."],
         "remaining": ["final cohort admission decisions", "provenance review", "Docker profile restoration",
                       "independent child annotations", "protocol freeze before any heldout execution"]})
     return output / "dataset.json"
@@ -533,6 +615,10 @@ def main() -> None:
     importer.add_argument("--dataset", type=Path, required=True)
     importer.add_argument("--annotations", type=Path, required=True)
     importer.add_argument("--out", type=Path, required=True)
+    batch = commands.add_parser("import-parent-batch")
+    batch.add_argument("--dataset", type=Path, required=True)
+    batch.add_argument("--reviews", type=Path, required=True)
+    batch.add_argument("--out", type=Path, required=True)
     audit = commands.add_parser("audit-provenance")
     audit.add_argument("--dataset", type=Path, required=True)
     audit.add_argument("--out", type=Path, required=True)
@@ -554,6 +640,8 @@ def main() -> None:
             result = assemble(args.selection, args.candidates, args.out)
         elif args.command == "import-parent":
             result = import_parent(args.dataset, args.annotations, args.out)
+        elif args.command == "import-parent-batch":
+            result = import_parent_batch(args.dataset, args.reviews, args.out)
         elif args.command == "audit-provenance":
             result = audit_provenance(args.dataset, args.out)
         elif args.command == "close-structural-provenance":

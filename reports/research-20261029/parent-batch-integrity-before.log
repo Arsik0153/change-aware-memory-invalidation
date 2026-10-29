@@ -1,0 +1,82 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_parent_import_rejects_drifted_preparation_before_copy[source_evidence] __
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '3562246af494885465e59d8dcb872b60dca8b8ce', 'repo_id': 'click', ...test-of-root/pytest-148/test_parent_import_rejects_dri0/source repo', ...}, 'a3abd1699d32d18c8dc3c25e153e16ac31706271')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-148/test_parent_import_rejects_dri0')
+changed = 'source_evidence'
+
+    @pytest.mark.parametrize('changed', ['source_evidence', 'preview', 'run_parent'])
+    def test_parent_import_rejects_drifted_preparation_before_copy(parent_repo, tmp_path, changed):
+        dataset, group, _, answers = batch_fixture(parent_repo, tmp_path)
+        if changed == 'source_evidence':
+            packet = read_jsonl(dataset.parent / 'annotation/packets.jsonl')[0]
+            record = next(r for r in packet['source_evidence'][packet['parent_commit']] if r['evidence_path'])
+            (dataset.parent / 'annotation' / record['evidence_path']).write_text('# altered after export\n')
+        else:
+            config = read_json(group / 'run.json')
+            if changed == 'preview':
+                config['preview'] = False
+            else:
+                config['parent_commit'] = 'f' * 40
+            write_json(group / 'run.json', config)
+        source = write_parent_batch(tmp_path, answers)
+>       with pytest.raises(InputError):
+E       Failed: DID NOT RAISE <class 'cami.errors.InputError'>
+
+tests/test_prepare_main.py:727: Failed
+_____ test_parent_import_rejects_drifted_preparation_before_copy[preview] ______
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '3562246af494885465e59d8dcb872b60dca8b8ce', 'repo_id': 'click', ...test-of-root/pytest-148/test_parent_import_rejects_dri1/source repo', ...}, 'a3abd1699d32d18c8dc3c25e153e16ac31706271')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-148/test_parent_import_rejects_dri1')
+changed = 'preview'
+
+    @pytest.mark.parametrize('changed', ['source_evidence', 'preview', 'run_parent'])
+    def test_parent_import_rejects_drifted_preparation_before_copy(parent_repo, tmp_path, changed):
+        dataset, group, _, answers = batch_fixture(parent_repo, tmp_path)
+        if changed == 'source_evidence':
+            packet = read_jsonl(dataset.parent / 'annotation/packets.jsonl')[0]
+            record = next(r for r in packet['source_evidence'][packet['parent_commit']] if r['evidence_path'])
+            (dataset.parent / 'annotation' / record['evidence_path']).write_text('# altered after export\n')
+        else:
+            config = read_json(group / 'run.json')
+            if changed == 'preview':
+                config['preview'] = False
+            else:
+                config['parent_commit'] = 'f' * 40
+            write_json(group / 'run.json', config)
+        source = write_parent_batch(tmp_path, answers)
+>       with pytest.raises(InputError):
+E       Failed: DID NOT RAISE <class 'cami.errors.InputError'>
+
+tests/test_prepare_main.py:727: Failed
+____ test_parent_import_rejects_drifted_preparation_before_copy[run_parent] ____
+
+parent_repo = ({'group_id': 'click-opaque-parent', 'parent_commit': '3562246af494885465e59d8dcb872b60dca8b8ce', 'repo_id': 'click', ...test-of-root/pytest-148/test_parent_import_rejects_dri2/source repo', ...}, 'a3abd1699d32d18c8dc3c25e153e16ac31706271')
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-148/test_parent_import_rejects_dri2')
+changed = 'run_parent'
+
+    @pytest.mark.parametrize('changed', ['source_evidence', 'preview', 'run_parent'])
+    def test_parent_import_rejects_drifted_preparation_before_copy(parent_repo, tmp_path, changed):
+        dataset, group, _, answers = batch_fixture(parent_repo, tmp_path)
+        if changed == 'source_evidence':
+            packet = read_jsonl(dataset.parent / 'annotation/packets.jsonl')[0]
+            record = next(r for r in packet['source_evidence'][packet['parent_commit']] if r['evidence_path'])
+            (dataset.parent / 'annotation' / record['evidence_path']).write_text('# altered after export\n')
+        else:
+            config = read_json(group / 'run.json')
+            if changed == 'preview':
+                config['preview'] = False
+            else:
+                config['parent_commit'] = 'f' * 40
+            write_json(group / 'run.json', config)
+        source = write_parent_batch(tmp_path, answers)
+>       with pytest.raises(InputError):
+E       Failed: DID NOT RAISE <class 'cami.errors.InputError'>
+
+tests/test_prepare_main.py:727: Failed
+=========================== short test summary info ============================
+FAILED tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[source_evidence]
+FAILED tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[preview]
+FAILED tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[run_parent]
+3 failed, 69 deselected in 0.69s

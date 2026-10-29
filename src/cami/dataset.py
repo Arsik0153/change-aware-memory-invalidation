@@ -260,8 +260,15 @@ def _agreement(groups: dict[tuple[str, str], list[RawAnnotation]],
         "computed_before_adjudication": True}
 
 
-def annotate_import(input_path: Path, output: Path) -> Path:
-    data = load(input_path, AnnotationImport)
+@dataclass(frozen=True)
+class AnnotationResolution:
+    labels: tuple[Label, ...]
+    unresolved: tuple[dict[str, str], ...]
+    agreement: dict[str, Any]
+
+
+def resolve_annotations(data: AnnotationImport) -> AnnotationResolution:
+    """Resolve declared independent answers without discarding disagreements or history."""
     groups: dict[tuple[str, str], list[RawAnnotation]] = {}
     annotation_ids: set[str] = set()
     authors: set[tuple[str, str, str]] = set()
@@ -316,12 +323,18 @@ def annotate_import(input_path: Path, output: Path) -> Path:
         if not set(groups) <= population_keys:
             raise InputError("annotation falls outside declared population")
         population = len(population_keys)
+    return AnnotationResolution(tuple(labels), tuple(unresolved), _agreement(groups, population))
+
+
+def annotate_import(input_path: Path, output: Path) -> Path:
+    data = load(input_path, AnnotationImport)
+    resolution = resolve_annotations(data)
     reserve(output)
     shutil.copyfile(input_path, output / "original_import.json")
     write_jsonl(output / "raw_annotations.jsonl", data.annotations)
     write_jsonl(output / "adjudications.jsonl", data.adjudications)
-    write_jsonl(output / "labels.jsonl", labels)
-    agreement = _agreement(groups, population)
+    write_jsonl(output / "labels.jsonl", resolution.labels)
+    agreement = resolution.agreement
     limitations = ["Authorship and independence are declared metadata; software cannot verify human identity.",
                   "Coverage is unverified unless the complete annotation_population is supplied.",
                   "Cohen kappa is reported per fixed annotator pair; heterogeneous pairs have no pooled kappa."]
@@ -329,7 +342,7 @@ def annotate_import(input_path: Path, output: Path) -> Path:
         limitations.append("Single-annotator limitation: the 20% independent second-human requirement is unmet or unverified.")
     write_json(output / "annotation_report.json", {"schema_version": 1,
         "input_sha256": file_hash(input_path), "agreement": agreement,
-        "final_labels": len(labels), "unresolved": unresolved,
+        "final_labels": len(resolution.labels), "unresolved": resolution.unresolved,
         "annotation_minutes": sum(row.annotation_minutes for row in data.annotations),
         "adjudication_minutes": sum(row.annotation_minutes for row in data.adjudications),
         "limitations": limitations,

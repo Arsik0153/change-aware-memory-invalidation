@@ -511,3 +511,222 @@ def test_human_independent_behavior_test_can_confirm_parent(parent_repo, tmp_pat
     assert len(receipts) == 1 and receipts[0]['confirmation_type'] == 'independent_test'
     assert read_jsonl(imported.parent / 'parent_raw_annotations.jsonl')[0]['annotator_kind'] == 'human'
     assert read_json(target / 'run.json')['preview'] is True
+
+
+def batch_fixture(parent_repo, tmp_path):
+    dataset = assemble_fixture(parent_repo, tmp_path)
+    group = dataset.parent / 'groups' / parent_repo[0]['group_id']
+    claims = read_jsonl(group / 'claims.jsonl')
+    assigned = {r['claim_id'] for r in read_jsonl(dataset.parent / 'annotation/second_form.jsonl')}
+    claim = next(row for row in claims if row['claim_id'] in assigned and row['kind'] != 'behavior_test')
+    answers = [review_for(claim, annotation_id='fixture-first', annotator_id='fixture-person-one'),
+               review_for(claim, annotation_id='fixture-second', annotator_id='fixture-person-two')]
+    return dataset, group, claims, answers
+
+
+def write_parent_batch(tmp_path, answers, adjudications=(), **extra):
+    path = tmp_path / 'external_fixture_batch.json'
+    write_json(path, {'schema_version': 1, 'annotations': answers,
+                      'adjudications': list(adjudications), **extra})
+    return path
+
+
+def fixture_adjudication(answers, **changes):
+    return {'schema_version': 1, 'adjudication_id': 'fixture-resolution',
+            'claim_id': answers[0]['claim_id'], 'commit': answers[0]['commit'],
+            'annotation_ids': [row['annotation_id'] for row in answers],
+            'adjudicator_id': 'fixture-person-three', 'status': 'resolved', 'label': 'supported',
+            'evidence': ['Explicitly synthetic fixture adjudication evidence.'],
+            'confirmation_type': 'human_review', 'annotation_minutes': 2.5,
+            'previous_adjudication_id': None, **changes}
+
+
+def test_parent_batch_preserves_both_answers_and_full_population_coverage(parent_repo, tmp_path):
+    dataset, group, claims, answers = batch_fixture(parent_repo, tmp_path)
+    source = write_parent_batch(tmp_path, answers)
+    imported = prepare.import_parent_batch(dataset, source, tmp_path / 'reviewed')
+    target = imported.parent / group.relative_to(dataset.parent)
+    receipts = read_jsonl(target / 'parent_receipts.jsonl')
+    assert len(receipts) == 1 and receipts[0]['annotation_minutes'] == 2.0
+    evidence = read_json(target / receipts[0]['evidence_path'])
+    assert evidence['annotations'] == answers
+    assert evidence['adjudications'] == []
+    assert evidence['resolution']['adjudication_status'] == 'agreement'
+    assert file_hash(target / receipts[0]['evidence_path']) == receipts[0]['evidence_sha256']
+    assert read_jsonl(imported.parent / 'parent_raw_annotations.jsonl') == answers
+    assert (imported.parent / 'parent_review_original_input.txt').read_bytes() == source.read_bytes()
+    report = read_json(imported.parent / 'parent_review_status.json')
+    assert report['reviewed'] == 2 and report['reviewed_claims'] == 1
+    assert report['agreement']['population_items'] == len(claims) == 10
+    assert report['agreement']['human_double_annotation_fraction'] == 0.1
+    assert report['agreement']['requirement_met'] is False
+    assert report['assigned_second_review']['assigned_parent_items'] == 2
+    assert report['assigned_second_review']['completed_parent_items'] == 1
+    assert report['assigned_second_review']['requirement_met'] is False
+    assert report['evaluation_eligible'] is False
+    assert read_json(target / 'run.json')['preview'] is True
+    assert read_jsonl(group / 'parent_receipts.jsonl') == []
+    for name, digest in report['artifact_hashes'].items():
+        assert file_hash(imported.parent / name) == digest
+
+
+@pytest.mark.parametrize('resolution', ['disagreement', 'adjudicated', 'reopened'])
+def test_parent_batch_retains_disagreement_and_adjudication_history(parent_repo, tmp_path, resolution):
+    dataset, group, _, answers = batch_fixture(parent_repo, tmp_path)
+    answers[1]['label'] = 'uncertain'
+    history = [] if resolution == 'disagreement' else [fixture_adjudication(answers)]
+    if resolution == 'reopened':
+        history.append(fixture_adjudication(answers, adjudication_id='fixture-reopened',
+            previous_adjudication_id='fixture-resolution', status='unresolved', label=None))
+    source = write_parent_batch(tmp_path, answers, history)
+    imported = prepare.import_parent_batch(dataset, source, tmp_path / 'reviewed')
+    target = imported.parent / group.relative_to(dataset.parent)
+    assert read_jsonl(imported.parent / 'parent_raw_annotations.jsonl') == answers
+    assert read_jsonl(imported.parent / 'parent_adjudications.jsonl') == history
+    report = read_json(imported.parent / 'parent_review_status.json')
+    assert report['agreement']['agreement'] == 0
+    receipts = read_jsonl(target / 'parent_receipts.jsonl')
+    if resolution == 'adjudicated':
+        assert len(receipts) == 1 and receipts[0]['annotation_minutes'] == 4.5
+        evidence = read_json(target / receipts[0]['evidence_path'])
+        assert evidence['adjudications'] == history and evidence['annotations'] == answers
+        assert evidence['resolution']['annotator_id'] == 'fixture-person-three'
+        assert evidence['resolution']['adjudication_status'] == 'adjudicated'
+        assert report['unresolved'] == []
+    else:
+        assert receipts == []
+        assert read_jsonl(imported.parent / 'parent_resolved_decisions.jsonl') == []
+        assert report['unresolved'][0]['reason'] == (
+            'disagreement' if resolution == 'disagreement' else 'unresolved_adjudication')
+
+
+@pytest.mark.parametrize('method', ['human_review', 'independent_test'])
+def test_behavior_parent_adjudication_requires_independent_execution(parent_repo, tmp_path, method):
+    dataset, group, claims, _ = batch_fixture(parent_repo, tmp_path)
+    behavior = next(row for row in claims if row['kind'] == 'behavior_test')
+    answers = [review_for(behavior, label='uncertain')]
+    history = [fixture_adjudication(answers, confirmation_type=method)]
+    source = write_parent_batch(tmp_path, answers, history)
+    if method == 'human_review':
+        with pytest.raises(InputError, match='independent frozen-probe'):
+            prepare.import_parent_batch(dataset, source, tmp_path / 'reviewed')
+        assert not (tmp_path / 'reviewed').exists()
+    else:
+        imported = prepare.import_parent_batch(dataset, source, tmp_path / 'reviewed')
+        target = imported.parent / group.relative_to(dataset.parent)
+        receipt = read_jsonl(target / 'parent_receipts.jsonl')[0]
+        assert receipt['confirmation_type'] == 'independent_test'
+        assert read_jsonl(imported.parent / 'parent_raw_annotations.jsonl') == answers
+
+
+@pytest.mark.parametrize('damage', ['same_author', 'same_id', 'child', 'unknown', 'partial_population',
+                                    'child_adjudication', 'missing_original', 'synthetic', 'assignment_hash'])
+def test_parent_batch_rejects_invalid_reviews_before_writing(parent_repo, tmp_path, damage):
+    dataset, _, _, answers = batch_fixture(parent_repo, tmp_path)
+    history = []
+    extra = {}
+    if damage == 'same_author':
+        answers[1]['annotator_id'] = answers[0]['annotator_id']
+    elif damage == 'same_id':
+        answers[1]['annotation_id'] = answers[0]['annotation_id']
+    elif damage == 'child':
+        answers[0]['commit'] = parent_repo[1]
+    elif damage == 'unknown':
+        answers[0]['claim_id'] = 'unknown-fixture-claim'
+    elif damage == 'partial_population':
+        extra['annotation_population'] = [{'schema_version': 1,
+            'claim_id': answers[0]['claim_id'], 'commit': answers[0]['commit']}]
+    elif damage == 'child_adjudication':
+        history = [fixture_adjudication(answers, commit=parent_repo[1])]
+    elif damage == 'missing_original':
+        history = [fixture_adjudication(answers, annotation_ids=[answers[0]['annotation_id']])]
+    elif damage == 'synthetic':
+        history = [fixture_adjudication(answers, confirmation_type='synthetic_manual')]
+    elif damage == 'assignment_hash':
+        with (dataset.parent / 'annotation/second_form.jsonl').open('a') as stream:
+            stream.write('\n')
+    source = write_parent_batch(tmp_path, answers, history, **extra)
+    with pytest.raises(InputError):
+        prepare.import_parent_batch(dataset, source, tmp_path / 'rejected')
+    assert not (tmp_path / 'rejected').exists()
+
+
+def test_parent_review_cannot_overwrite_prior_uncertain_originals(parent_repo, tmp_path):
+    dataset, _, _, answers = batch_fixture(parent_repo, tmp_path)
+    for row in answers:
+        row['label'] = 'uncertain'
+    source = write_parent_batch(tmp_path, answers)
+    imported = prepare.import_parent_batch(dataset, source, tmp_path / 'reviewed')
+    assert read_json(imported.parent / 'parent_review_status.json')['supported_receipts'] == 0
+    with pytest.raises(InputError, match='original unreviewed dataset'):
+        prepare.import_parent_batch(imported, source, tmp_path / 'overwritten')
+    assert not (tmp_path / 'overwritten').exists()
+
+
+def test_parent_batch_distinguishes_assigned_reviews_from_global_fraction(parent_repo, tmp_path):
+    dataset, _, claims, _ = batch_fixture(parent_repo, tmp_path)
+    assigned = {row['claim_id'] for row in read_jsonl(dataset.parent / 'annotation/second_form.jsonl')}
+    unassigned = [row for row in claims if row['claim_id'] not in assigned and row['kind'] != 'behavior_test'][:2]
+    answers = [review_for(claim, annotation_id=f'fixture-{i}-{author}', annotator_id=author)
+               for i, claim in enumerate(unassigned) for author in ('fixture-one', 'fixture-two')]
+    imported = prepare.import_parent_batch(dataset, write_parent_batch(tmp_path, answers), tmp_path / 'reviewed')
+    report = read_json(imported.parent / 'parent_review_status.json')
+    assert report['agreement']['requirement_met'] is True
+    assert report['agreement']['human_double_annotation_fraction'] == 0.2
+    assert report['assigned_second_review']['requirement_met'] is False
+    assert report['assigned_second_review']['completed_parent_items'] == 0
+    assert report['evaluation_eligible'] is False
+
+
+@pytest.mark.parametrize('changed', ['claim', 'probe', 'packet'])
+def test_parent_reviews_are_bound_to_prepared_claims_and_probes(parent_repo, tmp_path, changed):
+    dataset, group, claims, answers = batch_fixture(parent_repo, tmp_path)
+    if changed == 'claim':
+        claims[0]['scope'] += ' Changed after packet export.'
+        write_jsonl(group / 'claims.jsonl', claims)
+    elif changed == 'probe':
+        behavior = next(row for row in claims if row['kind'] == 'behavior_test')
+        with (group / behavior['predicate']['probe_path']).open('a') as stream:
+            stream.write('\n# mutation after frozen packet export\n')
+    else:
+        with (dataset.parent / 'annotation/packets.jsonl').open('a') as stream:
+            stream.write('\n')
+    source = write_parent_batch(tmp_path, answers)
+    with pytest.raises(InputError, match='review packet'):
+        prepare.import_parent_batch(dataset, source, tmp_path / 'rejected')
+    assert not (tmp_path / 'rejected').exists()
+
+
+def test_parent_batch_cli_writes_preview_from_external_fixture_answers(parent_repo, tmp_path):
+    dataset, _, _, answers = batch_fixture(parent_repo, tmp_path)
+    source = write_parent_batch(tmp_path, answers)
+    target = tmp_path / 'cli-reviewed'
+    result = subprocess.run([sys.executable, str(SCRIPT), 'import-parent-batch',
+        '--dataset', str(dataset), '--reviews', str(source), '--out', str(target)],
+        text=True, capture_output=True)
+    assert result.returncode == 0, result.stderr
+    assert read_jsonl(target / 'parent_raw_annotations.jsonl') == answers
+    assert read_json(target / 'parent_review_status.json')['evaluation_eligible'] is False
+
+
+@pytest.mark.parametrize('changed', ['source_evidence', 'exported_probe', 'preview', 'run_parent'])
+def test_parent_import_rejects_drifted_preparation_before_copy(parent_repo, tmp_path, changed):
+    dataset, group, _, answers = batch_fixture(parent_repo, tmp_path)
+    if changed == 'source_evidence':
+        packet = read_jsonl(dataset.parent / 'annotation/packets.jsonl')[0]
+        record = next(r for r in packet['source_evidence'][packet['parent_commit']] if r['evidence_path'])
+        (dataset.parent / 'annotation' / record['evidence_path']).write_text('# altered after export\n')
+    elif changed == 'exported_probe':
+        packet = next(r for r in read_jsonl(dataset.parent / 'annotation/packets.jsonl') if r['probe'])
+        (dataset.parent / 'annotation' / packet['probe']['path']).write_text('# altered exported probe\n')
+    else:
+        config = read_json(group / 'run.json')
+        if changed == 'preview':
+            config['preview'] = False
+        else:
+            config['parent_commit'] = 'f' * 40
+        write_json(group / 'run.json', config)
+    source = write_parent_batch(tmp_path, answers)
+    with pytest.raises(InputError):
+        prepare.import_parent_batch(dataset, source, tmp_path / 'rejected')
+    assert not (tmp_path / 'rejected').exists()

@@ -408,3 +408,38 @@ contradicted verdict и запись passed только после cleanup. У�
 Следующий этап: общий resolver для raw annotations/adjudications и parent batch
 import, который сохраняет оба ответа, disagreement и history. Проверять только
 synthetic fixtures до получения настоящих ответов; реальный пакет остаётся пустым.
+
+## Десятый этап: двойной parent-review и история adjudication
+
+Гипотеза: для реального parent-review недостаточно экспортировать две формы —
+importer должен сохранять оба ответа, не скрывать disagreement и не подменять
+полный denominator количеством ответивших. Добавлен import-parent-batch с общим
+resolver, извлечённым из существующего annotate-import без изменения его правил.
+Legacy import-parent сохраняет ограничение одного ответа на claim и использует
+тот же core. Все originals, полный adjudication chain и точные bytes batch сохраняются.
+
+Неразрешённое разногласие либо последний unresolved adjudication не создают receipt.
+Supported behavior adjudication требует independent_test так же, как первичный ответ.
+Coverage human double-review считается по полному candidate population; отдельно
+проверяется выполнение ранее назначенных вторых reviews. 20% произвольных двойных
+ответов не закрывают невыполненные assigned items. Preview и eligibility не меняются.
+Повторный импорт поверх reviewed dataset запрещён, даже когда старые uncertain
+ответы не создали receipts: исходные решения нельзя молча перезаписать.
+
+Independent review gpt-6.1-sol подтвердил основную логику, но воспроизвёл пропуск
+hash проверки экспортированного source evidence. Дополнительные failing tests
+выявили прием preview=false и несовпадающего run parent. Исправлены проверки
+preview/parent, claims, обеих копий probes, parent evidence и assignments до output.
+Evidence: parent-batch-integrity-before.log (3 failures до исправления).
+
+Финальные focused проверки: 108 passed; ruff и mypy passed. Включены реальный CLI
+на synthetic fixture, agreement/disagreement, reopening adjudication, неверные IDs,
+child decisions, неполный population, source/probe drift и защита прежних originals.
+Никакой synthetic ответ не импортировался в реальную выборку. Read-only аудит её
+материалов подтвердил 63 группы, 630 claims, 389 parent source files, 63 probes,
+630 пустых parent forms и 0 receipts/admitted. Данные проверки и ограничения
+в parent-batch-real-preparation-audit.json; инструкция parent-review обновлена.
+
+Следующие шаги: полный suite на новом неизменном HEAD; обновить локальный ZIP
+parent-review актуальной инструкцией, сохраняя все исходные blank assignments.
+После этого продолжить научный аудит и воспроизводимость результатов.
