@@ -1,0 +1,25 @@
+import hashlib,json,re,subprocess,urllib.parse
+from pathlib import Path
+base=Path('reports/research-20261029/parent-function-image-v2')
+pin='cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4'
+def inspect(name):return json.loads(subprocess.check_output(['docker','image','inspect',name]))[0]
+original=inspect('cami-parent-function:20261029')
+assert pin in original['RepoDigests']
+command=['docker','build','--pull=false','-f','docker/Dockerfile.parent-function-v2','-t','cami-parent-function:20261029-v2','.']
+with (base/'build-local-tag.log').open('x') as log:result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)
+assert result.returncode==0
+assert inspect('cami-parent-function:20261029')['Id']==original['Id']
+new=inspect('cami-parent-function:20261029-v2')
+assert new['RootFS']['Layers'][:-1]==original['RootFS']['Layers']
+assert len(new['RootFS']['Layers'])==len(original['RootFS']['Layers'])+1
+(base/'image-inspect.json').write_text(json.dumps([new],indent=2)+'\n')
+(base/'base-image-inspect.json').write_text(json.dumps([original],indent=2)+'\n')
+for path in (base/'build.log',base/'build-local-tag.log'):
+ assert not any(urllib.parse.urlparse(url).username for url in re.findall(r'https?://[^\s]+',path.read_text()))
+code='import sys,json,importlib.util,importlib.metadata; print(json.dumps({"python":sys.version.split()[0],"dependencies":{n:importlib.metadata.version(n) for n in ("attrs","py","packaging")},"pytest_present":importlib.util.find_spec("pytest") is not None,"_pytest_present":importlib.util.find_spec("_pytest") is not None}))'
+runtime=json.loads(subprocess.check_output(['docker','run','--rm','--pull','never','--network','none','--read-only','--user','65534:65534','--cap-drop','ALL','--security-opt','no-new-privileges',new['RepoDigests'][0],'python','-I','-B','-c',code]))
+assert runtime=={'python':'3.9.25','dependencies':{'attrs':'23.2.0','py':'1.11.0','packaging':'26.0'},'pytest_present':False,'_pytest_present':False}
+(base/'runtime.json').write_text(json.dumps(runtime,indent=2)+'\n')
+manifest={'image':new['RepoDigests'][0],'base_image':pin,'base_tag_before_after_same':True,'base_layers_unchanged':True,'extra_layers':1,'command':command,'runtime':runtime,'dockerfile_sha256':hashlib.sha256(Path('docker/Dockerfile.parent-function-v2').read_bytes()).hexdigest(),'build_driver_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'files':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in base.iterdir() if p.is_file()}}
+(base/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+print(manifest['image']);print(runtime)

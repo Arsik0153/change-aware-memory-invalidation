@@ -1,0 +1,18 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.parent-function-v2
+#1 transferring dockerfile: 258B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4
+#2 ERROR: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+------
+ > [internal] load metadata for docker.io/library/cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4:
+------
+Dockerfile.parent-function-v2:1
+--------------------
+   1 | >>> FROM cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4
+   2 |     USER root
+   3 |     RUN pip install --no-cache-dir --disable-pip-version-check packaging==26.0
+--------------------
+ERROR: failed to build: failed to solve: cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4: failed to resolve source metadata for docker.io/library/cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed

@@ -146,3 +146,17 @@ hashes проверены, source snapshots clean и совпали. V1 сохр
 не независимый подтверждающий эксперимент. Все21parents и3повтора сохраняются;
 неуспешный parent не исключён. Новый output будет отдельным, исходный protocol v1
 и результаты не перезаписываются. Стандартный pytest validator остаётся прежним.
+
+Image v2 собран:
+`cami-parent-function@sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6`.
+BuildKit не разрешил unpublished local digest как FROM и попытался обратиться к
+registry. Неудачный build log сохранён. Для локальной сборки использован tag v1
+с проверкой его точного digest до и после и полного prefix RootFS layers; у v2
+ровно один дополнительный слой. Проверенный runtime добавил только packaging26.0,
+Python/attrs/py прежние,pytest/_pytest по-прежнему отсутствуют. Воспроизводимый
+build driver и image inspections сохранены в parent-function-image-v2.
+
+Driver сохраняет оба frozen dependency profiles. Новая metadata packaging допускается
+только при явном v2 protocol; её отсутствие или незаявленное наличие отклоняется.
+Focused suite после этого изменения:44passed,ruff passed. Все21parents будут
+повторены с --protocol examples/parent_function_diagnostics/pytest_protocol_v2.json.

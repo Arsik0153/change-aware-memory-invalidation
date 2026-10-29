@@ -1,0 +1,39 @@
+{
+  "image": "cami-parent-function@sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6",
+  "base_image": "cami-parent-function@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4",
+  "base_tag_before_after_same": true,
+  "base_layers_unchanged": true,
+  "extra_layers": 1,
+  "command": [
+    "docker",
+    "build",
+    "--pull=false",
+    "-f",
+    "docker/Dockerfile.parent-function-v2",
+    "-t",
+    "cami-parent-function:20261029-v2",
+    "."
+  ],
+  "runtime": {
+    "python": "3.9.25",
+    "dependencies": {
+      "attrs": "23.2.0",
+      "py": "1.11.0",
+      "packaging": "26.0"
+    },
+    "pytest_present": false,
+    "_pytest_present": false
+  },
+  "dockerfile_sha256": "87e38bf64d6f569a97d0c834fc0bf9d9b7685e39b30a7dbdeb03ad7ddef8e9dd",
+  "build_driver_sha256": "1525e1596c1262cdd7c818ccb773a0adce93ba12addbc37e42d35500252608bc",
+  "files": {
+    "base-image-inspect.json": "8da48ca640482cf795119d0e96e78bcda5f46935c71e7ef1efdbe58564dc6cc7",
+    "runtime.json": "a9271e3097af05fd5a04bc28c6cc0cc367631e6db852812e3623c469ea44504d",
+    "build_driver.py.txt": "1525e1596c1262cdd7c818ccb773a0adce93ba12addbc37e42d35500252608bc",
+    "build.log": "0bea53053098b2b9334ed1b2d37d6e0b7fffdb7afc46543f522767e65b45666b",
+    "image-inspect.json": "efeef473d383242e6ad4df873d31e85e0c243c0b8058edb9e9e8353f0ebd13f9",
+    "build-local-tag.log": "292dd4a461fd79e096e54631523334a6800b7bceb7be6db6dd8799fbb2f32d4c"
+  },
+  "invocation_log": "../parent-function-build-v2.log",
+  "invocation_log_sha256": "1d9b8772e2debd5c721f6087f4feca4a0f8545bc43c04c936e1e4a4cad4c0d2b"
+}

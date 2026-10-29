@@ -22,6 +22,8 @@ from scripts.verify_cami import source_snapshot
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / 'examples/parent_function_diagnostics/pytest_protocol.json'
 RUNNER = ROOT / 'scripts/parent_function_runner.py'
+BASE_DEPENDENCIES = {'attrs': '23.2.0', 'py': '1.11.0'}
+SUPPORTED_DEPENDENCIES = (BASE_DEPENDENCIES, {**BASE_DEPENDENCIES, 'packaging': '26.0'})
 
 
 def prepare(parents_path, candidates, protocol):
@@ -29,7 +31,7 @@ def prepare(parents_path, candidates, protocol):
     if (plan['parent_inputs_sha256'] != file_hash(parents_path)
             or plan['probe_sha256'] != PROBE_SHA256 or plan['entry_point'] != 'test_frozen_case'
             or plan['target_module'] != '_pytest.compat' or plan['target_function'] != 'safe_getattr'
-            or plan['python_version'] != '3.9.25' or plan['dependencies'] != {'attrs': '23.2.0', 'py': '1.11.0'}
+            or plan['python_version'] != '3.9.25' or plan['dependencies'] not in SUPPORTED_DEPENDENCIES
             or type(plan['repetitions']) is not int or plan['repetitions'] != 3):
         raise InputError('Diagnostic plan differs from frozen inputs or execution contract')
     parents = load_jsonl(parents_path, ParentInput, unique='group_id')
@@ -57,7 +59,8 @@ def prepare(parents_path, candidates, protocol):
     return plan, prepared
 
 
-def classify(process, expected_source_hash, expected_origins):
+def classify(process, expected_source_hash, expected_origins, dependencies=None):
+    dependencies = BASE_DEPENDENCIES if dependencies is None else dependencies
     markers = [line.removeprefix(b'CAMI_FUNCTION_RESULT=') for line in process.stdout.splitlines()
                if line.startswith(b'CAMI_FUNCTION_RESULT=')]
     if process.returncode != 0 or len(markers) != 1:
@@ -69,7 +72,7 @@ def classify(process, expected_source_hash, expected_origins):
         if (type(result.get('schema_version')) is not int or result['schema_version'] != 1
                 or result['execution_mode'] != 'direct_frozen_function' or result['python_version'] != '3.9.25'
                 or result['python_flags'] != {'isolated': 1, 'optimize': 0, 'dont_write_bytecode': 1}
-                or result['dependencies'] != {'attrs': '23.2.0', 'py': '1.11.0'}
+                or result['dependencies'] != dependencies
                 or result['probe_sha256'] != PROBE_SHA256 or result['preloaded_framework_modules'] != []):
             raise ValueError('Execution contract mismatch')
         if result['status'] == 'technical_error':
@@ -93,7 +96,7 @@ def classify(process, expected_source_hash, expected_origins):
         return {'status': 'technical_error', 'reason': 'invalid_attestation', 'error': str(error)}
 
 
-def observe(snapshot, profile, probe, output):
+def observe(snapshot, profile, probe, output, *, dependencies=None):
     blobs = snapshot.by_path()
     expected_source = blobs['src/_pytest/compat.py'].content_hash
     origins = {'/repo/' + b.path: b.content_hash for b in snapshot.blobs if b.content is not None}
@@ -118,7 +121,7 @@ def observe(snapshot, profile, probe, output):
             try:
                 process = subprocess.run(command, capture_output=True, timeout=profile.timeout_seconds)
                 stdout, stderr = process.stdout, process.stderr
-                outcome = classify(process, expected_source, origins)
+                outcome = classify(process, expected_source, origins, dependencies)
                 outcome['exit_code'] = process.returncode
             except subprocess.TimeoutExpired as error:
                 stdout, stderr = error.stdout or b'', error.stderr or b''
@@ -174,7 +177,8 @@ def check(parents, candidates, image, output, protocol=PROTOCOL):
             try:
                 snapshot = read_snapshot(RepoLocation(repo_id='pytest', path=parent.repo_path,
                                          source_roots=parent.source_roots), parent.parent_commit)
-                attempts = observe(snapshot, profile, within(base, claim.predicate.probe_path), target)
+                attempts = observe(snapshot, profile, within(base, claim.predicate.probe_path), target,
+                                   dependencies=plan['dependencies'])
                 row.update(status='attempts_recorded', attempts=len(attempts),
                            outcomes=dict(Counter(a['status'] for a in attempts)))
             except (ResourceError, InputError, OSError, KeyError, subprocess.SubprocessError) as error:
@@ -212,5 +216,6 @@ if __name__ == '__main__':
     parser.add_argument('--candidates', type=Path, required=True)
     parser.add_argument('--image', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--protocol', type=Path, default=PROTOCOL)
     args = parser.parse_args()
-    check(args.parents.resolve(), args.candidates.resolve(), args.image, args.out.resolve())
+    check(args.parents.resolve(), args.candidates.resolve(), args.image, args.out.resolve(), args.protocol.resolve())

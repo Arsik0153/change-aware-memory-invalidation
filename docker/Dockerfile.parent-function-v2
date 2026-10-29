@@ -1,0 +1,5 @@
+# Verify local tag digest and inherited layers with the recorded build driver.
+FROM cami-parent-function:20261029
+USER root
+RUN pip install --no-cache-dir --disable-pip-version-check packaging==26.0
+USER 65534:65534

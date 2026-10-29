@@ -25,7 +25,13 @@ def main():
     try:
         if result['python_flags'] != {'isolated': 1, 'optimize': 0, 'dont_write_bytecode': 1}:
             raise RuntimeError('Requires isolated Python with assertions enabled and bytecode writes disabled')
-        result['dependencies'] = {name: importlib.metadata.version(name) for name in ('attrs', 'py')}
+        result['dependencies'] = {}
+        for name in ('attrs', 'py', 'packaging'):
+            try:
+                result['dependencies'][name] = importlib.metadata.version(name)
+            except importlib.metadata.PackageNotFoundError:
+                if name != 'packaging':
+                    raise
         preloaded = [n for n in sys.modules if n in ('pytest', '_pytest') or n.startswith(('_pytest.', 'pytest.'))]
         result['preloaded_framework_modules'] = sorted(preloaded)
         if preloaded:

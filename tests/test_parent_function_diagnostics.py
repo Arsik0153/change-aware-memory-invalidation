@@ -26,11 +26,11 @@ def payload():
                            '_pytest.compat': {'path': path, 'sha256': 'a' * 64}}}
 
 
-def classify(data, returncode=0):
+def classify(data, returncode=0, dependencies=None):
     process = subprocess.CompletedProcess([], returncode,
         b'CAMI_FUNCTION_RESULT=' + json.dumps(data).encode() + b'\n', b'')
     return checker.classify(process, 'a' * 64, {'/repo/src/_pytest/compat.py': 'a' * 64,
-                                              '/repo/src/_pytest/__init__.py': 'b' * 64})
+                                              '/repo/src/_pytest/__init__.py': 'b' * 64}, dependencies)
 
 
 @pytest.mark.parametrize('status', ['returned', 'assertion_failed'])
@@ -111,7 +111,8 @@ def test_parent_only_orchestration_preserves_partial_progress(repo, monkeypatch,
     parents, base, protocol, parent = prepare_fixture(repo)
     monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
 
-    def observe(snapshot, profile, probe, output):
+    def observe(snapshot, profile, probe, output, *, dependencies):
+        assert dependencies == checker.BASE_DEPENDENCIES
         assert snapshot.revision == parent
         assert b'child must not run' not in snapshot.by_path()['src/_pytest/compat.py'].content
         assert profile.python_version == '3.9.25'
@@ -175,10 +176,19 @@ def test_cleanup_timeout_retains_each_attempt_and_partial_stdout(repo, monkeypat
 def test_all_technical_errors_are_not_reported_as_successful_observations(repo, monkeypatch):
     parents, base, protocol, _ = prepare_fixture(repo)
     monkeypatch.setattr(checker, 'check_docker', lambda profile: None)
-    monkeypatch.setattr(checker, 'observe', lambda *args: [{'status': 'technical_error'}] * 3)
+    monkeypatch.setattr(checker, 'observe', lambda *args, **kwargs: [{'status': 'technical_error'}] * 3)
     result = checker.check(parents, base.parent, IMAGE, repo.root.parent / 'out', protocol)
     assert result['status'] == 'complete'
     assert result['summary']['container_attempts'] == 3
     assert result['summary']['groups_with_all_calls_returned'] == 0
     assert result['summary']['groups_with_no_function_observation'] == 1
     assert result['summary']['groups_with_incomplete_attempt_schedule'] == 0
+
+
+def test_dependency_profile_is_bound_to_actual_runtime_metadata():
+    data = payload()
+    upgraded = {**checker.BASE_DEPENDENCIES, 'packaging': '26.0'}
+    assert classify(data, dependencies=upgraded)['status'] == 'technical_error'
+    data['dependencies'] = upgraded
+    assert classify(data, dependencies=upgraded)['status'] == 'returned'
+    assert classify(data)['status'] == 'technical_error'

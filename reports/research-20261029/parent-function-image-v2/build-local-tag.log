@@ -1,0 +1,35 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.parent-function-v2
+#1 transferring dockerfile: 274B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/cami-parent-function:20261029
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 110B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/cami-parent-function:20261029@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4
+#4 resolve docker.io/library/cami-parent-function:20261029@sha256:434d7f8ef1728a7752fc21bcd6bcabd56e6df8f2daced060f4d36fb9fb7bf8a4 0.0s done
+#4 DONE 0.0s
+
+#5 [2/2] RUN pip install --no-cache-dir --disable-pip-version-check packaging==26.0
+#5 0.742 Collecting packaging==26.0
+#5 0.770   Downloading packaging-26.0-py3-none-any.whl (74 kB)
+#5 0.776      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.4/74.4 kB 22.8 MB/s eta 0:00:00
+#5 0.861 Installing collected packages: packaging
+#5 0.927 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#5 0.927 Successfully installed packaging-26.0
+#5 DONE 1.0s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:1add33ba322945a4c6c963098411305be0bd18142a21058417fcba49f08a97ad done
+#6 exporting config sha256:d9fb99373d03346505b0bd50ab94a85537268817f9a6616406baaf9c476784f0 done
+#6 exporting attestation manifest sha256:c6fcc3ed8dd11c0e3ef231938f8e09ecbdb811e341d7fbdd4412f961812e292a done
+#6 exporting manifest list sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6 done
+#6 naming to docker.io/library/cami-parent-function:20261029-v2 done
+#6 unpacking to docker.io/library/cami-parent-function:20261029-v2 0.0s done
+#6 DONE 0.2s

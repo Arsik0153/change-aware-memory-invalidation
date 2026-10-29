@@ -1,0 +1,60 @@
+[
+  {
+    "Id": "sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6",
+    "RepoTags": [
+      "cami-parent-function:20261029-v2"
+    ],
+    "RepoDigests": [
+      "cami-parent-function@sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6"
+    ],
+    "Comment": "buildkit.dockerfile.v0",
+    "Created": "2026-10-29T16:55:28.356072836Z",
+    "Config": {
+      "User": "65534:65534",
+      "Env": [
+        "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "LANG=C.UTF-8",
+        "GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568",
+        "PYTHON_VERSION=3.9.25",
+        "PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee84d2a40dae404a99303e3f97701c10966c91834",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONNOUSERSITE=1"
+      ],
+      "Cmd": [
+        "python3"
+      ],
+      "WorkingDir": "/tmp"
+    },
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Size": 196322078,
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:d7c97cb6f1fe7cae982649e9f55efe201212e8acaa64bd668c083b204e4efd4c",
+        "sha256:4f237755fbae41472cb9e0f874fa97abb8d684f8fdcc6bd485edc8b6267a9c93",
+        "sha256:298992e09a0315a8f26375a553f216f5fad3decf392956fd2de5ef7aa1f8dfea",
+        "sha256:c8f6b54339a8b44071408bd33dd69a9dc7db2ed9cdbf7c533ba09efecda5f33f",
+        "sha256:48f93b81b4e130d7787f890ea49d27b981a0ec2e37ebf763819edcf7c793bba9",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:1710dfbdd62a629ab09f1aa53928ef04be9f15e3872d2b2ccd84cd028521303a"
+      ]
+    },
+    "Metadata": {
+      "LastTagTime": "2026-10-29T16:55:28.484818851Z"
+    },
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:bc0bbfe94845de46b78cfb6fed0eeabea6ea4c326c75ef42dd9c14d1a0dbb8b6",
+      "size": 856
+    },
+    "Identity": {
+      "Build": [
+        {
+          "Ref": "7ujqoxef35puwz09qe9zm6uzj",
+          "CreatedAt": "2026-10-29T16:55:28.511964847Z"
+        }
+      ]
+    }
+  }
+]
