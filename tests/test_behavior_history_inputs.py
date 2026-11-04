@@ -5,11 +5,15 @@ from cami.inputs import check_inputs
 from scripts.check_behavior_history import PLAN, create_fixture, prepare_inputs
 
 
-def test_frozen_behavior_inputs_keep_synthetic_truth_out_of_public_masks(tmp_path):
-    plan = read_json(PLAN)
+@pytest.mark.parametrize('protocol,values', [
+    (PLAN, [1, 2, 2, 1, 3, 1, 1]),
+    (PLAN.with_name('recovery_protocol.json'), [1, 3, 2, 1, 1]),
+])
+def test_frozen_behavior_inputs_keep_synthetic_truth_out_of_public_masks(tmp_path, protocol, values):
+    plan = read_json(protocol)
     parent, children, observations = create_fixture(tmp_path, plan)
     configs = prepare_inputs(tmp_path, plan, parent, children, observations)
-    assert [row["value"] for row in observations] == [1, 2, 2, 1, 3, 1, 1]
+    assert [row["value"] for row in observations] == values
     for name, path in configs.items():
         inputs = check_inputs(path)
         assert inputs.config.dataset_kind == "synthetic"

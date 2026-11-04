@@ -141,6 +141,9 @@ def verify_run(run: Path, variant: dict, children: list[str], observations: list
         selection, state = selections[commit], states[commit]
         selected = commit in wanted
         assert selection["selected"] == selected
+        reasons = plan.get("expected_selection_reasons", {}).get(variant["id"], {})
+        if expected["step"] in reasons:
+            assert selection["reasons"] == reasons[expected["step"]], selection
         if selected:
             result = validations[commit]
             assert result["verdict"] == expected["label"] and not result["cache_hit"]
@@ -174,14 +177,14 @@ def verify_run(run: Path, variant: dict, children: list[str], observations: list
             "availability_mismatches": mismatches, "states": rows}
 
 
-def run(out: Path) -> None:
+def run(out: Path, protocol: Path = PLAN) -> None:
     out = out.resolve()
     before = source_snapshot(ROOT)
     assert not before["source_status"], "Commit source before the experiment"
     reserve(out)
-    plan = read_json(PLAN)
+    plan = read_json(protocol)
     write_json(out / "protocol.json", plan)
-    manifest = {"status": "running", "source_before": before, "protocol_sha256": file_hash(PLAN),
+    manifest = {"status": "running", "source_before": before, "protocol_sha256": file_hash(protocol),
                 "completed_runs": [], "synthetic": True, "independent_human_labels": False}
     write_json(out / "manifest.json", manifest)
     try:
@@ -227,7 +230,7 @@ def run(out: Path) -> None:
             write_json(out / "results.json", results)
             write_json(out / "manifest.json", manifest)
         assert all(file_hash(out / name) == expected for name, expected in input_hashes.items())
-        assert file_hash(PLAN) == manifest["protocol_sha256"]
+        assert file_hash(protocol) == manifest["protocol_sha256"]
         assert git(out / "repo", "status", "--porcelain") == ""
         manifest["source_after"] = source_snapshot(ROOT)
         assert manifest["source_after"] == before
@@ -246,4 +249,6 @@ def run(out: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
-    run(parser.parse_args().out)
+    parser.add_argument("--protocol", type=Path, default=PLAN)
+    args = parser.parse_args()
+    run(args.out, args.protocol)
