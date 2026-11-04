@@ -1,0 +1,24 @@
+{
+  "name": "memory_lookup",
+  "description": "Retrieve source-linked origin memory by name, path or text tokens. Results state their freshness. Withheld summaries are not usable facts. After editing code, query again before relying on current memory. Native code search/read tools remain necessary.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 5
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "additionalProperties": false
+  }
+}

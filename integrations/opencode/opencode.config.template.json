@@ -1,0 +1,33 @@
+{
+  "model": "openai/gpt-6.1-sol#high",
+  "warming": false,
+  "update": "disable",
+  "share": "disabled",
+  "mcp": {
+    "servers": {
+      "research_memory": {
+        "type": "local",
+        "command": [
+          "/ABS/CAMI/.venv/bin/python",
+          "/ABS/STAGE/memory_adapter.py",
+          "serve",
+          "--binding",
+          "/ABS/PREPARED/binding.json",
+          "--trace",
+          "/ABS/OUTSIDE_REPO/memory-trace.jsonl"
+        ],
+        "cwd": "/ABS/TARGET_REPO",
+        "environment": {
+          "PYTHONPATH": "/ABS/CAMI/src",
+          "PYTHONDONTWRITEBYTECODE": "1"
+        },
+        "codemode": false,
+        "timeout": {
+          "startup": 10000,
+          "catalog": 10000,
+          "execution": 120000
+        }
+      }
+    }
+  }
+}

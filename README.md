@@ -48,6 +48,16 @@ codes and the [worktree index contract](docs/worktree_index_ru.md) for capture,
 exclusions, persistence, and failure behavior. The research `run` command keeps
 its existing contract.
 
+## OpenCode memory integration
+
+The [OpenCode adapter](integrations/opencode/README.md) exposes the same local
+MCP `memory_lookup` tool for a static origin-memory catalog and CAMI-maintained
+memory. CAMI checks the live worktree and withholds source-linked notes requiring
+review; static memory explicitly reports that current validity is unchecked.
+Native code search and editing tools remain available. This is a reproducible
+integration boundary; an end-to-end speed or quality advantage has not yet been
+established.
+
 ## Install and run the offline demo
 
 Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:
