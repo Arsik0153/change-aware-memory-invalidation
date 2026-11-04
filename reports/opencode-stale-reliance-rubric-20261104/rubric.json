@@ -1,0 +1,288 @@
+{
+  "axes": {
+    "correction_after_native_inspection": {
+      "not_sufficient": [
+        "Native read happened somewhere later",
+        "Task eventually passed",
+        "Memory requery alone without native inspection",
+        "Final source differs but the transition evidence is missing"
+      ],
+      "positive_requires": [
+        "Prior visible reliance statement or stale-consistent application action is identified.",
+        "Subsequent native read/search/test output supplies relevant current evidence, with exact quote and source binding.",
+        "A later public statement rejects/revises the fact or an observable action replaces the stale application with one consistent with that native evidence.",
+        "All three events have a supported order; preserve the earlier positive label rather than erase it."
+      ],
+      "qualification": "Observed revision is not a claim about an internal belief update or that native inspection caused it.",
+      "values": [
+        "explicit_retraction_after_native_inspection",
+        "observable_revision_consistent_with_native_inspection",
+        "not_observed_in_complete_visible_record",
+        "unassessable",
+        "not_applicable"
+      ]
+    },
+    "explicit_reliance": {
+      "not_sufficient": [
+        "Mentioning or quoting old text without endorsement",
+        "Planning to consult memory before seeing a fact",
+        "Saying memory may be stale",
+        "Rejection/correction of the old fact",
+        "Private/visible reasoning block used as a proxy for internal cognition"
+      ],
+      "positive_requires": [
+        "Assistant public text endorses or applies the same stale atomic fact as current, or explicitly uses it to justify a proposed action/conclusion.",
+        "Exact quote and fact linkage, with source timing/assessability and competing evidence recorded."
+      ],
+      "qualification": "A statement citing memory is a visible self-report, not proof of a counterfactual causal effect.",
+      "source_attribution": [
+        "explicit_self_report_memory_source",
+        "content_reliance_source_unattributed",
+        "explicit_other_source",
+        "unknown"
+      ],
+      "values": [
+        "visible_explicit_reliance_statement",
+        "not_observed_in_complete_visible_record",
+        "unassessable",
+        "not_applicable"
+      ]
+    },
+    "exposure": {
+      "not_sufficient": [
+        "Only origin file changed",
+        "Reviewer-only catalog includes old text",
+        "Record merely withheld with subject/ID/reason",
+        "Tool was invoked but failed or output is missing"
+      ],
+      "positive_requires": [
+        "Exact stale atomic fact appears in an authenticated model-visible returned tool response.",
+        "Staleness basis verified for the time/scope, and response content/record ID binds to catalog or valid compact audit receipt."
+      ],
+      "values": [
+        "confirmed_stale_literal_exposed",
+        "withheld_without_stale_literal",
+        "no_stale_literal_found_in_verified_returned_channel",
+        "no_external_memory_call",
+        "memory_call_failed_or_uncompleted",
+        "unassessable"
+      ]
+    },
+    "observable_action": {
+      "action_kinds": [
+        "failed_patch_using_obsolete_context",
+        "applied_patch_using_obsolete_identifier_or_signature",
+        "attempted_obsolete_call",
+        "obsolete_command_or_path_use",
+        "final_answer_endorsing_stale_fact",
+        "other_exactly_documented_action"
+      ],
+      "not_sufficient": [
+        "A similar failure message",
+        "Generic unsuccessful task outcome",
+        "Native grep/read of the old name for verification",
+        "Deliberate negative/compatibility test using an obsolete API",
+        "Action works under both old and current facts without specific obsolete dependence"
+      ],
+      "positive_requires": [
+        "Exact tool input/diff/visible command or final statement matches the stale atomic fact in an intended current application.",
+        "Known temporal relation: exposure precedes action, or attribution is explicitly non-memory/unknown.",
+        "Retain attempted action and its result separately; failed patch/call is still a visible attempt."
+      ],
+      "qualification": "Consistency is a descriptive association. Report alternate sources/intent and do not rename it memory-caused action or behavioral incorrectness.",
+      "values": [
+        "action_consistent_with_stale_literal",
+        "investigation_or_negative_test_only",
+        "not_observed_in_complete_visible_record",
+        "unassessable",
+        "not_applicable"
+      ]
+    },
+    "staleness_basis": {
+      "rules": [
+        "Primary analysis uses authenticated literal comparisons in the supplied scope. A 2400-character prefix comparison establishes only that prefix, not complete-body or behavioral equivalence.",
+        "A source hash must be bound to actual source bytes/checkpoint; a hash of rendered read output is not a full-file hash.",
+        "Typed predicates require an explicit supplied frozen reference decision; do not invent one.",
+        "Withheld catalog content visible only to the reviewer is not content exposed to the trial agent."
+      ],
+      "values": [
+        "verified_obsolete_literal",
+        "verified_absent_subject_literal",
+        "supplied_verified_typed_predicate",
+        "same_literal_in_compared_scope",
+        "changed_file_only",
+        "withheld_summary_only",
+        "unknown_source_state",
+        "unsupported_origin_binding"
+      ]
+    }
+  },
+  "coverage_and_aggregation": {
+    "all_attempts": "Create roster before review from frozen plan plus attempt/terminal/partial records. Missing or failed trials retain a row and reason; active trials are not inspected until terminal snapshot/freeze.",
+    "correction": "Correction is reported conditional on a prior visible positive episode, retaining counts of initial reliance/action and subsequent revision.",
+    "counts": "Report each axis separately by arm and stage: attempted roster, model admitted, assessable trials, positive trials, positive episodes, unknown/unassessable, not applicable and coverage gaps. Never collapse axes into one stale-use number.",
+    "coverage_status": [
+      "complete_visible_record_reviewed",
+      "partial_visible_record_reviewed",
+      "no_model_admitted",
+      "missing_or_redacted_evidence",
+      "integrity_failure",
+      "oversize_unassessable",
+      "planned_unattempted"
+    ],
+    "denominators": "Show positive/Nattempted as an observed-evidence count with unknowns separately, plus positive/Nassessable. Plain external-memory exposure is not applicable, not a zero measure of all stale knowledge.",
+    "non_independence": "Repeated calls/records/episodes within trial/task/repetition are dependent observations; do not treat them as independent samples or sum overlapping axes.",
+    "prohibited_claims": [
+      "Exposure rate as reliance rate",
+      "Unknown as zero",
+      "Memory caused a failure solely because an action is compatible with old text",
+      "Annotation syntax change as proven behavioral API break",
+      "AI majority vote as human/ground-truth validation"
+    ]
+  },
+  "current_stage_activity": {
+    "actual_outcomes_annotated": 0,
+    "docker_calls": 0,
+    "heldout_read": false,
+    "model_calls": 0,
+    "tracked_edits": false,
+    "trial_transcripts_read": 0
+  },
+  "evaluator_identity": {
+    "ground_truth_claim": false,
+    "human": false,
+    "model_training_or_weight_independence": "unverified",
+    "reviewer_kind": "ai_reviewer",
+    "role": "Evidence-backed visible-behavior annotation; not a human evaluation or internal cognition measurement."
+  },
+  "evidence_contract": {
+    "annotation_required_fields": [
+      "trial_packet_id",
+      "fact_or_episode_id",
+      "reviewer_metadata",
+      "rubric_sha256",
+      "packet_sha256",
+      "coverage_status",
+      "axis_labels",
+      "evidence_ids",
+      "contradicting_evidence_ids",
+      "source_attribution",
+      "alternative_explanations",
+      "limitations",
+      "causal_effect_claim"
+    ],
+    "causal_effect_claim_fixed": "not_established_by_this_review",
+    "quote": {
+      "limits": "Each quote at most800characters; up to3 contiguous separately located quotes per event. Select only the necessary supporting/contradicting passage. Never concatenate separated text as one quote. Preserve a full immutable transcript pointer for context.",
+      "locator": "JSON Pointer into authenticated messages.json or one-based JSONL line plus JSON Pointer. Quote offsets are zero-based Unicode codepoints into the identified parsed string, not bytes. Hash raw artifact and UTF-8 parsed string separately.",
+      "null_ids": "If a public artifact has no message/tool ID, use null plus reason and the exact artifact locator; never invent an ID.",
+      "required_fields": [
+        "evidence_id",
+        "artifact_relative_path",
+        "artifact_sha256",
+        "locator",
+        "message_id",
+        "tool_call_id",
+        "event_role",
+        "exact_quote",
+        "parsed_string_sha256",
+        "char_start",
+        "char_end",
+        "truncation_status"
+      ]
+    },
+    "stale_fact": {
+      "hash_scope_values": [
+        "complete_regular_source_file",
+        "authenticated_literal_excerpt",
+        "rendered_tool_output_only",
+        "unknown"
+      ],
+      "null_hash_rule": "If native output is partial, retain output/excerpt hash and exact line/character scope; full source SHA256 is null. Do not label display hash a module hash.",
+      "required_fields": [
+        "fact_id",
+        "scope",
+        "subject",
+        "memory_record_id",
+        "memory_exposure_evidence_id",
+        "stale_atomic_fact_quote",
+        "staleness_assessment",
+        "origin_source",
+        "contemporaneous_source",
+        "comparison_evidence_ids"
+      ],
+      "source_fields": [
+        "path",
+        "sha256_or_null",
+        "hash_scope",
+        "snapshot_or_reset_artifact_sha256_or_null",
+        "excerpt_sha256_or_null",
+        "evidence_id_or_null",
+        "unknown_reason_or_null"
+      ]
+    },
+    "timing": {
+      "ordering_basis": [
+        "tool_intervals_and_message_dependency",
+        "unambiguous_message_dependency",
+        "unknown"
+      ],
+      "required_fields": [
+        "event_start_or_null",
+        "event_end_or_null",
+        "ordering_basis",
+        "write_phase",
+        "preceding_potential_write_call_ids",
+        "overlapping_potential_write_call_ids",
+        "source_checkpoint_evidence_id_or_null"
+      ],
+      "rules": [
+        "Unknown/shell/executing tools count as potential writes from start; a failed tool may have partially written.",
+        "Read-only tools are classified by frozen tool catalog, not guessed from success or command text.",
+        "Concurrent/overlapping tools and missing timestamps do not establish before/after from JSON serialization order alone.",
+        "Canonical reset source supports comparisons only before any prior/overlapping potential write, unless a contemporaneous source checkpoint proves the relevant state."
+      ],
+      "write_phase": [
+        "before_first_possible_write",
+        "after_possible_write_with_contemporaneous_checkpoint",
+        "after_possible_write_without_checkpoint",
+        "overlapping_or_unknown"
+      ]
+    }
+  },
+  "language": "en",
+  "non_inference_rules": [
+    "Do not infer private reasoning, attention, remembered internal state or chain of thought. Exclude reasoning/native/encrypted provider fields from packets.",
+    "Exposure does not establish reliance; a compatible action does not establish that memory caused it.",
+    "Changed file, changed literal or changed annotation syntax alone does not prove a false behavioral claim or API break.",
+    "Absence of visible evidence is not zero internal or causal reliance.",
+    "Use the exact source state at the statement/action time; final candidate source cannot stand in for earlier source.",
+    "Preserve attempted, failed, interrupted and partial trials. Never sample only stale-exposed, unsuccessful or static-arm cases.",
+    "Redacted/partial/ambiguous evidence stays unknown; never reconstruct private values or silently substitute historical data."
+  ],
+  "proposed_review_protocol": {
+    "blinding": "Opaque packet IDs and frozen randomized ordering; withhold aggregate scores/arm rankings/gold/evaluator outputs. Preserve backend/trust/freshness text when necessary for faithful evidence: full arm blinding is then impossible and must be disclosed.",
+    "costs": "Extraction/packet construction, review/adjudication model calls, wall/CPU/token/resource/storage costs are offline evaluation infrastructure, recorded separately from trial totals. No free evaluation-cost assumption.",
+    "disagreement": "Retain both original judgments and exact evidence. Report agreement/disagreement per axis; if adjudicating use separately labelled AI adjudication with all original labels retained, never silent human/ground-truth substitution.",
+    "freeze_before_review": [
+      "rubric and extraction implementation hashes",
+      "input roster/snapshot and source evidence inventories",
+      "reviewer model/provider/settings",
+      "packet order seed and packetizer limits",
+      "review count and disagreement procedure"
+    ],
+    "limits": "Never silently truncate a transcript. If a complete public packet cannot fit frozen limits, label oversize_unassessable and retain in denominator until a separate chunking protocol is frozen.",
+    "preferred_reviews": "Two fresh AI review contexts per trial packet, same rubric/prompt/model/settings and evidence schema across arms; no shared previous annotations until both originals are sealed. Root must freeze this choice before calls."
+  },
+  "rubric_id": "opencode-visible-stale-reliance-ai-review-v1",
+  "schema_version": 1,
+  "scope": "Offline AI annotation of public completed/attempted trial transcripts and authenticated source-context evidence. This stage contains no trial annotations.",
+  "status": "design_ready_for_freeze_before_any_outcome_annotation",
+  "units": {
+    "atomic_fact": "A smallest exact source statement, identifier, signature fragment, literal code context or typed predicate with authenticated contemporaneous comparison; not an entire changed file.",
+    "attempt_definition": "Use the frozen controller lifecycle/attempt-start record, not successful model completion. Preserve separate model_admitted and transcript_available flags.",
+    "episode": "One fact plus its specific exposure and subsequent visible evidence chain within a trial. Repeated observations remain linked to the same fact and are not independent samples.",
+    "non_memory": "Plain and memory arms may contain stale-looking actions from native/docs/unknown sources; retain them separately rather than attributing them to external memory.",
+    "roster": "Every registered trial gets a coverage row; every attempted trial stays in attempted denominator. Planned but unattempted trials are listed separately."
+  }
+}

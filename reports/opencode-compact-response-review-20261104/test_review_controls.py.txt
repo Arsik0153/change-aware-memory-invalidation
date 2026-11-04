@@ -1,0 +1,112 @@
+"""Independent small authored controls; no real catalog, model or CAMI execution."""
+
+import copy
+import hashlib
+import importlib.util
+import io
+import json
+from pathlib import Path
+import sys
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[2]
+STAGE = ROOT / "runs/opencode-compact-response-development-20261104"
+sys.path.insert(0, str(STAGE))
+import memory_adapter as candidate  # noqa: E402
+from compact_response import compact_result  # noqa: E402
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, ensure_ascii=True, separators=(",", ":"), allow_nan=False).encode()
+
+
+def digest(value):
+    return hashlib.sha256(canonical(value)).hexdigest()
+
+
+def full():
+    value = {"schema_version": 1, "backend": "static", "catalog_sha256": "a" * 64,
+             "entries": [{"id": "one/exact:id", "origin_source": {"sha256": "b" * 64},
+                          "availability": "unchecked_current", "label": "manual_assertion",
+                          "payload": {"type": "note", "subject": {"path": "src/a.py", "qualname": "f"},
+                                      "note_key": "exact/key", "text": "π\n@header\nfull note", "sources": [{"sha256": "b" * 64}]}}],
+             "withheld": [{"id": "second", "reason": "manual_review_required", "required_action": "review_and_update_note"}],
+             "freshness": "origin only; current validity unchecked"}
+    return {"content": [{"type": "text", "text": canonical(value).decode()}], "isError": False}
+
+
+def independent_verify(result, audit):
+    compact = json.loads(result["content"][0]["text"])
+    receipt = compact.pop("audit_receipt")
+    base = {"content": [{"type": "text", "text": canonical(compact).decode()}], "isError": result["isError"]}
+    assert digest(audit["full_result"]) == audit["receipt_payload"]["full_result_sha256"]
+    assert digest(base) == audit["receipt_payload"]["projection_result_sha256"]
+    assert digest(audit["receipt_payload"]) == receipt == audit["receipt_sha256"]
+    assert digest(result) == audit["model_result_sha256"]
+
+
+def test_independent_hashes_reject_each_single_artifact_tamper():
+    result, audit = compact_result(full())
+    independent_verify(result, audit)
+    for target in ["full", "model", "receipt"]:
+        changed_result, changed_audit = copy.deepcopy(result), copy.deepcopy(audit)
+        if target == "full":
+            changed_audit["full_result"]["isError"] = True
+        elif target == "model":
+            value = json.loads(changed_result["content"][0]["text"])
+            value["entries"][0]["payload"]["text"] += "tamper"
+            changed_result["content"][0]["text"] = canonical(value).decode()
+        else:
+            changed_audit["receipt_payload"]["full_result_sha256"] = "0" * 64
+        with pytest.raises(AssertionError):
+            independent_verify(changed_result, changed_audit)
+
+
+def fake_backend(tmp_path):
+    class FakeBackend:
+        def __init__(self, path):
+            self.binding = {"repo": str(tmp_path / "repo"), "backend": "static", "catalog_sha256": "a" * 64, "state_home": None}
+
+        def lookup(self, query, limit):
+            return json.loads(full()["content"][0]["text"]), {"selected_records": 1, "returned_records": 1, "withheld_records": 1}
+    return FakeBackend
+
+
+def request():
+    return {"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "memory_lookup", "arguments": {"query": "exact"}}}
+
+
+def test_default_full_result_and_trace_equal_installed_baseline(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location("review_installed_baseline", ROOT / "integrations/opencode/memory_adapter.py")
+    baseline = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(baseline)
+    outputs = []
+    for module in [baseline, candidate]:
+        records = []
+        monkeypatch.setattr(module, "Backend", fake_backend(tmp_path))
+        monkeypatch.setattr(module, "trace", lambda path, value: records.append(value))
+        monkeypatch.setattr(module, "cpu", lambda: 0.0)
+        monkeypatch.setattr(module.time, "perf_counter", lambda: 0.0)
+        server = module.Server(tmp_path / "binding", tmp_path / "trace")
+        server.phase = "ready"
+        outputs.append((server.dispatch(request()), records))
+    assert outputs[0] == outputs[1]
+
+
+def test_serve_emits_no_tool_result_when_audit_append_fails(tmp_path, monkeypatch):
+    monkeypatch.setattr(candidate, "Backend", fake_backend(tmp_path))
+    def broken_trace(path, value):
+        if value["event"] == "memory_lookup":
+            raise OSError("authored audit append failure")
+    monkeypatch.setattr(candidate, "trace", broken_trace)
+    messages = [
+        {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-06-18", "clientInfo": {}, "capabilities": {}}},
+        {"jsonrpc": "2.0", "method": "notifications/initialized"}, request(),
+    ]
+    incoming = io.BytesIO(b"".join(canonical(row) + b"\n" for row in messages))
+    outgoing = io.BytesIO()
+    with pytest.raises(OSError, match="authored audit append failure"):
+        candidate.serve(tmp_path / "binding", tmp_path / "trace", incoming, outgoing, response_format="compact")
+    responses = [json.loads(row) for row in outgoing.getvalue().splitlines()]
+    assert [row["id"] for row in responses] == [1]

@@ -1,0 +1,2132 @@
+{
+  "active_trials_inspected": false,
+  "all_assessed_evidence_supported": true,
+  "backend_crosscheck_unsupported_trial_ids": [],
+  "causal_reliance": "not_inferred",
+  "complete_36": false,
+  "complete_body_equivalence": "not_inferred",
+  "completed_trials": 17,
+  "counts": [
+    {
+      "arm": "cami",
+      "assessment": "same_literal_excerpt",
+      "channel": "returned",
+      "observations": 20,
+      "record_kind": "note"
+    },
+    {
+      "arm": "cami",
+      "assessment": "obsolete_literal_excerpt",
+      "channel": "withheld",
+      "observations": 4,
+      "record_kind": "note"
+    },
+    {
+      "arm": "cami",
+      "assessment": "same_literal_excerpt",
+      "channel": "withheld",
+      "observations": 6,
+      "record_kind": "note"
+    },
+    {
+      "arm": "cami",
+      "assessment": "unknown_after_possible_write",
+      "channel": "withheld",
+      "observations": 2,
+      "record_kind": "note"
+    },
+    {
+      "arm": "static",
+      "assessment": "obsolete_literal_excerpt",
+      "channel": "returned",
+      "observations": 4,
+      "record_kind": "note"
+    },
+    {
+      "arm": "static",
+      "assessment": "same_literal_excerpt",
+      "channel": "returned",
+      "observations": 21,
+      "record_kind": "note"
+    },
+    {
+      "arm": "static",
+      "assessment": "unknown_after_possible_write",
+      "channel": "returned",
+      "observations": 2,
+      "record_kind": "note"
+    }
+  ],
+  "coverage_status": "partial_terminal_snapshot",
+  "inputs": {
+    "analyzer_path": "/root/apps/change-aware-memory-invalidation/scripts/analyze_opencode_staleness.py",
+    "analyzer_sha256": "9c675edb2e65c4d499ca5ac4653b1b5f4c9450f81b5d35c39f9e1c81392f3296",
+    "canonical_line_boundary_risks": {
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/origin-and-stage1": [],
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/stage3": []
+    },
+    "canonical_tree_sha256": {
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/origin-and-stage1": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/stage3": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99"
+    },
+    "catalog_path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+    "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+    "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+    "frozen_study_sha256": "de6f5afda7b3d22f404dae76276106308d24d6829b2d8217b2e5adc33e62fd65",
+    "plan_sha256": "5b8c1bc18ae5ac779b08dcb06743860d45ae6b065f4045fe443e47280e6b2e70",
+    "run": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-20261104"
+  },
+  "limitations": [
+    "Only lookups ending before any possible/overlapping mutating tool are source-assessable; shell conservatively counts as possible mutation.",
+    "After possible edits or missing timestamps, source classification remains unknown; no canonical-base substitution for edited source.",
+    "Literal excerpt changes, unchanged excerpts, absent definitions and typed records are separate; neither behavioral truth nor semantic equivalence is inferred.",
+    "Withheld literal comparisons describe origin records not exposed as returned content; they do not prove the withholding policy was incorrect.",
+    "Shared existing analyzer and CPython AST logic, with immutable-tree caching; no independent semantic-binding or model reliance oracle.",
+    "Plain has no external memory tool exposure, not proof that model knowledge is current.",
+    "Unsupported calls/trials stay explicit; assessed-record counts exclude unclassifiable payloads and are not complete totals when unsupported evidence exists."
+  ],
+  "literal_comparison_boundary": "str.splitlines(keepends=True), earliest decorator line, prefix[:2400] characters; text only",
+  "planned_trials": 36,
+  "private_state_read": false,
+  "schema_version": 1,
+  "scope": "Development terminal trials only. Repeated record observations; no causal reliance inference.",
+  "terminal_snapshot_ids": [
+    "r1-plain-s1",
+    "r1-static-s1",
+    "r1-cami-s1",
+    "r1-static-s2",
+    "r1-cami-s2",
+    "r1-plain-s2",
+    "r1-cami-s3",
+    "r1-plain-s3",
+    "r1-static-s3",
+    "r1-plain-s4",
+    "r1-static-s4",
+    "r1-cami-s4",
+    "r2-static-s1",
+    "r2-cami-s1",
+    "r2-plain-s1",
+    "r2-cami-s2",
+    "r2-plain-s2"
+  ],
+  "trials": [
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "c5ef587bedd7c68fa0667878100ecc7099484ea389b3abc83c7fde1b535d4543",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "55ad007ffdc806e752da6997d5b5ddb63b64710e90f23df2d9e65223970fe94c",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "f25c2e3442666844362b9aaa25d8ab45db79bd453bdd7f273eda68df3a42620d",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r1-plain-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 230,
+      "backend_crosscheck": {
+        "lookup_events": 2,
+        "sha256": "2fbb955b93d191113267cff813fb7392c3a0a6072460e65c7bc441b3a023406c",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "c430d17d9be83baffc58f116922f4d7508e5d937de8982753586f9a1f0344fcb",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "channel": "returned",
+          "observations": 2,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-b72f27654121d1cca0325ebc",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        },
+        {
+          "call_id": "call_87e62615f6794aaba588eb89624665d4",
+          "reason": "possible_write_or_missing_timestamps",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7"
+          ],
+          "returned_records": 2,
+          "source_assessable": false,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "00b349ac4e8e7ca3eeb806121826eaa80de502b7a11885b84e6966148bb80fb9",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "current_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "call_id": "call_87e62615f6794aaba588eb89624665d4",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "call_id": "call_87e62615f6794aaba588eb89624665d4",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ],
+      "returned_record_observations": 7,
+      "status": "assessed",
+      "terminal_sha256": "c5378756be7544dfc6a9ff51860d97c990c3a4808736adc72713917a74c28bc9",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "static",
+        "id": "r1-static-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 230,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "11fb74ffb3da83e84acf636e3036ddbd1f7a21e46ce3cd94b6af13fe1a35ec9a",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "3f37397e0abf0ac79abc530655d1e044a957350cc6e34434bb794b90af78a582",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0",
+            "source-df9d3e32ee61af23abd5ed04"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "53dca017793c19483cf5a69b3e4f967b36681234c4f7afbcd3ee25d3bd1c0e03",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_912578722e184118bc3838641b2be6cf",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-df9d3e32ee61af23abd5ed04",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "f24fe58a91d74136215eaf1ba94bcf0c1ca36864c503554880220564e62d0767",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r1-cami-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "9e134853c402739fe4caa077e46184faeefd52ce31ba73adfca2c5e0bb88477d",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "72e0fa5f29fe97d5223027eca08b1f143353a9619ebcfa980ab40b0a322a3738",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-b72f27654121d1cca0325ebc",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "c4a3edcce3de94c0dd787f998c0140a9f5fc3f58162d9789df3a35a0fd4bf00e",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "current_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_de394964bf9c431da5069c65d0a40255",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "768ec4949020ac58afbaa2b7ebb07c21e22787093af566a28f02488ada389aeb",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "static",
+        "id": "r1-static-s2",
+        "predecessor": "r1-static-s1",
+        "repetition": 1,
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "5ccbabef8978d4bd79b626b87178cbc667755b10522d30487fe752528c0d4b22",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "fba390d2a9a58b265066fdc8c7a1eadcf1110602153f7c4bbd0c249b9fd7fdd7",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0",
+            "source-df9d3e32ee61af23abd5ed04"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "61a89e6d87cbfe8b3ba6c5c0488a3850820d7bb3fd88f4057bfd9e196eeb26c3",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_dcb71999733940a38c52c380835754ad",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-df9d3e32ee61af23abd5ed04",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "abe6fbd25f5f1ce8ace7853aa99930941d5f97e57402e5eca0dfdfa446b1fe55",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r1-cami-s2",
+        "predecessor": "r1-cami-s1",
+        "repetition": 1,
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "6a9ec92ec85c4f711f3cf9d48762f315cb5c4952c80ba72f1a09071e3f96916f",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "b5e6f11e6001cbf5c191441fed70bccb8f6451d2be1bfffbf49c79aeee9a639c",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "16b69d6560641253d0b2ff329cdae1e9684ef0cefa7a26deb8e3ba6ed8d8289f",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r1-plain-s2",
+        "predecessor": "r1-plain-s1",
+        "repetition": 1,
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "1d381044c1544ae4417f8228cf86f5d028b3495d376f743de1ffc3347297654a",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "75a4e22d215bf5700572cc4c3b16318e8fb34f9cce3389cac8a4b57664eb61e2",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "channel": "withheld",
+          "observations": 2,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "withheld",
+          "observations": 3,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [],
+          "returned_records": 0,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-b72f27654121d1cca0325ebc",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d75d9cab5567c0fe04d947fc"
+          ],
+          "withheld_records": 5
+        }
+      ],
+      "messages_sha256": "85297129956cfe7e10fd37dfc68c591ac9c78748454e0bc194838ab2f592cebb",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "7bb5fd25732abd6aa9c8d95e37c429170c912229f1ff2dbf9aa0da526e6b3997",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "ceb79ac194309a2e3a558533e446e7370a875a792cf32495a76420121a2cd6d2",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-d75d9cab5567c0fe04d947fc",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "withheld_reason": "manual_review_required"
+        }
+      ],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "13cfa400f5350fd4eca30ff1f4e3c8faf41909c42b59cf85101ebc333502229d",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r1-cami-s3",
+        "predecessor": "r1-cami-s2",
+        "repetition": 1,
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 5
+    },
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "9ff69260e816f3e76ed5d85fc034ca5ec6d44b1b5c20245f1cd947bb85338278",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "b4cd15917672d4f24bb474d86d43a0e243b724a940a13b354c15f6da7b7c91c0",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "8548f01ea3164a375a3315535d9a13f8e5206f975b4e42ed3c26190b16890762",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r1-plain-s3",
+        "predecessor": "r1-plain-s2",
+        "repetition": 1,
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "f00dbee4e86a351a4d8885400a82934627a01caaed5eac35fcc555fd8de67a32",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "6ddd1f7bb37d7abcc19089867ca188aa2240d9b6bc863759580ee158f990bfa7",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "channel": "returned",
+          "observations": 2,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 3,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-b72f27654121d1cca0325ebc",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d75d9cab5567c0fe04d947fc"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "e21b80459f9340aab0b6eb0999f36a16e3f96e2ca172f476e1d96d6ca7ec8277",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "7bb5fd25732abd6aa9c8d95e37c429170c912229f1ff2dbf9aa0da526e6b3997",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "ceb79ac194309a2e3a558533e446e7370a875a792cf32495a76420121a2cd6d2",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-d75d9cab5567c0fe04d947fc",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "a698cab8d8ed09f47541f37cf5c6258e4f6b04af3aae82c29c0f4459f9f7396a",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "static",
+        "id": "r1-static-s3",
+        "predecessor": "r1-static-s2",
+        "repetition": 1,
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "1ad8ca31c624ae1dadbc4050bc8051982ef578f698b0f3163ada58d508c40af8",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "e8247e05979dfc55445b46cc5793feadf7f0443e7183d37c5429ec5a4f6f6e54",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "2271d8ba84a063dbb58b4e756285c5bef1817d86038c0d93bd9441ca3d76bbd2",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r1-plain-s4",
+        "predecessor": "r1-plain-s3",
+        "repetition": 1,
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "436ec49346ff612e531283b31ee51ccb33d3264ff88491bc5be50f25de7a24e3",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "50bf746d92ea156119dab36efe8a56fae50cb68d6ad4fba2d42808dbb7a579d1",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "channel": "returned",
+          "observations": 2,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 3,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-b72f27654121d1cca0325ebc",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d75d9cab5567c0fe04d947fc"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "e3066766036e9807933b4581f58be566615459b1d9eec640ffae0f56addb1862",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "7bb5fd25732abd6aa9c8d95e37c429170c912229f1ff2dbf9aa0da526e6b3997",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "ceb79ac194309a2e3a558533e446e7370a875a792cf32495a76420121a2cd6d2",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_5686e07912da4409991d96b196b96b68",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-d75d9cab5567c0fe04d947fc",
+          "record_kind": "note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "1bea736f39be09bb00474fdd252c0e6b28ba42ba4a386bf4c6be5783714d3102",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "static",
+        "id": "r1-static-s4",
+        "predecessor": "r1-static-s3",
+        "repetition": 1,
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "45989c6b70b429abc8df1ce1b438878654abfe983647e992b0291d5920442a24",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "605a344b1ca594d5abfc14d7a3f43d756409a01109caee5e9f4f38259e0fc981",
+      "canonical_tree_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "channel": "withheld",
+          "observations": 2,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "withheld",
+          "observations": 3,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [],
+          "returned_records": 0,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-b72f27654121d1cca0325ebc",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d75d9cab5567c0fe04d947fc"
+          ],
+          "withheld_records": 5
+        }
+      ],
+      "messages_sha256": "f906088b6822bcd2b5b83b4e6aeac26a94d264cdf5e83fd1f05ff0c9a1249e36",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "7bb5fd25732abd6aa9c8d95e37c429170c912229f1ff2dbf9aa0da526e6b3997",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "obsolete_literal_excerpt",
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "ceb79ac194309a2e3a558533e446e7370a875a792cf32495a76420121a2cd6d2",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "current_file_sha256": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+          "origin_excerpt_sha256": "e66170e2860962fd07b862db56d104c848b90fdc0ad6563ff1d2585f21bb414b",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-d75d9cab5567c0fe04d947fc",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "source_file_changed": true,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "withheld_reason": "manual_review_required"
+        }
+      ],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "1894cd40a4f6dd99998074c807566dd1e00333d9c5cbc60ccaf95ffee59b555c",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r1-cami-s4",
+        "predecessor": "r1-cami-s3",
+        "repetition": 1,
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 5
+    },
+    {
+      "artifact_hashes_verified": 230,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "d0392555a4b2b2e14b4bfec4d61c37bd847e16e710dd483cdbeea04f67551cf0",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "3934cfcdd45f1856b1a1490c7f8d9e72efabff3be1eaf7f2a8712f2abeaedf50",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0",
+            "source-df9d3e32ee61af23abd5ed04"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "582eeb2025ad31df3041497824ca62c9e8fb3f2d43699ab5bc6e3a83438353d5",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-df9d3e32ee61af23abd5ed04",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "5f4e97cb65b6116cce5b287adcc791f7c136f2bed1f516add26e01df7449ae1b",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "static",
+        "id": "r2-static-s1",
+        "predecessor": null,
+        "repetition": 2,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 230,
+      "backend_crosscheck": {
+        "lookup_events": 1,
+        "sha256": "c780d0366e46b3e27ba1b8ef4a9577a114d1ee21b112a607e07f30c9206c38d6",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "3a249648c7bcf8f96c2b8f79f26d43965b9b8e0ddd986fd8c8b17770bdbec19f",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-d8719d75bd3f22319a8b90e0",
+            "source-df9d3e32ee61af23abd5ed04"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        }
+      ],
+      "messages_sha256": "0e68a06255c2dd9ef0fe19954e606299af96cd4d4c6afee65a741593e4fa69ef",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "3ed9bbb6c162b46689ca79e438ede50cc8ac42f2bec540aa886f01d00d7e024d",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-d8719d75bd3f22319a8b90e0",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "cfaedd20f801879f31867d6885d4d7019b97375f3a914b856172be8344571b4c",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-df9d3e32ee61af23abd5ed04",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          }
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "ae9f7b3942b2e8816d6578ccbe997e165ba6d4c6a810f5ec8e70e61819420c3b",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r2-cami-s1",
+        "predecessor": null,
+        "repetition": 2,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "7f24549ae1c5dc5b8487bd30ee206c956d0b9030e63820968a505294c9650b30",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "4951e0da308183eeb98209b9e533c9bc4db9eb65e9561dafbbcad9c6e78ed664",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "7c18700184d2f7fe85833ce0cd1f24214924fa4c1492e743564b19d9584b04e9",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r2-plain-s1",
+        "predecessor": null,
+        "repetition": 2,
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    },
+    {
+      "artifact_hashes_verified": 223,
+      "backend_crosscheck": {
+        "lookup_events": 2,
+        "sha256": "949408dd2783331dab4c244af15a8e60897afdd03ded0a5ce41790ff2c3d51b9",
+        "status": "matched"
+      },
+      "canonical_reset_sha256": "53f15b94f6d91885132613627f2ba0d4ef5a166b9a980268e6a7e11902a89d05",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "catalog_semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+      "counts": [
+        {
+          "assessment": "same_literal_excerpt",
+          "channel": "returned",
+          "observations": 5,
+          "record_kind": "note"
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "channel": "withheld",
+          "observations": 2,
+          "record_kind": "note"
+        }
+      ],
+      "memory_calls": [
+        {
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "reason": "no_prior_or_overlapping_potential_write",
+          "returned_ids": [
+            "source-32bcf24ccfd38aeacdee34f6",
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7",
+            "source-b72f27654121d1cca0325ebc",
+            "source-15251bab7cf7d5130f4cb2bd"
+          ],
+          "returned_records": 5,
+          "source_assessable": true,
+          "status": "supported",
+          "withheld_ids": [],
+          "withheld_records": 0
+        },
+        {
+          "call_id": "call_031e3b81b92c43918e959b88b636ef7e",
+          "reason": "possible_write_or_missing_timestamps",
+          "returned_ids": [],
+          "returned_records": 0,
+          "source_assessable": false,
+          "status": "supported",
+          "withheld_ids": [
+            "source-57c9836ad708b7dca5bbd9a8",
+            "source-f1e763299ebc7560da7b62d7"
+          ],
+          "withheld_records": 2
+        }
+      ],
+      "messages_sha256": "48594abbcd798ab2737faa5f001b3b6c1cb36c44632330149cab85d69ed20ade",
+      "records": [
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "57ba672c550baa92232936b3f01f2339174fef3222d07e5efee1f5885691b81b",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-32bcf24ccfd38aeacdee34f6",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "af4f84be841905748b403b2aff6eed3ff71598b6e329c2e94ba4c4266b268785",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "0132f931c61b6a523b7b31297c96bf3e8d08b38322d94932e005253f6128a350",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "current_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "origin_excerpt_sha256": "f4f14bd8bea4a2042e6f8a2eeae6c3393775d0adbe396cbd36a8e47159fbb842",
+          "origin_file_sha256": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+          "record_id": "source-b72f27654121d1cca0325ebc",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "assessment": "same_literal_excerpt",
+          "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+          "causal_reliance": "not_inferred",
+          "channel": "returned",
+          "current_definition_status": "unique_definition",
+          "current_excerpt_sha256": "bd34a4aa6d3647590cc6612ff5e5c1ffad49cbd6c066e90f50a84731c05a0c78",
+          "current_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "origin_excerpt_sha256": "bd34a4aa6d3647590cc6612ff5e5c1ffad49cbd6c066e90f50a84731c05a0c78",
+          "origin_file_sha256": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+          "record_id": "source-15251bab7cf7d5130f4cb2bd",
+          "record_kind": "note",
+          "source_file_changed": false,
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "BaseCommand.get_help"
+          }
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "call_id": "call_031e3b81b92c43918e959b88b636ef7e",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "record_id": "source-57c9836ad708b7dca5bbd9a8",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "withheld_reason": "manual_review_required"
+        },
+        {
+          "assessment": "unknown_after_possible_write",
+          "call_id": "call_031e3b81b92c43918e959b88b636ef7e",
+          "causal_reliance": "not_inferred",
+          "channel": "withheld",
+          "record_id": "source-f1e763299ebc7560da7b62d7",
+          "record_kind": "note",
+          "required_action": "review_and_update_note",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "withheld_reason": "manual_review_required"
+        }
+      ],
+      "returned_record_observations": 5,
+      "status": "assessed",
+      "terminal_sha256": "4b3b44a4cbf818f56bca82df405674988822e279e172601d03b0004fc3619280",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "cami",
+        "id": "r2-cami-s2",
+        "predecessor": "r2-cami-s1",
+        "repetition": 2,
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 2
+    },
+    {
+      "artifact_hashes_verified": 222,
+      "backend_crosscheck": {
+        "status": "plain_no_external_memory_expected"
+      },
+      "canonical_reset_sha256": "d2b1849fa9ee11a5fe53fdbf732a1df96f880fa5af1dd631b12e41b2b7305086",
+      "canonical_tree_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "catalog_raw_sha256": null,
+      "catalog_semantic_sha256": null,
+      "counts": [],
+      "memory_calls": [],
+      "messages_sha256": "a731c7c426402180cc29e5a95bff11e1a127e4ebdc3dc7eba77b9c0ac8db3ada",
+      "records": [],
+      "returned_record_observations": 0,
+      "status": "assessed",
+      "terminal_sha256": "b06286a172ff6345bdc4604103f5f51472bd6e075e855af2745e6310670ccede",
+      "terminal_status": "passed",
+      "trial": {
+        "arm": "plain",
+        "id": "r2-plain-s2",
+        "predecessor": "r2-plain-s1",
+        "repetition": 2,
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "unsupported_calls": 0,
+      "withheld_record_observations": 0
+    }
+  ],
+  "truncation_marker_equality": "not_assessed",
+  "unsupported_call_count": 0,
+  "unsupported_trial_ids": []
+}

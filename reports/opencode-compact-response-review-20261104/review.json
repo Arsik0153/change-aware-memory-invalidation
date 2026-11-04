@@ -1,0 +1,92 @@
+{
+  "backend_identical_to_installed": true,
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q runs/opencode-compact-response-development-20261104/test_compact_response.py",
+      "result": "20passed in0.13s"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q runs/opencode-compact-response-review-20261104/test_review_controls.py",
+      "result": "3passed in0.05s"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check runs/opencode-compact-response-review-20261104/test_review_controls.py",
+      "result": "passed"
+    }
+  ],
+  "conclusion": "No actionable material blocker for the current opt-in projection and documented audit contract. Preserve defaultfull and same projection in both memory arms. Any future benchmark must charge complete trace/I/O/storage and cannot infer benefit from response bytes alone.",
+  "confirmed": [
+    {
+      "area": "payload_and_trust",
+      "finding": "Only the named provenance/hash fields are removed. Complete note strings, exact entry IDs, note keys, subject selectors, typed expectations, labels, availability, state_type, freshness, errors and withheld reason/actions are retained in the closed backend schema."
+    },
+    {
+      "area": "same_arms_selection",
+      "finding": "Projection is applied once after either backend lookup, with no backend/arm branch. Ranking, original16KiBselection budget, selected records, unavailable withholding and error handling are unchanged. No historical fallback or replacement candidates are introduced."
+    },
+    {
+      "area": "receipt",
+      "finding": "Receipt binds canonical full MCP result, compact result before receipt and final model-facing result via full SHA256 digests, including isError. Independent hashlib/json verification passed and rejects single full/model/receipt tampering."
+    },
+    {
+      "area": "trace_failure",
+      "finding": "Audit trace append occurs before compact result return. Its OSError propagates through serve before that tool JSON-RPC response is written; independent stdio control emitted only initialization reply."
+    },
+    {
+      "area": "full_compatibility",
+      "finding": "Default full results and full trace shape matched the installed adapter under the same authored backend and deterministic clocks. CLI defaults full. Additional compact_response.py must be installed with the adapter as README states."
+    },
+    {
+      "area": "cost",
+      "finding": "Projection, parsing/canonicalization and digest work occur inside lookup timing. Full audit trace serialization/append and JSON-RPC output are excluded from this local timer and require outer lifecycle/I/O/storage accounting. response_bytes is complete MCP result bytes, not tokens."
+    }
+  ],
+  "limitations_not_blockers": [
+    {
+      "detail": "Unkeyed hashes are evidence bindings, not signatures, append-only storage or current-fact validation. Verification requires authentic retained full audit data and pinned projector/trace identity; a party replacing both trace and model result can recompute hashes.",
+      "id": "receipt_trust_boundary"
+    },
+    {
+      "detail": "Credential/email redaction can change bound bytes and must make original receipt verification fail against the scrubbed copy. README explicitly states pre-publication verification and forbids silent rebinding/redaction bypass.",
+      "id": "publication_scrub"
+    },
+    {
+      "detail": "Successful append is not fsync/power-loss durability. Partial/failed append terminates without releasing that response; previous evidence preservation/publication remains the outer harness responsibility.",
+      "id": "durability"
+    },
+    {
+      "detail": "Projector assumes current internal one-text-block MCP result and dictionary-shaped payload. It is not a generic arbitrary MCP result transformer. Current adapter constructs exactly that schema.",
+      "id": "closed_schema"
+    },
+    {
+      "detail": "Model loses direct source hashes/catalog/snapshot/generation IDs and instead receives one audit receipt. Exact source selectors/trust/freshness remain, and full provenance is audit-side. This is an explicit opt-in display tradeoff.",
+      "id": "model_provenance_visibility"
+    },
+    {
+      "detail": "Receipt/error overhead can enlarge empty/error responses; complete audit objects increase stored bytes and serialization work. Reported preserved-response byte savings do not establish token/billing/quality/wall improvements. This review did not read/re-measure actual task model responses.",
+      "id": "cost_benefit_unproven"
+    }
+  ],
+  "material_blockers": [],
+  "review_kind": "independent read-only source review plus authored fixture controls",
+  "reviewed_utc": "2026-11-04T20:55:10.280662+00:00",
+  "schema_version": 1,
+  "scope_exclusions": [
+    "No heldout/task/oracle contents read",
+    "No model, network or Docker calls",
+    "No CAMI registration/refresh or actual backend lifecycle performance experiment",
+    "No implementation, tracked file, frozen artifact or configuration edits"
+  ],
+  "source_before_after_equal": true,
+  "source_files_sha256": {
+    "README.md": "720b7d537068c26555177afe6107470c7936eb54966b9144738edfa06cb90b7d",
+    "compact_response.py": "326cf1d5e3949aaf89e596e5836ed799b6570a8faabe8f9f5e068b96c4a35172",
+    "measure_preserved_responses.py": "88936c96f49345c3045bde7402b4b5208bba56289b183dd03d142d129dea0c40",
+    "memory_adapter.py": "05fac3a88b207bcbe92d502ecafb7727022861d85850f0a8e1310db2e7a7fb20",
+    "memory_backend.py": "f8774a2635e93c0ade8617e053f2bfba838616e4237241a9ad3f4b04e263c5c2",
+    "reviewable.patch": "aa0ce1df80ded48f9421ff26d0f7c1f2ca5de4d38d34280c485078ae7091656a",
+    "test_compact_response.py": "9dd3d0904047403e3ac78a71e25abe023c21bfcee5aaa6d1b0c6db0cdcf52554"
+  },
+  "stage": "runs/opencode-compact-response-development-20261104",
+  "status": "clear_for_bounded_opt_in_research_projection"
+}

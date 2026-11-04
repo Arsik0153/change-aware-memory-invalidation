@@ -1,0 +1,138 @@
+{
+  "cost_ledger_fields": [
+    "extraction_wall_seconds",
+    "extraction_cpu_seconds",
+    "input_and_output_bytes",
+    "packet_tokens_estimate_and_encoding_if_used",
+    "review_provider_model_settings",
+    "review_attempts_and_rejections",
+    "review_usage_raw",
+    "review_wall_seconds",
+    "adjudication_cost_separate",
+    "evaluation_storage_bytes"
+  ],
+  "implementation_boundary": "A future deterministic extractor creates evidence packets/coverage, not reliance labels. Separate AI reviewers apply frozen rubric. Do not modify the existing literal-exposure analyzer or reinterpret its output as reliance.",
+  "inputs": [
+    {
+      "admission": "Explicit frozen study/run snapshot, no active directory traversal; all planned/attempted trial rows retained.",
+      "content": "registered study plan plus attempt/terminal/partial lifecycle records",
+      "name": "frozen_roster"
+    },
+    {
+      "admission": "Terminal artifact inventory hashes verified before text parsing. No auth/private-state directories, server secrets, reasoning/native/encrypted fields or unlisted symlink targets.",
+      "content": "session/evidence/messages.json + message-pages.json; fallback partial artifacts only when declared",
+      "name": "public_transcript"
+    },
+    {
+      "admission": "Keep original record/call IDs and classifier/hash/scope/unknown reasons. Do not treat changed-file or opaque final candidate hashes as contemporaneous source proof.",
+      "content": "frozen existing exposure classifier decisions and authenticated catalog/origin/canonical/read checkpoints",
+      "name": "literal_staleness_evidence"
+    },
+    {
+      "admission": "Bind full response to exact record source; if compact, verify raw/full/projection/final receipt BEFORE claiming exact binding. Redaction-induced digest mismatch => unsupported, no private-state recovery.",
+      "content": "returned model-visible response and matching public backend trace/full audit if available",
+      "name": "full_or_compact_memory_receipt"
+    }
+  ],
+  "no_outcome_annotations": true,
+  "normalization_contract": {
+    "api_times": "tool time lives on part.time.{created,ran,completed}; message time lives on message.time.{created,streamed,completed}. Do not assume part.state.time.start/end from older CLI schemas. Retain original units and explicit normalized milliseconds plus adapter source pin.",
+    "assistant_text": "message.type=assistant; content[i].type=text; quote pointer /<message-index>/content/<part-index>/text; retain message.id.",
+    "assistant_tool": "message.type=assistant; content[i].type=tool; call ID=part.id, name=part.name, input=part.state.input, result text=each part.state.content[j] text item; state.status retained even error/running/streaming.",
+    "duplicates_or_conflicts": "Reject ambiguous duplicate call IDs, conflicting outputs/timestamps or unrecognized text representations as coverage/integrity gaps; do not silently choose favorable content.",
+    "fallback": "CLI/SSE fallback must use a separately pinned schema adapter, preserve its exact artifact locator, and flag missing coverage; never double-count CLI/API/SSE representations of the same call.",
+    "other_events": "Retain relevant user task text, source observations, compaction boundaries/errors as permitted public context; a compaction/partial record that removes needed evidence reduces coverage, never supplies invented details.",
+    "pagination": "Validate final cursor termination, no repeated message IDs, complete pages and consistent aggregated IDs. For partial failure exports retain available events and label partial; terminal status alone does not prove transcript completeness.",
+    "primary_channel": "OpenCode2.2.5 Session.Message[] API messages, not streamed CLI rows silently interpreted as identical schema.",
+    "reasoning_exclusion": "Do not copy assistant reasoning items, any native field, provider encrypted content, credentials or account identifiers. This is not an attempt to infer internal chain of thought.",
+    "shell": "message.type=shell has message.id, shellID, command, status, exit and output; preserve public command/output if present with its own pointers. All shell may mutate by conservative policy."
+  },
+  "output_files": [
+    {
+      "path": "coverage.json",
+      "purpose": "one row per registered trial; attempted/model-admitted/terminal/transcript availability and independent coverage reasons; no dropping failures"
+    },
+    {
+      "path": "events.jsonl",
+      "purpose": "public assistant text, tool inputs/results, native inspection and write-boundary events, with exact IDs/times/locators/hashes"
+    },
+    {
+      "path": "facts.jsonl",
+      "purpose": "atomic stale-fact candidates linked to pre-existing authenticated staleness decisions, with reviewer-only vs agent-visible channel distinguished"
+    },
+    {
+      "path": "packets/<opaque_trial_id>.json",
+      "purpose": "all permitted public transcript events in original supported order, source excerpts necessary for comparison, evidence index and original artifact hashes"
+    },
+    {
+      "path": "packet-manifest.json",
+      "purpose": "complete roster/packet/source/rubric/extractor hash bindings, packet order seed, extraction costs and coverage gaps"
+    },
+    {
+      "path": "reviews/<reviewer>/<opaque_trial_id>.json",
+      "purpose": "later AI-labelled annotations; originals retained independently before adjudication"
+    },
+    {
+      "path": "agreement-and-counts.json",
+      "purpose": "later per-axis agreement, unknowns, all-attempt denominators and dependent episode counts, never exposure-as-reliance"
+    }
+  ],
+  "pipeline": [
+    {
+      "action": "Freeze the full trial roster/input snapshot and verify regular-file/nofollow public inventories. Create coverage rows before looking for stale facts.",
+      "step": 1
+    },
+    {
+      "action": "Normalize all allowed public events without semantic outcome labels. Preserve task/stage/repetition internally and create opaque review packet IDs in a frozen random order.",
+      "step": 2
+    },
+    {
+      "action": "Build a conservative partial-order timeline. Potential-write start is created/ran according to pinned policy; canonical source is valid immediately before first mutation attempt, including its input, but never inferred unchanged after completion/failure.",
+      "step": 3
+    },
+    {
+      "action": "Attach authenticated exposure decisions/call-record bindings. Preserve returned and withheld channels separately; reviewer-only catalog facts are never counted as model exposure.",
+      "step": 4
+    },
+    {
+      "action": "Create atomic fact/context candidates and exact source/quote/hash pointers. Preserve all public event context, not only events matching an obsolete literal. Post-write unknowns remain unknown without contemporaneous evidence.",
+      "step": 5
+    },
+    {
+      "action": "Validate quote substrings/offsets/parsed-string hashes/IDs and receipt/source bindings mechanically. Missing evidence yields explicit unavailable fields, not reconstructed text.",
+      "step": 6
+    },
+    {
+      "action": "Write packets for every attempted trial, including errors/no-memory/no-model/partial trials; oversized packet becomes an explicit unassessable row, not silent truncation. Seal all packets and extraction implementation/rubric before AI review.",
+      "step": 7
+    },
+    {
+      "action": "Later independent AI contexts annotate every packet with the same frozen rubric/prompt and bounded outputs. No actual review or model call occurs in this design stage.",
+      "step": 8
+    },
+    {
+      "action": "Mechanically reject annotations with absent/altered quotes, bad offsets, unknown IDs or unsupported positive claims; preserve rejected originals. Report disagreement and unknowns; do not invent consensus.",
+      "step": 9
+    }
+  ],
+  "privacy": [
+    "Only approved scrubbed public artifacts and explicitly authorized source checkpoints. Never traverse private-state/server-private/private-export-client/auth paths, credentials, gold or heldout assets.",
+    "Exact quoted evidence is not a license to undo redaction. A sensitive fragment must stay redacted and the annotation marked unassessable at that scope."
+  ],
+  "proposed_authored_controls_before_extraction_freeze": [
+    "Obsolete literal exposed, no visible endorsement or application: exposure positive, reliance/action not observed with complete coverage.",
+    "Assistant says according to memory f(x) accepts old keyword, then attempts it: explicit self-reported content reliance and action-consistency; causal effect still not established.",
+    "Grep old keyword or deliberate negative test: investigation only, not positive application.",
+    "Failed patch contains obsolete exact context: attempted action recorded even if no patch applied; source state after failed tool is not assumed unchanged.",
+    "Old fact rejected immediately and native source read: exposure remains, no initial reliance positive, correction axis not applicable without prior positive.",
+    "Prior positive, then native current read, then revised action: retain positive and label observed/explicit correction with three ordered evidence links.",
+    "Withheld ID/reason plus catalog old text shown only to reviewer: no model stale literal exposure.",
+    "Current file changed outside selected literal: changed-file-only is not stale literal positive.",
+    "Only final candidate source available after edits or tools overlap: source-at-event unknown.",
+    "Incomplete transcript/no response/failed trial/plain arm: row retained; unknown/not-applicable distinct from no visible evidence.",
+    "Redacted compact receipt, duplicate call ID, wrong quote/source hash: unsupported, no repair from private state.",
+    "Same event in CLI and API: one event after explicit normalization, not two observations."
+  ],
+  "schema_version": 1,
+  "status": "design_only_not_executed"
+}

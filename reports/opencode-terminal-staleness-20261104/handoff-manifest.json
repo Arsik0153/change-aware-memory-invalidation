@@ -1,0 +1,29 @@
+{
+  "active_trial_payloads_read": false,
+  "causal_reliance": "not_inferred",
+  "counts_are": "repeated model-visible returned/withheld record observations; literal prefixes only, no full-body/truncation-marker/behavioral equivalence",
+  "docker_calls": 0,
+  "external_analyzer_sha256": "9c675edb2e65c4d499ca5ac4653b1b5f4c9450f81b5d35c39f9e1c81392f3296",
+  "heldout_access": false,
+  "implementation_files": {
+    "classify_memory_calls.py": "2af162c62de6078e5502e31b4421270cd2c7815bc5c0909d374bdc7402ba7c1c",
+    "summarize_terminal_staleness.py": "084677acdb75c9e53c8e7d510cd52dd7ee57d870aff49f5b208f50dfe9b1fa87"
+  },
+  "model_calls": 0,
+  "private_state_read": false,
+  "readme_sha256": "71dc29f06242c7d35933aa3e93cb7ebbd06357f2b5dc50103c8a3dbfe4641f80",
+  "ruff": "passed",
+  "schema_version": 1,
+  "snapshot": {
+    "all_assessed_evidence_supported": true,
+    "artifact_hashes_verified": 3813,
+    "completed_trials": 17,
+    "exotic_source_boundaries_found": false,
+    "path": "terminal-snapshot-final/report.json",
+    "sha256": "28558c19a4ff2bdf8404f1070f28bfcb48a4243d9cfa9e350778636ce22036f9"
+  },
+  "status": "ready_for_parent_integration",
+  "test_sha256": "20ce00c8b363430af83c882a3178a1aaeb2faefb7f3cfc219ad350376e4e036a",
+  "tracked_or_frozen_writes": false,
+  "unit_controls": 9
+}
