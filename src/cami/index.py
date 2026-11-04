@@ -10,7 +10,7 @@ from pathlib import PurePosixPath
 from cami.models import Dependency, Node, Parameter, Signature
 from cami.repository import Blob, Snapshot, changed_files
 
-INDEX_VERSION = "3"
+INDEX_VERSION = "4"
 
 
 @dataclass(frozen=True)
@@ -144,6 +144,17 @@ def bound_names(nodes: Iterable[ast.AST]) -> set[str]:
     return names
 
 
+def module_class_globals(nodes: Iterable[ast.AST]) -> set[str]:
+    """Class bodies run in the enclosing execution; function bodies are deferred."""
+    pending = [node for node in scope_nodes(nodes) if isinstance(node, ast.ClassDef)]
+    names: set[str] = set()
+    while pending:
+        lexical = tuple(scope_nodes(pending.pop().body))
+        names.update(name for node in lexical if isinstance(node, ast.Global) for name in node.names)
+        pending.extend(node for node in lexical if isinstance(node, ast.ClassDef))
+    return names
+
+
 def parse_module(blob: Blob, name: str) -> Module:
     if blob.limitation:
         return Module(blob.path, name, (), (), (), blob.limitation, "")
@@ -155,7 +166,7 @@ def parse_module(blob: Blob, name: str) -> Module:
     definitions: list[Definition] = []
     imports: list[tuple[str, str, str | None]] = []
     unresolved: set[Node] = set()
-    assignments: set[str] = set()
+    assignments = module_class_globals(tree.body)
     scope_counts: dict[str, int] = {}
 
     def visit(body: list[ast.stmt], prefix: str, in_class: bool, conditional: bool) -> None:

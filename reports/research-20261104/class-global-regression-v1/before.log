@@ -1,0 +1,153 @@
+FFFFFF....F                                                              [100%]
+=================================== FAILURES ===================================
+_ test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    f = 0\n] _
+
+suffix = 'class C:\n    global f\n    f = 0\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+_ test_module_target_becomes_ambiguous_and_selected[class Outer:\n    class Inner:\n        global f\n        f = 0\n] _
+
+suffix = 'class Outer:\n    class Inner:\n        global f\n        f = 0\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+_ test_module_target_becomes_ambiguous_and_selected[if flag:\n    class C:\n        global f\n        del f\n] _
+
+suffix = 'if flag:\n    class C:\n        global f\n        del f\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+_ test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    import other as f\n] _
+
+suffix = 'class C:\n    global f\n    import other as f\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+_ test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    def f(x):\n        return x + 1\n] _
+
+suffix = 'class C:\n    global f\n    def f(x):\n        return x + 1\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [{'path': 'module.py', 'qualname': 'C.f'}], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+_ test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n] __
+
+suffix = 'class C:\n    global f\n'
+
+    @pytest.mark.parametrize('suffix', [
+        'class C:\n    global f\n    f = 0\n',
+        'class Outer:\n    class Inner:\n        global f\n        f = 0\n',
+        'if flag:\n    class C:\n        global f\n        del f\n',
+        'class C:\n    global f\n    import other as f\n',
+        'class C:\n    global f\n    def f(x):\n        return x + 1\n',
+        'class C:\n    global f\n',
+    ])
+    def test_module_target_becomes_ambiguous_and_selected(suffix):
+        parent, child = snapshot(PARENT), snapshot(PARENT + suffix)
+        for claim in claims(parent, 'class-global'):
+            row = observe(parent, child, claim, PLAN)
+>           assert row['selected'], row
+E           AssertionError: {'carry_violation': False, 'changed_files': ['module.py'], 'changed_symbols': [], 'child_reason': 'predicate_matches', ...}
+E           assert False
+
+tests/test_class_global_binding.py:26: AssertionError
+___________ test_same_blob_old_parser_cache_cannot_hide_class_global ___________
+
+    def test_same_blob_old_parser_cache_cannot_hide_class_global():
+        from cami import index
+        import sys
+        parent, child = snapshot(PARENT), snapshot(PARENT+'class C:\n    global f\n    f = 0\n')
+        # Cache the former parser's unambiguous result under its actual version key.
+        former = replace(build_index(parent).modules[0], source=child.blobs[0].content.decode())
+        cache = {(child.blobs[0].object_id, sys.version, '3', 'module.py', 'module'): former}
+        result = index.build_index(child, cache=cache)
+        subject = next(d for d in result.modules[0].definitions if d.node.qualname == 'f')
+>       assert subject.ambiguous
+E       AssertionError: assert False
+E        +  where False = Definition(node=Node(path='module.py', qualname='f'), node_kind='function', signature=Signature(parameters=(Parameter(...e='def f(x):\n    return x', ambiguous=False, calls=(), local_bindings=frozenset({'x'}), loaded_names=frozenset({'x'})).ambiguous
+
+tests/test_class_global_binding.py:56: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    f = 0\n]
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[class Outer:\n    class Inner:\n        global f\n        f = 0\n]
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[if flag:\n    class C:\n        global f\n        del f\n]
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    import other as f\n]
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n    def f(x):\n        return x + 1\n]
+FAILED tests/test_class_global_binding.py::test_module_target_becomes_ambiguous_and_selected[class C:\n    global f\n]
+FAILED tests/test_class_global_binding.py::test_same_blob_old_parser_cache_cannot_hide_class_global
+7 failed, 4 passed in 0.13s

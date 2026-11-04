@@ -1,0 +1,623 @@
+{
+  "target_cases": [
+    {
+      "case": "conditional_nested",
+      "claim_id": "conditional_nested:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-f4f879c4e81cd6dfe413e14cd774f1fa203685c52de20a72e9746d56ecafc5fa",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "conditional_nested",
+      "claim_id": "conditional_nested:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-f4f879c4e81cd6dfe413e14cd774f1fa203685c52de20a72e9746d56ecafc5fa",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "try_class",
+      "claim_id": "try_class:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-f735a3648716ac6f6807d20d7de32af064ca726104a0c50b664cfc67a74c1ad1",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "try_class",
+      "claim_id": "try_class:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-f735a3648716ac6f6807d20d7de32af064ca726104a0c50b664cfc67a74c1ad1",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "finally_class",
+      "claim_id": "finally_class:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-bfc5053eefc21854b8cd963224e4b0aef18ea82ba7734460bbb6721760e06634",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "finally_class",
+      "claim_id": "finally_class:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-bfc5053eefc21854b8cd963224e4b0aef18ea82ba7734460bbb6721760e06634",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "match_class",
+      "claim_id": "match_class:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-e99c58e5180508a2b08f193fb4b4e942f330cc78524227086cabd7d05dc4a0f2",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "match_class",
+      "claim_id": "match_class:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-e99c58e5180508a2b08f193fb4b4e942f330cc78524227086cabd7d05dc4a0f2",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "with_class",
+      "claim_id": "with_class:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-ead6bfbe92f6b1ff63de940f35752aa97bddc7111d83e82e43b8b83a166b9c42",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "with_class",
+      "claim_id": "with_class:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-ead6bfbe92f6b1ff63de940f35752aa97bddc7111d83e82e43b8b83a166b9c42",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "loop_class",
+      "claim_id": "loop_class:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-1a30f771b2a19ab716ea46476d34562944d7b5bdf6097f78c82dd44e691d07c4",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "loop_class",
+      "claim_id": "loop_class:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-1a30f771b2a19ab716ea46476d34562944d7b5bdf6097f78c82dd44e691d07c4",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "insufficient_evidence",
+      "child_reason": "ambiguous_subject",
+      "selected": true,
+      "selection_reasons": [
+        "subject_changed",
+        "symbol_or_dependency_changed"
+      ],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "f"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "async_function_deferred",
+      "claim_id": "async_function_deferred:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-140b3351efa04373f38d2c5978a66ed54cbac637a9854d52ddc40f44d4141347",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "deferred"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "async_function_deferred",
+      "claim_id": "async_function_deferred:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-140b3351efa04373f38d2c5978a66ed54cbac637a9854d52ddc40f44d4141347",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "deferred"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "nested_method_class_deferred",
+      "claim_id": "nested_method_class_deferred:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-898d66d2ef284b329f86e1f62e7e73661a6b451a89c2680d1de5e745162bd771",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "C.method"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "nested_method_class_deferred",
+      "claim_id": "nested_method_class_deferred:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-898d66d2ef284b329f86e1f62e7e73661a6b451a89c2680d1de5e745162bd771",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "C.method"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "class_method_global_deferred",
+      "claim_id": "class_method_global_deferred:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-e4a3430740da6cdcd04825d24e216d9d6d182735cab2b4cc1e4ddc706ed6a7ee",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "C.method"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "class_method_global_deferred",
+      "claim_id": "class_method_global_deferred:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-e4a3430740da6cdcd04825d24e216d9d6d182735cab2b4cc1e4ddc706ed6a7ee",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [
+        {
+          "path": "module.py",
+          "qualname": "C.method"
+        }
+      ],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "lambda_body_deferred",
+      "claim_id": "lambda_body_deferred:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-821f252220726e353c10b2ab587ab49f4361a3054c53c4f0b3fa49eced13a929",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "lambda_body_deferred",
+      "claim_id": "lambda_body_deferred:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-821f252220726e353c10b2ab587ab49f4361a3054c53c4f0b3fa49eced13a929",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "unrelated_global",
+      "claim_id": "unrelated_global:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-daa1a97916e50e65a691fc29e7e6637ed1c5005db760d29bf7ad7f645ca1f0ca",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "unrelated_global",
+      "claim_id": "unrelated_global:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-daa1a97916e50e65a691fc29e7e6637ed1c5005db760d29bf7ad7f645ca1f0ca",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "prefix_name",
+      "claim_id": "prefix_name:symbol_exists",
+      "claim_kind": "symbol_exists",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-d5951ca1e923eca2edb24f29cbbd1839b9b4236b30f52aebe1b18cf6d9f08c6d",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    },
+    {
+      "case": "prefix_name",
+      "claim_id": "prefix_name:signature_equals",
+      "claim_kind": "signature_equals",
+      "parent_revision": "constructed-d484f05a2311a124ee6d5c5c4af0f38e86cf03c9273b4eee6aa5c95d29e7337d",
+      "child_revision": "constructed-d5951ca1e923eca2edb24f29cbbd1839b9b4236b30f52aebe1b18cf6d9f08c6d",
+      "parent_verdict": "supported",
+      "parent_reason": "predicate_matches",
+      "child_verdict": "supported",
+      "child_reason": "predicate_matches",
+      "selected": false,
+      "selection_reasons": [],
+      "warm_index_equals_fresh": true,
+      "changed_symbols": [],
+      "changed_files": [
+        "module.py"
+      ],
+      "limited_paths": [],
+      "carry_violation": false
+    }
+  ],
+  "current_version": "5",
+  "old_v4_cache_actual_validations": 1,
+  "adjacent_preexisting_residual": {
+    "validator_verdict": "supported",
+    "indexed_definitions": [
+      [
+        "C.f",
+        false
+      ]
+    ],
+    "runtime_has_C_f": false,
+    "runtime_has_module_f": true
+  }
+}

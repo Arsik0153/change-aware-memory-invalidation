@@ -19,7 +19,12 @@ cami = "cami.cli:main"
 [tool.ruff]
 target-version = "py312"
 line-length = 100
-extend-exclude = ["scripts/build_submission.py"]
+extend-exclude = [
+    "scripts/build_submission.py",
+    "examples/ai_review_pilot/packet/source/**",
+    "reports/research-20261104/ai-parent-pilot-v1/reviewer_*/**",
+    "reports/research-20261104/reference-alignment-*/sources/**",
+]
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
