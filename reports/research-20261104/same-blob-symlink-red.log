@@ -1,0 +1,88 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__ test_same_blob_symlink_transition_withholds_and_restores[symbol_validate] ___
+
+repo = <conftest.GitFixture object at 0x7d60681fb1d0>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-213/test_same_blob_symlink_transit0')
+policy = 'symbol_validate'
+
+    @pytest.mark.parametrize('policy', ['symbol_validate', 'file_validate', 'all_validate'])
+    def test_same_blob_symlink_transition_withholds_and_restores(repo, tmp_path, policy):
+        parent = repo.commit({'module.py': 'def f(): pass\n'})
+        oid = repo.git('rev-parse', f'{parent}:module.py')
+        repo.git('update-index', '--cacheinfo', f'120000,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become an unsupported symlink')
+        link = repo.git('rev-parse', 'HEAD')
+        repo.git('update-index', '--cacheinfo', f'100644,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become a regular source file again')
+        restored = repo.git('rev-parse', 'HEAD')
+        config = repo.config(parent, [link, restored], policy=policy)
+        out = tmp_path / 'run'
+        run_experiment(config, out)
+        states = read_jsonl(out / 'states.jsonl')
+>       assert [row['available'] for row in states] == [False, True]
+E       assert [True, True] == [False, True]
+E         
+E         At index 0 diff: True != False
+E         Use -v to get more diff
+
+tests/test_engine.py:140: AssertionError
+___ test_same_blob_symlink_transition_withholds_and_restores[file_validate] ____
+
+repo = <conftest.GitFixture object at 0x7d606802fb30>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-213/test_same_blob_symlink_transit1')
+policy = 'file_validate'
+
+    @pytest.mark.parametrize('policy', ['symbol_validate', 'file_validate', 'all_validate'])
+    def test_same_blob_symlink_transition_withholds_and_restores(repo, tmp_path, policy):
+        parent = repo.commit({'module.py': 'def f(): pass\n'})
+        oid = repo.git('rev-parse', f'{parent}:module.py')
+        repo.git('update-index', '--cacheinfo', f'120000,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become an unsupported symlink')
+        link = repo.git('rev-parse', 'HEAD')
+        repo.git('update-index', '--cacheinfo', f'100644,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become a regular source file again')
+        restored = repo.git('rev-parse', 'HEAD')
+        config = repo.config(parent, [link, restored], policy=policy)
+        out = tmp_path / 'run'
+        run_experiment(config, out)
+        states = read_jsonl(out / 'states.jsonl')
+>       assert [row['available'] for row in states] == [False, True]
+E       assert [False, False] == [False, True]
+E         
+E         At index 1 diff: False != True
+E         Use -v to get more diff
+
+tests/test_engine.py:140: AssertionError
+____ test_same_blob_symlink_transition_withholds_and_restores[all_validate] ____
+
+repo = <conftest.GitFixture object at 0x7d606802f410>
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-213/test_same_blob_symlink_transit2')
+policy = 'all_validate'
+
+    @pytest.mark.parametrize('policy', ['symbol_validate', 'file_validate', 'all_validate'])
+    def test_same_blob_symlink_transition_withholds_and_restores(repo, tmp_path, policy):
+        parent = repo.commit({'module.py': 'def f(): pass\n'})
+        oid = repo.git('rev-parse', f'{parent}:module.py')
+        repo.git('update-index', '--cacheinfo', f'120000,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become an unsupported symlink')
+        link = repo.git('rev-parse', 'HEAD')
+        repo.git('update-index', '--cacheinfo', f'100644,{oid},module.py')
+        repo.git('commit', '-qm', 'same bytes become a regular source file again')
+        restored = repo.git('rev-parse', 'HEAD')
+        config = repo.config(parent, [link, restored], policy=policy)
+        out = tmp_path / 'run'
+        run_experiment(config, out)
+        states = read_jsonl(out / 'states.jsonl')
+>       assert [row['available'] for row in states] == [False, True]
+E       assert [False, False] == [False, True]
+E         
+E         At index 1 diff: False != True
+E         Use -v to get more diff
+
+tests/test_engine.py:140: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_engine.py::test_same_blob_symlink_transition_withholds_and_restores[symbol_validate]
+FAILED tests/test_engine.py::test_same_blob_symlink_transition_withholds_and_restores[file_validate]
+FAILED tests/test_engine.py::test_same_blob_symlink_transition_withholds_and_restores[all_validate]
+3 failed, 8 deselected in 0.46s

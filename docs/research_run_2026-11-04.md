@@ -133,4 +133,16 @@ real claim не закрыт и не допущен. Основные первы
 dynamic namespace на уровне всего модуля. Это существенное ограничение переноса
 fixture-критерия на реальные данные, а не ошибка truth labels.
 [Отчёт](structural_closure_feasibility_2026-11-04.md).112focused tests прошли;
-input/source/output hashes сверены, подготовленный набор остался неизменным.
+input/source/output hashes сверены; семь файлов preparation seal сохранили hashes.
+Этот seal не является полным рекурсивным inventory всего каталога подготовки.
+
+## Найден и исправлен дефект кэша при смене mode
+
+Три regression cases сначала упали: symbol_validate сохранил доступность на
+symlink, all/file_validate не восстановили обычный файл. Причина — одинаковый
+blob ID при смене mode и reuse Module без учёта limitation. Ограниченные blobs
+теперь обходят AST-кэш; INDEX_VERSION3, VALIDATOR_VERSION4. Реальный before/after
+запуск с прежним дисковым кэшем подтвердил его неприменение и восстановление.
+132focused tests, Ruff/mypy прошли. [Разбор](ast_cache_mode_fix_2026-11-04.md).
+После коммита запускается новая полная sealed проверка, поскольку изменён основной
+индексатор и versioning validator cache, а не только исследовательский driver.

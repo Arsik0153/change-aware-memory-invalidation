@@ -108,3 +108,16 @@ def test_staged_index_and_sha256_repository(tmp_path):
     assert snap.by_path()["module.py"].content == b"def f(): pass\n"
     assert file_hash(root / ".git/index") == index_hash
     assert (root / "module.py").read_text() == "unstaged\n"
+
+
+def test_ast_cache_respects_current_snapshot_size_limit(repo):
+    revision = repo.commit({'module.py': 'def f(): pass\n'})
+    location = RepoLocation(repo_id='fixture', path=str(repo.root))
+    cache = {}
+    for limit in (1024, 1, 1024, 1):
+        current = read_snapshot(location, revision, max_file_bytes=limit)
+        cached = build_index(current, cache=cache)
+        fresh = build_index(current)
+        assert cached == fresh
+        assert bool(cached.definitions()) == (limit == 1024)
+        assert cached.limitations() == ({} if limit == 1024 else {'module.py': 'file_too_large'})

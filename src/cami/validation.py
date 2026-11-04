@@ -9,7 +9,7 @@ from cami.index import CodeIndex
 from cami.models import Claim, Equals, Node, Provenance, ValidationResult, Verdict
 from cami.repository import Snapshot
 
-VALIDATOR_VERSION = "3"
+VALIDATOR_VERSION = "4"
 
 
 @dataclass(frozen=True)

@@ -55,7 +55,9 @@ truth labels само по себе не устранит эти техниче�
 ## Проверка и воспроизведение
 
 112 профильных tests прошли. Снимки исходников до/после совпали; hashes входов,
-retained source blobs и готового набора подготовки проверены. Сырые источники:
+retained source blobs и семи файлов из preparation_hashes.json проверены.
+Этот seal покрывает dataset/selection и пять файлов разметки; это не полный
+рекурсивный inventory всех файлов подготовки. Сырые источники:
 `runs/binding-gate-20261104-v1/sources/`; компактные протокол, строки наблюдений,
 summary и manifest: `reports/research-20261104/binding-gate-v1/`.
 

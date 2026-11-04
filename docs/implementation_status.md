@@ -531,3 +531,12 @@ Research protocols, datasets, seals, freeze, held-out targets and Docker remain 
 Exact commit, commands, reused receipts, quota/resource boundaries and cleanup are in the
 [MAIN integration handoff](/root/.claude/orchestrate/change-aware-memory-invalidation/outputs/stage5-main-integration/20261023T174926Z/HANDOFF.md).
 Independent integrated-MAIN acceptance remains pending.
+
+## 4 November 2026: snapshot limitations and AST cache identity
+
+The indexer now handles current blob limitations before consulting its reusable
+module cache. A mode-only regular-file/symlink transition with the same Git blob ID
+can no longer retain a healthy AST or poison later recovery. Index version is now
+3 and validator version is 4; prior validation cache entries are not reused.
+See [the regression and before/after evidence](ast_cache_mode_fix_2026-11-04.md).
+Earlier version and verification statements above remain dated history.

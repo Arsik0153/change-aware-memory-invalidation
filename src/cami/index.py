@@ -10,7 +10,7 @@ from pathlib import PurePosixPath
 from cami.models import Dependency, Node, Parameter, Signature
 from cami.repository import Blob, Snapshot, changed_files
 
-INDEX_VERSION = "2"
+INDEX_VERSION = "3"
 
 
 @dataclass(frozen=True)
@@ -259,6 +259,9 @@ def build_index(snapshot: Snapshot, config: IndexConfig = IndexConfig(),
             continue
         name = _module_name(blob.path, config.source_roots)
         if name is None:
+            continue
+        if blob.limitation:
+            modules.append(parse_module(blob, name))
             continue
         key = (blob.object_id, sys.version, INDEX_VERSION, blob.path, name)
         if cache is not None and key in cache:

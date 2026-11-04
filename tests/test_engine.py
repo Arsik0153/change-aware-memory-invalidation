@@ -121,3 +121,22 @@ def test_file_policy_conservatively_checks_unresolved_transitive_support(repo, c
     assert selection["selected"]
     assert "graph_free_unresolved_fallback" in selection["reasons"]
     assert len(read_jsonl(out / "validations.jsonl")) == 1
+
+
+@pytest.mark.parametrize('policy', ['symbol_validate', 'file_validate', 'all_validate'])
+def test_same_blob_symlink_transition_withholds_and_restores(repo, tmp_path, policy):
+    parent = repo.commit({'module.py': 'def f(): pass\n'})
+    oid = repo.git('rev-parse', f'{parent}:module.py')
+    repo.git('update-index', '--cacheinfo', f'120000,{oid},module.py')
+    repo.git('commit', '-qm', 'same bytes become an unsupported symlink')
+    link = repo.git('rev-parse', 'HEAD')
+    repo.git('update-index', '--cacheinfo', f'100644,{oid},module.py')
+    repo.git('commit', '-qm', 'same bytes become a regular source file again')
+    restored = repo.git('rev-parse', 'HEAD')
+    config = repo.config(parent, [link, restored], policy=policy)
+    out = tmp_path / 'run'
+    run_experiment(config, out)
+    states = read_jsonl(out / 'states.jsonl')
+    assert [row['available'] for row in states] == [False, True]
+    assert [row['last_checked_commit'] for row in states] == [link, restored]
+    assert [row['last_verdict'] for row in states] == ['insufficient_evidence', 'supported']
