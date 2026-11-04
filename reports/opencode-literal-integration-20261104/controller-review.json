@@ -1,0 +1,64 @@
+{
+  "baseline_source_sha256": {
+    "preparation_worker.py": "3336933a33436750dde15e421a959b92c8712ca4bcad98f9b6f2495b237e2c9f",
+    "study_runtime.py": "4fba808eb490eb2f04ee49854b30e057eefc119ec9f7b87bf6536a89158efad1",
+    "study_schema.py": "c9946410d42a09a1fc30a99e087a3409e0da5e5949a118e5c4bf84a532c2aebb"
+  },
+  "checked_boundaries": [
+    "Explicit memory-source schema2 metadata binds generator/helper filenames, payload kind and extractor format; legacy absence keeps schema1 policy.",
+    "normalize includes metadata/seed/generator/helper in sealed asset hashes; execute validation verifies assets and complete controller/helper/runtime inventories before admitted execution.",
+    "Generator is mounted with its single helper read-only; no whole bundle/oracle tree is introduced into preparation mounts. Runtime and adapter mounts remain read-only; only intended workspace/memory are writable.",
+    "Worker overwrites inherited PYTHONPATH, sets PYTHONSAFEPATH=1 and excludes workspace from trusted import paths. Generator and adapter helper provenance is now separated.",
+    "Generated seed must match exact frozen seed bytes before adapter preparation. Schema2 verify_memory requires exact catalog equality to validated frozen subject/tuple/source/span/policy data even if catalog and binding hashes were recomputed.",
+    "Catalog/source bindings are compared with canonical origin byte hashes/sizes after preparation; immutable seed/catalog/binding hashes are rechecked across trials.",
+    "Source payload remains source_excerpt_equals with exact expected literal and truncation; no note-header parsing or automatic manual-note conversion exists in this overlay.",
+    "Schema1 generator command, note comparison path and source consistency checks remain. Static command lacks state-home; CAMI alone receives its own state root. Static backend retains no ProductMemory service import requirement.",
+    "Existing fixed preparation limits remain: trusted source-only work, network none, 2 CPU/2GiB, per-command timeout300s, outer660s. These are not hard provider/billing, total host resource or validation-cost savings claims."
+  ],
+  "docker_calls": 0,
+  "finding": {
+    "control": "PathFinder resolves two authored colliding literal_source modules to generator and adapter respectively without executing either fixture. Existing schema1 route has equal environments and no literal-generator path.",
+    "effect": "Adapter imports of literal_source could resolve the bundle helper instead of the source identified by the adapter runtime pins. Current helper byte identity did not make this a safe reusable boundary.",
+    "fix": "Separate per-command environments. Generator2 gets literal-generator first; adapter prepare gets only memory-adapter/cami-src/cami-deps. Worker logs only those trusted Python environment keys.",
+    "severity": "material_before_model_code_attribution",
+    "status": "fixed_and_independently_verified",
+    "trigger": "Initial schema2 preparation reused one PYTHONPATH with /opt/literal-generator before /opt/memory-adapter for both generator and adapter prepare."
+  },
+  "heldout_reads": false,
+  "independent_controls": {
+    "cases": [
+      "Distinct actual module resolution per command",
+      "New helper mutation rejected by execute-time frozen source verification",
+      "Rehashed expected/span/kind tampering rejected and frozen seed unchanged",
+      "Schema1 original generator/backend state boundary preserved"
+    ],
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python runs/opencode-literal-controller-review-20261104/test_overlay_review.py",
+    "passed": 4,
+    "ruff": "passed",
+    "seconds": 0.012
+  },
+  "installed_byte_identity": {
+    "memory_seed_schema.py": true,
+    "preparation_worker.py": true,
+    "study_runtime.py": true,
+    "study_schema.py": true
+  },
+  "limits": [
+    "Actual generator/catalog2/container/MCP behavior is outside these pure review controls; root reports separate six-container success, not independently rerun here.",
+    "No real study data or heldout/task outcome inputs were inspected for this review.",
+    "Execution helpers assume the normal validated-study controller call path and trusted stable host code; this review does not establish adversarial host/filesystem immutability.",
+    "Schema2 supports only the declared Python literal predicate and bounded source/seed population; it makes no behavior, usefulness, token, cost or end-to-end speed claim."
+  ],
+  "model_calls": 0,
+  "network_calls": 0,
+  "own_control_sha256": "cc9fc2f7bcf25ad8c0aad656cb084343eef452721b95d02d8d6fc308f4365c68",
+  "reviewed_sha256": {
+    "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+    "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+    "study_runtime.py": "ad75c1c848cd25f9507df0a249ae9901fa24ef7b5c162d8f87eb6de02c4d17a0",
+    "study_schema.py": "c0aec1181aa38bff1d0e6de1e047b6ec989fe4abd348ed282b63925eec4633b3"
+  },
+  "scope": "Independent read-only review of the four generic schema2 controller modules against the installed format-enabled baseline and preserved format-selection sources. Own controls use authored temporary fixtures only. No task bundle/outcome, heldout, model, Docker or source-target execution.",
+  "status": "review_complete_no_remaining_material_blocker",
+  "tracked_writes": false
+}

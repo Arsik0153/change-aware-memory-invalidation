@@ -1,0 +1,207 @@
+{
+  "adapter": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v4-20261104/extracted/integrations/opencode",
+  "arms": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "binary_path": "/root/.opencode/bin/opencode",
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "bundle_kind": "development",
+  "bundle_path": "/root/apps/change-aware-memory-invalidation/examples/opencode_benchmark_development_v2",
+  "cami_source": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v4-20261104/extracted/src",
+  "execution_authorized": false,
+  "harness": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/harness/container_session.py",
+  "image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "max_steps": 20,
+  "memory_response_format": "compact",
+  "model": "openai/gpt-6.1-sol#high",
+  "normalized": {
+    "asset_hashes": {
+      "fixture-manifest.json": "908a61eaf7ebbd99b7355add5cf5f795c65e942be47a2ddcb3cfc27afc757529",
+      "fixtures/click-help-eagerness-base.tar.gz": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+      "fixtures/click-help-option-api-base.tar.gz": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+      "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+      "memory-origin-literal-v2/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be",
+      "memory-source.json": "87c0042f0595387872dd139c3cfd356a0997c3241761321d572f0efd39f44474",
+      "oracles/conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+      "oracles/test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+      "oracles/test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d",
+      "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+      "task-evaluation.json": "89b29c509cd62d8db585721f931a74a94061d4705bc249cca5a5942cd787951d",
+      "task-prompts.json": "71c3c093a217c6c16c35b5e7e04ca8fb253253931aa22aef53e2a8db534e3ab1"
+    },
+    "memory_source": {
+      "extractor_format": "python.definition-prefix/1",
+      "generator": "seed_source_literals_v2.py",
+      "helpers": [
+        "literal_source.py"
+      ],
+      "payload_kind": "source_excerpt_equals",
+      "schema_version": 2,
+      "seed": "memory-origin-literal-v2/seed-spec.json"
+    },
+    "seed": "memory-origin-literal-v2/seed-spec.json",
+    "sequence": [
+      "click-help-option-api",
+      "click-help-option-api",
+      "click-help-eagerness",
+      "click-help-eagerness"
+    ],
+    "source_roots": [
+      "src/click"
+    ],
+    "tasks": [
+      {
+        "acceptance": [
+          "oracles/test_help_option_api.py"
+        ],
+        "archive": "fixtures/click-help-option-api-base.tar.gz",
+        "archive_sha256": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+        "id": "click-help-option-api",
+        "oracle_root": "oracles",
+        "prompt": "Consolidate Click's duplicated built-in help-option behavior into a reusable public click.HelpOption class derived from Option. It should default to --help, an eager flag that prints help and exits without passing a value to the command. Use the same class for automatically generated command help and the help_option decorator. Preserve custom option names, disabled automatic help, resilient parsing, existing help output/color behavior, explicit option keyword overrides (including callback), and the decorator's custom cls support. Keep existing applications working and add focused tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+        "pytest_selection": null,
+        "regression": "tests",
+        "replace_regression_tests": null
+      },
+      {
+        "acceptance": [
+          "oracles/test_commands.py"
+        ],
+        "archive": "fixtures/click-help-eagerness-base.tar.gz",
+        "archive_sha256": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+        "id": "click-help-eagerness",
+        "oracle_root": "oracles",
+        "prompt": "Fix the ordering of Click's automatically generated help option when help_option_names supplies a custom name. For a command with a non-eager flag -a, an eager flag -b whose callback prints and exits, and automatic --my-help: --my-help before -b must print help, while -b before --my-help must invoke -b. Help must take precedence over the non-eager flag regardless of order. Keep ordinary callback ordering, disabled help, and other option behavior intact. Add focused regression tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+        "pytest_selection": "help_param_priority or iter_params_for_processing",
+        "regression": "tests",
+        "replace_regression_tests": null
+      }
+    ]
+  },
+  "pins": {
+    "adapter": {
+      "files": {
+        "README.md": "74cd8e5ec1acc817304303e860b76f85f924839b95612476c855e43f30681c55",
+        "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+        "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+        "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+        "memory_adapter.py": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+        "memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+        "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+        "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+        "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+      },
+      "root": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v4-20261104/extracted/integrations/opencode"
+    },
+    "controller": {
+      "files": {
+        "authored_integration.py": "3a2260c56a6c3ef490c4f1818bf6d94a8af83f6b425b720eb7e6c9dcbdaf57ea",
+        "fixed_grader.py": "4d369f797dc067bdf57b154036b1220c0a785ba17b457b79c78a4f315cb07f6a",
+        "literal_stdio_worker.py": "3d492d3cfa0d1c98957433e201520e2f44c5dc1c37b65f347c10c40bd830288d",
+        "memory_format_evidence.py": "b19a7d45c576a54d5cb74ae843ac5c65b25a7ee5b7b6e0013083fdbfaea58348",
+        "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+        "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+        "study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+        "study_controller.py": "742d319ba26e568731efbd6679cf585b599c12940b45df4cc6a17d77508b295a",
+        "study_ledger.py": "e82c76a9aa20028a150abde6244f6854a346cfc0aa115a3dca737549d4141a3e",
+        "study_runtime.py": "ad75c1c848cd25f9507df0a249ae9901fa24ef7b5c162d8f87eb6de02c4d17a0",
+        "study_schema.py": "c0aec1181aa38bff1d0e6de1e047b6ec989fe4abd348ed282b63925eec4633b3",
+        "study_workspace.py": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89",
+        "test_controller.py": "ab497678ff421f848ac6683f6914d72b387447b93be9e7eb74cfc914c322d810",
+        "test_format_observation.py": "c9010037e0958e22480aee7885faf9cacb3e0313e2ec7678c9fe0cf2ed6ceb77",
+        "test_format_selection.py": "60f516615e40463e4938957699f15d882babac24e3d4eee67df17b461fbaf786",
+        "test_literal_controller.py": "0d38c84880418a280bcaec82ba203656a2974d1a997e1ea9ec0c65f003ebd563",
+        "test_literal_stdio.py": "3829ef2b7d67193121a065dddeab0c8ed1dedf6005fb302642bf09ff1b9fa56c",
+        "verify_literal_containers.py": "2fb226061101352a3c5d7fce042880b19e11949f31f12192604f1305f9b7ed34"
+      },
+      "root": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/controller"
+    },
+    "harness": {
+      "files": {
+        "boundary-sentinel.txt": "2c254255be5ae1d1741ee5ec813738d044f47f086c5ba13c0f6dfd964bd61212",
+        "container_common.py": "0b6b17f08a38beabbcb76a96f6021b92bc9e29139c580419045652638573f03e",
+        "container_session.py": "824efc380833d2f02c5a702f09221057964176e9f9a79ad9d3b6b0846b4e882d",
+        "container_worker.py": "cd42b259e47eb7b9bf52d97a61199d2ab619ace830349f88e3af252a1a503758",
+        "evidence_safety.py": "3ff3d798413f7ced9202a9d7ac0ecd16d8643390c3f7790df5fea270936ce430",
+        "test_failure_contracts.py": "4c594e0aeae4502a19bbc9edd87b6bfea8be5e5a539af651a2590e7706edbd8a",
+        "test_publication_guards.py": "dabdfe747148f6af771a0d28f2f801e55f24c3ea7ed5d54a8a30d163c0dbf0a4",
+        "test_structured_redaction.py": "c5959253d25f4d2e4e6721a30292e38bc57fb702120f7f666e4d89e352ddf7b6",
+        "trial_guards.py": "03fc81278ae7f0f411a0132c02aec26d8a59405bd6b49d11eca535ebb03f24f1"
+      },
+      "root": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/harness"
+    },
+    "production": {
+      "files": {
+        "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+        "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+        "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+        "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+        "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+        "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+        "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+        "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+        "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+        "cami/cli.py": "cd94b4b14ef18696dd41f01be46c13be1ade69808a82cdd4f0e2cebf7a8a5560",
+        "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+        "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+        "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+        "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+        "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+        "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+        "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+        "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+        "cami/index.py": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+        "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+        "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+        "cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+        "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+        "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+        "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+        "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+        "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+        "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+        "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+        "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+        "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+        "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+        "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+        "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+        "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+        "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+        "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+        "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+        "cami/product/memory/store.py": "b5c8ac3d1917afa443b0af6dfdedd8b9e9ebed3c90d5b7db17af4f93f4e19b8f",
+        "cami/product/memory/validation.py": "16a44a5c32a91a3e57c1435441782896df2f9005c28c501f277493750e8dbdfb",
+        "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+        "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+        "cami/product/service.py": "bde12a975d429821fbb9dff9461ea71852e93afc4d7cf435a5d4c39f8b7cf24f",
+        "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+        "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+        "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+        "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+        "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+        "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+        "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+        "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+        "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+        "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+        "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+        "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+        "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+        "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+        "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+        "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+        "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+      },
+      "root": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v4-20261104/extracted/src"
+    }
+  },
+  "repetitions": 3,
+  "reported_token_budget": 1000000,
+  "runtime_manifest_path": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v4-20261104/runtime-manifest.json",
+  "runtime_manifest_sha256": "7cdff700153728ab3267f98524a6d58cf1f0942b96e1d89816773808f22be182",
+  "schema_version": 1,
+  "timeout_seconds": 900
+}

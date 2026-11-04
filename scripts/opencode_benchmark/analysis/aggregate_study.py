@@ -17,6 +17,53 @@ from aggregate_metrics import ARMS, TOKEN_KEYS, number, token_fields, summarize
 HERE = Path(__file__).resolve().parent
 PRIVATE = {"private-state", "server-private", "private-export-client"}
 
+LITERAL_COMPACT_DEVELOPMENT_ID = "opencode-cami-real-maintenance-development-v4-literal-compact"
+
+
+def admit_protocol(protocol, supported):
+    """Two explicit IDs share the unchanged frozen success/cost/token rules."""
+    expected = supported
+    if protocol.get("study_id") == LITERAL_COMPACT_DEVELOPMENT_ID:
+        expected = {**supported, "study_id": LITERAL_COMPACT_DEVELOPMENT_ID}
+    if {key: protocol.get(key) for key in supported} != expected:
+        raise ValueError("protocol success rules differ from independently supported frozen rules")
+    return protocol["study_id"]
+
+
+def _cohort_path(value, basename=None):
+    if not isinstance(value, str) or not value or "\\" in value or "\x00" in value:
+        return False
+    path = Path(value)
+    return (not path.is_absolute() and ".." not in path.parts and str(path) == value
+            and bool(path.parts) and (basename is None or path.name == basename))
+
+
+def admit_study_cohort(protocol_id, study):
+    if protocol_id != LITERAL_COMPACT_DEVELOPMENT_ID:
+        return
+    normalized = study.get("normalized")
+    source = normalized.get("memory_source") if isinstance(normalized, dict) else None
+    if (study.get("bundle_kind") != "development"
+            or study.get("memory_response_format") != "compact"
+            or not isinstance(source, dict)
+            or set(source) != {"schema_version", "seed", "generator", "helpers",
+                               "payload_kind", "extractor_format"}
+            or type(source["schema_version"]) is not int or source["schema_version"] != 2
+            or source["payload_kind"] != "source_excerpt_equals"
+            or source["extractor_format"] != "python.definition-prefix/1"
+            or not _cohort_path(source["seed"])
+            or source["seed"] != normalized.get("seed")
+            or not _cohort_path(source["generator"], "seed_source_literals_v2.py")
+            or not isinstance(source["helpers"], list) or len(source["helpers"]) != 1
+            or not _cohort_path(source["helpers"][0], "literal_source.py")):
+        raise ValueError("v4 literal/compact ID requires its explicit development schema2 study cohort")
+    hashes = normalized.get("asset_hashes")
+    required = ["memory-source.json", source["seed"], source["generator"], source["helpers"][0]]
+    if not isinstance(hashes, dict) or any(
+            not isinstance(hashes.get(name), str)
+            or not re.fullmatch(r"[a-f0-9]{64}", hashes[name]) for name in required):
+        raise ValueError("v4 literal/compact source policy assets must be explicitly frozen")
+
 
 def sha(path):
     value = hashlib.sha256()
@@ -382,8 +429,7 @@ def aggregate(
 ):
     protocol = read(protocol_path)
     supported = read(HERE / "supported_rules.json")
-    if {key: protocol.get(key) for key in supported} != supported:
-        raise ValueError("protocol success rules differ from independently supported frozen rules")
+    protocol_id = admit_protocol(protocol, supported)
     binding = read(run / "run.json")
     if expected_study_sha and binding["study_sha256"] != expected_study_sha:
         raise ValueError("unexpected study version; never pool attempts")
@@ -400,6 +446,7 @@ def aggregate(
         or study["model"] != protocol["model"]
     ):
         raise ValueError("run/study design binding differs")
+    admit_study_cohort(protocol_id, study)
     planned = schedule(study)
     if read(run / "plan.json")["trials"] != planned:
         raise ValueError("stored plan differs from independently reconstructed cyclic schedule")

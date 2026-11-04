@@ -1,0 +1,87 @@
+{
+  "activity": {
+    "Docker_calls": 0,
+    "Git_calls": 0,
+    "ProductMemory_constructed_by_this_review": false,
+    "generic_authored_inputs_only": true,
+    "heldout_access": false,
+    "model_calls": 0,
+    "source_stage_edits": false,
+    "target_source_executed": false,
+    "tracked_edits": false
+  },
+  "checks": [
+    {
+      "artifact": "producer-unit-controls.txt",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=runs/opencode-literal-adapter-development-20261104 .venv/bin/python -m unittest discover -s runs/opencode-literal-adapter-development-20261104 -p test_literal_adapter.py -q",
+      "result": "27passed in0.066s"
+    },
+    {
+      "artifact": "independent-controls.txt",
+      "coverage": [
+        "forged text",
+        "forged truncation",
+        "forged span",
+        "forged source hash",
+        "forged source size",
+        "forged subject kind",
+        "no schema2 note conversion/full index",
+        "full schema1 bytes versus frozen batch-v2 backend"
+      ],
+      "result": "8passed in0.12s"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check runs/opencode-literal-adapter-review-20261104/test_review_boundaries.py",
+      "result": "passed"
+    }
+  ],
+  "conclusion": "No actionable material blocker found in reviewed adapter/generator trust, expected derivation, schema separation or static parity. New study/driver/resource/format freeze and preflight remain required; preserve old studies and schema1 interpretation.",
+  "confirmed": [
+    {
+      "area": "expected_derivation",
+      "finding": "Schema2 frozen expected/span/source values are comparison-only. Common stdlib reauthenticate validates current canonical origin raw hash/size, exact direct subject/kind, lexical span/text/truncation before creating CAMI state or importing ProductMemory. RememberInput receives only kind/query/context/request_id; core derives payload from authenticated context/CAS. Adapter checks context certificate and complete normalized server-derived payload afterward."
+    },
+    {
+      "area": "static_parity",
+      "finding": "Both arms use the same reauthenticated catalog and shared retrieval/ranking/original-record budget. Static preparation imports no CAMI and labels origin literal assertions unchecked_current. CAMI available literals use validated_literal_source; unavailable entries yield summaries without expected/historical text or result replacement. Complete module source hashes are rechecked at end of preparation."
+    },
+    {
+      "area": "schema_boundaries",
+      "finding": "Schema2 explicitly supports only source_excerpt_equals with exact field sets and portable origin_source. Manual notes/schema1 remain a separate path; no automatic conversion or caller expected field reaches registration. Only origin_source.index is removed during core payload comparison; expected text/truncated, portable source path/hash/size and origin span remain."
+    },
+    {
+      "area": "schema1_compatibility",
+      "finding": "Independent full static lookup response bytes match preserved batch-v2 backend for authored schema1 manual note containing Unicode/header-like prose. Producer27 unit controls including schema1 golden pass. Common TOOL description intentionally changes in new version, so old-v3 agent byte equivalence is not claimed."
+    },
+    {
+      "area": "lexical_generator",
+      "finding": "Generator uses stdlib-only direct syntactic enumeration, deterministic selectors/order/IDs, explicit schema2, regular/size/path controls and lexical physical @ span through definition end. It does not execute source or inspect outcomes. It is not a production binding/eligibility oracle: all frozen subjects must pass CAMI preflight or preparation fails, with no replacement/subset heuristic."
+    },
+    {
+      "area": "full_compact",
+      "finding": "Default remains full. Compact projection retains new expected.text/truncated/origin_source/origin_span inside payload; top provenance pruning and unkeyed audit receipts have the previously reviewed pre-scrub trust boundary. Same projection/budget across arms."
+    }
+  ],
+  "handoff_manifest_sha256": "e675aa6bbcded987994ee1286e1e83856ea6960929cfd318346ccd2139216891",
+  "limitations_not_blockers": [
+    "This independent review did not rerun the producer's seven actual ProductMemory authored integration groups; their evidence manifest/code are pinned separately. No additional ProductMemory/database execution was needed for the bounded independent controls.",
+    "Static syntax enumeration can include subjects production regards as ambiguous/unavailable or ignored. Correctness requires fail-closed all-record CAMI preflight on the frozen cohort, not silently choosing a favorable subset.",
+    "Literal prefix availability is not full-body/behavior/API equivalence and says nothing about effects of surrounding globals/classes/imports.",
+    "No token, wall, CPU, quality or billing benefit established. Common reauthentication, registration, refresh, final reads and larger compact audit storage must be charged in any new frozen study.",
+    "Read_source uses ordinary regular-file checks and final rechecks in a trusted isolated preparation lifecycle; it is not a new OS namespace/security boundary.",
+    "Failures retain partial construction metrics/state in their new isolated namespace; controller must not reuse failed preparation as a valid binding."
+  ],
+  "material_blockers": [],
+  "reviewed_utc": "2026-11-04T22:02:39.030900+00:00",
+  "runtime_files_sha256": {
+    "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+    "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+    "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+    "memory_adapter.py": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+    "memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+    "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15"
+  },
+  "schema_version": 1,
+  "source_before_after_equal": true,
+  "status": "clear_bounded_adapter_review"
+}
