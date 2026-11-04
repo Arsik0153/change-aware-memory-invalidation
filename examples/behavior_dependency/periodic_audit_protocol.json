@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "experiment": "finite-periodic-audit-bound-v1",
+  "analysis_kind": "Exploratory model extension, not a new production policy or main-protocol change.",
+  "base_input_sha256": {
+    "reports/research-20261104/behavior-reachability-v1/hidden_missing.json": "81cea377514061c30ad33d3a1ff27f1fd4350567023dc552a1e27439726b8477",
+    "reports/research-20261104/behavior-reachability-v1/programs.json": "69a0ea103ffb70f38570a39e480e007836515ae21bfeac7c0e6c80d74a39f9fc",
+    "reports/research-20261104/behavior-reachability-final-audit.json": "1b36180bf981c67e4a2d1f9a99c3a386e90b79aac6e5a4f1445f449b05aed9dc"
+  },
+  "intervals": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "state": [
+    "base availability state",
+    "number of processed child commits since last validation"
+  ],
+  "initial_age": 0,
+  "rule": "Select if the frozen baseline selects OR age+1 >= K. A selected transition obtains finite-oracle truth and resets age=0; otherwise retain availability and increment age. Every transition counts, including unchanged source.",
+  "expected_bound": "No reachable cycle of false availability; longest consecutive run of false-availability states is at most K-1, conditional on accurate completed validation.",
+  "projection": "Lift each frozen hidden_missing transition using its target program and finite truth; force validation at the deadline. Check each resulting base state exists in the frozen graph.",
+  "negative_controls": [
+    {
+      "id": "reset_on_source_change",
+      "interval": 4,
+      "rule": "Incorrectly reset age to zero whenever source changes before evaluating the deadline.",
+      "expected": "A reachable source-changing false-availability cycle violates the bound."
+    },
+    {
+      "id": "deadline_off_by_one",
+      "interval": 4,
+      "rule": "Use age+1 > K instead of >= K.",
+      "expected": "Longest false-availability run exceeds K-1."
+    }
+  ],
+  "workloads": [
+    {
+      "id": "stable",
+      "steps": 40,
+      "truth": "g=1 throughout; f calls g; unrelated VALUE toggles at every child."
+    },
+    {
+      "id": "persistently_false",
+      "steps": 40,
+      "truth": "g=2 from first child onward; f calls g; unrelated VALUE toggles at every child."
+    },
+    {
+      "id": "break_then_restore",
+      "steps": 40,
+      "truth": "g=2 for children1..8, restored to1 at child9; f calls g; unrelated VALUE toggles at every child."
+    }
+  ],
+  "outputs": [
+    "Full reachable lifted graphs and longest-run witnesses per K",
+    "Negative-control counterexamples",
+    "Per-step workload decisions, ages, availability and logical validation counts",
+    "Protocol/source/artifact hashes"
+  ],
+  "limits": [
+    "Finite two-function grammar inherited from the frozen model; not arbitrary Python.",
+    "No Docker runs or runtime measurements; validation boundary uses known finite truth.",
+    "No independence or population-frequency claim.",
+    "Periodic validation is a generic safeguard, not claimed as a novel idea.",
+    "Persistent false claims already withheld are rechecked at every transition by the original previously_unavailable rule.",
+    "No real provenance, labels, cohort, policy config or main protocol is changed."
+  ]
+}
