@@ -27,6 +27,36 @@ def memory_tool(name: str) -> bool:
     return name == "memory_lookup" or name.endswith("_memory_lookup")
 
 
+def message_rows(messages: list[dict]) -> list[dict]:
+    """Normalize aggregated OpenCode v2 API messages to the CLI tool shape."""
+    rows = []
+    for message in messages:
+        if message.get("type") == "shell":
+            rows.append({"type": "tool_use", "part": {
+                "id": message["id"], "tool": "shell",
+                "state": {"status": message.get("status"), "time": {
+                    "start": message.get("time", {}).get("created"),
+                    "end": message.get("time", {}).get("completed")}}}})
+        if message.get("type") != "assistant":
+            continue
+        for part in message.get("content", []):
+            if part.get("type") != "tool":
+                continue
+            state = dict(part["state"])
+            state["time"] = {"start": part.get("time", {}).get("created"),
+                             "end": part.get("time", {}).get("completed")}
+            if memory_tool(part["name"]) and state["status"] == "completed":
+                content = state.get("content", [])
+                if len(content) != 1 or content[0].get("type") != "text":
+                    raise ValueError("memory response must contain one complete text payload")
+                if state.get("metadata", {}).get("truncated"):
+                    raise ValueError("truncated memory response cannot authenticate exposure")
+                state["output"] = content[0]["text"]
+            rows.append({"type": "tool_use", "part": {
+                "id": part["id"], "tool": part["name"], "state": state}})
+    return rows
+
+
 def body(repo: Path, relative: str, qualname: str) -> tuple[str, str | None, str | None]:
     path = PurePosixPath(relative)
     if path.is_absolute() or ".." in path.parts or str(path) != relative:
@@ -141,10 +171,19 @@ def analyze(rows: list[dict], catalog: dict, origin: Path, current: Path) -> dic
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    for name in ["trace", "catalog", "origin", "current", "out"]:
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--trace", type=Path, help="CLI JSONL tool events")
+    source.add_argument("--messages", type=Path, help="Complete aggregated v2 API message array")
+    for name in ["catalog", "origin", "current", "out"]:
         parser.add_argument("--" + name, type=Path, required=True)
     args = parser.parse_args()
-    rows = [json.loads(line) for line in args.trace.read_text().splitlines() if line.strip()]
+    if args.messages:
+        messages = json.loads(args.messages.read_text())
+        if not isinstance(messages, list):
+            raise ValueError("expected complete aggregated message array, not a paginated API envelope")
+        rows = message_rows(messages)
+    else:
+        rows = [json.loads(line) for line in args.trace.read_text().splitlines() if line.strip()]
     result = analyze(rows, json.loads(args.catalog.read_text()), args.origin.resolve(), args.current.resolve())
     args.out.write_text(json.dumps(result, indent=2) + "\n")
 

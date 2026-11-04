@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from scripts.analyze_opencode_staleness import analyze, canonical, sha
+from scripts.analyze_opencode_staleness import analyze, canonical, message_rows, sha
 
 
 @pytest.fixture
@@ -85,3 +85,30 @@ def test_error_and_withheld_payload_do_not_count_as_exposure(sample):
     result = analyze([call], catalog, origin, current)
     assert result["memory_calls"][0]["withheld_records"] == 1
     assert result["counts"]["returned_records"] == 0
+
+
+def test_api_messages_match_cli_exposure_and_keep_shell_uncertainty(sample):
+    origin, current, catalog, call = sample
+    part = call["part"]
+    messages = [{"type": "assistant", "content": [{
+        "type": "tool", "id": part["id"], "name": part["tool"],
+        "time": {"created": 10, "ran": 11, "completed": 20},
+        "state": {"status": "completed", "content": [{
+            "type": "text", "text": part["state"]["output"]}],
+            "metadata": {"truncated": False}}}]}]
+    assert analyze(message_rows(messages), catalog, origin, current) == analyze([call], catalog, origin, current)
+    messages.append({"id": "external-shell", "type": "shell", "status": "exited", "time": {"created": 15, "completed": 30}})
+    assert analyze(message_rows(messages), catalog, origin, current)["counts"]["unassessed_records"] == 1
+
+
+@pytest.mark.parametrize("metadata,content", [
+    ({"truncated": True}, [{"type": "text", "text": "{}"}]),
+    ({}, []),
+    ({}, [{"type": "image"}]),
+])
+def test_api_incomplete_memory_output_is_rejected(metadata, content):
+    messages = [{"type": "assistant", "content": [{
+        "type": "tool", "id": "memory", "name": "research_memory_memory_lookup",
+        "state": {"status": "completed", "content": content, "metadata": metadata}}]}]
+    with pytest.raises(ValueError):
+        message_rows(messages)
