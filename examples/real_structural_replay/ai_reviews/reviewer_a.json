@@ -1,0 +1,1614 @@
+{
+  "schema_version": 1,
+  "reviewer_kind": "ai_reviewer",
+  "human": false,
+  "provider": "codex",
+  "model": "codex:gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "agent_task": "/root/blinded_ai_reviewer_a",
+  "packet_sha256": "3b2069e787061695a9d1e3c9028678803155a1804ba86f4d83ddb60d7dfc27c3",
+  "independence_disclosure": "Model weights and training independence are unverified.",
+  "identity_basis": "declared_invocation",
+  "items": [
+    {
+      "id": "case-8810691b50960340f777",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "cls",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "name",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Constant(value=None)",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        },
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 399,
+          "line_end": 414
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level add_completion_class before comparison. It differs from the predicate: parameter 1 name: actual 'cls', expected '_case_85cedda1ed9a6eeda5e5de2f'. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for src/click/shell_completion.py:add_completion_class. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-cfe735f7fe6d94e8d37f",
+      "source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 717
+        },
+        {
+          "source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+          "available": true,
+          "line_start": 551,
+          "line_end": 608
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named open_url, at lines 551-608. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/_termui_impl.py:open_url. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-7377f449b4ef54345266",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [],
+          "returns_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        },
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 321,
+          "line_end": 325
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level get_binary_stdin matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:get_binary_stdin. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-dda544104a253ce1f2af",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "cli",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='BaseCommand', ctx=Load())"
+            },
+            {
+              "name": "ctx_args",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "prog_name",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "complete_var",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "instruction",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='int', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        },
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 17,
+          "line_end": 52
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level shell_complete matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/shell_completion.py:shell_complete. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-8f76208c55aa31b28f93",
+      "source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "param_decls",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "attrs",
+              "kind": "var_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 308
+        },
+        {
+          "source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+          "available": true,
+          "line_start": 156,
+          "line_end": 172
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level option before comparison. It differs from the predicate: parameter 1 name: actual 'param_decls', expected '_case_8e35469b32bbd2ebc8600fc4'. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for click/decorators.py:option. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-40171ec6c75287dd3791",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 0,
+        "unconditional": null,
+        "target_rebinding": false,
+        "type_parameters_present": null
+      },
+      "evidence": [
+        {
+          "source_path": "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 333
+        }
+      ],
+      "reasoning": "Inspected the entire supplied module, lines 1-333, including all module-level compound statements. There is no exact top-level function definition named _case_48aeb98c608b7a55429e4f2e, and no target binding or wildcard-import ambiguity.",
+      "scope_notes": "Exact supplied source for click/testing.py:_case_48aeb98c608b7a55429e4f2e. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-05ba048b5794cf8f990f",
+      "source_sha256": "cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be",
+      "verdict": "uncertain",
+      "extracted_facts": {
+        "definition_count": 3,
+        "unconditional": true,
+        "target_rebinding": true,
+        "type_parameters_present": false,
+        "binding_events": [
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 336,
+            "line_end": 337
+          },
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 340,
+            "line_end": 341
+          }
+        ],
+        "observed_definitions": [
+          {
+            "line_start": 54,
+            "line_end": 70,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "input",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "charset",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 336,
+            "line_end": 337,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 340,
+            "line_end": 341,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "source_path": "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 341
+        },
+        {
+          "source_path": "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py",
+          "available": true,
+          "line_start": 54,
+          "line_end": 70
+        },
+        {
+          "source_path": "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py",
+          "available": true,
+          "line_start": 336,
+          "line_end": 337
+        },
+        {
+          "source_path": "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py",
+          "available": true,
+          "line_start": 340,
+          "line_end": 341
+        }
+      ],
+      "reasoning": "The full module contains 3 unconditional module-level definitions of make_input_stream at lines 54-70, 336-337, 340-341. The later definitions bind the same name again. The rubric requires uncertainty for duplicate definitions; a unique subject cannot be selected.",
+      "scope_notes": "Exact supplied source for click/testing.py:make_input_stream. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-693c3ef0c09519c317d5",
+      "source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 787
+        },
+        {
+          "source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+          "available": true,
+          "line_start": 686,
+          "line_end": 712
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named launch, at lines 686-712. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/termui.py:launch. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-a6fedc18232ebb4b0bcd",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        },
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 20,
+          "line_end": 21
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named get_filesystem_encoding, at lines 20-21. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:get_filesystem_encoding. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-1df49ff79b3e89f43e17",
+      "source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 556
+        },
+        {
+          "source_path": "source/7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107.py",
+          "available": true,
+          "line_start": 275,
+          "line_end": 300
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named pager, at lines 275-300. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for click/_termui_impl.py:pager. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-ff7d4a7d85fc7f93e36b",
+      "source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 1765
+        },
+        {
+          "source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+          "available": true,
+          "line_start": 75,
+          "line_end": 87
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named invoke_param_callback, at lines 75-87. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for click/core.py:invoke_param_callback. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-5206d40b4bfd3d830632",
+      "source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 717
+        },
+        {
+          "source_path": "source/0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851.py",
+          "available": true,
+          "line_start": 373,
+          "line_end": 420
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named _pipepager, at lines 373-420. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/_termui_impl.py:_pipepager. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-abecd108af7dc7a86e2c",
+      "source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "param_decls",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "attrs",
+              "kind": "var_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 308
+        },
+        {
+          "source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+          "available": true,
+          "line_start": 156,
+          "line_end": 172
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level option matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for click/decorators.py:option. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-70fba0e5e4d4b10d4a53",
+      "source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "string",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 529
+        },
+        {
+          "source_path": "source/70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9.py",
+          "available": true,
+          "line_start": 125,
+          "line_end": 156
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level split_arg_string matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/parser.py:split_arg_string. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-8e4662b35a277e089071",
+      "source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "name",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "encoding",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": null
+            },
+            {
+              "name": "errors",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value='strict')",
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 416
+        },
+        {
+          "source_path": "source/32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1.py",
+          "available": true,
+          "line_start": 280,
+          "line_end": 294
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level get_text_stream matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for click/utils.py:get_text_stream. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-e90051c92c6d97f15a2c",
+      "source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 555
+        },
+        {
+          "source_path": "source/ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d.py",
+          "available": true,
+          "line_start": 372,
+          "line_end": 393
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named confirmation_option, at lines 372-393. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/decorators.py:confirmation_option. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-97aa74864140fa4be270",
+      "source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "ctx",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "incomplete",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "completions_out",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 217
+        },
+        {
+          "source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+          "available": true,
+          "line_start": 129,
+          "line_end": 142
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level add_subcommand_completions before comparison. It differs from the predicate: parameter 1 name: actual 'ctx', expected '_case_8775f56b824ba2ed5a09a278'. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for click/_bashcomplete.py:add_subcommand_completions. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-62bbc36e988f01facdc1",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        },
+        {
+          "source_path": "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py",
+          "available": true,
+          "line_start": 493,
+          "line_end": 494
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named strip_ansi, at lines 493-494. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:strip_ansi. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-d2b1ccfc7e13d13b8f2d",
+      "source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "info",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value='Press any key to continue ...')",
+              "annotation_ast": null
+            },
+            {
+              "name": "err",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=False)",
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 549
+        },
+        {
+          "source_path": "source/f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803.py",
+          "available": true,
+          "line_start": 523,
+          "line_end": 549
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level pause matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for click/termui.py:pause. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-d4d3535c4fe15a32739e",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "cls",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "name",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Constant(value=None)",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        },
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 399,
+          "line_end": 414
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level add_completion_class matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/shell_completion.py:add_completion_class. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-66802ae48c314463e3ca",
+      "source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "ctx",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "incomplete",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "completions_out",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 217
+        },
+        {
+          "source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+          "available": true,
+          "line_start": 129,
+          "line_end": 142
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level add_subcommand_completions matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for click/_bashcomplete.py:add_subcommand_completions. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-165babea9c1f3185fd3e",
+      "source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "color",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='int', ctx=Load()), Name(id='int', ctx=Load())], ctx=Load()), ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "offset",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=0)",
+              "annotation_ast": "Name(id='int', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 787
+        },
+        {
+          "source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+          "available": true,
+          "line_start": 452,
+          "line_end": 462
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level _interpret_color matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/termui.py:_interpret_color. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-fa56fa6d0d50eeabd960",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 333
+        },
+        {
+          "source_path": "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py",
+          "available": true,
+          "line_start": 54,
+          "line_end": 70
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named make_input_stream, at lines 54-70. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for click/testing.py:make_input_stream. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-f795a594f3c16a85b76b",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "cli",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='BaseCommand', ctx=Load())"
+            },
+            {
+              "name": "ctx_args",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "prog_name",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "complete_var",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "instruction",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='int', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        },
+        {
+          "source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+          "available": true,
+          "line_start": 17,
+          "line_end": 52
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level shell_complete before comparison. It differs from the predicate: parameter 1 name: actual 'cli', expected '_case_19fee5b73e98cf9990334ca9'. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for src/click/shell_completion.py:shell_complete. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-42500e4d0e990a7fafe5",
+      "source_sha256": "fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f",
+      "verdict": "uncertain",
+      "extracted_facts": {
+        "definition_count": 3,
+        "unconditional": true,
+        "target_rebinding": true,
+        "type_parameters_present": false,
+        "binding_events": [
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 629,
+            "line_end": 630
+          },
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 633,
+            "line_end": 634
+          }
+        ],
+        "observed_definitions": [
+          {
+            "line_start": 493,
+            "line_end": 494,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": "Name(id='str', ctx=Load())"
+                }
+              ],
+              "returns_ast": "Name(id='str', ctx=Load())",
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 629,
+            "line_end": 630,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 633,
+            "line_end": 634,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "source_path": "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 634
+        },
+        {
+          "source_path": "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py",
+          "available": true,
+          "line_start": 493,
+          "line_end": 494
+        },
+        {
+          "source_path": "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py",
+          "available": true,
+          "line_start": 629,
+          "line_end": 630
+        },
+        {
+          "source_path": "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py",
+          "available": true,
+          "line_start": 633,
+          "line_end": 634
+        }
+      ],
+      "reasoning": "The full module contains 3 unconditional module-level definitions of strip_ansi at lines 493-494, 629-630, 633-634. The later definitions bind the same name again. The rubric requires uncertainty for duplicate definitions; a unique subject cannot be selected.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:strip_ansi. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-149a8b0e0385711225c7",
+      "source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 1765
+        },
+        {
+          "source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+          "available": true,
+          "line_start": 28,
+          "line_end": 34
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named fast_exit, at lines 28-34. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for click/core.py:fast_exit. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-dac3570a02520e6cee76",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        },
+        {
+          "source_path": "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py",
+          "available": true,
+          "line_start": 43,
+          "line_end": 50
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named make_str, at lines 43-50. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/utils.py:make_str. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-0b4b57db58e52db5eef8",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [],
+          "returns_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        },
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 321,
+          "line_end": 325
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level get_binary_stdin before comparison. It differs from the predicate: actual parameter count is 0, expected 1. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:get_binary_stdin. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-b773f7da706ed01a3d5e",
+      "source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "help",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "max_length",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=45)",
+              "annotation_ast": "Name(id='int', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 585
+        },
+        {
+          "source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+          "available": true,
+          "line_start": 56,
+          "line_end": 103
+        }
+      ],
+      "reasoning": "The signature was extracted from the unique unconditional top-level make_default_short_help before comparison. It differs from the predicate: parameter 1 name: actual 'help', expected '_case_0352818f05d75b1d7a7c406f'. Whole-module inspection found no ambiguity that would require an uncertain verdict.",
+      "scope_notes": "Exact supplied source for src/click/utils.py:make_default_short_help. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-3d038f1e676ac720fdc9",
+      "source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "iterable",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='V', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "batch_size",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='int', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='V', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 2969
+        },
+        {
+          "source_path": "source/c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81.py",
+          "available": true,
+          "line_start": 91,
+          "line_end": 92
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level batch matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/core.py:batch. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-9aea31bd6cefe8771357",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        },
+        {
+          "source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+          "available": true,
+          "line_start": 328,
+          "line_end": 332
+        }
+      ],
+      "reasoning": "The full module contains exactly one unconditional top-level function definition named get_binary_stdout, at lines 328-332. Whole-module inspection found no other definition, module-scope rebinding, wildcard import, or subject type parameters.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:get_binary_stdout. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-679aa00fdafa7e9a8520",
+      "source_sha256": "45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1",
+      "verdict": "uncertain",
+      "extracted_facts": {
+        "definition_count": 3,
+        "unconditional": true,
+        "target_rebinding": true,
+        "type_parameters_present": false,
+        "binding_events": [
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 583,
+            "line_end": 584
+          },
+          {
+            "kind": "repeated_function_definition",
+            "line_start": 587,
+            "line_end": 588
+          }
+        ],
+        "observed_definitions": [
+          {
+            "line_start": 43,
+            "line_end": 50,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "value",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())"
+                }
+              ],
+              "returns_ast": "Name(id='str', ctx=Load())",
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 583,
+            "line_end": 584,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 587,
+            "line_end": 588,
+            "unconditional": true,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "source_path": "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 588
+        },
+        {
+          "source_path": "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py",
+          "available": true,
+          "line_start": 43,
+          "line_end": 50
+        },
+        {
+          "source_path": "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py",
+          "available": true,
+          "line_start": 583,
+          "line_end": 584
+        },
+        {
+          "source_path": "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py",
+          "available": true,
+          "line_start": 587,
+          "line_end": 588
+        }
+      ],
+      "reasoning": "The full module contains 3 unconditional module-level definitions of make_str at lines 43-50, 583-584, 587-588. The later definitions bind the same name again. The rubric requires uncertainty for duplicate definitions; a unique subject cannot be selected.",
+      "scope_notes": "Exact supplied source for src/click/utils.py:make_str. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-478d6725ff1f810fc08e",
+      "source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "generator",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "color",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Constant(value=None)",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 717
+        },
+        {
+          "source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+          "available": true,
+          "line_start": 344,
+          "line_end": 370
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level pager matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/_termui_impl.py:pager. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-92fac7ba1b0e33c9f130",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 0,
+        "unconditional": null,
+        "target_rebinding": false,
+        "type_parameters_present": null
+      },
+      "evidence": [
+        {
+          "source_path": "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 580
+        }
+      ],
+      "reasoning": "Inspected the entire supplied module, lines 1-580, including all module-level compound statements. There is no exact top-level function definition named _case_5e53cdd4c9da3c75de0544d3, and no target binding or wildcard-import ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/utils.py:_case_5e53cdd4c9da3c75de0544d3. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-bf21190da236925a4ce3",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 0,
+        "unconditional": null,
+        "target_rebinding": false,
+        "type_parameters_present": null
+      },
+      "evidence": [
+        {
+          "source_path": "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 626
+        }
+      ],
+      "reasoning": "Inspected the entire supplied module, lines 1-626, including all module-level compound statements. There is no exact top-level function definition named _case_c0ac466127d73535a4da35b0, and no target binding or wildcard-import ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/_compat.py:_case_c0ac466127d73535a4da35b0. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    },
+    {
+      "id": "case-6c9bc5be30c50e49d47e",
+      "source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "help",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "max_length",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=45)",
+              "annotation_ast": "Name(id='int', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+          "available": true,
+          "line_start": 1,
+          "line_end": 585
+        },
+        {
+          "source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+          "available": true,
+          "line_start": 56,
+          "line_end": 103
+        }
+      ],
+      "reasoning": "The independently extracted signature of the unique unconditional top-level make_default_short_help matches every expected field: parameter names, order, kinds, defaults and annotations, return annotation, decorator order, and async status. Whole-module inspection found no target rebinding or other rubric ambiguity.",
+      "scope_notes": "Exact supplied source for src/click/utils.py:make_default_short_help. Entire module inspected syntactically; nested functions and methods are excluded. Decorators and expressions were not evaluated; no runtime binding or behavior is asserted."
+    }
+  ]
+}

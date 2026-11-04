@@ -1,0 +1,1136 @@
+{
+  "boundary": {
+    "frozen_commit": "934813e4d421071a1b3db3973c02fe2721359a6e",
+    "interpretation": "Detached local HEAD at 8.1.8 is the explicit upper boundary; no main branch is claimed.",
+    "main_master_refs": [],
+    "object_format": "sha1",
+    "shallow_repository": false,
+    "symbolic_HEAD": null,
+    "tag_8.1.8_commit": "934813e4d421071a1b3db3973c02fe2721359a6e"
+  },
+  "child_blob_tree_or_diff_read": false,
+  "child_results_read": false,
+  "development_only_evidence": "All selected dataset runs and selected original configs declare development and repo_id=click.",
+  "git_fetch_performed": false,
+  "git_metadata_commands": [
+    [
+      "rev-parse",
+      "--verify",
+      "HEAD^{commit}"
+    ],
+    [
+      "symbolic-ref",
+      "-q",
+      "HEAD"
+    ],
+    [
+      "for-each-ref",
+      "--format=%(refname) %(objectname)",
+      "refs/heads/main",
+      "refs/remotes/origin/main",
+      "refs/heads/master",
+      "refs/remotes/origin/master"
+    ],
+    [
+      "rev-parse",
+      "--verify",
+      "refs/tags/8.1.8^{commit}"
+    ],
+    [
+      "rev-list",
+      "--first-parent",
+      "--reverse",
+      "934813e4d421071a1b3db3973c02fe2721359a6e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "d5741a2ca2ebc21d525c903f628b1bebad75b735"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "a41e349ae738c55bce46dfb8715159463074d6e9"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "456fbb6b0053fb01bedf90b64999b0a3c645a3cd"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "a66119abe973f55b4f5e28dbb0da6f3c32c21af7"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "030f53cf677ee1de534359c535d465eed0ec1d99"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "2f8a3417acf8afd798cab6850e6102c7e3dc43d5"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e1399d20788829ea9b981603251cc413e00ca4eb"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "0f833b6e5ecf2307c23050823fc70644476b4bdb"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "4883c93a786f561108a806cbae7873e5c2b604a3"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "6f35455ddf500d57aa746a4dc06d812ca535dd0e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "9c6f032681e38a60ce526335f2abf166191f692d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "d19d0def9a2a5979312b705bbfd53725aa1d5081"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "eb1d760fb433d08278816d7ba49477ce86b691a7"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e002dbc40ceb6a7e78dbe5e5868744690ba3120f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "8473b3ced140296b9dd869957e0026eebd94634b"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "77838f86fa647ca82f53a88d6495dfc009b24c41"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "1c4099006474875574e233dc92d12c15d659585f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "5f802ac459557685bd6748c6cc75cb4a4a82617e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "25dfd27c302e212afb436efab2f9b52099f97683"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "9affb021ff0fc71a676511226ac3cf721d2f9e3c"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "ac15816133ef12001ebf6d6aecb7a3cf14487761"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "3a6d3da15ae5c0672dd5884a2ec229a428058783"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "3a6d3da15ae5c0672dd5884a2ec229a428058783"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "c7ef4bab075479830a349f9ee2020b7a953c27ff"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "55682f6f5348f5220a557f89c3a796321a52aebf"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "72f1f3e20834d05832cdfc361ca401d586c371f8"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "7a10fe1fbcba466714cfaadcc6c51cdcb656568e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "1b14bbe8670755719d2c4290e0206db6b086b23d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "60ef759d0eb480d843c69bae2ce1c38279686e41"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "b8f5744820a1359291f11ae8bf8ad85313da000c"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2"
+    ],
+    [
+      "rev-parse",
+      "--is-shallow-repository"
+    ],
+    [
+      "rev-parse",
+      "--show-object-format"
+    ]
+  ],
+  "group_ids": [
+    "click-1c2fc1b0152f",
+    "click-1e53748f80eb",
+    "click-8c7491d9b0d7"
+  ],
+  "input_sha256": {
+    "examples/ai_review_pilot/private/case_map.json": "b2524f1ddb1abb6933fa0fb4093f1e129444739146ce4d3d3d49cc432e93c35a",
+    "runs/main-restored-20261029/ready/dataset.json": "f58be29e364bda8671aa771a81e9bc1be2f0926042a9f119a58773620d6b0f21",
+    "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/claims.jsonl": "842e8f05ba4c5ed1c93436945e7d9cb7c0f19d4bbcc4a6c130ddddcac3cfa3bd",
+    "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/provenance.jsonl": "5187aab2176cdc31e3effe69631f8ff717f33ce726626708149ddad7ee75137b",
+    "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/run.json": "bc477a0c7f4a5e3681e0c74be3c5145c16ac2741ea21d5cb1859f330372cd510",
+    "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/claims.jsonl": "8d809f6abc25d400faa1f2a14f1a07f05b50021488124f0807cda546a7b54891",
+    "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/provenance.jsonl": "ccb5e3467ae19916a57eb3618a420fbfb9af41d8a3d7e61b64a8132a334b096c",
+    "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/run.json": "49aaf90f6b17476416f39ffd29a24742f8799f336e9cc8153cba2e877e91aef7",
+    "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/claims.jsonl": "3548ae9e2edf3bc0f35a2938c774cdc64997d6dec861c054acfc2a87a5ae23d2",
+    "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/provenance.jsonl": "de91771374f6e9d973c6aae3041f3193e2e051c591e385515fd9577f4843a715",
+    "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/run.json": "788fb3c2f1137823cefecf2f3cd676e66ce84aa49a5c88127c90f38af219dc42",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_bashcomplete.py": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_termui_impl.py": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/decorators.py": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/termui.py": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/utils.py": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_termui_impl.py": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/decorators.py": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/parser.py": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/shell_completion.py": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/utils.py": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/core.py": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/shell_completion.py": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+    "scripts/structural_checker_v2.py": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a",
+    "src/cami/index.py": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+    "src/cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+    "src/cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+    "src/cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+    "src/cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+  },
+  "original_AI_reviews_read": false,
+  "original_files": [
+    {
+      "claims": "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/claims.jsonl",
+      "config": "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/run.json",
+      "copied_original_inputs": {
+        "claims_all_original_candidates.jsonl": "original_inputs/click-1c2fc1b0152f/claims_all_original_candidates.jsonl",
+        "config.json": "original_inputs/click-1c2fc1b0152f/config.json",
+        "provenance_all_original_candidates.jsonl": "original_inputs/click-1c2fc1b0152f/provenance_all_original_candidates.jsonl"
+      },
+      "group_id": "click-1c2fc1b0152f",
+      "original_config_policy": {
+        "dependency_depth": 1,
+        "id": "symbol_validate"
+      },
+      "original_config_preview": true,
+      "original_config_protocol_version": "1.1",
+      "provenance": "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/provenance.jsonl",
+      "selected_claim_rows_sha256": "c8540b4550b326e9b1bb83f742bd31586ec0efffa01da13ac84320a1cf6bdb9c",
+      "selected_immutable_claim_rows": "groups/click-1c2fc1b0152f/claims.jsonl"
+    },
+    {
+      "claims": "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/claims.jsonl",
+      "config": "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/run.json",
+      "copied_original_inputs": {
+        "claims_all_original_candidates.jsonl": "original_inputs/click-1e53748f80eb/claims_all_original_candidates.jsonl",
+        "config.json": "original_inputs/click-1e53748f80eb/config.json",
+        "provenance_all_original_candidates.jsonl": "original_inputs/click-1e53748f80eb/provenance_all_original_candidates.jsonl"
+      },
+      "group_id": "click-1e53748f80eb",
+      "original_config_policy": {
+        "dependency_depth": 1,
+        "id": "symbol_validate"
+      },
+      "original_config_preview": true,
+      "original_config_protocol_version": "1.1",
+      "provenance": "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/provenance.jsonl",
+      "selected_claim_rows_sha256": "cad0f2266b7187738872008155c1acf8196673b0b1392bcaa021d98a2f663bf8",
+      "selected_immutable_claim_rows": "groups/click-1e53748f80eb/claims.jsonl"
+    },
+    {
+      "claims": "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/claims.jsonl",
+      "config": "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/run.json",
+      "copied_original_inputs": {
+        "claims_all_original_candidates.jsonl": "original_inputs/click-8c7491d9b0d7/claims_all_original_candidates.jsonl",
+        "config.json": "original_inputs/click-8c7491d9b0d7/config.json",
+        "provenance_all_original_candidates.jsonl": "original_inputs/click-8c7491d9b0d7/provenance_all_original_candidates.jsonl"
+      },
+      "group_id": "click-8c7491d9b0d7",
+      "original_config_policy": {
+        "dependency_depth": 1,
+        "id": "symbol_validate"
+      },
+      "original_config_preview": true,
+      "original_config_protocol_version": "1.1",
+      "provenance": "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/provenance.jsonl",
+      "selected_claim_rows_sha256": "bd93055740df2859bca4b13b27417a49ad043149b9bc245d7fe3513d914410d7",
+      "selected_immutable_claim_rows": "groups/click-8c7491d9b0d7/claims.jsonl"
+    }
+  ],
+  "original_parent_sources": [
+    {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/utils.py",
+      "git_blob_object_id": "8283788ace64e92ef77e3a7d1ff6aea5fda1854e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_compat.py",
+      "git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_termui_impl.py",
+      "git_blob_object_id": "4b979bcc1edcb33feb9b385156492221d92253dc",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_termui_impl.py",
+      "source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/shell_completion.py",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/shell_completion.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/core.py",
+      "git_blob_object_id": "18431cd1d7620b25dde29f5fcd2b2803393ee796",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/core.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/core.py",
+      "source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/_compat.py",
+      "git_blob_object_id": "e55a713028b3dee82103e552f00f624d218192af",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/termui.py",
+      "git_blob_object_id": "f3ad4ca9febfcffad2e1dae43f4e84c68212cedd",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/termui.py",
+      "source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/decorators.py",
+      "git_blob_object_id": "b8b273185b5e201ff74515cfbae892f254936286",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/decorators.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/decorators.py",
+      "source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/_termui_impl.py",
+      "git_blob_object_id": "a050471f20c82cb03b10455a4d560c05f66e5fc5",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_termui_impl.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_termui_impl.py",
+      "source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/shell_completion.py",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/shell_completion.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/utils.py",
+      "git_blob_object_id": "e9310e548fafeb7e8d10de67f7d13b5fb0fe141e",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/utils.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/parser.py",
+      "git_blob_object_id": "2d5a2ed7ba744f0eb6cd561d98c667b09cff4cc0",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/parser.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/parser.py",
+      "source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/testing.py",
+      "git_blob_object_id": "ae36d10144e64f9b2a0227a132dbb80e481f9111",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/testing.py",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/core.py",
+      "git_blob_object_id": "83581723239580945a05b2615dc69a996aa2a5bb",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/core.py",
+      "source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/_termui_impl.py",
+      "git_blob_object_id": "cebf3bbf5e67512ee900e86a614b54ae7f311f92",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_termui_impl.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/_termui_impl.py",
+      "source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/_bashcomplete.py",
+      "git_blob_object_id": "e0e739579cbbac9038d8e5dc59e6bef8f673fce3",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_bashcomplete.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/_bashcomplete.py",
+      "source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/decorators.py",
+      "git_blob_object_id": "c0b9e85a392a59d3106ac10624ad3db23205f2ab",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/decorators.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/decorators.py",
+      "source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/termui.py",
+      "git_blob_object_id": "9a89afebdece006239314816b895b93d1ecae17e",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/termui.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/termui.py",
+      "source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+      "split": "development"
+    },
+    {
+      "cluster_id": "click-episode-6b4af947f312",
+      "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/utils.py",
+      "git_blob_object_id": "fdf4f62847f7804943ccf4b0f5e17afe5d756007",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/utils.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/utils.py",
+      "source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+      "split": "development"
+    }
+  ],
+  "parent_anchor_python_version": "3.12.3",
+  "parent_reference_labels_computed": false,
+  "parent_source_access": "Only existing immutable parent-review module bytes were hashed and parsed for anchor derivation.",
+  "repo": {
+    "environment_restoration": "Pending pinned offline Docker profiles and independent finite-probe parent review.",
+    "path": "/root/apps/change-aware-memory-invalidation/data/corpora/click",
+    "repo_id": "click",
+    "source_roots": [
+      "src",
+      "click"
+    ],
+    "url": "https://github.com/pallets/click.git"
+  },
+  "status": "proposed_before_any_child_source_access",
+  "trajectories": [
+    {
+      "config_path": "runs/main-restored-20261029/ready/groups/click-1c2fc1b0152f/run.json",
+      "config_sha256": "bc477a0c7f4a5e3681e0c74be3c5145c16ac2741ea21d5cb1859f330372cd510",
+      "dataset_run_metadata": {
+        "cluster_id": "click-episode-bba4914a46ab",
+        "config_path": "groups/click-1c2fc1b0152f/run.json",
+        "run_id": "click-1c2fc1b0152f",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "explored_first_12_successors_metadata": [
+        {
+          "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+          "committer_timestamp": "2022-03-30T12:45:31-07:00",
+          "parents": [
+            "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+          ]
+        },
+        {
+          "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+          "committer_timestamp": "2022-03-30T13:05:42-07:00",
+          "parents": [
+            "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+            "e234cf958d2416d4b20b53ae850c487fed32fa35"
+          ]
+        },
+        {
+          "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+          "committer_timestamp": "2022-03-30T13:12:57-07:00",
+          "parents": [
+            "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+            "3c301ebacbfe8ec7dc3d9d46ebf517082a8ee4b1"
+          ]
+        },
+        {
+          "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+          "committer_timestamp": "2022-03-31T13:35:40-07:00",
+          "parents": [
+            "a41e349ae738c55bce46dfb8715159463074d6e9"
+          ]
+        },
+        {
+          "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+          "committer_timestamp": "2022-03-31T13:41:49-07:00",
+          "parents": [
+            "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+            "92cebe902aa7f03a89f6b261d897964dd9c5fa43"
+          ]
+        },
+        {
+          "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+          "committer_timestamp": "2022-03-31T13:46:31-07:00",
+          "parents": [
+            "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+            "b36bf8f9b36ab7db8cf03cd8eff714dfc33f0c29"
+          ]
+        },
+        {
+          "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+          "committer_timestamp": "2022-03-31T13:49:58-07:00",
+          "parents": [
+            "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+            "2f1c35a43652e565802c230dbc47a9a358a0c6fd"
+          ]
+        },
+        {
+          "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+          "committer_timestamp": "2022-04-01T12:39:35-07:00",
+          "parents": [
+            "030f53cf677ee1de534359c535d465eed0ec1d99",
+            "5c36b4d38494723a7dcd288fb01382545ecb5196"
+          ]
+        },
+        {
+          "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+          "committer_timestamp": "2022-04-24T09:56:56-07:00",
+          "parents": [
+            "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+            "d005226c71c0064bb3806727edde9463e75fa2db"
+          ]
+        },
+        {
+          "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+          "committer_timestamp": "2022-04-25T14:20:51-07:00",
+          "parents": [
+            "e1399d20788829ea9b981603251cc413e00ca4eb"
+          ]
+        },
+        {
+          "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+          "committer_timestamp": "2022-04-25T14:21:56-07:00",
+          "parents": [
+            "0f833b6e5ecf2307c23050823fc70644476b4bdb"
+          ]
+        },
+        {
+          "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+          "committer_timestamp": "2022-04-26T07:34:30-07:00",
+          "parents": [
+            "4883c93a786f561108a806cbae7873e5c2b604a3"
+          ]
+        }
+      ],
+      "fallback_reasons": [
+        "multi_parent_or_nonlinear_successor"
+      ],
+      "frozen_children": [
+        {
+          "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+          "committer_timestamp": "2022-03-30T12:45:31-07:00",
+          "parents": [
+            "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+          ]
+        }
+      ],
+      "group_id": "click-1c2fc1b0152f",
+      "original_child": {
+        "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+        "committer_timestamp": "2022-03-30T12:45:31-07:00",
+        "parents": [
+          "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+        ]
+      },
+      "parent": {
+        "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+        "committer_timestamp": "2022-03-28T10:32:24-07:00",
+        "parents": [
+          "20c88f02788586a80e6d867854c8313eaba5ad6e",
+          "f8d811e5d5644aca8d32eebff196bf7c659ebf45"
+        ]
+      },
+      "repo_id": "click",
+      "selection_mode": "original_one_child_fallback",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development"
+    },
+    {
+      "config_path": "runs/main-restored-20261029/ready/groups/click-1e53748f80eb/run.json",
+      "config_sha256": "49aaf90f6b17476416f39ffd29a24742f8799f336e9cc8153cba2e877e91aef7",
+      "dataset_run_metadata": {
+        "cluster_id": "click-episode-e6be5af8a821",
+        "config_path": "groups/click-1e53748f80eb/run.json",
+        "run_id": "click-1e53748f80eb",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "explored_first_12_successors_metadata": [
+        {
+          "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+          "committer_timestamp": "2023-05-03T11:16:59-04:00",
+          "parents": [
+            "9c6f032681e38a60ce526335f2abf166191f692d"
+          ]
+        },
+        {
+          "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+          "committer_timestamp": "2023-05-07T11:51:18-04:00",
+          "parents": [
+            "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+          ]
+        },
+        {
+          "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+          "committer_timestamp": "2023-05-07T11:52:15-04:00",
+          "parents": [
+            "d19d0def9a2a5979312b705bbfd53725aa1d5081"
+          ]
+        },
+        {
+          "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+          "committer_timestamp": "2023-05-08T00:01:21-04:00",
+          "parents": [
+            "eb1d760fb433d08278816d7ba49477ce86b691a7"
+          ]
+        },
+        {
+          "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+          "committer_timestamp": "2023-05-08T11:03:33-04:00",
+          "parents": [
+            "e002dbc40ceb6a7e78dbe5e5868744690ba3120f"
+          ]
+        },
+        {
+          "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+          "committer_timestamp": "2023-05-09T15:10:59-04:00",
+          "parents": [
+            "8473b3ced140296b9dd869957e0026eebd94634b"
+          ]
+        },
+        {
+          "commit": "1c4099006474875574e233dc92d12c15d659585f",
+          "committer_timestamp": "2023-05-09T15:25:43-04:00",
+          "parents": [
+            "77838f86fa647ca82f53a88d6495dfc009b24c41"
+          ]
+        },
+        {
+          "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+          "committer_timestamp": "2023-05-09T15:54:51-04:00",
+          "parents": [
+            "1c4099006474875574e233dc92d12c15d659585f"
+          ]
+        },
+        {
+          "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+          "committer_timestamp": "2023-05-09T22:28:55-04:00",
+          "parents": [
+            "5f802ac459557685bd6748c6cc75cb4a4a82617e"
+          ]
+        },
+        {
+          "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+          "committer_timestamp": "2023-06-01T10:59:28-07:00",
+          "parents": [
+            "25dfd27c302e212afb436efab2f9b52099f97683"
+          ]
+        },
+        {
+          "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+          "committer_timestamp": "2023-06-01T11:00:04-07:00",
+          "parents": [
+            "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe"
+          ]
+        },
+        {
+          "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+          "committer_timestamp": "2023-06-01T11:44:40-07:00",
+          "parents": [
+            "9affb021ff0fc71a676511226ac3cf721d2f9e3c"
+          ]
+        }
+      ],
+      "fallback_reasons": [],
+      "frozen_children": [
+        {
+          "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+          "committer_timestamp": "2023-05-03T11:16:59-04:00",
+          "parents": [
+            "9c6f032681e38a60ce526335f2abf166191f692d"
+          ]
+        },
+        {
+          "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+          "committer_timestamp": "2023-05-07T11:51:18-04:00",
+          "parents": [
+            "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+          ]
+        },
+        {
+          "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+          "committer_timestamp": "2023-05-07T11:52:15-04:00",
+          "parents": [
+            "d19d0def9a2a5979312b705bbfd53725aa1d5081"
+          ]
+        },
+        {
+          "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+          "committer_timestamp": "2023-05-08T00:01:21-04:00",
+          "parents": [
+            "eb1d760fb433d08278816d7ba49477ce86b691a7"
+          ]
+        },
+        {
+          "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+          "committer_timestamp": "2023-05-08T11:03:33-04:00",
+          "parents": [
+            "e002dbc40ceb6a7e78dbe5e5868744690ba3120f"
+          ]
+        },
+        {
+          "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+          "committer_timestamp": "2023-05-09T15:10:59-04:00",
+          "parents": [
+            "8473b3ced140296b9dd869957e0026eebd94634b"
+          ]
+        },
+        {
+          "commit": "1c4099006474875574e233dc92d12c15d659585f",
+          "committer_timestamp": "2023-05-09T15:25:43-04:00",
+          "parents": [
+            "77838f86fa647ca82f53a88d6495dfc009b24c41"
+          ]
+        },
+        {
+          "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+          "committer_timestamp": "2023-05-09T15:54:51-04:00",
+          "parents": [
+            "1c4099006474875574e233dc92d12c15d659585f"
+          ]
+        },
+        {
+          "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+          "committer_timestamp": "2023-05-09T22:28:55-04:00",
+          "parents": [
+            "5f802ac459557685bd6748c6cc75cb4a4a82617e"
+          ]
+        },
+        {
+          "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+          "committer_timestamp": "2023-06-01T10:59:28-07:00",
+          "parents": [
+            "25dfd27c302e212afb436efab2f9b52099f97683"
+          ]
+        },
+        {
+          "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+          "committer_timestamp": "2023-06-01T11:00:04-07:00",
+          "parents": [
+            "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe"
+          ]
+        },
+        {
+          "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+          "committer_timestamp": "2023-06-01T11:44:40-07:00",
+          "parents": [
+            "9affb021ff0fc71a676511226ac3cf721d2f9e3c"
+          ]
+        }
+      ],
+      "group_id": "click-1e53748f80eb",
+      "original_child": {
+        "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+        "committer_timestamp": "2023-05-03T11:16:59-04:00",
+        "parents": [
+          "9c6f032681e38a60ce526335f2abf166191f692d"
+        ]
+      },
+      "parent": {
+        "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+        "committer_timestamp": "2023-05-02T05:54:48-07:00",
+        "parents": [
+          "13627be199a3cbe50c35ec778a9d61b31e1580b2",
+          "d2b12c1c31028a0da5a16ddff368d8260cd6a97e"
+        ]
+      },
+      "repo_id": "click",
+      "selection_mode": "12_single_parent_successors",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development"
+    },
+    {
+      "config_path": "runs/main-restored-20261029/ready/groups/click-8c7491d9b0d7/run.json",
+      "config_sha256": "788fb3c2f1137823cefecf2f3cd676e66ce84aa49a5c88127c90f38af219dc42",
+      "dataset_run_metadata": {
+        "cluster_id": "click-episode-6b4af947f312",
+        "config_path": "groups/click-8c7491d9b0d7/run.json",
+        "run_id": "click-8c7491d9b0d7",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "explored_first_12_successors_metadata": [
+        {
+          "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+          "committer_timestamp": "2018-02-01T11:15:46+01:00",
+          "parents": [
+            "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+          ]
+        },
+        {
+          "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+          "committer_timestamp": "2018-02-01T09:14:16-08:00",
+          "parents": [
+            "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+            "2723b55b539a5f5d41bb929c50a32069389788dd"
+          ]
+        },
+        {
+          "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+          "committer_timestamp": "2018-02-01T09:14:44-08:00",
+          "parents": [
+            "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+            "1e0e9b6210dd33010679ccff5362a791a5f7242a"
+          ]
+        },
+        {
+          "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+          "committer_timestamp": "2018-02-09T20:40:22+01:00",
+          "parents": [
+            "c7ef4bab075479830a349f9ee2020b7a953c27ff"
+          ]
+        },
+        {
+          "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+          "committer_timestamp": "2018-03-27T00:20:08+02:00",
+          "parents": [
+            "55682f6f5348f5220a557f89c3a796321a52aebf"
+          ]
+        },
+        {
+          "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+          "committer_timestamp": "2018-03-31T11:35:42+02:00",
+          "parents": [
+            "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+          ]
+        },
+        {
+          "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+          "committer_timestamp": "2018-03-31T12:50:14+02:00",
+          "parents": [
+            "72f1f3e20834d05832cdfc361ca401d586c371f8"
+          ]
+        },
+        {
+          "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+          "committer_timestamp": "2018-03-31T12:56:16+02:00",
+          "parents": [
+            "7a10fe1fbcba466714cfaadcc6c51cdcb656568e"
+          ]
+        },
+        {
+          "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+          "committer_timestamp": "2018-03-31T13:21:12+02:00",
+          "parents": [
+            "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+            "abe982ca91f0bd5c1a79c426c2dbb8febfd96999"
+          ]
+        },
+        {
+          "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+          "committer_timestamp": "2018-03-31T13:22:02+02:00",
+          "parents": [
+            "1b14bbe8670755719d2c4290e0206db6b086b23d"
+          ]
+        },
+        {
+          "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+          "committer_timestamp": "2018-03-31T13:24:26+02:00",
+          "parents": [
+            "60ef759d0eb480d843c69bae2ce1c38279686e41"
+          ]
+        },
+        {
+          "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+          "committer_timestamp": "2018-03-31T13:24:47+02:00",
+          "parents": [
+            "b8f5744820a1359291f11ae8bf8ad85313da000c"
+          ]
+        }
+      ],
+      "fallback_reasons": [
+        "multi_parent_or_nonlinear_successor"
+      ],
+      "frozen_children": [
+        {
+          "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+          "committer_timestamp": "2018-02-01T11:15:46+01:00",
+          "parents": [
+            "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+          ]
+        }
+      ],
+      "group_id": "click-8c7491d9b0d7",
+      "original_child": {
+        "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+        "committer_timestamp": "2018-02-01T11:15:46+01:00",
+        "parents": [
+          "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+        ]
+      },
+      "parent": {
+        "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+        "committer_timestamp": "2018-01-04T22:38:40+01:00",
+        "parents": [
+          "d5cddb9e1c433a5fd65739d98d8415dd62d276f7",
+          "2cd71bffc8cf21983a4cf15abe3bd1708ba27ad8"
+        ]
+      },
+      "repo_id": "click",
+      "selection_mode": "original_one_child_fallback",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development"
+    }
+  ]
+}

@@ -21,7 +21,9 @@ target-version = "py312"
 line-length = 100
 extend-exclude = [
     "scripts/build_submission.py",
+    "output/**",
     "examples/ai_review_pilot/packet/source/**",
+    "examples/real_structural_replay/parent_sources/**",
     "reports/research-20261104/ai-parent-pilot-v1/reviewer_*/**",
     "reports/research-20261104/reference-alignment-*/sources/**",
 ]

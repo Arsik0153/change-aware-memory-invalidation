@@ -1,0 +1,949 @@
+[
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-00",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_str"
+      },
+      "text": "src/click/utils.py contains the exact top-level function definition make_str."
+    },
+    "claim_sha256": "479af4a3b2a93eadcc541da091dbfe031a18248bbc237c6ebc7348ded5caa63e",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/utils.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "99bd74373883fd78df5a1538c26ebaf5735172ec231a3518dab57b7a7d541388",
+    "parent_git_blob_object_id": "8283788ace64e92ef77e3a7d1ff6aea5fda1854e",
+    "parent_source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py",
+    "split": "development",
+    "symbol_ast_sha256": "db0bc1d03f73839df63f86423050ff5ffa57d614394185e2e7538ce31e32b623"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-01",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdout"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition get_binary_stdout."
+    },
+    "claim_sha256": "b68e197185eb8bd7b884a7fd30574a28195e362e6c2af69cfc7c070f9d62c64e",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_compat.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "7be75f8ed8379cf285949dd16ea202ed9211b31ec3fa3a6e7f18e8f5d2100cb3",
+    "parent_git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+    "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+    "split": "development",
+    "symbol_ast_sha256": "e2523c62d50f6a4dfd4fe3eeafbe9d77a72749d4b4b82125d96b930f3153f193"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-02",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_filesystem_encoding"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition get_filesystem_encoding."
+    },
+    "claim_sha256": "de9c3ba07cb6260927269b96f8d40001f8c4501414b383670ebc8e644cfecfba",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_compat.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "0d44e14bacbb9c42515f48367b37cc2696d30901108634b08484a1956f1ca07d",
+    "parent_git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+    "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+    "split": "development",
+    "symbol_ast_sha256": "e59c896e79f30ff6939739b88a1c193b2eebd70df4fa61f298e6a665d6cf6b79"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-03",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "open_url"
+      },
+      "text": "src/click/_termui_impl.py contains the exact top-level function definition open_url."
+    },
+    "claim_sha256": "adb0132f5d7aa430cbb3ecf60fbbad884de39d4fac592b08b38d60e081c35df0",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_termui_impl.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "b0447d61aaa52af87ac305ade4ee9322bf2d1dd2248930c97fabf5fd2a103da1",
+    "parent_git_blob_object_id": "4b979bcc1edcb33feb9b385156492221d92253dc",
+    "parent_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py",
+    "split": "development",
+    "symbol_ast_sha256": "98b277d32a5615c5c3683473753317d9c71ef725babfc6fb378f4c00ce437c02"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-04",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [],
+          "returns_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdin"
+      },
+      "text": "The exact definition src/click/_compat.py:get_binary_stdin has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[],\"returns_ast\":\"Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())\"}."
+    },
+    "claim_sha256": "13a55b9f328ace1e017d0549e5167e65edab0f299e35969168ae93e7d444ca48",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_compat.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "4dad9dc8557413021e67e7ab86069eb1c3873bfc63e1af7db8a790126b0dfbbe",
+    "parent_git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+    "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+    "split": "development",
+    "symbol_ast_sha256": "68c04c675e351a3a56731d64f475efe2eb66a2f05638d03a2a57e74ca9dde52c"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-05",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cls"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "name"
+            }
+          ],
+          "returns_ast": "Constant(value=None)"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "add_completion_class"
+      },
+      "text": "The exact definition src/click/shell_completion.py:add_completion_class has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cls\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\",\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"name\"}],\"returns_ast\":\"Constant(value=None)\"}."
+    },
+    "claim_sha256": "af0ac358ce172b25493d5328502fea91a3f2f4ccfd0a50b9921cd6b85e932253",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/shell_completion.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "5f2fd5e932ee76e7c21f7348944bf2d53a50fb761aa02e3b4c68e61594943cd2",
+    "parent_git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+    "parent_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/shell_completion.py",
+    "split": "development",
+    "symbol_ast_sha256": "3a0047a1539dfeff05de90f3eae3c26d6abb7a4386a68ef2611e4c0f1cceceed"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-06",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "generator"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "color"
+            }
+          ],
+          "returns_ast": "Constant(value=None)"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "pager"
+      },
+      "text": "The exact definition src/click/_termui_impl.py:pager has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"generator\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())\",\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"color\"}],\"returns_ast\":\"Constant(value=None)\"}."
+    },
+    "claim_sha256": "02303f154ff066a9c664a8af1ae136fe391fa0c78b9a9817630339a17418d2e1",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/_termui_impl.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "d9a3397ac6bee970e011dcc28711d55aef4993b95b56697b95f7db93ed799526",
+    "parent_git_blob_object_id": "4b979bcc1edcb33feb9b385156492221d92253dc",
+    "parent_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py",
+    "split": "development",
+    "symbol_ast_sha256": "eef82905cf787a516f2397dffe249233a5d6f6a91bdcb4406f44cec530ef669b"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1c2fc1b0152f-07",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='V', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "iterable"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "batch_size"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='V', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load()), ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/core.py",
+        "qualname": "batch"
+      },
+      "text": "The exact definition src/click/core.py:batch has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='V', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"iterable\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"batch_size\"}],\"returns_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='V', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load()), ctx=Load())\"}."
+    },
+    "claim_sha256": "036779a959c9261b69a1a05898ce371f56d82c73aef4fe8792da87c31f435344",
+    "copied_parent_source_path": "parent_sources/click-1c2fc1b0152f/src/click/core.py",
+    "group_id": "click-1c2fc1b0152f",
+    "original_provenance_row_sha256": "b1b10d8e5c079dc2d95b362c6b90c4db4d02a0e1613f75e335bded1fce26d1be",
+    "parent_git_blob_object_id": "18431cd1d7620b25dde29f5fcd2b2803393ee796",
+    "parent_source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/core.py",
+    "split": "development",
+    "symbol_ast_sha256": "d088fa780321bf5bd3714384eafe7b8db6c1b2632be1fd11e1a42d8895e54ac0"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-00",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "strip_ansi"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition strip_ansi."
+    },
+    "claim_sha256": "f0d4c92e445bfd3959fd91eb642c9bf4386a7b82bf1d37a3dd099fc6ca46ce27",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/_compat.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "4a9ec41f26e9596e2d9b3cdaa5906a0479fc11fd583d5c8c9cdf79c7af5a9264",
+    "parent_git_blob_object_id": "e55a713028b3dee82103e552f00f624d218192af",
+    "parent_source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py",
+    "split": "development",
+    "symbol_ast_sha256": "420cf0578129bcca1f80d7c604d8449e530cfec67430cefd9eb629e96935b32f"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-01",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/termui.py",
+        "qualname": "launch"
+      },
+      "text": "src/click/termui.py contains the exact top-level function definition launch."
+    },
+    "claim_sha256": "e9f2d2fd45beb3a39d8520cccd6786965786ad9647ce2607de4ffccb683c6995",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/termui.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "4007efb761791761e4b66d9da68e483f7c14ca29773a7f38b3602bcefcc6d2c5",
+    "parent_git_blob_object_id": "f3ad4ca9febfcffad2e1dae43f4e84c68212cedd",
+    "parent_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py",
+    "split": "development",
+    "symbol_ast_sha256": "351772625d05ab27e891faf149dc0c434a6c0ce6baf04a643c71aeccde0fb128"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-02",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/decorators.py",
+        "qualname": "confirmation_option"
+      },
+      "text": "src/click/decorators.py contains the exact top-level function definition confirmation_option."
+    },
+    "claim_sha256": "d78480c7bd773a8739647ce86b09fab3b3be0c9daf263e8b67dea478ae336224",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/decorators.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "462eaefb36ac234b8ab72075096eace0270489cb4cff587b3279459ce4a7f106",
+    "parent_git_blob_object_id": "b8b273185b5e201ff74515cfbae892f254936286",
+    "parent_source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/decorators.py",
+    "split": "development",
+    "symbol_ast_sha256": "c6146eab2eb1b5ed988e1438ff9db07f951fef369f6cf8e86ab1396bf3b9c909"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-03",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "_pipepager"
+      },
+      "text": "src/click/_termui_impl.py contains the exact top-level function definition _pipepager."
+    },
+    "claim_sha256": "629335e905788ac085c7ca5a9b13908693d9067adc354a9e16995631b960a41e",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/_termui_impl.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "4358343136eb5dd24753d7f4de5d7a5d7f05b27e040970fc22b25dd187020825",
+    "parent_git_blob_object_id": "a050471f20c82cb03b10455a4d560c05f66e5fc5",
+    "parent_source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_termui_impl.py",
+    "split": "development",
+    "symbol_ast_sha256": "041630d5ba98875b55027806acf6bb188d5b99010aa9cc0123a2a0decf70c759"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-04",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='BaseCommand', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cli"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx_args"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "prog_name"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "complete_var"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "instruction"
+            }
+          ],
+          "returns_ast": "Name(id='int', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "shell_complete"
+      },
+      "text": "The exact definition src/click/shell_completion.py:shell_complete has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='BaseCommand', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cli\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx_args\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"prog_name\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"complete_var\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"instruction\"}],\"returns_ast\":\"Name(id='int', ctx=Load())\"}."
+    },
+    "claim_sha256": "f01fef1dde75e43ffc9f87992e1b9cd45293f21b435724ad8249462a6d3fb139",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/shell_completion.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "4689c0114cfdb04b37f79c1fe9eb1fe78a3401dc9faa7de79e63feba75b7f8a8",
+    "parent_git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+    "parent_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/shell_completion.py",
+    "split": "development",
+    "symbol_ast_sha256": "567107658a188feac4263a8afde68cf2d5d42db2d7c92de08565cf1dd26a30ba"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-05",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "help"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": "Constant(value=45)",
+              "kind": "positional_or_keyword",
+              "name": "max_length"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_default_short_help"
+      },
+      "text": "The exact definition src/click/utils.py:make_default_short_help has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"help\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":\"Constant(value=45)\",\"kind\":\"positional_or_keyword\",\"name\":\"max_length\"}],\"returns_ast\":\"Name(id='str', ctx=Load())\"}."
+    },
+    "claim_sha256": "df70acc32e600b2e257b350f39eafb9e072d7dea13d659ffe181a74e486c1f15",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/utils.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "d522a2dd51fb1b5b61857f78288fb0323e38409c48f70bf5717d2129a270fa50",
+    "parent_git_blob_object_id": "e9310e548fafeb7e8d10de67f7d13b5fb0fe141e",
+    "parent_source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/utils.py",
+    "split": "development",
+    "symbol_ast_sha256": "009bc045553d53f9511d303ceb9bb107b8cfe62c5841f02a6e3a789be35c35c9"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-06",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='int', ctx=Load()), Name(id='int', ctx=Load())], ctx=Load()), ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "color"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": "Constant(value=0)",
+              "kind": "positional_or_keyword",
+              "name": "offset"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/termui.py",
+        "qualname": "_interpret_color"
+      },
+      "text": "The exact definition src/click/termui.py:_interpret_color has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='int', ctx=Load()), Name(id='int', ctx=Load())], ctx=Load()), ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"color\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":\"Constant(value=0)\",\"kind\":\"positional_or_keyword\",\"name\":\"offset\"}],\"returns_ast\":\"Name(id='str', ctx=Load())\"}."
+    },
+    "claim_sha256": "bec27a68f0e72851e70db0d8312b7993228c0eef93a9e241ff812fcecab02a80",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/termui.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "67ab583665a596263dd31e4258196df221b9eab059ac40db6546aa4185b4c926",
+    "parent_git_blob_object_id": "f3ad4ca9febfcffad2e1dae43f4e84c68212cedd",
+    "parent_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py",
+    "split": "development",
+    "symbol_ast_sha256": "bb3e8eb59e27b468b8f58026ad23de228d81df05107e3d757cc147252bb90abb"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-1e53748f80eb-07",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "string"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/parser.py",
+        "qualname": "split_arg_string"
+      },
+      "text": "The exact definition src/click/parser.py:split_arg_string has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"string\"}],\"returns_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\"}."
+    },
+    "claim_sha256": "b5c1541716e9d7ae7f60587a7d1dfb4ab65ff9eb5247f4d5ed9bab44ad5c2cde",
+    "copied_parent_source_path": "parent_sources/click-1e53748f80eb/src/click/parser.py",
+    "group_id": "click-1e53748f80eb",
+    "original_provenance_row_sha256": "0abe1284aef7d4493374d611bb1b237a1dea6d7e6fe97d7f2b687b60147a0a01",
+    "parent_git_blob_object_id": "2d5a2ed7ba744f0eb6cd561d98c667b09cff4cc0",
+    "parent_source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/parser.py",
+    "split": "development",
+    "symbol_ast_sha256": "ffcfab989809e2f89d68e19f26846022a2579bf2240d85e6a2ddcafa8678f64b"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-00",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/testing.py",
+        "qualname": "make_input_stream"
+      },
+      "text": "click/testing.py contains the exact top-level function definition make_input_stream."
+    },
+    "claim_sha256": "5b0ab2e8d76b8b4c26b2331353e919aa65ca9c2e41dddd02ce423abe393faafc",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/testing.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "cc9d86665ca630deb2a254c084863ff425dd3fab7f7fd43eadfc21f8c4a8fda1",
+    "parent_git_blob_object_id": "ae36d10144e64f9b2a0227a132dbb80e481f9111",
+    "parent_source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py",
+    "split": "development",
+    "symbol_ast_sha256": "cd8b9a9437b8e1d2ab653ea203754a4930151b6b15957f14a8e484084a80eb28"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-01",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "invoke_param_callback"
+      },
+      "text": "click/core.py contains the exact top-level function definition invoke_param_callback."
+    },
+    "claim_sha256": "b8eac2d4675d155772db7b16c361ca42a7bca567a2c22eea59407e711ce3cabd",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/core.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "706b520e108557ff07abdb22fff99eacbd7f3318dc649d76cda2874deec3e79c",
+    "parent_git_blob_object_id": "83581723239580945a05b2615dc69a996aa2a5bb",
+    "parent_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py",
+    "split": "development",
+    "symbol_ast_sha256": "0d920ae7c3b4bec165e229637411473ac3fff5822bcf3de2eed622b99bce7601"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-02",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "fast_exit"
+      },
+      "text": "click/core.py contains the exact top-level function definition fast_exit."
+    },
+    "claim_sha256": "6390061c27ad5afdbe41fd85c9f60d743a9932c5f8e042e94c33ea4693e5db0c",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/core.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "81d777b5563bc420d276c6c173b035157c0c901b263dc430c4db89cbdb9af988",
+    "parent_git_blob_object_id": "83581723239580945a05b2615dc69a996aa2a5bb",
+    "parent_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py",
+    "split": "development",
+    "symbol_ast_sha256": "ff4530c2bd1a20dac2969eecd55d22af82bc8fc69fe1ede86aa580261b70945a"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-03",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/_termui_impl.py",
+        "qualname": "pager"
+      },
+      "text": "click/_termui_impl.py contains the exact top-level function definition pager."
+    },
+    "claim_sha256": "2e8b6cba6149b3e1d4abb0398e469fd714a97f14bebddee75c3450e131908792",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/_termui_impl.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "97f67bfb010b07b4cd135ba5f10293f01a78de51a3165a110400f56518f2f39f",
+    "parent_git_blob_object_id": "cebf3bbf5e67512ee900e86a614b54ae7f311f92",
+    "parent_source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_termui_impl.py",
+    "split": "development",
+    "symbol_ast_sha256": "59ba56f0e878bc0facdcc3ee4982d6b1eaceb78bc49e5450df50f1f4893280b9"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-04",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "incomplete"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "completions_out"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/_bashcomplete.py",
+        "qualname": "add_subcommand_completions"
+      },
+      "text": "The exact definition click/_bashcomplete.py:add_subcommand_completions has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"incomplete\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"completions_out\"}],\"returns_ast\":null}."
+    },
+    "claim_sha256": "db73fc32e31d7bf270387d9e3e1476d4a7b3f7d39aa42b57e6c4d9aa10d37e15",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/_bashcomplete.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "e1c84b1db6b540d3d0b5fa648a0039a2dd0ec0094f008ff86b30a25db7f7b0b0",
+    "parent_git_blob_object_id": "e0e739579cbbac9038d8e5dc59e6bef8f673fce3",
+    "parent_source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_bashcomplete.py",
+    "split": "development",
+    "symbol_ast_sha256": "302fc980f1863184ff2a78925f987424c458a828c935300f08e239916a6f6276"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-05",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "param_decls"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_keyword",
+              "name": "attrs"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/decorators.py",
+        "qualname": "option"
+      },
+      "text": "The exact definition click/decorators.py:option has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_positional\",\"name\":\"param_decls\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_keyword\",\"name\":\"attrs\"}],\"returns_ast\":null}."
+    },
+    "claim_sha256": "1727d73e44d3d6027ad94e8ee78ed5525adbf98531edf1a451a69c0a1f7cf659",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/decorators.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "0fe25cacf7f47e9265bad52c4509072ba0b60740d833f5f810c0b90062b46a32",
+    "parent_git_blob_object_id": "c0b9e85a392a59d3106ac10624ad3db23205f2ab",
+    "parent_source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/decorators.py",
+    "split": "development",
+    "symbol_ast_sha256": "08763787cfd0090e54b0c0f93849025662891ef5e825a3325f1152d32e7297dc"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-06",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value='Press any key to continue ...')",
+              "kind": "positional_or_keyword",
+              "name": "info"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value=False)",
+              "kind": "positional_or_keyword",
+              "name": "err"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/termui.py",
+        "qualname": "pause"
+      },
+      "text": "The exact definition click/termui.py:pause has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":\"Constant(value='Press any key to continue ...')\",\"kind\":\"positional_or_keyword\",\"name\":\"info\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value=False)\",\"kind\":\"positional_or_keyword\",\"name\":\"err\"}],\"returns_ast\":null}."
+    },
+    "claim_sha256": "15f3349129bd04461633bb3b591640e4f8a4e54b4a22c4b494f0611ad25f6abd",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/termui.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "b1d95ddf182feaae3fc8f1a52073746706483b71e550c669abc4254b4a8678d1",
+    "parent_git_blob_object_id": "9a89afebdece006239314816b895b93d1ecae17e",
+    "parent_source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/termui.py",
+    "split": "development",
+    "symbol_ast_sha256": "92fb3b3f1fc1a2688936aa82521fcd3e9dee5738ebb856fd8af07fb2ada968a0"
+  },
+  {
+    "ai_confirmation_binding": "Coordinator must bind existing sealed parent-only AI records before final freeze; not read here.",
+    "claim": {
+      "claim_id": "click-8c7491d9b0d7-07",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "name"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "encoding"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value='strict')",
+              "kind": "positional_or_keyword",
+              "name": "errors"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/utils.py",
+        "qualname": "get_text_stream"
+      },
+      "text": "The exact definition click/utils.py:get_text_stream has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"name\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"encoding\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value='strict')\",\"kind\":\"positional_or_keyword\",\"name\":\"errors\"}],\"returns_ast\":null}."
+    },
+    "claim_sha256": "ca966f9c52a72f8fbd5bbd796061551004b429f9f585301f11db87e33b4eb802",
+    "copied_parent_source_path": "parent_sources/click-8c7491d9b0d7/click/utils.py",
+    "group_id": "click-8c7491d9b0d7",
+    "original_provenance_row_sha256": "8e35a837ad8172f013d7c273120c81d7a521dd627acf211b3c1fb4ecf5deaf7d",
+    "parent_git_blob_object_id": "fdf4f62847f7804943ccf4b0f5e17afe5d756007",
+    "parent_source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+    "source_evidence_path": "runs/parent-review-20261104/sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/utils.py",
+    "split": "development",
+    "symbol_ast_sha256": "a85e44661da891c29c6160607b63c101466bdce702649baf28eae1b7b06e1678"
+  }
+]
