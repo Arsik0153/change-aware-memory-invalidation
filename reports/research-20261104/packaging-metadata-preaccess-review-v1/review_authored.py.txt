@@ -1,0 +1,287 @@
+#!/usr/bin/env python3
+"""Read-only infrastructure review with authored mocked project metadata."""
+
+import hashlib
+import json
+import os
+from pathlib import Path
+import types
+
+ROOT = Path("/root/apps/change-aware-memory-invalidation")
+OUT = Path(__file__).resolve().parent
+SOURCE = ROOT / "scripts/collect_packaging_topology.py"
+source_bytes = SOURCE.read_bytes()
+module = types.ModuleType("reviewed_packaging_metadata")
+module.__file__ = str(SOURCE)
+exec(compile(source_bytes, str(SOURCE), "exec"), module.__dict__)
+
+
+def save(path, value):
+    with path.open("x") as stream:
+        json.dump(value, stream, indent=2, sort_keys=True)
+        stream.write("\n")
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def authored_frame(length):
+    return [
+        hashlib.sha1(("authored-metadata-position-" + str(index)).encode()).hexdigest()
+        for index in range(length)
+    ]
+
+
+def run_case(
+    name,
+    *,
+    length=75,
+    bad_seal=False,
+    dirty=False,
+    deny_committed=False,
+    wrong_origin=False,
+    wrong_head=False,
+    missing_start=False,
+    broken_at=None,
+    widened=False,
+):
+    case = OUT / name
+    case.mkdir()
+    frame = authored_frame(length)
+    protocol = {
+        "schema_version": 1,
+        "protocol_id": module.PROTOCOL_ID,
+        "status": "sealed",
+        "phase": "metadata_only",
+        "seal_path": str((case / "seal.json").relative_to(ROOT)),
+        "repo_path": str((OUT / "mocked-project-marker").relative_to(ROOT)),
+        "repository_url": "https://example.invalid/authored-metadata-only",
+        "start_commit": frame[0],
+        "boundary_commit": frame[-1],
+        "source_configuration": {"proposed_index_source_roots": ["src", "packaging"]},
+        "selection": {
+            "parents": 3,
+            "horizon": 12 if widened else 24,
+            "prefix": 12,
+            "minimum_frame": 75,
+            "minimum_parent_gap": 25,
+            "positions": "0, (L-25)//2, L-25",
+        },
+    }
+    protocol_path = case / "protocol.json"
+    save(protocol_path, protocol)
+    seal = {
+        "protocol_sha256": "0" * 64 if bad_seal else module.sha(protocol_path),
+        "files": {"scripts/collect_packaging_topology.py": digest(source_bytes)},
+    }
+    save(case / "seal.json", seal)
+    events = []
+    project_calls = []
+
+    def committed(root, head, names):
+        events.append("committed_input_check")
+        assert (
+            root == ROOT and head == "a" * 40 and "scripts/collect_packaging_topology.py" in names
+        )
+        if deny_committed:
+            raise ValueError("authored uncommitted input")
+
+    def git(repo, *args):
+        if repo == ROOT:
+            events.append("root:" + args[0])
+            if args == ("rev-parse", "HEAD"):
+                return "a" * 40
+            if args[0] == "status":
+                return "?? authored input" if dirty else ""
+            raise AssertionError(("unexpected root command", args))
+        assert "committed_input_check" in events, (
+            "project metadata reached before committed-input gate"
+        )
+        project_calls.append(list(args))
+        events.append("project:" + args[0])
+        if args == ("config", "--get", "remote.origin.url"):
+            return "wrong repository" if wrong_origin else protocol["repository_url"]
+        if args == ("rev-parse", "HEAD"):
+            return frame[0] if wrong_head else frame[-1]
+        if args[:2] == ("rev-parse", "--verify"):
+            return args[2].removesuffix("^{commit}")
+        if args[:3] == ("rev-list", "--first-parent", "--reverse"):
+            return "\n".join(frame[1:] if missing_start else frame)
+        if args[:4] == ("rev-list", "--parents", "-n", "1"):
+            index = frame.index(args[4])
+            parents = [] if index == 0 else [frame[index - 1]]
+            if index == broken_at:
+                parents = [frame[1]]
+            if index in [10, 50, 85]:
+                parents.append(
+                    hashlib.sha1(("authored-side-parent-" + str(index)).encode()).hexdigest()
+                )
+            return " ".join([frame[index], *parents])
+        if args[:3] == ("log", "-1", "--format=%ct"):
+            return str(1700000000 + frame.index(args[3]))
+        raise AssertionError(("non-metadata project command", args))
+
+    module.git, module.committed_inputs = git, committed
+    output = case / "output"
+    error = None
+    try:
+        module.collect(protocol_path, output)
+    except Exception as caught:
+        error = type(caught).__name__ + ": " + str(caught)
+    manifest = json.loads((output / "manifest.json").read_text())
+    result = {
+        "case": name,
+        "status": manifest["status"],
+        "error": error,
+        "events": events,
+        "project_command_count": len(project_calls),
+        "project_commands": project_calls,
+        "finished_manifest_preserved": "finished_at" in manifest,
+    }
+    if not any(
+        [
+            bad_seal,
+            dirty,
+            deny_committed,
+            wrong_origin,
+            wrong_head,
+            missing_start,
+            broken_at is not None,
+            widened,
+            length < 75,
+        ]
+    ):
+        assert error is None and manifest["status"] == "complete"
+        topology = json.loads((output / "topology.json").read_text())
+        groups = topology["groups"]
+        assert [group["parent_position"] for group in groups] == [
+            0,
+            (length - 25) // 2,
+            length - 25,
+        ]
+        assert (
+            len(topology["frame"]) == length and topology["child_source_access_authorized"] is False
+        )
+        assert topology["parent_source_allowlist_after_separate_commit"] == [
+            group["parent_commit"] for group in groups
+        ]
+        assert topology["merge_steps"] == sum(
+            index in [10, 50, 85]
+            for group in groups
+            for index in [frame.index(oid) for oid in group["child_commits"]]
+        )
+        children = [oid for group in groups for oid in group["child_commits"]]
+        assert len(children) == len(set(children)) == 72
+        assert not set(children) & {group["parent_commit"] for group in groups}
+        before = {
+            str(path.relative_to(output)): digest(path.read_bytes())
+            for path in output.rglob("*")
+            if path.is_file()
+        }
+        count = len(events)
+        try:
+            module.collect(protocol_path, output)
+        except FileExistsError:
+            pass
+        else:
+            raise AssertionError("existing output accepted")
+        assert len(events) == count
+        after = {
+            str(path.relative_to(output)): digest(path.read_bytes())
+            for path in output.rglob("*")
+            if path.is_file()
+        }
+        assert before == after
+        result["existing_output_unchanged_and_no_commands"] = True
+    else:
+        assert error and manifest["status"] == "failed" and result["finished_manifest_preserved"]
+    if bad_seal or dirty or deny_committed or widened:
+        assert project_calls == []
+    save(case / "observed.json", result)
+    return result
+
+
+def main():
+    assert not (OUT / "report.json").exists(), "review output already exists"
+    checks = []
+    for length in range(75, 601):
+        groups = module.select_windows(authored_frame(length))
+        parents = {group["parent_commit"] for group in groups}
+        children = [oid for group in groups for oid in group["child_commits"]]
+        assert len(children) == len(set(children)) == 72 and not parents & set(children)
+        assert [group["parent_position"] for group in groups] == [
+            0,
+            (length - 25) // 2,
+            length - 25,
+        ]
+    checks.append({"check": "every_frame_length_75_through_600", "passed": True, "lengths": 526})
+    for length in range(75):
+        try:
+            module.select_windows(authored_frame(length))
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("short frame accepted")
+    checks.append(
+        {"check": "every_short_frame_length_0_through_74_rejected", "passed": True, "lengths": 75}
+    )
+    original_committed = module.committed_inputs
+    os.environ["GIT_NO_LAZY_FETCH"] = "1"
+    os.environ["GIT_TERMINAL_PROMPT"] = "0"
+    import subprocess
+
+    head = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
+    original_committed(ROOT, head, [".python-version"])
+    ignored = OUT / "ignored-input.json"
+    save(ignored, {"authored": True})
+    try:
+        original_committed(ROOT, head, [str(ignored.relative_to(ROOT))])
+    except ValueError as error:
+        assert "committed HEAD bytes" in str(error)
+    else:
+        raise AssertionError("ignored input accepted as committed")
+    checks.append(
+        {
+            "check": "actual_main_repo_committed_bytes_guard",
+            "passed": True,
+            "real_project_Git_access": False,
+        }
+    )
+    cases = [
+        run_case("good75"),
+        run_case("good100", length=100),
+        run_case("bad-seal", bad_seal=True),
+        run_case("dirty-input", dirty=True),
+        run_case("uncommitted-input", deny_committed=True),
+        run_case("changed-selection", widened=True),
+        run_case("wrong-origin", wrong_origin=True),
+        run_case("wrong-head", wrong_head=True),
+        run_case("missing-start", missing_start=True),
+        run_case("short74", length=74),
+        run_case("gap-discontinuity", length=100, broken_at=30),
+    ]
+    assert "discontinuity" in next(
+        row["error"] for row in cases if row["case"] == "gap-discontinuity"
+    )
+    assert SOURCE.read_bytes() == source_bytes, "collector changed during review"
+    report = {
+        "status": "pass",
+        "reviewed_collector_sha256": digest(source_bytes),
+        "reviewed_test_sha256": digest((ROOT / "tests/test_packaging_topology.py").read_bytes()),
+        "checks": checks,
+        "authored_flow_cases": [
+            {key: value for key, value in row.items() if key not in ["events", "project_commands"]}
+            for row in cases
+        ],
+        "scope": "Only source infrastructure review, authored mock project metadata, and read-only main-repository committed-byte checks. No packaging repository, project source/tree/diff, clone, network, or real project Git command.",
+        "committed_guard_mocked_only_for_authored_flow": True,
+    }
+    save(OUT / "report.json", report)
+    print(
+        json.dumps({"status": "pass", "sampling_lengths": 601, "authored_flow_cases": len(cases)})
+    )
+
+
+if __name__ == "__main__":
+    main()

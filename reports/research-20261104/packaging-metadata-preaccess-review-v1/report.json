@@ -1,0 +1,105 @@
+{
+  "authored_flow_cases": [
+    {
+      "case": "good75",
+      "error": null,
+      "existing_output_unchanged_and_no_commands": true,
+      "finished_manifest_preserved": true,
+      "project_command_count": 155,
+      "status": "complete"
+    },
+    {
+      "case": "good100",
+      "error": null,
+      "existing_output_unchanged_and_no_commands": true,
+      "finished_manifest_preserved": true,
+      "project_command_count": 205,
+      "status": "complete"
+    },
+    {
+      "case": "bad-seal",
+      "error": "ValueError: protocol hash mismatch",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "dirty-input",
+      "error": "ValueError: collection inputs must be committed before metadata access",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "uncommitted-input",
+      "error": "ValueError: authored uncommitted input",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "changed-selection",
+      "error": "ValueError: unsupported selection rule; do not widen a failed frame",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "wrong-origin",
+      "error": "ValueError: unexpected repository identity",
+      "finished_manifest_preserved": true,
+      "project_command_count": 1,
+      "status": "failed"
+    },
+    {
+      "case": "wrong-head",
+      "error": "ValueError: repository HEAD must equal pinned25.0 boundary",
+      "finished_manifest_preserved": true,
+      "project_command_count": 2,
+      "status": "failed"
+    },
+    {
+      "case": "missing-start",
+      "error": "ValueError: 23.2 start is not on25.0 first-parent ancestry",
+      "finished_manifest_preserved": true,
+      "project_command_count": 5,
+      "status": "failed"
+    },
+    {
+      "case": "short74",
+      "error": "ValueError: requires at least75 distinct first-parent positions",
+      "finished_manifest_preserved": true,
+      "project_command_count": 5,
+      "status": "failed"
+    },
+    {
+      "case": "gap-discontinuity",
+      "error": "ValueError: frame first-parent discontinuity",
+      "finished_manifest_preserved": true,
+      "project_command_count": 66,
+      "status": "failed"
+    }
+  ],
+  "checks": [
+    {
+      "check": "every_frame_length_75_through_600",
+      "lengths": 526,
+      "passed": true
+    },
+    {
+      "check": "every_short_frame_length_0_through_74_rejected",
+      "lengths": 75,
+      "passed": true
+    },
+    {
+      "check": "actual_main_repo_committed_bytes_guard",
+      "passed": true,
+      "real_project_Git_access": false
+    }
+  ],
+  "committed_guard_mocked_only_for_authored_flow": true,
+  "reviewed_collector_sha256": "a6f461a89849a2fb4991e15b01834a42b0217a30159d94ace9ea884bc2687338",
+  "reviewed_test_sha256": "9d668a6ef9a70eca7a4119d1ae3548d4ab4546ba6e33b45dd8a7b62b790e582b",
+  "scope": "Only source infrastructure review, authored mock project metadata, and read-only main-repository committed-byte checks. No packaging repository, project source/tree/diff, clone, network, or real project Git command.",
+  "status": "pass"
+}

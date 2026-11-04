@@ -1,0 +1,49 @@
+{
+  "independent_checks": {
+    "authored_mocked_flow_cases": 11,
+    "committed_input_guard_real_main_repo_positive_and_ignored_negative": true,
+    "existing_output_hashes_unchanged_on_reuse": true,
+    "global_unselected_gap_discontinuity_rejected": true,
+    "merges_retained_and_side_parent_source_not_authorized": true,
+    "preaccess_seal_dirty_commit_and_rule_failures_preserved": true,
+    "rejected_short_lengths": {
+      "count": 75,
+      "first": 0,
+      "last": 74
+    },
+    "sampling_lengths_checked": 601,
+    "valid_frame_lengths": {
+      "count": 526,
+      "first": 75,
+      "last": 600
+    }
+  },
+  "limits": [
+    "Authored collector flows mock project Git and successful committed-input checks. The actual committed_inputs function is separately exercised against the main repository.",
+    "Root reports12 focused tests passed, including actual authored-Git ignored/assume-unchanged regressions. This review inspected their source and did not rerun that suite.",
+    "No packaging repository, source, tree, diff, clone or network was accessed by this reviewer. No claim about the real frame length or parent-source feasibility is made."
+  ],
+  "material_findings_open": [],
+  "metadata_only_commands": "Project command set is config remote.origin.url, rev-parse HEAD/commit identities, rev-list first-parent/ordered parents, and log --format=%ct. No project tree, blob, file-list, diff, subject or executable source access is present. Main-workspace cat-file blob reads verify the explicitly required committed infrastructure inputs.",
+  "network_commands": 0,
+  "new_project_source_tree_diff_reads": 0,
+  "phase_boundary": "Output only records parent_source_allowlist_after_separate_commit and child_source_access_authorized=false. Collection grants no subsequent source access.",
+  "real_project_Git_commands": 0,
+  "resolved_before_freeze": [
+    {
+      "committed_check_lines": [
+        111,
+        184
+      ],
+      "finding": "An empty git status can hide ignored files or assume-unchanged modified tracked inputs, so it alone does not prove committed identity.",
+      "first_project_command_line": 113,
+      "resolution": "Root added committed_inputs: each sealed input, protocol and seal must SHA-match the blob at the frozen HEAD. The check runs before the first project metadata command and repeats after collection.",
+      "status": "fixed_and_reviewed"
+    }
+  ],
+  "reviewed_collector_sha256": "a6f461a89849a2fb4991e15b01834a42b0217a30159d94ace9ea884bc2687338",
+  "reviewed_test_sha256": "9d668a6ef9a70eca7a4119d1ae3548d4ab4546ba6e33b45dd8a7b62b790e582b",
+  "status": "no_open_material_findings",
+  "tracked_edits": false,
+  "verdict_scope": "No remaining material blocker under the declared fresh no-checkout blob-filtered clone protocol."
+}

@@ -1,0 +1,77 @@
+{
+  "Git_commands": 0,
+  "all_candidates": 630,
+  "all_parent_groups": 63,
+  "by_repository": [
+    {
+      "authentic_AI_reviewed_structural_claims": 24,
+      "kinds": {
+        "behavior_test": 20,
+        "prose": 20,
+        "signature_equals": 80,
+        "symbol_exists": 80
+      },
+      "parent_groups": 20,
+      "repo_id": "click",
+      "split": "development",
+      "structural_claims": 160
+    },
+    {
+      "authentic_AI_reviewed_structural_claims": 0,
+      "kinds": {
+        "behavior_test": 22,
+        "prose": 22,
+        "signature_equals": 88,
+        "symbol_exists": 88
+      },
+      "parent_groups": 22,
+      "repo_id": "requests",
+      "split": "heldout",
+      "structural_claims": 176
+    },
+    {
+      "authentic_AI_reviewed_structural_claims": 0,
+      "kinds": {
+        "behavior_test": 21,
+        "prose": 21,
+        "signature_equals": 84,
+        "symbol_exists": 84
+      },
+      "parent_groups": 21,
+      "repo_id": "pytest",
+      "split": "heldout",
+      "structural_claims": 168
+    }
+  ],
+  "critical_limit": "All Requests/pytest groups are heldout. Parent diagnostic exposure does not change their split or authorize new development use. Unreviewed means outside the authentic AI pilot, not unseen source or absence of historical exposure.",
+  "cross_project_existing_development_feasible": false,
+  "development_AI_reviewed_groups": 3,
+  "development_AI_reviewed_structural_claims": 24,
+  "development_not_AI_reviewed_groups": 17,
+  "development_not_AI_reviewed_structural_claims": 136,
+  "development_parent_groups": 20,
+  "development_structural_claims": 160,
+  "eligible_distinct_clusters": 13,
+  "eligible_new_to_AI_groups_after_extra_exposure_exclusions": 16,
+  "eligible_new_to_AI_structural_claims": 128,
+  "fallback_claim_module_occurrences_already_in_AI_packet": 6,
+  "fallback_claims": 32,
+  "fallback_groups": [
+    "click-ba0c2389ce12",
+    "click-f4f1e0f7f390",
+    "click-24fee975f12b",
+    "click-f71f1c52a038"
+  ],
+  "fallback_kind_counts": {
+    "signature_equals": 16,
+    "symbol_exists": 16
+  },
+  "fallback_module_occurrences": 25,
+  "fallback_subject_paths_and_names_matching_prior_AI": 5,
+  "fallback_unique_subject_module_hashes": 25,
+  "heldout_source_reads": 0,
+  "new_child_source_tree_diff_reads": 0,
+  "new_parent_source_reads": 0,
+  "original_claims_modified": false,
+  "scope": "Fixed existing 630-candidate inventory; metadata and published parent-only diagnostics only."
+}
