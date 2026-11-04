@@ -1,27 +1,27 @@
 {
   "status": "passed",
-  "reviewer": "Codex visual inspection of all twelve rendered pages",
-  "pdf_sha256": "bc0dbd5d11bb2552b6dcdcf851aff473fcae94f034253552c57ad32f6c6626eb",
-  "pages": 12,
-  "method": "pdftoppm -scale-to 1100 -png; all twelve page images inspected with view_image",
-  "checks": [
-    "No clipped text, tables or figures.",
-    "All eight figures visible, including real Click timeline and count chart.",
-    "Real replay, independent audit, 1259-test verification and 82-fact ledger present.",
-    "Final short evidence page remains readable."
-  ],
+  "reviewer": "root visual inspection of all rendered PDF pages",
+  "pages": 14,
+  "pdf_sha256": "28099855d17af9f100330652437f1a01b30e607a7a0ffc39db1bb060c4ed4f39",
+  "method": "pdftoppm PNG at1100px; every page viewed; checked text and figure bounds, legibility, table continuation headers, no clipped/overlapping content. Source text extraction independently checked193blocks.",
   "page_sha256": {
-    "page-01.png": "72bdcf403ee062479af16922bcf3b1277ca4b366e18f30cfb342eaffe5cce9e1",
-    "page-02.png": "e63f595d6b696bdfb8a222e0578807acd668f39dba549c8d0ce1c1a732ca8519",
-    "page-03.png": "4d37e0c2bbe484583b7e37c2970d5c3a14072937d5e502d36164698768fb3e2c",
-    "page-04.png": "dfc6c1a169a59540c6bd5a2b520e623a4a6702b5429e137006ba4efa6d1d6ea0",
-    "page-05.png": "b0544baffdac55a5762cb75e7eb5af092758b7be9455efffce8e86b9392b83bc",
-    "page-06.png": "e80a6ce755a926c4ad030dfc6a2eeb4c69481be1a170005740934f28b9f9c1ad",
+    "page-01.png": "5bc784e58fb488c3d83b77cf7ac06e557931ff432b768996109f74755f117e42",
+    "page-02.png": "93ee77cfc478f7b605cc542e78ab747bce38d0366d4d20bc70596aeedd7eac7e",
+    "page-03.png": "f9ea701d735304e070ddae9e277dfef450b155d603290df2cb568c54fbd6f59a",
+    "page-04.png": "76eb298495aaad3b7a617f2d2411ec7cb9038199c4ef2ac63c8985e3c5fa06e8",
+    "page-05.png": "f5219af50cb6bc0e951a8c4571c798f65fd0578c76daa00b7517b846c88de7a3",
+    "page-06.png": "09f317d7e501d8a679ad176fdcbf482587969a0243803aa155e78221944049d1",
     "page-07.png": "33d0c28ed8ed9b3e508ff93f9e3f7d651d79149c1e1dd6e7f1a689e210f8f47e",
     "page-08.png": "fb0f558bd2ba5d25feefddda143b22accad36abbc5a738b7d7a367a9d3860255",
     "page-09.png": "2ad8eff2fb33c96181ce929c2eb435d2721eb0a298017445cee6eb262dab431f",
     "page-10.png": "b08d8057ea77004bf22ade1663beb08e0b657c74e6af5277b3395c2d07ac3a31",
-    "page-11.png": "73342bf4eb9288cff382b6382664ee9720f9787eb33537a87e721a877c94c164",
-    "page-12.png": "0e3f839926575a2890f1d12c5e545c72b3b1ebe6688eb2c87b4df498fd3b645a"
-  }
+    "page-11.png": "cfb6aef825ef8cd71741e57748e5ec9e95f2be62c6007f54d7f827cd1720bfdc",
+    "page-12.png": "ba37e8fb8299155c8b9fb43e26a5f552d8ce29da06e6ee7f4c5e7422ea137d9e",
+    "page-13.png": "5e01e47fe2afb9bca0935d79afd8e10ed2318e7f06f4ce19f7687f869d6e06ad",
+    "page-14.png": "2bbc27bda82051adcc08d57cc59a17ff55b7a043a91b4cf5c33c58331945538d"
+  },
+  "observations": [
+    "The first-parent comparison table continues from page11 to12 with a repeated header; every row is readable.",
+    "All10figures are visible and their labels remain within page bounds."
+  ]
 }
