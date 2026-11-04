@@ -1,20 +1,21 @@
 {
   "status": "passed",
-  "reviewer": "primary assistant visual inspection with pixel-equivalence verification",
+  "reviewer": "primary assistant visual inspection of all rendered pages",
   "independent_review": false,
-  "pages": 6,
-  "pdf_sha256": "7cc35ddccf1289f703f333e0c95f99ff897f8b189a0c3d50fb7277cf01170ec1",
+  "pages": 7,
+  "pdf_sha256": "769f9ed6aacbfde1a72efa7d770b09d42338b4c0f39868ac175e1f1da8eac4fc",
   "observations": [
-    "All six v4 rendered pages are byte-identical to the six visually inspected v3 page PNGs.",
-    "Three figures and the table are readable; no clipping observed.",
-    "All 69 source paragraphs and table cells matched current PDF extraction."
+    "All seven pages inspected at 1400px; no clipping or overlapping text observed.",
+    "Four figures, table, captions and page numbers are readable.",
+    "All 77 source text blocks matched PDF extraction."
   ],
   "page_png_sha256": {
-    "page-1.png": "9f4893bf33a417eb5cee346914ca5c079a8e281a095d726a3359379bb071d18f",
-    "page-2.png": "d2b5024bd259cf1d0b5f83695ba3c0a7c9ff4f11707fe5e7ace969fe6333120b",
-    "page-3.png": "7558de4383354d9fa37ef662ce2705af0f91e5de2051973bfa57fb8fbc503018",
-    "page-4.png": "d1f88869386f4ddb685cfb5b56647230c8e2c526582780d479ead9e73e656981",
-    "page-5.png": "37034d505d50c08a1ceb05601bd5deced0ec94dbaa5d3679401a955ddeee0be1",
-    "page-6.png": "646f57727888f81032d3f3ba12ed7ae1a2e225623284819e7f731ae8a861af4f"
+    "page-1.png": "d3127ff9c9d27344a2e877a8769dec5524badb00a73ca38534b74ac1c43a46c5",
+    "page-2.png": "b3b6273b0eeb76d811b3516bf2cd1446a7820ec9b69c226ef9233e17bafd1d61",
+    "page-3.png": "c95c0b9e05dac7b3139178b642ca9d6c3ba642db718a61b2d26e3a04a59bf0cd",
+    "page-4.png": "e56772feeb1c79a1d8674ac1af4d75e0a61488a65414de460ed6f3b967c30a83",
+    "page-5.png": "91a45c627e494baab1447b9f779f4930447b843619532cd7c62b6d2f5fa3c2a3",
+    "page-6.png": "99f2aee3effb43b572ae740931a8db218b62746ee48978341229b0fe92961ab6",
+    "page-7.png": "1aae5701287dccfc420a4a18ec9275fdedc6ee7425485ff5ef15ed808ee510fd"
   }
 }
