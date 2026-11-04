@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "experiment": "structural-reference-transition-alignment-v1",
+  "parent_source": "def f(x):\n    return x\n",
+  "mutations": [
+    {
+      "id": "unchanged",
+      "child_source": "def f(x):\n    return x\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "supported"
+      }
+    },
+    {
+      "id": "unrelated_assignment",
+      "child_source": "def f(x):\n    return x\nVALUE = 2\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "supported"
+      }
+    },
+    {
+      "id": "unrelated_attribute",
+      "child_source": "def f(x):\n    return x\ndef other(obj):\n    obj.value = 1\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "supported"
+      }
+    },
+    {
+      "id": "unrelated_globals_read",
+      "child_source": "def f(x):\n    return x\ndef other():\n    return globals()\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "supported"
+      }
+    },
+    {
+      "id": "unrelated_method",
+      "child_source": "def f(x):\n    return x\nclass C:\n    def f(self):\n        pass\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "supported"
+      }
+    },
+    {
+      "id": "signature_change",
+      "child_source": "def f(x, y):\n    return x\n",
+      "authored_expected": {
+        "symbol_exists": "supported",
+        "signature_equals": "contradicted"
+      }
+    },
+    {
+      "id": "removed",
+      "child_source": "VALUE = 1\n",
+      "authored_expected": {
+        "symbol_exists": "contradicted",
+        "signature_equals": "contradicted"
+      }
+    },
+    {
+      "id": "conditional",
+      "child_source": "if flag:\n    def f(x):\n        return x\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "duplicate",
+      "child_source": "def f(x):\n    return x\ndef f(x):\n    return x\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "assignment",
+      "child_source": "def f(x):\n    return x\nf = 0\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "deletion",
+      "child_source": "def f(x):\n    return x\ndel f\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "import",
+      "child_source": "def f(x):\n    return x\nimport other as f\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "from_import",
+      "child_source": "def f(x):\n    return x\nfrom other import f\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "loop_target",
+      "child_source": "def f(x):\n    return x\nfor f in values:\n    pass\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "with_target",
+      "child_source": "def f(x):\n    return x\nwith manager() as f:\n    pass\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "exception_target",
+      "child_source": "def f(x):\n    return x\ntry:\n    pass\nexcept Exception as f:\n    pass\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "match_target",
+      "child_source": "def f(x):\n    return x\nmatch value:\n    case {\"value\": f}:\n        pass\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "wildcard_import",
+      "child_source": "def f(x):\n    return x\nfrom other import *\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "named_expression",
+      "child_source": "def f(x):\n    return x\n(f := 1)\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    },
+    {
+      "id": "class_global",
+      "child_source": "def f(x):\n    return x\nclass C:\n    global f\n    f = 1\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
+    }
+  ],
+  "predicates": [
+    "symbol_exists",
+    "signature_equals"
+  ],
+  "selector_variants": [
+    "symbol_anchor",
+    "file_anchor",
+    "all_validate"
+  ],
+  "expected_input_pairs": 20,
+  "expected_claim_transitions": 40,
+  "expected_policy_states": 120,
+  "protocol_version": "1.1",
+  "known_incomplete": false,
+  "frozen_reference_sha256": "2f3dfc7a3d867d9094c8aae692faf24271cca6704532204ce08528a15ce1df1f",
+  "hypothesis": "Parent agreement does not by itself establish safe carry under the independent syntax rubric. Check target-binding mutations and unrelated syntax controls.",
+  "method": [
+    "Construct full synthetic module snapshots, fixed exact f(x) claims and provenance; no real provenance is edited.",
+    "Evaluate parent/child with the frozen independent checker and current production full validator; preserve all disagreements.",
+    "Invoke real selector/state functions for symbol anchor, file anchor and all_validate; selected results for the research reference pipeline come from independent checker, uncertain maps to insufficient_evidence.",
+    "Measure unavailable-reference carry separately from truth errors: uncertain is not proof of a false claim.",
+    "Preserve explicit manually authored expected control verdicts and compare them with the reference."
+  ],
+  "limits": [
+    "Authored mutation challenge, not real-data effect sizes or admitted labels.",
+    "Known-incomplete=false is a synthetic experimental condition, not closure of real review-pending provenance.",
+    "Reference uses shared CPython AST and has stated scope/coverage limits.",
+    "No Git/Docker execution; policies are invoked on synthetic snapshots.",
+    "Any fix or changed reference requires a separately identified after-run; never overwrite baseline."
+  ]
+}
