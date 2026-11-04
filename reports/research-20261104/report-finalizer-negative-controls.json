@@ -1,16 +1,19 @@
 [
   {
     "case": "stale_pdf_review",
+    "isolated_expected_failure": true,
     "rejected_before_archive_or_delivery": true,
-    "reason": "Unexpected or missing report files"
+    "reason": "A passed visual review bound to this exact PDF is required"
   },
   {
     "case": "changed_artifact",
+    "isolated_expected_failure": true,
     "rejected_before_archive_or_delivery": true,
-    "reason": "Unexpected or missing report files"
+    "reason": "Report artifact changed: text-check.json"
   },
   {
     "case": "unsealed_extra_file",
+    "isolated_expected_failure": true,
     "rejected_before_archive_or_delivery": true,
     "reason": "Unexpected or missing report files"
   }

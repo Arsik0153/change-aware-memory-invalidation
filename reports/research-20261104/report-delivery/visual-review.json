@@ -1,13 +1,20 @@
 {
   "status": "passed",
-  "reviewer": "primary assistant visual inspection",
+  "reviewer": "primary assistant visual inspection with pixel-equivalence verification",
   "independent_review": false,
-  "pages": 5,
+  "pages": 6,
+  "pdf_sha256": "7cc35ddccf1289f703f333e0c95f99ff897f8b189a0c3d50fb7277cf01170ec1",
   "observations": [
-    "All five PDF pages inspected at 1200 px height.",
-    "Both figures and the table are readable; no clipped text observed.",
-    "All 63 source paragraphs and table cells matched PDF text extraction.",
-    "Timing ranges are explicitly descriptive, and unsafe hidden-missing result is identified."
+    "All six v4 rendered pages are byte-identical to the six visually inspected v3 page PNGs.",
+    "Three figures and the table are readable; no clipping observed.",
+    "All 69 source paragraphs and table cells matched current PDF extraction."
   ],
-  "preview_tool_limitation": "Headless HTML preview failed with Chrome exit 1; local PNG/PDF render inspection completed."
+  "page_png_sha256": {
+    "page-1.png": "9f4893bf33a417eb5cee346914ca5c079a8e281a095d726a3359379bb071d18f",
+    "page-2.png": "d2b5024bd259cf1d0b5f83695ba3c0a7c9ff4f11707fe5e7ace969fe6333120b",
+    "page-3.png": "7558de4383354d9fa37ef662ce2705af0f91e5de2051973bfa57fb8fbc503018",
+    "page-4.png": "d1f88869386f4ddb685cfb5b56647230c8e2c526582780d479ead9e73e656981",
+    "page-5.png": "37034d505d50c08a1ceb05601bd5deced0ec94dbaa5d3679401a955ddeee0be1",
+    "page-6.png": "646f57727888f81032d3f3ba12ed7ae1a2e225623284819e7f731ae8a861af4f"
+  }
 }

@@ -203,3 +203,10 @@ behavior-памяти, ограниченная проверка структу�
 projection и исправление кеша при смене Git mode. Полная проверка исправления:
 1124 passed на e810a09. Независимые parent reviews и child labels остаются
 незавершёнными; основная held-out оценка ещё не выполнена.
+
+Текущий [PDF-отчёт](reports/research-20261104/report-delivery/CAMI_research_progress_2026-11-04.pdf)
+включает измерения времени и [достижимый цикл ложной доступности](docs/behavior_reachability_2026-11-04.md),
+подтверждённый конечной моделью и отдельным Git/Docker-свидетелем.
+Команды сборки и упаковки: `scripts/build_research_report.py` и
+`scripts/finalize_research_report.py`; упаковка требует записи визуальной проверки,
+привязанной к SHA-256 конкретного PDF.

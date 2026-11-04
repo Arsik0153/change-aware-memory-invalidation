@@ -540,3 +540,27 @@ can no longer retain a healthy AST or poison later recovery. Index version is no
 3 and validator version is 4; prior validation cache entries are not reused.
 See [the regression and before/after evidence](ast_cache_mode_fix_2026-11-04.md).
 Earlier version and verification statements above remain dated history.
+
+## 2026-11-04: finite persistence witness and reproducible report packaging
+
+A 12-program finite availability abstraction exhausts 50 reachable states and 600
+transitions across four variants. Hidden provenance admits a source-changing cycle
+of false availability; the other variants have no availability mismatch in this
+model. A stdlib-only explicit-rule auditor checks the complete transition graph.
+One extracted cycle was reproduced with five actual Git commits and 48 Docker
+probe executions. This is a finite-model result plus a concrete witness, not a
+population frequency or arbitrary-Python proof.
+
+Repeated measurements on two authored behavior histories completed 40 CLI runs,
+615 audited probe executions, and a separate excluded profile. Intact provenance
+reduced observed time in all five paired repeats per history; hidden missingness
+can save more time while retaining false claims. See the dated timing report.
+
+The current portable research report includes six pages, three figures and 66
+compact evidence files. A strict finalizer exposed and fixed omission of nested
+manifest.json files from the report builder inventory. Packaging now verifies the
+exact inventory, binds visual review to the current PDF hash, and verifies every
+ZIP payload. Three isolated negative controls reject stale review, modified payload
+and an extra unsealed file. The successful artifact is v4; the failed v3 attempt
+remains recorded. Research production sources remain at the cache-fix state verified
+by 1124 full-suite tests on e810a09; later diagnostic tools have focused checks.
