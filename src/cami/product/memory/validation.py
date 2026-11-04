@@ -8,15 +8,17 @@ from typing import Literal
 from cami.product.models import digest
 from cami.product.memory.models import (
     AbsenceWitness, AvailableRecord, CarriedClaim, CheckedClaim, CheckRef, CodeView,
-    DefinitionFact, DependencyStamp, Equivalence, NotePayload, NoteState, RecordRevision, RecordState,
-    SignaturePayload, SourceRef, SymbolKey, WithheldRecord,
+    DefinitionFact, DependencyStamp, Equivalence, ExistsPayload, NotePayload, NoteState,
+    PythonExcerptReady, RecordRevision, RecordState, SignaturePayload, SourceExcerptPayload,
+    SourceRef, SymbolKey, WithheldRecord,
 )
 
 VALIDATOR_FINGERPRINT = digest([
     "product-memory-structural/2",
     {name: hashlib.sha256((Path(__file__).parents[2] / name).read_bytes()).hexdigest()
      for name in ("ecma_models.py", "product/memory/models.py", "product/memory/adapters.py",
-                  "product/memory/validation.py", "product/memory/_ecma_syntax.cjs")},
+                  "product/memory/validation.py", "product/memory/python_excerpt.py",
+                  "product/memory/_ecma_syntax.cjs")},
 ])
 
 
@@ -30,6 +32,12 @@ def identity_uncertainty(view: CodeView, subject: SymbolKey) -> bool:
         for g in view.identity_gaps)
 
 
+def excerpt_source_bound(definition: DefinitionFact, view: CodeView) -> bool:
+    return (definition.source.index == view.index
+            and definition.source.path == definition.subject.path
+            and definition.source in view.sources)
+
+
 def dependencies(record: RecordRevision, view: CodeView) -> DependencyStamp:
     payload = record.payload
     subject = payload.subject
@@ -40,6 +48,30 @@ def dependencies(record: RecordRevision, view: CodeView) -> DependencyStamp:
         errors += ("binding_unresolved",)
     scopes = (f"{subject.language}:{subject.path}:{subject.qualname}:{subject.node_kind}",
               subject.path)
+    if isinstance(payload, SourceExcerptPayload):
+        values = []
+        for definition in found:
+            projection = definition.python_excerpt
+            excerpt = ({"format": projection.format,
+                        "prefix_sha256": projection.prefix_sha256,
+                        "prefix_characters": projection.prefix_characters,
+                        "truncated": projection.truncated}
+                       if isinstance(projection, PythonExcerptReady)
+                       else projection.model_dump(mode="json") if projection else None)
+            values.append({"subject": definition.subject.model_dump(mode="json"),
+                           "ambiguous": definition.ambiguous,
+                           "uncertain": definition.identity_uncertain,
+                           "source_bound": excerpt_source_bound(definition, view), "excerpt": excerpt})
+        certain = (not errors and coverage in ("present", "absent")
+                   and (not found or len(found) == 1 and not found[0].ambiguous
+                        and not found[0].identity_uncertain
+                        and excerpt_source_bound(found[0], view)
+                        and isinstance(found[0].python_excerpt, PythonExcerptReady)))
+        return DependencyStamp(fingerprint=digest([
+            "source-excerpt-inputs/1", VALIDATOR_FINGERPRINT,
+            view.index.policy_fingerprint, view.index.analyzer_fingerprint,
+            subject.model_dump(mode="json"), payload.expected.format, values, coverage, errors]),
+            scopes=scopes, certain=certain)
     if isinstance(payload, NotePayload):
         paths = {s.path for s in payload.sources}
         source_values = [(s.path, s.sha256) for s in view.sources if s.path in paths]
@@ -134,6 +166,20 @@ def check(record: RecordRevision, view: CodeView, transition_id: str) -> CheckRe
             scope_digest=digest([view.index.snapshot_id, subject.model_dump(mode="json")]),
             reason="path_absent_in_scope" if coverage[subject.path] == "absent"
             else "symbol_absent_in_parsed_file"),)
+    elif isinstance(payload, SourceExcerptPayload):
+        projection = found[0].python_excerpt
+        if not excerpt_source_bound(found[0], view):
+            reason = "source_excerpt_unavailable"
+        elif not isinstance(projection, PythonExcerptReady):
+            reason = projection.reason if projection else "source_excerpt_unavailable"
+        elif projection.format != payload.expected.format:
+            reason = "source_excerpt_schema_mismatch"
+        elif (projection.prefix_sha256 == hashlib.sha256(payload.expected.text.encode("utf-8")).hexdigest()
+              and projection.prefix_characters == len(payload.expected.text)
+              and projection.truncated == payload.expected.truncated):
+            verdict, reason = "supported", "source_excerpt_matches"
+        else:
+            verdict, reason = "contradicted", "source_excerpt_mismatch"
     elif isinstance(payload, SignaturePayload):
         actual = found[0].signature
         if actual is None:
@@ -144,8 +190,10 @@ def check(record: RecordRevision, view: CodeView, transition_id: str) -> CheckRe
             verdict, reason = "supported", "predicate_matches"
         else:
             verdict, reason = "contradicted", "signature_mismatch"
-    else:
+    elif isinstance(payload, ExistsPayload):
         verdict, reason = "supported", "predicate_matches"
+    else:
+        reason = "unsupported_predicate"
     return CheckRef(
         check_id=digest(["check/1", transition_id, record.memory_id, record.revision,
                          view.index.generation_id, VALIDATOR_FINGERPRINT]),

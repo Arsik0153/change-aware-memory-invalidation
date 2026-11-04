@@ -64,7 +64,7 @@ def index_fingerprint() -> str:
                                            "_typescript/analyze.cjs")]
     sources.extend(sorted((package / "product").glob("*.py")))
     sources.extend(package / "product" / "memory" / name for name in
-                   ("adapters.py", "models.py", "_ecma_syntax.cjs"))
+                   ("adapters.py", "models.py", "python_excerpt.py", "_ecma_syntax.cjs"))
     return digest({"schema_version": 2, "index_version": INDEX_VERSION,
                    "typescript_runtime": runtime_identity(),
                    "python": sys.version, "implementation": platform.python_implementation(),

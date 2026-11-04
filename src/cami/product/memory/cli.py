@@ -3,8 +3,9 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import get_args
 
-from cami.product.memory.models import AgentContext, MemoryGeneration, MutationReceipt, RecordHistory
+from cami.product.memory.models import AgentContext, MemoryGeneration, MemoryKind, MutationReceipt, RecordHistory
 
 
 def add_parser(sub: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
@@ -18,7 +19,7 @@ def add_parser(sub: argparse._SubParsersAction[argparse.ArgumentParser]) -> None
         command.add_argument("--exclude", action="append", default=[])
         if name in ("context", "remember"):
             if name == "remember":
-                command.add_argument("kind", choices=("symbol_exists", "signature_equals", "note"))
+                command.add_argument("kind", choices=get_args(MemoryKind))
             command.add_argument("symbol")
         if name in ("remember", "update"):
             command.add_argument("--from-context", type=Path, required=True)

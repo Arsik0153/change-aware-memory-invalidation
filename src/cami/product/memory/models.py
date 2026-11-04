@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Annotated, Literal
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 
 from cami.ecma_models import EcmaIdentityGap
 from cami.product.models import Digest, Observation, ProductValue
@@ -70,12 +70,61 @@ class EcmaSignatureSyntax(ProductValue):
 Signature = Annotated[PythonSignature | EcmaSignatureSyntax, Field(discriminator="format")]
 
 
+class PythonDefinitionSpan(ProductValue):
+    first_line: int = Field(ge=1)
+    last_line: int = Field(ge=1)
+
+    @model_validator(mode="after")
+    def ordered(self) -> PythonDefinitionSpan:
+        if self.last_line < self.first_line:
+            raise ValueError("source span ends before it starts")
+        return self
+
+
+class PythonExcerptReady(ProductValue):
+    status: Literal["ready"] = "ready"
+    format: Literal["python.definition-prefix/1"] = "python.definition-prefix/1"
+    span: PythonDefinitionSpan
+    prefix_characters: int = Field(ge=1, le=2400)
+    prefix_sha256: Digest
+    truncated: bool
+
+    @model_validator(mode="after")
+    def bounded(self) -> PythonExcerptReady:
+        if self.truncated and self.prefix_characters != 2400:
+            raise ValueError("truncated excerpt must have 2400 characters")
+        return self
+
+
+class PythonExcerptUnavailable(ProductValue):
+    status: Literal["unavailable"] = "unavailable"
+    reason: Literal["unsupported_encoding", "invalid_source_span"]
+
+
+PythonExcerptProjection = Annotated[
+    PythonExcerptReady | PythonExcerptUnavailable, Field(discriminator="status")]
+
+
+class PythonExcerptExpected(ProductValue):
+    format: Literal["python.definition-prefix/1"] = "python.definition-prefix/1"
+    text: str = Field(min_length=1, max_length=2400)
+    truncated: bool
+
+    @model_validator(mode="after")
+    def bounded(self) -> PythonExcerptExpected:
+        self.text.encode("utf-8")
+        if self.truncated and len(self.text) != 2400:
+            raise ValueError("truncated excerpt must have 2400 characters")
+        return self
+
+
 class DefinitionFact(ProductValue):
     subject: SymbolKey
     signature: Signature | None
     source: SourceRef
     ambiguous: bool
     identity_uncertain: bool = False
+    python_excerpt: PythonExcerptProjection | None = None
 
 
 class PathCoverage(ProductValue):
@@ -116,7 +165,27 @@ class NotePayload(ProductValue):
     sources: tuple[SourceRef, ...] = Field(min_length=1)
 
 
-Payload = Annotated[ExistsPayload | SignaturePayload | NotePayload, Field(discriminator="type")]
+class SourceExcerptPayload(ProductValue):
+    type: Literal["source_excerpt_equals"] = "source_excerpt_equals"
+    subject: SymbolKey
+    expected: PythonExcerptExpected
+    origin_source: SourceRef
+    origin_span: PythonDefinitionSpan
+
+    @model_validator(mode="after")
+    def python_subject(self) -> SourceExcerptPayload:
+        if (self.subject.language != "python"
+                or self.subject.node_kind not in ("function", "method")
+                or self.origin_source.path != self.subject.path):
+            raise ValueError("source excerpt requires a matching Python source subject")
+        return self
+
+
+MemoryKind = Literal["symbol_exists", "signature_equals", "note", "source_excerpt_equals"]
+
+
+Payload = Annotated[ExistsPayload | SignaturePayload | NotePayload | SourceExcerptPayload,
+                    Field(discriminator="type")]
 
 
 class RecordRevision(ProductValue):
@@ -128,6 +197,12 @@ class RecordRevision(ProductValue):
     author_id: str = "cli"
     created_at: str
     previous_revision: int | None
+
+    @model_validator(mode="after")
+    def excerpt_origin_matches(self) -> RecordRevision:
+        if isinstance(self.payload, SourceExcerptPayload) and self.payload.origin_source.index != self.origin:
+            raise ValueError("source excerpt origin index mismatch")
+        return self
 
 
 class AbsenceWitness(ProductValue):
@@ -212,7 +287,7 @@ class WithheldRecord(AvailableRecord):
 
 
 class AgentContext(ProductValue):
-    schema_version: Literal[1] = 1
+    schema_version: Literal[1, 2] = 2
     query: str
     index: IndexRef
     memory_generation_id: Digest
@@ -228,12 +303,18 @@ class AgentContext(ProductValue):
 
 
 class RememberInput(ProductValue):
-    kind: Literal["symbol_exists", "signature_equals", "note"]
+    kind: MemoryKind
     query: str = Field(min_length=1)
     context: AgentContext
     request_id: str = Field(min_length=1, max_length=1024)
     note_key: str | None = None
     text: str | None = None
+
+    @model_validator(mode="after")
+    def excerpt_is_server_minted(self) -> RememberInput:
+        if self.kind == "source_excerpt_equals" and (self.note_key is not None or self.text is not None):
+            raise ValueError("source_excerpt_equals does not accept text or note_key")
+        return self
 
 
 class MutationRequest(ProductValue):

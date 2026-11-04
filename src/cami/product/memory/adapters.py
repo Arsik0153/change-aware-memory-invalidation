@@ -17,6 +17,9 @@ from cami.product.memory.models import (
     CodeView, DefinitionFact, EcmaSignatureSyntax, IndexRef,
     PathCoverage, PythonParameter, PythonSignature, SourceRef, SymbolKey,
 )
+from cami.product.memory.python_excerpt import (
+    prepare_python_excerpt_source, project_python_excerpt,
+)
 from cami.product.models import EcmaReady, EcmaUnavailable, IndexedWorktree, Observation, digest
 from cami.product.store import GenerationStore, refresh_locked, state_base
 from cami.product.worktree import CaptureChanged, capture
@@ -65,6 +68,8 @@ class PythonIndexAdapter:
                                         sha256=hashlib.sha256(blob.content).hexdigest(),
                                         size=len(blob.content))
                    for blob in indexed.capture.blobs if blob.content is not None}
+        raw_sources = {blob.path: blob.content for blob in indexed.capture.blobs
+                       if blob.content is not None}
         definitions = []
         errors = []
         for module in indexed.generation.index.modules:
@@ -72,6 +77,7 @@ class PythonIndexAdapter:
                 errors.append((module.path, module.limitation))
                 continue
             tree = ast.parse(module.source)
+            excerpt_source = prepare_python_excerpt_source(raw_sources[module.path], expected_source=module.source)
             nodes = {n.lineno: n for n in ast.walk(tree)
                      if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
             for definition in module.definitions:
@@ -81,7 +87,8 @@ class PythonIndexAdapter:
                                       qualname=definition.node.qualname or "",
                                       node_kind=definition.node_kind),
                     signature=python_signature(node), source=sources[module.path],
-                    ambiguous=definition.ambiguous))
+                    ambiguous=definition.ambiguous,
+                    python_excerpt=project_python_excerpt(excerpt_source, node)))
         coverage = {s.path: PathCoverage(path=s.path, status="present") for s in sources.values()}
         coverage.update({c.path: PathCoverage(path=c.path, status=c.status)
                          for c in indexed.capture.path_coverage})

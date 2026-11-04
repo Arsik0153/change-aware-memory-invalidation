@@ -17,6 +17,8 @@ cami memory remember symbol_exists src/api.py:create_user --repo "$REPO" \
   --from-context /tmp/context.json --request-id agent-exists-1 --format json
 cami memory remember signature_equals src/api.py:create_user --repo "$REPO" \
   --from-context /tmp/context.json --request-id agent-signature-1 --format json
+cami memory remember source_excerpt_equals src/api.py:create_user --repo "$REPO" \
+  --from-context /tmp/context.json --request-id agent-excerpt-1 --format json
 cami memory remember note src/api.py:create_user --repo "$REPO" \
   --note-key api-return-contract --text 'Returns the input name unchanged.' \
   --from-context /tmp/context.json --request-id agent-note-1 --format json
@@ -34,6 +36,30 @@ Backend проверяет `index`, `code` и привязку memory generation
 Python canonical form содержит AST параметров, annotations, defaults, decorators,
 return, type parameters и async. Отсутствующий default отличается от `None`.
 Формат привязан к версии Python через analyzer fingerprint.
+
+`source_excerpt_equals` сохраняет точный фрагмент Python-функции или метода.
+Сервер извлекает текст из проверенных исходных байтов закреплённого контекста;
+агент не передаёт ожидаемый текст, хеш или границы. Для этого типа запрещены
+`--text` и `--note-key`.
+
+Формат `python.definition-prefix/1` включает полные физические строки от первого
+`@` декоратора, либо начала определения, до последней строки определения.
+Сохраняются первые 2400 символов Unicode и признак `truncated`. Отступы, комментарии
+и окончания строк не нормализуются. Поддерживается UTF-8; неоднозначное определение,
+ошибка разбора или неподдерживаемая кодировка не дают доступного факта.
+
+После изменения другой функции в том же файле прежний фрагмент может оставаться
+доступным, если повторно извлечённые текст и признак усечения совпадают. Изменение
+внутри фрагмента скрывает запись; восстановление текста требует новой проверки.
+Это подтверждает только показанный текст: изменение глобальной переменной может
+изменить поведение функции при прежнем фрагменте. У усечённой записи оставшаяся
+часть определения не проверяется этим предикатом.
+
+Ручные заметки сохраняют прежнюю проверку всего файла и требование повторного
+просмотра после изменений. Они не преобразуются в факты о фрагментах. Новые
+контексты имеют схему 2; текущий клиент читает схемы 1 и 2. Старый контекст без
+сертификата фрагмента нужно обновить перед регистрацией нового типа. Старые
+бинарники отклоняют новые проекции; формат таблиц SQLite при этом не меняется.
 
 ## Подготовьте несколько записей одной операцией
 

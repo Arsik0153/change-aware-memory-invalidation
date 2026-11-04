@@ -16,7 +16,12 @@ from cami.product.memory.adapters import ProductIndexPort, HybridIndexPort
 from cami.product.memory.models import (
     AgentContext, AvailableRecord, CodeView, DefinitionFact, ExistsPayload, MemoryGeneration,
     MutationReceipt, MutationRequest, NotePayload, NoteState, Payload, RecordHistory,
-    RecordRevision, RememberInput, SignaturePayload, SourceRef, WithheldRecord,
+    MemoryKind, PythonExcerptReady, PythonExcerptUnavailable, RecordState, RecordRevision, RememberInput, SignaturePayload,
+    SourceExcerptPayload, SourceRef, WithheldRecord,
+)
+from cami.product.memory.python_excerpt import (
+    ExcerptUnavailable, PythonExcerptSource, origin_literal_from_certificate,
+    prepare_python_excerpt_source, verify_origin_literal,
 )
 from cami.product.memory.store import MemoryStore
 from cami.product.memory.validation import VALIDATOR_FINGERPRINT, availability, transition
@@ -38,7 +43,43 @@ def semantic_payload(payload: Payload) -> object:
     value = payload.model_dump(mode="json")
     if isinstance(payload, NotePayload):
         value["sources"] = [(s.path, s.sha256, s.size) for s in payload.sources]
+    if isinstance(payload, SourceExcerptPayload):
+        value.pop("origin_source")
+        value.pop("origin_span")
     return value
+
+
+def _origin_sources(payload: Payload) -> tuple[SourceRef, ...]:
+    if isinstance(payload, NotePayload):
+        return payload.sources
+    if isinstance(payload, SourceExcerptPayload):
+        return (payload.origin_source,)
+    return ()
+
+
+def _record_sources(item: RecordState) -> tuple[SourceRef, ...]:
+    sources = _origin_sources(item.record.payload)
+    if not isinstance(item.state, NoteState):
+        sources += tuple(e for e in item.state.check.evidence if isinstance(e, SourceRef))
+    return sources
+
+
+MAX_SOURCE_CACHE_ENTRIES = 128
+MAX_SOURCE_CACHE_BYTES = 32 * 1024**2
+
+
+def _prepared_excerpt_source(source: SourceRef, raw: bytes,
+                             cache: dict[SourceRef, PythonExcerptSource]) -> PythonExcerptSource:
+    if source in cache:
+        return cache[source]
+    prepared = prepare_python_excerpt_source(raw)
+    if isinstance(prepared, PythonExcerptUnavailable):
+        raise ExcerptUnavailable(prepared.reason)
+    if (len(cache) < MAX_SOURCE_CACHE_ENTRIES
+            and prepared.retained_bytes + sum(item.retained_bytes for item in cache.values())
+            <= MAX_SOURCE_CACHE_BYTES):
+        cache[source] = prepared
+    return prepared
 
 
 MAX_BATCH = 1024
@@ -49,8 +90,7 @@ def _probes(records: tuple[RecordRevision, ...] | list[RecordRevision],
             requests: tuple[MutationRequest, ...] = ()) -> tuple[str, ...]:
     paths = {r.payload.subject.path for r in records}
     for record in records:
-        if isinstance(record.payload, NotePayload):
-            paths.update(s.path for s in record.payload.sources)
+        paths.update(s.path for s in _origin_sources(record.payload))
     queries = (query,) if isinstance(query, str) else query or ()
     paths.update(item.split(":", 1)[0] for item in queries if ":" in item)
     paths.update(request.payload.subject.path for request in requests)
@@ -79,6 +119,23 @@ class ProductMemory:
                 yield db
         except (OSError, CacheCorrupt) as exc:
             raise IncompleteError(f"memory_state_io_error: {exc}") from exc
+
+    def _verify_sources(self, item: RecordState, raw_sources: dict[SourceRef, bytes],
+                        excerpt_sources: dict[SourceRef, PythonExcerptSource]) -> None:
+        payload = item.record.payload
+        for source in _record_sources(item):
+            raw = raw_sources.get(source)
+            if raw is None:
+                raw = self.store.read_source(source)
+                if (len(raw_sources) < MAX_SOURCE_CACHE_ENTRIES
+                        and len(raw) + sum(map(len, raw_sources.values())) <= MAX_SOURCE_CACHE_BYTES):
+                    raw_sources[source] = raw
+            if isinstance(payload, SourceExcerptPayload) and source == payload.origin_source:
+                try:
+                    prepared = _prepared_excerpt_source(source, raw, excerpt_sources)
+                    verify_origin_literal(prepared, payload.origin_span, payload.expected)
+                except ExcerptUnavailable as exc:
+                    raise IncompleteError("source_excerpt_origin_inconsistent") from exc
 
     def refresh(self) -> MemoryGeneration:
         return self._coordinate(None, None)[0]
@@ -114,14 +171,10 @@ class ProductMemory:
                     if matches and not unavailable and self.index_store.load(
                             previous.index.generation_id, captured, fingerprint) is None:
                         matches, reason = False, "index_artifact_unavailable"
+                    verified_sources: dict[SourceRef, bytes] = {}
+                    excerpt_sources: dict[SourceRef, PythonExcerptSource] = {}
                     for item in previous.states:
-                        sources = (item.record.payload.sources
-                                   if isinstance(item.record.payload, NotePayload) else
-                                   tuple(e for e in item.state.check.evidence
-                                         if isinstance(e, SourceRef))
-                                   if not isinstance(item.state, NoteState) else ())
-                        for source in sources:
-                            self.store.read_source(source)
+                        self._verify_sources(item, verified_sources, excerpt_sources)
                 verified = capture(self.root, self.roots, self.excludes, state_base(), probes)
                 if (captured.snapshot_id != verified.snapshot_id
                         or captured.base_commit != verified.base_commit
@@ -179,9 +232,11 @@ class ProductMemory:
             coverage=view.coverage, path_errors=view.path_errors,
             facts=tuple(facts), notes=tuple(notes), withheld=tuple(withheld))
 
-    def remember(self, kind: Literal["symbol_exists", "signature_equals", "note"], query: str,
+    def remember(self, kind: MemoryKind, query: str,
                  context: AgentContext, request_id: str, *, note_key: str | None = None,
                  text: str | None = None) -> MutationReceipt:
+        if kind == "source_excerpt_equals" and (text is not None or note_key is not None):
+            raise InputError("source_excerpt_equals does not accept text or note_key")
         return self._mutate(kind, query, context, request_id, note_key, text, None, None)
 
     def update(self, memory_id: str, expected_revision: int, context: AgentContext,
@@ -192,7 +247,8 @@ class ProductMemory:
     def _request(self, db: sqlite3.Connection, kind: str | None, query: str | None,
                  context: AgentContext, request_id: str, note_key: str | None,
                  text: str | None, memory_id: str | None, expected_revision: int | None,
-                 origins: dict[str, CodeView], context_indexes: dict[str, object]) -> MutationRequest:
+                 origins: dict[str, CodeView], context_indexes: dict[str, object],
+                 excerpt_sources: dict[SourceRef, PythonExcerptSource]) -> MutationRequest:
         if context.index.generation_id not in origins:
             origins[context.index.generation_id] = self.store.view(db, context.index.generation_id)
         origin = origins[context.index.generation_id]
@@ -227,6 +283,32 @@ class ProductMemory:
             if fact.signature is None:
                 raise InputError("unsupported signature form")
             payload = SignaturePayload(subject=fact.subject, expected=fact.signature)
+        elif kind == "source_excerpt_equals":
+            if text is not None or note_key is not None:
+                raise InputError("source_excerpt_equals does not accept text or note_key")
+            if fact.subject.language != "python" or fact.subject.node_kind not in ("function", "method"):
+                raise InputError("source_excerpt_equals supports Python functions and methods only")
+            if (fact.source.index != origin.index or fact.source.path != fact.subject.path
+                    or fact.source not in origin.sources):
+                raise IncompleteError("source_excerpt_origin_inconsistent")
+            if (not any(c.path == fact.subject.path and c.status == "present" for c in origin.coverage)
+                    or any(path == fact.subject.path for path, _ in origin.path_errors)):
+                raise InputError("source_excerpt_origin_uncovered")
+            if fact.python_excerpt is None:
+                raise InputError("refresh_context_required: supported Python excerpt certificate required")
+            if not isinstance(fact.python_excerpt, PythonExcerptReady):
+                raise InputError("source_excerpt_unavailable: " + fact.python_excerpt.reason)
+            try:
+                prepared = excerpt_sources.get(fact.source)
+                if prepared is None:
+                    prepared = _prepared_excerpt_source(
+                        fact.source, self.store.read_source(fact.source), excerpt_sources)
+                expected = origin_literal_from_certificate(prepared, fact.python_excerpt)
+            except ExcerptUnavailable as exc:
+                raise IncompleteError("source_excerpt_origin_inconsistent") from exc
+            payload = SourceExcerptPayload(subject=fact.subject, expected=expected,
+                                           origin_source=fact.source,
+                                           origin_span=fact.python_excerpt.span)
         elif kind == "note" and note_key and text:
             payload = NotePayload(subject=fact.subject, note_key=note_key, text=text,
                                   sources=(fact.source,))
@@ -240,7 +322,7 @@ class ProductMemory:
                 memory_id: str | None, expected_revision: int | None) -> MutationReceipt:
         with self._session() as db:
             request = self._request(db, kind, query, context, request_id, note_key, text,
-                                    memory_id, expected_revision, {}, {})
+                                    memory_id, expected_revision, {}, {}, {})
             _, _, _, receipt = self._coordinate_locked(db, None, request)
             assert receipt is not None
             return receipt
@@ -265,9 +347,10 @@ class ProductMemory:
         with self._session() as db:
             origins: dict[str, CodeView] = {}
             context_indexes: dict[str, object] = {}
+            excerpt_sources: dict[SourceRef, PythonExcerptSource] = {}
             requests = tuple(self._request(
                 db, item.kind, item.query, item.context, item.request_id, item.note_key,
-                item.text, None, None, origins, context_indexes) for item in items)
+                item.text, None, None, origins, context_indexes, excerpt_sources) for item in items)
             _, _, _, receipts = self._coordinate_many_locked(db, None, requests)
             return receipts
 
@@ -358,12 +441,12 @@ class ProductMemory:
             else:
                 assert previous is not None
                 generation = previous
+            # A fresh cache for this final verification phase. Do not reuse the
+            # minting cache or a previous operation's source evidence.
+            verified_sources: dict[SourceRef, bytes] = {}
+            excerpt_sources: dict[SourceRef, PythonExcerptSource] = {}
             for item in generation.states:
-                sources = item.record.payload.sources if isinstance(item.record.payload, NotePayload) \
-                    else tuple(e for e in item.state.check.evidence if isinstance(e, SourceRef)) \
-                    if not isinstance(item.state, NoteState) else ()
-                for source in sources:
-                    self.store.read_source(source)
+                self._verify_sources(item, verified_sources, excerpt_sources)
             self.port.verify(self.root, self.roots, self.excludes, probes, prepared)
             for index, (request, request_hash, mutation) in enumerate(zip(requests, hashes, mutations, strict=True)):
                 if mutation is None:
