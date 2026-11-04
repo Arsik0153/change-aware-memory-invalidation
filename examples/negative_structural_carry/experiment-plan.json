@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "protocol_id": "negative-structural-carry-exploratory-development-v1-draft",
+  "status": "historical_broad_draft_superseded_not_executed",
+  "created_date": "2026-11-04",
+  "purpose": "Test restricted definitive signature-mismatch carry against unchanged production symbol_validate; reject broad contradiction carry.",
+  "dataset_kind": "real_repository_research_sensitivity",
+  "split": "development",
+  "evaluation_eligible": false,
+  "prior_outcome_disclosure": "Designed after inspecting completed real-structural-replay-v1. Same-cohort results are post-hoc exploratory sensitivity, not confirmatory preregistered evidence.",
+  "authorization": "This task stages design and authored fixtures only. No new corpus access or sensitivity execution authorized by this draft.",
+  "baseline_artifacts": {
+    "reports/research-20261104/real-structural-replay-v1/report.json": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+    "reports/research-20261104/real-structural-replay-v1/observations.jsonl": "d3f20a3521e79fa899acf3e5eba6832dd9a6336c51b935a1bdb3c2120eb30b9a",
+    "reports/research-20261104/real-structural-replay-v1/manifest.json": "7e38f3cd13af5ea597d95c81844859e9cdb1ae13d4b9961882c22e782d0ab727"
+  },
+  "fixed_population": {
+    "candidate_claims": 24,
+    "candidate_claim_child_observations_per_variant": 112,
+    "group_child_counts": {
+      "click-1c2fc1b0152f": 1,
+      "click-1e53748f80eb": 12,
+      "click-8c7491d9b0d7": 1
+    },
+    "allowed_commit_ids": "Exactly the existing sealed real replay protocol groups; no new revisions, branches, sources, repositories or held-out data."
+  },
+  "comparison_variants": [
+    "original symbol_anchor / symbol_validate",
+    "research signature_mismatch_negative_carry with original symbol-anchor provenance",
+    "original known_incomplete baseline unchanged",
+    "original all_validate full-production comparison"
+  ],
+  "optional_conservative_comparator": "Full-module identity negative carry, only if implemented and sealed before any new run; otherwise omit explicitly before freeze.",
+  "eligibility": "Design.md exact proposed eligibility; sole previously_unavailable reason; prior actual contradicted/predicate_mismatch; signature_equals only; existing exact regular readable unambiguous function; unchanged AST + full normalized signature; immutable sealed context; complete provenance assumption.",
+  "state_transition": "Call existing advance_state on effective selection; never synthesize validation, change last_checked_commit or make carried contradiction available.",
+  "anti_leakage": "Independent reference and all_validate comparison never feed adapter or maintained state. Every variant uses own sequential states. Baseline states/results cannot substitute for candidate state evolution.",
+  "known_opportunity": "Seven baseline sole-previously_unavailable retries, after the fifth child changed one signature. This is a retrospective count, not a predicted realized saving.",
+  "primary_endpoints": [
+    "Number and fraction of original selected validations actually suppressed",
+    "Per-step candidate availability vs fresh all_validate; false availability and withheld-supported separately",
+    "Fresh production noncontradicted verdict on a suppressed step (supported and insufficient_evidence separately)",
+    "Mismatch of carried contradiction reason against fresh production reason",
+    "Recovery delay in number of revisions after first fresh-supported observation"
+  ],
+  "secondary_endpoints": [
+    "Available-reference-unknown, candidate-reference-unknown, and excluded-parent observations",
+    "Logical selected validations, actual validate_claim executions, index work and adapter witness work separately",
+    "Number of suppressions by group, claim and reason; dependent observations disclosed",
+    "Parent initialization costs, reference costs and shared index costs separately"
+  ],
+  "failure_rules": [
+    "Any suppressed fresh-supported or fresh-insufficient-evidence result refutes the negative-preservation hypothesis on that case; preserve failed run and inspect before any new version.",
+    "Do not drop absent/uncertain/difficult steps, replace claims or trajectories, rewrite old results or silently weaken endpoint definitions.",
+    "Changed protocol/seal/context, warm/fresh index mismatch, malformed identity or unsupported access stops execution.",
+    "A zero reduction is a valid result. No wall-time benefit claim from reduced validation call counts.",
+    "Zero reference-contradicted denominators produce null rates with reason; no universal safety inference."
+  ],
+  "artifact_requirements": [
+    "All original/effective selections, suppression eligibility and rejection reasons, claim/provenance/context hashes, previous/current states, last actual validation and actual new validation, exact source/index witness identity",
+    "Fresh full-production comparison and independent reference per scored observation, without feeding selection",
+    "Complete candidate/exclusion denominators and aggregate plus group-specific results",
+    "Separate costs, before/after source snapshots, new-only output directory, running/failed/complete manifest and artifact inventory"
+  ],
+  "prospective_authored_matrix": {
+    "status": "Proposed to freeze generator source/seed/case manifest before expanded execution; existing eight design tests remain disclosed exploratory checks.",
+    "cross_product_axes": [
+      "Prior state: supported, predicate_mismatch, subject_absent, uncertain",
+      "Mutation: unchanged, unrelated-file, unrelated-module-statement, signature default/annotation/decorator/async, body-only change, deletion, rename, recovery",
+      "Binding context: plain, duplicate, conditional, module rebinding, wildcard import, class/global/nested class",
+      "Evidence envelope: regular, executable regular, same-blob symlink, ancestor symlink/submodule, parse error, encoding error, size/LFS limitation",
+      "Provenance: complete research assumption, known incomplete, unresolved remarks, explicit dependency, changed provenance",
+      "Index path: fresh and warmed cache; same blob and changed mode",
+      "Direct and nested class/global contexts with same subject AST plus changed module ambiguity",
+      "Scope flags and same-ID expected-signature edits; roots/version/Python/size-limit context edits; mismatched prior validation input identity"
+    ],
+    "negative_controls": [
+      "Broad filter ancestor-symlink absence counterexample must fail negative-preservation check",
+      "Suppressed genuine subject-change marker must be detected by explicit AST/signature witness check",
+      "Ignoring signature witness during changed expected predicate must be caught by immutable-context gate"
+    ],
+    "proof_obligations": [
+      "Establish witness availability and unique same node kind in both indexes",
+      "Establish full-signature inequality preservation under immutable expectation",
+      "Prove unavailable and historical-check fields remain unchanged on omitted validation",
+      "Induct over actual sequential adjacent snapshots; retry all uncertainty and invalidated witnesses",
+      "Establish immediate recovery validation and no reference leakage"
+    ],
+    "limits": "Finite authored tests and a conditional proof are not a formal proof of all Python bindings or independent truth."
+  },
+  "implementation_next_gate": "No further adapter expansion until the root chooses a candidate and freezes total-maintenance-cost measurement; see timing-and-context-plan.md.",
+  "cost_hypothesis": "Reduced validate_claim call counts may be cosmetic; compare full maintenance cost including eligibility/witness acquisition, and reject performance claim if no robust reduction.",
+  "planned_context_binding": "Immutable prior actual-mismatch witness binds full claim/provenance/context hashes, actual result input identity and full regular subject module identity; same-ID predicate/context edits must retry or reject.",
+  "negative_control_expected_fields": {
+    "prior_verdict": "contradicted",
+    "prior_reason": "subject_absent",
+    "subject_path": "pkg/f.py",
+    "ancestor_path": "pkg",
+    "new_ancestor_mode": "120000",
+    "base_selection_reasons": [
+      "previously_unavailable"
+    ],
+    "fresh_verdict": "insufficient_evidence",
+    "fresh_reason": "symlink_unsupported",
+    "naive_carried_last_verdict": "contradicted",
+    "naive_available": false
+  },
+  "superseded_by": "challenge-protocol.json: bounded 17 authored histories only; no real-cohort sensitivity authorized or implemented."
+}

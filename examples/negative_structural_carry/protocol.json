@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "protocol_id": "authored-negative-carry-maintenance-v1",
+  "status": "sealed",
+  "root": "../..",
+  "seal_path": "examples/negative_structural_carry/seal.json",
+  "histories": [
+    {
+      "id": "unchanged_module_other_file",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "other_file",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        },
+        {
+          "operation": "other_file",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "changed_comment_same_ast",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "source": "# changed comment\ndef f(x=2):\n    return x\n"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "direct_class_global",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "uncertain",
+          "source": "def f(x=2):\n    return x\nclass C:\n    global f\n    f = 7\n"
+        },
+        {
+          "operation": "source",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "source": "def f(x=2):\n    return x\n"
+        }
+      ]
+    },
+    {
+      "id": "nested_class_global",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "uncertain",
+          "source": "def f(x=2):\n    return x\nclass C:\n    class D:\n        global f\n        f = 7\n"
+        },
+        {
+          "operation": "source",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "source": "def f(x=2):\n    return x\n"
+        }
+      ]
+    },
+    {
+      "id": "same_blob_symlink",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "symlink_same_blob",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "uncertain"
+        },
+        {
+          "operation": "source",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "source": "def f(x=2):\n    return x\n"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "signature_recovery",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "supported",
+          "expected_reference": "supported",
+          "source": "def f(x=1):\n    return x\n"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "supported",
+          "expected_reference": "supported"
+        }
+      ]
+    },
+    {
+      "id": "same_id_expected_signature_change",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "supported",
+          "expected_reference": "supported",
+          "expected_source": "def f(x=2): pass"
+        }
+      ]
+    },
+    {
+      "id": "context_flag_change",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "context": {
+            "scope_contract": "runtime_signature"
+          }
+        }
+      ]
+    },
+    {
+      "id": "context_index_change",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "context": {
+            "build_graph": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "scope_change",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted",
+          "scope": "Runtime inspect.signature after execution."
+        }
+      ]
+    },
+    {
+      "id": "known_incomplete",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "known_incomplete": true,
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        },
+        {
+          "operation": "other_file",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "size_limit",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "max_file_bytes": 40,
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "contradicted",
+          "source": "def f(x=2):\n    return x\n#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "context_size_limit_change",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "noop",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "contradicted",
+          "context": {
+            "max_file_bytes": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "parse_error_recovery",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "uncertain",
+          "source": "def f(\n"
+        },
+        {
+          "operation": "source",
+          "expected_production": "supported",
+          "expected_reference": "supported",
+          "source": "def f(x=1): return x\n"
+        }
+      ]
+    },
+    {
+      "id": "regular_mode_equivalence",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "executable",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        }
+      ]
+    },
+    {
+      "id": "absence_ancestor_limitation",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "delete",
+          "expected_production": "contradicted",
+          "expected_reference": "contradicted"
+        },
+        {
+          "operation": "ancestor_symlink",
+          "expected_production": "insufficient_evidence",
+          "expected_reference": "uncertain"
+        }
+      ]
+    },
+    {
+      "id": "policy_switch_lineage",
+      "initial_source": "def f(x=2):\n    return x\n",
+      "steps": [
+        {
+          "operation": "source",
+          "expected_production": "supported",
+          "expected_reference": "supported",
+          "source": "def f(x=1): return x\n",
+          "policy": "keep_all"
+        },
+        {
+          "operation": "noop",
+          "expected_production": "supported",
+          "expected_reference": "supported"
+        }
+      ]
+    }
+  ],
+  "variants": [
+    "production",
+    "signature_witness",
+    "module_blob_witness"
+  ],
+  "warmup_blocks": 2,
+  "paired_repetitions": 21,
+  "histories_per_block": 100,
+  "order": "rotate_three_variants_by_repetition_then_reverse_on_odd_repetitions",
+  "measurement_claim": "Determine whether complete selection+eligibility+witness+actual-validation+advance loop is faster, equal, slower or inconclusive on these authored histories. No corpus or general speedup claim.",
+  "report_limits": [
+    "Prebuilt snapshot/index/reference work is setup, reported separately.",
+    "Eligibility and context hashing may cost more than cheap structural validation.",
+    "Witness creation and refresh are inside measured maintenance.",
+    "Correctness expectations are frozen before the measured run.",
+    "Already executed exploratory fixtures are disclosed; no new corpus access.",
+    "Report CPU/wall median/range and paired deltas with actual work counters; no adoption conclusion without limiter evidence."
+  ],
+  "minimum_block_ns": 10000000,
+  "primary_endpoint": "Paired total maintenance process CPU ns and wall ns including all selection, eligibility, context hashing, witness acquisition/refresh, actual validate_claim executions and state advance.",
+  "excluded_scope": "No real-cohort sensitivity run, no new corpus access, no exhaustive cross product; only the 17 listed authored histories.",
+  "host_note": "Root reported full tracked source test suite finished: 1259 passed. Shared host remains uncontrolled; runner records load average and CPU count before/after and interleaves variants.",
+  "test_path": "tests/test_negative_structural_carry.py",
+  "implementation_paths": [
+    ".python-version",
+    "examples/ai_review_pilot/packet/rubric.md",
+    "examples/ai_review_pilot/structural_checker_README.md",
+    "examples/negative_structural_carry/INSTALL.md",
+    "examples/negative_structural_carry/changed_claim_counterexample.json",
+    "examples/negative_structural_carry/design-initial-draft.md",
+    "examples/negative_structural_carry/design.md",
+    "examples/negative_structural_carry/experiment-plan.json",
+    "examples/negative_structural_carry/frozen_rejected_reproduction_manifest.json",
+    "examples/negative_structural_carry/lineage_counterexample.json",
+    "examples/negative_structural_carry/rejected-prototype-reproduction.zip",
+    "examples/negative_structural_carry/review-v2.json",
+    "examples/negative_structural_carry/review.json",
+    "examples/negative_structural_carry/timing-and-context-plan.md",
+    "pyproject.toml",
+    "scripts/blob_negative_carry.py",
+    "scripts/negative_carry.py",
+    "scripts/negative_carry_challenge.py",
+    "scripts/negative_carry_witness.py",
+    "scripts/real_structural_replay_support.py",
+    "scripts/run_negative_carry_challenge.py",
+    "scripts/structural_checker_v2.py",
+    "scripts/verify_cami.py",
+    "src/cami/__init__.py",
+    "src/cami/aggregate.py",
+    "src/cami/artifacts.py",
+    "src/cami/behavior.py",
+    "src/cami/cli.py",
+    "src/cami/dataset.py",
+    "src/cami/dataset_models.py",
+    "src/cami/demo.py",
+    "src/cami/ecma_models.py",
+    "src/cami/engine.py",
+    "src/cami/environment_pilot.py",
+    "src/cami/errors.py",
+    "src/cami/evaluation.py",
+    "src/cami/index.py",
+    "src/cami/inputs.py",
+    "src/cami/llm.py",
+    "src/cami/models.py",
+    "src/cami/operational.py",
+    "src/cami/parent_review_html.py",
+    "src/cami/pilot.py",
+    "src/cami/policies.py",
+    "src/cami/probe_runner.py",
+    "src/cami/product/__init__.py",
+    "src/cami/product/ecma.py",
+    "src/cami/product/git_snapshot.py",
+    "src/cami/product/inputs.py",
+    "src/cami/product/memory/__init__.py",
+    "src/cami/product/memory/adapters.py",
+    "src/cami/product/memory/cli.py",
+    "src/cami/product/memory/database.py",
+    "src/cami/product/memory/models.py",
+    "src/cami/product/memory/store.py",
+    "src/cami/product/memory/validation.py",
+    "src/cami/product/models.py",
+    "src/cami/product/observation.py",
+    "src/cami/product/service.py",
+    "src/cami/product/store.py",
+    "src/cami/product/watch/__init__.py",
+    "src/cami/product/watch/cli.py",
+    "src/cami/product/watch/control.py",
+    "src/cami/product/watch/models.py",
+    "src/cami/product/watch/runtime.py",
+    "src/cami/product/watch/worker.py",
+    "src/cami/product/worktree.py",
+    "src/cami/provenance_audit.py",
+    "src/cami/reporting.py",
+    "src/cami/repository.py",
+    "src/cami/scenarios.py",
+    "src/cami/structural_closure.py",
+    "src/cami/symbol_search.py",
+    "src/cami/typescript_analyzer.py",
+    "src/cami/typescript_runtime.py",
+    "src/cami/validation.py",
+    "tests/test_negative_structural_carry.py",
+    "tests/test_structural_checker.py",
+    "tests/test_structural_checker_v2.py",
+    "uv.lock"
+  ],
+  "profile_history_pack_repetitions": 1,
+  "profile_top_functions": 20,
+  "profiling_phase": "After all paired timed samples, run one separately cProfile-instrumented complete 17-history pack per variant. Write stripped-path .prof plus top20 cumulative JSON. Its actual work counters are separate and excluded from measured timings.",
+  "dataset_kind": "authored_git_histories",
+  "split": "development",
+  "evaluation_eligible": false,
+  "prior_executions": "Fourteen authored tests, including correctness checks of the 17 histories, passed before timing freeze; no timing/profiling experiment was run. Existing Click observations motivated the hypothesis but no corpus is accessed here.",
+  "review_limits": "review-v2 precedes final relocation/preflight/profiling changes; root inspected those and reran all 14 installed tests. Initial rejected prototype is explicitly reconstructed, with repeated counterexamples matching originals."
+}

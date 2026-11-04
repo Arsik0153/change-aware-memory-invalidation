@@ -1,0 +1,109 @@
+{
+  "classification": "Outside immutable-claim precondition; required negative control for any reusable caller",
+  "original_claim": {
+    "schema_version": 1,
+    "claim_id": "fixture",
+    "repo_id": "synthetic-carry",
+    "origin_commit": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3",
+    "kind": "signature_equals",
+    "text": "Exact signature",
+    "subject": {
+      "path": "module.py",
+      "qualname": "f",
+      "node_kind": "function"
+    },
+    "predicate": {
+      "type": "signature_equals",
+      "expected_signature": {
+        "parameters": [
+          {
+            "name": "x",
+            "kind": "positional_or_keyword",
+            "default_ast": "Constant(value=1)",
+            "annotation_ast": null
+          }
+        ],
+        "returns_ast": null,
+        "decorators_ast": [],
+        "is_async": false
+      }
+    },
+    "scope": "Exact syntax"
+  },
+  "changed_claim": {
+    "schema_version": 1,
+    "claim_id": "fixture",
+    "repo_id": "synthetic-carry",
+    "origin_commit": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3",
+    "kind": "signature_equals",
+    "text": "Exact signature",
+    "subject": {
+      "path": "module.py",
+      "qualname": "f",
+      "node_kind": "function"
+    },
+    "predicate": {
+      "type": "signature_equals",
+      "expected_signature": {
+        "parameters": [
+          {
+            "name": "x",
+            "kind": "positional_or_keyword",
+            "default_ast": "Constant(value=2)",
+            "annotation_ast": null
+          }
+        ],
+        "returns_ast": null,
+        "decorators_ast": [],
+        "is_async": false
+      }
+    },
+    "scope": "Exact syntax"
+  },
+  "original_claim_sha256": "daf7f61ca9d8e83fe832e42efa65d923ec3c5c105950a8b6a49c96fd7bd4b92e",
+  "changed_claim_sha256": "bd22e55911586abed53d06e59423c086c3213c2a1b2e556f4207af0b90f3d907",
+  "previous_state": {
+    "schema_version": 1,
+    "claim_id": "fixture",
+    "revision": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3",
+    "state": "stale",
+    "last_checked_commit": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3",
+    "last_supported_commit": null,
+    "last_verdict": "contradicted",
+    "basis": "validated",
+    "current_provenance": {
+      "schema_version": 1,
+      "claim_id": "fixture",
+      "scenario_id": "review",
+      "anchors": [
+        {
+          "path": "module.py",
+          "qualname": "f",
+          "scope": "symbol",
+          "observed_commit": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3",
+          "content_hash": "fafc32a0c8d62d3853d4c22c96fc57876de998f9d433dc63da3fb95cdce2c26f",
+          "origin": "static",
+          "start_line": null,
+          "end_line": null
+        }
+      ],
+      "dependencies": [],
+      "known_incomplete": false,
+      "unresolved_reasons": []
+    },
+    "available": false,
+    "withheld_reason": "predicate_mismatch"
+  },
+  "before_source": "def f(x=2):\n    return x\n",
+  "after_source": "def f(x=2):\n    return x\n\n# comment-only transition\n",
+  "observed": {
+    "suppressed": true,
+    "original_reasons": [
+      "previously_unavailable"
+    ],
+    "fresh_verdict": "supported",
+    "carried_verdict": "contradicted",
+    "available": false,
+    "last_checked_commit": "constructed-e433c748b55736da246b79ad3ee3942d161eca777fe8ea09e3f24ec91f57cab3"
+  }
+}

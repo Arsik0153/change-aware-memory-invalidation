@@ -1,0 +1,32 @@
+{
+  "status": "review_complete",
+  "prototype_only": true,
+  "production_edits": false,
+  "corpus_access": false,
+  "fixture_tests_passed": 8,
+  "findings": [
+    {
+      "id": "state_lineage",
+      "severity": "blocker_for_arbitrary_existing_state",
+      "finding": "Immutable claim/context does not establish that the latest before witness still mismatches. A genuine historical contradicted state carried through recovery by keep_all can be accepted and cause supported state to remain withheld.",
+      "evidence": "lineage_counterexample.json",
+      "bounded_condition": "Negative fact must bind to the witness at last actual validation, or arrive through a verified uninterrupted chain of safe carries. Freshly validate before enabling carry on arbitrary imported state."
+    },
+    {
+      "id": "claim_context",
+      "severity": "precondition",
+      "finding": "Same claim_id with revised expected signature can be incorrectly carried. Prototype explicitly requires immutable claim/context but has no executable binding.",
+      "evidence": "changed_claim_counterexample.json",
+      "bounded_condition": "Bind the complete claim, provenance, parser/validator/configuration and negative witness, not only IDs and current provenance."
+    },
+    {
+      "id": "work_avoided",
+      "severity": "measurement_limit",
+      "finding": "Adapter repeats snapshot limitation and module/definition/signature checks for both indexes. Production structural validation already consumes shared indexes and performs a cheap lookup/comparison. Fewer validator calls are not a demonstrated reduction in substantive work.",
+      "bounded_condition": "Count guard/witness creation, index work and end-to-end maintenance. An exact unchanged regular module blob witness tied to the actual negative check is a simpler narrower candidate."
+    }
+  ],
+  "sound_scope": "For truthful signature mismatch, fixed exact claim/context, authentic consistent indexes, and uninterrupted safe state lineage, unique unambiguous unchanged signature preserves predicate_mismatch. Source signature recovery is selected and validated; absence/ambiguity/limitations remain retried.",
+  "availability_note": "Counterexamples incorrectly prolong unavailability; they do not create false availability. Last negative verdict and check provenance still matter.",
+  "recommendation": "Keep this version as a proof-oriented research prototype. Prefer the smallest witness-bound candidate for further measurement; no production change or speedup claim follows from this review."
+}

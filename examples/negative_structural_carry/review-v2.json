@@ -1,0 +1,84 @@
+{
+  "status": "review_complete_no_remaining_blocker_for_bounded_authored_freeze",
+  "reviewed_files_sha256": {
+    "runs/negative-structural-carry-design-20261104/negative_carry_witness.py": "212dad95cdfb8eb664688d115b14beba95b4f13dc57ab3276315b604b114501d",
+    "runs/negative-structural-carry-design-20261104/blob_negative_carry.py": "9888cfcfc9bcc600cf1f3a0a1d65791c38a0f7846774707ee336e829b36378a0",
+    "runs/negative-structural-carry-design-20261104/negative_carry.py": "e3d16150c1882b20470d80bf681fc9eacc56046cd24823e9b3df096e7d279ba4",
+    "runs/negative-structural-carry-design-20261104/negative_carry_challenge.py": "870b72053f3bb3abee3b444f619213d7fca2451722d962f47ede696e49b3f89c",
+    "runs/negative-structural-carry-design-20261104/run_negative_carry_challenge.py": "b80efb9ffae46c3b3df3b2ca31284a1b1f238370bbefe57f4d2c2955818fc41c",
+    "runs/negative-structural-carry-design-20261104/challenge-protocol.json": "7d8fc3bf7d8d7dec4836683d2b04a3f9068049be34351609716595f763ca7098",
+    "runs/negative-structural-carry-design-20261104/experiment-plan.json": "249936b978e0d03df3f34865fdb49c552112c6dea9307fe318ebcb09b3ae2230",
+    "runs/negative-structural-carry-design-20261104/test_negative_carry.py": "2774342b996abd31972103461c307f745d08a0af5e5203d17ffa7f15061312d7",
+    "runs/negative-structural-carry-design-20261104/timing-and-context-plan.md": "6eea40b337dc7f2ea6712549548de1b4b7e1c04ffd1b1f0438ed2c16d69faae7"
+  },
+  "verification": {
+    "authored_fixture_tests_passed": 13,
+    "histories": 17,
+    "variants": [
+      "production",
+      "signature_witness",
+      "module_blob_witness"
+    ],
+    "full_timing_experiment_run": false,
+    "corpus_access": false,
+    "tracked_edits": false
+  },
+  "resolved_previous_findings": [
+    {
+      "id": "same_ID_predicate_edit",
+      "resolution": "Witness binds full canonical claim, provenance and context. Predicate/scope edits refuse carry."
+    },
+    {
+      "id": "historical_negative_lineage",
+      "resolution": "Witness records actual checked commit/input hash, gate matches prior state last_checked_commit, and blob guard compares before/after module identities directly to last actual mismatch module. Signature candidate also compares current signature/AST directly with actual witness."
+    },
+    {
+      "id": "context_setup_accounting",
+      "resolution": "Context includes mandatory canonical enclosing plan binding; setup separately records candidate-only source/context hashing costs."
+    },
+    {
+      "id": "misleading_block_count",
+      "resolution": "Timing rows distinguish pack repetitions from actual history/transition executions."
+    }
+  ],
+  "bounded_soundness": {
+    "premises": [
+      "Witness minted only by trusted runner from actual structural contradicted/predicate_mismatch result with matching production input hash.",
+      "Snapshots and object IDs come from authentic production Git snapshot reader; source/index/context/configuration identities remain honestly bound.",
+      "Original genuine production symbol_validate selection is preserved unless its sole reason is previously_unavailable.",
+      "Exact syntactic signature scope, complete dependency-free research provenance and extant regular subject module are required."
+    ],
+    "argument": "With same full module Git object as the actual mismatch and unchanged parser/roots/validator/claim context, production module parsing, binding ambiguity and normalized signature are unchanged. Genuine regular exact path also excludes non-tree ancestors. The fixed expectation therefore remains mismatched. This proof is relative to production structural semantics and trusted witness creation.",
+    "uncertainty_and_recovery": "Missing/nonregular/limited modules, changed context/claim, extra production reasons and invalid witnesses retain validation. Actual uncertain/supported validation replaces witness with None. A recovered signature differs from actual negative module and is revalidated immediately, including after keep_all policy switch.",
+    "limits": [
+      "Not independent truth or proof for all Python bindings.",
+      "No witness authenticates an untrusted caller: matching result hash is identity consistency, not proof a validator executed.",
+      "Uses genuine Git object identity; hand-constructed inconsistent snapshots and hash-collision attacks are outside this experiment.",
+      "Signature candidate still repeats substantial validator checks; full-module candidate is deliberately more conservative."
+    ]
+  },
+  "measurement_review": {
+    "charged_inside_loop": [
+      "Initial and refreshed witness minting",
+      "Original production selection",
+      "Eligibility/context/claim/provenance checks and module/index lookups",
+      "Actual validate_claim calls for selected transitions",
+      "advance_state and variant work counters"
+    ],
+    "outside_region_disclosed": [
+      "Git authoring, snapshot/index/compare construction",
+      "Fresh correctness validation and independent reference",
+      "Candidate-only context source hashing setup",
+      "Audit/result serialization"
+    ],
+    "sequential_state": "Each run_history starts from its own actual parent result and evolves its own states/witness; fresh/reference fields are consulted only for post-transition correctness.",
+    "warmups": 2,
+    "paired_repetitions": 21,
+    "history_pack_repetitions": 100,
+    "order": "Rotation plus odd-repetition reversal covers all six three-variant permutations in each six-repetition cycle.",
+    "checks": "Work counters and final state endpoints checked after each complete timed block; correctness checked per transition outside timing. Wall/CPU distributions and paired deltas retained; short blocks counted against explicit floor.",
+    "interpretation": "No elapsed benefit is established by this review. Keep performance recommendation inconclusive until actual paired results, variation and limiter evidence are examined. Maintenance-only timings exclude shared index work and do not establish end-to-end corpus savings."
+  },
+  "scope": "Only the 17 enumerated authored histories. Older broad matrix is unimplemented historical planning, not claimed coverage.",
+  "remaining_blockers": []
+}

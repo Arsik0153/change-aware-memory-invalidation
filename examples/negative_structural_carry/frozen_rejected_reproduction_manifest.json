@@ -1,0 +1,60 @@
+{
+  "status": "reproduced_rejected_prototype_counterexamples",
+  "prototype_provenance": {
+    "kind": "reconstruction_from_initial_reviewed_source_in_session",
+    "original_source_bytes_archived": false,
+    "original_source_sha256": null,
+    "note": "The initial candidate source was overwritten by its author. This explicit reconstruction preserves the reviewed initial guards and adds a reconstruction notice. Its current SHA-256 identifies only the reconstruction; it is not asserted as the historical original hash."
+  },
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "reconstruction_and_driver_sha256": {
+    "rejected_prototype.py": "1fed4eff8fbab5b1a374d86625820b2590da63c056c9abdb72aec3c1aceba8ad",
+    "boundary_check_frozen.py": "b41343e7643515704620c5d771a61ab6f3e6c3e8f88ecbba9bc860d58b2014e3",
+    "lineage_check_frozen.py": "ba04b37d7bcad2e97b9e896bae6cbceec34cdc2b62ce2b341f62ee109f0d1dc7"
+  },
+  "new_result_sha256": {
+    "frozen_rejected_boundary_results.json": "2aeae3f3b356e4481dbcf056126307e943af1fbdcb4bccf174673c8fd41e2326",
+    "frozen_rejected_changed_claim_counterexample.json": "25aa04eef72bab39253bebb0e4abfef17800a26679699718293251f2d3bbcb4c",
+    "frozen_rejected_lineage_counterexample.json": "b2b8f6712b44b1849fa608986efd918357a340a73bf678a1958a116cf529ae26"
+  },
+  "preserved_original_artifact_sha256": {
+    "review_checks.py": "9694b1528cd35e3f3a6b81319d37b37a83c68cc3db20d4db7aa4ed6adf77ff83",
+    "lineage_check.py": "3b0e15eb790a9e84260201c889999a4df8a46b750e82ccd40ac58a8d4e1e7196",
+    "review_results.json": "2aeae3f3b356e4481dbcf056126307e943af1fbdcb4bccf174673c8fd41e2326",
+    "changed_claim_counterexample.json": "1cae544b04af55d75f8cce326cd97401eec5ee9dbed5adec57439d7862daa42a",
+    "lineage_counterexample.json": "b2b8f6712b44b1849fa608986efd918357a340a73bf678a1958a116cf529ae26"
+  },
+  "production_dependency_sha256": {
+    "src/cami/index.py": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+    "src/cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+    "src/cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535",
+    "src/cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+    "src/cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+    "src/cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+    "scripts/check_structural_carry.py": "aceef5955f006d4494403566acbf9635e653a1a05a925f9c05f35192a5aca30b",
+    "scripts/verify_cami.py": "e3b4422a3546c24335697925fb6afbbe86c63f7ecd445ef7959879c88798e399"
+  },
+  "commands_from_workspace_root": [
+    "PYTHONPATH=. .venv/bin/python runs/negative-structural-carry-review-20261104/boundary_check_frozen.py",
+    "PYTHONPATH=. .venv/bin/python runs/negative-structural-carry-review-20261104/lineage_check_frozen.py"
+  ],
+  "verification": {
+    "changed_claim_counterexample_reproduced": true,
+    "policy_switch_lineage_counterexample_reproduced": true,
+    "stable_mismatch_control_reproduced": true,
+    "ordinary_source_recovery_control_reproduced": true,
+    "new_boundary_and_lineage_results_equal_original_saved_results": true
+  },
+  "interpretation": {
+    "changed_claim": "Outside the initial immutable-claim precondition: same ID with modified expectation suppresses required recovery.",
+    "lineage": "Fixed claim/parser/roots/validator context is insufficient without negative-witness or verified carry lineage: genuine keep_all state can preserve an old mismatch through recovery, and the initial adapter incorrectly suppresses a later retry.",
+    "availability": "Both failures prolong unavailability and preserve stale negative evidence; neither creates false availability."
+  },
+  "constraints": {
+    "original_scripts_and_JSON_modified": false,
+    "staged_current_candidate_imported": false,
+    "tracked_edits": false,
+    "corpus_access": false,
+    "timing_or_policy_experiment": false
+  }
+}
