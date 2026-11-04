@@ -122,3 +122,73 @@ def test_signature_claim_json_arrays_are_accepted(tmp_path):
     output = tmp_path / 'review'
     exporter.export(source, output)
     assert read_jsonl(output / 'packets.jsonl')[0]['claim'] == claim
+
+
+def test_viewer_shows_parent_evidence_without_executing_source_markup(tmp_path):
+    source = prepared(tmp_path)
+    payload = '<script>alert("source")</script>\n<a href="https://invalid">x</a>\n'
+    (source / 'annotation/sources/parent.py').write_text(payload)
+    path = source / 'annotation/packets.jsonl'
+    rows = read_jsonl(path)
+    rows[0]['source_evidence']['parent'][0]['sha256'] = file_hash(
+        source / 'annotation/sources/parent.py')
+    rows[0]['claim']['text'] = '<img src=x onerror=alert(1)>'
+    rows[0]['claim_sha256'] = digest(rows[0]['claim'])
+    write_jsonl(path, rows)
+    seal(source)
+    output = tmp_path / 'review'
+    exporter.export(source, output)
+    markup = (output / 'review.html').read_text()
+    assert '&lt;img src=x onerror=alert(1)&gt;' in markup
+    assert '<img' not in markup
+    assert 'child' not in markup
+    assert 'primary_form.jsonl' in markup and 'second_form.jsonl' in markup
+    assert 'Второй разметчик назначен</dt><dd>Да' in markup
+    evidence = next((output / 'review-assets').glob('*.html')).read_text()
+    assert '<script>' not in evidence
+    assert '&lt;script&gt;' in evidence
+    assert 'id="L2"' in evidence
+    assert "default-src 'none'" in evidence
+    assert (output / 'sources/parent.py').read_text() == payload
+    assert read_jsonl(output / 'primary_form.jsonl')[0]['label'] is None
+
+
+@pytest.mark.parametrize('relative', ['review.html', 'review-assets/source.py', 'primary_form.jsonl'])
+def test_evidence_cannot_overwrite_exported_artifacts(tmp_path, relative):
+    source = prepared(tmp_path)
+    path = source / 'annotation/packets.jsonl'
+    rows = read_jsonl(path)
+    target = source / 'annotation' / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text('source')
+    rows[0]['source_evidence']['parent'][0]['evidence_path'] = relative
+    rows[0]['source_evidence']['parent'][0]['sha256'] = file_hash(target)
+    write_jsonl(path, rows)
+    seal(source)
+    output = tmp_path / 'rejected'
+    with pytest.raises(InputError, match='conflicts with exported review files'):
+        exporter.export(source, output)
+    assert not output.exists()
+
+
+def test_viewer_retains_missing_evidence_limitation_and_probe(tmp_path):
+    source = prepared(tmp_path)
+    path = source / 'annotation/packets.jsonl'
+    rows = read_jsonl(path)
+    entry = rows[0]['source_evidence']['parent'][0]
+    entry.update(evidence_path=None, sha256=None, limitation='not available <reason>')
+    probe = source / 'annotation/probes/test_frozen.py'
+    probe.parent.mkdir()
+    probe.write_bytes(b'assert True\n# \xff\n')
+    rows[0]['probe'] = {'path': 'probes/test_frozen.py', 'sha256': file_hash(probe),
+                        'node_id': 'test_frozen.py::test_example'}
+    write_jsonl(path, rows)
+    seal(source)
+    output = tmp_path / 'review'
+    exporter.export(source, output)
+    markup = (output / 'review.html').read_text()
+    assert 'исходник отсутствует' in markup
+    assert 'not available &lt;reason&gt;' in markup
+    assert 'test_frozen.py::test_example' in markup
+    assert (output / 'probes/test_frozen.py').read_bytes() == probe.read_bytes()
+    assert '\ufffd' in next((output / 'review-assets').glob('*.html')).read_text()

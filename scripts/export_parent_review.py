@@ -8,6 +8,7 @@ from pathlib import Path
 from cami.artifacts import canonical, digest, file_hash, read_json, read_jsonl, reserve, within, write_json, write_jsonl
 from cami.errors import InputError
 from cami.models import Claim
+from cami.parent_review_html import render
 
 ANSWER_FIELDS = ('annotation_id', 'annotator_id', 'annotator_kind', 'independent',
                  'label', 'confirmation_type', 'annotation_minutes')
@@ -71,6 +72,10 @@ def export(prepared: Path, output: Path) -> None:
             raise InputError('unexpected parent form fields')
         if any(row[field] is not None for field in ANSWER_FIELDS) or row['evidence'] != []:
             raise InputError('only blank forms may be exported for independent parent review')
+    reserved = {'manifest.json', 'packets.jsonl', 'primary_form.jsonl',
+                'second_form.jsonl', 'review.html', 'review-assets'}
+    if any(Path(relative).parts[0] in reserved for relative in sources):
+        raise InputError('parent evidence path conflicts with exported review files')
     reserve(output)
     write_jsonl(output / 'packets.jsonl', parents)
     write_jsonl(output / 'primary_form.jsonl', primary)
@@ -79,7 +84,9 @@ def export(prepared: Path, output: Path) -> None:
         target = within(output, relative)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    render(output, parents, secondary, sources)
     write_json(output / 'manifest.json', {
+        'review_entrypoint': 'review.html',
         'scope': 'parent-only blank review material', 'parent_items': len(primary),
         'second_parent_items': len(secondary), 'copied_evidence_files': len(sources),
         'source_packet_sha256': hashes['annotation/packets.jsonl'],

@@ -1,0 +1,38 @@
+
+==================================== ERRORS ====================================
+____________ ERROR collecting tests/test_behavior_history_inputs.py ____________
+ImportError while importing test module '/root/apps/change-aware-memory-invalidation/tests/test_behavior_history_inputs.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_behavior_history_inputs.py:5: in <module>
+    from scripts.check_behavior_history import PLAN, create_fixture, prepare_inputs
+E   ModuleNotFoundError: No module named 'scripts'
+____________ ERROR collecting tests/test_finite_behavior_oracle.py _____________
+ImportError while importing test module '/root/apps/change-aware-memory-invalidation/tests/test_finite_behavior_oracle.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_finite_behavior_oracle.py:3: in <module>
+    from scripts.finite_behavior_oracle import value_of
+E   ModuleNotFoundError: No module named 'scripts'
+_________ ERROR collecting tests/test_paired_bootstrap_availability.py _________
+ImportError while importing test module '/root/apps/change-aware-memory-invalidation/tests/test_paired_bootstrap_availability.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_paired_bootstrap_availability.py:13: in <module>
+    from scripts.bootstrap_availability import conditional as shared_conditional
+E   ModuleNotFoundError: No module named 'scripts'
+=========================== short test summary info ============================
+ERROR tests/test_behavior_history_inputs.py
+ERROR tests/test_finite_behavior_oracle.py
+ERROR tests/test_paired_bootstrap_availability.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 0.92s

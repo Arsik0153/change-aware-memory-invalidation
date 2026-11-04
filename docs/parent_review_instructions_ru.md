@@ -82,3 +82,30 @@ Agreement считается до adjudication; unresolved и annotation/adjudic
 
 Наличие supported receipts или достижение coverage не меняет preview и не разрешает
 held-out execution. Cohort admission, provenance и protocol freeze остаются отдельными.
+
+## Автономный просмотр свидетельств
+
+Новый экспорт содержит `review.html`: откройте файл после распаковки ZIP.
+Сервер, сеть и установка CAMI разметчику не нужны. Найдите claim_id через Ctrl+F;
+страница показывает полный claim, назначение второго review и ссылки на parent
+исходники с номерами строк, исходные байты и frozen probe. Ограничения отсутствующих
+свидетельств показаны явно. Исходники отображаются как текст, а не исполняются.
+UTF-8 display заменяет недекодируемые байты; оригинальные файлы сохраняются побайтно.
+Это средство чтения: ответы по-прежнему заполняются отдельно в JSONL.
+
+Воспроизводимое создание и техническая проверка нового пакета:
+
+```bash
+.venv/bin/python scripts/export_parent_review.py \
+  --prepared runs/main-restored-20261029/ready \
+  --out runs/parent-review-NEW
+.venv/bin/python scripts/check_parent_review.py \
+  --package runs/parent-review-NEW \
+  --out reports/parent-review-NEW-audit.json
+```
+
+Проверка контролирует хеши, локальные ссылки и HTML anchors, отсутствие активных
+элементов, соответствие заданий и пустоту ответов. Она не проверяет истинность
+утверждений или независимость людей. Результат запуска 4 ноября:
+`reports/research-20261104/parent-viewer-audit-v2.json`.
+Готовый локальный архив: `output/parent-review-20261104.zip`.
