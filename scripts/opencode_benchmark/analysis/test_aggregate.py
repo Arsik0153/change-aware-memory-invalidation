@@ -219,6 +219,75 @@ class AggregateTests(unittest.TestCase):
             [],
         )
 
+    def caveat(self, *, ids=None, evidence_hash=None, hash_only=False):
+        evidence = self.root / "phase-timing.json"
+        write(evidence, {"authored_overlap": True})
+        item = {
+            "trial_ids": ids or ["r1-plain-s1"],
+            "reason": "Authored concurrent infrastructure phase",
+            "evidence_sha256": evidence_hash or sha(evidence),
+        }
+        if not hash_only:
+            item["evidence_path"] = evidence.name
+        path = self.root / "timing-caveats.json"
+        write(path, {"schema_version": 1, "caveats": [item]})
+        return path
+
+    def test_timing_caveat_blocks_wall_but_keeps_valid_token_win(self):
+        self.fill()
+        original = aggregate(self.run, self.protocol)
+        caveat = self.caveat()
+        report = aggregate(self.run, self.protocol, timing_caveats_path=caveat)
+        self.assertEqual(
+            report["summary"]["winning_metrics_satisfying_all_six_pairs"], ["token_work"]
+        )
+        self.assertFalse(report["summary"]["primary_metric_eligibility"]["charged_wall"])
+        self.assertTrue(report["summary"]["primary_metric_eligibility"]["token_work"])
+        self.assertEqual(report["summary"]["excluded_trial_ids"], [])
+        self.assertEqual(len(report["trials"]), 36)
+        self.assertEqual(report["timing_caveats"]["source_sha256"], sha(caveat))
+        for left, right in zip(
+            original["summary"]["paired_comparisons"],
+            report["summary"]["paired_comparisons"],
+            strict=True,
+        ):
+            self.assertEqual(
+                left["charged_wall"]["delta_cami_minus_comparator"],
+                right["charged_wall"]["delta_cami_minus_comparator"],
+            )
+        self.assertTrue(report["trials"][0]["timing_caveat"])
+
+    def test_known_timing_caveat_prevents_false_wall_only_win(self):
+        for item in self.plan:
+            self.terminal(item, token_input=200 if item["arm"] == "cami" else None)
+        self.assertEqual(
+            aggregate(self.run, self.protocol)["summary"][
+                "winning_metrics_satisfying_all_six_pairs"
+            ],
+            ["charged_wall"],
+        )
+        report = aggregate(self.run, self.protocol, timing_caveats_path=self.caveat())
+        self.assertEqual(report["summary"]["primary_superiority"], "not_established")
+        self.assertTrue(report["summary"]["primary_metric_eligibility"]["token_work"])
+
+    def test_unknown_caveat_trial_rejected(self):
+        with self.assertRaisesRegex(ValueError, "unknown/invalid trial"):
+            aggregate(self.run, self.protocol, timing_caveats_path=self.caveat(ids=["r4-cami-s1"]))
+
+    def test_timing_evidence_hash_mismatch_rejected(self):
+        with self.assertRaisesRegex(ValueError, "evidence SHA256 mismatch"):
+            aggregate(
+                self.run, self.protocol, timing_caveats_path=self.caveat(evidence_hash="a" * 64)
+            )
+
+    def test_hash_only_caveat_labels_unverified_file(self):
+        report = aggregate(self.run, self.protocol, timing_caveats_path=self.caveat(hash_only=True))
+        self.assertEqual(
+            report["timing_caveats"]["entries"][0]["evidence_verification"],
+            "declared_hash_only_no_file_read",
+        )
+        self.assertTrue(report["summary"]["charged_wall_disqualified_by_timing_caveats"])
+
     def test_artifact_tamper_rejected(self):
         self.fill()
         path = self.run / "trials" / self.plan[0]["id"] / "session/evidence/usage.json"

@@ -1,0 +1,2329 @@
+{
+  "status": "complete",
+  "audit_kind": "AI descriptive trace audit, not human annotation or causal evidence",
+  "scope": "Exactly first three terminal-pass published sanitized development traces, no active/private files, task prompts, gold or heldout artifacts.",
+  "methods": {
+    "tool_count": "Unique tool parts from final messages.json only; no additive SSE or pagination counting.",
+    "response_bytes": "Sum UTF-8 byte lengths of returned text blocks only; not tokens, wire size or billing. No inserted separator bytes.",
+    "memory_backend_response_bytes": "Backend metric counts canonical JSON of the MCP result envelope, including escaped inner text and isError; independently reconstructed exactly. Distinct from returned text-body bytes.",
+    "backend_query_hash": "Despite metric name query_sha256, adapter hashes canonical full arguments object (query plus limit); independent audit verifies it.",
+    "tool_elapsed": "Completed minus ran timestamps. Sums may overlap and are not CPU or end-to-end wall time.",
+    "repeated_reads": "Report repeat paths separately from overlapping returned native read line intervals. Disjoint slices are not counted as repeated identical/broad reads.",
+    "first_write": "First native patch/edit/write, not temporary files internally created by test shell commands.",
+    "network": "Visible tool inputs/commands only; not syscall/packet-level proof and does not audit test subprocess internals."
+  },
+  "trials": [
+    {
+      "arm": "plain",
+      "trial": "r1-plain-s1",
+      "worker_status": "passed",
+      "tool_calls": 30,
+      "native_tool_calls": 30,
+      "memory_calls": 0,
+      "tools_by_name": {
+        "read": {
+          "calls": 16,
+          "response_text_utf8_bytes": 51405,
+          "recorded_elapsed_seconds_sum": 0.8260000000000002
+        },
+        "grep": {
+          "calls": 3,
+          "response_text_utf8_bytes": 7366,
+          "recorded_elapsed_seconds_sum": 0.173
+        },
+        "shell": {
+          "calls": 7,
+          "response_text_utf8_bytes": 6594,
+          "recorded_elapsed_seconds_sum": 4.2540000000000004
+        },
+        "patch": {
+          "calls": 4,
+          "response_text_utf8_bytes": 310,
+          "recorded_elapsed_seconds_sum": 0.07
+        }
+      },
+      "returned_text_utf8_bytes_total": 65675,
+      "native_read_text_utf8_bytes_total": 51405,
+      "memory_text_utf8_bytes_total": 0,
+      "native_tool_status_counts": {
+        "completed": 30
+      },
+      "tool_failure_statuses": [],
+      "nonzero_shell_commands": [
+        {
+          "ordinal": 24,
+          "exit": 1,
+          "category": "missing local lint/format module"
+        },
+        {
+          "ordinal": 25,
+          "exit": 1,
+          "category": "missing local lint/format module"
+        }
+      ],
+      "first_code_write_tool_ordinal": 20,
+      "first_memory_is_first_tool": false,
+      "post_edit_memory_query_count": 0,
+      "conditional_postedit_contract_assessment": "No memory tool in plain arm.",
+      "memory_queries": [],
+      "native_reads": [
+        {
+          "ordinal": 1,
+          "path": "/workspace",
+          "offset": 1,
+          "requested_limit": 80,
+          "returned_line_interval": null,
+          "response_text_utf8_bytes": 261
+        },
+        {
+          "ordinal": 3,
+          "path": "/workspace/src/click/__init__.py",
+          "offset": 1,
+          "requested_limit": 220,
+          "returned_line_interval": [
+            1,
+            74
+          ],
+          "response_text_utf8_bytes": 3480
+        },
+        {
+          "ordinal": 4,
+          "path": "/workspace/pyproject.toml",
+          "offset": 1,
+          "requested_limit": 220,
+          "returned_line_interval": [
+            1,
+            103
+          ],
+          "response_text_utf8_bytes": 2553
+        },
+        {
+          "ordinal": 7,
+          "path": "/workspace/src/click/core.py",
+          "offset": 1,
+          "requested_limit": 80,
+          "returned_line_interval": [
+            1,
+            80
+          ],
+          "response_text_utf8_bytes": 2778
+        },
+        {
+          "ordinal": 8,
+          "path": "/workspace/src/click/core.py",
+          "offset": 1240,
+          "requested_limit": 100,
+          "returned_line_interval": [
+            1240,
+            1339
+          ],
+          "response_text_utf8_bytes": 4052
+        },
+        {
+          "ordinal": 9,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 1,
+          "requested_limit": 50,
+          "returned_line_interval": [
+            1,
+            50
+          ],
+          "response_text_utf8_bytes": 1690
+        },
+        {
+          "ordinal": 10,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 280,
+          "requested_limit": 310,
+          "returned_line_interval": [
+            280,
+            553
+          ],
+          "response_text_utf8_bytes": 11333
+        },
+        {
+          "ordinal": 11,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2439,
+          "requested_limit": 200,
+          "returned_line_interval": [
+            2439,
+            2638
+          ],
+          "response_text_utf8_bytes": 9385
+        },
+        {
+          "ordinal": 12,
+          "path": "/workspace/tests/test_formatting.py",
+          "offset": 210,
+          "requested_limit": 70,
+          "returned_line_interval": [
+            210,
+            279
+          ],
+          "response_text_utf8_bytes": 2257
+        },
+        {
+          "ordinal": 13,
+          "path": "/workspace/docs/api.rst",
+          "offset": 1,
+          "requested_limit": 190,
+          "returned_line_interval": [
+            1,
+            190
+          ],
+          "response_text_utf8_bytes": 3501
+        },
+        {
+          "ordinal": 14,
+          "path": "/workspace/CHANGES.rst",
+          "offset": 1,
+          "requested_limit": 65,
+          "returned_line_interval": [
+            1,
+            65
+          ],
+          "response_text_utf8_bytes": 2462
+        },
+        {
+          "ordinal": 16,
+          "path": "/workspace/tests/conftest.py",
+          "offset": 1,
+          "requested_limit": 110,
+          "returned_line_interval": [
+            1,
+            8
+          ],
+          "response_text_utf8_bytes": 204
+        },
+        {
+          "ordinal": 17,
+          "path": "/workspace/tests/test_options.py",
+          "offset": 600,
+          "requested_limit": 70,
+          "returned_line_interval": [
+            600,
+            669
+          ],
+          "response_text_utf8_bytes": 2604
+        },
+        {
+          "ordinal": 18,
+          "path": "/workspace/tox.ini",
+          "offset": 1,
+          "requested_limit": 170,
+          "returned_line_interval": [
+            1,
+            66
+          ],
+          "response_text_utf8_bytes": 1750
+        },
+        {
+          "ordinal": 19,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2970,
+          "requested_limit": 90,
+          "returned_line_interval": [
+            2970,
+            3034
+          ],
+          "response_text_utf8_bytes": 2620
+        },
+        {
+          "ordinal": 26,
+          "path": "/workspace/.pre-commit-config.yaml",
+          "offset": 1,
+          "requested_limit": 160,
+          "returned_line_interval": [
+            1,
+            14
+          ],
+          "response_text_utf8_bytes": 475
+        }
+      ],
+      "multiple_read_paths": {
+        "/workspace/src/click/core.py": 4,
+        "/workspace/src/click/decorators.py": 2
+      },
+      "overlapping_native_file_read_intervals": [],
+      "directory_scoped_grep_calls": [
+        {
+          "ordinal": 2,
+          "id": "call_bf2bd09c10354fd881aac5007084ab6e",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def help_option|def get_help_option|_help_option|class Option",
+            "path": "/workspace/src"
+          },
+          "response_text_utf8_bytes": 1072,
+          "recorded_elapsed_seconds": 0.077,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 5,
+          "id": "call_ea61c0780ab2491ca2f49a9ff7baa53a",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|--help|resilient_parsing",
+            "path": "/workspace/tests",
+            "include": "test*",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 6208,
+          "recorded_elapsed_seconds": 0.051,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 15,
+          "id": "call_02833e16f7e94781ae57895fa6d2babc",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "^class Argument",
+            "path": "/workspace/src/click/core.py"
+          },
+          "response_text_utf8_bytes": 86,
+          "recorded_elapsed_seconds": 0.045,
+          "shell_exit": null
+        }
+      ],
+      "native_reads_at_least_200_returned_lines": [
+        {
+          "ordinal": 10,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 280,
+          "requested_limit": 310,
+          "returned_line_interval": [
+            280,
+            553
+          ],
+          "response_text_utf8_bytes": 11333
+        },
+        {
+          "ordinal": 11,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2439,
+          "requested_limit": 200,
+          "returned_line_interval": [
+            2439,
+            2638
+          ],
+          "response_text_utf8_bytes": 9385
+        }
+      ],
+      "visible_network_or_upstream_command_flags": [],
+      "visible_outside_workspace_path_flags": [],
+      "assistant_text_sha256": "4bc72dd3db80282b3d924e8046ce7306a29e811d7cca6d5bca37a2c5a942b284",
+      "calls": [
+        {
+          "ordinal": 1,
+          "id": "call_09c659e5953e41ab9c2b4b8ea99ec0c4",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace",
+            "limit": 80
+          },
+          "response_text_utf8_bytes": 261,
+          "recorded_elapsed_seconds": 0.02,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 2,
+          "id": "call_bf2bd09c10354fd881aac5007084ab6e",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def help_option|def get_help_option|_help_option|class Option",
+            "path": "/workspace/src"
+          },
+          "response_text_utf8_bytes": 1072,
+          "recorded_elapsed_seconds": 0.077,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 3,
+          "id": "call_3f934804052b4be68d160fd5a26589e5",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/__init__.py",
+            "limit": 220
+          },
+          "response_text_utf8_bytes": 3480,
+          "recorded_elapsed_seconds": 0.075,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 4,
+          "id": "call_5d1eb404d9b24d6ab5028281162d63d6",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/pyproject.toml",
+            "limit": 220
+          },
+          "response_text_utf8_bytes": 2553,
+          "recorded_elapsed_seconds": 0.052,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 5,
+          "id": "call_ea61c0780ab2491ca2f49a9ff7baa53a",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|--help|resilient_parsing",
+            "path": "/workspace/tests",
+            "include": "test*",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 6208,
+          "recorded_elapsed_seconds": 0.051,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 6,
+          "id": "call_e50d476ae65d42d4b2fa51ed3aed57eb",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git status --short",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 11,
+          "recorded_elapsed_seconds": 0.048,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 7,
+          "id": "call_c8e50a13611e4b51a9d22d5533820277",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 1,
+            "limit": 80
+          },
+          "response_text_utf8_bytes": 2778,
+          "recorded_elapsed_seconds": 0.079,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 8,
+          "id": "call_8619185a30af4f7bae64071faa8c6ede",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 1240,
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 4052,
+          "recorded_elapsed_seconds": 0.078,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 9,
+          "id": "call_4878d2c54e1d4d5fa9e8162ebfe30e7e",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 1,
+            "limit": 50
+          },
+          "response_text_utf8_bytes": 1690,
+          "recorded_elapsed_seconds": 0.086,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 10,
+          "id": "call_554a2ba0b1e24e67a2691301a87c102f",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 280,
+            "limit": 310
+          },
+          "response_text_utf8_bytes": 11333,
+          "recorded_elapsed_seconds": 0.084,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 11,
+          "id": "call_ce22b5b971624b76ba92e509fc6551fa",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2439,
+            "limit": 200
+          },
+          "response_text_utf8_bytes": 9385,
+          "recorded_elapsed_seconds": 0.074,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 12,
+          "id": "call_39aea601798f4bf3ae56a74c725fdb55",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_formatting.py",
+            "offset": 210,
+            "limit": 70
+          },
+          "response_text_utf8_bytes": 2257,
+          "recorded_elapsed_seconds": 0.063,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 13,
+          "id": "call_4f86bf59519d4681b3f458f221f090c5",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/docs/api.rst",
+            "limit": 190
+          },
+          "response_text_utf8_bytes": 3501,
+          "recorded_elapsed_seconds": 0.05,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 14,
+          "id": "call_227cab6562774d8bb8e2496c3c4478a8",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/CHANGES.rst",
+            "limit": 65
+          },
+          "response_text_utf8_bytes": 2462,
+          "recorded_elapsed_seconds": 0.041,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 15,
+          "id": "call_02833e16f7e94781ae57895fa6d2babc",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "^class Argument",
+            "path": "/workspace/src/click/core.py"
+          },
+          "response_text_utf8_bytes": 86,
+          "recorded_elapsed_seconds": 0.045,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 16,
+          "id": "call_f89c0e8b54294857ad44e971ed6f4ec8",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/conftest.py",
+            "limit": 110
+          },
+          "response_text_utf8_bytes": 204,
+          "recorded_elapsed_seconds": 0.035,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 17,
+          "id": "call_378894ce6bdb4b65bba62e07d23ddddf",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_options.py",
+            "offset": 600,
+            "limit": 70
+          },
+          "response_text_utf8_bytes": 2604,
+          "recorded_elapsed_seconds": 0.029,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 18,
+          "id": "call_095a5959a17d4d26b6643dd143e0fdb5",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tox.ini",
+            "limit": 170
+          },
+          "response_text_utf8_bytes": 1750,
+          "recorded_elapsed_seconds": 0.02,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 19,
+          "id": "call_d1c372f13fb5497aa10f9063ec4d8ec9",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2970,
+            "limit": 90
+          },
+          "response_text_utf8_bytes": 2620,
+          "recorded_elapsed_seconds": 0.019,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 20,
+          "id": "call_a5dd9c72b0ff422c9e561eb8ab455fcc",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/src/click/core.py",
+              "/workspace/src/click/decorators.py",
+              "/workspace/src/click/__init__.py",
+              "/workspace/docs/api.rst",
+              "/workspace/CHANGES.rst"
+            ]
+          },
+          "response_text_utf8_bytes": 136,
+          "recorded_elapsed_seconds": 0.045,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 21,
+          "id": "call_c0e25297fe1341b29a5edff78c7d2b5f",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help.py"
+            ]
+          },
+          "response_text_utf8_bytes": 58,
+          "recorded_elapsed_seconds": 0.011,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 22,
+          "id": "call_d39b327227c14510a63b9b3ce7d3632d",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "PYTHONPATH=src python -m pytest -q tests/test_help.py tests/test_formatting.py tests/test_options.py tests/test_shell_completion.py tests/test_info_dict.py --basetemp=/workspace/.pytest-tmp",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 340,
+          "recorded_elapsed_seconds": 0.784,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 23,
+          "id": "call_7d9f18efeea648efac66afa08141fd70",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "TMPDIR=/workspace/.pytest-tmp PYTHONPATH=src python -m pytest -q --basetemp=/workspace/.pytest-tmp",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 843,
+          "recorded_elapsed_seconds": 1.637,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 24,
+          "id": "call_86d41ccdc7ca4a44a5d8189c69cf1280",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git diff --check && git diff --stat && python -m ruff --version && python -m black --version",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 346,
+          "recorded_elapsed_seconds": 0.101,
+          "shell_exit": 1
+        },
+        {
+          "ordinal": 25,
+          "id": "call_1e731fdd072449aebe5b7cb1a87b8516",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git status --short && git diff -- src/click/core.py src/click/decorators.py && python -m black --version",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 4085,
+          "recorded_elapsed_seconds": 0.076,
+          "shell_exit": 1
+        },
+        {
+          "ordinal": 26,
+          "id": "call_295cc17aa7b24e01b41f0e6e1e4f2768",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/.pre-commit-config.yaml",
+            "limit": 160
+          },
+          "response_text_utf8_bytes": 475,
+          "recorded_elapsed_seconds": 0.021,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 27,
+          "id": "call_65dc3d7d57114d388a98e1715e12dbbe",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help.py"
+            ]
+          },
+          "response_text_utf8_bytes": 58,
+          "recorded_elapsed_seconds": 0.007,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 28,
+          "id": "call_6cf5900a5a7842b38cfc38e55d676245",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help.py"
+            ]
+          },
+          "response_text_utf8_bytes": 58,
+          "recorded_elapsed_seconds": 0.007,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 29,
+          "id": "call_ddab8d7f649148cdabb9418eed8bcbbd",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "TMPDIR=/workspace/.pytest-tmp PYTHONPATH=src python -m pytest -q --basetemp=/workspace/.pytest-tmp && git diff --check && python - <<'PY'\nfrom pathlib import Path\nfor name in ('tests/test_help.py',):\n    for n, line in enumerate(Path(name).read_text().splitlines(), 1):\n        if len(line) > 88:\n            print(f'{name}:{n}: {len(line)} characters')\nPY",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 843,
+          "recorded_elapsed_seconds": 1.559,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 30,
+          "id": "call_bfa847c8f7bb4d0b9e9d9779f1021d2e",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "rm -rf -- /workspace/.pytest-tmp && git status --short && git diff --check",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 126,
+          "recorded_elapsed_seconds": 0.049,
+          "shell_exit": 0
+        }
+      ],
+      "input_artifact_sha256": {
+        "runs/opencode-development-v3-20261104/trials/r1-plain-s1/session/evidence/manifest.json": "0eae5a1d7d3f4357638f131a919d82e02ec4f6c3de1326e10fbd94e0186a82a0",
+        "runs/opencode-development-v3-20261104/trials/r1-plain-s1/session/evidence/messages.json": "55ad007ffdc806e752da6997d5b5ddb63b64710e90f23df2d9e65223970fe94c"
+      }
+    },
+    {
+      "arm": "static",
+      "trial": "r1-static-s1",
+      "worker_status": "passed",
+      "tool_calls": 28,
+      "native_tool_calls": 26,
+      "memory_calls": 2,
+      "tools_by_name": {
+        "research_memory_memory_lookup": {
+          "calls": 2,
+          "response_text_utf8_bytes": 13025,
+          "recorded_elapsed_seconds_sum": 0.074
+        },
+        "read": {
+          "calls": 15,
+          "response_text_utf8_bytes": 55571,
+          "recorded_elapsed_seconds_sum": 0.44900000000000007
+        },
+        "shell": {
+          "calls": 6,
+          "response_text_utf8_bytes": 9892,
+          "recorded_elapsed_seconds_sum": 2.8560000000000003
+        },
+        "grep": {
+          "calls": 1,
+          "response_text_utf8_bytes": 1920,
+          "recorded_elapsed_seconds_sum": 0.039
+        },
+        "patch": {
+          "calls": 4,
+          "response_text_utf8_bytes": 331,
+          "recorded_elapsed_seconds_sum": 0.093
+        }
+      },
+      "returned_text_utf8_bytes_total": 80739,
+      "native_read_text_utf8_bytes_total": 55571,
+      "memory_text_utf8_bytes_total": 13025,
+      "native_tool_status_counts": {
+        "completed": 26
+      },
+      "tool_failure_statuses": [],
+      "nonzero_shell_commands": [
+        {
+          "ordinal": 22,
+          "exit": 1,
+          "category": "pytest failure"
+        },
+        {
+          "ordinal": 26,
+          "exit": 1,
+          "category": "missing local lint/format module"
+        }
+      ],
+      "first_code_write_tool_ordinal": 18,
+      "first_memory_is_first_tool": true,
+      "post_edit_memory_query_count": 1,
+      "conditional_postedit_contract_assessment": "Static performs an observed post-edit lookup; returned notes remain unchecked_current.",
+      "memory_queries": [
+        {
+          "ordinal": 1,
+          "query": "Click built-in help option Command.get_help_option decorators.help_option Option tests",
+          "limit": 5,
+          "response_text_utf8_bytes": 9808,
+          "entry_count": 5,
+          "withheld_count": 0,
+          "availability_counts": {
+            "unchecked_current": 5
+          },
+          "subjects": [
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option_names"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option"
+            },
+            {
+              "language": "python",
+              "node_kind": "function",
+              "path": "src/click/decorators.py",
+              "qualname": "help_option"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Option.get_help_record"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_short_help_str"
+            }
+          ],
+          "before_first_patch": true,
+          "observed_mcp_result_canonical_json_bytes": 10526,
+          "backend_metrics": {
+            "backend": "static",
+            "catalog_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+            "cpu_seconds_self_and_completed_children": 0.020862159999999998,
+            "error": null,
+            "event": "memory_lookup",
+            "query_sha256": "6a715d1619d0d5995aaece1d8434614cc1a867305ea91a42c6329bf4f66bdc57",
+            "requested_limit": 5,
+            "response_bytes": 10526,
+            "returned_records": 5,
+            "selected_records": 5,
+            "state_bytes": 0,
+            "timing_scope": "tool backend/imports/retrieval/serialization/storage observation; excludes JSON-RPC input/output and trace append; external harness must time whole process/session",
+            "wall_seconds": 0.022519470192492008,
+            "withheld_records": 0
+          },
+          "backend_result_bytes_match_reconstructed_mcp_result": true
+        },
+        {
+          "ordinal": 27,
+          "query": "src/click/core.py HelpOption Command.get_help_option src/click/decorators.py help_option",
+          "limit": 2,
+          "response_text_utf8_bytes": 3217,
+          "entry_count": 2,
+          "withheld_count": 0,
+          "availability_counts": {
+            "unchecked_current": 2
+          },
+          "subjects": [
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option_names"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option"
+            }
+          ],
+          "before_first_patch": false,
+          "observed_mcp_result_canonical_json_bytes": 3513,
+          "backend_metrics": {
+            "backend": "static",
+            "catalog_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+            "cpu_seconds_self_and_completed_children": 0.027232309999999996,
+            "error": null,
+            "event": "memory_lookup",
+            "query_sha256": "4ba06749ff0ceb833e9da887635063abbf680d66550f367cd264b1c551837488",
+            "requested_limit": 2,
+            "response_bytes": 3513,
+            "returned_records": 2,
+            "selected_records": 2,
+            "state_bytes": 0,
+            "timing_scope": "tool backend/imports/retrieval/serialization/storage observation; excludes JSON-RPC input/output and trace append; external harness must time whole process/session",
+            "wall_seconds": 0.02936534397304058,
+            "withheld_records": 0
+          },
+          "backend_result_bytes_match_reconstructed_mcp_result": true
+        }
+      ],
+      "native_reads": [
+        {
+          "ordinal": 2,
+          "path": "/workspace",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": null,
+          "response_text_utf8_bytes": 261
+        },
+        {
+          "ordinal": 4,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 1,
+          "requested_limit": 75,
+          "returned_line_interval": [
+            1,
+            75
+          ],
+          "response_text_utf8_bytes": 2826
+        },
+        {
+          "ordinal": 5,
+          "path": "/workspace/src/click/core.py",
+          "offset": 1250,
+          "requested_limit": 95,
+          "returned_line_interval": [
+            1250,
+            1344
+          ],
+          "response_text_utf8_bytes": 3894
+        },
+        {
+          "ordinal": 6,
+          "path": "/workspace/src/click/__init__.py",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            74
+          ],
+          "response_text_utf8_bytes": 3480
+        },
+        {
+          "ordinal": 7,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 290,
+          "requested_limit": 290,
+          "returned_line_interval": [
+            290,
+            553
+          ],
+          "response_text_utf8_bytes": 10899
+        },
+        {
+          "ordinal": 8,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2440,
+          "requested_limit": 200,
+          "returned_line_interval": [
+            2440,
+            2639
+          ],
+          "response_text_utf8_bytes": 9361
+        },
+        {
+          "ordinal": 10,
+          "path": "/workspace/pyproject.toml",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            103
+          ],
+          "response_text_utf8_bytes": 2553
+        },
+        {
+          "ordinal": 11,
+          "path": "/workspace/docs/api.rst",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            209
+          ],
+          "response_text_utf8_bytes": 3811
+        },
+        {
+          "ordinal": 12,
+          "path": "/workspace/tests/conftest.py",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            8
+          ],
+          "response_text_utf8_bytes": 204
+        },
+        {
+          "ordinal": 13,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2910,
+          "requested_limit": 125,
+          "returned_line_interval": [
+            2910,
+            3034
+          ],
+          "response_text_utf8_bytes": 5044
+        },
+        {
+          "ordinal": 14,
+          "path": "/workspace/tests/test_formatting.py",
+          "offset": 190,
+          "requested_limit": 105,
+          "returned_line_interval": [
+            190,
+            294
+          ],
+          "response_text_utf8_bytes": 3358
+        },
+        {
+          "ordinal": 15,
+          "path": "/workspace/tests/test_custom_classes.py",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            112
+          ],
+          "response_text_utf8_bytes": 3536
+        },
+        {
+          "ordinal": 16,
+          "path": "/workspace/CHANGES.rst",
+          "offset": 1,
+          "requested_limit": 50,
+          "returned_line_interval": [
+            1,
+            50
+          ],
+          "response_text_utf8_bytes": 1561
+        },
+        {
+          "ordinal": 17,
+          "path": "/workspace/tox.ini",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            66
+          ],
+          "response_text_utf8_bytes": 1750
+        },
+        {
+          "ordinal": 20,
+          "path": "/workspace/src/click/testing.py",
+          "offset": 400,
+          "requested_limit": 95,
+          "returned_line_interval": [
+            400,
+            481
+          ],
+          "response_text_utf8_bytes": 3033
+        }
+      ],
+      "multiple_read_paths": {
+        "/workspace/src/click/decorators.py": 2,
+        "/workspace/src/click/core.py": 3
+      },
+      "overlapping_native_file_read_intervals": [],
+      "directory_scoped_grep_calls": [
+        {
+          "ordinal": 9,
+          "id": "call_c306bd9cc7114182a004e3149bfba729",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|resilient|color",
+            "path": "/workspace/tests",
+            "include": "test*.py",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 1920,
+          "recorded_elapsed_seconds": 0.039,
+          "shell_exit": null
+        }
+      ],
+      "native_reads_at_least_200_returned_lines": [
+        {
+          "ordinal": 7,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 290,
+          "requested_limit": 290,
+          "returned_line_interval": [
+            290,
+            553
+          ],
+          "response_text_utf8_bytes": 10899
+        },
+        {
+          "ordinal": 8,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2440,
+          "requested_limit": 200,
+          "returned_line_interval": [
+            2440,
+            2639
+          ],
+          "response_text_utf8_bytes": 9361
+        },
+        {
+          "ordinal": 11,
+          "path": "/workspace/docs/api.rst",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            209
+          ],
+          "response_text_utf8_bytes": 3811
+        }
+      ],
+      "visible_network_or_upstream_command_flags": [],
+      "visible_outside_workspace_path_flags": [],
+      "assistant_text_sha256": "c280478351a9f2f9417a822745beffa45a794aa2980af4f156dad944dfbb68a8",
+      "calls": [
+        {
+          "ordinal": 1,
+          "id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+          "name": "research_memory_memory_lookup",
+          "status": "completed",
+          "input_summary": {
+            "query": "Click built-in help option Command.get_help_option decorators.help_option Option tests",
+            "limit": 5
+          },
+          "response_text_utf8_bytes": 9808,
+          "recorded_elapsed_seconds": 0.038,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 2,
+          "id": "call_ccfcbc25da1245a189d06d22dd29bb18",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace"
+          },
+          "response_text_utf8_bytes": 261,
+          "recorded_elapsed_seconds": 0.027,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 3,
+          "id": "call_3114c8bb094941458277fe4cd45221cb",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git status --short",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 11,
+          "recorded_elapsed_seconds": 0.066,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 4,
+          "id": "call_41ecc28cd3084fa781b89477229234d0",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 1,
+            "limit": 75
+          },
+          "response_text_utf8_bytes": 2826,
+          "recorded_elapsed_seconds": 0.041,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 5,
+          "id": "call_711f0df34d9e4fa6a2164bbf3500db32",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 1250,
+            "limit": 95
+          },
+          "response_text_utf8_bytes": 3894,
+          "recorded_elapsed_seconds": 0.053,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 6,
+          "id": "call_fdff8cbc301c4d5f8456b1fa4799f5af",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/__init__.py"
+          },
+          "response_text_utf8_bytes": 3480,
+          "recorded_elapsed_seconds": 0.029,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 7,
+          "id": "call_7d677a1f75bd4785a9885497bc2175d5",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 290,
+            "limit": 290
+          },
+          "response_text_utf8_bytes": 10899,
+          "recorded_elapsed_seconds": 0.028,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 8,
+          "id": "call_62fec4a12e2b44418741c47d71546d81",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2440,
+            "limit": 200
+          },
+          "response_text_utf8_bytes": 9361,
+          "recorded_elapsed_seconds": 0.025,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 9,
+          "id": "call_c306bd9cc7114182a004e3149bfba729",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|resilient|color",
+            "path": "/workspace/tests",
+            "include": "test*.py",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 1920,
+          "recorded_elapsed_seconds": 0.039,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 10,
+          "id": "call_8d778d6be9f44ea1be75b56b4ef0c0dc",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/pyproject.toml"
+          },
+          "response_text_utf8_bytes": 2553,
+          "recorded_elapsed_seconds": 0.025,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 11,
+          "id": "call_99e33f71df2042d9a24f805853de8d16",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/docs/api.rst"
+          },
+          "response_text_utf8_bytes": 3811,
+          "recorded_elapsed_seconds": 0.023,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 12,
+          "id": "call_534e997a290f4410a47c5c7c9db67ff0",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/conftest.py"
+          },
+          "response_text_utf8_bytes": 204,
+          "recorded_elapsed_seconds": 0.013,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 13,
+          "id": "call_a7fb49cdf63e4fbf92463f628ec69332",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2910,
+            "limit": 125
+          },
+          "response_text_utf8_bytes": 5044,
+          "recorded_elapsed_seconds": 0.054,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 14,
+          "id": "call_f8ea198fcbb44e949d8112d4c58b339d",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_formatting.py",
+            "offset": 190,
+            "limit": 105
+          },
+          "response_text_utf8_bytes": 3358,
+          "recorded_elapsed_seconds": 0.042,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 15,
+          "id": "call_89cdb73aa8fa4a99acd0be5e34154525",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_custom_classes.py"
+          },
+          "response_text_utf8_bytes": 3536,
+          "recorded_elapsed_seconds": 0.034,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 16,
+          "id": "call_b51c6d42334a43ba904a92493a667078",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/CHANGES.rst",
+            "offset": 1,
+            "limit": 50
+          },
+          "response_text_utf8_bytes": 1561,
+          "recorded_elapsed_seconds": 0.026,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 17,
+          "id": "call_687303c13e144cf5976c51ba97d009a7",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tox.ini"
+          },
+          "response_text_utf8_bytes": 1750,
+          "recorded_elapsed_seconds": 0.014,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 18,
+          "id": "call_5c66833df5f64cc1ada6a031036a3b6d",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/src/click/core.py",
+              "/workspace/src/click/__init__.py",
+              "/workspace/src/click/decorators.py",
+              "/workspace/docs/api.rst",
+              "/workspace/CHANGES.rst"
+            ]
+          },
+          "response_text_utf8_bytes": 136,
+          "recorded_elapsed_seconds": 0.066,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 19,
+          "id": "call_e86e6df0aa6f4fb796cad7f91af8ffeb",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.012,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 20,
+          "id": "call_bd1de335e2fc4af8b18cd8afe7507250",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/testing.py",
+            "offset": 400,
+            "limit": 95
+          },
+          "response_text_utf8_bytes": 3033,
+          "recorded_elapsed_seconds": 0.015,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 21,
+          "id": "call_95953d9217704441b8b12b7fef99f232",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.008,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 22,
+          "id": "call_67d5c982436041f5b49171dbf10c551e",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "mkdir -p .test-tmp && PYTHONPATH=/workspace/src PYTHONDONTWRITEBYTECODE=1 TMPDIR=/workspace/.test-tmp python -m pytest -q tests/test_help_option.py tests/test_formatting.py tests/test_custom_classes.py tests/test_shell_completion.py --basetemp=/workspace/.test-tmp/pytest",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 3269,
+          "recorded_elapsed_seconds": 0.524,
+          "shell_exit": 1
+        },
+        {
+          "ordinal": 23,
+          "id": "call_6396680a24e8450cacc090d36ae58e3c",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.007,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 24,
+          "id": "call_af124a78963345b9a316efb4dd42206e",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "PYTHONPATH=/workspace/src PYTHONDONTWRITEBYTECODE=1 TMPDIR=/workspace/.test-tmp python -m pytest -q tests/test_help_option.py tests/test_formatting.py tests/test_custom_classes.py tests/test_shell_completion.py --basetemp=/workspace/.test-tmp/pytest && PYTHONPATH=/workspace/src PYTHONDONTWRITEBYTECODE=1 TMPDIR=/workspace/.test-tmp python -m pytest -q --basetemp=/workspace/.test-tmp/pytest-full",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 1023,
+          "recorded_elapsed_seconds": 2.119,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 25,
+          "id": "call_eb28be146e9d4de38c3ef92252ae6608",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git diff --check && git diff --stat && git status --short && git diff -- src/click/core.py src/click/decorators.py src/click/__init__.py",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 5394,
+          "recorded_elapsed_seconds": 0.054,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 26,
+          "id": "call_64a37d13c0b54bf2855ad790c8e9a93a",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "PYTHONDONTWRITEBYTECODE=1 python -m ruff check --no-fix src/click/core.py src/click/decorators.py src/click/__init__.py tests/test_help_option.py",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 62,
+          "recorded_elapsed_seconds": 0.049,
+          "shell_exit": 1
+        },
+        {
+          "ordinal": 27,
+          "id": "call_87e62615f6794aaba588eb89624665d4",
+          "name": "research_memory_memory_lookup",
+          "status": "completed",
+          "input_summary": {
+            "query": "src/click/core.py HelpOption Command.get_help_option src/click/decorators.py help_option",
+            "limit": 2
+          },
+          "response_text_utf8_bytes": 3217,
+          "recorded_elapsed_seconds": 0.036,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 28,
+          "id": "call_0d8c6864c1d84bb38f97eb04ea10c7b7",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "rm -rf /workspace/.test-tmp && git diff --check && git status --short",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 133,
+          "recorded_elapsed_seconds": 0.044,
+          "shell_exit": 0
+        }
+      ],
+      "input_artifact_sha256": {
+        "runs/opencode-development-v3-20261104/trials/r1-static-s1/session/evidence/manifest.json": "a74143158181766b022cf840648ddd918a41e5844f346d50435b3e9000a054ba",
+        "runs/opencode-development-v3-20261104/trials/r1-static-s1/session/evidence/messages.json": "00b349ac4e8e7ca3eeb806121826eaa80de502b7a11885b84e6966148bb80fb9",
+        "runs/opencode-development-v3-20261104/trials/r1-static-s1/session/evidence/memory-backend-trace.jsonl": "2fbb955b93d191113267cff813fb7392c3a0a6072460e65c7bc441b3a023406c"
+      }
+    },
+    {
+      "arm": "cami",
+      "trial": "r1-cami-s1",
+      "worker_status": "passed",
+      "tool_calls": 30,
+      "native_tool_calls": 29,
+      "memory_calls": 1,
+      "tools_by_name": {
+        "research_memory_memory_lookup": {
+          "calls": 1,
+          "response_text_utf8_bytes": 9425,
+          "recorded_elapsed_seconds_sum": 1.021
+        },
+        "read": {
+          "calls": 15,
+          "response_text_utf8_bytes": 55604,
+          "recorded_elapsed_seconds_sum": 0.614
+        },
+        "grep": {
+          "calls": 3,
+          "response_text_utf8_bytes": 2465,
+          "recorded_elapsed_seconds_sum": 0.149
+        },
+        "shell": {
+          "calls": 6,
+          "response_text_utf8_bytes": 12057,
+          "recorded_elapsed_seconds_sum": 4.284
+        },
+        "patch": {
+          "calls": 5,
+          "response_text_utf8_bytes": 396,
+          "recorded_elapsed_seconds_sum": 0.09000000000000001
+        }
+      },
+      "returned_text_utf8_bytes_total": 79947,
+      "native_read_text_utf8_bytes_total": 55604,
+      "memory_text_utf8_bytes_total": 9425,
+      "native_tool_status_counts": {
+        "completed": 29
+      },
+      "tool_failure_statuses": [],
+      "nonzero_shell_commands": [
+        {
+          "ordinal": 22,
+          "exit": 1,
+          "category": "pytest failure"
+        }
+      ],
+      "first_code_write_tool_ordinal": 19,
+      "first_memory_is_first_tool": true,
+      "post_edit_memory_query_count": 0,
+      "conditional_postedit_contract_assessment": "CAMI has no post-edit lookup. Assistant text has no visible post-edit memory-availability/reliance claim; no violation established.",
+      "memory_queries": [
+        {
+          "ordinal": 1,
+          "query": "Click help option Option Command.get_help_option help_option decorator",
+          "limit": 5,
+          "response_text_utf8_bytes": 9425,
+          "entry_count": 5,
+          "withheld_count": 0,
+          "availability_counts": {
+            "manual_assertion_source_unchanged": 5
+          },
+          "subjects": [
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option_names"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help_option"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Option.get_help_record"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_short_help_str"
+            },
+            {
+              "language": "python",
+              "node_kind": "method",
+              "path": "src/click/core.py",
+              "qualname": "Command.get_help"
+            }
+          ],
+          "before_first_patch": true,
+          "observed_mcp_result_canonical_json_bytes": 10124,
+          "backend_metrics": {
+            "backend": "cami",
+            "catalog_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772",
+            "counter_note": "State types are not counts of actual validator calls in this lookup.",
+            "cpu_seconds_self_and_completed_children": 0.9129056200000001,
+            "error": null,
+            "event": "memory_lookup",
+            "generation_changed": true,
+            "note_states": 329,
+            "query_sha256": "5bacb759ba06b0a33649d8d05d5a56479aff56bf3b29b17f3393faab8b30bfbf",
+            "requested_limit": 5,
+            "response_bytes": 10124,
+            "returned_records": 5,
+            "selected_records": 5,
+            "state_bytes": 13608981,
+            "states_carried_type": 0,
+            "states_checked_type": 0,
+            "timing_scope": "tool backend/imports/retrieval/serialization/storage observation; excludes JSON-RPC input/output and trace append; external harness must time whole process/session",
+            "wall_seconds": 1.0096755451522768,
+            "withheld_records": 0
+          },
+          "backend_result_bytes_match_reconstructed_mcp_result": true
+        }
+      ],
+      "native_reads": [
+        {
+          "ordinal": 2,
+          "path": "/workspace",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": null,
+          "response_text_utf8_bytes": 261
+        },
+        {
+          "ordinal": 4,
+          "path": "/workspace/pyproject.toml",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            103
+          ],
+          "response_text_utf8_bytes": 2553
+        },
+        {
+          "ordinal": 6,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 1,
+          "requested_limit": 45,
+          "returned_line_interval": [
+            1,
+            45
+          ],
+          "response_text_utf8_bytes": 1603
+        },
+        {
+          "ordinal": 7,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 350,
+          "requested_limit": 240,
+          "returned_line_interval": [
+            350,
+            553
+          ],
+          "response_text_utf8_bytes": 8503
+        },
+        {
+          "ordinal": 8,
+          "path": "/workspace/src/click/core.py",
+          "offset": 1245,
+          "requested_limit": 90,
+          "returned_line_interval": [
+            1245,
+            1334
+          ],
+          "response_text_utf8_bytes": 3735
+        },
+        {
+          "ordinal": 9,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2439,
+          "requested_limit": 245,
+          "returned_line_interval": [
+            2439,
+            2683
+          ],
+          "response_text_utf8_bytes": 11480
+        },
+        {
+          "ordinal": 10,
+          "path": "/workspace/src/click/__init__.py",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            74
+          ],
+          "response_text_utf8_bytes": 3480
+        },
+        {
+          "ordinal": 12,
+          "path": "/workspace/docs/api.rst",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            209
+          ],
+          "response_text_utf8_bytes": 3811
+        },
+        {
+          "ordinal": 13,
+          "path": "/workspace/CHANGES.rst",
+          "offset": 1,
+          "requested_limit": 60,
+          "returned_line_interval": [
+            1,
+            60
+          ],
+          "response_text_utf8_bytes": 2087
+        },
+        {
+          "ordinal": 14,
+          "path": "/workspace/tests/test_formatting.py",
+          "offset": 170,
+          "requested_limit": 130,
+          "returned_line_interval": [
+            170,
+            299
+          ],
+          "response_text_utf8_bytes": 4104
+        },
+        {
+          "ordinal": 15,
+          "path": "/workspace/tests/conftest.py",
+          "offset": 1,
+          "requested_limit": 160,
+          "returned_line_interval": [
+            1,
+            8
+          ],
+          "response_text_utf8_bytes": 204
+        },
+        {
+          "ordinal": 16,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2910,
+          "requested_limit": 70,
+          "returned_line_interval": [
+            2910,
+            2979
+          ],
+          "response_text_utf8_bytes": 2858
+        },
+        {
+          "ordinal": 17,
+          "path": "/workspace/tox.ini",
+          "offset": 1,
+          "requested_limit": 120,
+          "returned_line_interval": [
+            1,
+            66
+          ],
+          "response_text_utf8_bytes": 1750
+        },
+        {
+          "ordinal": 18,
+          "path": "/workspace/tests/test_options.py",
+          "offset": 1,
+          "requested_limit": 65,
+          "returned_line_interval": [
+            1,
+            65
+          ],
+          "response_text_utf8_bytes": 2189
+        },
+        {
+          "ordinal": 28,
+          "path": "/workspace/tests/test_help_option.py",
+          "offset": 1,
+          "requested_limit": 250,
+          "returned_line_interval": [
+            1,
+            191
+          ],
+          "response_text_utf8_bytes": 6986
+        }
+      ],
+      "multiple_read_paths": {
+        "/workspace/src/click/decorators.py": 2,
+        "/workspace/src/click/core.py": 3
+      },
+      "overlapping_native_file_read_intervals": [],
+      "directory_scoped_grep_calls": [
+        {
+          "ordinal": 3,
+          "id": "call_9fccaee05ae64dd9b2584c0fd5523e58",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def help_option|def get_help_option|class Option|class Argument",
+            "path": "/workspace/src/click"
+          },
+          "response_text_utf8_bytes": 537,
+          "recorded_elapsed_seconds": 0.054,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 11,
+          "id": "call_95ca042b96a544eeafa276e045093f27",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|help_option_names|resilient_parsing",
+            "path": "/workspace/tests",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 1090,
+          "recorded_elapsed_seconds": 0.057,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 27,
+          "id": "call_b52ef10d5c334caab77a49b2940e3b58",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def parse_args|args = |pop\\(",
+            "path": "/workspace/src/click/parser.py",
+            "limit": 45
+          },
+          "response_text_utf8_bytes": 838,
+          "recorded_elapsed_seconds": 0.038,
+          "shell_exit": null
+        }
+      ],
+      "native_reads_at_least_200_returned_lines": [
+        {
+          "ordinal": 7,
+          "path": "/workspace/src/click/decorators.py",
+          "offset": 350,
+          "requested_limit": 240,
+          "returned_line_interval": [
+            350,
+            553
+          ],
+          "response_text_utf8_bytes": 8503
+        },
+        {
+          "ordinal": 9,
+          "path": "/workspace/src/click/core.py",
+          "offset": 2439,
+          "requested_limit": 245,
+          "returned_line_interval": [
+            2439,
+            2683
+          ],
+          "response_text_utf8_bytes": 11480
+        },
+        {
+          "ordinal": 12,
+          "path": "/workspace/docs/api.rst",
+          "offset": 1,
+          "requested_limit": null,
+          "returned_line_interval": [
+            1,
+            209
+          ],
+          "response_text_utf8_bytes": 3811
+        }
+      ],
+      "visible_network_or_upstream_command_flags": [],
+      "visible_outside_workspace_path_flags": [],
+      "assistant_text_sha256": "e2945266489b2cb0baaec7175c46d6ecba0b269ed429d04222b19382a2dd1e21",
+      "calls": [
+        {
+          "ordinal": 1,
+          "id": "call_912578722e184118bc3838641b2be6cf",
+          "name": "research_memory_memory_lookup",
+          "status": "completed",
+          "input_summary": {
+            "query": "Click help option Option Command.get_help_option help_option decorator",
+            "limit": 5
+          },
+          "response_text_utf8_bytes": 9425,
+          "recorded_elapsed_seconds": 1.021,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 2,
+          "id": "call_181f3d1f88994741a5ac899dd5439660",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace"
+          },
+          "response_text_utf8_bytes": 261,
+          "recorded_elapsed_seconds": 0.043,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 3,
+          "id": "call_9fccaee05ae64dd9b2584c0fd5523e58",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def help_option|def get_help_option|class Option|class Argument",
+            "path": "/workspace/src/click"
+          },
+          "response_text_utf8_bytes": 537,
+          "recorded_elapsed_seconds": 0.054,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 4,
+          "id": "call_aa7333ae2bb54c6eaee89f1dc41fef23",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/pyproject.toml"
+          },
+          "response_text_utf8_bytes": 2553,
+          "recorded_elapsed_seconds": 0.033,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 5,
+          "id": "call_7d705efc922a484084e95a822c70bdfc",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git status --short",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 11,
+          "recorded_elapsed_seconds": 0.028,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 6,
+          "id": "call_0c3490a534ef4214802747482bcb85de",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 1,
+            "limit": 45
+          },
+          "response_text_utf8_bytes": 1603,
+          "recorded_elapsed_seconds": 0.052,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 7,
+          "id": "call_e6455df7c8d5491799d1ec855dff16b9",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/decorators.py",
+            "offset": 350,
+            "limit": 240
+          },
+          "response_text_utf8_bytes": 8503,
+          "recorded_elapsed_seconds": 0.038,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 8,
+          "id": "call_94ce18308dc54ac69a7c00537de4749c",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 1245,
+            "limit": 90
+          },
+          "response_text_utf8_bytes": 3735,
+          "recorded_elapsed_seconds": 0.082,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 9,
+          "id": "call_d1f3cfa65b324290a86075fd5fc2007a",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2439,
+            "limit": 245
+          },
+          "response_text_utf8_bytes": 11480,
+          "recorded_elapsed_seconds": 0.073,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 10,
+          "id": "call_646123618aa241f9b0e55bb66fe36660",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/__init__.py"
+          },
+          "response_text_utf8_bytes": 3480,
+          "recorded_elapsed_seconds": 0.056,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 11,
+          "id": "call_95ca042b96a544eeafa276e045093f27",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "help_option|help_option_names|resilient_parsing",
+            "path": "/workspace/tests",
+            "limit": 100
+          },
+          "response_text_utf8_bytes": 1090,
+          "recorded_elapsed_seconds": 0.057,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 12,
+          "id": "call_fa2cda71c04a4dd0832abaf88019c053",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/docs/api.rst"
+          },
+          "response_text_utf8_bytes": 3811,
+          "recorded_elapsed_seconds": 0.045,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 13,
+          "id": "call_9de728b816e84bc09717e5df752cc8c0",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/CHANGES.rst",
+            "limit": 60
+          },
+          "response_text_utf8_bytes": 2087,
+          "recorded_elapsed_seconds": 0.04,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 14,
+          "id": "call_ad7c158576b74eefa11a63ccb6d0e57d",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_formatting.py",
+            "offset": 170,
+            "limit": 130
+          },
+          "response_text_utf8_bytes": 4104,
+          "recorded_elapsed_seconds": 0.038,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 15,
+          "id": "call_778597db2b0c4b018f3de5c8805945ce",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/conftest.py",
+            "limit": 160
+          },
+          "response_text_utf8_bytes": 204,
+          "recorded_elapsed_seconds": 0.025,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 16,
+          "id": "call_544d2bf6aa574e27a82ecff743de61ff",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/src/click/core.py",
+            "offset": 2910,
+            "limit": 70
+          },
+          "response_text_utf8_bytes": 2858,
+          "recorded_elapsed_seconds": 0.035,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 17,
+          "id": "call_64d62e3db3ce40afb23fbe13cd7e8bf3",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tox.ini",
+            "limit": 120
+          },
+          "response_text_utf8_bytes": 1750,
+          "recorded_elapsed_seconds": 0.025,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 18,
+          "id": "call_a32aa22b543349ed8002f55c1a4b3ef2",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_options.py",
+            "limit": 65
+          },
+          "response_text_utf8_bytes": 2189,
+          "recorded_elapsed_seconds": 0.019,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 19,
+          "id": "call_48abefec917640eba182d52ffbadd898",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/src/click/core.py",
+              "/workspace/src/click/decorators.py",
+              "/workspace/src/click/__init__.py",
+              "/workspace/docs/api.rst",
+              "/workspace/CHANGES.rst"
+            ]
+          },
+          "response_text_utf8_bytes": 136,
+          "recorded_elapsed_seconds": 0.063,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 20,
+          "id": "call_121b9cb8bcc54eab95119d3bef6e64af",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.013,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 21,
+          "id": "call_49eac750fbd0465c972fc70ab90e6ced",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.003,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 22,
+          "id": "call_7da4415591f24e95b58a7b08b24cc397",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "mkdir -p .test-tmp && TMPDIR=/workspace/.test-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -q tests/test_help_option.py tests/test_formatting.py tests/test_options.py tests/test_shell_completion.py --basetemp=/workspace/.test-tmp/pytest",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 4698,
+          "recorded_elapsed_seconds": 0.712,
+          "shell_exit": 1
+        },
+        {
+          "ordinal": 23,
+          "id": "call_7b8895453c5644f8b43963ac32df2c9d",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.004,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 24,
+          "id": "call_721cc14f526d4370b2c5e7badb6b0114",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "TMPDIR=/workspace/.test-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -q --basetemp=/workspace/.test-tmp/pytest",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 763,
+          "recorded_elapsed_seconds": 1.855,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 25,
+          "id": "call_bd576a4fb5b4491ba27728d00bf75ce3",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git diff --check && git diff --stat && command -v ruff || true; command -v mypy || true",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 283,
+          "recorded_elapsed_seconds": 0.061,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 26,
+          "id": "call_6dade2d617a1434b8ab09448cb94159c",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "git diff -- src/click/core.py src/click/decorators.py src/click/__init__.py docs/api.rst CHANGES.rst && git status --short",
+            "workdir": "/workspace"
+          },
+          "response_text_utf8_bytes": 5406,
+          "recorded_elapsed_seconds": 0.064,
+          "shell_exit": 0
+        },
+        {
+          "ordinal": 27,
+          "id": "call_b52ef10d5c334caab77a49b2940e3b58",
+          "name": "grep",
+          "status": "completed",
+          "input_summary": {
+            "pattern": "def parse_args|args = |pop\\(",
+            "path": "/workspace/src/click/parser.py",
+            "limit": 45
+          },
+          "response_text_utf8_bytes": 838,
+          "recorded_elapsed_seconds": 0.038,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 28,
+          "id": "call_c7410510d40f4cf5bd121bd784047c90",
+          "name": "read",
+          "status": "completed",
+          "input_summary": {
+            "path": "/workspace/tests/test_help_option.py",
+            "limit": 250
+          },
+          "response_text_utf8_bytes": 6986,
+          "recorded_elapsed_seconds": 0.01,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 29,
+          "id": "call_b0e67b21b3784530ba5bf1d835856848",
+          "name": "patch",
+          "status": "completed",
+          "input_summary": {
+            "targets": [
+              "/workspace/tests/test_help_option.py"
+            ]
+          },
+          "response_text_utf8_bytes": 65,
+          "recorded_elapsed_seconds": 0.007,
+          "shell_exit": null
+        },
+        {
+          "ordinal": 30,
+          "id": "call_b94e1f93498247d2a6d88d3b240bc3a9",
+          "name": "shell",
+          "status": "completed",
+          "input_summary": {
+            "command": "TMPDIR=/workspace/.test-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m pytest -q --basetemp=/workspace/.test-tmp/pytest && git diff --check && rm -rf .test-tmp && git status --short",
+            "workdir": "/workspace",
+            "timeout": 120000
+          },
+          "response_text_utf8_bytes": 896,
+          "recorded_elapsed_seconds": 1.564,
+          "shell_exit": 0
+        }
+      ],
+      "input_artifact_sha256": {
+        "runs/opencode-development-v3-20261104/trials/r1-cami-s1/session/evidence/manifest.json": "1231c04d9207084855d66c3692e0a97cecc0cd207506db1bfcb7d6fcb267921e",
+        "runs/opencode-development-v3-20261104/trials/r1-cami-s1/session/evidence/messages.json": "53dca017793c19483cf5a69b3e4f967b36681234c4f7afbcd3ee25d3bd1c0e03",
+        "runs/opencode-development-v3-20261104/trials/r1-cami-s1/session/evidence/memory-backend-trace.jsonl": "11fb74ffb3da83e84acf636e3036ddbd1f7a21e46ce3cd94b6af13fe1a35ec9a"
+      }
+    }
+  ],
+  "installed_native_mutation_contract": {
+    "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+    "patch_plugin_offset": 175225992,
+    "edit_plugin_offset": 175235157,
+    "read_plugin_offset": 175264815,
+    "file_mutation_readText_offset": 175116715,
+    "finding": "No prior-native-read freshness tracker or read-first requirement in inspected v2.2.5 patch/edit path. Patch/edit read current Environment.files bytes internally, match chunks/oldString, and authorize writes under file locks.",
+    "gpt_tool_selection": "Patch plugin context hook removes edit/write for non-oss gpt models other than gpt-4; the trial traces use patch.",
+    "memory_tool_effect": "MCP memory lookup does not call native read. There is no native-read prerequisite here for it to satisfy. Native reads may still supply current context and surrounding source absent from bounded historical notes.",
+    "honest_note_contract": "CAMI manual_assertion_source_unchanged authenticates the declared unchanged source for a manual historical excerpt; it does not validate behavioral assertions or supply omitted current surrounding code. Static notes are unchecked_current.",
+    "evidence": {
+      "installed-edit-excerpt.txt": "150e5e6e26edc1ac4225809554c1147a9bdd41b3b67efb66f14bd6d66ad6a1f5",
+      "installed-file-mutation-excerpt.txt": "f7506ee1f8592a3e855cb148e4920e20c411ad18386737a569e89cd516821e16",
+      "installed-patch-excerpt.txt": "4f6ac632544f6d1586a84ae1c01193851d56b82e37a0727cb9de230f3b9c7a01",
+      "installed-read-excerpt.txt": "9d7e622c83e146f2d8fee5de082c27ff6d8ed5daea77d9cb56db8f3d456f4a66"
+    }
+  },
+  "interpretation_limits": [
+    "Three traces of the same development task are not three independent task samples.",
+    "No tuning recommendation, speedup inference or general model-behavior claim is made.",
+    "No automatic inference that all native reads after memory are redundant.",
+    "An absent post-edit query is not itself a conditional-contract violation without visible post-edit reliance on memory availability.",
+    "Published output has undergone credential/email redaction; bytes describe the sanitized text retained for audit."
+  ],
+  "implementation_edits": false,
+  "model_calls": 0,
+  "auth_calls": 0
+}

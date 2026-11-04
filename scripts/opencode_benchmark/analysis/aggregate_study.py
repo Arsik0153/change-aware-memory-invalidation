@@ -8,6 +8,7 @@ import hashlib
 import json
 import math
 import os
+import re
 from pathlib import Path
 import stat
 
@@ -294,7 +295,91 @@ def trial_row(directory, expected):
     )
 
 
-def aggregate(run, protocol_path, expected_study_sha=None, study_path=None):
+def load_timing_caveats(path, expected_ids, study_sha):
+    if path is None:
+        return {
+            "provided": False,
+            "source_path": None,
+            "source_sha256": None,
+            "entries": [],
+            "affected_trial_ids": [],
+            "trials_excluded": [],
+        }
+    path = Path(path).absolute()
+    if any(part in PRIVATE for part in path.parts):
+        raise ValueError("private timing-caveat input refused without reading")
+    content = read(path)
+    if content.get("schema_version") != 1 or not isinstance(content.get("caveats"), list):
+        raise ValueError("unsupported timing-caveat schema")
+    if content.get("study_sha256") not in (None, study_sha):
+        raise ValueError("timing caveats bind a different study version")
+    affected, entries = set(), []
+    for item in content["caveats"]:
+        ids = item.get("trial_ids")
+        if (
+            not isinstance(ids, list)
+            or not ids
+            or not all(isinstance(x, str) for x in ids)
+            or len(set(ids)) != len(ids)
+            or not set(ids) <= expected_ids
+        ):
+            raise ValueError("timing caveat contains unknown/invalid trial IDs")
+        reason = item.get("reason")
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("timing caveat requires a nonempty reason")
+        evidence_path = item.get("evidence_path")
+        declared = item.get("evidence_sha256")
+        if declared is not None and (
+            not isinstance(declared, str) or not re.fullmatch(r"[a-f0-9]{64}", declared)
+        ):
+            raise ValueError("invalid timing-caveat evidence SHA256")
+        if evidence_path is None and declared is None:
+            raise ValueError("timing caveat needs an evidence file or SHA256")
+        if evidence_path is not None:
+            if not isinstance(evidence_path, str) or not evidence_path:
+                raise ValueError("invalid timing-caveat evidence path")
+            evidence = Path(evidence_path)
+            evidence = evidence if evidence.is_absolute() else path.parent / evidence
+            if (
+                any(part in PRIVATE for part in evidence.parts)
+                or evidence.is_symlink()
+                or any(p.is_symlink() for p in evidence.parents)
+                or not evidence.is_file()
+            ):
+                raise ValueError("unsafe/nonregular timing evidence refused")
+            observed = sha(evidence)
+            if declared is not None and declared != observed:
+                raise ValueError("timing-caveat evidence SHA256 mismatch")
+            evidence_path, evidence_sha, verification = (
+                str(evidence.absolute()),
+                observed,
+                "file_hash_verified",
+            )
+        else:
+            evidence_sha, verification = declared, "declared_hash_only_no_file_read"
+        entries.append(
+            {
+                "trial_ids": sorted(ids),
+                "reason": reason,
+                "evidence_path": evidence_path,
+                "evidence_sha256": evidence_sha,
+                "evidence_verification": verification,
+            }
+        )
+        affected.update(ids)
+    return {
+        "provided": True,
+        "source_path": str(path),
+        "source_sha256": sha(path),
+        "entries": entries,
+        "affected_trial_ids": sorted(affected),
+        "trials_excluded": [],
+    }
+
+
+def aggregate(
+    run, protocol_path, expected_study_sha=None, study_path=None, timing_caveats_path=None
+):
     protocol = read(protocol_path)
     supported = read(HERE / "supported_rules.json")
     if {key: protocol.get(key) for key in supported} != supported:
@@ -322,8 +407,11 @@ def aggregate(run, protocol_path, expected_study_sha=None, study_path=None):
     trial_root = run / "trials"
     if any(p.name not in expected_ids for p in trial_root.iterdir()):
         raise ValueError("unregistered trial directory/file; possible version pooling")
+    caveats = load_timing_caveats(timing_caveats_path, expected_ids, binding["study_sha256"])
     rows = [trial_row(trial_root / item["id"], item) for item in planned]
-    summary = summarize(rows)
+    for row in rows:
+        row["timing_caveat"] = row["id"] in caveats["affected_trial_ids"]
+    summary = summarize(rows, caveats["affected_trial_ids"])
     if binding.get("mode") != "model":
         summary.update(
             primary_efficiency_eligible=False,
@@ -345,6 +433,7 @@ def aggregate(run, protocol_path, expected_study_sha=None, study_path=None):
         "runtime_image": study.get("image"),
         "reported_token_budget": study.get("reported_token_budget"),
         "summary": summary,
+        "timing_caveats": caveats,
         "trials": rows,
         "integrity": {
             "terminal_artifact_hashes_verified": sum(
@@ -382,6 +471,7 @@ def export_csv(out, report):
         "quality_eligible",
         "wall_complete",
         "tokens_complete",
+        "timing_caveat",
         "charged_wall_seconds",
         "construction_host_wall_seconds",
         "session_host_wall_seconds",
@@ -447,6 +537,7 @@ def export_csv(out, report):
                 "delta_cami_minus_comparator",
                 "ratio_cami_over_comparator",
                 "strictly_lower",
+                "primary_metric_eligible",
             ]
         )
         for row in report["summary"]["paired_comparisons"]:
@@ -462,6 +553,7 @@ def export_csv(out, report):
                         item["delta_cami_minus_comparator"],
                         item["ratio_cami_over_comparator"],
                         item["strictly_lower"],
+                        item["primary_metric_eligible"],
                     ]
                 )
 
@@ -473,6 +565,11 @@ def main():
     parser.add_argument("--study-sha256")
     parser.add_argument(
         "--study", type=Path, help="Byte-identical frozen study metadata at a relocated path"
+    )
+    parser.add_argument(
+        "--timing-caveats",
+        type=Path,
+        help="Explicit timing confounds; preserve rows and disqualify wall superiority",
     )
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
@@ -486,7 +583,9 @@ def main():
         parser.error("analysis output must be new and separate from input run")
     out.mkdir(parents=True, exist_ok=False)
     try:
-        report = aggregate(run, args.protocol.absolute(), args.study_sha256, args.study)
+        report = aggregate(
+            run, args.protocol.absolute(), args.study_sha256, args.study, args.timing_caveats
+        )
         write(out / "report.json", report)
         export_csv(out, report)
     except Exception as error:

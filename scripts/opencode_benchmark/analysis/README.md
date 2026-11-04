@@ -42,3 +42,31 @@ Outputs:
 ```
 
 Fourteen controls cover complete wins, paid failures, missing/partial telemetry, active private-state non-access (with an open guard), unknown metrics, mixed-metric false wins, ties, raw and rehashed tamper, extra/version-pooled rows, and CSV unknowns. `authored-cli-final/verification.json` preserves six end-to-end CLI cases: complete, partial failure, missing usage, mixed metrics, artifact tamper and rehashed forged cost. No actual study or heldout results were aggregated during development.
+
+## Timing-caveat extension (analysis v2)
+
+This is a separate staging copy. Earlier analysis source, all measured runs and installed/frozen benchmark modules remain unchanged. Verification used only quick authored unit checks, with no model/auth calls, Docker, task source or heldout outcome access.
+
+Add `--timing-caveats PATH.json` to the same CLI. The file uses this shape:
+
+```json
+{
+  "schema_version": 1,
+  "caveats": [{
+    "trial_ids": ["r1-plain-s1"],
+    "reason": "Known concurrent infrastructure on the shared CPU host",
+    "evidence_path": "phase-timing.json",
+    "evidence_sha256": "64 lowercase hexadecimal characters"
+  }]
+}
+```
+
+`evidence_path` is optional when an evidence SHA is supplied; a path alone is also accepted and its full SHA is recorded. Relative paths resolve against the caveat file's directory. With both fields, a mismatch is rejected. Hash-only declarations are explicitly labeled as not having their evidence file read. Each entry needs nonempty known trial IDs and a reason. Optional top-level `study_sha256` binds the caveat file to one input study version. Unknown IDs, private/unsafe evidence paths and invalid hashes are rejected.
+
+The report retains the full caveat input path/SHA, normalized entries and evidence path/SHA. Every trial remains in JSON and CSV. All raw charged-wall values, complete block totals, medians/ranges and all six paired deltas/ratios remain unchanged. Affected trial flags and block ID lists make the context visible. `excluded_trial_ids` is always empty.
+
+If any trial is affected, `primary_metric_eligibility.charged_wall` is false and charged-wall cannot appear in `winning_metrics_satisfying_all_six_pairs`. This applies to the entire wall metric; no selective trial removal or retry occurs. `primary_metric_eligibility.token_work` continues to depend on the original all36 operational/quality/complete-telemetry gate. A valid token-work win can still satisfy all six comparisons. CSV pairs include a `primary_metric_eligible` column so raw faster timings cannot be mistaken for an eligible time claim.
+
+`timing-caveats-v3-example.json` stages the known v3 `r1-plain-s1` overlap declaration, referencing only the authorized timing metadata and its full file hash. Root should add its frozen study SHA before freezing a run-specific declaration. Supplying known caveats is the caller's responsibility; omission is not evidence of timing isolation. No actual study aggregation was performed here.
+
+Nineteen authored checks pass. The five new checks cover wall-only false-win prevention, preserving a valid token win and unchanged raw pairs, unknown IDs, evidence-hash mismatch, and declared hash-only provenance. See `unit-final.json` and `ruff-final.json`.

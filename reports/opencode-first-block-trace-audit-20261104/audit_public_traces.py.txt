@@ -1,0 +1,158 @@
+"""Descriptive AI audit of exactly three completed, sanitized development traces."""
+from __future__ import annotations
+
+from collections import Counter, defaultdict
+import hashlib
+import json
+from pathlib import Path
+import re
+
+STAGE = Path(__file__).resolve().parent
+ROOT = next(p for p in STAGE.parents if (p / 'src/cami').is_dir())
+MEMORY = 'research_memory_memory_lookup'
+SOURCE = ROOT / 'runs/opencode-development-v3-20261104/trials'
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def text_content(tool):
+    return '\n'.join(part.get('text', '') for part in tool['state'].get('content', []) if part.get('type') == 'text')
+
+
+def audit(arm):
+    evidence = SOURCE / f'r1-{arm}-s1/session/evidence'
+    manifest = json.loads((evidence / 'manifest.json').read_text())
+    assert manifest['status'] == 'passed', 'Audit only completed, published worker traces'
+    messages = json.loads((evidence / 'messages.json').read_text())
+    tools = [part for message in messages if message.get('type') == 'assistant'
+             for part in message.get('content', []) if part.get('type') == 'tool']
+    ids = [tool['id'] for tool in tools]
+    assert len(ids) == len(set(ids)), 'Tool parts must not be double-counted across SSE/pages/messages'
+    first_patch = next((i for i, t in enumerate(tools, 1) if t['name'] in {'patch', 'edit', 'write'}), None)
+    queries, calls, failed_shell, reads = [], [], [], []
+    by_name = defaultdict(lambda: {'calls': 0, 'response_text_utf8_bytes': 0, 'recorded_elapsed_seconds_sum': 0})
+    network_flags, outside_flags = [], []
+    read_intervals, repeated = defaultdict(list), []
+    for index, tool in enumerate(tools, 1):
+        name, state = tool['name'], tool['state']
+        inp, text = state.get('input', {}), text_content(tool)
+        # Sum each returned text block's bytes separately; add no separator bytes.
+        byte_count = sum(len(p.get('text', '').encode('utf-8')) for p in state.get('content', []) if p.get('type') == 'text')
+        elapsed = (tool['time']['completed'] - tool['time']['ran']) / 1000 if 'completed' in tool['time'] and 'ran' in tool['time'] else None
+        by_name[name]['calls'] += 1
+        by_name[name]['response_text_utf8_bytes'] += byte_count
+        by_name[name]['recorded_elapsed_seconds_sum'] += elapsed or 0
+        summary = {k: v for k, v in inp.items() if k != 'patchText'}
+        if name == 'patch':
+            summary = {'targets': re.findall(r'^\*\*\* (?:Update|Add|Delete) File: (.+)$', inp.get('patchText', ''), re.M)}
+        calls.append({'ordinal': index, 'id': tool['id'], 'name': name, 'status': state['status'],
+                      'input_summary': summary, 'response_text_utf8_bytes': byte_count,
+                      'recorded_elapsed_seconds': elapsed, 'shell_exit': state.get('metadata', {}).get('exit') if name == 'shell' else None})
+        if name == 'shell' and state.get('metadata', {}).get('exit') not in (None, 0):
+            reason = 'pytest failure' if re.search(r'\d+ failed', text) else 'missing local lint/format module' if 'No module named ' in text else 'other nonzero exit'
+            failed_shell.append({'ordinal': index, 'exit': state['metadata']['exit'], 'category': reason})
+        if name == MEMORY:
+            payload = json.loads(next(p['text'] for p in state['content'] if p['type'] == 'text'))
+            queries.append({'ordinal': index, 'query': inp['query'], 'limit': inp.get('limit'),
+                            'response_text_utf8_bytes': byte_count, 'entry_count': len(payload['entries']),
+                            'withheld_count': len(payload.get('withheld', [])),
+                            'availability_counts': dict(Counter(e['availability'] for e in payload['entries'])),
+                            'subjects': [e.get('payload', {}).get('subject') for e in payload['entries']],
+                            'before_first_patch': first_patch is None or index < first_patch,
+                            'observed_mcp_result_canonical_json_bytes': len(json.dumps({'content': state['content'], 'isError': False}, sort_keys=True, ensure_ascii=True, separators=(',', ':'), allow_nan=False).encode())})
+        if name == 'read':
+            path = inp['path']
+            match = re.search(r'^Read file .+, lines (\d+)-(\d+)', text)
+            interval = tuple(map(int, match.groups())) if match else None
+            row = {'ordinal': index, 'path': path, 'offset': inp.get('offset', 1), 'requested_limit': inp.get('limit'),
+                   'returned_line_interval': interval, 'response_text_utf8_bytes': byte_count}
+            reads.append(row)
+            if interval:
+                for earlier in read_intervals[path]:
+                    lo, hi = max(interval[0], earlier['returned_line_interval'][0]), min(interval[1], earlier['returned_line_interval'][1])
+                    if lo <= hi:
+                        repeated.append({'earlier_ordinal': earlier['ordinal'], 'later_ordinal': index, 'path': path, 'overlap_lines': hi - lo + 1})
+                read_intervals[path].append(row)
+        command = inp.get('command', '') if name == 'shell' else ''
+        if re.search(r'\b(?:curl|wget|ssh|scp|git\s+(?:fetch|pull|clone|push)|pip\s+install)\b|https?://', command):
+            network_flags.append({'ordinal': index, 'command': command})
+        if name in {'webfetch', 'websearch', 'fetch'}:
+            network_flags.append({'ordinal': index, 'tool': name})
+        for key in ('path', 'workdir'):
+            value = inp.get(key)
+            if isinstance(value, str) and value.startswith('/') and not (value == '/workspace' or value.startswith('/workspace/')):
+                outside_flags.append({'ordinal': index, 'field': key, 'value': value})
+    trace = evidence / 'memory-backend-trace.jsonl'
+    backend = [json.loads(line) for line in trace.read_text().splitlines()] if trace.exists() else []
+    lookup_rows = [r for r in backend if r['event'] == 'memory_lookup']
+    assert len(lookup_rows) == len(queries)
+    for query, row in zip(queries, lookup_rows):
+        arguments = {'query': query['query'], 'limit': query['limit']}
+        assert row['query_sha256'] == hashlib.sha256(json.dumps(arguments, sort_keys=True, ensure_ascii=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
+        query['backend_metrics'] = row
+        query['backend_result_bytes_match_reconstructed_mcp_result'] = row['response_bytes'] == query['observed_mcp_result_canonical_json_bytes']
+        assert query['backend_result_bytes_match_reconstructed_mcp_result']
+    assistant_text = '\n'.join(p.get('text', '') for m in messages if m.get('type') == 'assistant'
+                               for p in m.get('content', []) if p.get('type') == 'text')
+    used = ['manifest.json', 'messages.json'] + (['memory-backend-trace.jsonl'] if trace.exists() else [])
+    return {'arm': arm, 'trial': f'r1-{arm}-s1', 'worker_status': manifest['status'],
+            'tool_calls': len(tools), 'native_tool_calls': sum(t['name'] != MEMORY for t in tools),
+            'memory_calls': len(queries), 'tools_by_name': dict(by_name),
+            'returned_text_utf8_bytes_total': sum(c['response_text_utf8_bytes'] for c in calls),
+            'native_read_text_utf8_bytes_total': sum(c['response_text_utf8_bytes'] for c in reads),
+            'memory_text_utf8_bytes_total': sum(q['response_text_utf8_bytes'] for q in queries),
+            'native_tool_status_counts': dict(Counter(t['state']['status'] for t in tools if t['name'] != MEMORY)),
+            'tool_failure_statuses': [r for r in calls if r['status'] != 'completed'],
+            'nonzero_shell_commands': failed_shell,
+            'first_code_write_tool_ordinal': first_patch,
+            'first_memory_is_first_tool': bool(queries and queries[0]['ordinal'] == 1),
+            'post_edit_memory_query_count': sum(not q['before_first_patch'] for q in queries),
+            'conditional_postedit_contract_assessment': 'CAMI has no post-edit lookup. Assistant text has no visible post-edit memory-availability/reliance claim; no violation established.' if arm == 'cami' else 'Static performs an observed post-edit lookup; returned notes remain unchecked_current.' if arm == 'static' else 'No memory tool in plain arm.',
+            'memory_queries': queries, 'native_reads': reads,
+            'multiple_read_paths': {p: n for p, n in Counter(r['path'] for r in reads).items() if n > 1},
+            'overlapping_native_file_read_intervals': repeated,
+            'directory_scoped_grep_calls': [r for r in calls if r['name'] == 'grep'],
+            'native_reads_at_least_200_returned_lines': [r for r in reads if r['returned_line_interval'] and r['returned_line_interval'][1] - r['returned_line_interval'][0] + 1 >= 200],
+            'visible_network_or_upstream_command_flags': network_flags,
+            'visible_outside_workspace_path_flags': outside_flags,
+            'assistant_text_sha256': hashlib.sha256(assistant_text.encode()).hexdigest(),
+            'calls': calls, 'input_artifact_sha256': {str((evidence / n).relative_to(ROOT)): sha(evidence / n) for n in used}}
+
+
+def main():
+    rows = [audit(arm) for arm in ('plain', 'static', 'cami')]
+    report = {
+        'status': 'complete', 'audit_kind': 'AI descriptive trace audit, not human annotation or causal evidence',
+        'scope': 'Exactly first three terminal-pass published sanitized development traces, no active/private files, task prompts, gold or heldout artifacts.',
+        'methods': {'tool_count': 'Unique tool parts from final messages.json only; no additive SSE or pagination counting.',
+                    'response_bytes': 'Sum UTF-8 byte lengths of returned text blocks only; not tokens, wire size or billing. No inserted separator bytes.',
+                    'memory_backend_response_bytes': 'Backend metric counts canonical JSON of the MCP result envelope, including escaped inner text and isError; independently reconstructed exactly. Distinct from returned text-body bytes.',
+                    'backend_query_hash': 'Despite metric name query_sha256, adapter hashes canonical full arguments object (query plus limit); independent audit verifies it.',
+                    'tool_elapsed': 'Completed minus ran timestamps. Sums may overlap and are not CPU or end-to-end wall time.',
+                    'repeated_reads': 'Report repeat paths separately from overlapping returned native read line intervals. Disjoint slices are not counted as repeated identical/broad reads.',
+                    'first_write': 'First native patch/edit/write, not temporary files internally created by test shell commands.',
+                    'network': 'Visible tool inputs/commands only; not syscall/packet-level proof and does not audit test subprocess internals.'},
+        'trials': rows,
+        'installed_native_mutation_contract': {
+            'binary_sha256': '8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050',
+            'patch_plugin_offset': 175225992, 'edit_plugin_offset': 175235157, 'read_plugin_offset': 175264815,
+            'file_mutation_readText_offset': 175116715,
+            'finding': 'No prior-native-read freshness tracker or read-first requirement in inspected v2.2.5 patch/edit path. Patch/edit read current Environment.files bytes internally, match chunks/oldString, and authorize writes under file locks.',
+            'gpt_tool_selection': 'Patch plugin context hook removes edit/write for non-oss gpt models other than gpt-4; the trial traces use patch.',
+            'memory_tool_effect': 'MCP memory lookup does not call native read. There is no native-read prerequisite here for it to satisfy. Native reads may still supply current context and surrounding source absent from bounded historical notes.',
+            'honest_note_contract': 'CAMI manual_assertion_source_unchanged authenticates the declared unchanged source for a manual historical excerpt; it does not validate behavioral assertions or supply omitted current surrounding code. Static notes are unchecked_current.',
+            'evidence': {p.name: sha(p) for p in sorted(STAGE.glob('installed-*-excerpt.txt'))}},
+        'interpretation_limits': ['Three traces of the same development task are not three independent task samples.',
+                                  'No tuning recommendation, speedup inference or general model-behavior claim is made.',
+                                  'No automatic inference that all native reads after memory are redundant.',
+                                  'An absent post-edit query is not itself a conditional-contract violation without visible post-edit reliance on memory availability.',
+                                  'Published output has undergone credential/email redaction; bytes describe the sanitized text retained for audit.'],
+        'implementation_edits': False, 'model_calls': 0, 'auth_calls': 0}
+    (STAGE / 'trace-audit.json').write_text(json.dumps(report, indent=2) + '\n')
+    print(json.dumps([{k: r[k] for k in ['arm', 'tool_calls', 'native_tool_calls', 'memory_calls', 'post_edit_memory_query_count', 'nonzero_shell_commands']} for r in rows], indent=2))
+
+
+if __name__ == '__main__':
+    main()

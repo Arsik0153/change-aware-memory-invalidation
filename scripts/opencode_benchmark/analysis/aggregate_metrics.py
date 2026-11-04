@@ -60,7 +60,8 @@ def stats(values):
     }
 
 
-def summarize(rows):
+def summarize(rows, timing_caveat_trial_ids=()):
+    affected = set(timing_caveat_trial_ids)
     blocks = []
     for repetition in range(1, 4):
         for arm in ARMS:
@@ -72,6 +73,7 @@ def summarize(rows):
                 "repetition": repetition,
                 "arm": arm,
                 "trials": [r["id"] for r in members],
+                "timing_caveat_trial_ids": [r["id"] for r in members if r["id"] in affected],
                 "all_four_operational_quality_pass": all(r["quality_eligible"] for r in members),
                 "charged_wall": metric(members, "charged_wall_seconds", "wall_complete"),
                 "token_work": metric(members, "token_work", "tokens_complete"),
@@ -113,11 +115,15 @@ def summarize(rows):
     all_quality = all(r["quality_eligible"] for r in rows)
     all_metrics = all(r["wall_complete"] and r["tokens_complete"] for r in rows)
     eligible = len(rows) == 36 and all_quality and all_metrics
+    metric_eligibility = {"charged_wall": eligible and not affected, "token_work": eligible}
     winners = [
         key
         for key in ("charged_wall", "token_work")
-        if eligible and all(p[key]["strictly_lower"] is True for p in pairs)
+        if metric_eligibility[key] and all(p[key]["strictly_lower"] is True for p in pairs)
     ]
+    for pair in pairs:
+        for key in ("charged_wall", "token_work"):
+            pair[key]["primary_metric_eligible"] = metric_eligibility[key]
     summaries = {
         arm: {
             key: stats([b[key]["total"] for b in blocks if b["arm"] == arm])
@@ -153,6 +159,10 @@ def summarize(rows):
         "all_trials_operational_quality_pass": all_quality,
         "all_primary_metrics_complete": all_metrics,
         "primary_efficiency_eligible": eligible,
+        "primary_metric_eligibility": metric_eligibility,
+        "charged_wall_disqualified_by_timing_caveats": bool(affected),
+        "timing_caveat_trial_ids": sorted(affected),
+        "excluded_trial_ids": [],
         "primary_superiority": "established_for_declared_sequence"
         if winners
         else "not_established",

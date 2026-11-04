@@ -1,0 +1,26 @@
+{
+  "actual_study_results_aggregated": false,
+  "analysis_version": "timing-caveats-v2",
+  "auth_calls": 0,
+  "authorized_timing_metadata_only": true,
+  "docker_calls": 0,
+  "heldout_source_or_outcomes_read": false,
+  "implementation_files": {
+    "aggregate_metrics.py": "777a98a622d017a7a77ec397189d1c57ab8b4c00eb5430668832d7351828dbc6",
+    "aggregate_study.py": "122e52697b8bd3b03f75a2565fb85f4cd0cf845007393cd484bb6dd7db34cf4f",
+    "supported_rules.json": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4"
+  },
+  "installed_or_frozen_files_changed": false,
+  "known_timing_example_sha256": "c6d53cf5acc0a67b15ac418364019bf15f5a0af65cd3c8b244b427ab8f34bd65",
+  "model_calls": 0,
+  "readme_sha256": "af82a5c2d197c6d17a9e8a7c4b9981d398be0400a4554cde3af70ea27b17c422",
+  "ruff": "passed",
+  "schema_version": 1,
+  "status": "ready_for_parent_install",
+  "test_files": {
+    "test_aggregate.py": "32c878d701148abe335235f0833b603d85389b047bc4a28575fe39529a47261c",
+    "verify_authored.py": "7e70b1a08e85352144fd70880b1b3de3f01f5f027fff8f27bfd97c7f0eb4ad42"
+  },
+  "timing_policy": "Any declared affected trial disables charged_wall as a primary winning metric; retain all rows/timings/pairs. Token eligibility unchanged.",
+  "unit_controls": 19
+}
