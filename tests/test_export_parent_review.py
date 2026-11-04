@@ -192,3 +192,40 @@ def test_viewer_retains_missing_evidence_limitation_and_probe(tmp_path):
     assert 'test_frozen.py::test_example' in markup
     assert (output / 'probes/test_frozen.py').read_bytes() == probe.read_bytes()
     assert '\ufffd' in next((output / 'review-assets').glob('*.html')).read_text()
+
+
+@pytest.mark.parametrize('newline', ['\n', '\r\n', '\r'])
+def test_source_line_numbers_match_python_with_form_feed(tmp_path, newline):
+    import ast
+    from html.parser import HTMLParser
+
+    source = prepared(tmp_path)
+    code = newline.join(['# comment\fstill same line', 'def f():', '    return 1', ''])
+    (source / 'annotation/sources/parent.py').write_bytes(code.encode())
+    path = source / 'annotation/packets.jsonl'
+    rows = read_jsonl(path)
+    rows[0]['source_evidence']['parent'][0]['sha256'] = file_hash(
+        source / 'annotation/sources/parent.py')
+    write_jsonl(path, rows)
+    seal(source)
+    output = tmp_path / 'review'
+    exporter.export(source, output)
+
+    class Lines(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.current = None
+            self.definition_line = None
+
+        def handle_starttag(self, tag, attrs):
+            if tag == 'span':
+                self.current = dict(attrs)['id']
+
+        def handle_data(self, data):
+            if 'def f():' in data:
+                self.definition_line = self.current
+
+    lines = Lines()
+    lines.feed(next((output / 'review-assets').glob('*.html')).read_text())
+    assert lines.definition_line == f'L{ast.parse(code).body[0].lineno}' == 'L2'
+    assert (output / 'sources/parent.py').read_bytes() == code.encode()

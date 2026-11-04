@@ -42,9 +42,13 @@ def render(output: Path, packets: list[dict[str, Any]], secondary: list[dict[str
         links[relative] = view
         # Display only: original bytes remain the authoritative evidence.
         text = source.read_bytes().decode('utf-8', errors='replace')
+        text = text.replace('\r\n', '\n').replace('\r', '\n')
+        source_lines = text.split('\n') if text else []
+        if source_lines and not source_lines[-1]:
+            source_lines.pop()
         lines = ''.join(f'<span class="line" id="L{i}"><a class="number" href="#L{i}">'
                         f'{i}</a>{escaped(line)}</span>'
-                        for i, line in enumerate(text.splitlines(), 1))
+                        for i, line in enumerate(source_lines, 1))
         (output / view).write_text(page('Parent evidence',
             '<p><a href="../review.html">К заданиям</a></p>'
             f'<p>SHA-256: <code>{sha}</code></p>'
