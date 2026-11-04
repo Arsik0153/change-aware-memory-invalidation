@@ -1,0 +1,14 @@
+{
+  "actual_packaging_source_access": false,
+  "authored_tests": 28,
+  "command": ".venv/bin/python -m pytest -q tests/test_packaging_replay.py",
+  "resource_scope": "Observed 2GiB repositories+output,1200 self+completed-childCPU seconds,1800wall seconds; operation may overshoot before next guard.",
+  "ruff": "passed",
+  "seconds": 61.04,
+  "source_sha256": {
+    "scripts/packaging_replay_support.py": "5f1f55e123554a73d8d34e2867f81ea025eb60811c33880d3ad468fda61c3ef9",
+    "scripts/run_packaging_replay.py": "200f91f2b0bb36a50b593a5508d9659d1907f29dc284159b77e602f8851b22c5",
+    "tests/test_packaging_replay.py": "f82c287aef979e9ba1d8632223389e0c78b406aaa369b488b2eec2bd8d798257"
+  },
+  "status": "pass"
+}

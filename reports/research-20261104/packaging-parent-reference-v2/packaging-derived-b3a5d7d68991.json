@@ -1,0 +1,511 @@
+{
+  "decisions": [
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "evidence": [
+        {
+          "end_line": 468,
+          "role": "unconditional definition",
+          "start_line": 383
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='MacVersion', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "version"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "arch"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-f91bdb996b90ed0675ec",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "evidence": [
+        {
+          "end_line": 134,
+          "role": "unconditional definition",
+          "start_line": 125
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "values"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "keyword_only",
+              "name": "key"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-892cdc291de819219038",
+      "reason": "all complete signature fields match",
+      "source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "evidence": [
+        {
+          "end_line": 134,
+          "role": "unconditional definition",
+          "start_line": 125
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "values"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "keyword_only",
+              "name": "key"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-c820f6a5f1b18bab1f45",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "evidence": [
+        {
+          "end_line": 70,
+          "role": "unconditional definition",
+          "start_line": 54
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "archs"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-2f6a14499ea750843fa5",
+      "reason": "signature mismatch in: parameters",
+      "source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "verdict": "contradicted"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "evidence": [
+        {
+          "end_line": 70,
+          "role": "unconditional definition",
+          "start_line": 54
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "archs"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-9d89bd563bbdd2dc2ef5",
+      "reason": "all complete signature fields match",
+      "source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "evidence": [
+        {
+          "end_line": 298,
+          "role": "unconditional definition",
+          "start_line": 270
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "interpreter"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "abis"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "platforms"
+            },
+            {
+              "annotation_ast": "Name(id='bool', ctx=Load())",
+              "default_ast": "Constant(value=False)",
+              "kind": "keyword_only",
+              "name": "warn"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-c0096906128b9d07c873",
+      "reason": "all complete signature fields match",
+      "source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "evidence": [
+        {
+          "end_line": 70,
+          "role": "unconditional definition",
+          "start_line": 54
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "archs"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-616fdb53fdac8138fd3a",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "ced0034017529652a772d2bed59c9dace35d99a92cb098ef9bee7cef507ee7ce",
+      "evidence": [
+        {
+          "end_line": 70,
+          "role": "unconditional definition",
+          "start_line": 54
+        },
+        {
+          "end_line": 87,
+          "role": "unconditional definition",
+          "start_line": 86
+        },
+        {
+          "end_line": 91,
+          "role": "unconditional definition",
+          "start_line": 90
+        }
+      ],
+      "facts": {
+        "definition_count": 3,
+        "unconditional_definition_count": 3
+      },
+      "id": "case-880a87b00e42ba28d989",
+      "reason": "Uncertain: duplicate target definitions",
+      "source_sha256": "ced0034017529652a772d2bed59c9dace35d99a92cb098ef9bee7cef507ee7ce",
+      "verdict": "uncertain"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "evidence": [
+        {
+          "end_line": 83,
+          "role": "complete module inspected for absence",
+          "start_line": 1
+        }
+      ],
+      "facts": {
+        "definition_count": 0,
+        "exists": false,
+        "unconditional_definition_count": 0
+      },
+      "id": "case-7badc941848ce0695beb",
+      "reason": "no top-level syntactic function definition for target",
+      "source_sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+      "verdict": "contradicted"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "evidence": [
+        {
+          "end_line": 298,
+          "role": "unconditional definition",
+          "start_line": 270
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "interpreter"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "abis"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "platforms"
+            },
+            {
+              "annotation_ast": "Name(id='bool', ctx=Load())",
+              "default_ast": "Constant(value=False)",
+              "kind": "keyword_only",
+              "name": "warn"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-0314a856b951571aec37",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "evidence": [
+        {
+          "end_line": 468,
+          "role": "unconditional definition",
+          "start_line": 383
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='MacVersion', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "version"
+            },
+            {
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "arch"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-49848f00888857a697df",
+      "reason": "all complete signature fields match",
+      "source_sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+      "verdict": "supported"
+    },
+    {
+      "checker": {
+        "identity": "authored-structural-reference",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior.",
+        "version": "1.1.0-development"
+      },
+      "declared_source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "evidence": [
+        {
+          "end_line": 134,
+          "role": "unconditional definition",
+          "start_line": 125
+        }
+      ],
+      "facts": {
+        "definition_count": 1,
+        "exists": true,
+        "signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "values"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "keyword_only",
+              "name": "key"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())"
+        },
+        "unconditional_definition_count": 1
+      },
+      "id": "case-cdbe9577102a95bfb325",
+      "reason": "signature mismatch in: parameters",
+      "source_sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+      "verdict": "contradicted"
+    }
+  ],
+  "packet_sha256": "663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123",
+  "reference_sha256": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a"
+}

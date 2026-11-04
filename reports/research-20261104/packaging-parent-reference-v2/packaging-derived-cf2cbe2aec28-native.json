@@ -1,0 +1,448 @@
+{
+  "format": "independent-structural-reference-development-v1",
+  "records": [
+    {
+      "id": "case-7f94633837e662610ec5",
+      "verdict": "supported",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 252,
+          "end_line": 253,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "declared_source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-59b797fb4b76830426cc",
+      "verdict": "supported",
+      "reason": "all complete signature fields match",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 252,
+          "end_line": 253,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "declared_source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-818477b7a7d45cbdd4ff",
+      "verdict": "contradicted",
+      "reason": "no top-level syntactic function definition for target",
+      "facts": {
+        "definition_count": 0,
+        "unconditional_definition_count": 0,
+        "exists": false
+      },
+      "evidence": [
+        {
+          "start_line": 1,
+          "end_line": 331,
+          "role": "complete module inspected for absence"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-3971df344c2a789799c3",
+      "verdict": "contradicted",
+      "reason": "signature mismatch in: parameters",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 204,
+          "end_line": 231,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-7234a8c26cb3bb49ac85",
+      "verdict": "supported",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "tokenizer",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerAtom', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 274,
+          "end_line": 293,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "declared_source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-afde14daf67b1ca41b10",
+      "verdict": "uncertain",
+      "reason": "Uncertain: duplicate target definitions",
+      "facts": {
+        "definition_count": 3,
+        "unconditional_definition_count": 3
+      },
+      "evidence": [
+        {
+          "start_line": 204,
+          "end_line": 231,
+          "role": "unconditional definition"
+        },
+        {
+          "start_line": 334,
+          "end_line": 335,
+          "role": "unconditional definition"
+        },
+        {
+          "start_line": 338,
+          "end_line": 339,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10",
+      "declared_source_sha256": "c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-a6a1bd3c3ec8ec04e72c",
+      "verdict": "contradicted",
+      "reason": "signature mismatch in: parameters",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 252,
+          "end_line": 253,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "declared_source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-4cd1475b14b1300a6d8e",
+      "verdict": "supported",
+      "reason": "all complete signature fields match",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "tokenizer",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerAtom', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 274,
+          "end_line": 293,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "declared_source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-bee7fc1bc119ea8bce69",
+      "verdict": "supported",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 204,
+          "end_line": 231,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-7c24c19be0b9d2ea64a5",
+      "verdict": "supported",
+      "reason": "all complete signature fields match",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 204,
+          "end_line": 231,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-f37a08e0e3aed302beb2",
+      "verdict": "supported",
+      "reason": "all complete signature fields match",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [],
+          "returns_ast": "Name(id='Environment', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 242,
+          "end_line": 257,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    },
+    {
+      "id": "case-13fada19f628012149b2",
+      "verdict": "supported",
+      "reason": "unique unconditional top-level syntactic function definition",
+      "facts": {
+        "definition_count": 1,
+        "unconditional_definition_count": 1,
+        "exists": true,
+        "signature": {
+          "parameters": [],
+          "returns_ast": "Name(id='Environment', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "start_line": 242,
+          "end_line": 257,
+          "role": "unconditional definition"
+        }
+      ],
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "declared_source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "checker": {
+        "identity": "authored-structural-reference",
+        "version": "1.1.0-development",
+        "python": "3.12.3",
+        "shared_primitive_limitation": "Shares CPython ast parsing and ast.dump(include_attributes=False) with the predicate contract; this is not parser-independent. Source is never executed. Checks exact syntactic top-level definitions, not runtime binding or behavior."
+      }
+    }
+  ]
+}
