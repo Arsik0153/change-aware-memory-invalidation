@@ -1,0 +1,20 @@
+{
+  "experiment": "structural-reference-transition-alignment-v2-sensitivity",
+  "original_protocol_sha256": "e14ce0f66dd500c8270f9a0cb8c6fc5bb258a5b6eb714461170076de72c1ae6a",
+  "reference_v1_sha256": "2f3dfc7a3d867d9094c8aae692faf24271cca6704532204ce08528a15ce1df1f",
+  "reference_v2_sha256": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a",
+  "before_index_sha256": "617b574f59c0ff54c14ef6ea5d21686b03dc2343c7be21a7ebad74cedfb6d246",
+  "before_validation_sha256": "79ef1bbd76225db860511d7f2bfcb86a42d0621a0a3a18a6532c29a01db46fcc",
+  "change": "V2 no longer skips nested ClassDef while conservatively collecting target global declarations. Function and lambda bodies remain excluded.",
+  "sequence": [
+    "Run unchanged 21 mutation pairs with production before-fix and v2 reference.",
+    "Add regression tests for class-global ambiguity and correct production parsing/cache versions.",
+    "Run the same cases with fixed production and unchanged v2 reference."
+  ],
+  "reporting": "Keep original v1 baseline. Report reference-vs-authored mismatches and reference-unsupported availability separately. Reference uncertain is not proof of falsehood.",
+  "limits": [
+    "Targeted regression repair, not proof of reference or production completeness.",
+    "V2 is derived from independent v1; it is not a newly independent implementation.",
+    "No changes to sealed AI pilot, real provenance or original main evaluation."
+  ]
+}
