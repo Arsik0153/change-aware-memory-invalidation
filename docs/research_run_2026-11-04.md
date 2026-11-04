@@ -658,3 +658,7 @@ These raw findings are retained for a separate implementation/result audit befor
 Full verification at `07cb633` passed: 1361 tests, four skipped, Ruff clean and mypy clean across 53 production files; source snapshots and all three log hashes match. The four skips are the opt-in Docker integration cases because this invocation omitted `CAMI_TEST_IMAGE`. The previously pinned local image remains available, so the four cases will be checked separately with that exact digest; this run is not relabelled as 1365 passed.
 
 Installed the reproducible Packaging figure. PNG/SVG/data remain byte-identical to the independently prepared figure; HTML was adjusted for theme variables and zero outer padding. All five installed output artifacts match a repeat rendering. The PNG was visually inspected and HTML was shown. Browser preview itself failed with the existing Chrome exit1 limitation, which is recorded.
+
+### Four Docker integration skips resolved separately
+
+At `2071f54`, reran only the four skipped Docker integration node IDs with `CAMI_TEST_IMAGE=cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6`. All four passed in 14.96 seconds. Every pre-existing source file matches the full `07cb633` run; the sole added source file is the reviewed plot script. Before/after snapshots also match within this supplement. The original full-run record stays `1361 passed, 4 skipped`; the supplemental record stays `4 passed`. Together they exercise all 1365 collected cases, without presenting that as a single uninterrupted full-suite result.
