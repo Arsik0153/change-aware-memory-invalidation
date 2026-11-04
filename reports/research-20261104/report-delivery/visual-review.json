@@ -2,11 +2,12 @@
   "status": "passed",
   "reviewer": "primary assistant visual inspection",
   "independent_review": false,
-  "pages": 4,
+  "pages": 5,
   "observations": [
-    "All four rendered pages inspected at 1200 px height.",
-    "Table cells readable; figure labels separate; no clipped body text observed.",
-    "PDF extraction matched all 55 source paragraphs and table cells."
+    "All five PDF pages inspected at 1200 px height.",
+    "Both figures and the table are readable; no clipped text observed.",
+    "All 63 source paragraphs and table cells matched PDF text extraction.",
+    "Timing ranges are explicitly descriptive, and unsafe hidden-missing result is identified."
   ],
-  "preview_tool_limitation": "Inline HTML preview failed with headless Chrome exit 1; PNG/PDF pages inspected through local image tool."
+  "preview_tool_limitation": "Headless HTML preview failed with Chrome exit 1; local PNG/PDF render inspection completed."
 }

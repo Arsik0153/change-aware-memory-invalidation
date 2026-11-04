@@ -225,3 +225,9 @@ assertion failures), без технических ошибок. Отдельн�
 отрицательны в каждой истории; known_missing не даёт устойчивого различия.
 Hidden_missing exposure быстрее, но оставляет2ложных доступности на историю.
 [Полный разбор и ограничения](behavior_timing_2026-11-04.md).
+
+Отчёт обновлён доv2:5страниц,2рисунка,49компактных evidence files.
+Проверены63текстовых блока и все5страниц; ZIP hashes сверены.
+Новая версия включает timings и post-hoc prerequisite profile. Предыдущийv1
+сохранён вoutput и Git history; текущиеPDF/DOCX обновлены вreport-delivery.
+Архив: `output/research-progress-20261104-v2.zip`.
