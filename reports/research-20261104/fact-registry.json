@@ -659,6 +659,66 @@
           "unit": "control"
         }
       ]
+    },
+    {
+      "id": "symbolic",
+      "label": "Символические условия для произвольного K",
+      "scope": "QF_LIA, K>=1, неограниченные Int; один закреплённый Z3 4.16.0.0.",
+      "limits": [
+        "Ручная формализация перехода, не production verification.",
+        "Proof objects не проверены независимым kernel.",
+        "Непротиворечивость предпосылок не доказывает их выполнение на реальных данных."
+      ],
+      "facts": [
+        {
+          "id": "symbolic.checks",
+          "label": "Все solver checks",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/checks"
+          },
+          "expected": 18,
+          "unit": "solver check"
+        },
+        {
+          "id": "symbolic.unsat_refutations",
+          "label": "UNSAT отрицаний целей",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/unsat_refutations"
+          },
+          "expected": 6,
+          "unit": "obligation"
+        },
+        {
+          "id": "symbolic.sat_premises",
+          "label": "SAT предпосылок",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sat_premises"
+          },
+          "expected": 6,
+          "unit": "obligation"
+        },
+        {
+          "id": "symbolic.sat_witnesses",
+          "label": "SAT примеров и контрпримеров",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sat_witnesses"
+          },
+          "expected": 6,
+          "unit": "witness"
+        }
+      ]
     }
   ]
 }
