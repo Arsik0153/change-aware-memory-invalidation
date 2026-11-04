@@ -54,9 +54,12 @@ The [OpenCode adapter](integrations/opencode/README.md) exposes the same local
 MCP `memory_lookup` tool for a static origin-memory catalog and CAMI-maintained
 memory. CAMI checks the live worktree and withholds source-linked notes requiring
 review; static memory explicitly reports that current validity is unchecked.
-Native code search and editing tools remain available. This is a reproducible
-integration boundary; an end-to-end speed or quality advantage has not yet been
-established.
+Native code search and editing tools remain available. Atomic catalog preparation
+now handles all 329 source notes in three fresh runs; the previous sequential
+implementation exceeded its database bound after 131 notes. [Preparation evidence](reports/opencode-batch-preparation-20261104/summary.json)
+and [the preserved failure](reports/opencode-preflight-20261104/summary.json)
+are separate from agent-task results. An end-to-end speed or quality advantage
+has not yet been established.
 
 ## Install and run the offline demo
 
@@ -268,4 +271,4 @@ production-кода независимым proof kernel не заявляетс�
 - [Новая development-когорта Packaging](docs/packaging_development_replay_2026-11-04_ru.md): 24 новых утверждения, 69 переходов, два эпизода изменения аннотационных сигнатур. Проверок 28/71/552/552 при одинаковой доступности; 24 отрицательные строки включают два первых случая и 22 повтора. Сохранён [проверенный офлайн-корпус 72 снимков](reports/research-20261104/packaging-offline-corpus-v1/README.md).
 - [Цена переноса отрицательного ответа](docs/negative_structural_carry_cost_2026-11-04_ru.md): три реализации сокращают число проверок, но увеличивают CPU-время на закреплённых авторских историях. Отдельная регистрация неизменных входов также не окупилась; все результаты и независимые аудиты сохранены.
 
-Последняя полная проверка: [1361 passed, 4 skipped, Ruff и mypy на 07cb633](reports/research-20261104/full-verification-07cb633/checks.json); снимки исходников и хеши трёх логов совпали. Четыре опциональных Docker-теста [отдельно прошли на 2071f54](reports/research-20261104/docker-supplement-2071f54/checks.json) с прежним закреплённым образом. Все прежние исходники совпадают, добавлен только скрипт рисунка. Вместе проверены 1365 случаев; это два запуска, а не один полный прогон без пропусков. Поздние аудиторы и упаковщик корпуса проверены отдельно.
+Последняя полная проверка: [1393 passed, без skips, Ruff и mypy на 5328a45](reports/opencode-batch-full-verification-20261104/checks.json). Все Docker-тесты включены; 53 production-файла прошли проверку типов. Снимки исходников до и после совпали, включая новую директорию интеграции. Более поздний стенд модельных экспериментов проверяется отдельно. Исторический PDF v10 сохраняет результаты своего прежнего среза.

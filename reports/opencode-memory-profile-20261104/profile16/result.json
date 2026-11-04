@@ -1,0 +1,147 @@
+{
+  "actual_context_calls": 16,
+  "artifact_hashes": {
+    "counters.json": "3cd6d19f5a7806efdec53a991dc60c870367fbccabf9a941d9f890f89cbafed9",
+    "input-manifest.json": "4bc57e64e5dcb3fbd08575adde57f1bc9bd2e5323a679a920ade6da0b3982de8",
+    "phase-observations.json": "cec6a3dfd413607903fa2fd717b466f692f6876cfe24921718ae58c878f8316f",
+    "prepare.prof": "68bdce23214a5400e90548b19bf3e2d7140bd9b432a71f410c0df9d57a127e8d",
+    "seed-spec.json": "55c5813241e9e7286accb099629f224b1359919dfa1ab4164f9f20371dfa6de8",
+    "top-cumulative.json": "f2d1fc485a463ad56e2d2c4a86d4c82cc04d5e07c16793c8797a1cc61f66a888",
+    "top-cumulative.txt": "e22a2382674217e98e1920488e533f95418c1f82f20ba40deb5bab244502ad51"
+  },
+  "construction_metrics": {
+    "backend": "cami",
+    "catalog_capture": {
+      "cpu_seconds_self_and_completed_children": 8.623739939,
+      "created_from_spec": true,
+      "wall_seconds": 10.156089304946363
+    },
+    "catalog_sha256": "b3ea6b76b4beb9ddeec70c81d6479470f704ab18e7dfc57a26348de0066308da",
+    "cpu_seconds_self_and_completed_children": 17.233328698999998,
+    "output_bytes": 19024,
+    "records": 16,
+    "registrations": [
+      {
+        "cpu_seconds_self_and_completed_children": 0.4819765700000005,
+        "id": "source-91a42aa1441b49d42c254780",
+        "wall_seconds": 0.5661541058216244
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.47861469000000056,
+        "id": "source-8c6397993cdc8eb1fc926099",
+        "wall_seconds": 0.5766430429648608
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.48054847000000045,
+        "id": "source-5967cce2ecf0ddccff37453e",
+        "wall_seconds": 0.6112743988633156
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.48007310000000025,
+        "id": "source-6c5172e01910e4f770e4ab34",
+        "wall_seconds": 0.5456092718522996
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.49710825000000014,
+        "id": "source-87270cb4942eeaf7d50b7a29",
+        "wall_seconds": 0.5535098449327052
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5041379899999985,
+        "id": "source-ef70372d30d0ca79f75ff98f",
+        "wall_seconds": 0.57871412509121
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5058690800000001,
+        "id": "source-4210fab4b80491a9d849adf3",
+        "wall_seconds": 0.6057906800415367
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5030104899999994,
+        "id": "source-2978bb2d1fcc020fd6cd4455",
+        "wall_seconds": 0.6169898579828441
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5362095500000024,
+        "id": "source-992977174c3a2957064c8aed",
+        "wall_seconds": 0.6040312279947102
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5263134999999988,
+        "id": "source-9300cdbe837bb6b2b446b42b",
+        "wall_seconds": 0.621541904984042
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5079331700000012,
+        "id": "source-b52d99175cb179ae1cde205e",
+        "wall_seconds": 0.6124716908670962
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5088384799999996,
+        "id": "source-cd4ee2b4a25519fe6bc635c2",
+        "wall_seconds": 0.5665505251381546
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5283995900000011,
+        "id": "source-6f04139dd3fb1907b1e863f2",
+        "wall_seconds": 0.5910742958076298
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5380370499999998,
+        "id": "source-f1ebe9e2120f4e4d7201bf4d",
+        "wall_seconds": 0.6206629630178213
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5413651599999998,
+        "id": "source-41d3515c7efd24d066469bc2",
+        "wall_seconds": 0.7162828799337149
+      },
+      {
+        "cpu_seconds_self_and_completed_children": 0.5365071600000029,
+        "id": "source-066fbc4de34fa3fd57eb01c1",
+        "wall_seconds": 0.7097131991758943
+      }
+    ],
+    "state_bytes": 6468919,
+    "status": "complete",
+    "timing_scope": "prepare function entry through final metrics observation; excludes Python/CLI startup and final metrics write",
+    "wall_seconds": 20.36669491790235
+  },
+  "origin_source_unchanged": true,
+  "phase_aggregates": {
+    "context": {
+      "calls": 16,
+      "cpu_seconds_self_and_completed_children": 8.621627699000001,
+      "wall_seconds": 10.153445796808228
+    },
+    "freeze_spec": {
+      "calls": 1,
+      "cpu_seconds_self_and_completed_children": 8.623723419,
+      "wall_seconds": 10.156064834911376
+    },
+    "refresh": {
+      "calls": 1,
+      "cpu_seconds_self_and_completed_children": 0.44016287999999903,
+      "wall_seconds": 0.49724309192970395
+    },
+    "remember": {
+      "calls": 16,
+      "cpu_seconds_self_and_completed_children": 8.153288039999998,
+      "wall_seconds": 9.693760199705139
+    }
+  },
+  "profile_limitations": [
+    "cProfile and observer wrappers add overhead; not a speedup/throughput benchmark.",
+    "Imports of CAMI before cProfile are excluded; this isolates initialization operations, not CLI startup.",
+    "Catalog capture contains context spans; nested phases/cumulative function times must not be added twice.",
+    "Concurrent full-catalog job and filesystem/cache state can affect wall time; no repeated-order timing comparison.",
+    "First-N entries share one source path; later growing catalog/DB history costs may differ. Do not extrapolate to329."
+  ],
+  "records": 16,
+  "scope": "One first-N origin-note subset, full existing Python source roots copied into a private authored Git fixture; no task prompts/oracles/model calls.",
+  "status": "complete",
+  "total_profiled_prepare": {
+    "cpu_seconds_self_and_completed_children": 17.235083449,
+    "wall_seconds": 20.36851907102391
+  }
+}

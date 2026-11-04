@@ -1,0 +1,51 @@
+{
+  "status": "failed_cli_launcher_not_contract_evidence",
+  "authored_fixture_sha256": "a1d3176ccfbb7e6d1bdca3994748a6189a89b5ee5e9f4002022187980f69ff02",
+  "commands": [
+    {
+      "argv": [
+        "rg",
+        "--line-number",
+        "return.*7",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo/api.py"
+      ],
+      "exit_code": 0,
+      "stdout": "2:    return 7\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "-m",
+        "cami",
+        "find",
+        "return.*7",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo",
+        "--format",
+        "json"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "/usr/bin/python3.12: No module named cami\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.12",
+        "-m",
+        "cami",
+        "find",
+        "current_value",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo",
+        "--format",
+        "json"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "/usr/bin/python3.12: No module named cami\n"
+    }
+  ],
+  "conclusion": "The first launch resolved the virtualenv interpreter to system Python and used an absent package __main__. Both CAMI invocations failed before the search contract could be tested.",
+  "model_calls": 0
+}

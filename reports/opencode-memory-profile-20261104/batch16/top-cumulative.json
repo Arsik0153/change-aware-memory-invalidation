@@ -1,0 +1,452 @@
+[
+  {
+    "calls": 3,
+    "cumulative_seconds": 3.591333328,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/profile_batch.py",
+    "function": "measured",
+    "line": 41,
+    "primitive_calls": 3,
+    "self_seconds": 3.9781000000000004e-05
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 3.4201910750000004,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "_coordinate_many_locked",
+    "line": 288,
+    "primitive_calls": 3,
+    "self_seconds": 0.005340569000000001
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 3.130091301,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/memory/adapters.py",
+    "function": "prepare_locked",
+    "line": 210,
+    "primitive_calls": 3,
+    "self_seconds": 8.186e-05
+  },
+  {
+    "calls": 2,
+    "cumulative_seconds": 2.9856077610000002,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "_coordinate",
+    "line": 278,
+    "primitive_calls": 2,
+    "self_seconds": 1.561e-05
+  },
+  {
+    "calls": 2,
+    "cumulative_seconds": 2.920721131,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "_coordinate_locked",
+    "line": 282,
+    "primitive_calls": 2,
+    "self_seconds": 0.0022115430000000003
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 2.519665217,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/store.py",
+    "function": "refresh_locked",
+    "line": 303,
+    "primitive_calls": 3,
+    "self_seconds": 0.00018553000000000002
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 2.483833723,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/profile_batch.py",
+    "function": "<lambda>",
+    "line": 53,
+    "primitive_calls": 1,
+    "self_seconds": 0.0008089810000000001
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 2.4830200120000003,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "context_many",
+    "line": 147,
+    "primitive_calls": 1,
+    "self_seconds": 1.686e-05
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 2.045990982,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/symbol_search.py",
+    "function": "_search_index",
+    "line": 105,
+    "primitive_calls": 1,
+    "self_seconds": 0.00031815
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 1.7186131610000002,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/index.py",
+    "function": "build_index",
+    "line": 265,
+    "primitive_calls": 1,
+    "self_seconds": 0.023524735
+  },
+  {
+    "calls": 16,
+    "cumulative_seconds": 1.476876832,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/index.py",
+    "function": "parse_module",
+    "line": 158,
+    "primitive_calls": 16,
+    "self_seconds": 0.002191803
+  },
+  {
+    "calls": 2433,
+    "cumulative_seconds": 1.331126757,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/index.py",
+    "function": "visit",
+    "line": 172,
+    "primitive_calls": 16,
+    "self_seconds": 0.049228756000000005
+  },
+  {
+    "calls": 286356,
+    "cumulative_seconds": 0.680869673,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "walk",
+    "line": 369,
+    "primitive_calls": 286356,
+    "self_seconds": 0.12195662200000001
+  },
+  {
+    "calls": 794324,
+    "cumulative_seconds": 0.634373971,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "iter_child_nodes",
+    "line": 269,
+    "primitive_calls": 794324,
+    "self_seconds": 0.309638012
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 0.6068357990000001,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/memory/adapters.py",
+    "function": "project",
+    "line": 182,
+    "primitive_calls": 3,
+    "self_seconds": 0.00044533100000000004
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 0.606383988,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/memory/adapters.py",
+    "function": "project",
+    "line": 58,
+    "primitive_calls": 3,
+    "self_seconds": 0.050737340000000006
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 0.599545067,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/profile_batch.py",
+    "function": "<lambda>",
+    "line": 65,
+    "primitive_calls": 1,
+    "self_seconds": 0.0019886630000000003
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 0.597556404,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "remember_batch",
+    "line": 248,
+    "primitive_calls": 1,
+    "self_seconds": 0.0035332360000000004
+  },
+  {
+    "calls": 281520,
+    "cumulative_seconds": 0.528398506,
+    "file": "~",
+    "function": "<method 'extend' of 'collections.deque' objects>",
+    "line": 0,
+    "primitive_calls": 281520,
+    "self_seconds": 0.07774924700000001
+  },
+  {
+    "calls": 625743,
+    "cumulative_seconds": 0.510166899,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/index.py",
+    "function": "scope_nodes",
+    "line": 111,
+    "primitive_calls": 130352,
+    "self_seconds": 0.222708217
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 0.507847057,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "refresh",
+    "line": 83,
+    "primitive_calls": 1,
+    "self_seconds": 0.0015129920000000001
+  },
+  {
+    "calls": 5280,
+    "cumulative_seconds": 0.382911382,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/index.py",
+    "function": "bound_names",
+    "line": 133,
+    "primitive_calls": 5280,
+    "self_seconds": 0.08481616700000001
+  },
+  {
+    "calls": 9,
+    "cumulative_seconds": 0.32992880500000005,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/worktree.py",
+    "function": "capture",
+    "line": 123,
+    "primitive_calls": 9,
+    "self_seconds": 7.598e-05
+  },
+  {
+    "calls": 9,
+    "cumulative_seconds": 0.329852825,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/worktree.py",
+    "function": "_capture",
+    "line": 135,
+    "primitive_calls": 9,
+    "self_seconds": 0.0013089920000000001
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 0.326720191,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/symbol_search.py",
+    "function": "_local_import_edges",
+    "line": 27,
+    "primitive_calls": 1,
+    "self_seconds": 0.028002793
+  },
+  {
+    "calls": 512,
+    "cumulative_seconds": 0.30547344000000004,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "get_source_segment",
+    "line": 332,
+    "primitive_calls": 512,
+    "self_seconds": 0.004732323
+  },
+  {
+    "calls": 85,
+    "cumulative_seconds": 0.30457852900000004,
+    "file": "/usr/lib/python3.12/subprocess.py",
+    "function": "run",
+    "line": 506,
+    "primitive_calls": 85,
+    "self_seconds": 0.0007082120000000001
+  },
+  {
+    "calls": 512,
+    "cumulative_seconds": 0.299703015,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "_splitlines_no_ff",
+    "line": 308,
+    "primitive_calls": 512,
+    "self_seconds": 0.26587693500000004
+  },
+  {
+    "calls": 2919212,
+    "cumulative_seconds": 0.290643786,
+    "file": "~",
+    "function": "<built-in method builtins.isinstance>",
+    "line": 0,
+    "primitive_calls": 2919212,
+    "self_seconds": 0.290391096
+  },
+  {
+    "calls": 17610,
+    "cumulative_seconds": 0.273171054,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/models.py",
+    "function": "safe_path",
+    "line": 29,
+    "primitive_calls": 17610,
+    "self_seconds": 0.053246308000000006
+  },
+  {
+    "calls": 37,
+    "cumulative_seconds": 0.261079263,
+    "file": "~",
+    "function": "<method 'validate_json' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+    "line": 0,
+    "primitive_calls": 37,
+    "self_seconds": 0.061054741
+  },
+  {
+    "calls": 7716,
+    "cumulative_seconds": 0.247416661,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "dump",
+    "line": 115,
+    "primitive_calls": 7716,
+    "self_seconds": 0.006526870000000001
+  },
+  {
+    "calls": 120278,
+    "cumulative_seconds": 0.24016199100000002,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "_format",
+    "line": 127,
+    "primitive_calls": 7716,
+    "self_seconds": 0.16420526200000002
+  },
+  {
+    "calls": 1064504,
+    "cumulative_seconds": 0.23335344100000002,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "iter_fields",
+    "line": 257,
+    "primitive_calls": 1064504,
+    "self_seconds": 0.172261471
+  },
+  {
+    "calls": 85,
+    "cumulative_seconds": 0.22456492,
+    "file": "/usr/lib/python3.12/subprocess.py",
+    "function": "communicate",
+    "line": 1165,
+    "primitive_calls": 85,
+    "self_seconds": 0.00033652000000000004
+  },
+  {
+    "calls": 85,
+    "cumulative_seconds": 0.22406935,
+    "file": "/usr/lib/python3.12/subprocess.py",
+    "function": "_communicate",
+    "line": 2062,
+    "primitive_calls": 85,
+    "self_seconds": 0.002585838
+  },
+  {
+    "calls": 120738,
+    "cumulative_seconds": 0.21539796400000003,
+    "file": "/root/apps/change-aware-memory-invalidation/.venv/lib/python3.12/site-packages/pydantic/main.py",
+    "function": "__eq__",
+    "line": 1147,
+    "primitive_calls": 116686,
+    "self_seconds": 0.150107554
+  },
+  {
+    "calls": 280,
+    "cumulative_seconds": 0.20346480600000003,
+    "file": "/usr/lib/python3.12/selectors.py",
+    "function": "select",
+    "line": 402,
+    "primitive_calls": 280,
+    "self_seconds": 0.0010055700000000001
+  },
+  {
+    "calls": 280,
+    "cumulative_seconds": 0.202190325,
+    "file": "~",
+    "function": "<method 'poll' of 'select.poll' objects>",
+    "line": 0,
+    "primitive_calls": 280,
+    "self_seconds": 0.202190325
+  },
+  {
+    "calls": 80,
+    "cumulative_seconds": 0.20012858900000002,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "parse",
+    "line": 34,
+    "primitive_calls": 80,
+    "self_seconds": 0.035818846
+  },
+  {
+    "calls": 46,
+    "cumulative_seconds": 0.16755024400000001,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/repository.py",
+    "function": "git",
+    "line": 38,
+    "primitive_calls": 46,
+    "self_seconds": 0.0012988610000000001
+  },
+  {
+    "calls": 82,
+    "cumulative_seconds": 0.167422638,
+    "file": "~",
+    "function": "<built-in method builtins.compile>",
+    "line": 0,
+    "primitive_calls": 82,
+    "self_seconds": 0.167422638
+  },
+  {
+    "calls": 35,
+    "cumulative_seconds": 0.156966563,
+    "file": "/root/apps/change-aware-memory-invalidation/.venv/lib/python3.12/site-packages/pydantic/main.py",
+    "function": "model_validate_json",
+    "line": 726,
+    "primitive_calls": 35,
+    "self_seconds": 4.7810000000000005e-05
+  },
+  {
+    "calls": 103315,
+    "cumulative_seconds": 0.15059767500000001,
+    "file": "~",
+    "function": "<method 'join' of 'str' objects>",
+    "line": 0,
+    "primitive_calls": 54225,
+    "self_seconds": 0.022275043
+  },
+  {
+    "calls": 20647,
+    "cumulative_seconds": 0.138732305,
+    "file": "/usr/lib/python3.12/ast.py",
+    "function": "<genexpr>",
+    "line": 172,
+    "primitive_calls": 6551,
+    "self_seconds": 0.005685517
+  },
+  {
+    "calls": 36,
+    "cumulative_seconds": 0.1315281,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/worktree.py",
+    "function": "_ignored_paths",
+    "line": 100,
+    "primitive_calls": 36,
+    "self_seconds": 0.0015287500000000002
+  },
+  {
+    "calls": 3,
+    "cumulative_seconds": 0.129109048,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/store.py",
+    "function": "load",
+    "line": 205,
+    "primitive_calls": 3,
+    "self_seconds": 0.0011204510000000002
+  },
+  {
+    "calls": 598,
+    "cumulative_seconds": 0.127384344,
+    "file": "~",
+    "function": "<built-in method builtins.next>",
+    "line": 0,
+    "primitive_calls": 483,
+    "self_seconds": 0.00045536000000000003
+  },
+  {
+    "calls": 6,
+    "cumulative_seconds": 0.125567963,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/service.py",
+    "function": "_session",
+    "line": 75,
+    "primitive_calls": 6,
+    "self_seconds": 2.3250000000000003e-05
+  },
+  {
+    "calls": 6,
+    "cumulative_seconds": 0.125065962,
+    "file": "/root/apps/change-aware-memory-invalidation/runs/opencode-memory-profile-development-20261104/batch-api/runtime/cami/product/memory/store.py",
+    "function": "connection",
+    "line": 166,
+    "primitive_calls": 6,
+    "self_seconds": 7.944e-05
+  }
+]

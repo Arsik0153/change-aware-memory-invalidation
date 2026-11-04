@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""Profile the public staged batch API once on the exact saved16-note origin inputs."""
+from __future__ import annotations
+
+import argparse
+import cProfile
+import io
+import json
+from pathlib import Path
+import pstats
+import shutil
+import subprocess
+import sys
+import time
+
+from profile_prepare import sha, save
+
+
+def run(runtime, adapter_dir, baseline, output):
+    output.mkdir(parents=True, exist_ok=False)
+    repo = output / "repo"
+    shutil.copytree(baseline / "repo", repo, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+    subprocess.run(["git", "init", "-q", str(repo)], check=True)
+    spec = json.loads((baseline / "seed-spec.json").read_text())
+    save(output / "seed-spec.json", spec)
+    sys.path.insert(0, str(runtime))
+    sys.path.insert(0, str(adapter_dir))
+    import memory_backend as backend
+    from cami.product.memory.models import RememberInput
+    from cami.product.memory.validation import availability
+    from cami.product.service import ProductMemory
+    import cami.product.service as service_module
+    if not Path(service_module.__file__).resolve().is_relative_to(runtime):
+        raise ValueError("not using staged runtime")
+    observations = []
+    profile = cProfile.Profile()
+    state = output / "state"
+    prepared = output / "prepared"
+    prepared.mkdir()
+
+    def measured(label, operation):
+        started, started_cpu = time.perf_counter(), backend.cpu()
+        result = operation()
+        observations.append({"operation": label, "wall_seconds": time.perf_counter() - started,
+                             "cpu_seconds_self_and_completed_children": backend.cpu() - started_cpu})
+        return result
+
+    started, started_cpu = time.perf_counter(), backend.cpu()
+    try:
+        profile.enable()
+        with backend.isolated_state(state):
+            service = ProductMemory(repo, tuple(spec["source_roots"]), tuple(spec["excluded_paths"]))
+            contexts = measured("context_many", lambda: service.context_many(tuple(r["selector"] for r in spec["records"])))
+            records = []
+            for seed, context in zip(spec["records"], contexts, strict=True):
+                backend.check(len(context.code) == 1 and context.code[0].subject.model_dump(mode="json") == seed["subject"], "origin mismatch")
+                fact = context.code[0]
+                source = {key: fact.source.model_dump(mode="json")[key] for key in ("path", "sha256", "size")}
+                records.append({"id": seed["id"], "source": source, "payload": {"type": "note", "subject": seed["subject"],
+                                "note_key": seed["note_key"], "text": seed["text"], "sources": [source]}})
+            catalog = backend.validate_catalog({key: spec[key] for key in ("schema_version", "source_roots", "excluded_paths")} | {"records": records})
+            requests = tuple(RememberInput(kind="note", query=seed["selector"], context=context,
+                             request_id="adapter-seed-" + backend.digest(record), note_key=seed["note_key"], text=seed["text"])
+                             for seed, record, context in zip(spec["records"], records, contexts, strict=True))
+            receipts = measured("remember_batch", lambda: service.remember_batch(requests))
+            generation = measured("refresh", service.refresh)
+            by_id = {s.record.memory_id: s for s in generation.states}
+            backend.check(len(by_id) == len(records) and all(not hasattr(availability(s), "reason") for s in generation.states), "batch not all initially available")
+            for record, receipt in zip(records, receipts, strict=True):
+                backend.check(backend.plain_payload(by_id[receipt.memory_id].record.payload) == record["payload"], "batch payload mismatch")
+                backend.check(backend.origin_source(repo, record["source"]["path"]) == record["source"], "origin changed")
+            backend.save(prepared / "catalog.json", catalog)
+            backend.save(prepared / "receipts.json", [r.model_dump(mode="json") for r in receipts])
+            backend.check(catalog == backend.load(baseline / "prepared/catalog.json"), "sequential/batch catalogs differ")
+            state_bytes = backend.storage(state)
+    finally:
+        profile.disable()
+        measured_total = {"wall_seconds": time.perf_counter() - started,
+                          "cpu_seconds_self_and_completed_children": backend.cpu() - started_cpu}
+        profile.dump_stats(str(output / "prepare.prof"))
+    save(output / "phase-observations.json", observations)
+    stream = io.StringIO()
+    pstats.Stats(profile, stream=stream).strip_dirs().sort_stats("cumulative").print_stats(40)
+    (output / "top-cumulative.txt").write_text(stream.getvalue())
+    functions = []
+    for (filename, line, function), (primitive, calls, self_time, cumulative, _) in pstats.Stats(profile).stats.items():
+        functions.append({"file": filename, "line": line, "function": function, "primitive_calls": primitive,
+                          "calls": calls, "self_seconds": self_time, "cumulative_seconds": cumulative})
+    functions.sort(key=lambda r: (-r["cumulative_seconds"], r["file"], r["line"], r["function"]))
+    save(output / "top-cumulative.json", functions[:50])
+    base_counters = json.loads((baseline / "counters.json").read_text())
+    names = {r["function"] for r in base_counters} | {"context_many", "remember_batch", "_coordinate_many_locked"}
+    counters = [r for r in functions if r["function"] in names and "/cami/" in r["file"]]
+    save(output / "counters.json", counters)
+    manifest = {"status": "complete", "records": len(records), "phase_observations": observations,
+                "total_profiled_prepare": measured_total, "state_bytes": state_bytes,
+                "semantic_catalog_exactly_equal_to_sequential": True,
+                "all_records_initially_available": True,
+                "catalog_sha256": backend.digest(catalog),
+                "baseline_result_sha256": sha(baseline / "result.json"),
+                "baseline_input_sha256": sha(baseline / "input-manifest.json"),
+                "staged_source_sha256": {str(p.relative_to(runtime)): sha(p) for p in
+                    (runtime / "cami/product/service.py", runtime / "cami/product/memory/models.py")},
+                "limits": ["One cProfile run per implementation with instrumentation; no alternating repeated unprofiled benchmark.",
+                           "Sequential run overlapped a full-catalog job; batch run may have different contention/cache state.",
+                           "Initialization comparison only; no model sessions or task success/speedup inference.",
+                           "Exact equivalent catalog/current availability; intentionally atomic batch history differs from sequential intermediate publications."]}
+    save(output / "result.json", manifest)
+    print(json.dumps({k: manifest[k] for k in ("status", "records", "phase_observations", "total_profiled_prepare", "state_bytes", "semantic_catalog_exactly_equal_to_sequential")}, indent=2))
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--runtime", type=Path, required=True)
+    p.add_argument("--adapter-dir", type=Path, required=True)
+    p.add_argument("--baseline", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    a = p.parse_args()
+    run(a.runtime.resolve(), a.adapter_dir.resolve(), a.baseline.resolve(), a.out.resolve())
+
+
+if __name__ == "__main__":
+    main()

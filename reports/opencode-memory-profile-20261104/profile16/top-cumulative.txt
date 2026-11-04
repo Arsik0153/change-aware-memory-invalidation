@@ -1,0 +1,48 @@
+         39295247 function calls (38183700 primitive calls) in 20.362 seconds
+
+   Ordered by: cumulative time
+   List reduced from 728 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001   20.368   20.368 memory_backend.py:227(prepare)
+    34/18    0.018    0.001   20.349    1.130 profile_prepare.py:71(observed)
+       33    0.070    0.002   18.081    0.548 service.py:227(_coordinate_locked)
+       33    0.001    0.000   15.116    0.458 adapters.py:210(prepare_locked)
+       17    0.028    0.002   10.619    0.625 service.py:223(_coordinate)
+        1    0.000    0.000   10.156   10.156 memory_backend.py:127(freeze_spec)
+       16    0.000    0.000   10.136    0.633 service.py:136(context)
+       16    0.036    0.002    9.694    0.606 service.py:164(remember)
+       16    0.047    0.003    9.658    0.604 service.py:174(_mutate)
+       33    0.001    0.000    7.782    0.236 store.py:303(refresh_locked)
+       33    0.007    0.000    7.333    0.222 adapters.py:182(project)
+       33    0.610    0.018    7.326    0.222 adapters.py:58(project)
+      577    1.098    0.002    4.306    0.007 {method 'validate_json' of 'pydantic_core._pydantic_core.SchemaValidator' objects}
+  1524306    0.672    0.000    3.749    0.000 ast.py:369(walk)
+   234630    0.554    0.000    3.658    0.000 models.py:29(safe_path)
+       99    0.001    0.000    3.115    0.031 worktree.py:123(capture)
+       99    0.008    0.000    3.115    0.031 worktree.py:135(_capture)
+  1518990    0.432    0.000    2.922    0.000 {method 'extend' of 'collections.deque' objects}
+      925    0.007    0.000    2.913    0.003 subprocess.py:506(run)
+  3268784    1.304    0.000    2.681    0.000 ast.py:269(iter_child_nodes)
+       33    0.025    0.001    2.498    0.076 store.py:205(load)
+      545    0.002    0.000    2.357    0.004 main.py:726(model_validate_json)
+        1    0.000    0.000    2.183    2.183 symbol_search.py:105(_search_index)
+       32    0.000    0.000    1.951    0.061 type_adapter.py:452(validate_json)
+        1    0.023    0.023    1.863    1.863 index.py:265(build_index)
+6658/5373    0.007    0.000    1.712    0.000 {built-in method builtins.next}
+       66    0.000    0.000    1.691    0.026 service.py:67(_session)
+       66    0.001    0.000    1.685    0.026 store.py:166(connection)
+       16    0.002    0.000    1.623    0.101 index.py:158(parse_module)
+      925    0.003    0.000    1.592    0.002 subprocess.py:1165(communicate)
+      925    0.024    0.000    1.587    0.002 subprocess.py:2062(_communicate)
+   234910    0.157    0.000    1.579    0.000 pathlib.py:702(parts)
+   480635    0.237    0.000    1.484    0.000 pathlib.py:551(drive)
+      560    0.226    0.000    1.447    0.003 ast.py:34(parse)
+      496    0.013    0.000    1.446    0.003 repository.py:38(git)
+      396    0.020    0.000    1.386    0.003 worktree.py:100(_ignored_paths)
+  2433/16    0.056    0.000    1.363    0.085 index.py:172(visit)
+    16896    0.205    0.000    1.330    0.000 adapters.py:28(python_signature)
+      925    0.008    0.000    1.310    0.001 subprocess.py:807(__init__)
+      925    0.057    0.000    1.260    0.001 subprocess.py:1791(_execute_child)
+
+

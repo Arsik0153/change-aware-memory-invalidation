@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""One isolated, profiled small-catalog preparation; no original edits/model calls."""
+from __future__ import annotations
+
+import argparse
+import cProfile
+from functools import wraps
+import hashlib
+import io
+import json
+from pathlib import Path
+import pstats
+import shutil
+import subprocess
+import sys
+import time
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def save(path, value):
+    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+def run(adapter_dir, origin, spec_path, output, count):
+    output.mkdir(parents=True, exist_ok=False)
+    source_hashes = {}
+    repo = output / "repo"
+    repo.mkdir()
+    spec = json.loads(spec_path.read_text())
+    spec["records"] = spec["records"][:count]
+    if len(spec["records"]) != count:
+        raise ValueError("insufficient seed records")
+    for record in spec["records"]:
+        # Required by existing ProductMemory global note identity, not a task/content selection.
+        record["note_key"] = "source-excerpt:" + hashlib.sha256(record["selector"].encode()).hexdigest()[:24]
+    for root in spec["source_roots"]:
+        if root == ".":
+            raise ValueError("explicit source roots required for bounded source copy")
+        for path in sorted((origin / root).rglob("*.py")):
+            relative = path.relative_to(origin)
+            source_hashes[str(relative)] = sha(path)
+            destination = repo / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, destination)
+    if (origin / ".gitignore").is_file():
+        source_hashes[".gitignore"] = sha(origin / ".gitignore")
+        shutil.copyfile(origin / ".gitignore", repo / ".gitignore")
+    subprocess.run(["git", "init", "-q", str(repo)], check=True)
+    save(output / "seed-spec.json", spec)
+    save(output / "input-manifest.json", {"origin": str(origin), "seed_spec_path": str(spec_path),
+         "seed_spec_sha256": sha(spec_path), "selected_count": count,
+         "selected_ids": [r["id"] for r in spec["records"]], "selection": "first N in frozen origin seed order",
+         "note_key_recipe": "source-excerpt:sha256(selector)[:24]; global uniqueness preflight",
+         "copied_source_sha256": source_hashes,
+         "copied_python_files": sum(name.endswith(".py") for name in source_hashes),
+         "copied_source_bytes": sum((repo / name).stat().st_size for name in source_hashes),
+         "adapter_sha256": {n: sha(adapter_dir / n) for n in ("memory_adapter.py", "memory_backend.py")}})
+    sys.path.insert(0, str(adapter_dir))
+    import memory_backend as backend
+    from cami.product.service import ProductMemory
+
+    observations = []
+    phase = "other"
+    restores = []
+
+    def instrument(owner, name, label):
+        original = getattr(owner, name)
+        @wraps(original)
+        def observed(*args, **kwargs):
+            nonlocal phase
+            previous = phase
+            if label == "freeze_spec":
+                phase = "catalog_capture"
+            elif label == "remember":
+                phase = "registration"
+            elif label == "refresh":
+                phase = "final_refresh"
+            started, started_cpu = time.perf_counter(), backend.cpu()
+            try:
+                return original(*args, **kwargs)
+            finally:
+                entry = {"operation": label, "phase": phase,
+                         "wall_seconds": time.perf_counter() - started,
+                         "cpu_seconds_self_and_completed_children": backend.cpu() - started_cpu}
+                if label == "context":
+                    entry["query_sha256"] = backend.digest(args[1] if len(args) > 1 else kwargs.get("query"))
+                observations.append(entry)
+                phase = previous
+        setattr(owner, name, observed)
+        restores.append((owner, name, original))
+
+    for owner, name in ((backend, "freeze_spec"), (ProductMemory, "context"),
+                        (ProductMemory, "remember"), (ProductMemory, "refresh")):
+        instrument(owner, name, name)
+    profile = cProfile.Profile()
+    started, started_cpu = time.perf_counter(), backend.cpu()
+    try:
+        profile.enable()
+        backend.prepare("cami", repo, output / "prepared", spec_path=output / "seed-spec.json", state_home=output / "state")
+    finally:
+        profile.disable()
+        measured = {"wall_seconds": time.perf_counter() - started,
+                    "cpu_seconds_self_and_completed_children": backend.cpu() - started_cpu}
+        for owner, name, original in restores:
+            setattr(owner, name, original)
+        profile.dump_stats(str(output / "prepare.prof"))
+        save(output / "phase-observations.json", observations)
+    stats = pstats.Stats(profile)
+    stream = io.StringIO()
+    stats.stream = stream
+    stats.strip_dirs().sort_stats("cumulative").print_stats(40)
+    (output / "top-cumulative.txt").write_text(stream.getvalue())
+    functions = []
+    for (filename, line, function), values in pstats.Stats(profile).stats.items():
+        primitive, calls, self_time, cumulative, _ = values
+        functions.append({"file": filename, "line": line, "function": function,
+                          "primitive_calls": primitive, "calls": calls,
+                          "self_seconds": self_time, "cumulative_seconds": cumulative})
+    functions.sort(key=lambda r: (-r["cumulative_seconds"], r["file"], r["line"], r["function"]))
+    save(output / "top-cumulative.json", functions[:50])
+    names = {"context", "remember", "refresh", "_coordinate_locked", "capture", "_capture", "refresh_locked",
+             "build_index", "parse_module", "project", "python_signature", "_validate_connection", "_private_connection",
+             "read_source", "put_sources", "view", "_image", "save_revision", "publish", "_write_file", "_sync_directory",
+             "git", "_ignored_paths", "_cache_read", "read_evidence", "transition", "check", "_read_regular", "_read_file",
+             "_publish_generation", "_publish_pointer", "_validate", "configuration_inputs"}
+    counters = [r for r in functions if r["function"] in names and "/src/cami/" in r["file"]]
+    save(output / "counters.json", counters)
+    aggregates = {}
+    for label in ("freeze_spec", "context", "remember", "refresh"):
+        entries = [r for r in observations if r["operation"] == label]
+        aggregates[label] = {"calls": len(entries), "wall_seconds": sum(r["wall_seconds"] for r in entries),
+                             "cpu_seconds_self_and_completed_children": sum(r["cpu_seconds_self_and_completed_children"] for r in entries)}
+    after = {name: sha(origin / name) for name in source_hashes}
+    if source_hashes != after:
+        raise ValueError("original source changed")
+    result = {"status": "complete", "records": count, "actual_context_calls": aggregates["context"]["calls"],
+              "phase_aggregates": aggregates, "total_profiled_prepare": measured,
+              "construction_metrics": backend.load(output / "prepared/construction-metrics.json"),
+              "origin_source_unchanged": True,
+              "scope": "One first-N origin-note subset, full existing Python source roots copied into a private authored Git fixture; no task prompts/oracles/model calls.",
+              "profile_limitations": ["cProfile and observer wrappers add overhead; not a speedup/throughput benchmark.",
+                  "Imports of CAMI before cProfile are excluded; this isolates initialization operations, not CLI startup.",
+                  "Catalog capture contains context spans; nested phases/cumulative function times must not be added twice.",
+                  "Concurrent full-catalog job and filesystem/cache state can affect wall time; no repeated-order timing comparison.",
+                  "First-N entries share one source path; later growing catalog/DB history costs may differ. Do not extrapolate to329."],
+              "artifact_hashes": {str(p.relative_to(output)): sha(p) for p in sorted(output.iterdir()) if p.is_file()}}
+    save(output / "result.json", result)
+    print(json.dumps({"status": result["status"], "records": count, "phase_aggregates": aggregates,
+                      "total_profiled_prepare": measured, "state_bytes": result["construction_metrics"]["state_bytes"]}, indent=2))
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--adapter-dir", type=Path, required=True)
+    parser.add_argument("--origin", type=Path, required=True)
+    parser.add_argument("--seed-spec", type=Path, required=True)
+    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--count", type=int, choices=(16, 32), default=16)
+    args = parser.parse_args()
+    run(args.adapter_dir.resolve(), args.origin.resolve(), args.seed_spec.resolve(), args.out.resolve(), args.count)
+
+
+if __name__ == "__main__":
+    main()

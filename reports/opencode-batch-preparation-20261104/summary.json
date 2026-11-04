@@ -1,0 +1,16 @@
+{
+  "status": "three_complete_full_catalog_preparations",
+  "runtime_commit": "5328a45",
+  "notes_per_repetition": 329,
+  "catalog_equals_static_all_repetitions": true,
+  "prepare_wall_seconds": [
+    2.695367942098528,
+    2.6709584968630224,
+    2.806085560005158
+  ],
+  "state_bytes_each": 13625365,
+  "claim": "Full source-authenticated catalog preparation now succeeds under the unchanged database bound. The earlier sequential run failed after131notes; no successful-run speed ratio is inferred from its incomplete time.",
+  "limits": "Local shared-host preparation only; no OpenCode task/model quality or cost advantage established. All three fresh state directories have the same semantic origin catalog; times are not population estimates.",
+  "targeted_verification": "47 passed, Ruff clean, mypy53sourcefiles passed; full suite running separately.",
+  "history_change": "Batch has one atomic post-registration generation; independent per-record revisions/receipts and source verification remain. Sequential intermediate history is intentionally absent."
+}

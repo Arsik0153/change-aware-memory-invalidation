@@ -1,0 +1,41 @@
+{
+  "all_records_initially_available": true,
+  "baseline_input_sha256": "4bc57e64e5dcb3fbd08575adde57f1bc9bd2e5323a679a920ade6da0b3982de8",
+  "baseline_result_sha256": "7e26e70865a6d2fd0edd6501600eefada14dfe64510eca5f9eec43daf568b02a",
+  "catalog_sha256": "b3ea6b76b4beb9ddeec70c81d6479470f704ab18e7dfc57a26348de0066308da",
+  "limits": [
+    "One cProfile run per implementation with instrumentation; no alternating repeated unprofiled benchmark.",
+    "Sequential run overlapped a full-catalog job; batch run may have different contention/cache state.",
+    "Initialization comparison only; no model sessions or task success/speedup inference.",
+    "Exact equivalent catalog/current availability; intentionally atomic batch history differs from sequential intermediate publications."
+  ],
+  "phase_observations": [
+    {
+      "cpu_seconds_self_and_completed_children": 2.38458388,
+      "operation": "context_many",
+      "wall_seconds": 2.4838449731469154
+    },
+    {
+      "cpu_seconds_self_and_completed_children": 0.5523998789999993,
+      "operation": "remember_batch",
+      "wall_seconds": 0.5995576370041817
+    },
+    {
+      "cpu_seconds_self_and_completed_children": 0.4914641900000003,
+      "operation": "refresh",
+      "wall_seconds": 0.507863697130233
+    }
+  ],
+  "records": 16,
+  "semantic_catalog_exactly_equal_to_sequential": true,
+  "staged_source_sha256": {
+    "cami/product/memory/models.py": "2842a448e972a1c253d8013771bcc4f466ad9a200bf27dbdea197929ac903a54",
+    "cami/product/service.py": "1e232dbdb3055a6bd1b8888f623df5133df0c338aa602897b8f6f54e2a1c7687"
+  },
+  "state_bytes": 3024183,
+  "status": "complete",
+  "total_profiled_prepare": {
+    "cpu_seconds_self_and_completed_children": 3.457225879,
+    "wall_seconds": 3.6207477329298854
+  }
+}

@@ -1,0 +1,48 @@
+         9591163 function calls (8908904 primitive calls) in 3.630 seconds
+
+   Ordered by: cumulative time
+   List reduced from 736 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        3    0.000    0.000    3.616    1.205 profile_batch.py:41(measured)
+        3    0.006    0.002    3.453    1.151 service.py:288(_coordinate_many_locked)
+        3    0.000    0.000    3.163    1.054 adapters.py:210(prepare_locked)
+        2    0.000    0.000    2.968    1.484 service.py:278(_coordinate)
+        2    0.002    0.001    2.898    1.449 service.py:282(_coordinate_locked)
+        3    0.000    0.000    2.524    0.841 store.py:303(refresh_locked)
+        1    0.001    0.001    2.465    2.465 profile_batch.py:53(<lambda>)
+        1    0.000    0.000    2.464    2.464 service.py:147(context_many)
+        1    0.000    0.000    2.043    2.043 symbol_search.py:105(_search_index)
+        1    0.023    0.023    1.717    1.717 index.py:265(build_index)
+       16    0.002    0.000    1.483    0.093 index.py:158(parse_module)
+  2433/16    0.049    0.000    1.332    0.083 index.py:172(visit)
+   286356    0.128    0.000    0.689    0.000 ast.py:369(walk)
+   794324    0.313    0.000    0.644    0.000 ast.py:269(iter_child_nodes)
+        1    0.002    0.002    0.642    0.642 profile_batch.py:65(<lambda>)
+        1    0.003    0.003    0.640    0.640 service.py:248(remember_batch)
+        3    0.001    0.000    0.635    0.212 adapters.py:182(project)
+        3    0.053    0.018    0.635    0.212 adapters.py:58(project)
+   281520    0.079    0.000    0.530    0.000 {method 'extend' of 'collections.deque' objects}
+625743/130352    0.217    0.000    0.518    0.000 index.py:111(scope_nodes)
+        1    0.001    0.001    0.508    0.508 service.py:83(refresh)
+     5280    0.088    0.000    0.384    0.000 index.py:133(bound_names)
+        9    0.000    0.000    0.327    0.036 worktree.py:123(capture)
+        9    0.001    0.000    0.327    0.036 worktree.py:135(_capture)
+        1    0.028    0.028    0.325    0.325 symbol_search.py:27(_local_import_edges)
+       85    0.001    0.000    0.322    0.004 subprocess.py:506(run)
+      512    0.005    0.000    0.306    0.001 ast.py:332(get_source_segment)
+      512    0.272    0.001    0.300    0.001 ast.py:308(_splitlines_no_ff)
+  2918700    0.294    0.000    0.294    0.000 {built-in method builtins.isinstance}
+    17610    0.061    0.000    0.278    0.000 models.py:29(safe_path)
+       37    0.062    0.002    0.267    0.007 {method 'validate_json' of 'pydantic_core._pydantic_core.SchemaValidator' objects}
+       85    0.000    0.000    0.254    0.003 subprocess.py:1165(communicate)
+       85    0.002    0.000    0.254    0.003 subprocess.py:2062(_communicate)
+     7716    0.007    0.000    0.247    0.000 ast.py:115(dump)
+  1064504    0.176    0.000    0.239    0.000 ast.py:257(iter_fields)
+120278/7716    0.163    0.000    0.239    0.000 ast.py:127(_format)
+      272    0.001    0.000    0.238    0.001 selectors.py:402(select)
+      272    0.237    0.001    0.237    0.001 {method 'poll' of 'select.poll' objects}
+120226/116174    0.147    0.000    0.211    0.000 main.py:1147(__eq__)
+       80    0.036    0.000    0.207    0.003 ast.py:34(parse)
+
+

@@ -1,0 +1,46 @@
+{
+  "status": "checked",
+  "commands": [
+    {
+      "argv": [
+        "rg",
+        "--line-number",
+        "return.*7",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo/api.py"
+      ],
+      "exit_code": 0,
+      "stdout": "2:    return 7\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/cami",
+        "find",
+        "return.*7",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"absence_confirmed\": true, \"coverage\": \"complete\", \"global_unresolved\": false, \"graph_complete\": false, \"limitations\": [{\"code\": \"calls_may_include_nested_scopes\", \"path\": null}, {\"code\": \"python_functions_and_methods_only\", \"path\": null}, {\"code\": \"runtime_binding_not_evaluated\", \"path\": null}, {\"code\": \"static_graph_is_partial\", \"path\": null}, {\"code\": \"unresolved_is_conservative\", \"path\": null}], \"matches\": [], \"observation\": {\"cache_reused\": false, \"capture_started_at\": \"2026-11-04T18:50:42.192865+00:00\", \"verified_at\": \"2026-11-04T18:50:42.232438+00:00\"}, \"query\": \"return.*7\", \"requested_revision\": null, \"schema_version\": 3, \"snapshot\": {\"base_commit\": null, \"consistency\": \"verified_readset\", \"fingerprint\": \"37ef4c78814116500890012e5bce6dcb242854629eef38b192ec107fb81b1dda\", \"generation_id\": \"0e21f526d73f5d2eca2b3161f7abf4e9e3382689d28d55a023363fd8cfa8cb19\", \"index_version\": \"4\", \"kind\": \"worktree\", \"policy\": {\"excluded_dirs\": [\".git\", \".venv\", \"venv\", \"node_modules\", \"__pycache__\", \".pytest_cache\", \".mypy_cache\", \".ruff_cache\", \".cache\", \".tox\", \".nox\", \".next\", \"dist\", \"build\", \"out\", \"coverage\", \".cami\"], \"excluded_paths\": [], \"ignore_fingerprint\": \"b190a17679c407b9d8ac313f15bfcbcd524a7a49becc8b5d961e56583d4f3f55\", \"language\": \"python_js_ts\", \"root_outputs\": [\"runs\", \"reports\", \"output\", \"cache\", \"state\"], \"source_roots\": [\".\"]}, \"python_version\": \"3.12.3\", \"search_version\": \"3\", \"snapshot_id\": \"f0f93e60ec60f9ad8ababfd1faab11bfd453c8e51ca8ac6a1a220befce5d2ad9\", \"source_roots\": [\".\"]}, \"status\": \"not_found\", \"typescript\": {\"status\": \"not_present\"}, \"unresolved\": []}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/cami",
+        "find",
+        "current_value",
+        "--repo",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-search-contract-20261104/authored-repo",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"absence_confirmed\": false, \"coverage\": \"complete\", \"global_unresolved\": false, \"graph_complete\": false, \"limitations\": [{\"code\": \"calls_may_include_nested_scopes\", \"path\": null}, {\"code\": \"python_functions_and_methods_only\", \"path\": null}, {\"code\": \"runtime_binding_not_evaluated\", \"path\": null}, {\"code\": \"static_graph_is_partial\", \"path\": null}, {\"code\": \"unresolved_is_conservative\", \"path\": null}], \"matches\": [{\"ambiguous\": false, \"end_line\": 2, \"incoming\": [], \"language\": \"python\", \"module\": \"api\", \"node_kind\": \"function\", \"outgoing\": [], \"path\": \"api.py\", \"qualified_name\": \"api.current_value\", \"qualname\": \"current_value\", \"signature\": {\"decorators_ast\": [], \"is_async\": false, \"parameters\": [], \"returns_ast\": null}, \"signature_text\": \"def current_value()\", \"start_line\": 1}], \"observation\": {\"cache_reused\": true, \"capture_started_at\": \"2026-11-04T18:50:42.516572+00:00\", \"verified_at\": \"2026-11-04T18:50:42.548190+00:00\"}, \"query\": \"current_value\", \"requested_revision\": null, \"schema_version\": 3, \"snapshot\": {\"base_commit\": null, \"consistency\": \"verified_readset\", \"fingerprint\": \"37ef4c78814116500890012e5bce6dcb242854629eef38b192ec107fb81b1dda\", \"generation_id\": \"0e21f526d73f5d2eca2b3161f7abf4e9e3382689d28d55a023363fd8cfa8cb19\", \"index_version\": \"4\", \"kind\": \"worktree\", \"policy\": {\"excluded_dirs\": [\".git\", \".venv\", \"venv\", \"node_modules\", \"__pycache__\", \".pytest_cache\", \".mypy_cache\", \".ruff_cache\", \".cache\", \".tox\", \".nox\", \".next\", \"dist\", \"build\", \"out\", \"coverage\", \".cami\"], \"excluded_paths\": [], \"ignore_fingerprint\": \"b190a17679c407b9d8ac313f15bfcbcd524a7a49becc8b5d961e56583d4f3f55\", \"language\": \"python_js_ts\", \"root_outputs\": [\"runs\", \"reports\", \"output\", \"cache\", \"state\"], \"source_roots\": [\".\"]}, \"python_version\": \"3.12.3\", \"search_version\": \"3\", \"snapshot_id\": \"f0f93e60ec60f9ad8ababfd1faab11bfd453c8e51ca8ac6a1a220befce5d2ad9\", \"source_roots\": [\".\"]}, \"status\": \"found\", \"typescript\": {\"status\": \"not_present\"}, \"unresolved\": []}\n",
+      "stderr": ""
+    }
+  ],
+  "model_calls": 0,
+  "conclusion": "Regex text search returns the matching body line; CAMI exact-definition search reports not_found for that regex and found for the actual symbol. These are different contracts, so native grep remains unchanged in the primary study."
+}

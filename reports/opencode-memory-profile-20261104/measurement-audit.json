@@ -1,0 +1,54 @@
+{
+  "claim": "Batch API avoids repeated whole-view/capture and serial intermediate state publication while preserving payload/current-availability semantics; no timing speedup claim.",
+  "run_count": "one sequential profile and one final-source batch profile; earlier different-source draft retained",
+  "limiter_evidence": "33 projections/99 captures/136 note transitions become3/9/16 for same16 notes; one cold index build on each; raw profiles pinned",
+  "errors": {
+    "sequential16": 0,
+    "final_batch16": 0,
+    "semantic_catalog_equal": true,
+    "all_batch_records_available": true,
+    "same_revisions_and_receipts": 16
+  },
+  "work_happened": "Actual saved records/revisions/receipts and state rows verified via immutable-readonly SQLite and equal normalized payload catalog; no no-op/early rejection included as success.",
+  "measurement_limits": [
+    "cProfile/wrapper overhead; imports excluded",
+    "no5x alternating unprofiled repetitions",
+    "concurrent root329job during sequential profile; different load in final batch",
+    "load observed after sequential profile near completion, not before:2cores,load2.41/1.43/1.00,otherPython78.1%CPU; finalbatchbrieflyoverlappedmypy",
+    "first16 shareonepath; cannot extrapolate full329growingDB or model task latency"
+  ],
+  "source_limits": [
+    "No production installs/edits by this agent",
+    "No targetsourceexecution/modelcalls/futuretasksororacles",
+    "Full329feasibility and broader product/watch/full suites left to root"
+  ],
+  "profiles": {
+    "profile16": {
+      "timing": {
+        "cpu_seconds_self_and_completed_children": 17.235083449,
+        "wall_seconds": 20.36851907102391
+      },
+      "state_bytes": 6468919,
+      "captures": 99,
+      "index_builds": 1,
+      "python_projection": 33,
+      "python_signatures": 16896,
+      "note_transitions": 136,
+      "saved_revisions": 16
+    },
+    "batch16-final": {
+      "timing": {
+        "cpu_seconds_self_and_completed_children": 3.49239499,
+        "wall_seconds": 3.633505583042279
+      },
+      "state_bytes": 3024183,
+      "captures": 9,
+      "index_builds": 1,
+      "python_projection": 3,
+      "python_signatures": 1536,
+      "note_transitions": 16,
+      "saved_revisions": 16
+    }
+  },
+  "benchmark_skill": "/root/.codex/plugins/cache/open-pstack/pstack/1.16.0/skills/benchmark-checklist/SKILL.md"
+}

@@ -1,0 +1,217 @@
+{
+  "excluded_paths": [],
+  "records": [
+    {
+      "id": "source-91a42aa1441b49d42c254780",
+      "kind": "note",
+      "note_key": "source-excerpt:91a42aa1441b49d42c254780",
+      "selector": "src/click/_compat.py:_AtomicFile.__init__",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_AtomicFile.__init__"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_AtomicFile.__init__.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 455-459.\nThis is source text from the memory origin, not a verified behavior claim.\n    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n"
+    },
+    {
+      "id": "source-8c6397993cdc8eb1fc926099",
+      "kind": "note",
+      "note_key": "source-excerpt:8c6397993cdc8eb1fc926099",
+      "selector": "src/click/_compat.py:_AtomicFile.close",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_AtomicFile.close"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_AtomicFile.close.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 465-470.\nThis is source text from the memory origin, not a verified behavior claim.\n    def close(self, delete: bool = False) -> None:\n        if self.closed:\n            return\n        self._f.close()\n        os.replace(self._tmp_filename, self._real_filename)\n        self.closed = True\n"
+    },
+    {
+      "id": "source-5967cce2ecf0ddccff37453e",
+      "kind": "note",
+      "note_key": "source-excerpt:5967cce2ecf0ddccff37453e",
+      "selector": "src/click/_compat.py:_AtomicFile.name",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_AtomicFile.name"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_AtomicFile.name.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 461-463.\nThis is source text from the memory origin, not a verified behavior claim.\n    @property\n    def name(self) -> str:\n        return self._real_filename\n"
+    },
+    {
+      "id": "source-6c5172e01910e4f770e4ab34",
+      "kind": "note",
+      "note_key": "source-excerpt:6c5172e01910e4f770e4ab34",
+      "selector": "src/click/_compat.py:_FixupStream.__init__",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_FixupStream.__init__"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_FixupStream.__init__.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 88-96.\nThis is source text from the memory origin, not a verified behavior claim.\n    def __init__(\n        self,\n        stream: t.BinaryIO,\n        force_readable: bool = False,\n        force_writable: bool = False,\n    ):\n        self._stream = stream\n        self._force_readable = force_readable\n        self._force_writable = force_writable\n"
+    },
+    {
+      "id": "source-87270cb4942eeaf7d50b7a29",
+      "kind": "note",
+      "note_key": "source-excerpt:87270cb4942eeaf7d50b7a29",
+      "selector": "src/click/_compat.py:_FixupStream.read1",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_FixupStream.read1"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_FixupStream.read1.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 101-107.\nThis is source text from the memory origin, not a verified behavior claim.\n    def read1(self, size: int) -> bytes:\n        f = getattr(self._stream, \"read1\", None)\n\n        if f is not None:\n            return t.cast(bytes, f(size))\n\n        return self._stream.read(size)\n"
+    },
+    {
+      "id": "source-ef70372d30d0ca79f75ff98f",
+      "kind": "note",
+      "note_key": "source-excerpt:ef70372d30d0ca79f75ff98f",
+      "selector": "src/click/_compat.py:_FixupStream.readable",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_FixupStream.readable"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_FixupStream.readable.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 109-119.\nThis is source text from the memory origin, not a verified behavior claim.\n    def readable(self) -> bool:\n        if self._force_readable:\n            return True\n        x = getattr(self._stream, \"readable\", None)\n        if x is not None:\n            return t.cast(bool, x())\n        try:\n            self._stream.read(0)\n        except Exception:\n            return False\n        return True\n"
+    },
+    {
+      "id": "source-4210fab4b80491a9d849adf3",
+      "kind": "note",
+      "note_key": "source-excerpt:4210fab4b80491a9d849adf3",
+      "selector": "src/click/_compat.py:_FixupStream.seekable",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_FixupStream.seekable"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_FixupStream.seekable.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 136-144.\nThis is source text from the memory origin, not a verified behavior claim.\n    def seekable(self) -> bool:\n        x = getattr(self._stream, \"seekable\", None)\n        if x is not None:\n            return t.cast(bool, x())\n        try:\n            self._stream.seek(self._stream.tell())\n        except Exception:\n            return False\n        return True\n"
+    },
+    {
+      "id": "source-2978bb2d1fcc020fd6cd4455",
+      "kind": "note",
+      "note_key": "source-excerpt:2978bb2d1fcc020fd6cd4455",
+      "selector": "src/click/_compat.py:_FixupStream.writable",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_FixupStream.writable"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_FixupStream.writable.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 121-134.\nThis is source text from the memory origin, not a verified behavior claim.\n    def writable(self) -> bool:\n        if self._force_writable:\n            return True\n        x = getattr(self._stream, \"writable\", None)\n        if x is not None:\n            return t.cast(bool, x())\n        try:\n            self._stream.write(\"\")  # type: ignore\n        except Exception:\n            try:\n                self._stream.write(b\"\")\n            except Exception:\n                return False\n        return True\n"
+    },
+    {
+      "id": "source-992977174c3a2957064c8aed",
+      "kind": "note",
+      "note_key": "source-excerpt:992977174c3a2957064c8aed",
+      "selector": "src/click/_compat.py:_NonClosingTextIOWrapper.__init__",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_NonClosingTextIOWrapper.__init__"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_NonClosingTextIOWrapper.__init__.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 53-65.\nThis is source text from the memory origin, not a verified behavior claim.\n    def __init__(\n        self,\n        stream: t.BinaryIO,\n        encoding: t.Optional[str],\n        errors: t.Optional[str],\n        force_readable: bool = False,\n        force_writable: bool = False,\n        **extra: t.Any,\n    ) -> None:\n        self._stream = stream = t.cast(\n            t.BinaryIO, _FixupStream(stream, force_readable, force_writable)\n        )\n        super().__init__(stream, encoding, errors, **extra)\n"
+    },
+    {
+      "id": "source-9300cdbe837bb6b2b446b42b",
+      "kind": "note",
+      "note_key": "source-excerpt:9300cdbe837bb6b2b446b42b",
+      "selector": "src/click/_compat.py:_NonClosingTextIOWrapper.isatty",
+      "subject": {
+        "language": "python",
+        "node_kind": "method",
+        "path": "src/click/_compat.py",
+        "qualname": "_NonClosingTextIOWrapper.isatty"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:_NonClosingTextIOWrapper.isatty.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 73-75.\nThis is source text from the memory origin, not a verified behavior claim.\n    def isatty(self) -> bool:\n        # https://bitbucket.org/pypy/pypy/issue/1803\n        return self._stream.isatty()\n"
+    },
+    {
+      "id": "source-b52d99175cb179ae1cde205e",
+      "kind": "note",
+      "note_key": "source-excerpt:b52d99175cb179ae1cde205e",
+      "selector": "src/click/_compat.py:get_best_encoding",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_best_encoding"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_best_encoding.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 44-49.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_best_encoding(stream: t.IO[t.Any]) -> str:\n    \"\"\"Returns the default stream encoding if not found.\"\"\"\n    rv = getattr(stream, \"encoding\", None) or sys.getdefaultencoding()\n    if is_ascii_encoding(rv):\n        return \"utf-8\"\n    return rv\n"
+    },
+    {
+      "id": "source-cd4ee2b4a25519fe6bc635c2",
+      "kind": "note",
+      "note_key": "source-excerpt:cd4ee2b4a25519fe6bc635c2",
+      "selector": "src/click/_compat.py:get_binary_stderr",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stderr"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_binary_stderr.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 326-330.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_binary_stderr() -> t.BinaryIO:\n    writer = _find_binary_writer(sys.stderr)\n    if writer is None:\n        raise RuntimeError(\"Was not able to determine binary stream for sys.stderr.\")\n    return writer\n"
+    },
+    {
+      "id": "source-6f04139dd3fb1907b1e863f2",
+      "kind": "note",
+      "note_key": "source-excerpt:6f04139dd3fb1907b1e863f2",
+      "selector": "src/click/_compat.py:get_binary_stdin",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdin"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_binary_stdin.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 312-316.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_binary_stdin() -> t.BinaryIO:\n    reader = _find_binary_reader(sys.stdin)\n    if reader is None:\n        raise RuntimeError(\"Was not able to determine binary stream for sys.stdin.\")\n    return reader\n"
+    },
+    {
+      "id": "source-f1ebe9e2120f4e4d7201bf4d",
+      "kind": "note",
+      "note_key": "source-excerpt:f1ebe9e2120f4e4d7201bf4d",
+      "selector": "src/click/_compat.py:get_binary_stdout",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdout"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_binary_stdout.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 319-323.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_binary_stdout() -> t.BinaryIO:\n    writer = _find_binary_writer(sys.stdout)\n    if writer is None:\n        raise RuntimeError(\"Was not able to determine binary stream for sys.stdout.\")\n    return writer\n"
+    },
+    {
+      "id": "source-41d3515c7efd24d066469bc2",
+      "kind": "note",
+      "note_key": "source-excerpt:41d3515c7efd24d066469bc2",
+      "selector": "src/click/_compat.py:get_text_stderr",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_text_stderr"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_text_stderr.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 351-357.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_text_stderr(\n    encoding: t.Optional[str] = None, errors: t.Optional[str] = None\n) -> t.TextIO:\n    rv = _get_windows_console_stream(sys.stderr, encoding, errors)\n    if rv is not None:\n        return rv\n    return _force_correct_text_writer(sys.stderr, encoding, errors, force_writable=True)\n"
+    },
+    {
+      "id": "source-066fbc4de34fa3fd57eb01c1",
+      "kind": "note",
+      "note_key": "source-excerpt:066fbc4de34fa3fd57eb01c1",
+      "selector": "src/click/_compat.py:get_text_stdin",
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_text_stdin"
+      },
+      "text": "Historical source excerpt for src/click/_compat.py:get_text_stdin.\nOrigin file SHA-256: 2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c. Lines 333-339.\nThis is source text from the memory origin, not a verified behavior claim.\ndef get_text_stdin(\n    encoding: t.Optional[str] = None, errors: t.Optional[str] = None\n) -> t.TextIO:\n    rv = _get_windows_console_stream(sys.stdin, encoding, errors)\n    if rv is not None:\n        return rv\n    return _force_correct_text_reader(sys.stdin, encoding, errors, force_readable=True)\n"
+    }
+  ],
+  "schema_version": 1,
+  "source_roots": [
+    "src/click"
+  ]
+}

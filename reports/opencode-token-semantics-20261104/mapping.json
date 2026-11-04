@@ -1,0 +1,59 @@
+{
+  "installed_version": "2.2.5",
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "evidence": [
+    {
+      "file": "ai-usage-visible-output.js.txt",
+      "binary_start_byte": 173997950,
+      "binary_end_byte": 173998480,
+      "sha256": "47d1d8464ae12269da87024b807aa3a426e2b529b240159b9742b8a1963df447"
+    },
+    {
+      "file": "opencode-token-normalizer-and-cost.js.txt",
+      "binary_start_byte": 175143920,
+      "binary_end_byte": 175144830,
+      "sha256": "a6d71636acaa54a11db9024b81ee4d91b7aeb7513445ed29217f455cd0d7c4c5"
+    },
+    {
+      "file": "openai-responses-provider-usage.js.txt",
+      "binary_start_byte": 178636820,
+      "binary_end_byte": 178637600,
+      "sha256": "7eea341548b9d4b650338e8709aae931ccb17f040ec9f546145e6aaf0b14c8bc"
+    },
+    {
+      "file": "sdk-usage-bridge.js.txt",
+      "binary_start_byte": 174334250,
+      "binary_end_byte": 174334820,
+      "sha256": "06c5c4c3bbe86f7d5845e38941a90ced7cc5003046f78037a8706d94f1d06d82"
+    },
+    {
+      "file": "usage-subtract-and-sum.js.txt",
+      "binary_start_byte": 174021840,
+      "binary_end_byte": 174022090,
+      "sha256": "4c8fafcf855939c93da1157b6b350813a97f8e1eac9e172a70d094eae891679a"
+    }
+  ],
+  "confirmed_mapping": {
+    "session_tokens.input": "max(0,finite(AI.Usage.nonCachedInputTokens) else0)",
+    "session_tokens.output": "max(0,finite(AI.Usage.visibleOutputTokens) else0)",
+    "AI.Usage.visibleOutputTokens": "max(0,(outputTokens??0)-(reasoningTokens??0))",
+    "session_tokens.reasoning": "max(0,finite(AI.Usage.reasoningTokens) else0)",
+    "session_tokens.cache.read": "max(0,finite(AI.Usage.cacheReadInputTokens) else0)",
+    "session_tokens.cache.write": "max(0,finite(AI.Usage.cacheWriteInputTokens) else0)",
+    "openai_responses_usage": "input_tokens total; subtract cached_tokens and cache_write_tokens for noncached input; output_tokens total; reasoning_tokens separate"
+  },
+  "derived_when_provider_fields_present": {
+    "full_provider_input": "session.input+session.cache.read+session.cache.write",
+    "full_provider_output": "session.output+session.reasoning",
+    "uncached_input_plus_visible_output": "session.input+session.output",
+    "uncached_input_plus_total_output": "session.input+session.output+session.reasoning"
+  },
+  "cost_estimator": "input*input_rate +(output+reasoning)*output_rate +cache.read*cache_read_rate +cache.write*cache_write_rate, tier/context aware; provider explicit cost overrides; client USD estimate not subscription billing",
+  "limitations": [
+    "Normalizer collapses missing/nonfinite fields to0. Normalized session usage alone cannot prove true provider zero vs missing.",
+    "Mappings version-specific; preserve raw normalized component fields.",
+    "Do not add session totals to message/step totals.",
+    "Cached input is a disjoint input component here, not already included in session.input.",
+    "Reasoning is disjoint from normalized session.output here; provider output_tokens itself includes reasoning."
+  ]
+}

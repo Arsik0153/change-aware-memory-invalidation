@@ -1,0 +1,308 @@
+[
+  {
+    "calls": 33,
+    "cumulative_seconds": 18.080824928000002,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py",
+    "function": "_coordinate_locked",
+    "line": 227,
+    "primitive_calls": 33,
+    "self_seconds": 0.070276482
+  },
+  {
+    "calls": 16,
+    "cumulative_seconds": 10.135899891000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py",
+    "function": "context",
+    "line": 136,
+    "primitive_calls": 16,
+    "self_seconds": 0.00023789000000000001
+  },
+  {
+    "calls": 16,
+    "cumulative_seconds": 9.69361173,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py",
+    "function": "remember",
+    "line": 164,
+    "primitive_calls": 16,
+    "self_seconds": 0.035762709000000004
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 7.781641403,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "refresh_locked",
+    "line": 303,
+    "primitive_calls": 33,
+    "self_seconds": 0.0014203540000000002
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 7.3327480220000005,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/adapters.py",
+    "function": "project",
+    "line": 182,
+    "primitive_calls": 33,
+    "self_seconds": 0.006708352000000001
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 7.32594235,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/adapters.py",
+    "function": "project",
+    "line": 58,
+    "primitive_calls": 33,
+    "self_seconds": 0.609899877
+  },
+  {
+    "calls": 99,
+    "cumulative_seconds": 3.1152932910000004,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/worktree.py",
+    "function": "capture",
+    "line": 123,
+    "primitive_calls": 99,
+    "self_seconds": 0.0006913700000000001
+  },
+  {
+    "calls": 99,
+    "cumulative_seconds": 3.114601921,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/worktree.py",
+    "function": "_capture",
+    "line": 135,
+    "primitive_calls": 99,
+    "self_seconds": 0.008439178
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 1.8627219810000002,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/index.py",
+    "function": "build_index",
+    "line": 265,
+    "primitive_calls": 1,
+    "self_seconds": 0.022879860000000002
+  },
+  {
+    "calls": 16,
+    "cumulative_seconds": 1.6228590260000002,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/index.py",
+    "function": "parse_module",
+    "line": 158,
+    "primitive_calls": 16,
+    "self_seconds": 0.0021563420000000003
+  },
+  {
+    "calls": 496,
+    "cumulative_seconds": 1.446311877,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/repository.py",
+    "function": "git",
+    "line": 38,
+    "primitive_calls": 496,
+    "self_seconds": 0.013495368
+  },
+  {
+    "calls": 396,
+    "cumulative_seconds": 1.385766279,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/worktree.py",
+    "function": "_ignored_paths",
+    "line": 100,
+    "primitive_calls": 396,
+    "self_seconds": 0.020006938000000002
+  },
+  {
+    "calls": 16896,
+    "cumulative_seconds": 1.3304825530000002,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/adapters.py",
+    "function": "python_signature",
+    "line": 28,
+    "primitive_calls": 16896,
+    "self_seconds": 0.20463458
+  },
+  {
+    "calls": 48,
+    "cumulative_seconds": 1.249421214,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "view",
+    "line": 248,
+    "primitive_calls": 48,
+    "self_seconds": 0.0007284310000000001
+  },
+  {
+    "calls": 66,
+    "cumulative_seconds": 1.108197515,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "_private_connection",
+    "line": 150,
+    "primitive_calls": 66,
+    "self_seconds": 0.031229561000000003
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.8916055380000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "_validate_connection",
+    "line": 119,
+    "primitive_calls": 33,
+    "self_seconds": 0.00454449
+  },
+  {
+    "calls": 17,
+    "cumulative_seconds": 0.52747838,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "publish",
+    "line": 278,
+    "primitive_calls": 17,
+    "self_seconds": 0.01299863
+  },
+  {
+    "calls": 1,
+    "cumulative_seconds": 0.497232002,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py",
+    "function": "refresh",
+    "line": 75,
+    "primitive_calls": 1,
+    "self_seconds": 0.001217942
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.470980797,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/database.py",
+    "function": "publish",
+    "line": 109,
+    "primitive_calls": 33,
+    "self_seconds": 0.001456812
+  },
+  {
+    "calls": 103,
+    "cumulative_seconds": 0.39318768600000004,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "_write_file",
+    "line": 84,
+    "primitive_calls": 103,
+    "self_seconds": 0.000966101
+  },
+  {
+    "calls": 136,
+    "cumulative_seconds": 0.175789105,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/validation.py",
+    "function": "transition",
+    "line": 63,
+    "primitive_calls": 136,
+    "self_seconds": 0.0016997020000000002
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.15852497200000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "put_sources",
+    "line": 212,
+    "primitive_calls": 33,
+    "self_seconds": 0.003409571
+  },
+  {
+    "calls": 1432,
+    "cumulative_seconds": 0.152315798,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "read_source",
+    "line": 232,
+    "primitive_calls": 1432,
+    "self_seconds": 0.009049683000000001
+  },
+  {
+    "calls": 1681,
+    "cumulative_seconds": 0.146473723,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/database.py",
+    "function": "read_evidence",
+    "line": 29,
+    "primitive_calls": 1681,
+    "self_seconds": 0.005669271
+  },
+  {
+    "calls": 154,
+    "cumulative_seconds": 0.130740182,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "_sync_directory",
+    "line": 76,
+    "primitive_calls": 154,
+    "self_seconds": 0.00032662
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.125324875,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "publish",
+    "line": 234,
+    "primitive_calls": 33,
+    "self_seconds": 0.00043401000000000003
+  },
+  {
+    "calls": 1861,
+    "cumulative_seconds": 0.115890716,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "_cache_read",
+    "line": 115,
+    "primitive_calls": 1861,
+    "self_seconds": 0.011522706
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.11307301700000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "_publish_pointer",
+    "line": 276,
+    "primitive_calls": 33,
+    "self_seconds": 0.0006844030000000001
+  },
+  {
+    "calls": 1683,
+    "cumulative_seconds": 0.064253949,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/worktree.py",
+    "function": "_read_file",
+    "line": 44,
+    "primitive_calls": 1683,
+    "self_seconds": 0.0023209330000000003
+  },
+  {
+    "calls": 1782,
+    "cumulative_seconds": 0.056404497000000005,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/worktree.py",
+    "function": "_read_regular",
+    "line": 52,
+    "primitive_calls": 1782,
+    "self_seconds": 0.00926995
+  },
+  {
+    "calls": 66,
+    "cumulative_seconds": 0.053190113000000004,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "_image",
+    "line": 112,
+    "primitive_calls": 66,
+    "self_seconds": 0.00022429
+  },
+  {
+    "calls": 33,
+    "cumulative_seconds": 0.008438554000000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/store.py",
+    "function": "_publish_generation",
+    "line": 259,
+    "primitive_calls": 33,
+    "self_seconds": 3.341e-05
+  },
+  {
+    "calls": 16,
+    "cumulative_seconds": 0.003216445,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py",
+    "function": "save_revision",
+    "line": 272,
+    "primitive_calls": 16,
+    "self_seconds": 6.418e-05
+  },
+  {
+    "calls": 99,
+    "cumulative_seconds": 0.0009051710000000001,
+    "file": "/root/apps/change-aware-memory-invalidation/src/cami/product/inputs.py",
+    "function": "configuration_inputs",
+    "line": 51,
+    "primitive_calls": 99,
+    "self_seconds": 0.00046157
+  }
+]

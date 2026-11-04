@@ -1,0 +1,31 @@
+{
+  "scope": "Local preparation preflight; no model/task results, shared host, no speedup ratio against earlier incomplete run.",
+  "results": [
+    {
+      "repetition": 2,
+      "exit_code": 0,
+      "external_wall_seconds": 2.7904896868858486,
+      "prepare_wall_seconds": 2.6709584968630224,
+      "cpu_seconds": 2.52906778,
+      "state_bytes": 13625365,
+      "records": 329,
+      "catalog_equals_static": true
+    },
+    {
+      "repetition": 3,
+      "exit_code": 0,
+      "external_wall_seconds": 2.930123368045315,
+      "prepare_wall_seconds": 2.806085560005158,
+      "cpu_seconds": 2.64750637,
+      "state_bytes": 13625365,
+      "records": 329,
+      "catalog_equals_static": true
+    }
+  ],
+  "source_hashes": {
+    "src/cami/product/service.py": "eeb4b188baed90d76c839f64ce62ae69f51faad676400c74bce258b345929b58",
+    "src/cami/product/memory/models.py": "2842a448e972a1c253d8013771bcc4f466ad9a200bf27dbdea197929ac903a54",
+    "integrations/opencode/memory_backend.py": "f8774a2635e93c0ade8617e053f2bfba838616e4237241a9ad3f4b04e263c5c2",
+    "integrations/opencode/memory_adapter.py": "f2d2b736ecd0b65a27a058fee9c770b9ab556426bbab16c272f6dbf0e21e4b2b"
+  }
+}
