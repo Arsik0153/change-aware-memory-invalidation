@@ -1,0 +1,5618 @@
+{
+  "artifact_files_checked": 1290,
+  "authorized_click_commits": [
+    "030f53cf677ee1de534359c535d465eed0ec1d99",
+    "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+    "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+    "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+    "1b14bbe8670755719d2c4290e0206db6b086b23d",
+    "1c4099006474875574e233dc92d12c15d659585f",
+    "25dfd27c302e212afb436efab2f9b52099f97683",
+    "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+    "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+    "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+    "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+    "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+    "4883c93a786f561108a806cbae7873e5c2b604a3",
+    "55682f6f5348f5220a557f89c3a796321a52aebf",
+    "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+    "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+    "60ef759d0eb480d843c69bae2ce1c38279686e41",
+    "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+    "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+    "72f1f3e20834d05832cdfc361ca401d586c371f8",
+    "77838f86fa647ca82f53a88d6495dfc009b24c41",
+    "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+    "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+    "8473b3ced140296b9dd869957e0026eebd94634b",
+    "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+    "9c6f032681e38a60ce526335f2abf166191f692d",
+    "a41e349ae738c55bce46dfb8715159463074d6e9",
+    "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+    "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+    "b8f5744820a1359291f11ae8bf8ad85313da000c",
+    "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+    "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+    "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+    "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+    "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+    "e1399d20788829ea9b981603251cc413e00ca4eb",
+    "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+    "eb1d760fb433d08278816d7ba49477ce86b691a7",
+    "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f"
+  ],
+  "authorized_click_git_read_count": 696,
+  "contradicted_claim_child_observations_per_variant": 8,
+  "contradiction_commits_by_claim": {
+    "click-1e53748f80eb-04": [
+      "8473b3ced140296b9dd869957e0026eebd94634b",
+      "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "1c4099006474875574e233dc92d12c15d659585f",
+      "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "25dfd27c302e212afb436efab2f9b52099f97683",
+      "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "ac15816133ef12001ebf6d6aecb7a3cf14487761"
+    ]
+  },
+  "cost_rows_checked": 1048,
+  "coverage_per_variant": {
+    "full": 288,
+    "merge": 80,
+    "new_added": 176,
+    "nonmerge": 208,
+    "old_overlap": 112
+  },
+  "exact_authentic_ai_claim_bindings_checked": 24,
+  "frozen_sealed_files_checked": 134,
+  "historical_fallback_paths": [],
+  "historical_source_inventory_files_checked": 251,
+  "implementation_commit": "02fcd4a8655dbb9932af86d1161411e28301b885",
+  "independent_audit_source_reuse_sha256": "7e43e21f39a45eebcc2bb9409e8b2b3b66b8253a481d2c6cac1eea513f6fbc96",
+  "independent_binding_screen": {
+    "hazards_found": 0,
+    "packets_screened": 312,
+    "scope": "Conservative module/class evaluated syntax; deferred function/lambda bodies excluded; rejects dynamic namespace calls and possible subject writes/imports/captures; not a runtime binding oracle."
+  },
+  "limits": [
+    "The pinned protocol/seal and local Git object database are the trust roots; artifact hashes are integrity checks, not signatures.",
+    "The bounded independent semantic check supports this exact population of present, unique direct functions passing a conservative immediate binding screen; unsupported future populations stop the audit.",
+    "CPython ast is shared with production/reference. Syntactic predicates do not establish dynamic binding or runtime behavior.",
+    "Source inspection finds references computed after policy transitions and never passed into selection/state; this is not a dynamic information-flow proof.",
+    "Recorded actual calls are reconciled exactly against raw validation/cost rows; this does not independently observe past physical executions or wall time.",
+    "Coverage and topology partitions describe overlapping dependent observations from the same claims/modules/history. New added coverage is development evidence, not a new independent sample or causal merge effect."
+  ],
+  "manifest_sha256": "2a57c6b2b71b95d40141422ef23aacac933fd64a248144f9ea9083d867848bf2",
+  "observation_records": 1152,
+  "old_overlap_semantic_equality": {
+    "observation_count": 448,
+    "parent_count": 24,
+    "status": "matched"
+  },
+  "parent_records": 24,
+  "protocol_sha256": "d733b76fc78e9813b39ba0e07398d67b6941fe649c52f5b82e532e9fec686aa9",
+  "recomputed_report": {
+    "coverage_note": "Added transitions are outcome-informed development coverage; old overlap is repeated evidence. Merge strata are descriptive, not causal.",
+    "groups": {
+      "click-1c2fc1b0152f": {
+        "candidate_claims": 8,
+        "child_count": 12,
+        "variants": {
+          "all_validate": {
+            "actual_validation_calls": 96,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 1,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 95,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 1,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 96,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 96,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        }
+      },
+      "click-1e53748f80eb": {
+        "candidate_claims": 8,
+        "child_count": 12,
+        "variants": {
+          "all_validate": {
+            "actual_validation_calls": 96,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 13,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 83,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 13,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 96,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 8,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 88,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          }
+        }
+      },
+      "click-8c7491d9b0d7": {
+        "candidate_claims": 8,
+        "child_count": 12,
+        "variants": {
+          "all_validate": {
+            "actual_validation_calls": 96,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 3,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 93,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 3,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 96,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 96,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 96,
+            "candidate_reference_unknown": 0,
+            "carried_states": 96,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 96,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        }
+      }
+    },
+    "old_overlap": {
+      "groups": {
+        "click-1c2fc1b0152f": {
+          "all_validate": {
+            "actual_validation_calls": 8,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 0,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 8,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 8,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 8,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        },
+        "click-1e53748f80eb": {
+          "all_validate": {
+            "actual_validation_calls": 96,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 13,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 83,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 13,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 96,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 96,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 8,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 96,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 88,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 96,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          }
+        },
+        "click-8c7491d9b0d7": {
+          "all_validate": {
+            "actual_validation_calls": 8,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 0,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 8,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 8,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 8,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 8,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 8,
+            "candidate_reference_unknown": 0,
+            "carried_states": 8,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 8,
+            "reference_unknown": 0,
+            "scored_observations": 8,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        }
+      },
+      "variants": {
+        "all_validate": {
+          "actual_validation_calls": 112,
+          "available": 104,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 112,
+          "candidate_reference_contradicted": 8,
+          "candidate_reference_supported": 104,
+          "candidate_reference_unknown": 0,
+          "carried_states": 0,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": 0.0,
+          "false_available_per_contradicted_null_reason": null,
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 8,
+          "reference_supported": 104,
+          "reference_unknown": 0,
+          "scored_observations": 112,
+          "selected_logical_validations": 112,
+          "withheld_supported": 0
+        },
+        "file_anchor": {
+          "actual_validation_calls": 13,
+          "available": 104,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 112,
+          "candidate_reference_contradicted": 8,
+          "candidate_reference_supported": 104,
+          "candidate_reference_unknown": 0,
+          "carried_states": 99,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": 0.0,
+          "false_available_per_contradicted_null_reason": null,
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 8,
+          "reference_supported": 104,
+          "reference_unknown": 0,
+          "scored_observations": 112,
+          "selected_logical_validations": 13,
+          "withheld_supported": 0
+        },
+        "known_incomplete": {
+          "actual_validation_calls": 112,
+          "available": 104,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 112,
+          "candidate_reference_contradicted": 8,
+          "candidate_reference_supported": 104,
+          "candidate_reference_unknown": 0,
+          "carried_states": 0,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": 0.0,
+          "false_available_per_contradicted_null_reason": null,
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 8,
+          "reference_supported": 104,
+          "reference_unknown": 0,
+          "scored_observations": 112,
+          "selected_logical_validations": 112,
+          "withheld_supported": 0
+        },
+        "symbol_anchor": {
+          "actual_validation_calls": 8,
+          "available": 104,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 112,
+          "candidate_reference_contradicted": 8,
+          "candidate_reference_supported": 104,
+          "candidate_reference_unknown": 0,
+          "carried_states": 104,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": 0.0,
+          "false_available_per_contradicted_null_reason": null,
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 8,
+          "reference_supported": 104,
+          "reference_unknown": 0,
+          "scored_observations": 112,
+          "selected_logical_validations": 8,
+          "withheld_supported": 0
+        }
+      }
+    },
+    "overlap_check": {
+      "observation_count": 448,
+      "parent_count": 24,
+      "status": "matched"
+    },
+    "parent_initialization": {
+      "all_validate": {
+        "actual_validation_calls": 24,
+        "eligible_parent_claims": 24,
+        "initially_withheld": 0,
+        "supported": 24
+      },
+      "file_anchor": {
+        "actual_validation_calls": 24,
+        "eligible_parent_claims": 24,
+        "initially_withheld": 0,
+        "supported": 24
+      },
+      "known_incomplete": {
+        "actual_validation_calls": 24,
+        "eligible_parent_claims": 24,
+        "initially_withheld": 0,
+        "supported": 24
+      },
+      "symbol_anchor": {
+        "actual_validation_calls": 24,
+        "eligible_parent_claims": 24,
+        "initially_withheld": 0,
+        "supported": 24
+      }
+    },
+    "primary_new_coverage": {
+      "groups": {
+        "click-1c2fc1b0152f": {
+          "all_validate": {
+            "actual_validation_calls": 88,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 88,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 1,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 87,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 1,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 88,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 88,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 88,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        },
+        "click-1e53748f80eb": {
+          "all_validate": {
+            "actual_validation_calls": 0,
+            "available": 0,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 0,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 0,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": null,
+            "false_available_per_scored_null_reason": "no_observations_in_stratum",
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 0,
+            "reference_unknown": 0,
+            "scored_observations": 0,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 0,
+            "available": 0,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 0,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 0,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": null,
+            "false_available_per_scored_null_reason": "no_observations_in_stratum",
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 0,
+            "reference_unknown": 0,
+            "scored_observations": 0,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 0,
+            "available": 0,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 0,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 0,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": null,
+            "false_available_per_scored_null_reason": "no_observations_in_stratum",
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 0,
+            "reference_unknown": 0,
+            "scored_observations": 0,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 0,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 0,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 0,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": null,
+            "false_available_per_scored_null_reason": "no_observations_in_stratum",
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 0,
+            "reference_unknown": 0,
+            "scored_observations": 0,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        },
+        "click-8c7491d9b0d7": {
+          "all_validate": {
+            "actual_validation_calls": 88,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 88,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 3,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 85,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 3,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 88,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 88,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 88,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 88,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 88,
+            "candidate_reference_unknown": 0,
+            "carried_states": 88,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 88,
+            "reference_unknown": 0,
+            "scored_observations": 88,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        }
+      },
+      "variants": {
+        "all_validate": {
+          "actual_validation_calls": 176,
+          "available": 176,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 176,
+          "candidate_reference_contradicted": 0,
+          "candidate_reference_supported": 176,
+          "candidate_reference_unknown": 0,
+          "carried_states": 0,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": null,
+          "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 0,
+          "reference_supported": 176,
+          "reference_unknown": 0,
+          "scored_observations": 176,
+          "selected_logical_validations": 176,
+          "withheld_supported": 0
+        },
+        "file_anchor": {
+          "actual_validation_calls": 4,
+          "available": 176,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 176,
+          "candidate_reference_contradicted": 0,
+          "candidate_reference_supported": 176,
+          "candidate_reference_unknown": 0,
+          "carried_states": 172,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": null,
+          "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 0,
+          "reference_supported": 176,
+          "reference_unknown": 0,
+          "scored_observations": 176,
+          "selected_logical_validations": 4,
+          "withheld_supported": 0
+        },
+        "known_incomplete": {
+          "actual_validation_calls": 176,
+          "available": 176,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 176,
+          "candidate_reference_contradicted": 0,
+          "candidate_reference_supported": 176,
+          "candidate_reference_unknown": 0,
+          "carried_states": 0,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": null,
+          "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 0,
+          "reference_supported": 176,
+          "reference_unknown": 0,
+          "scored_observations": 176,
+          "selected_logical_validations": 176,
+          "withheld_supported": 0
+        },
+        "symbol_anchor": {
+          "actual_validation_calls": 0,
+          "available": 176,
+          "available_full_production_contradicted": 0,
+          "available_unknown": 0,
+          "candidate_observations": 176,
+          "candidate_reference_contradicted": 0,
+          "candidate_reference_supported": 176,
+          "candidate_reference_unknown": 0,
+          "carried_states": 176,
+          "excluded_parent_observations": 0,
+          "false_available": 0,
+          "false_available_per_contradicted": null,
+          "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+          "false_available_per_scored": 0.0,
+          "false_available_per_scored_null_reason": null,
+          "full_production_unknown": 0,
+          "reference_contradicted": 0,
+          "reference_supported": 176,
+          "reference_unknown": 0,
+          "scored_observations": 176,
+          "selected_logical_validations": 0,
+          "withheld_supported": 0
+        }
+      }
+    },
+    "separate_work": {
+      "child_reference_calls": 288,
+      "parent_reference_calls": 24,
+      "shared_index_builds": 39
+    },
+    "topology_strata": {
+      "merge": {
+        "groups": {
+          "click-1c2fc1b0152f": {
+            "all_validate": {
+              "actual_validation_calls": 56,
+              "available": 56,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 56,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 56,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 56,
+              "reference_unknown": 0,
+              "scored_observations": 56,
+              "selected_logical_validations": 56,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 1,
+              "available": 56,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 56,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 56,
+              "candidate_reference_unknown": 0,
+              "carried_states": 55,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 56,
+              "reference_unknown": 0,
+              "scored_observations": 56,
+              "selected_logical_validations": 1,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 56,
+              "available": 56,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 56,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 56,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 56,
+              "reference_unknown": 0,
+              "scored_observations": 56,
+              "selected_logical_validations": 56,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 0,
+              "available": 56,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 56,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 56,
+              "candidate_reference_unknown": 0,
+              "carried_states": 56,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 56,
+              "reference_unknown": 0,
+              "scored_observations": 56,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            }
+          },
+          "click-1e53748f80eb": {
+            "all_validate": {
+              "actual_validation_calls": 0,
+              "available": 0,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 0,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 0,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": null,
+              "false_available_per_scored_null_reason": "no_observations_in_stratum",
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 0,
+              "reference_unknown": 0,
+              "scored_observations": 0,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 0,
+              "available": 0,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 0,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 0,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": null,
+              "false_available_per_scored_null_reason": "no_observations_in_stratum",
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 0,
+              "reference_unknown": 0,
+              "scored_observations": 0,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 0,
+              "available": 0,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 0,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 0,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": null,
+              "false_available_per_scored_null_reason": "no_observations_in_stratum",
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 0,
+              "reference_unknown": 0,
+              "scored_observations": 0,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 0,
+              "available": 0,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 0,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 0,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": null,
+              "false_available_per_scored_null_reason": "no_observations_in_stratum",
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 0,
+              "reference_unknown": 0,
+              "scored_observations": 0,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            }
+          },
+          "click-8c7491d9b0d7": {
+            "all_validate": {
+              "actual_validation_calls": 24,
+              "available": 24,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 24,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 24,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 24,
+              "reference_unknown": 0,
+              "scored_observations": 24,
+              "selected_logical_validations": 24,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 0,
+              "available": 24,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 24,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 24,
+              "candidate_reference_unknown": 0,
+              "carried_states": 24,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 24,
+              "reference_unknown": 0,
+              "scored_observations": 24,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 24,
+              "available": 24,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 24,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 24,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 24,
+              "reference_unknown": 0,
+              "scored_observations": 24,
+              "selected_logical_validations": 24,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 0,
+              "available": 24,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 24,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 24,
+              "candidate_reference_unknown": 0,
+              "carried_states": 24,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 24,
+              "reference_unknown": 0,
+              "scored_observations": 24,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            }
+          }
+        },
+        "variants": {
+          "all_validate": {
+            "actual_validation_calls": 80,
+            "available": 80,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 80,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 80,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 80,
+            "reference_unknown": 0,
+            "scored_observations": 80,
+            "selected_logical_validations": 80,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 1,
+            "available": 80,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 80,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 80,
+            "candidate_reference_unknown": 0,
+            "carried_states": 79,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 80,
+            "reference_unknown": 0,
+            "scored_observations": 80,
+            "selected_logical_validations": 1,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 80,
+            "available": 80,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 80,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 80,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 80,
+            "reference_unknown": 0,
+            "scored_observations": 80,
+            "selected_logical_validations": 80,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 0,
+            "available": 80,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 80,
+            "candidate_reference_contradicted": 0,
+            "candidate_reference_supported": 80,
+            "candidate_reference_unknown": 0,
+            "carried_states": 80,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": null,
+            "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 0,
+            "reference_supported": 80,
+            "reference_unknown": 0,
+            "scored_observations": 80,
+            "selected_logical_validations": 0,
+            "withheld_supported": 0
+          }
+        }
+      },
+      "nonmerge": {
+        "groups": {
+          "click-1c2fc1b0152f": {
+            "all_validate": {
+              "actual_validation_calls": 40,
+              "available": 40,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 40,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 40,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 40,
+              "reference_unknown": 0,
+              "scored_observations": 40,
+              "selected_logical_validations": 40,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 0,
+              "available": 40,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 40,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 40,
+              "candidate_reference_unknown": 0,
+              "carried_states": 40,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 40,
+              "reference_unknown": 0,
+              "scored_observations": 40,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 40,
+              "available": 40,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 40,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 40,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 40,
+              "reference_unknown": 0,
+              "scored_observations": 40,
+              "selected_logical_validations": 40,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 0,
+              "available": 40,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 40,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 40,
+              "candidate_reference_unknown": 0,
+              "carried_states": 40,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 40,
+              "reference_unknown": 0,
+              "scored_observations": 40,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            }
+          },
+          "click-1e53748f80eb": {
+            "all_validate": {
+              "actual_validation_calls": 96,
+              "available": 88,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 96,
+              "candidate_reference_contradicted": 8,
+              "candidate_reference_supported": 88,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": 0.0,
+              "false_available_per_contradicted_null_reason": null,
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 8,
+              "reference_supported": 88,
+              "reference_unknown": 0,
+              "scored_observations": 96,
+              "selected_logical_validations": 96,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 13,
+              "available": 88,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 96,
+              "candidate_reference_contradicted": 8,
+              "candidate_reference_supported": 88,
+              "candidate_reference_unknown": 0,
+              "carried_states": 83,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": 0.0,
+              "false_available_per_contradicted_null_reason": null,
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 8,
+              "reference_supported": 88,
+              "reference_unknown": 0,
+              "scored_observations": 96,
+              "selected_logical_validations": 13,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 96,
+              "available": 88,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 96,
+              "candidate_reference_contradicted": 8,
+              "candidate_reference_supported": 88,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": 0.0,
+              "false_available_per_contradicted_null_reason": null,
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 8,
+              "reference_supported": 88,
+              "reference_unknown": 0,
+              "scored_observations": 96,
+              "selected_logical_validations": 96,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 8,
+              "available": 88,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 96,
+              "candidate_reference_contradicted": 8,
+              "candidate_reference_supported": 88,
+              "candidate_reference_unknown": 0,
+              "carried_states": 88,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": 0.0,
+              "false_available_per_contradicted_null_reason": null,
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 8,
+              "reference_supported": 88,
+              "reference_unknown": 0,
+              "scored_observations": 96,
+              "selected_logical_validations": 8,
+              "withheld_supported": 0
+            }
+          },
+          "click-8c7491d9b0d7": {
+            "all_validate": {
+              "actual_validation_calls": 72,
+              "available": 72,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 72,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 72,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 72,
+              "reference_unknown": 0,
+              "scored_observations": 72,
+              "selected_logical_validations": 72,
+              "withheld_supported": 0
+            },
+            "file_anchor": {
+              "actual_validation_calls": 3,
+              "available": 72,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 72,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 72,
+              "candidate_reference_unknown": 0,
+              "carried_states": 69,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 72,
+              "reference_unknown": 0,
+              "scored_observations": 72,
+              "selected_logical_validations": 3,
+              "withheld_supported": 0
+            },
+            "known_incomplete": {
+              "actual_validation_calls": 72,
+              "available": 72,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 72,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 72,
+              "candidate_reference_unknown": 0,
+              "carried_states": 0,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 72,
+              "reference_unknown": 0,
+              "scored_observations": 72,
+              "selected_logical_validations": 72,
+              "withheld_supported": 0
+            },
+            "symbol_anchor": {
+              "actual_validation_calls": 0,
+              "available": 72,
+              "available_full_production_contradicted": 0,
+              "available_unknown": 0,
+              "candidate_observations": 72,
+              "candidate_reference_contradicted": 0,
+              "candidate_reference_supported": 72,
+              "candidate_reference_unknown": 0,
+              "carried_states": 72,
+              "excluded_parent_observations": 0,
+              "false_available": 0,
+              "false_available_per_contradicted": null,
+              "false_available_per_contradicted_null_reason": "zero_reference_contradicted_observations",
+              "false_available_per_scored": 0.0,
+              "false_available_per_scored_null_reason": null,
+              "full_production_unknown": 0,
+              "reference_contradicted": 0,
+              "reference_supported": 72,
+              "reference_unknown": 0,
+              "scored_observations": 72,
+              "selected_logical_validations": 0,
+              "withheld_supported": 0
+            }
+          }
+        },
+        "variants": {
+          "all_validate": {
+            "actual_validation_calls": 208,
+            "available": 200,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 208,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 200,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 200,
+            "reference_unknown": 0,
+            "scored_observations": 208,
+            "selected_logical_validations": 208,
+            "withheld_supported": 0
+          },
+          "file_anchor": {
+            "actual_validation_calls": 16,
+            "available": 200,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 208,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 200,
+            "candidate_reference_unknown": 0,
+            "carried_states": 192,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 200,
+            "reference_unknown": 0,
+            "scored_observations": 208,
+            "selected_logical_validations": 16,
+            "withheld_supported": 0
+          },
+          "known_incomplete": {
+            "actual_validation_calls": 208,
+            "available": 200,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 208,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 200,
+            "candidate_reference_unknown": 0,
+            "carried_states": 0,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 200,
+            "reference_unknown": 0,
+            "scored_observations": 208,
+            "selected_logical_validations": 208,
+            "withheld_supported": 0
+          },
+          "symbol_anchor": {
+            "actual_validation_calls": 8,
+            "available": 200,
+            "available_full_production_contradicted": 0,
+            "available_unknown": 0,
+            "candidate_observations": 208,
+            "candidate_reference_contradicted": 8,
+            "candidate_reference_supported": 200,
+            "candidate_reference_unknown": 0,
+            "carried_states": 200,
+            "excluded_parent_observations": 0,
+            "false_available": 0,
+            "false_available_per_contradicted": 0.0,
+            "false_available_per_contradicted_null_reason": null,
+            "false_available_per_scored": 0.0,
+            "false_available_per_scored_null_reason": null,
+            "full_production_unknown": 0,
+            "reference_contradicted": 8,
+            "reference_supported": 200,
+            "reference_unknown": 0,
+            "scored_observations": 208,
+            "selected_logical_validations": 8,
+            "withheld_supported": 0
+          }
+        }
+      }
+    },
+    "variants": {
+      "all_validate": {
+        "actual_validation_calls": 288,
+        "available": 280,
+        "available_full_production_contradicted": 0,
+        "available_unknown": 0,
+        "candidate_observations": 288,
+        "candidate_reference_contradicted": 8,
+        "candidate_reference_supported": 280,
+        "candidate_reference_unknown": 0,
+        "carried_states": 0,
+        "excluded_parent_observations": 0,
+        "false_available": 0,
+        "false_available_per_contradicted": 0.0,
+        "false_available_per_contradicted_null_reason": null,
+        "false_available_per_scored": 0.0,
+        "false_available_per_scored_null_reason": null,
+        "full_production_unknown": 0,
+        "reference_contradicted": 8,
+        "reference_supported": 280,
+        "reference_unknown": 0,
+        "scored_observations": 288,
+        "selected_logical_validations": 288,
+        "withheld_supported": 0
+      },
+      "file_anchor": {
+        "actual_validation_calls": 17,
+        "available": 280,
+        "available_full_production_contradicted": 0,
+        "available_unknown": 0,
+        "candidate_observations": 288,
+        "candidate_reference_contradicted": 8,
+        "candidate_reference_supported": 280,
+        "candidate_reference_unknown": 0,
+        "carried_states": 271,
+        "excluded_parent_observations": 0,
+        "false_available": 0,
+        "false_available_per_contradicted": 0.0,
+        "false_available_per_contradicted_null_reason": null,
+        "false_available_per_scored": 0.0,
+        "false_available_per_scored_null_reason": null,
+        "full_production_unknown": 0,
+        "reference_contradicted": 8,
+        "reference_supported": 280,
+        "reference_unknown": 0,
+        "scored_observations": 288,
+        "selected_logical_validations": 17,
+        "withheld_supported": 0
+      },
+      "known_incomplete": {
+        "actual_validation_calls": 288,
+        "available": 280,
+        "available_full_production_contradicted": 0,
+        "available_unknown": 0,
+        "candidate_observations": 288,
+        "candidate_reference_contradicted": 8,
+        "candidate_reference_supported": 280,
+        "candidate_reference_unknown": 0,
+        "carried_states": 0,
+        "excluded_parent_observations": 0,
+        "false_available": 0,
+        "false_available_per_contradicted": 0.0,
+        "false_available_per_contradicted_null_reason": null,
+        "false_available_per_scored": 0.0,
+        "false_available_per_scored_null_reason": null,
+        "full_production_unknown": 0,
+        "reference_contradicted": 8,
+        "reference_supported": 280,
+        "reference_unknown": 0,
+        "scored_observations": 288,
+        "selected_logical_validations": 288,
+        "withheld_supported": 0
+      },
+      "symbol_anchor": {
+        "actual_validation_calls": 8,
+        "available": 280,
+        "available_full_production_contradicted": 0,
+        "available_unknown": 0,
+        "candidate_observations": 288,
+        "candidate_reference_contradicted": 8,
+        "candidate_reference_supported": 280,
+        "candidate_reference_unknown": 0,
+        "carried_states": 280,
+        "excluded_parent_observations": 0,
+        "false_available": 0,
+        "false_available_per_contradicted": 0.0,
+        "false_available_per_contradicted_null_reason": null,
+        "false_available_per_scored": 0.0,
+        "false_available_per_scored_null_reason": null,
+        "full_production_unknown": 0,
+        "reference_contradicted": 8,
+        "reference_supported": 280,
+        "reference_unknown": 0,
+        "scored_observations": 288,
+        "selected_logical_validations": 8,
+        "withheld_supported": 0
+      }
+    }
+  },
+  "reference_packets_checked": 312,
+  "seal_sha256": "a46d5741a365fdbe8daa1174a782c867c0d654178b7693e999d0e9f838586c81",
+  "source_access_log": [
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "diff"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+      "group_id": "click-1c2fc1b0152f",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1c4099006474875574e233dc92d12c15d659585f",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "diff"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+      "group_id": "click-1e53748f80eb",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "cat-file"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "diff"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "ls-tree"
+    },
+    {
+      "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+      "group_id": "click-8c7491d9b0d7",
+      "operation": "show"
+    }
+  ],
+  "source_inventory_files_checked": 251,
+  "status": "pass",
+  "unique_contradicted_claims": 1,
+  "unique_false_available_claims_by_variant": {
+    "all_validate": 0,
+    "file_anchor": 0,
+    "known_incomplete": 0,
+    "symbol_anchor": 0
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "run": "/root/apps/change-aware-memory-invalidation/reports/research-20261104/real-first-parent-replay-v1",
+  "source_commit": "02fcd4a8655dbb9932af86d1161411e28301b885",
+  "input_hashes": {
+    "manifest.json": "2a57c6b2b71b95d40141422ef23aacac933fd64a248144f9ea9083d867848bf2",
+    "report.json": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+    "observations.jsonl": "6e699f8d7da97dd7b4708d79c455c4a350b09064bf6da860a599f5fd202fd158",
+    "parents.jsonl": "4ae96f0c6f81b10688c95c26280f57fdfde76e9f515d1b241385fa641230b228",
+    "costs.jsonl": "1619cf65c79059dfe70c03b4e066ee0ba0a00fa088b3af6bff45cb886f6c7c8a",
+    "overlap-check.json": "f6e5c8118b63f7f86d92ea5c61316327eb954de0559f74a461f8baab46339a31",
+    "changes/click-1c2fc1b0152f/d5741a2ca2ebc21d525c903f628b1bebad75b735.json": "91979f38a7953c60f9f746a3365c48b857f8b6e8cacd3f0bab9544dd174d0790",
+    "changes/click-8c7491d9b0d7/72f1f3e20834d05832cdfc361ca401d586c371f8.json": "5199f3d0d7b1c151a7b494c8a51ec0867ef6f19f19c382ef430274170784395b",
+    "changes/click-8c7491d9b0d7/5d1df0e042b2f8b0dee8f6dd9ce74edce331a950.json": "c7a2d7e51c38e5eac86c6d48f64957162d0fb3ed4d45472f3ab498bc817af95c"
+  },
+  "variants": [
+    "symbol_anchor",
+    "file_anchor",
+    "known_incomplete",
+    "all_validate"
+  ],
+  "series": {
+    "full": [
+      8,
+      17,
+      288,
+      288
+    ],
+    "new": [
+      0,
+      4,
+      176,
+      176
+    ],
+    "old": [
+      8,
+      13,
+      112,
+      112
+    ],
+    "merge": [
+      0,
+      1,
+      80,
+      80
+    ]
+  },
+  "claim_count": 24,
+  "full_denominator": 288,
+  "new_denominator": 176,
+  "old_denominator": 112,
+  "parent_actual_validations": 96,
+  "reference_calls": 312,
+  "shared_indexes": 39,
+  "additional_file_selections": [
+    {
+      "observation_line": 48,
+      "claim_id": "click-1c2fc1b0152f-07",
+      "kind": "signature_equals",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/core.py",
+        "qualname": "batch"
+      },
+      "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+      "step": 2,
+      "is_merge": true,
+      "parents": [
+        "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+        "e234cf958d2416d4b20b53ae850c487fed32fa35"
+      ],
+      "selection_reasons": [
+        "anchor_file_changed",
+        "subject_file_changed"
+      ],
+      "production_verdict": "supported",
+      "reference_verdict": "supported",
+      "changed_files": [
+        "CHANGES.rst",
+        "src/click/core.py",
+        "src/click/decorators.py"
+      ],
+      "subject_in_changed_symbols": false,
+      "changes_source": "changes/click-1c2fc1b0152f/d5741a2ca2ebc21d525c903f628b1bebad75b735.json"
+    },
+    {
+      "observation_line": 938,
+      "claim_id": "click-8c7491d9b0d7-01",
+      "kind": "symbol_exists",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "invoke_param_callback"
+      },
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "step": 6,
+      "is_merge": false,
+      "parents": [
+        "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+      ],
+      "selection_reasons": [
+        "anchor_file_changed",
+        "subject_file_changed"
+      ],
+      "production_verdict": "supported",
+      "reference_verdict": "supported",
+      "changed_files": [
+        "click/core.py"
+      ],
+      "subject_in_changed_symbols": false,
+      "changes_source": "changes/click-8c7491d9b0d7/72f1f3e20834d05832cdfc361ca401d586c371f8.json"
+    },
+    {
+      "observation_line": 939,
+      "claim_id": "click-8c7491d9b0d7-02",
+      "kind": "symbol_exists",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "fast_exit"
+      },
+      "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+      "step": 6,
+      "is_merge": false,
+      "parents": [
+        "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+      ],
+      "selection_reasons": [
+        "anchor_file_changed",
+        "subject_file_changed"
+      ],
+      "production_verdict": "supported",
+      "reference_verdict": "supported",
+      "changed_files": [
+        "click/core.py"
+      ],
+      "subject_in_changed_symbols": false,
+      "changes_source": "changes/click-8c7491d9b0d7/72f1f3e20834d05832cdfc361ca401d586c371f8.json"
+    },
+    {
+      "observation_line": 1006,
+      "claim_id": "click-8c7491d9b0d7-05",
+      "kind": "signature_equals",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/decorators.py",
+        "qualname": "option"
+      },
+      "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+      "step": 8,
+      "is_merge": false,
+      "parents": [
+        "7a10fe1fbcba466714cfaadcc6c51cdcb656568e"
+      ],
+      "selection_reasons": [
+        "anchor_file_changed",
+        "subject_file_changed"
+      ],
+      "production_verdict": "supported",
+      "reference_verdict": "supported",
+      "changed_files": [
+        "CHANGES",
+        "click/decorators.py",
+        "tests/test_commands.py",
+        "tests/test_formatting.py"
+      ],
+      "subject_in_changed_symbols": false,
+      "changes_source": "changes/click-8c7491d9b0d7/5d1df0e042b2f8b0dee8f6dd9ce74edce331a950.json"
+    }
+  ],
+  "contradicted_unique_claims": [
+    "click-1e53748f80eb-04"
+  ],
+  "contradicted_old_observations": 8,
+  "new_reference_supported": 176,
+  "new_reference_contradicted": 0,
+  "conditional_false_availability_rate_new": null
+}

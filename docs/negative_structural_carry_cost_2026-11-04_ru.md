@@ -141,6 +141,27 @@ validations занимают 1.925 ms, а вызовы `register` — 4.704 ms. 
 [исходные записи](../reports/research-20261104/registered-negative-carry-evidence-v1/correctness.jsonl),
 [полный raw-архив](../reports/research-20261104/registered-negative-carry-raw-v1.tar.gz)
 и [проверка упаковки](../reports/research-20261104/registered-negative-carry-raw-delivery.json).
+
+Независимый аудитор восстановил все 124 состояния из
+[исходных записей](../reports/research-20261104/registered-negative-carry-evidence-v1/correctness.jsonl).
+Во всех 31 шагах полное состояние зарегистрированного варианта совпало с вариантом
+полного blob. Среди 120 обычных переходов четырёх вариантов нет ложной доступности,
+доступности при uncertain или скрытых supported claims. Ещё четыре записи относятся
+к намеренному `keep_all`. Политика сохраняет недоступность, хотя свежая проверка
+возвращает supported. Эти четыре контроля учитываются отдельно.
+
+[Счётчики работы](../reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json)
+подтверждают 22 регистрации на набор, включая 17 сбросов и пять изменений, а также
+17 проверок импортируемого parent-ответа. Все 21
+[парные CPU- и wall-разности](../reports/research-20261104/negative-carry-premise-check-v1.json)
+registered минус baseline положительны. Повторы используют тот же авторский набор
+на общем хосте. Они не являются независимой выборкой программ.
+
+[Проверка упаковки](../reports/research-20261104/registered-negative-carry-raw-delivery.json)
+подтвердила 153 файла результатов и 88 runtime-файлов. Эти числа описывают целостность
+пакета. Git databases и намеренная dangling symlink сохранены отдельно в raw-архиве.
+
+Установленный [аудитор](../scripts/audit_registered_negative_carry.py) проверил опубликованный mirror по Git fixtures из raw-архива. Проверены 153 артефакта, 88 закреплённых входов, 244 исторических файла реализации и 84 замера. Восемь подмен с пересчитанными хешами отклонены в десяти группах контролей. [Полный аудит и ограничения](../reports/research-20261104/registered-negative-carry-audit-v1/report.json).
 Проверены 153 payload hashes и 88 runtime files. Новый
 `package_authored_replay.py` сохраняет исходные Git databases отдельно от обычной
 файловой копии для Git и проверяет содержимое архива после записи.
@@ -179,5 +200,7 @@ available unknown или withheld supported; три контрольных `keep
 не приписываются нашему исходному коду.
 [Аудит и его ограничения](../reports/research-20261104/negative-carry-audit-v1/report.json).
 
-Полная проверка 1259 tests относится к `49dc9c2`; новый эксперимент покрыт своими
-14 тестами, которые не прибавляются к старому результату полного suite.
+Полная проверка на `a1dc53c`: 1290 passed за 472.00 секунды, Ruff и mypy
+без ошибок. В неё входят 14 тестов первого опыта и 17 тестов регистрации.
+Исходники до и после совпали; проверены хеши трёх логов. Независимый аудитор
+регистрации добавлен позднее и проверен отдельно на опубликованном архиве.

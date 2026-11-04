@@ -1,0 +1,7 @@
+extend = "pyproject.toml"
+
+# These two review artifacts are sealed experimental evidence. Preserve their
+# original bytes; executable project sources retain the inherited lint rules.
+[lint.per-file-ignores]
+"reports/research-20261104/real-first-parent-preaccess-review-v1/audit_metadata.py" = ["F401", "E731"]
+"reports/research-20261104/real-first-parent-preaccess-review-v1/overlap_denial_checks.py" = ["E402", "E701", "E702"]

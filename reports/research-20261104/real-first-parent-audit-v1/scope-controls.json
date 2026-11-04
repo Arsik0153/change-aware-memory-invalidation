@@ -1,0 +1,62 @@
+{
+  "status": "pass",
+  "claim": {
+    "subject": {
+      "qualname": "target",
+      "node_kind": "function"
+    },
+    "kind": "symbol_exists",
+    "predicate": {
+      "type": "symbol_exists",
+      "expected": true
+    }
+  },
+  "unsupported_cases": [
+    {
+      "case": "assignment",
+      "source_hex": "6465662074617267657428293a20706173730a746172676574203d20310a",
+      "rejected": true,
+      "reason": "unsupported immediate subject binding hazards: [{'line': 2, 'kind': 'name store/delete'}]"
+    },
+    {
+      "case": "nested_class_global",
+      "source_hex": "6465662074617267657428293a20706173730a636c61737320413a0a20636c61737320423a0a2020676c6f62616c207461726765740a2020746172676574203d20310a",
+      "rejected": true,
+      "reason": "unsupported immediate subject binding hazards: [{'line': 4, 'kind': 'evaluated global declaration'}, {'line': 5, 'kind': 'name store/delete'}]"
+    },
+    {
+      "case": "dynamic_namespace",
+      "source_hex": "6465662074617267657428293a20706173730a676c6f62616c7328295b22746172676574225d203d20310a",
+      "rejected": true,
+      "reason": "unsupported immediate subject binding hazards: [{'line': 2, 'kind': 'dynamic namespace operation'}]"
+    },
+    {
+      "case": "unsupported_type_parameters",
+      "source_hex": "646566207461726765745b545d28783a2054293a2072657475726e20780a",
+      "rejected": true,
+      "reason": "unsupported audit type parameters"
+    },
+    {
+      "case": "non_UTF8",
+      "source_hex": "6465662074617267657428293a20706173730a23ff",
+      "rejected": true,
+      "reason": "'utf-8' codec can't decode byte 0xff in position 20: invalid start byte"
+    },
+    {
+      "case": "conditional_definition",
+      "source_hex": "696620547275653a0a206465662074617267657428293a20706173730a",
+      "rejected": true,
+      "reason": "audit requires one unambiguous direct function: target"
+    },
+    {
+      "case": "duplicate_definition",
+      "source_hex": "6465662074617267657428293a20706173730a6465662074617267657428293a20706173730a",
+      "rejected": true,
+      "reason": "audit requires one unambiguous direct function: target"
+    }
+  ],
+  "deferred_body_positive_source_hex": "6465662074617267657428293a20706173730a64656620646566657272656428293a0a20676c6f62616c207461726765740a20746172676574203d20676c6f62616c7328290a66203d206c616d6264613a20676c6f62616c7328290a",
+  "deferred_function_lambda_control_supported": true,
+  "auditor_sha256": "e28c1c335e0d21e1a5c89d6f95b1412adfee9c8f5574c6952ddcdfe22ba32505",
+  "no_corpus_access": true
+}

@@ -1,0 +1,16 @@
+{
+  "auditor_sources": {
+    "scripts/audit_real_first_parent_replay.py": "e28c1c335e0d21e1a5c89d6f95b1412adfee9c8f5574c6952ddcdfe22ba32505",
+    "scripts/check_first_parent_audit.py": "891e8b19c56570574456fb57b088d936b0706bb57dff5737eac27ff60122c2bf"
+  },
+  "files": {
+    "report.json": "4eb7c9c773c3ea3d517c7c6b08c07bc9d9edf41a0c9619729e32e7b75e23bf4f",
+    "scope-controls.json": "06d55c4bc29b1fa2cf689e737fafcad3802ee3ed1bd057a5db1119dcb6e5111c",
+    "tamper-checks.json": "c5f8da35c664efb5588f4b156094e561ff221b9175ec3914c9907fa619f8545b"
+  },
+  "implementation_commit": "02fcd4a8655dbb9932af86d1161411e28301b885",
+  "prior_independent_auditor_sha256": "7e43e21f39a45eebcc2bb9409e8b2b3b66b8253a481d2c6cac1eea513f6fbc96",
+  "schema_version": 1,
+  "status": "pass",
+  "verification": "Installed independent stdlib auditor reproduces the staged positive report exactly after formatting;10honestly rehashed forgeries rejected;7unsupported scope fixtures refused and deferred-body positive accepted. No replay rerun or side-parent source read."
+}

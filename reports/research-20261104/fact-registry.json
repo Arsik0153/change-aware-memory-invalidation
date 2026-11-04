@@ -486,7 +486,7 @@
     {
       "id": "verification",
       "label": "Полная проверка",
-      "scope": "Неизменный commit 49dc9c2; production fix, AI pilot, translation и real replay driver включены.",
+      "scope": "Неизменный commit a1dc53c; production fix, AI pilot, translation, real replay и 31 тест negative carry включены. First-parent extension добавлен позже.",
       "limits": [
         "Полная проверка относится к указанному HEAD; поздние отдельные auditors не приписываются этому прогону."
       ],
@@ -494,12 +494,12 @@
         {
           "id": "verification.passed",
           "label": "Прошедшие тесты",
-          "source": "reports/research-20261104/full-verification-49dc9c2/pytest.log",
-          "source_sha256": "a01afddfe8468717c396d124dfb889375d4959f3c446d1c23cd5cf897f223b8f",
+          "source": "reports/research-20261104/full-verification-a1dc53c/pytest.log",
+          "source_sha256": "c09c7f5244be974a356338a22edb38d1560406326779f1063a4f695647daf488",
           "selector": {
             "format": "pytest_summary"
           },
-          "expected": 1259,
+          "expected": 1290,
           "unit": "test"
         }
       ]
@@ -1351,6 +1351,322 @@
           },
           "expected": 93,
           "unit": "variant/transition"
+        }
+      ]
+    },
+    {
+      "id": "registered_negative_carry",
+      "label": "Перенос отрицательного ответа с зарегистрированными входами",
+      "scope": "Те же 17 авторских Git-историй и 31 переход, четыре варианта. В 124 correctness records входят 120 обычных переходов и четыре намеренных keep_all-контроля. Выполнен 21 парный повтор; блок содержит 100 повторов набора, 1700 исполнений историй и 3100 переходов.",
+      "limits": [
+        "Повторы используют тот же фиксированный авторский набор. Истории и переходы зависимы; 21 повтор не означает 21 независимую программу. Результат не переносится на популяцию репозиториев.",
+        "Во всех 120 обычных переходах аудит получил ноль false_available, available_unknown и withheld_supported. Четыре keep_all-контроля намеренно скрывают supported claim и учитываются отдельно.",
+        "На набор приходятся 22 материализованные регистрации: 17 при сбросах историй и пять при изменениях. В измерение входят эти регистрации, 17 проверок parent-ответов и создание свидетельств. Подготовка Git, индексов и reference учтена отдельно.",
+        "CPU-медианы относятся к полному обслуживанию 100 наборов. Меньшее число validation calls не дало ускорения. Все 21 CPU- и wall-разности registered минус baseline положительны на этом общем хосте.",
+        "Числа 153 и 88 описывают проверку упаковки опубликованного результата. Они не подменяют семантический аудит. Git databases и намеренная dangling symlink сохранены в raw-архиве, но исключены из исходного списка хешей обычных файлов.",
+        "Профилирование выполнено отдельно после timing samples. Его вложенные cumulative intervals не суммируются с измеренным CPU и не дают точного контрфактического ускорения."
+      ],
+      "facts": [
+        {
+          "id": "registered_negative_carry.histories",
+          "label": "Авторские Git-истории",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/setup.json",
+          "source_sha256": "efa139191e0f91f27d96f0056c228a67b2784af3a59d45f1ca85889baeb4bd53",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/histories"
+          },
+          "expected": 17,
+          "unit": "history"
+        },
+        {
+          "id": "registered_negative_carry.steps",
+          "label": "Различные переходы в наборе",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/setup.json",
+          "source_sha256": "efa139191e0f91f27d96f0056c228a67b2784af3a59d45f1ca85889baeb4bd53",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/transitions"
+          },
+          "expected": 31,
+          "unit": "transition"
+        },
+        {
+          "id": "registered_negative_carry.production_calls",
+          "label": "Baseline: фактические проверки на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/production/counts/actual_validation_calls"
+          },
+          "expected": 29,
+          "unit": "validation call / history pack"
+        },
+        {
+          "id": "registered_negative_carry.registered_calls",
+          "label": "Registered: фактические проверки на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/registered_inputs/counts/actual_validation_calls"
+          },
+          "expected": 22,
+          "unit": "validation call / history pack"
+        },
+        {
+          "id": "registered_negative_carry.registered_suppressed",
+          "label": "Registered: пропущенные проверки на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/registered_inputs/counts/suppressed"
+          },
+          "expected": 7,
+          "unit": "validation call / history pack"
+        },
+        {
+          "id": "registered_negative_carry.registrations",
+          "label": "Новые регистрации на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/registered_inputs/counts/registrations"
+          },
+          "expected": 22,
+          "unit": "materialized registration / history pack"
+        },
+        {
+          "id": "registered_negative_carry.checked_imports",
+          "label": "Проверки импортируемых parent-ответов на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/registered_inputs/counts/checked_result_imports"
+          },
+          "expected": 17,
+          "unit": "checked result import / history pack"
+        },
+        {
+          "id": "registered_negative_carry.mint_attempts",
+          "label": "Попытки создания свидетельства на набор",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/expected-work.json",
+          "source_sha256": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/registered_inputs/counts/witness_mint_attempts"
+          },
+          "expected": 39,
+          "unit": "witness mint attempt / history pack"
+        },
+        {
+          "id": "registered_negative_carry.production_cpu",
+          "label": "Baseline: медиана CPU",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/summary.json",
+          "source_sha256": "6d40596d2aa1192c3535ad120130a7b1b726f4c7d4d42add0083a1be0513a5e2",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/production/cpu_ns/median"
+          },
+          "expected": 222551430,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "registered_negative_carry.registered_cpu",
+          "label": "Registered: медиана CPU",
+          "source": "reports/research-20261104/registered-negative-carry-evidence-v1/summary.json",
+          "source_sha256": "6d40596d2aa1192c3535ad120130a7b1b726f4c7d4d42add0083a1be0513a5e2",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/registered_inputs/cpu_ns/median"
+          },
+          "expected": 544742840,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "registered_negative_carry.positive_cpu_pairs",
+          "label": "Положительные CPU-разности registered минус baseline",
+          "source": "reports/research-20261104/negative-carry-premise-check-v1.json",
+          "source_sha256": "dfd1b5b8cbda3d1e4cac1af0bfac4043b1ff4a388b369462653f8fd7279800e1",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_observation/registered_inputs/positive_cpu_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "registered_negative_carry.positive_wall_pairs",
+          "label": "Положительные wall-разности registered минус baseline",
+          "source": "reports/research-20261104/negative-carry-premise-check-v1.json",
+          "source_sha256": "dfd1b5b8cbda3d1e4cac1af0bfac4043b1ff4a388b369462653f8fd7279800e1",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_observation/registered_inputs/positive_wall_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "registered_negative_carry.artifact_files",
+          "label": "Проверенные при упаковке файлы результатов",
+          "source": "reports/research-20261104/registered-negative-carry-raw-delivery.json",
+          "source_sha256": "1c3f3b09a6ea4e109e927926574b70741112d4a9d4c76570a4df6d701cc2fb4b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/original_artifact_files_checked"
+          },
+          "expected": 153,
+          "unit": "artifact file"
+        },
+        {
+          "id": "registered_negative_carry.runtime_files",
+          "label": "Проверенные при упаковке runtime-файлы",
+          "source": "reports/research-20261104/registered-negative-carry-raw-delivery.json",
+          "source_sha256": "1c3f3b09a6ea4e109e927926574b70741112d4a9d4c76570a4df6d701cc2fb4b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/runtime_files_checked"
+          },
+          "expected": 88,
+          "unit": "runtime file"
+        }
+      ]
+    },
+    {
+      "id": "real_first_parent",
+      "label": "Click replay по первым родителям: та же фиксированная когорта",
+      "scope": "24 прежних синтаксических claims, 36 переходов, 288 пар на вариант; из них 112 повторных и 176 добавленных.",
+      "limits": [
+        "Все 176 добавленных наблюдений reference-supported, новых contradicted нет; условная частота на contradicted не определена.",
+        "Восемь contradicted на полной траектории относятся к одному claim в старом перекрытии. Повторные версии зависимы.",
+        "Число actual-валидаций не равно общему времени; 96 parent-валидаций, 312 вызовов reference и 39 индексов учитываются отдельно.",
+        "Merge-страты описательные; reference делит CPython ast с production; это development, не held-out."
+      ],
+      "facts": [
+        {
+          "id": "real_first_parent.symbol_full",
+          "label": "Символьный якорь: actual child-валидации на полной траектории",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 8,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.file_full",
+          "label": "Файловый якорь: actual child-валидации на полной траектории",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 17,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.all_full",
+          "label": "Полная проверка: actual child-валидации на полной траектории",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/all_validate/actual_validation_calls"
+          },
+          "expected": 288,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.symbol_new",
+          "label": "Символьный якорь: actual child-валидации только в добавленной части",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_new_coverage/variants/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 0,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.file_new",
+          "label": "Файловый якорь: actual child-валидации только в добавленной части",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_new_coverage/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 4,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.all_new",
+          "label": "Полная проверка: actual child-валидации только в добавленной части",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_new_coverage/variants/all_validate/actual_validation_calls"
+          },
+          "expected": 176,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.new_conditional_rate",
+          "label": "Добавленная часть: условная частота ложной доступности не определена при нуле contradicted",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_new_coverage/variants/symbol_anchor/false_available_per_contradicted"
+          },
+          "expected": null,
+          "unit": "ratio"
+        },
+        {
+          "id": "real_first_parent.file_merge",
+          "label": "Файловый якорь: actual child-валидации на merge-переходах",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/topology_strata/merge/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 1,
+          "unit": "validation"
+        },
+        {
+          "id": "real_first_parent.overlap",
+          "label": "Семантически совпавшие строки старого перекрытия четырёх вариантов",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/overlap_check/observation_count"
+          },
+          "expected": 448,
+          "unit": "observation"
+        },
+        {
+          "id": "real_first_parent.child_reference",
+          "label": "Общие child-вызовы reference v2, отдельно от parent-работы",
+          "source": "reports/research-20261104/real-first-parent-replay-v1/report.json",
+          "source_sha256": "7b69791936459f661e0a99ade1efd181b088584704d53146f4416ab722b8e4b3",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/child_reference_calls"
+          },
+          "expected": 288,
+          "unit": "reference_call"
         }
       ]
     }
