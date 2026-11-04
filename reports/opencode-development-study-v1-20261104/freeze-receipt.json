@@ -1,0 +1,12 @@
+{
+  "study_sha256": "1d9c49d0a120a5af61d293b764270a84aac38e362a11d327ba217f564c080fed",
+  "authorization": "User explicitly authorized OpenCode sessions using OpenAI models; no new approval needed.",
+  "task_model_calls_before_freeze": 0,
+  "authored_smoke_model_sessions_before_freeze": 3,
+  "authored_smoke_breakdown": "2 host sessions (failed then passed) and1 container session (operational pass but missed preedit lookup, partial integration contract). All preserved.",
+  "criteria": "reports/opencode-study-design-20261104/protocol.json",
+  "runtime_amendment": "Pinned pretend1.0.9 for generic fixed test dependency before task outcomes; previous runtime preserved.",
+  "source_commit": "5328a457bf00ffa178d3889c5c8dfadc078a984d",
+  "final_task_bundle_sha256": "72b4e060612ceefbae4529453a97ca450cfc78ba2e5cd438d66cf2817a41fcab",
+  "heldout_model_calls": 0
+}

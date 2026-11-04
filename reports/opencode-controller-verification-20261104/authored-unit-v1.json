@@ -1,0 +1,17 @@
+{
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "runs/opencode-study-controller-development-20261104",
+    "-p",
+    "test_controller.py",
+    "-v"
+  ],
+  "model_calls": 0,
+  "returncode": 0,
+  "stderr": "test_archive_link_traversal_and_duplicate_rejected (test_controller.ControllerTests.test_archive_link_traversal_and_duplicate_rejected) ... ok\ntest_balanced_schedule_and_dependencies (test_controller.ControllerTests.test_balanced_schedule_and_dependencies) ... ok\ntest_canonical_hash_denial_before_reset (test_controller.ControllerTests.test_canonical_hash_denial_before_reset) ... ok\ntest_canonical_reset_discards_agent_history_preserves_directory (test_controller.ControllerTests.test_canonical_reset_discards_agent_history_preserves_directory) ... ok\ntest_export_captures_committed_additions_and_deletions (test_controller.ControllerTests.test_export_captures_committed_additions_and_deletions) ... ok\ntest_extra_terminal_file_rejected (test_controller.ControllerTests.test_extra_terminal_file_rejected) ... ok\ntest_grader_restores_original_tests (test_controller.ControllerTests.test_grader_restores_original_tests) ... ok\ntest_incomplete_recovery_is_terminal_not_retry (test_controller.ControllerTests.test_incomplete_recovery_is_terminal_not_retry) ... ok\ntest_model_failure_preserved_grading_still_runs (test_controller.ControllerTests.test_model_failure_preserved_grading_still_runs) ... ok\ntest_plain_dummy_memory_mutation_rejected (test_controller.ControllerTests.test_plain_dummy_memory_mutation_rejected) ... ok\ntest_plain_never_constructs_memory_and_quality_uses_fixed_grader (test_controller.ControllerTests.test_plain_never_constructs_memory_and_quality_uses_fixed_grader) ... ok\ntest_source_directory_symlink_rejected (test_controller.ControllerTests.test_source_directory_symlink_rejected) ... ok\ntest_source_fifo_rejected_without_reading (test_controller.ControllerTests.test_source_fifo_rejected_without_reading) ... ok\ntest_source_symlink_rejected (test_controller.ControllerTests.test_source_symlink_rejected) ... ok\ntest_summary_never_double_counts_nested_costs (test_controller.ControllerTests.test_summary_never_double_counts_nested_costs) ... ok\ntest_terminal_reused_and_mutation_rejected (test_controller.ControllerTests.test_terminal_reused_and_mutation_rejected) ... ok\ntest_unusable_predecessor_blocks_without_session (test_controller.ControllerTests.test_unusable_predecessor_blocks_without_session) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.607s\n\nOK\n",
+  "stdout": ""
+}

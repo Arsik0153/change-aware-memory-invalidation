@@ -1,0 +1,53 @@
+{
+  "authored_support": {
+    "authored_integration.py": "01d77627109d7d5bd5b51ec27c36657fef8edc17e9185493df35ee925f0fdd63",
+    "test_controller.py": "93b4870e13ccee0026d36363aaf8f6b3dc73dc83469db1590cb452e5ed6baeac"
+  },
+  "default_plan": "final-plan-v1/plan.json",
+  "default_plan_sha256": "9820ba726daf1e9d195a7e338851d474baa5ab2b91bb16f8427ff5188c29f003",
+  "default_plan_trials": 36,
+  "image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "implementation_modules": {
+    "fixed_grader.py": "797b7f7ee9b58052ff9600da6f780acc565c450cd69b6052578a8e1e2b8a80e5",
+    "preparation_worker.py": "3336933a33436750dde15e421a959b92c8712ca4bcad98f9b6f2495b237e2c9f",
+    "study_common.py": "1967002fb6ed8cf113b39252a4095816113cd9932da532fca74a9156dde6a0f6",
+    "study_controller.py": "57e2cc37c4254120db92966881735b6fbff1b349ad98bfaefd8770e65e363fed",
+    "study_ledger.py": "e82c76a9aa20028a150abde6244f6854a346cfc0aa115a3dca737549d4141a3e",
+    "study_runtime.py": "ab8bf428de150cad45b802bc606b1db37d3ad53dfcc338e43611c57177f11fc7",
+    "study_schema.py": "2d5ee971de42a4ee7893b11c6226b46ca898cd2804b01e09b765a56344061efc",
+    "study_workspace.py": "1bdc00678bf4e7a3eec0aa61a05722c19a55777f22570cc36a2aaab846274c38"
+  },
+  "installation": "Copy8 implementation modules together; tests/authoredintegration optionalverification support. Regenerate study config from installed controller path to pin actual installed inventory before freeze.",
+  "integration": {
+    "all_skipped_acceptance_rejected": true,
+    "artifact_hashes_verified": 479,
+    "auth_imports": 0,
+    "baseline_allowances": 2,
+    "candidate_pytest_poison_did_not_replace_trusted_runner": true,
+    "legitimate_regression_skips_preserved": true,
+    "model_calls": 0,
+    "path": "authored-docker-v3/report.json",
+    "positive_arm_version_cases": 6,
+    "positive_fixed_checks": 12,
+    "sha256": "9c358744eb5e117337757d443c45aa15566b6a0ba48dacda4dba46caaea1d4fb",
+    "status": "passed"
+  },
+  "limitations": [
+    "Final immutable evidence hashing/publication follows the per-trial operational timer and is benchmark bookkeeping; raw session/preparation startup, model/tools/state and cleanup are timed inclusively.",
+    "Docker daemon CPU outside cgroup/host-child counters; client token normalization may lose provider missingness; no provider compute/subscription-billing measurement.",
+    "This controller-development verification used synthetic fixtures only. No task models were run. Earlier heldout asset preflights remain separately archived; they were not rerun or used to tune this controller. Synthetic integration proves mechanics, not model quality or empirical gains."
+  ],
+  "model_calls_by_implementation_agent": 0,
+  "post_integration_changes": [
+    "study_controller.py: failed-session usage read in finally; missing usage explicit null; corresponding unit control"
+  ],
+  "preserved_iterations": {
+    "authored-docker-v1": "passed6cases; ambiguous default pytest rootdir subsequently corrected",
+    "authored-docker-v2": "plain2cases passed; static startup pending race failed; no retry; parent readiness fix required"
+  },
+  "ruff": "passed",
+  "runtime_manifest_sha256": "56c2b3d60f73ee0ace2d3d22c223810b61b20191f131152814a411e3dae96724",
+  "schema_version": 1,
+  "status": "ready_for_parent_install_and_freeze",
+  "unit_controls": 21
+}

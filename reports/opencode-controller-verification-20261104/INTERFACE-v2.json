@@ -1,0 +1,49 @@
+{
+  "arms": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "canonical_policy": "fixed directory inode; recreate source and fresh single-commit Git each stage; no prior patch as source",
+  "dependency_hashes": {
+    "authored_integration.py": "01d77627109d7d5bd5b51ec27c36657fef8edc17e9185493df35ee925f0fdd63",
+    "fixed_grader.py": "797b7f7ee9b58052ff9600da6f780acc565c450cd69b6052578a8e1e2b8a80e5",
+    "preparation_worker.py": "3336933a33436750dde15e421a959b92c8712ca4bcad98f9b6f2495b237e2c9f",
+    "study_common.py": "1967002fb6ed8cf113b39252a4095816113cd9932da532fca74a9156dde6a0f6",
+    "study_controller.py": "57e2cc37c4254120db92966881735b6fbff1b349ad98bfaefd8770e65e363fed",
+    "study_ledger.py": "e82c76a9aa20028a150abde6244f6854a346cfc0aa115a3dca737549d4141a3e",
+    "study_runtime.py": "ab8bf428de150cad45b802bc606b1db37d3ad53dfcc338e43611c57177f11fc7",
+    "study_schema.py": "2d5ee971de42a4ee7893b11c6226b46ca898cd2804b01e09b765a56344061efc",
+    "study_workspace.py": "1bdc00678bf4e7a3eec0aa61a05722c19a55777f22570cc36a2aaab846274c38",
+    "test_controller.py": "93b4870e13ccee0026d36363aaf8f6b3dc73dc83469db1590cb452e5ed6baeac"
+  },
+  "entrypoint": "study_controller.py",
+  "grader": "separate network-none readonly fixed-tests container; trusted pytest loaded before candidate imports",
+  "limits": {
+    "cpu": 2,
+    "memory_bytes": 2147483648,
+    "model": "openai/gpt-6.1-sol#high",
+    "steps": 20,
+    "timeout_seconds": 900
+  },
+  "memory_policy": "unique physical namespace per repetition/arm; plain zero construction; static/CAMI separately charged identical origin generation and preparation; persistent memory across four canonical stages",
+  "model_calls_by_implementation_agent": 0,
+  "modes": {
+    "default": "validate and plan only; zero containers/models",
+    "make-study": "new draft config; execution_authorized false",
+    "one-trial": "next scheduled development trial only",
+    "resume": "reuse terminal attempts; abandon partial attempts; no retries",
+    "run-model": "explicit authorization + exact study SHA + runtime manifest"
+  },
+  "normalization": {
+    "development": "fixture-manifest + task-prompts + task-evaluation + source-only origin seed",
+    "heldout": "extracted portable tasks.json + private oracle inventory + origin seed; no gold source read"
+  },
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_scope": "regular src/**; addition/deletion/mode changes exported independent of Git",
+  "stages": 4,
+  "trial_count": 36,
+  "verification_manifest": "handoff-manifest-v2.json",
+  "verification_manifest_sha256": "4a7e5aba69475bb1fe0a52d0fc60de170dd3c8955bb4025f625270c5ab917c3f"
+}

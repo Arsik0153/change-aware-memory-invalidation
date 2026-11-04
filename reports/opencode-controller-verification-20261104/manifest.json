@@ -1,0 +1,35 @@
+{
+  "attempts": [
+    {
+      "attempt": "authored-docker-v1",
+      "status": "passed",
+      "archive": "authored-docker-v1.tar.gz",
+      "sha256": "65ebe8d6799be1b68ad4ca325899fcab34ba54d8a5d9ef5ce836c414f23e74bf",
+      "bytes": 174997,
+      "model_calls": 0,
+      "auth_imports": 0
+    },
+    {
+      "attempt": "authored-docker-v2",
+      "status": "failed",
+      "archive": "authored-docker-v2.tar.gz",
+      "sha256": "b9fb710c7b06c083edec4231dfa9d92608ade27fcb8cb185fe11571a5aa7a133",
+      "bytes": 82339,
+      "model_calls": 0,
+      "auth_imports": 0
+    },
+    {
+      "attempt": "authored-docker-v3",
+      "status": "passed",
+      "archive": "authored-docker-v3.tar.gz",
+      "sha256": "9ec703b025b545809ac0170be5906e2838a7ad32eae4539e7963388b9c1d026a",
+      "bytes": 189442,
+      "model_calls": 0,
+      "auth_imports": 0
+    }
+  ],
+  "installed_runtime_modules_equal_staged": true,
+  "installed_unit_controls": 21,
+  "installed_ruff": "passed",
+  "authored_helper_relocation_only": "Output may be a new owned runs/ directory rather than staging directory."
+}
