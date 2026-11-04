@@ -219,13 +219,13 @@ Merge-срез содержит 80 наблюдений на вариант: 0/1
 ## Packaging: новая development-когорта и два синтаксических события
 
 В Packaging выполнен отдельный development replay: три parent-группы, по четыре выбранные функции и два утверждения на функцию — существует ли символ и совпадает ли точная нормализованная сигнатура. Всего получены 24 новых производных claims. Три цепочки по 23 перехода дают 69 children и вместе с parents — 72 snapshots. Это дополнение к исследованию; исходные 630 кандидатов не переименованы и не заменены. Данные топологии: packaging-topology-v2/topology.json, параметры и результат replay: packaging-replay-v2/manifest.json.
-<!-- facts: packaging_development.claims, packaging_development.snapshots; supporting: topology derived check -->
+
 
 Исходный план с горизонтом 24 остановился до чтения исходников: в заданных границах нашлись 72 first-parent позиции при требуемых 75. Неудачный запуск сохранён. Затем отдельно закреплён горизонт 23 с раскрытой поправкой на основании метаданных, до чтения parent- и child-кода. Поэтому v2 обозначается metadata-informed; первоначальный план не выдаётся за выполненный без изменений. Сохранённая невозможность h24: packaging-frame-infeasibility-v1/report.json, методическая запись v2: packaging-parents-v2/manifest.json.
-<!-- supporting: v1_failed, v1_frame, v1_minimum, v1_no_parent_reads, v1_no_child_reads, generation_metadata_informed, original_plan_failed, primary_horizon -->
+
 
 Шесть свежих слепых AI-контекстов дали 72 первичных решения, включая контроли. Все 12 авторских контрольных случаев прошли установленный gate. Все 24 реальных claims получили parent eligibility; исключений и замены рецензентов не было. Это AI-проверка, human credit равен нулю; независимость ошибок моделей не установлена. Результаты parent review: packaging-parent-review-results-v2/manifest.json.
-<!-- facts: packaging_development.ai_contexts, packaging_development.ai_decisions; supporting: controls_passed, no_reviewer_replacement, human_credit, parent_exclusion_observations, *.parent_eligible -->
+
 
 | Вариант | Фактические child-валидации | Наблюдения claim × шаг |
 | --- | ---: | ---: |
@@ -237,16 +237,16 @@ Merge-срез содержит 80 наблюдений на вариант: 0/1
 ![Packaging: проверки и два эпизода изменения точной сигнатуры](../reports/research-20261104/packaging-figure-v1/packaging_replay.png)
 
 Во всех четырёх вариантах reference определил 528 supported и 24 contradicted наблюдения; unknown не было. Ложная доступность, доступность при reference-unknown и скрытые supported равны нулю в каждом варианте. Эти нули описывают подготовленный набор, а не гарантируют отсутствие ошибок на других проектах. Парные predicates, повторные функции, модули и версии зависимы: 552 строки не являются 552 независимыми случаями. Полные счётчики: packaging-replay-v2/report.json.
-<!-- facts: packaging_development.symbol_anchor, packaging_development.file_anchor, packaging_development.known_incomplete, packaging_development.all_validate, packaging_development.reference_supported, packaging_development.reference_contradicted, packaging_development.false_available, packaging_development.available_unknown, packaging_development.withheld_supported; supporting: candidate_observations and per-variant consistency checks -->
+
 
 Отрицательные наблюдения относятся к двум claims: два первых события и 22 продолжающихся повтора. На шаге 3 второй группы у `_format_marker` в `markers.py` изменились записи `Optional[bool]` → `bool | None` и `Union[List[str], MarkerAtom, str]` → `list[str] | MarkerAtom | str`. На шаге 21 третьей группы у `_evaluate_markers` аннотация `environment` сменилась с `dict[str, str]` на `dict[str, str | AbstractSet[str]]`. Оба первых события были выбраны для проверки и скрыты всеми четырьмя вариантами. Это расхождения точного синтаксического контракта; поведенческий API break и семантическая неэквивалентность типов этим не установлены. Последующий разбор событий является описательным post-hoc анализом. События и причины отбора: packaging-event-analysis-v1/report.json.
-<!-- facts: packaging_development.unique_contradicted, packaging_development.first_events, packaging_development.contradicted_repeats; event detail: /events/0 and /events/1 in hashed event report -->
+
 
 У symbol anchor 22 из 28 проверок вызваны `previously_unavailable`: уже скрытые claims перепроверяются на последующих шагах. Ещё четыре выбранных наблюдения оказались supported. File anchor добавил 43 проверки по сравнению с symbol anchor; все эти дополнительные наблюдения supported. Эти трассы объясняют состав вызовов, но не являются причинным разложением времени. Описательный разбор: packaging-event-analysis-v1/report.json.
-<!-- supporting: symbol_retries, symbol_selected_supported, extra_file_selected, extra_file_supported -->
+
 
 Отдельно выполнены 96 parent-валидаций — по 24 на вариант; 576 reference calls внутри replay — 24 parent и 552 child; ещё 36 reference-решений относятся к более ранней review-фазе. Построены 72 общих для вариантов индекса. Число child-вызовов не объявляется ускорением полного обслуживания. Префикс 12 вложен в полную траекторию и не является отдельной выборкой. Это development-результат с `evaluation_eligible=false`, без human admission и без основного held-out сравнения. Раздельный учёт replay: packaging-replay-v2/report.json, ранняя review-фаза: packaging-parent-review-results-v2/manifest.json.
-<!-- facts: packaging_development.parent_calls_per_variant, packaging_development.parent_reference, packaging_development.child_reference, packaging_development.indexes; supporting: parent sum96, reference sum576, earlier_reference_decisions, heldout_ineligible -->
+
 
 Независимый stdlib-аудитор повторно проверил 2378 артефактов, 578 закреплённых входов, 272 исторических файла, 576 Git/AST-пакетов, все 2208 наблюдений и 1947 строк затрат. Все 53 production Python-файла совпали с `700ebf2`; отбор, состояния и разрезы вычислены без импорта CAMI или reference. Установленная версия воспроизвела отчёт на извлечённом офлайн-корпусе. Восемь подмен с пересчитанными хешами отклонены; unknown-as-contradicted отмечен неприменимым к реальным данным без unknown и проверен на авторской нагрузке. Аудитор знал предварительные сводки; слепая репликация не заявляется. Данные: packaging-result-audit-v1/.
 
