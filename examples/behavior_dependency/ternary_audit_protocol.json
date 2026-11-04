@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "experiment": "ternary-validation-availability-invariants-v1",
+  "kind": "Finite model for conditional arguments; no probes or production policy change.",
+  "state": [
+    "truth",
+    "availability",
+    "processed transitions since last validation"
+  ],
+  "initial_state": {
+    "truth": true,
+    "available": true,
+    "age": 0
+  },
+  "intervals": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "transition_inputs": [
+    "next truth in {false,true}",
+    "arbitrary baseline trigger in {false,true}"
+  ],
+  "selection": "baseline trigger OR previous unavailable OR age+1>=K",
+  "normal_result": "available iff supported; all completed validations reset age=0; skipped transitions carry availability and increment age",
+  "models": {
+    "exact_binary": {
+      "true": [
+        "supported"
+      ],
+      "false": [
+        "contradicted"
+      ]
+    },
+    "sound_positive_only": {
+      "true": [
+        "supported",
+        "contradicted",
+        "insufficient_evidence"
+      ],
+      "false": [
+        "contradicted",
+        "insufficient_evidence"
+      ]
+    }
+  },
+  "checks": [
+    "Every reachable transition, not sampled traces.",
+    "Both models: no false-availability cycle and maximum consecutive false availability <= K-1.",
+    "Exact binary: no false withholding. Sound-positive-only: false withholding is allowed and must be reachable.",
+    "Every false-availability state has 1<=age<K; every edge between false-available states increments age by one."
+  ],
+  "negative_controls": [
+    {
+      "id": "false_positive_supported",
+      "interval": 4,
+      "change": "Allow all three outcomes for both truth values.",
+      "expected": "Reachable false-availability cycle."
+    },
+    {
+      "id": "carry_on_insufficient",
+      "interval": 4,
+      "change": "Keep old availability on insufficient_evidence while resetting age=0.",
+      "expected": "Reachable false-availability cycle even though supported remains sound."
+    }
+  ],
+  "scope": [
+    "Nondeterministic validation outcomes, not measured failure frequencies.",
+    "Finite exploration supports a separate rank/transition argument for arbitrary positive integer K.",
+    "Initial available claim assumed true. Claim, history order and validator contract fixed.",
+    "No assertions about wall time, unfinished runs, real validator soundness, production resume or main empirical evaluation."
+  ]
+}
