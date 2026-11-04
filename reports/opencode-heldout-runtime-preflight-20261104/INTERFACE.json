@@ -1,0 +1,29 @@
+{
+  "archive": "heldout-evaluator-metadata-v1.tar.gz",
+  "archive_bytes": 763751,
+  "archive_private": true,
+  "archive_sha256": "9a54362e5ac7a82e87b21453f0d0ff8ad4f847a91f33f8fe64c5c085149b3d7f",
+  "bindings": [
+    "asset_archive_sha256",
+    "task_manifest_sha256",
+    "runtime_manifest_sha256",
+    "image_id",
+    "task_archive_sha256",
+    "controller_files"
+  ],
+  "candidate_quality_rule": "No candidate failure allowances: fixed acceptance and full regression must both pass. Baseline failures are used only to admit the declared canonical base.",
+  "contains_prompt_or_solution_source_bodies": false,
+  "contains_task_ids_and_pytest_node_ids": true,
+  "expected_baseline_failures_per_task_ordinal": [
+    1,
+    4
+  ],
+  "payload": "baseline-failure-allowances.json",
+  "preserved_failure": "report.json + preflight-v1.py.txt + private/failure.txt (metadata mode representation mismatch, before any evaluator container).",
+  "public_summary": "summary.json",
+  "root_blinding": "Do not inspect private/bundle, private/checks-v2 logs or mapping values manually.",
+  "status": "ready_for_parent_freeze_no_model_calls",
+  "study_field": "baseline_failure_allowances",
+  "timing_caveat": "Development r1-plain-s1 overlapped early infrastructure preflight; flag this row for primary wall-time interpretation. See phase-timing-final.json.",
+  "transfer_rule": "After verifying metadata archive SHA256 and embedded metadata-seal.json, load payload and copy ONLY its baseline_failure_allowances mapping to the final heldout study object. Retain identity bindings; do not print mapping or node IDs. No controller modification needed."
+}

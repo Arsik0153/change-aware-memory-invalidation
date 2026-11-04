@@ -1,0 +1,58 @@
+{
+  "all_grader_outcomes_errors_skips_xfails_xpasses_zero": true,
+  "cgroup_phases": [
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-01-base/acceptance"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-01-base/regression"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-01-gold/acceptance"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-01-gold/regression"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-02-base/acceptance"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-02-base/regression"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-02-gold/acceptance"
+    },
+    {
+      "cgroup_before_after_success": true,
+      "cpu_quota_cores": 2.0,
+      "memory_max_bytes": 2147483648,
+      "phase": "task-02-gold/regression"
+    }
+  ],
+  "comparison_note": "Acceptance overlaps regression; counts are not independent observations and must not be summed for task quality.",
+  "gold_collections_equal_corresponding_base": true,
+  "metadata_archive_roundtrip_verified": true,
+  "public_python_helpers_ruff": "passed",
+  "status": "passed"
+}
