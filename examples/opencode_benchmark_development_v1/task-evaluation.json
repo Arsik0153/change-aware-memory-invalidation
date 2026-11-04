@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "click-help-option-api",
+      "acceptance": [
+        "oracles/test_help_option_api.py"
+      ],
+      "acceptance_origin": "authored public API requirements derived from upstream PR2563",
+      "regression_suite": "unchanged tests from the base archive"
+    },
+    {
+      "id": "click-help-eagerness",
+      "acceptance": [
+        "oracles/test_commands.py"
+      ],
+      "pytest_selection": "help_param_priority or iter_params_for_processing",
+      "acceptance_origin": "upstream PR2811 regression tests",
+      "regression_suite": "unchanged tests from the base archive"
+    }
+  ],
+  "evaluation_policy": "Evaluate a copy of the agent source patch with fixed original tests; do not trust modified/deleted agent tests. Acceptance and original regressions must both pass. Store failure logs and full source diff. No exact implementation match required."
+}

@@ -1,0 +1,147 @@
+{
+  "results": [
+    {
+      "task": "help-api",
+      "state": "base",
+      "type": "acceptance",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-c",
+        "/dev/null",
+        "--confcutdir",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle",
+        "-p",
+        "no:cacheprovider",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle/test_help_option_api.py"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "wall_seconds": 0.39884329005144536,
+      "log": "help-api-base-acceptance.log",
+      "log_sha256": "749f66c2e03a97e241ea88291293e3d5e4eb79c577437111910421fee1b99841"
+    },
+    {
+      "task": "help-api",
+      "state": "gold",
+      "type": "acceptance",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-c",
+        "/dev/null",
+        "--confcutdir",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle",
+        "-p",
+        "no:cacheprovider",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle/test_help_option_api.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "wall_seconds": 0.21884195692837238,
+      "log": "help-api-gold-acceptance.log",
+      "log_sha256": "d5be81bbe49b412357ba177be7fae47b32ba70b563d2a01ec6ee15df362cc215"
+    },
+    {
+      "task": "help-api",
+      "state": "gold",
+      "type": "regressions",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "wall_seconds": 8.090682793874294,
+      "log": "help-api-gold-regressions.log",
+      "log_sha256": "cdca1a5b552c66221f0d47761bfba5d50d63ac030162d7ae40a25241627e9c4c"
+    },
+    {
+      "task": "help-eagerness",
+      "state": "base",
+      "type": "acceptance",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-c",
+        "/dev/null",
+        "--confcutdir",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle",
+        "-p",
+        "no:cacheprovider",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle/test_commands.py",
+        "-k",
+        "help_param_priority or iter_params_for_processing"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "wall_seconds": 0.27657705801539123,
+      "log": "help-eagerness-base-acceptance.log",
+      "log_sha256": "a5a2d3973c4cdab38b1c6639254eddcd17307e4e77cf31dcb454ec911a7702f3"
+    },
+    {
+      "task": "help-eagerness",
+      "state": "gold",
+      "type": "acceptance",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-c",
+        "/dev/null",
+        "--confcutdir",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle",
+        "-p",
+        "no:cacheprovider",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-study-development-20261104/grader-preflight-v1/oracle/test_commands.py",
+        "-k",
+        "help_param_priority or iter_params_for_processing"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "wall_seconds": 0.28029896412044764,
+      "log": "help-eagerness-gold-acceptance.log",
+      "log_sha256": "ffc22427f125cc2ccffe0aac940aedc7592cd0abf7658c932605b55622fe7f42"
+    },
+    {
+      "task": "help-eagerness",
+      "state": "gold",
+      "type": "regressions",
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "wall_seconds": 1.4634884661063552,
+      "log": "help-eagerness-gold-regressions.log",
+      "log_sha256": "40d967c468a66fc5966a6477f894538e923f9d8a2163d0db429f540aea17f8d5"
+    }
+  ],
+  "status": "pass",
+  "model_calls": 0,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "acceptance_scope": "Authored public API requirements for PR2563; upstream task-specific tests from PR2811. No implementation byte-equality requirement.",
+  "oracle_hashes": {
+    "conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+    "test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+    "test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d"
+  }
+}

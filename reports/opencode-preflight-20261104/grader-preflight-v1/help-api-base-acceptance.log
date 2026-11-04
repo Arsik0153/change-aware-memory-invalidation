@@ -1,0 +1,62 @@
+FFFFF.                                                                   [100%]
+=================================== FAILURES ===================================
+_______________________ test_public_help_option_defaults _______________________
+
+    def test_public_help_option_defaults():
+>       option = click.HelpOption()
+                 ^^^^^^^^^^^^^^^^
+E       AttributeError: module 'click' has no attribute 'HelpOption'. Did you mean: 'help_option'?
+
+../../grader-preflight-v1/oracle/test_help_option_api.py:7: AttributeError
+___________ test_automatic_help_uses_public_option_and_custom_names ____________
+
+    def test_automatic_help_uses_public_option_and_custom_names():
+        command = click.Command("sample", context_settings={"help_option_names": ["-h", "--assist"]})
+        with command.make_context("sample", [], resilient_parsing=True) as context:
+            option = command.get_help_option(context)
+>           assert isinstance(option, click.HelpOption)
+                                      ^^^^^^^^^^^^^^^^
+E           AttributeError: module 'click' has no attribute 'HelpOption'. Did you mean: 'help_option'?
+
+../../grader-preflight-v1/oracle/test_help_option_api.py:17: AttributeError
+______ test_decorator_and_direct_option_have_equivalent_default_behavior _______
+
+    def test_decorator_and_direct_option_have_equivalent_default_behavior():
+        @click.command(add_help_option=False)
+        @click.help_option("--assist")
+        def decorated():
+            raise AssertionError("Help must exit before invoking the command")
+    
+>       direct = click.Command("direct", params=[click.HelpOption(["--assist"])])
+                                                 ^^^^^^^^^^^^^^^^
+E       AttributeError: module 'click' has no attribute 'HelpOption'. Did you mean: 'help_option'?
+
+../../grader-preflight-v1/oracle/test_help_option_api.py:29: AttributeError
+_____________ test_help_option_respects_explicit_callback_override _____________
+
+    def test_help_option_respects_explicit_callback_override():
+        def custom(context, parameter, value):
+            if value:
+                click.echo("custom help")
+                context.exit()
+    
+>       command = click.Command("sample", params=[click.HelpOption(callback=custom)], add_help_option=False)
+                                                  ^^^^^^^^^^^^^^^^
+E       AttributeError: module 'click' has no attribute 'HelpOption'. Did you mean: 'help_option'?
+
+../../grader-preflight-v1/oracle/test_help_option_api.py:42: AttributeError
+______________ test_help_option_decorator_preserves_custom_class _______________
+
+    def test_help_option_decorator_preserves_custom_class():
+>       class CustomHelp(click.HelpOption):
+                         ^^^^^^^^^^^^^^^^
+E       AttributeError: module 'click' has no attribute 'HelpOption'. Did you mean: 'help_option'?
+
+../../grader-preflight-v1/oracle/test_help_option_api.py:48: AttributeError
+=========================== short test summary info ============================
+FAILED ../../../../../../../dev::test_public_help_option_defaults - Attribute...
+FAILED ../../../../../../../dev::test_automatic_help_uses_public_option_and_custom_names
+FAILED ../../../../../../../dev::test_decorator_and_direct_option_have_equivalent_default_behavior
+FAILED ../../../../../../../dev::test_help_option_respects_explicit_callback_override
+FAILED ../../../../../../../dev::test_help_option_decorator_preserves_custom_class
+5 failed, 1 passed in 0.04s

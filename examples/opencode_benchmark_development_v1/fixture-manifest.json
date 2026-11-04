@@ -1,0 +1,43 @@
+{
+  "project": "https://github.com/pallets/click",
+  "fixtures": [
+    {
+      "task": "click-help-option-api",
+      "role": "base",
+      "upstream_commit": "9aeb586cbc622c229bbf80ad948e590f596a8d3e",
+      "archive": "fixtures/click-help-option-api-base.tar.gz",
+      "sha256": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+      "bytes": 334278,
+      "contains_upstream_git_history": false
+    },
+    {
+      "task": "click-help-option-api",
+      "role": "gold",
+      "upstream_commit": "26aa7bf3189e19a8a63890b1c2cc7eca24312d6f",
+      "archive": "fixtures/click-help-option-api-gold.tar.gz",
+      "sha256": "22bb04d58d7e699aead89bacf4b2c60babdbb33b3ed504a3d1112590579d7756",
+      "bytes": 334333,
+      "contains_upstream_git_history": false
+    },
+    {
+      "task": "click-help-eagerness",
+      "role": "base",
+      "upstream_commit": "273fb90106726daa16e1033eca0d677de76345eb",
+      "archive": "fixtures/click-help-eagerness-base.tar.gz",
+      "sha256": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+      "bytes": 334402,
+      "contains_upstream_git_history": false
+    },
+    {
+      "task": "click-help-eagerness",
+      "role": "gold",
+      "upstream_commit": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+      "archive": "fixtures/click-help-eagerness-gold.tar.gz",
+      "sha256": "1e3ac9c49e7d20744285b17e7b373fbc2a37256ef4a069c7cffdcd43961c3398",
+      "bytes": 335750,
+      "contains_upstream_git_history": false
+    }
+  ],
+  "licenses": "Upstream LICENSE.txt preserved in every source archive.",
+  "agent_visibility": "Base archive only is mounted for each task. Gold archives and grader files remain outside agent containers."
+}

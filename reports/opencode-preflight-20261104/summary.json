@@ -1,0 +1,22 @@
+{
+  "status": "preparation_failure_before_agent_benchmark",
+  "development_model_task_calls": 0,
+  "task_oracle_preflight": "both development bases fail acceptance; both upstream gold fixes pass acceptance and original regressions",
+  "initial_note_key_failure": {
+    "registered": 1,
+    "wall_seconds": 159.0920125860721,
+    "scope": "invalid seed generator used repeated global note keys; corrected before model task measurements"
+  },
+  "corrected_seed_preparation": {
+    "requested_notes": 329,
+    "registered_before_failure": 131,
+    "wall_seconds": 445.8803586619906,
+    "cpu_seconds": 410.86552826900004,
+    "sqlite_bytes": 266428416,
+    "error": "memory_database_unavailable: database exceeds size limit"
+  },
+  "static_preparation": "complete; same329note semantic input, no CAMI imports",
+  "timing_limit": "Shared-host preflight with unrelated development activity; not controlled task benchmark or statistical comparison. Entire subprocess timings and logs preserved.",
+  "baseline_runtime_commit": "13edf86d7d746fb1c0c6c95e5f841364c6079ad3",
+  "next_action": "Measured repeated capture/projection and repeated full-state generation publication motivate atomic batch preparation, preserving readset verification and database limit."
+}

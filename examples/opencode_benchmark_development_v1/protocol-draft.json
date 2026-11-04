@@ -1,0 +1,73 @@
+{
+  "study_id": "opencode-cami-real-maintenance-v1",
+  "status": "design_before_model_task_runs_not_final_freeze",
+  "task_class": "Bounded Python library maintenance at historical upstream revisions: API refactoring and bug fixes, with persistent source-linked memory across canonical code changes.",
+  "arms": [
+    "plain",
+    "static_memory",
+    "cami_memory"
+  ],
+  "model": "openai/gpt-6.1-sol#high",
+  "opencode_version": "2.2.5",
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "development": {
+    "project": "https://github.com/pallets/click",
+    "tasks": [
+      {
+        "id": "click-help-option-api",
+        "upstream_pr": 2563,
+        "base": "9aeb586cbc622c229bbf80ad948e590f596a8d3e",
+        "gold": "26aa7bf3189e19a8a63890b1c2cc7eca24312d6f",
+        "category": "real upstream refactor exposing reusable HelpOption API; authored acceptance tests required"
+      },
+      {
+        "id": "click-help-eagerness",
+        "upstream_pr": 2811,
+        "base": "273fb90106726daa16e1033eca0d677de76345eb",
+        "gold": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+        "category": "real upstream bug fix; upstream regression tests"
+      }
+    ]
+  },
+  "heldout_selection": {
+    "project": "https://github.com/pypa/packaging",
+    "gold_commit_ids": [
+      "c52d2b30465ace6d11f54c01b6ea30419a94b5ef",
+      "cf2cbe2aec28f87c6228a6fb136c27931c9af407"
+    ],
+    "selection_basis": "Two chronological specifier bug fixes in already available metadata, chosen before any task-model measurements. No performance-based replacement allowed.",
+    "source_exposure": "Packaging source was used in earlier structural research, so this is task/outcome-held-out, not a previously unseen project. Final task prompts/evaluator and implementation will be frozen before final model runs.",
+    "unusable_task_rule": "Record a failed preflight; do not substitute a task after observing model results. All final results preserved and implementation cannot be tuned against them."
+  },
+  "sequence": [
+    "first_task_local_cold",
+    "first_task_repeat",
+    "second_task_after_canonical_upstream_changes",
+    "second_task_repeat"
+  ],
+  "repetitions": 3,
+  "sessions": "New clean transcript per stage; persistent memory database across four stages, canonical source reset before every stage; model-generated patches never become subsequent task inputs.",
+  "order": "Three cyclic arm orders over repetition blocks, stage index rotates initial arm; no concurrent model trials.",
+  "memory": "Identical deterministic origin-source note catalog, shared retrieval and budget; static notes explicitly unchecked-current; CAMI source-linked notes withheld when current evidence requires review. No future task solutions in memory. Notes are not behavior-verified claims.",
+  "cold_scope": "Fresh local OpenCode/MCP state and memory construction; remote provider cache cannot be forced cold and cached token fields must be recorded.",
+  "cost_boundary": "Common source extraction charged identically; per-arm memory construction, capture, source CAS, SQLite durability, refresh, lookup, process startup, model calls, task tool runs, storage and cleanup measured. Initial build included in full four-stage sequence totals and cold task total; never amortized away without showing denominator. Infrastructure/auth preparation and evaluator cost separately recorded, never silently omitted.",
+  "primary_quality": "All fixed task acceptance checks plus predefined regression suite pass; original tests restored for evaluation, agent modifications cannot weaken evaluator. Base must fail task acceptance and gold must pass before model runs.",
+  "staleness": "Separate changed-source memory exposure, confirmed obsolete snippet exposure, and evidence-backed stale reliance in visible tool/action/final traces. Unknown reliance remains unknown. CAMI withholding is not itself task correctness; zero detected reliance is not proof of absence.",
+  "primary_efficiency": "End-to-end sequence elapsed seconds and provider token fields, with memory setup included; report paired per-block values, medians, ranges and all failures. Provider cost metadata is not verified subscription billing.",
+  "secondary_resources": [
+    "CPU self and descendants",
+    "sampled aggregate RSS with limitations",
+    "stored logical and allocated bytes",
+    "memory preparation and maintenance durations",
+    "provider input/output/reasoning/cache counters separately",
+    "tool counts and durations"
+  ],
+  "success_rule": "No quality degradation on the predefined final tasks and a consistent paired gain in full sequence elapsed time or non-cached provider token usage over all three repeated blocks against both comparison arms. With two task instances, no broad population claim or statistical proof of noninferiority.",
+  "failure_policy": "Timeouts, provider errors, rejected permissions, tool errors and incomplete runs retained and reported. No silent retry/replacement; technical repair creates a new declared protocol/run version.",
+  "optimization": "Development measurements only. Profile measured dominant costs before changes; no Rust rewrite unless a confirmed CPU bottleneck justifies it.",
+  "search_replacement": "Exact symbol lookup does not satisfy native regex grep semantics; retain native search in primary arms. A separately labeled exact-symbol tool experiment requires its own compatibility and task protocol.",
+  "state_trajectory": "Frozen semantic catalog content persists. CAMI maintenance states and caches produced by each arm's own tool calls persist across stages, including sticky manual-review states after temporary edits. Canonical source resets are identical before each task; agent solutions are not used as future source or memory payloads. This is an end-to-end policy effect, not a claim that all arms execute an identical internal state trajectory.",
+  "memory_seed_policy": "All unambiguous direct public Python functions and methods plus __init__/__call__ from source roots; one deterministic source-only note per selector, unique global note key, first2400 source characters. No task-target filtering, max1024 records safety bound. Seed source extraction charged per arm.",
+  "native_search_compatibility": "CAMI find supports exact symbol selectors; native OpenCode grep supports arbitrary regex text matches and line/path results. These contracts differ, so no direct replacement is included or mislabeled as equivalent. A complementary symbol tool can be a separate later experiment.",
+  "historical_task_limitations": "Public historical tasks may be present in model training. No claim of contamination-free benchmark. Same fixed model and prompts across arms, no upstream history/solutions available in task filesystem, network use prohibited in task prompts and native web tools disabled."
+}

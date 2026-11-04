@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/root/apps/change-aware-memory-invalidation/integrations/opencode/memory_adapter.py", line 175, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/integrations/opencode/memory_adapter.py", line 161, in main
+    prepare(args.backend, args.repo.resolve(), args.out.resolve(),
+  File "/root/apps/change-aware-memory-invalidation/integrations/opencode/memory_backend.py", line 267, in prepare
+    receipt = service.remember(payload["type"], selector, context,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py", line 167, in remember
+    return self._mutate(kind, query, context, request_id, note_key, text, None, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py", line 178, in _mutate
+    with self._session() as db:
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/root/apps/change-aware-memory-invalidation/src/cami/product/service.py", line 70, in _session
+    with self.index_store.writer(), self.store.connection() as db:
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py", line 190, in connection
+    snapshot.publish(self._image(db))
+                     ^^^^^^^^^^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/src/cami/product/memory/store.py", line 116, in _image
+    raise IncompleteError("memory_database_unavailable: database exceeds size limit")
+cami.errors.IncompleteError: memory_database_unavailable: database exceeds size limit

@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "cause": "Generator reused a note_key across different subjects; ProductMemory note identity is worktree + note_key, not subject + note_key.",
+  "preserved_source": "seed_source_notes.v1.py.txt",
+  "preserved_seed": "seed-origin/seed-spec.json",
+  "preserved_run": "prepare-cami-329",
+  "registered_before_failure": 1,
+  "fix": "Use deterministic unique note_key per source selector; adapter must reject duplicate note keys before capture.",
+  "failed_source_sha256": "d683e6a5e6fd75515849fcec6017ab919405406ff7182e5388a1beeb4e8a0289"
+}
