@@ -192,3 +192,12 @@ child verdicts:64supported,40contradicted,64insufficient_evidence.
 `reports/research-20261104/report-delivery/` содержитPDF/DOCX иdelivery records;
 полный переносимый компактный пакет — `output/research-progress-20261104-v1.zip`.
 Этот пакет не заменяет сохранённые полные raw runs.
+
+## Уточнение ограничения binding gate
+
+Post-hoc prerequisite profile: все504 кандидата проходят наблюдаемые технические
+условия вне binding gate. Все условия вместе проходят30. Фактических сравнений
+сигнатуры252; ещё252symbol_exists не требуют сравнения. Это не независимое
+подтверждение и не изменение полномочий closure. Сверены189input hashes,
+3artifact hashes и504строки с прежним gate diagnostic, включаяsourceblob hashes.
+[Подробности](structural_prerequisites_2026-11-04.md).
