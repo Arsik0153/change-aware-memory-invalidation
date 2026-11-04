@@ -211,7 +211,7 @@ projection и исправление кеша при смене Git mode. Пол
 `scripts/finalize_research_report.py`; упаковка требует записи визуальной проверки,
 привязанной к SHA-256 конкретного PDF.
 
-PDF v5 также включает
+PDF v6 также включает
 [периодическая перепроверка и граница K−1](docs/periodic_audit_bound_2026-11-04.md).
 Конечная модель дополнена опытом на 12 Git children и 93 Docker executions;
 исследовательская обёртка подтверждает предсказанные 1 и 3 ошибки для K=2 и K=4.
@@ -224,13 +224,13 @@ runtime sources; Docker image в него не входит. Хеш и инст�
 в [разборе опыта](docs/periodic_audit_bound_2026-11-04.md), отдельная запись доставки —
 [periodic-raw-delivery.json](reports/research-20261104/periodic-raw-delivery.json).
 
-Дополнение после PDF v5: [графовые ограничения на реальных parent-снимках](docs/parent_graph_fallback_2026-11-04.md).
+В PDF v6 включены [графовые ограничения на реальных parent-снимках](docs/parent_graph_fallback_2026-11-04.md).
 У всех 63 behavior-кандидатов присутствуют одновременно локальные и глобальные
 unresolved-флаги; снятия одного глобального fallback недостаточно для выборочного
 отбора. Проверены parent-источники; child-результаты не использовались.
 
-[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v3/verified-facts.md)
-связывает 44 показателя с точным полем хешированного источника, единицей и
+[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v4/verified-facts.md)
+связывает 48 показателей с точным полем хешированного источника, единицей и
 ограничениями. Проверка и генерация: `.venv/bin/python -m scripts.check_research_facts --out runs/NEW_NAME`.
 
 [Формальные условия гарантий доступности](docs/availability_invariants_2026-11-04_ru.md)

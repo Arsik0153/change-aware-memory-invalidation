@@ -1,21 +1,24 @@
 {
   "status": "passed",
-  "reviewer": "primary assistant visual inspection of all rendered pages",
+  "reviewer": "primary assistant visual inspection and pixel-equivalence check",
   "independent_review": false,
-  "pages": 7,
-  "pdf_sha256": "769f9ed6aacbfde1a72efa7d770b09d42338b4c0f39868ac175e1f1da8eac4fc",
+  "pages": 9,
+  "pdf_sha256": "f8d6b77ce5a156fee44e2885db89dce72e2d21fa258dea0f3e608574618a69db",
   "observations": [
-    "All seven pages inspected at 1400px; no clipping or overlapping text observed.",
-    "Four figures, table, captions and page numbers are readable.",
-    "All 77 source text blocks matched PDF extraction."
+    "Pages 1 and 2 are byte-identical to previously inspected v5 PNGs.",
+    "Pages 3 through 9 inspected at 1400px; no text clipping or overlaps observed.",
+    "Six figures and their captions are readable; all page numbers present.",
+    "All 92 source text blocks matched PDF extraction."
   ],
   "page_png_sha256": {
     "page-1.png": "d3127ff9c9d27344a2e877a8769dec5524badb00a73ca38534b74ac1c43a46c5",
     "page-2.png": "b3b6273b0eeb76d811b3516bf2cd1446a7820ec9b69c226ef9233e17bafd1d61",
-    "page-3.png": "c95c0b9e05dac7b3139178b642ca9d6c3ba642db718a61b2d26e3a04a59bf0cd",
+    "page-3.png": "6f8ed3f6584d37f25106bdd2d1ddaf275b818f1497c0662e7670a04b5f8e580a",
     "page-4.png": "e56772feeb1c79a1d8674ac1af4d75e0a61488a65414de460ed6f3b967c30a83",
     "page-5.png": "91a45c627e494baab1447b9f779f4930447b843619532cd7c62b6d2f5fa3c2a3",
-    "page-6.png": "99f2aee3effb43b572ae740931a8db218b62746ee48978341229b0fe92961ab6",
-    "page-7.png": "1aae5701287dccfc420a4a18ec9275fdedc6ee7425485ff5ef15ed808ee510fd"
+    "page-6.png": "489104f6fd0d3a88f46b78e550eb346c85047f8c1604c4591ea2e375fb838fb5",
+    "page-7.png": "24b23762e81692b2cdcca41bc6fcfb77d197fc20b44c016794ce14c2a2999d50",
+    "page-8.png": "094e7175a0fac5a34d27419880f542aad10eaba5213970182eb84433aefbffb2",
+    "page-9.png": "719d4ccb0eb5d99f682ea1392bd5488e24decb98d4289d166faf29284f22ab39"
   }
 }
