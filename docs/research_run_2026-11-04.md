@@ -160,3 +160,20 @@ blob ID при смене mode и reuse Module без учёта limitation. О�
 совпали, три SHA-256 логов сверены. Свидетельство:
 `reports/research-20261104/sealed-verification-v2/checks.json`.
 [Краткий обзор новых результатов](research_findings_2026-11-04_ru.md).
+
+## Ограниченная проверка структурного переноса
+
+План закреплён в2895ac2, runner вf4eeab9. На168случаях:136selected,
+32carried; все32пропуска supported у свежего полного валидатора. Из всех
+child verdicts:64supported,40contradicted,64insufficient_evidence.
+Нарушений carry и расхождений warm/fresh index нет. Отрицательный контроль
+со скрытым изменением сигнатуры обнаружен. Сверены6artifact hashes и
+неизменность source snapshot.42focused tests прошли.
+
+Первый запуск прямым путём script завершился до выполнения опыта из-за
+импорта namespace scripts; правильная команда — `python -m scripts.check_structural_carry`.
+Новый output не был создан до исправления команды.
+
+Это168авторских случаев, а не независимые наблюдения и не оценка real-data
+экономии.8size-limit cases дополнительно меняют внешнее ограничение чтения
+и лежат вне аргумента с фиксированной конфигурацией.

@@ -193,3 +193,13 @@ null) mean diagnostics were not computed, including replay and not-applicable
 metrics; they do not mean zero support. These counts do not establish interval
 calibration. The [synthetic development study](docs/bootstrap_study_2026-10-29.md)
 explains why interval availability must be reported alongside conditional coverage.
+
+## Результаты на 4 ноября 2026 года
+
+[Обзор новых результатов](docs/research_findings_2026-11-04_ru.md) и
+[обновлённый исследовательский отчёт](docs/research_progress_report_2026-11-04_ru.md):
+применимость binding gate на 504 реальных parent-кандидатах, восстановление
+behavior-памяти, ограниченная проверка структурного переноса, Requests package-only
+projection и исправление кеша при смене Git mode. Полная проверка исправления:
+1124 passed на e810a09. Независимые parent reviews и child labels остаются
+незавершёнными; основная held-out оценка ещё не выполнена.

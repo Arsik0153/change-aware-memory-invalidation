@@ -105,8 +105,27 @@ def inline(paragraph, children, *, size=None):
             raise ValueError(f'Unsupported report inline token: {token.type}')
 
 
-def build(source: Path, out: Path):
+def build(source: Path, out: Path, spec_path: Path | None = None):
     source, out = source.resolve(), out.resolve()
+    spec = json.loads(spec_path.read_text()) if spec_path else {
+        'artifact_stem': 'CAMI_research_progress_2026-10-29',
+        'evidence_root': 'reports/research-20261029', 'evidence': EVIDENCE,
+        'evidence_cutoff': '4e13583', 'full_suite_head': '44c77d3',
+    }
+    stem = spec['artifact_stem']
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', stem):
+        raise ValueError('Artifact stem must be a plain filename without extension')
+    evidence_root = (ROOT / spec['evidence_root']).resolve()
+    if not evidence_root.is_relative_to(ROOT / 'reports'):
+        raise ValueError('Evidence must come from the project reports directory')
+    evidence_paths = {}
+    for name in spec['evidence']:
+        path = (evidence_root / name).resolve()
+        if not path.is_relative_to(evidence_root) or not path.is_file():
+            raise ValueError('Evidence paths must be existing files inside evidence_root')
+        evidence_paths[name] = path
+    evidence_hashes = {name: sha(path) for name, path in evidence_paths.items()}
+    spec_hash = sha(spec_path) if spec_path else None
     if out.exists() or out.is_relative_to(ROOT / 'docs'):
         raise ValueError('Output must be a new directory outside source documentation')
     before = source_snapshot(ROOT)
@@ -124,7 +143,8 @@ def build(source: Path, out: Path):
                 'source_sha256':sha(source),'source_before':before,
                 'python':sys.version,'packages':{p:version(p) for p in
                     ('python-docx','markdown-it-py','mdurl','lxml','typing-extensions')},
-                'evidence_cutoff':'4e13583','source_images':images}
+                'evidence_cutoff':spec['evidence_cutoff'],'source_images':images,
+                'report_spec':spec,'report_spec_sha256':spec_hash}
     write(out / 'manifest.json', manifest)
     index, list_style, pending_style = 0, None, None
     try:
@@ -200,7 +220,7 @@ def build(source: Path, out: Path):
             elif token.type not in ('heading_close','paragraph_close','list_item_open','list_item_close'):
                 raise ValueError(f'Unsupported report block token: {token.type}')
             index += 1
-        docx_path = out / 'CAMI_research_progress_2026-10-29.docx'
+        docx_path = out / (stem + '.docx')
         document.save(docx_path)
         packaged_markdown = original
         for name, data in images.items():
@@ -208,12 +228,11 @@ def build(source: Path, out: Path):
             packaged_markdown = packaged_markdown.replace('../reports/' + relative, data['packaged'])
         (out / 'report.md').write_text(packaged_markdown)
         (out / 'source-original.md').write_text(original)
-        for name in EVIDENCE:
-            evidence = ROOT / 'reports/research-20261029' / name
+        for name, evidence in evidence_paths.items():
             destination = out / 'evidence' / name
             destination.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(evidence,destination)
-        manifest['evidence_sources'] = {name:sha(ROOT / 'reports/research-20261029' / name) for name in EVIDENCE}
+        manifest['evidence_sources'] = evidence_hashes
         manifest['libreoffice_version'] = subprocess.check_output(['libreoffice','--version'],text=True).strip()
         with tempfile.TemporaryDirectory(prefix='cami-report-lo-') as directory:
             result = subprocess.run(['libreoffice','-env:UserInstallation='+Path(directory).as_uri(),
@@ -243,8 +262,11 @@ def build(source: Path, out: Path):
                         source_after=source_snapshot(ROOT))
         assert manifest['source_after'] == before
         assert sha(source) == manifest['source_sha256']
-        assert subprocess.run(['git','-C',str(ROOT),'diff','--quiet','44c77d3','HEAD','--','src','schemas']).returncode == 0
-        manifest['production_and_schemas_unchanged_since_full_suite'] = '44c77d3'
+        assert all(sha(path) == evidence_hashes[name] for name, path in evidence_paths.items())
+        assert spec_path is None or sha(spec_path) == spec_hash
+        assert subprocess.run(['git','-C',str(ROOT),'diff','--quiet',spec['full_suite_head'],
+                               'HEAD','--','src','schemas']).returncode == 0
+        manifest['production_and_schemas_unchanged_since_full_suite'] = spec['full_suite_head']
     except Exception as exc:
         manifest.update(status='failed',failure={'type':type(exc).__name__,'message':str(exc)})
         raise
@@ -258,5 +280,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source',type=Path,default=ROOT/'docs/research_progress_report_2026-10-29_ru.md')
     parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--spec',type=Path,help='Dated artifact name and evidence inventory JSON')
     args = parser.parse_args()
-    build(args.source,args.out)
+    build(args.source,args.out,args.spec)
