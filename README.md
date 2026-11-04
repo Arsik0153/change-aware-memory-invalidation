@@ -223,3 +223,8 @@ PDF v5 также включает
 runtime sources; Docker image в него не входит. Хеш и инструкция проверки —
 в [разборе опыта](docs/periodic_audit_bound_2026-11-04.md), отдельная запись доставки —
 [periodic-raw-delivery.json](reports/research-20261104/periodic-raw-delivery.json).
+
+Дополнение после PDF v5: [графовые ограничения на реальных parent-снимках](docs/parent_graph_fallback_2026-11-04.md).
+У всех 63 behavior-кандидатов присутствуют одновременно локальные и глобальные
+unresolved-флаги; снятия одного глобального fallback недостаточно для выборочного
+отбора. Проверены parent-источники; child-результаты не использовались.

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "artifact_hashes_verified": 68,
+  "input_hashes_verified": 190,
+  "git_parent_trees_verified": 63,
+  "module_blob_occurrences_verified": 2131,
+  "unique_git_blobs_verified": 1098,
+  "claim_graph_flags_verified": 630,
+  "source_snapshots_match": true,
+  "posthoc_import_diagnostic": {
+    "linked_unresolved_modules": 2070,
+    "with_sufficient_trigger": 1912,
+    "modules_by_overlapping_trigger": {
+      "plain_module_import": 1669,
+      "wildcard_import": 0,
+      "target_module_not_indexed": 1892,
+      "ambiguous_target_module": 0
+    },
+    "not_a_causal_ablation": true
+  },
+  "independent_human_review": false
+}

@@ -332,3 +332,18 @@ files. Три rehashed tamper controls отвергнуты по ожидаем�
 
 Архив: output/periodic-audit-raw-20261104-v1.zip. Docker image не включён;
 его pinned identity сохранена. Свободно 16 GiB, удаление не требуется.
+
+## Parent-only графы на реальных данных
+
+План a04464b, runtime 5c1deca; первая попытка остановилась до graph construction:
+ошибочно ожидались 126 behavior claims, фактически 63 behavior + 63 prose.
+Исправление в 1714dee сохранило тот же набор. Успешный v2 охватывает 63 parents,
+630 claims, 2131 module occurrences. Все 63 warm/fresh индекса совпали.
+
+Во всех 63 behavior-кандидатах присутствуют subject, module и global unresolved.
+2070 module flags добавлены linker; post-hoc простые import triggers объясняют
+1912 из них (категории пересекаются). Сверены 1098 уникальных Git blobs,
+68 output hashes, 190 inputs и все claim/graph flags. Child-данные не читались.
+[Разбор и условное следствие для отбора](parent_graph_fallback_2026-11-04.md).
+PNG просмотрен; HTML preview завершился Chrome exit 1, html_render используется
+для показа. Дополнение пока не входит в семистраничный PDF v5.
