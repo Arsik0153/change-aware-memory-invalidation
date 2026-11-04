@@ -486,7 +486,7 @@
     {
       "id": "verification",
       "label": "Полная проверка",
-      "scope": "Неизменный commit 61a04bf.",
+      "scope": "Неизменный commit 418f58a; после него добавлено расширение с неполными вердиктами.",
       "limits": [
         "Более поздние research scripts проверялись профильными тестами."
       ],
@@ -494,12 +494,12 @@
         {
           "id": "verification.passed",
           "label": "Прошедшие тесты",
-          "source": "reports/research-20261104/full-verification-61a04bf/pytest.log",
-          "source_sha256": "0870f61689847eddf1f979e0c69ed4319575b251a079c2d38d8e057f627d9fe8",
+          "source": "reports/research-20261104/full-verification-418f58a/pytest.log",
+          "source_sha256": "f6d66d8a275534a62c12a6e55fb6286458b3054c7ea54c32b301cfe0c4b54386",
           "selector": {
             "format": "pytest_summary"
           },
-          "expected": 1140,
+          "expected": 1163,
           "unit": "test"
         }
       ]
@@ -609,6 +609,54 @@
           },
           "expected": 0,
           "unit": "child state"
+        }
+      ]
+    },
+    {
+      "id": "ternary",
+      "label": "Неполные вердикты и условия гарантии",
+      "scope": "Полный конечный обход для K=1,2,4,8; точная двоичная и только положительно корректная модели.",
+      "limits": [
+        "Не проверяет soundness реального валидатора.",
+        "Нет Docker executions.",
+        "Граница для всех K опирается на отдельный аргумент возраста."
+      ],
+      "facts": [
+        {
+          "id": "ternary.sound_model_states",
+          "label": "Состояния двух моделей",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sound_model_states"
+          },
+          "expected": 64,
+          "unit": "state"
+        },
+        {
+          "id": "ternary.sound_model_transitions",
+          "label": "Переходы двух моделей",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sound_model_transitions"
+          },
+          "expected": 403,
+          "unit": "transition"
+        },
+        {
+          "id": "ternary.negative_control_cycles_verified",
+          "label": "Циклические отрицательные контроли",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/negative_control_cycles_verified"
+          },
+          "expected": 2,
+          "unit": "control"
         }
       ]
     }

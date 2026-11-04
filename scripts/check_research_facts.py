@@ -5,6 +5,7 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 
@@ -64,11 +65,12 @@ def verify(registry, root=ROOT):
     return rows,sources
 
 
-def run(registry_path, out):
+def run(registry_path, out, root=ROOT):
     registry_bytes=registry_path.read_bytes()
     registry=json.loads(registry_bytes)
-    rows,sources=verify(registry)
+    rows,sources=verify(registry,root)
     out.mkdir(parents=True,exist_ok=False)
+    (out/'registry.json').write_bytes(registry_bytes)
     (out/'facts.json').write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
     with (out/'facts.tsv').open('w',newline='') as stream:
         writer=csv.writer(stream,delimiter='\t')
@@ -82,15 +84,17 @@ def run(registry_path, out):
         lines.extend(['## '+study['label'],'',study['scope'],'',
                       '| Факт | Значение | Единица | Источник |','| --- | ---: | --- | --- |'])
         for row in [r for r in rows if r['study']==study['id']]:
-            relative=Path(row['source']).relative_to('reports/research-20261104').as_posix()
-            lines.append(f"| {row['label']} | {row['value']} | {row['unit']} | [{relative}](../{relative}) |")
+            relative=Path(os.path.relpath(root/row['source'],out)).as_posix()
+            label=Path(row['source']).relative_to('reports').as_posix()
+            lines.append(f"| {row['label']} | {row['value']} | {row['unit']} | [{label}](<{relative}>) |")
         lines.extend(['','Ограничения: '+' '.join(study['limits']),''])
     (out/'verified-facts.md').write_text('\n'.join(lines))
     if registry_path.read_bytes()!=registry_bytes:
         raise ValueError('Registry changed during rendering')
-    if any(sha((ROOT/name).read_bytes())!=expected for name,expected in sources.items()):
+    if any(sha((root/name).read_bytes())!=expected for name,expected in sources.items()):
         raise ValueError('Evidence changed during rendering')
-    manifest={'status':'passed','registry_sha256':sha(registry_bytes),'facts':len(rows),
+    manifest={'status':'passed','registry_sha256':sha(registry_bytes),
+              'registry_snapshot':'registry.json','script_sha256':sha(Path(__file__).read_bytes()),'facts':len(rows),
               'studies':len(registry['studies']),'source_hashes':sources,
               'artifact_hashes':{p.name:sha(p.read_bytes()) for p in out.iterdir() if p.is_file()}}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

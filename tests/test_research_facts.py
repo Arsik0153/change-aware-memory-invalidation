@@ -62,3 +62,17 @@ def test_limits_and_units_are_required(tmp_path):
     data['studies'][0]['limits']=[]
     with pytest.raises(ValueError,match='scope and limits'):
         verify(data,tmp_path)
+
+
+def test_generated_ledger_keeps_registry_after_original_is_removed(tmp_path):
+    from scripts.check_research_facts import run
+    data,_=registry(tmp_path)
+    source=tmp_path/'registry.json'
+    source.write_text(json.dumps(data))
+    out=tmp_path/'reports/ledger'
+    run(source,out,tmp_path)
+    source.unlink()
+    rows,_=verify(json.loads((out/'registry.json').read_text()),tmp_path)
+    assert rows[0]['value']==63
+    manifest=json.loads((out/'manifest.json').read_text())
+    assert manifest['artifact_hashes']['registry.json']==manifest['registry_sha256']
