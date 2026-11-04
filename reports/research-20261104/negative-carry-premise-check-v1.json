@@ -1,0 +1,77 @@
+{
+  "status": "premise_rejected_for_measured_implementations",
+  "premise": "On this fixed short-history workload, avoiding repeated cheap structural validation pays for the correctness bookkeeping required by these negative-carry implementations.",
+  "paired_observation": {
+    "module_blob_witness": {
+      "pairs": 21,
+      "fewer_validation_calls": true,
+      "positive_cpu_pairs": 21,
+      "positive_wall_pairs": 21
+    },
+    "registered_inputs": {
+      "pairs": 21,
+      "fewer_validation_calls": true,
+      "positive_cpu_pairs": 21,
+      "positive_wall_pairs": 21
+    },
+    "signature_witness": {
+      "pairs": 21,
+      "fewer_validation_calls": true,
+      "positive_cpu_pairs": 21,
+      "positive_wall_pairs": 21
+    }
+  },
+  "separate_profile": {
+    "all_baseline_validation": {
+      "function": [
+        "validation.py",
+        24,
+        "validate_claim"
+      ],
+      "primitive_calls": 29,
+      "total_calls": 29,
+      "own_seconds": 0.000279361,
+      "cumulative_seconds": 0.001924724
+    },
+    "registered_input_registration": {
+      "function": [
+        "registered_negative_carry.py",
+        88,
+        "register"
+      ],
+      "primitive_calls": 48,
+      "total_calls": 48,
+      "own_seconds": 0.00032752000000000004,
+      "cumulative_seconds": 0.004704477
+    },
+    "registered_actual_result_ingress": {
+      "function": [
+        "registered_negative_carry.py",
+        139,
+        "initialize_checked_negative"
+      ],
+      "primitive_calls": 17,
+      "total_calls": 17,
+      "own_seconds": 0.00012637,
+      "cumulative_seconds": 0.0017304940000000002
+    },
+    "registration_exceeds_all_baseline_validation": true
+  },
+  "decision": "Retain ordinary production retry; stop adding variants that assume this workload's validation savings pay for their lifecycle bookkeeping.",
+  "limits": [
+    "This is a diagnostic of three measured implementations on the same 17 authored histories, not an impossibility theorem for negative caching.",
+    "Instrumented single-pack profile intervals are not unprofiled CPU samples or a causal counterfactual speedup estimate.",
+    "Registration contains nested cloning and immutability work; these cumulative times must not be added again to their children.",
+    "Longer histories, larger indexes or a different validator would be new workload conditions requiring new evidence."
+  ],
+  "sources": {
+    "manifest.json": "ebbf3ed11de2f62a3b1497f4558d160179b47f1dadac814a29c2b39bdcc493fa",
+    "summary.json": "6d40596d2aa1192c3535ad120130a7b1b726f4c7d4d42add0083a1be0513a5e2",
+    "expected-work.json": "cb61e908161964a8eb84019e15de4ea1e439e4a50dd57b6561e4062322689628",
+    "profiles/production.prof": "0487e7e6f782fc10f8d544bc0602b6c5cab4c43bcd4dd70162b5a81a39da0541",
+    "profiles/registered_inputs.prof": "7f9dad8c8f04076da0b08d26394df9315b1182bca1e39be3aa66f882015f02fd",
+    "profiles/production.json": "842000ef633b88bf493cdd708df1cd1fe56810eb4b7e3b4cff86d76d6bcc870f",
+    "profiles/registered_inputs.json": "3631d2c7b9cd205f95d3c40347f5f5970784efbbd426b34c4af2b56aa2abbb1a"
+  },
+  "script_sha256": "f735cf9ce313e76404399bc875260fe4a9a7655c8a14066403c1ff77cefe4294"
+}

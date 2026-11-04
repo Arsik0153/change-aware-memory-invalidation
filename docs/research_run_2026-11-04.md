@@ -532,3 +532,19 @@ source,48Git snapshots,31referencepacket,93correctnessrecords и63timingsamples.
 Первоначальныенеудачныеитерацииаудиторасохраненывruns. Реестрv7:95фактов,
 19разрезов,23источника. GitHubpusha48e5b1 завершилсяHTTPSconnecttimeout;
 локальныеcommitsиартефактысохранены,повторнаяотправкапредстоит.
+
+Push4a8ee5f успешно повторён после временногоHTTPSconnecttimeout;remoteиlocalHEAD
+совпали. Экспериментregistered-inputs закреплён8e4241c:88sealedfiles,тотже17/31
+workload,4варианта,21x100paired. Rootдобавилgetter/pendingkeep_all guardsпослеreview;
+17новых+14старыхтестовпрошли. Получены124correctnessrecords,84timingrows;
+registeredCPUmedian544.743msпротив222.551msbaseline,все21pairedCPU/wallхуже.
+Создание22регистрацийи17ingresschecksучтено. Источникидо/посленеизменны.
+
+Применёнpstack:principle-attack-the-premise: записанаипроверенаобщаяпредпосылка
+окупаемостидешёвыхvalidation. Отдельныйprofile даёт1.925ms всехbaselinevalidations
+против4.704msregister и1.730msingress; этиinstrumented интервалы не смешаны
+сCPUtiming samples. check_negative_carry_premise.py сохраняетповторяемыйдиагноз.
+Дальнейшиевариантынанетойжепредпосылкенедобавляются; следующийопыт — реальные
+first-parent траекториисmerges. Графикпросмотрен,html_previewexit1,html_renderуспешен.
+Rawregisteredtar546134bytes сохраняет153payload,88runtimefiles,17Gitfixtures иsymlink.
+Независимыйаудитвыполняетсяотдельно.

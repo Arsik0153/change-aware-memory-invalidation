@@ -20,6 +20,14 @@ def run(source: Path, out: Path) -> None:
     variants = ["production", "signature_witness", "module_blob_witness"]
     labels = ["Production retry", "Signature witness", "Module-blob witness"]
     colors = ["#286c8e", "#b9583c", "#bf8651"]
+    registered = "registered_inputs" in summary["variants"]
+    if registered:
+        variants.append("registered_inputs")
+        labels.append("Registered inputs")
+        colors.append("#826398")
+    if any(row["candidate_minus_baseline_cpu_ns"] <= 0
+           for rows in summary["paired_deltas"].values() for row in rows):
+        raise ValueError("this figure describes candidates slower in every paired CPU block")
     counts = [work[v]["counts"]["actual_validation_calls"] for v in variants]
     samples = [summary["variants"][v]["cpu_ns"] for v in variants]
     medians = [x["median"] / 1e6 for x in samples]
@@ -27,7 +35,7 @@ def run(source: Path, out: Path) -> None:
               [(x["max"] - x["median"]) / 1e6 for x in samples]]
     plan = manifest["protocol"]
     out.mkdir(parents=True, exist_ok=False)
-    fig, (left, right) = plt.subplots(1, 2, figsize=(10.5, 4.1), constrained_layout=True)
+    fig, (left, right) = plt.subplots(1, 2, figsize=(10.5, 4.7 if registered else 4.1), constrained_layout=True)
     bars = left.barh(labels[::-1], counts[::-1], color=colors[::-1])
     left.bar_label(bars, padding=4)
     left.set_xlim(0, max(counts) * 1.2)
@@ -44,8 +52,9 @@ def run(source: Path, out: Path) -> None:
         axis.spines[["top", "right"]].set_visible(False)
         axis.grid(axis="x", alpha=.2)
         axis.set_axisbelow(True)
-    fig.suptitle("Fewer validator calls, higher total maintenance cost", fontsize=13)
-    fig.supxlabel("17 authored histories / 31 transitions. Both candidates are slower in every paired CPU block.\n"
+    fig.suptitle("Registered inputs still cost more than ordinary retry" if registered
+                 else "Fewer validator calls, higher total maintenance cost", fontsize=13)
+    fig.supxlabel("17 authored histories / 31 transitions. All candidates are slower in every paired CPU block.\n"
                   "Index, Git and reference setup excluded and reported separately; no corpus speedup claim.", fontsize=9)
     fig.savefig(out / "negative-carry-cost.png", dpi=180)
     fig.savefig(out / "negative-carry-cost.svg")
