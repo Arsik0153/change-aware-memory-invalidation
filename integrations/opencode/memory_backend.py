@@ -128,10 +128,10 @@ def freeze_spec(service, spec):
     validate_seed_spec(spec)
     records = []
     contexts = {}
-    for item in spec["records"]:
+    batch_contexts = service.context_many(tuple(item["selector"] for item in spec["records"]))
+    for item, context in zip(spec["records"], batch_contexts, strict=True):
         check(set(item) <= {"id", "kind", "selector", "subject", "note_key", "text"}
               and {"id", "kind", "selector"} <= set(item), "invalid seed item")
-        context = service.context(item["selector"])
         check(len(context.code) == 1 and not context.code[0].ambiguous and not context.code[0].identity_uncertain,
               "seed requires unique supported symbol")
         fact = context.code[0]
@@ -241,34 +241,41 @@ def prepare(backend, repo, output, catalog_path=None, spec_path=None, state_home
             with isolated_state(state_home):
                 from cami.product.service import ProductMemory
                 from cami.product.memory.validation import availability
+                from cami.product.memory.models import RememberInput
                 service = ProductMemory(repo, tuple(policy["source_roots"]), tuple(policy["excluded_paths"]))
                 capture_started, capture_cpu = time.perf_counter(), cpu()
                 if spec_path:
                     catalog, contexts = freeze_spec(service, policy)
                 else:
-                    catalog, contexts = validate_catalog(policy), {}
+                    catalog = validate_catalog(policy)
+                    selectors = tuple(r["payload"]["subject"]["path"] + ":" + r["payload"]["subject"]["qualname"] for r in catalog["records"])
+                    contexts = {r["id"]: context for r, context in zip(catalog["records"], service.context_many(selectors), strict=True)}
                 metrics["catalog_capture"] = {"wall_seconds": time.perf_counter() - capture_started,
                                                "cpu_seconds_self_and_completed_children": cpu() - capture_cpu,
                                                "created_from_spec": spec_path is not None}
                 mapping = {}
-                metrics["registrations"] = []
+                requests = []
+                entry_started, entry_cpu = time.perf_counter(), cpu()
                 for record in catalog["records"]:
-                    entry_started, entry_cpu = time.perf_counter(), cpu()
                     payload = record["payload"]
                     subject = payload["subject"]
                     selector = subject["path"] + ":" + subject["qualname"]
-                    context = contexts.get(record["id"]) or service.context(selector)
+                    context = contexts[record["id"]]
                     check(len(context.code) == 1 and context.code[0].subject.model_dump(mode="json") == subject,
                           "catalog subject differs from current source")
                     source = context.code[0].source.model_dump(mode="json")
                     check(all(source[k] == v for k, v in record["source"].items()), "catalog origin bytes differ; prepare at seed version first")
                     if payload["type"] == "signature_equals":
                         check(context.code[0].signature is not None and context.code[0].signature.model_dump(mode="json") == payload["expected"], "catalog signature differs from backend")
-                    receipt = service.remember(payload["type"], selector, context,
-                                               "adapter-seed-" + digest(record),
-                                               note_key=payload.get("note_key"), text=payload.get("text"))
+                    requests.append(RememberInput(kind=payload["type"], query=selector, context=context,
+                                                  request_id="adapter-seed-" + digest(record),
+                                                  note_key=payload.get("note_key"), text=payload.get("text")))
+                receipts = service.remember_batch(tuple(requests))
+                for record, receipt in zip(catalog["records"], receipts, strict=True):
                     mapping[record["id"]] = {"memory_id": receipt.memory_id, "revision": receipt.revision}
-                    metrics["registrations"].append({"id": record["id"], "wall_seconds": time.perf_counter() - entry_started, "cpu_seconds_self_and_completed_children": cpu() - entry_cpu})
+                metrics["registration_batch"] = {"items": len(requests), "wall_seconds": time.perf_counter() - entry_started,
+                                                  "cpu_seconds_self_and_completed_children": cpu() - entry_cpu,
+                                                  "publication": "one atomic post-batch generation; individual intermediate generations are not created"}
                 generation = service.refresh()
                 live = {r.record.memory_id: r.record for r in generation.states}
                 check(len(live) == len(mapping), "unexpected prepared memory catalog")

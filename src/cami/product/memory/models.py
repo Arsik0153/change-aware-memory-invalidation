@@ -227,6 +227,15 @@ class AgentContext(ProductValue):
     graph_complete: Literal[False] = False
 
 
+class RememberInput(ProductValue):
+    kind: Literal["symbol_exists", "signature_equals", "note"]
+    query: str = Field(min_length=1)
+    context: AgentContext
+    request_id: str = Field(min_length=1, max_length=1024)
+    note_key: str | None = None
+    text: str | None = None
+
+
 class MutationRequest(ProductValue):
     request_id: str = Field(min_length=1, max_length=1024)
     payload: Payload

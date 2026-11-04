@@ -56,7 +56,7 @@ def test_static_seed_requires_no_cami_import_and_catalog_matches(workspace):
     assert load(static / "catalog.json") == load(cami / "catalog.json")
     metrics = load(cami / "construction-metrics.json")
     assert metrics["status"] == "complete" and metrics["state_bytes"] > 0
-    assert metrics["wall_seconds"] > 0 and len(metrics["registrations"]) == 1
+    assert metrics["wall_seconds"] > 0 and metrics["registration_batch"]["items"] == 1
 
 
 def test_dirty_note_withheld_no_old_text_static_unchanged_and_sticky_review(workspace):

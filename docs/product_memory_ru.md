@@ -35,6 +35,43 @@ Python canonical form содержит AST параметров, annotations, de
 return, type parameters и async. Отсутствующий default отличается от `None`.
 Формат привязан к версии Python через analyzer fingerprint.
 
+## Подготовьте несколько записей одной операцией
+
+Python API поддерживает `context_many(queries)` и `remember_batch(items)`.
+Оба метода принимают tuple из 1–1024 элементов. Контексты получают общий
+проверенный снимок с объединением путей всех запросов. Ожидания каждой записи
+по-прежнему выводятся из сохранённого backend-контекста.
+
+```python
+from pathlib import Path
+from cami.product.service import ProductMemory
+from cami.product.memory.models import RememberInput
+
+memory = ProductMemory(Path("/path/to/repository"))
+queries = ("src/api.py:create_user", "src/api.py:delete_user")
+contexts = memory.context_many(queries)
+receipts = memory.remember_batch(tuple(
+    RememberInput(
+        kind="symbol_exists", query=query, context=context,
+        request_id=f"initial-catalog-{index}",
+    )
+    for index, (query, context) in enumerate(zip(queries, contexts, strict=True))
+))
+```
+
+Пакет регистрируется атомарно: конфликт, подмена контекста, повреждение evidence
+или изменение исходников до заключительной проверки не публикуют часть записей.
+У каждого элемента остаются собственные revision и request ID. Новые receipts
+ссылаются на одно итоговое поколение памяти; промежуточные поколения после каждой
+записи не создаются. При повторе ранее выполненного элемента возвращается его
+исходный receipt, даже если рядом добавлены новые элементы.
+
+Для заметок `note_key` уникален во всём worktree, независимо от subject.
+Повторяющиеся request IDs или note keys внутри пакета отклоняются. Старые
+корректные контексты сохраняют прежние ожидания: пакетная операция не превращает
+устаревшую сигнатуру в текущую. Лимит SQLite и проверки source CAS сохраняются.
+Одиночные `context`, `remember`, `update` и CLI продолжают работать.
+
 ## Используйте доступные сведения
 
 Ответ содержит `index`, `memory_generation_id`, `observation`, `code`, `facts`,

@@ -16,7 +16,7 @@ from cami.product.memory.adapters import ProductIndexPort, HybridIndexPort
 from cami.product.memory.models import (
     AgentContext, AvailableRecord, CodeView, DefinitionFact, ExistsPayload, MemoryGeneration,
     MutationReceipt, MutationRequest, NotePayload, NoteState, Payload, RecordHistory,
-    RecordRevision, SignaturePayload, SourceRef, WithheldRecord,
+    RecordRevision, RememberInput, SignaturePayload, SourceRef, WithheldRecord,
 )
 from cami.product.memory.store import MemoryStore
 from cami.product.memory.validation import VALIDATOR_FINGERPRINT, availability, transition
@@ -41,17 +41,25 @@ def semantic_payload(payload: Payload) -> object:
     return value
 
 
+MAX_BATCH = 1024
+
+
 def _probes(records: tuple[RecordRevision, ...] | list[RecordRevision],
-            query: str | None = None, request: MutationRequest | None = None) -> tuple[str, ...]:
+            query: str | tuple[str, ...] | None = None,
+            requests: tuple[MutationRequest, ...] = ()) -> tuple[str, ...]:
     paths = {r.payload.subject.path for r in records}
     for record in records:
         if isinstance(record.payload, NotePayload):
             paths.update(s.path for s in record.payload.sources)
-    if query and ":" in query:
-        paths.add(query.split(":", 1)[0])
-    if request:
-        paths.add(request.payload.subject.path)
+    queries = (query,) if isinstance(query, str) else query or ()
+    paths.update(item.split(":", 1)[0] for item in queries if ":" in item)
+    paths.update(request.payload.subject.path for request in requests)
     return tuple(sorted(paths))
+
+
+def _bounded_batch(items: tuple[object, ...]) -> None:
+    if type(items) is not tuple or not 1 <= len(items) <= MAX_BATCH:
+        raise InputError(f"batch must be a tuple with 1..{MAX_BATCH} items")
 
 
 class ProductMemory:
@@ -134,9 +142,19 @@ class ProductMemory:
             raise IncompleteError(f"memory_state_io_error: {exc}") from exc
 
     def context(self, query: str) -> AgentContext:
-        if not query.strip() or "\x00" in query:
-            raise InputError("symbol must be nonempty and contain no NUL characters")
-        generation, view, observation, _ = self._coordinate(query, None)
+        return self.context_many((query,))[0]
+
+    def context_many(self, queries: tuple[str, ...]) -> tuple[AgentContext, ...]:
+        """Resolve queries from one verified view with the union of all path probes."""
+        _bounded_batch(queries)
+        for query in queries:
+            if not isinstance(query, str) or not query.strip() or "\x00" in query:
+                raise InputError("symbol must be nonempty and contain no NUL characters")
+        generation, view, observation, _ = self._coordinate(queries, None)
+        return tuple(self._context(query, generation, view, observation) for query in queries)
+
+    def _context(self, query: str, generation: MemoryGeneration, view: CodeView,
+                 observation: Observation) -> AgentContext:
         code = select(view, query)
         # Exact selectors continue to expose withheld records when their definitions disappear.
         selected = {d.subject for d in code}
@@ -171,64 +189,108 @@ class ProductMemory:
         return self._mutate(None, None, context, request_id, None, text,
                             memory_id, expected_revision)
 
+    def _request(self, db: sqlite3.Connection, kind: str | None, query: str | None,
+                 context: AgentContext, request_id: str, note_key: str | None,
+                 text: str | None, memory_id: str | None, expected_revision: int | None,
+                 origins: dict[str, CodeView], context_indexes: dict[str, object]) -> MutationRequest:
+        if context.index.generation_id not in origins:
+            origins[context.index.generation_id] = self.store.view(db, context.index.generation_id)
+        origin = origins[context.index.generation_id]
+        if context.memory_generation_id not in context_indexes:
+            row = db.execute("SELECT value FROM memory_generation WHERE id=?",
+                             (context.memory_generation_id,)).fetchone()
+            context_indexes[context.memory_generation_id] = (
+                MemoryGeneration.model_validate_json(row[0]).index if row else None)
+        if (origin.index != context.index
+                or context_indexes[context.memory_generation_id] != context.index
+                or select(origin, context.query) != context.code):
+            raise InputError("context_mismatch: context differs from immutable backend")
+        if len(context.code) != 1 or context.code[0].ambiguous \
+                or context.code[0].identity_uncertain:
+            raise InputError("registration requires one exact unique symbol")
+        fact = context.code[0]
+        if query is not None and select(origin, query) != context.code:
+            raise InputError("symbol does not match pinned context")
+        if memory_id is not None:
+            records = self.store.revisions(db)
+            old = next((r for r in records if r.memory_id == memory_id), None)
+            if old is None:
+                raise InputError("unknown memory ID")
+            if old.payload.subject != fact.subject:
+                raise InputError("update cannot retarget the record subject")
+            kind = old.payload.type
+            note_key = old.payload.note_key if isinstance(old.payload, NotePayload) else None
+        payload: Payload
+        if kind == "symbol_exists":
+            payload = ExistsPayload(subject=fact.subject)
+        elif kind == "signature_equals":
+            if fact.signature is None:
+                raise InputError("unsupported signature form")
+            payload = SignaturePayload(subject=fact.subject, expected=fact.signature)
+        elif kind == "note" and note_key and text:
+            payload = NotePayload(subject=fact.subject, note_key=note_key, text=text,
+                                  sources=(fact.source,))
+        else:
+            raise InputError("note requires --note-key and nonempty --text")
+        return MutationRequest(request_id=request_id, payload=payload, origin=origin.index,
+                               memory_id=memory_id, expected_revision=expected_revision)
+
     def _mutate(self, kind: str | None, query: str | None, context: AgentContext,
                 request_id: str, note_key: str | None, text: str | None,
                 memory_id: str | None, expected_revision: int | None) -> MutationReceipt:
-        # Resolve expectations only from an authenticated immutable backend view.
         with self._session() as db:
-            origin = self.store.view(db, context.index.generation_id)
-            row = db.execute("SELECT value FROM memory_generation WHERE id=?",
-                             (context.memory_generation_id,)).fetchone()
-            if (origin.index != context.index or row is None
-                    or MemoryGeneration.model_validate_json(row[0]).index != context.index
-                    or select(origin, context.query) != context.code):
-                raise InputError("context_mismatch: context differs from immutable backend")
-            if len(context.code) != 1 or context.code[0].ambiguous \
-                    or context.code[0].identity_uncertain:
-                raise InputError("registration requires one exact unique symbol")
-            fact = context.code[0]
-            if query is not None and select(origin, query) != context.code:
-                raise InputError("symbol does not match pinned context")
-            records = self.store.revisions(db)
-            if memory_id is not None:
-                old = next((r for r in records if r.memory_id == memory_id), None)
-                if old is None:
-                    raise InputError("unknown memory ID")
-                if old.payload.subject != fact.subject:
-                    raise InputError("update cannot retarget the record subject")
-                kind = old.payload.type
-                note_key = old.payload.note_key if isinstance(old.payload, NotePayload) else None
-            payload: Payload
-            if kind == "symbol_exists":
-                payload = ExistsPayload(subject=fact.subject)
-            elif kind == "signature_equals":
-                if fact.signature is None:
-                    raise InputError("unsupported signature form")
-                payload = SignaturePayload(subject=fact.subject, expected=fact.signature)
-            elif kind == "note" and note_key and text:
-                payload = NotePayload(subject=fact.subject, note_key=note_key, text=text,
-                                      sources=(fact.source,))
-            else:
-                raise InputError("note requires --note-key and nonempty --text")
-            request = MutationRequest(request_id=request_id, payload=payload, origin=origin.index,
-                                      memory_id=memory_id, expected_revision=expected_revision)
+            request = self._request(db, kind, query, context, request_id, note_key, text,
+                                    memory_id, expected_revision, {}, {})
             _, _, _, receipt = self._coordinate_locked(db, None, request)
             assert receipt is not None
             return receipt
+
+    def remember_batch(self, items: tuple[RememberInput, ...]) -> tuple[MutationReceipt, ...]:
+        """Register atomically; every new receipt names the same post-batch generation."""
+        _bounded_batch(items)
+        if not all(isinstance(item, RememberInput) for item in items):
+            raise InputError("batch items must be RememberInput values")
+        request_ids: set[str] = set()
+        note_keys: set[str] = set()
+        for item in items:
+            if item.request_id in request_ids:
+                raise InputError("duplicate batch request_id")
+            request_ids.add(item.request_id)
+            if item.kind == "note":
+                if item.note_key in note_keys:
+                    raise InputError("duplicate global note_key in batch")
+                if not item.note_key or not item.text:
+                    raise InputError("note requires --note-key and nonempty --text")
+                note_keys.add(item.note_key)
+        with self._session() as db:
+            origins: dict[str, CodeView] = {}
+            context_indexes: dict[str, object] = {}
+            requests = tuple(self._request(
+                db, item.kind, item.query, item.context, item.request_id, item.note_key,
+                item.text, None, None, origins, context_indexes) for item in items)
+            _, _, _, receipts = self._coordinate_many_locked(db, None, requests)
+            return receipts
 
     def history(self, memory_id: str) -> RecordHistory:
         with self._session() as db:
             return self.store.history(db, memory_id)
 
-    def _coordinate(self, query: str | None, request: MutationRequest | None) -> tuple[MemoryGeneration, CodeView, Observation, MutationReceipt | None]:
+    def _coordinate(self, query: str | tuple[str, ...] | None, request: MutationRequest | None) -> tuple[MemoryGeneration, CodeView, Observation, MutationReceipt | None]:
         with self._session() as db:
             return self._coordinate_locked(db, query, request)
 
-    def _coordinate_locked(self, db: sqlite3.Connection, query: str | None,
+    def _coordinate_locked(self, db: sqlite3.Connection, query: str | tuple[str, ...] | None,
                            request: MutationRequest | None) -> tuple[MemoryGeneration, CodeView, Observation, MutationReceipt | None]:
+        generation, view, observation, receipts = self._coordinate_many_locked(
+            db, query, (request,) if request else ())
+        return generation, view, observation, receipts[0] if receipts else None
+
+    def _coordinate_many_locked(self, db: sqlite3.Connection,
+                                query: str | tuple[str, ...] | None,
+                                requests: tuple[MutationRequest, ...]) -> tuple[MemoryGeneration, CodeView, Observation, tuple[MutationReceipt, ...]]:
         previous = self.store.head(db)
         records = list(self.store.revisions(db))
-        probes = _probes(records, query, request)
+        probes = _probes(records, query, requests)
         prepared = self.port.prepare_locked(self.index_store, self.root, self.roots,
                                             self.excludes, probes)
         view = prepared.view
@@ -237,15 +299,19 @@ class ProductMemory:
         self.store.put_sources(prepared.sources, view)
         old_view = self.store.view(db, previous.index.generation_id) if previous else None
         epoch = previous.catalog_epoch if previous else 0
-        request_hash = digest(request.model_dump(mode="json")) if request else ""
-        receipt = self.store.receipt(db, request.request_id, request_hash) if request else None
-        changed = False
-        mutated: RecordRevision | None = None
+        hashes = tuple(digest(request.model_dump(mode="json")) for request in requests)
+        receipts = [self.store.receipt(db, request.request_id, request_hash)
+                    for request, request_hash in zip(requests, hashes, strict=True)]
+        mutations: list[tuple[RecordRevision, bool] | None] = []
         db.execute("BEGIN IMMEDIATE")
         try:
-            if request and receipt is None:
+            for request, receipt in zip(requests, receipts, strict=True):
+                if receipt is not None:
+                    mutations.append(None)
+                    continue
                 record_id = identity(view.index.worktree_key, request.payload)
                 old = next((r for r in records if r.memory_id == record_id), None)
+                changed = False
                 if request.memory_id is not None:
                     if request.memory_id != record_id or old is None:
                         raise InputError("record_identity_conflict")
@@ -269,7 +335,9 @@ class ProductMemory:
                     self.store.save_revision(db, mutated)
                     records = [r for r in records if r.memory_id != record_id] + [mutated]
                 else:
+                    assert old is not None
                     mutated = old
+                mutations.append((mutated, changed))
             needs_transition = (previous is None or previous.index != view.index
                                 or epoch != previous.catalog_epoch
                                 or previous.validator_fingerprint != VALIDATOR_FINGERPRINT)
@@ -297,16 +365,22 @@ class ProductMemory:
                 for source in sources:
                     self.store.read_source(source)
             self.port.verify(self.root, self.roots, self.excludes, probes, prepared)
-            if request and receipt is None:
-                assert mutated is not None
+            for index, (request, request_hash, mutation) in enumerate(zip(requests, hashes, mutations, strict=True)):
+                if mutation is None:
+                    continue
+                mutated, changed = mutation
                 receipt = MutationReceipt(
                     request_id=request.request_id, memory_id=mutated.memory_id,
                     revision=mutated.revision, changed=changed,
                     memory_generation_id=generation.memory_generation_id)
                 db.execute("INSERT INTO operation_receipt VALUES(?,?,?)",
                            (request.request_id, request_hash, receipt.model_dump_json()))
+                receipts[index] = receipt
+            complete = tuple(receipt for receipt in receipts if receipt is not None)
+            if len(complete) != len(requests):
+                raise IncompleteError("memory_batch_receipt_incomplete")
             db.execute("COMMIT")
-            return generation, view, prepared.observation, receipt
+            return generation, view, prepared.observation, complete
         except BaseException:
             db.execute("ROLLBACK")
             raise

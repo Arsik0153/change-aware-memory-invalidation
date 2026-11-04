@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_PATHS = ('src', 'tests', 'scripts', 'schemas', 'docker', 'pyproject.toml',
+SOURCE_PATHS = ('src', 'integrations', 'tests', 'scripts', 'schemas', 'docker', 'pyproject.toml',
                 'uv.lock', '.python-version', 'conftest.py', 'pytest.ini', 'setup.cfg',
                 'tox.ini', 'mypy.ini', '.mypy.ini', 'ruff.toml', '.ruff.toml', '.gitignore')
 

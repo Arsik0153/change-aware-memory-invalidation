@@ -47,7 +47,7 @@ Both commands write:
 
 - `catalog.json`: portable canonical payloads and origin full-file SHA-256/size; backend-specific `IndexRef` values are excluded.
 - `binding.json`: frozen catalog digest/path, backend, absolute repository and private state paths, and CAMI record-ID/revision mappings.
-- `construction-metrics.json`: success/failure, total wall and self+completed-child CPU, output/state bytes; CAMI also records catalog-capture and each registration span.
+- `construction-metrics.json`: success/failure, total wall and self+completed-child CPU, output/state bytes; CAMI also records shared catalog-capture and atomic batch-registration spans.
 
 At the same canonical origin bytes, notes-only catalogs must compare semantically equal (the authored test proves exact JSON equality). CAMI authenticates each unique subject from immutable backend context and checks the registered payload, origin source, and initial availability. No candidate is silently dropped or substituted. Static binds the given manual subject and origin bytes; it does not independently establish symbol existence or note meaning. It reads source files only during preparation, not runtime lookup.
 
@@ -84,7 +84,7 @@ The installed runtime has accepted JSONL initialization fallback from requested 
 
 ## Cost accounting and boundaries
 
-Preparation spans include adapter entry, CAMI import/backend work, source capture/authentication, per-entry registration, final refresh/equality checks, durable storage and the final storage observation. They exclude interpreter/CLI startup and the final metrics-file write; measure whole process wall/CPU externally. `catalog_capture` and per-registration spans are nested components of the total, not additional independent costs to sum again. The generator's extraction work must also be charged per arm. Failed preparation retains metrics.
+Preparation uses `ProductMemory.context_many` to capture the union of all requested paths, then `remember_batch` to register the catalog atomically. Each record retains its authenticated origin and receipt. One final memory generation replaces the sequential intermediate generations; this changes history granularity without weakening current source checks. Preparation spans include adapter entry, CAMI import/backend work, source capture/authentication, registration, final refresh/equality checks, durable storage and the final storage observation. They exclude interpreter/CLI startup and the final metrics-file write; measure whole process wall/CPU externally. `catalog_capture` and `registration_batch` are nested components of the total, not additional costs to sum again. No per-record time is fabricated from the batch total. The generator's extraction work must also be charged per arm. Failed preparation retains metrics.
 
 Each lookup trace contains chosen limit, a query/arguments hash (not plaintext query or note text), backend/catalog identity, backend/import/retrieval/serialization/storage-observation wall and self+completed-child CPU, state bytes, serialized response bytes, selected/returned/withheld counts and error diagnostics. JSON-RPC input/output and trace append are outside that inner span; measure total server/session overhead externally. Backend import is lazy and charged to the first CAMI lookup, so cold and warm calls must be identified separately.
 
