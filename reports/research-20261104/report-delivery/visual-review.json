@@ -1,24 +1,26 @@
 {
   "status": "passed",
-  "reviewer": "primary assistant visual inspection and pixel-equivalence check",
-  "independent_review": false,
-  "pages": 9,
-  "pdf_sha256": "f8d6b77ce5a156fee44e2885db89dce72e2d21fa258dea0f3e608574618a69db",
-  "observations": [
-    "Pages 1 and 2 are byte-identical to previously inspected v5 PNGs.",
-    "Pages 3 through 9 inspected at 1400px; no text clipping or overlaps observed.",
-    "Six figures and their captions are readable; all page numbers present.",
-    "All 92 source text blocks matched PDF extraction."
+  "reviewer": "Codex visual inspection of all rendered pages",
+  "pdf_sha256": "da7b2228348b770a3852600ef127c3d621dbead022ec6c492d40bc8d1b56bb38",
+  "pages": 11,
+  "method": "pdftoppm -scale-to 1500 -png; all eleven page images inspected with view_image",
+  "checks": [
+    "No clipped text or figures.",
+    "All seven research figures are readable.",
+    "New AI, model correspondence, class-global and verification sections are present.",
+    "Continuation paragraphs and short final evidence page remain readable."
   ],
-  "page_png_sha256": {
-    "page-1.png": "d3127ff9c9d27344a2e877a8769dec5524badb00a73ca38534b74ac1c43a46c5",
-    "page-2.png": "b3b6273b0eeb76d811b3516bf2cd1446a7820ec9b69c226ef9233e17bafd1d61",
-    "page-3.png": "6f8ed3f6584d37f25106bdd2d1ddaf275b818f1497c0662e7670a04b5f8e580a",
-    "page-4.png": "e56772feeb1c79a1d8674ac1af4d75e0a61488a65414de460ed6f3b967c30a83",
-    "page-5.png": "91a45c627e494baab1447b9f779f4930447b843619532cd7c62b6d2f5fa3c2a3",
-    "page-6.png": "489104f6fd0d3a88f46b78e550eb346c85047f8c1604c4591ea2e375fb838fb5",
-    "page-7.png": "24b23762e81692b2cdcca41bc6fcfb77d197fc20b44c016794ce14c2a2999d50",
-    "page-8.png": "094e7175a0fac5a34d27419880f542aad10eaba5213970182eb84433aefbffb2",
-    "page-9.png": "719d4ccb0eb5d99f682ea1392bd5488e24decb98d4289d166faf29284f22ab39"
+  "page_sha256": {
+    "page-01.png": "600a9fe116a03af15752e3e5a90a1a0521b940cdc1117bc67d85542d6a061f98",
+    "page-02.png": "397265698ad8fe8bd91ad5e6b8c079136a19e4d1493dfb8acd9247bb9bfa290c",
+    "page-03.png": "046a250f383aeb455f9790872a2f7f522198b78e451512e3d51786b649827caf",
+    "page-04.png": "9db514852c58c3da921a8b12267573e1349770fe2e56ce2a092c626eeb44cd07",
+    "page-05.png": "6ec13f26f6a3bbd4e324147c8f760b7d6bcf1ef4335138c99554c4c5de2df617",
+    "page-06.png": "58f742e32960d1271fe4ee36f3316d11bbd71986ccf56a11e3be43603ec41230",
+    "page-07.png": "c6c9a55b711395d142a6d37c835baabaafb107d0fa7ba3215b270edd78b9af39",
+    "page-08.png": "d839267ed691c9cfe6675c722a0f06e4d0b0ab10a6a76160cf5de05c1ea8e698",
+    "page-09.png": "ffc694742ee20ecb96547f8a011d2f5c294ed68bf09ddee48f38840a63edc2dd",
+    "page-10.png": "90b5c230b1be29df466d150f2b069f3560d388450cf031d041bf8ebb7a6ecadb",
+    "page-11.png": "266db3ea4ccf477ff03e073969b5a21a404a8d32dfc2684a00a79ebab8ebe82c"
   }
 }
