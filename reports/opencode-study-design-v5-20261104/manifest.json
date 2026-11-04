@@ -1,0 +1,27 @@
+{
+  "artifact_sha256": {
+    "freeze.json": "7a494c8808480bd31351a75b191890543d774f622556508ec1d709639466b2d2",
+    "protocol.json": "5cd033940c65418e1dedf29bce93af5b3d73be26c3225ce313fbbf4b3c14a4e6",
+    "runtime-manifest.json": "7cdff700153728ab3267f98524a6d58cf1f0942b96e1d89816773808f22be182",
+    "runtime-source.tar": "0575053291feb68cce863e3928827e2b03ab4119cc2d3b41a5ab9d1f7a4893fc",
+    "study.json": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c",
+    "study.sha256": "6f788ba415f0df9e895df3f5fe266dbc35195d885cbf5e10fc65ca0f6a761660"
+  },
+  "controller_changes_vs_v4": [
+    "memory_format_evidence.py",
+    "test_idle_lifecycle.py"
+  ],
+  "heldout_task_model_calls": 0,
+  "protocol_sha256": "5cd033940c65418e1dedf29bce93af5b3d73be26c3225ce313fbbf4b3c14a4e6",
+  "run_path": "runs/opencode-development-v5-20261104",
+  "schema_version": 1,
+  "status": "frozen_ready_for_v5",
+  "study_sha256": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c",
+  "task_model_calls_before_freeze": 0,
+  "unchanged_groups": [
+    "production",
+    "adapter",
+    "harness",
+    "normalized_bundle"
+  ]
+}
