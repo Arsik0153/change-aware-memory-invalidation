@@ -47,3 +47,8 @@ manifest или HTML экспорта. Тесты покрывают такое 
 на третьем переходе единственная причина отбора — previously_unavailable;
 повторная проверка должна восстановить доступность. План: 54 исполнения probe,
 16 child states; никаких новых человеческих labels или held-out результатов.
+
+Новый recovery-эксперимент завершён на e32e63e: 54 Docker executions,
+16 состояний, единственный trigger восстановления в hidden_missing —
+previously_unavailable. Снимки исходников совпали, inputs и артефакты проверены.
+Подробности: [отчёт](behavior_hidden_recovery_2026-11-04.md).

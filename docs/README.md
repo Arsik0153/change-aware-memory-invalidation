@@ -37,6 +37,11 @@ still requires independent annotation, cohort admission, provenance review, and
 protocol fixation before held-out policy execution. Automated parent environment
 observations do not supply independent confirmation receipts.
 
+- [Hidden-dependency recovery](behavior_hidden_recovery_2026-11-04.md) isolates
+  successful revalidation caused solely by prior unavailability, with 54 Docker probes.
+- [November continuation](research_run_2026-11-04.md) records the portable parent viewer,
+  verification repairs, new experiments and their limits.
+
 ## Proposal and submission documents
 
 - [Research proposal](../research_proposal.md) is the authoritative content source
