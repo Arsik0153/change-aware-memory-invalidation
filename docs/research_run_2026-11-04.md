@@ -437,3 +437,26 @@ nested-class-global gap reference; отдельный screen не обнаруж
 (126policy states). Nested-class-global добавлен до запуска после независимой
 находки reviewer; frozen reference остаётся неизменным. На диске свободно16GiB,
 очистка не требовалась.
+
+## Дефект class-global и исправление700ebf2
+
+Исходныйchallenge наab9bd6e подтвердил разногласие production/reference для прямого
+class-global и общий пропуск nested-class-global. Referencev2 зафиксирован в5ed6844;
+его42ответа совпали с authored controls. При прежнем production четыре случая
+оставались доступными при reference uncertain. После production-фикса700ebf2
+таких случаев ноль, полные ответы совпали42/42, symbol selections выросли28→32.
+Исходные before-v1, before-v2 и after-v2 сохранены раздельно. Утверждение uncertain
+не переименовывается в доказанно false. См. `class_global_binding_fix_2026-11-04_ru.md`.
+
+До исправления7regression failures и4passing controls. После —161связанный test,
+Ruff/mypy; затем29engine+bindingtests, включая6реальныхGit-историй иотклонение
+прежнего validation cache. Текущий файл содержит18регрессий. Полная sealed проверка
+запущена на700ebf2; до её завершения source иHEAD не меняются.
+
+График PNG/SVG просмотрен локально. html_preview снова завершился ошибкой
+Headless Chrome exited unexpectedly (exit code1); html_render успешно показал
+тот же локальный PNG. На диске свободно16GiB(78%занято), очистка не нужна.
+
+Полная sealed проверка700ebf2 завершена:1248passed,0skipped,463.75s;Ruff иmypy
+прошли. Source snapshots совпали, три log hashes сверены. Реестрv5 содержит
+69показателей,17разрезов и17источников; старые реестры сохранены.

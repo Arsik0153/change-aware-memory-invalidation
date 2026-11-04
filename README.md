@@ -229,8 +229,8 @@ runtime sources; Docker image в него не входит. Хеш и инст�
 unresolved-флаги; снятия одного глобального fallback недостаточно для выборочного
 отбора. Проверены parent-источники; child-результаты не использовались.
 
-[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v4/verified-facts.md)
-связывает 48 показателей с точным полем хешированного источника, единицей и
+[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v5/verified-facts.md)
+связывает 69 показателей с точным полем хешированного источника, единицей и
 ограничениями. Проверка и генерация: `.venv/bin/python -m scripts.check_research_facts --out runs/NEW_NAME`.
 
 [Формальные условия гарантий доступности](docs/availability_invariants_2026-11-04_ru.md)
@@ -243,3 +243,11 @@ unresolved-флаги; снятия одного глобального fallback
 шесть условий перехода проверены Z3 над неограниченными Int с отдельными
 SAT-проверками предпосылок. Формулы и proof objects сохранены; проверка
 production-кода независимым proof kernel не заявляется.
+
+Новые результаты автономного development-этапа:
+
+- [Слепой AI-пилот](docs/ai_parent_pilot_2026-11-04_ru.md): 24 исходных claims и 12 контролей; сохранены независимые контексты, исходные ответы и ограничения.
+- [Соответствие модели коду](docs/model_engine_translation_2026-11-04_ru.md): 499 проверенных переходов и независимый аудит записей.
+- [Исправление class-global](docs/class_global_binding_fix_2026-11-04_ru.md): устранён пропуск неоднозначности в индексаторе, обновлены версии кэшей и проверены реальные Git replay fixtures.
+
+Последняя полная проверка: [1248 passed, Ruff и mypy на 700ebf2](reports/research-20261104/full-verification-700ebf2/checks.json), source snapshots и hashes трёх логов совпали.

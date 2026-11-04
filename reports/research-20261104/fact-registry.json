@@ -486,20 +486,20 @@
     {
       "id": "verification",
       "label": "Полная проверка",
-      "scope": "Неизменный commit 418f58a; после него добавлено расширение с неполными вердиктами.",
+      "scope": "Неизменный commit 700ebf2; production fix class-global, AI pilot и translation scripts включены.",
       "limits": [
-        "Более поздние research scripts проверялись профильными тестами."
+        "Полная проверка относится к указанному HEAD; поздние отдельные auditors не приписываются этому прогону."
       ],
       "facts": [
         {
           "id": "verification.passed",
           "label": "Прошедшие тесты",
-          "source": "reports/research-20261104/full-verification-418f58a/pytest.log",
-          "source_sha256": "f6d66d8a275534a62c12a6e55fb6286458b3054c7ea54c32b301cfe0c4b54386",
+          "source": "reports/research-20261104/full-verification-700ebf2/pytest.log",
+          "source_sha256": "3ae489df7a1cd247f8f05904d113f867440eae9be29a152fbfca67a52d032e51",
           "selector": {
             "format": "pytest_summary"
           },
-          "expected": 1163,
+          "expected": 1248,
           "unit": "test"
         }
       ]
@@ -717,6 +717,303 @@
           },
           "expected": 6,
           "unit": "witness"
+        }
+      ]
+    },
+    {
+      "id": "ai_pilot",
+      "label": "Слепой AI development-пилот",
+      "scope": "Три Click parent-группы; исходные claims и авторские контролы; раздельные AI-контексты.",
+      "limits": [
+        "AI agreement не является truth или человеческой разметкой.",
+        "Общий CPython и модель; зависимые строки и простые искусственные контролы.",
+        "Известный nested-class-global gap v1 отдельно раскрыт; целевых global в этих исходниках нет."
+      ],
+      "facts": [
+        {
+          "id": "ai_pilot.cases",
+          "label": "Все случаи",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/cases"
+          },
+          "expected": 36,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.authentic",
+          "label": "Исходные утверждения",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/authentic/cases"
+          },
+          "expected": 24,
+          "unit": "claim"
+        },
+        {
+          "id": "ai_pilot.controls",
+          "label": "Авторские контролы",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/controls/cases"
+          },
+          "expected": 12,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.ai_disagreement",
+          "label": "Расхождения двух AI",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/ai_pair_disagreements"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.reference_a",
+          "label": "Расхождения reference и AI A",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/mechanical_disagreements/reviewer_a"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.reference_b",
+          "label": "Расхождения reference и AI B",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/mechanical_disagreements/reviewer_b"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.human",
+          "label": "Человеческие reviews",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/human_review_count"
+          },
+          "expected": 0,
+          "unit": "review"
+        },
+        {
+          "id": "ai_pilot.source_hashes",
+          "label": "Уникальные source hashes",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/unique_source_hashes"
+          },
+          "expected": 21,
+          "unit": "hash"
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "label": "Связь модели с engine",
+      "scope": "Восемь конечных графов, реальные функции отбора и состояния, канонические synthetic metadata.",
+      "limits": [
+        "ValidationResult задан моделью; probes не исполнялись.",
+        "Ограниченное соответствие, не доказательство произвольных production histories."
+      ],
+      "facts": [
+        {
+          "id": "translation.edges",
+          "label": "Исходные рёбра",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/source_transitions"
+          },
+          "expected": 403,
+          "unit": "edge"
+        },
+        {
+          "id": "translation.contexts",
+          "label": "Канонические контексты",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/canonical_memory_contexts"
+          },
+          "expected": 76,
+          "unit": "context"
+        },
+        {
+          "id": "translation.cases",
+          "label": "Проверенные переходы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/translation_cases"
+          },
+          "expected": 499,
+          "unit": "transition"
+        },
+        {
+          "id": "translation.matched",
+          "label": "Совпавшие переходы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/matched_cases"
+          },
+          "expected": 499,
+          "unit": "transition"
+        },
+        {
+          "id": "translation.controls",
+          "label": "Обнаруженные отрицательные контролы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/negative_controls_detected"
+          },
+          "expected": 2,
+          "unit": "control"
+        }
+      ]
+    },
+    {
+      "id": "binding_before",
+      "label": "Class-global: before",
+      "scope": "21 authored mutation × 2 predicates; одинаковый reference v2 до и после production fix.",
+      "limits": [
+        "Available при uncertain означает отсутствие поддержки по rubric, не доказанную ложность.",
+        "Синтетический challenge не измеряет эффект на популяции репозиториев."
+      ],
+      "facts": [
+        {
+          "id": "binding_before.cases",
+          "label": "Claim-переходы",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_transitions"
+          },
+          "expected": 42,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_before.selected",
+          "label": "Выбранные symbol-проверки",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/selected"
+          },
+          "expected": 28,
+          "unit": "validation"
+        },
+        {
+          "id": "binding_before.unsupported",
+          "label": "Доступность при отсутствии поддержки",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/available_when_reference_not_supported"
+          },
+          "expected": 4,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_before.mismatch",
+          "label": "Полный validator против reference",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_1_full_production_vs_reference/child_mismatches"
+          },
+          "expected": 4,
+          "unit": "claim/transition"
+        }
+      ]
+    },
+    {
+      "id": "binding_after",
+      "label": "Class-global: after",
+      "scope": "21 authored mutation × 2 predicates; одинаковый reference v2 до и после production fix.",
+      "limits": [
+        "Available при uncertain означает отсутствие поддержки по rubric, не доказанную ложность.",
+        "Синтетический challenge не измеряет эффект на популяции репозиториев."
+      ],
+      "facts": [
+        {
+          "id": "binding_after.cases",
+          "label": "Claim-переходы",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_transitions"
+          },
+          "expected": 42,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_after.selected",
+          "label": "Выбранные symbol-проверки",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/selected"
+          },
+          "expected": 32,
+          "unit": "validation"
+        },
+        {
+          "id": "binding_after.unsupported",
+          "label": "Доступность при отсутствии поддержки",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/available_when_reference_not_supported"
+          },
+          "expected": 0,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_after.mismatch",
+          "label": "Полный validator против reference",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_1_full_production_vs_reference/child_mismatches"
+          },
+          "expected": 0,
+          "unit": "claim/transition"
         }
       ]
     }
