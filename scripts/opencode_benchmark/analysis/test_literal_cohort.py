@@ -6,8 +6,23 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+import pytest
+
 import aggregate_study as evaluator
 import test_aggregate as legacy
+
+
+@pytest.mark.parametrize('study_id', sorted(evaluator.LITERAL_COMPACT_DEVELOPMENT_IDS))
+def test_explicit_literal_versions_keep_same_rules_and_cohort_gate(study_id):
+    supported = json.loads((Path(__file__).parent / 'supported_rules.json').read_text())
+    protocol = {**supported, 'study_id': study_id}
+    assert evaluator.admit_protocol(protocol, supported) == study_id
+    with pytest.raises(ValueError, match='schema2 study cohort'):
+        evaluator.admit_study_cohort(study_id, {'bundle_kind': 'development'})
+    changed = copy.deepcopy(protocol)
+    changed['success_rule']['paired_win'] = 'one favorable run is enough'
+    with pytest.raises(ValueError, match='success rules differ'):
+        evaluator.admit_protocol(changed, supported)
 
 
 class LiteralCohortTests(unittest.TestCase):

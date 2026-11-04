@@ -1,0 +1,158 @@
+{
+  "status": "complete_readonly_boundary_diagnosis",
+  "root_cause": "memory_format_evidence.inspect_format currently admits only user/assistant, but the installed v2.2.5 Message.Info union includes genuine idle lifecycle records. Closed plain trace contains one schema-valid idle/succeeded record with no tool content.",
+  "observed_closed_public_metadata": {
+    "path": "runs/opencode-development-v4-20261104/trials/r1-plain-s1/session/evidence/messages.json",
+    "sha256": "293216b089a6a055c23e3bb5feffe3b5f70a934c543f7896b5119322a7c04ca2",
+    "types": {
+      "assistant": 12,
+      "idle": 1,
+      "user": 1
+    },
+    "non_user_assistant_records": [
+      {
+        "id": "msg_1a8b46ef6001OmUDTHxfLb5gFR",
+        "time": {
+          "created": 1793831759606
+        },
+        "type": "idle",
+        "outcome": "succeeded"
+      }
+    ]
+  },
+  "installed_source": {
+    "api_path": "runs/opencode-reconnaissance-20261104/installed-openapi.json",
+    "api_sha256": "f5c4571bf7e9afc22a440875a746f593f988c4c31bf824f602601c04b20e6c8e",
+    "runtime_version": "OpenCode2.2.5",
+    "binary_sha256_from_frozen_runtime": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+    "whole_binary_rehashed_now": false,
+    "binary_citations": [
+      {
+        "path": "runs/opencode-api-lifecycle-audit-20261104/schema-idle-union.txt",
+        "binary_start_offset": 167245460,
+        "binary_end_offset": 167246090,
+        "sha256": "bf5fc4ec23bf9ef8a2d7bec89db04b044e2621adeefc1775db43e9981339cd39"
+      },
+      {
+        "path": "runs/opencode-api-lifecycle-audit-20261104/client-terminal-idle-insert.txt",
+        "binary_start_offset": 168160470,
+        "binary_end_offset": 168161270,
+        "sha256": "e3e8cd2e5084b117124908fd76d33cb6ffc42d1a3764388cfc2a094cbd3ee39c"
+      },
+      {
+        "path": "runs/opencode-api-lifecycle-audit-20261104/server-terminal-idle-insert.txt",
+        "binary_start_offset": 174665340,
+        "binary_end_offset": 174666160,
+        "sha256": "8462af83bcf345e2d88cf2e0adc9a64030f32b653a69c8565313cd00aebf0a22"
+      }
+    ]
+  },
+  "genuine_message_variants": {
+    "assistant": "Only Message.Info variant with an executable tool-part content array. Required content array must not be silently replaced with an empty default.",
+    "user": "Text/files/agents/skills inputs; not a tool-execution record. Official schema also forbids extra content/tool_calls fields.",
+    "idle": "id,time.created,type,outcome required; metadata/error optional. Outcome succeeded/failed/interrupted. No content/tool_calls permitted.",
+    "agent-switched": "agent required, previous optional; benchmark agent invariance needs a separate check.",
+    "model-switched": "model required, previous optional; benchmark frozen-model invariance needs a separate check.",
+    "location-switched": "location required; optional projectID/subpath/previous; workspace isolation must be checked separately.",
+    "synthetic": "Required text, optional description; text data not tool execution.",
+    "system": "Required text, optional description; text data not tool execution.",
+    "skill": "Required skill/name/text; not an executable tool-part carrier.",
+    "shell": "Native shell execution outside assistant parts; command/status required, output/exit/completed optional. Not an MCP tool part, but retain command/mutation/resource evidence.",
+    "compaction": "Running/completed/failed variants. Summary or error fields; may contain model/native/tokens/cost but no tool array. Resource/usage completeness must remain separately enforced."
+  },
+  "minimal_fix_proposal": {
+    "scope": "Admit strictly schema-valid idle only as the immediate repair: this covers all36closedv3 plus closedv4plain observations. Leave other genuine but unobserved union variants unsupported until explicitly schema-covered; never skip all non-assistant records.",
+    "idle_allowed_fields": [
+      "id",
+      "metadata",
+      "time",
+      "type",
+      "outcome",
+      "error"
+    ],
+    "idle_required_fields": [
+      "id",
+      "time",
+      "type",
+      "outcome"
+    ],
+    "constraints": [
+      "id string matches ^msg_",
+      "time exactly {created: finite JSON number}; bool is not a number",
+      "type exactly idle",
+      "outcome one of succeeded,failed,interrupted",
+      "metadata optional dict/object",
+      "error optional exact Session.StructuredError schema",
+      "Reject all extra fields, especially content/tool_calls/state or nested time extras"
+    ],
+    "preserve": [
+      "Scan every genuine assistant tool part",
+      "Do not use missing assistant.content as empty valid input",
+      "Reject duplicate/missing memory call IDs",
+      "Retain completed/incomplete call handling",
+      "Keep argument+receipt visible/backend multiset equality; real backend calls with no assistant carrier must still fail",
+      "Recognized idle failed/interrupted is not operational success; preserve separate outcome/failure handling and costs"
+    ],
+    "broader_supported_boundary": "If covering all11 variants, use their explicit required/allowed keys and types from pinned schemas, not a typename-only whitelist. Report recognized model/agent/location switches and compaction/shell data to their separate protocol/resource validators."
+  },
+  "regression_proposal": [
+    "Real closed metadata-only idle fixture passes plain format inspection with zero observations, rather than unsupported schema.",
+    "Legal failed/interrupted idle records are recognized without converting the run to success.",
+    "Idle plus content containing a memory tool, tool_calls or any other unexpected field rejects.",
+    "Unknown message type rejects; malformed id/time/outcome/metadata/error rejects.",
+    "Missing/malformed assistant content rejects instead of disappearing as not_observed.",
+    "An actual assistant memory call beside idle still matches its backend receipt; absent/extra/duplicate backend calls reject.",
+    "A forged lifecycle record cannot replace an assistant memory call and evade backend reconciliation.",
+    "Existing schema1/full and schema2/compact argument+receipt matching remains unchanged."
+  ],
+  "limits": [
+    "No active/static/private payload was read.",
+    "Only closed plain non-user/assistant metadata and type counts were inspected, not task solution content.",
+    "No source or production fix was made.",
+    "This identifies an operational schema-validation bug; the closed attempted run and its costs must remain preserved, with repaired execution under a new version as root intends."
+  ],
+  "tracked_writes": false,
+  "model_calls": 0,
+  "auth_calls": 0,
+  "network_calls": 0,
+  "heavy_checks": false,
+  "tests_run": false,
+  "closed_harness_census": {
+    "path": "runs/opencode-api-lifecycle-audit-20261104/closed-message-type-census.json",
+    "sha256": "b0aeb6885f48bfe16c311ae90e46aee590063bee15d2ccfed5abcbdedac4738d",
+    "v3_closed_trials": 36,
+    "v3_counts": {
+      "user": 36,
+      "assistant": 482,
+      "idle": 36
+    },
+    "v4_closed_plain_counts": {
+      "user": 1,
+      "assistant": 12,
+      "idle": 1
+    },
+    "observed_lifecycle_types": [
+      "idle"
+    ],
+    "interpretation": "Strict idle-only repair covers every observed non-user/assistant type in these closed pinned-harness arrays. Other genuine API union variants remain unsupported unless deliberately covered later."
+  },
+  "exact_idle_error_bounds": {
+    "allowed": [
+      "type",
+      "message",
+      "status",
+      "response",
+      "retryAfterMs"
+    ],
+    "required": [
+      "type",
+      "message"
+    ],
+    "type_and_message": "strings (no extra min length imposed by pinned schema)",
+    "status": "optional JSON integer100..599, bool invalid",
+    "response": "optional object with exactly body:string, body required",
+    "retryAfterMs": "optional JSON integer0..9007199254740991, bool invalid",
+    "additional_properties": false,
+    "null_error_allowed": false
+  }
+}

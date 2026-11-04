@@ -18,13 +18,17 @@ HERE = Path(__file__).resolve().parent
 PRIVATE = {"private-state", "server-private", "private-export-client"}
 
 LITERAL_COMPACT_DEVELOPMENT_ID = "opencode-cami-real-maintenance-development-v4-literal-compact"
+LITERAL_COMPACT_DEVELOPMENT_IDS = (
+    LITERAL_COMPACT_DEVELOPMENT_ID,
+    "opencode-cami-real-maintenance-development-v5-literal-compact",
+)
 
 
 def admit_protocol(protocol, supported):
-    """Two explicit IDs share the unchanged frozen success/cost/token rules."""
+    """Explicit version IDs share the unchanged frozen success/cost/token rules."""
     expected = supported
-    if protocol.get("study_id") == LITERAL_COMPACT_DEVELOPMENT_ID:
-        expected = {**supported, "study_id": LITERAL_COMPACT_DEVELOPMENT_ID}
+    if protocol.get("study_id") in LITERAL_COMPACT_DEVELOPMENT_IDS:
+        expected = {**supported, "study_id": protocol['study_id']}
     if {key: protocol.get(key) for key in supported} != expected:
         raise ValueError("protocol success rules differ from independently supported frozen rules")
     return protocol["study_id"]
@@ -39,7 +43,7 @@ def _cohort_path(value, basename=None):
 
 
 def admit_study_cohort(protocol_id, study):
-    if protocol_id != LITERAL_COMPACT_DEVELOPMENT_ID:
+    if protocol_id not in LITERAL_COMPACT_DEVELOPMENT_IDS:
         return
     normalized = study.get("normalized")
     source = normalized.get("memory_source") if isinstance(normalized, dict) else None
@@ -56,13 +60,13 @@ def admit_study_cohort(protocol_id, study):
             or not _cohort_path(source["generator"], "seed_source_literals_v2.py")
             or not isinstance(source["helpers"], list) or len(source["helpers"]) != 1
             or not _cohort_path(source["helpers"][0], "literal_source.py")):
-        raise ValueError("v4 literal/compact ID requires its explicit development schema2 study cohort")
+        raise ValueError("literal/compact ID requires its explicit development schema2 study cohort")
     hashes = normalized.get("asset_hashes")
     required = ["memory-source.json", source["seed"], source["generator"], source["helpers"][0]]
     if not isinstance(hashes, dict) or any(
             not isinstance(hashes.get(name), str)
             or not re.fullmatch(r"[a-f0-9]{64}", hashes[name]) for name in required):
-        raise ValueError("v4 literal/compact source policy assets must be explicitly frozen")
+        raise ValueError("literal/compact source policy assets must be explicitly frozen")
 
 
 def sha(path):
@@ -251,10 +255,18 @@ def trial_row(directory, expected):
         and record["quality"] != grade["status"]
     ):
         raise ValueError("terminal quality differs from hashed fixed-grade report")
+    runtime_passed_admission_failed = bool(
+        session is not None and session.get('status') == 'passed'
+        and record.get('session_status') == 'failed'
+        and record.get('status') == 'failed' and record.get('operational_status') == 'failed'
+        and any(isinstance(failure, dict) and failure.get('phase') == 'model_session'
+                for failure in record.get('failures', []))
+    )
     if (
         session is not None
         and record.get("session_status") in {"passed", "failed"}
         and record["session_status"] != session["status"]
+        and not runtime_passed_admission_failed
     ):
         raise ValueError("terminal session differs from hashed runtime report")
     quality_evidence = bool(
@@ -319,6 +331,8 @@ def trial_row(directory, expected):
         status=record.get("status", "unknown"),
         operational_status=record.get("operational_status", "unknown"),
         session_status=record.get("session_status", "unknown"),
+        runtime_manifest_status=session.get('status') if session is not None else None,
+        runtime_passed_controller_admission_failed=runtime_passed_admission_failed,
         quality=record.get("quality", "unknown"),
         quality_eligible=quality_eligible,
         wall_complete=wall_complete,

@@ -2,6 +2,7 @@
 from collections import Counter
 import hashlib
 import json
+import math
 import re
 
 COMPACT = 'research-memory-compact/1'
@@ -14,6 +15,38 @@ def digest(value):
 
 def sha_value(value):
     return isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) is not None
+
+
+def idle_lifecycle(message):
+    """Pinned OpenCode 2.2.5 Idle record; it cannot contain tool executions."""
+    allowed = {'id', 'type', 'metadata', 'time', 'outcome', 'error'}
+    if (set(message) - allowed or not {'id', 'type', 'time', 'outcome'} <= set(message)
+            or not isinstance(message['id'], str) or not message['id'].startswith('msg_')
+            or message['type'] != 'idle'
+            or message['outcome'] not in ('succeeded', 'failed', 'interrupted')
+            or 'metadata' in message and not isinstance(message['metadata'], dict)):
+        raise ValueError('invalid pinned idle lifecycle record')
+    timing = message['time']
+    if (not isinstance(timing, dict) or set(timing) != {'created'}
+            or isinstance(timing['created'], bool)
+            or not isinstance(timing['created'], (int, float))
+            or isinstance(timing['created'], float) and not math.isfinite(timing['created'])):
+        raise ValueError('invalid idle lifecycle timestamp')
+    if 'error' in message:
+        error = message['error']
+        if (not isinstance(error, dict)
+                or set(error) - {'type', 'message', 'status', 'response', 'retryAfterMs'}
+                or not {'type', 'message'} <= set(error)
+                or not all(isinstance(error[key], str) for key in ('type', 'message'))):
+            raise ValueError('invalid idle structured error')
+        for key, low, high in [('status', 100, 599), ('retryAfterMs', 0, 9007199254740991)]:
+            if key in error and (type(error[key]) is not int or not low <= error[key] <= high):
+                raise ValueError('invalid idle structured error number')
+        if 'response' in error and (not isinstance(error['response'], dict)
+                or set(error['response']) != {'body'}
+                or not isinstance(error['response']['body'], str)):
+            raise ValueError('invalid idle structured error response')
+    return {'id': message['id'], 'outcome': message['outcome'], 'has_error': 'error' in message}
 
 
 def visible_marker(part, arm, selected):
@@ -67,17 +100,30 @@ def inspect_format(messages, events, arm, selected):
     if selected not in ('full', 'compact') or arm not in ('plain', 'static', 'cami'):
         raise ValueError('unsupported frozen memory configuration')
     visible, backend, observations, errors, incomplete = [], [], [], [], []
-    seen = set()
+    seen, lifecycle = set(), []
     if not isinstance(messages, list) or not isinstance(events, list):
         raise ValueError('complete message and backend event arrays required')
     for message in messages:
+        if isinstance(message, dict) and message.get('type') == 'idle':
+            try:
+                lifecycle.append(idle_lifecycle(message))
+            except (ValueError, KeyError, TypeError) as error:
+                errors.append({'reason': str(error)})
+            continue
         if not isinstance(message, dict) or message.get('type') not in ('user', 'assistant'):
             errors.append({'reason': 'unsupported pinned API message schema'})
             continue
         if message.get('type') != 'assistant':
             continue
-        for part in message.get('content', []):
+        content = message.get('content')
+        if not isinstance(content, list) or not all(isinstance(part, dict) for part in content):
+            errors.append({'reason': 'assistant content must be an explicit part array'})
+            continue
+        for part in content:
             name = part.get('name', '')
+            if part.get('type') == 'tool' and not isinstance(name, str):
+                errors.append({'reason': 'tool name must be a string'})
+                continue
             if part.get('type') != 'tool' or not (name == 'memory_lookup' or name.endswith('_memory_lookup')):
                 continue
             call_id = part.get('id')
@@ -113,5 +159,7 @@ def inspect_format(messages, events, arm, selected):
     return {'requested_format': selected, 'arm': arm, 'status': status,
             'completed_observations': len(observations), 'observations': observations,
             'incomplete_calls': incomplete, 'errors': errors,
+            'lifecycle_records': lifecycle,
+            'lifecycle_scope': 'Validated non-tool records; outcomes retained, execution success is checked separately by the session harness',
             'correlation': 'multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred',
             'receipt_verification': 'metadata_binding_only; original full/projected/model bytes not checked after publication scrub'}

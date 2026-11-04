@@ -77,7 +77,10 @@ manual-note review rules. [Capability evidence](reports/opencode-source-excerpt-
 includes the failed prototype, its independent counterexample, correction and
 241 passing memory tests. Optional compact responses retain payload content and
 write full audit receipts, whose I/O and storage must be charged. These changes
-have not yet established a model-level benefit.
+have not yet established a model-level benefit. The first literal pilot stopped
+after two paid sessions because its format observer rejected OpenCode's genuine
+`idle` lifecycle message. [The correction and 38-array replay](reports/opencode-lifecycle-format-fix-20261104/report.json)
+preserve the failed pilot separately; a repaired experiment uses a new version.
 
 ## Install and run the offline demo
 

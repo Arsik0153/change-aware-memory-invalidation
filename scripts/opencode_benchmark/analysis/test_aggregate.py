@@ -131,6 +131,37 @@ class AggregateTests(unittest.TestCase):
         self.assertEqual(cami["tokens"]["cache_read"]["total"], 2000)
         self.assertEqual(report["integrity"]["terminal_artifact_hashes_verified"], 108)
 
+    def test_post_runtime_admission_failure_retains_paid_usage_and_failed_status(self):
+        directory, record = self.terminal(self.plan[0])
+        record.update(status='failed', operational_status='failed', session_status='failed',
+                      failures=[{'phase': 'model_session', 'failure': 'format admission failed'}])
+        self.rewrite(directory, record)
+        report = aggregate(self.run, self.protocol)
+        row = report['trials'][0]
+        self.assertEqual(row['session_status'], 'failed')
+        self.assertEqual(row['runtime_manifest_status'], 'passed')
+        self.assertTrue(row['runtime_passed_controller_admission_failed'])
+        self.assertFalse(row['quality_eligible'])
+        self.assertIsNotNone(row['token_work'])
+        self.assertEqual(report['summary']['primary_superiority'], 'not_established')
+
+    def test_passing_terminal_cannot_override_failed_runtime_manifest(self):
+        directory, record = self.terminal(self.plan[0])
+        path = directory / 'session/manifest.json'
+        data = json.loads(path.read_text())
+        data['status'] = 'failed'
+        path.write_text(json.dumps(data))
+        self.rewrite(directory, record)
+        with self.assertRaisesRegex(ValueError, 'terminal session differs'):
+            aggregate(self.run, self.protocol)
+
+    def test_unexplained_session_disagreement_still_rejected(self):
+        directory, record = self.terminal(self.plan[0])
+        record['session_status'] = 'failed'
+        self.rewrite(directory, record)
+        with self.assertRaisesRegex(ValueError, 'terminal session differs'):
+            aggregate(self.run, self.protocol)
+
     def test_partial_active_trial_never_read(self):
         self.terminal(self.plan[0])
         active = self.run / "trials" / self.plan[1]["id"] / "private-state"

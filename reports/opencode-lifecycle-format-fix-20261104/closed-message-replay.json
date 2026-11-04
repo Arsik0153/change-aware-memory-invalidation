@@ -1,0 +1,2172 @@
+{
+  "after_source_sha256": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+  "before_source_sha256": "b19a7d45c576a54d5cb74ae843ac5c65b25a7ee5b7b6e0013083fdbfaea58348",
+  "complete_unfiltered_message_arrays": 38,
+  "limits": [
+    "Replay of format inspection only; original quality/operational/cost outcomes remain unchanged.",
+    "The earlier three-response verification lacked source/input hash bindings and did not establish full-message admission. It is retained, not used as evidence of this boundary."
+  ],
+  "model_calls": 0,
+  "rows": [
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a838c600001WtLv7eWWeY9WbI",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_912578722e184118bc3838641b2be6cf",
+            "format": "full",
+            "query_sha256": "5bacb759ba06b0a33649d8d05d5a56479aff56bf3b29b17f3393faab8b30bfbf"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_912578722e184118bc3838641b2be6cf",
+            "format": "full",
+            "query_sha256": "5bacb759ba06b0a33649d8d05d5a56479aff56bf3b29b17f3393faab8b30bfbf"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "11fb74ffb3da83e84acf636e3036ddbd1f7a21e46ce3cd94b6af13fe1a35ec9a",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "53dca017793c19483cf5a69b3e4f967b36681234c4f7afbcd3ee25d3bd1c0e03",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "f24fe58a91d74136215eaf1ba94bcf0c1ca36864c503554880220564e62d0767",
+      "trial": "r1-cami-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a83f6749001NmXg6Mtz9yen1Y",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_dcb71999733940a38c52c380835754ad",
+            "format": "full",
+            "query_sha256": "3bdedffbf07c469e162df13316576ea4a77dfb7f5ce41316e2d88e4a9c9590ef"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_dcb71999733940a38c52c380835754ad",
+            "format": "full",
+            "query_sha256": "3bdedffbf07c469e162df13316576ea4a77dfb7f5ce41316e2d88e4a9c9590ef"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "5ccbabef8978d4bd79b626b87178cbc667755b10522d30487fe752528c0d4b22",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "61a89e6d87cbfe8b3ba6c5c0488a3850820d7bb3fd88f4057bfd9e196eeb26c3",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "abe6fbd25f5f1ce8ace7853aa99930941d5f97e57402e5eca0dfdfa446b1fe55",
+      "trial": "r1-cami-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a843d9d9001lM1WigRpIr6HSA",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+            "format": "full",
+            "query_sha256": "5eb8da9b215dda47fa372380b5bbce645af96516616c2919cb7e22bbf9f82ee2"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_5bee8344b081495482c3aab089cc55e6",
+            "format": "full",
+            "query_sha256": "5eb8da9b215dda47fa372380b5bbce645af96516616c2919cb7e22bbf9f82ee2"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "1d381044c1544ae4417f8228cf86f5d028b3495d376f743de1ffc3347297654a",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "85297129956cfe7e10fd37dfc68c591ac9c78748454e0bc194838ab2f592cebb",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "13cfa400f5350fd4eca30ff1f4e3c8faf41909c42b59cf85101ebc333502229d",
+      "trial": "r1-cami-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a84c7534001UIJ3tDRAPrxb86",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+            "format": "full",
+            "query_sha256": "9109bfb58c02186cf55ccef10ddb5d4c3e199296e4f7dd9f6b2e1e20be108237"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_adad0ff7ba754926b2d1291425c20779",
+            "format": "full",
+            "query_sha256": "9109bfb58c02186cf55ccef10ddb5d4c3e199296e4f7dd9f6b2e1e20be108237"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "45989c6b70b429abc8df1ce1b438878654abfe983647e992b0291d5920442a24",
+      "input_filtering": false,
+      "input_message_count": 18,
+      "messages_sha256": "f906088b6822bcd2b5b83b4e6aeac26a94d264cdf5e83fd1f05ff0c9a1249e36",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "1894cd40a4f6dd99998074c807566dd1e00333d9c5cbc60ccaf95ffee59b555c",
+      "trial": "r1-cami-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a82faf6c001D1S53PgSIJLxRF",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "55ad007ffdc806e752da6997d5b5ddb63b64710e90f23df2d9e65223970fe94c",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "f25c2e3442666844362b9aaa25d8ab45db79bd453bdd7f273eda68df3a42620d",
+      "trial": "r1-plain-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a84269bb001iM93taL0NFYn4v",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "b5e6f11e6001cbf5c191441fed70bccb8f6451d2be1bfffbf49c79aeee9a639c",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "16b69d6560641253d0b2ff329cdae1e9684ef0cefa7a26deb8e3ba6ed8d8289f",
+      "trial": "r1-plain-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a845709e001pq4mpksM1d7xv1",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 12,
+      "messages_sha256": "b4cd15917672d4f24bb474d86d43a0e243b724a940a13b354c15f6da7b7c91c0",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "8548f01ea3164a375a3315535d9a13f8e5206f975b4e42ed3c26190b16890762",
+      "trial": "r1-plain-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a848c9dc001fdjuyraDSxnXut",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "e8247e05979dfc55445b46cc5793feadf7f0443e7183d37c5429ec5a4f6f6e54",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "2271d8ba84a063dbb58b4e756285c5bef1817d86038c0d93bd9441ca3d76bbd2",
+      "trial": "r1-plain-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a834269f001F6c601BpcVQz3a",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+            "format": "full",
+            "query_sha256": "6a715d1619d0d5995aaece1d8434614cc1a867305ea91a42c6329bf4f66bdc57"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_87e62615f6794aaba588eb89624665d4",
+            "format": "full",
+            "query_sha256": "4ba06749ff0ceb833e9da887635063abbf680d66550f367cd264b1c551837488"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_6a62edc8d14a465982d25e266c8b6ebf",
+            "format": "full",
+            "query_sha256": "6a715d1619d0d5995aaece1d8434614cc1a867305ea91a42c6329bf4f66bdc57"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_87e62615f6794aaba588eb89624665d4",
+            "format": "full",
+            "query_sha256": "4ba06749ff0ceb833e9da887635063abbf680d66550f367cd264b1c551837488"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "2fbb955b93d191113267cff813fb7392c3a0a6072460e65c7bc441b3a023406c",
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "00b349ac4e8e7ca3eeb806121826eaa80de502b7a11885b84e6966148bb80fb9",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "c5378756be7544dfc6a9ff51860d97c990c3a4808736adc72713917a74c28bc9",
+      "trial": "r1-static-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a83cab610013kN11uJ8xEEkGi",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_de394964bf9c431da5069c65d0a40255",
+            "format": "full",
+            "query_sha256": "e4a0b5d9e839e6628592656b59e610e047d841e1ca2de382a42204897af3c09d"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_de394964bf9c431da5069c65d0a40255",
+            "format": "full",
+            "query_sha256": "e4a0b5d9e839e6628592656b59e610e047d841e1ca2de382a42204897af3c09d"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "9e134853c402739fe4caa077e46184faeefd52ce31ba73adfca2c5e0bb88477d",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "c4a3edcce3de94c0dd787f998c0140a9f5fc3f58162d9789df3a35a0fd4bf00e",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "768ec4949020ac58afbaa2b7ebb07c21e22787093af566a28f02488ada389aeb",
+      "trial": "r1-static-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a84728cc001tESYSm1GNL6q2g",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+            "format": "full",
+            "query_sha256": "f84da4fa63e0e10cb5c55ba5d972e0643be441720a915b3c62e2cb5a15fa5573"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_7f7ad1bc94c24029b9506d707c732979",
+            "format": "full",
+            "query_sha256": "f84da4fa63e0e10cb5c55ba5d972e0643be441720a915b3c62e2cb5a15fa5573"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "f00dbee4e86a351a4d8885400a82934627a01caaed5eac35fcc555fd8de67a32",
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "e21b80459f9340aab0b6eb0999f36a16e3f96e2ca172f476e1d96d6ca7ec8277",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "a698cab8d8ed09f47541f37cf5c6258e4f6b04af3aae82c29c0f4459f9f7396a",
+      "trial": "r1-static-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a84a9573001PaK0RC27k5CQiW",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_5686e07912da4409991d96b196b96b68",
+            "format": "full",
+            "query_sha256": "5eb8da9b215dda47fa372380b5bbce645af96516616c2919cb7e22bbf9f82ee2"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_5686e07912da4409991d96b196b96b68",
+            "format": "full",
+            "query_sha256": "5eb8da9b215dda47fa372380b5bbce645af96516616c2919cb7e22bbf9f82ee2"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "436ec49346ff612e531283b31ee51ccb33d3264ff88491bc5be50f25de7a24e3",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "e3066766036e9807933b4581f58be566615459b1d9eec640ffae0f56addb1862",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "1bea736f39be09bb00474fdd252c0e6b28ba42ba4a386bf4c6be5783714d3102",
+      "trial": "r1-static-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a851c98c001hJKWCcREytRsB1",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+            "format": "full",
+            "query_sha256": "8e68dd14c484cc6b2734c105f7ad393fad4002193fce0e786613e1029e239e78"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_a991ed52849042e9841029bc9fc7831a",
+            "format": "full",
+            "query_sha256": "8e68dd14c484cc6b2734c105f7ad393fad4002193fce0e786613e1029e239e78"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "c780d0366e46b3e27ba1b8ef4a9577a114d1ee21b112a607e07f30c9206c38d6",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "0e68a06255c2dd9ef0fe19954e606299af96cd4d4c6afee65a741593e4fa69ef",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "ae9f7b3942b2e8816d6578ccbe997e165ba6d4c6a810f5ec8e70e61819420c3b",
+      "trial": "r2-cami-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a85802a4001tivNXwsoda1pKf",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+            "format": "full",
+            "query_sha256": "30762a6ecb01379c51d1eac08d64b974ccb2d695051ed35bd22bef2d48eede5e"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_031e3b81b92c43918e959b88b636ef7e",
+            "format": "full",
+            "query_sha256": "4ba06749ff0ceb833e9da887635063abbf680d66550f367cd264b1c551837488"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_f8a3ca3b9234404cad8d1ba68064be74",
+            "format": "full",
+            "query_sha256": "30762a6ecb01379c51d1eac08d64b974ccb2d695051ed35bd22bef2d48eede5e"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_031e3b81b92c43918e959b88b636ef7e",
+            "format": "full",
+            "query_sha256": "4ba06749ff0ceb833e9da887635063abbf680d66550f367cd264b1c551837488"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "949408dd2783331dab4c244af15a8e60897afdd03ded0a5ce41790ff2c3d51b9",
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "48594abbcd798ab2737faa5f001b3b6c1cb36c44632330149cab85d69ed20ade",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "4b3b44a4cbf818f56bca82df405674988822e279e172601d03b0004fc3619280",
+      "trial": "r2-cami-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a8636f2a0015idG0G2ghO23CG",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_fd2206e0c4b54e7aa1307f2cb2ef0bb8",
+            "format": "full",
+            "query_sha256": "1334c6eff600d5cc2cfc4d897c9e4c746a76e27e52b1997f02587e959a6136bd"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_fd2206e0c4b54e7aa1307f2cb2ef0bb8",
+            "format": "full",
+            "query_sha256": "1334c6eff600d5cc2cfc4d897c9e4c746a76e27e52b1997f02587e959a6136bd"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "029badd50eaa7ba8809de984960de18ff2c066ef7cc1a32382fb523ed9e5b0f5",
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "d0c0d04678450c5498919b63d31373e696059e472664ea111b226479c59b3b78",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "79bce9e706d478107f69c91b96bf21f0bb88d4d2dc8c5ccc8cfe7b88d1752cdd",
+      "trial": "r2-cami-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a867234b001Ftc0ugE0bPnYLm",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_98c6955e0c6c4a6a9719dd3f72826e40",
+            "format": "full",
+            "query_sha256": "fbf5a3be50995768c1df51103d9b4086fe13114a1ad423aeceb97ddf330bb999"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_36d77b32fb4f44ce993e35d4f8e48689",
+            "format": "full",
+            "query_sha256": "5a08cd28a87ae3cdba45dd70e5829229a98dd00befcf77df51f5390b0c2542f4"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 2,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_98c6955e0c6c4a6a9719dd3f72826e40",
+            "format": "full",
+            "query_sha256": "fbf5a3be50995768c1df51103d9b4086fe13114a1ad423aeceb97ddf330bb999"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_36d77b32fb4f44ce993e35d4f8e48689",
+            "format": "full",
+            "query_sha256": "5a08cd28a87ae3cdba45dd70e5829229a98dd00befcf77df51f5390b0c2542f4"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "642a84c563edb986ff9eed20b927548df4d914643a0a700e930c5122bc081ca2",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "e73f883047c2644bbe7a1164f28411c92f4f43e9747e9b433fa7325b9f1a87d3",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "d52b12e1a4e019698babe0840ea31327b969f53d18b0c6a8de6b3e47f94620b4",
+      "trial": "r2-cami-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a854cee0001bVTZCQufNEMkyJ",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "4951e0da308183eeb98209b9e533c9bc4db9eb65e9561dafbbcad9c6e78ed664",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "7c18700184d2f7fe85833ce0cd1f24214924fa4c1492e743564b19d9584b04e9",
+      "trial": "r2-plain-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a85ae81b0012DBE4zmoY3exHf",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "a731c7c426402180cc29e5a95bff11e1a127e4ebdc3dc7eba77b9c0ac8db3ada",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "b06286a172ff6345bdc4604103f5f51472bd6e075e855af2745e6310670ccede",
+      "trial": "r2-plain-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a85fbddb001Ag01mTfIt1YMUR",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "3de171b1b3819b72c4143bdd51826acc96e786d7c72c842c4f2c394c60785822",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "acb9db641891196efb4e6031e0e37f85c110c6992cc6be531290ed5545381378",
+      "trial": "r2-plain-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a868af73001dP31j3W2uSOGI5",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 13,
+      "messages_sha256": "bae6f5a68a70fdae277244dc2418048f46918ace85a2c50d9e299059626fed7e",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "868753da6b27a5e0b9fbfac9075981f5260746b0eba4206391be76ff2a45953a",
+      "trial": "r2-plain-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a84f341b0012GpMkgm6XPeZZb",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+            "format": "full",
+            "query_sha256": "4e4e727ebc3ab5e1f67add3750c5fcdab8b4753ee479ef356b32ad5943d05db5"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_bda7deb9ac734e799714cba97f6f55e2",
+            "format": "full",
+            "query_sha256": "4e4e727ebc3ab5e1f67add3750c5fcdab8b4753ee479ef356b32ad5943d05db5"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "d0392555a4b2b2e14b4bfec4d61c37bd847e16e710dd483cdbeea04f67551cf0",
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "582eeb2025ad31df3041497824ca62c9e8fb3f2d43699ab5bc6e3a83438353d5",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "5f4e97cb65b6116cce5b287adcc791f7c136f2bed1f516add26e01df7449ae1b",
+      "trial": "r2-static-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a85dc50e001kX5bgN4jA30dCm",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_dfcc1a10e1384a1e8d39cf5e8e36a027",
+            "format": "full",
+            "query_sha256": "486665292bcfb43c4d9e22a321d2af0747853da8f9cfc08c479bb55c76c34a0e"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_dfcc1a10e1384a1e8d39cf5e8e36a027",
+            "format": "full",
+            "query_sha256": "486665292bcfb43c4d9e22a321d2af0747853da8f9cfc08c479bb55c76c34a0e"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "ca1d33b60aa570124c2ebe301ae5a875b9cbc01b22895885332a62918d4aa974",
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "4330d493f630edbf198cf41bdbac6eba24e676e1a98693b84a6bd8fd246dc1d2",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "f7a066b298eb8dd51018568c74bdcd769f57fb162f862c160e560283e99d921e",
+      "trial": "r2-static-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a8618e2b001Ad0L4T51sl4OIl",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_204794b707a541dfa40d38e73cd381ab",
+            "format": "full",
+            "query_sha256": "2f7b1783764105bd21d964e0533231755fa5fc512d6f00977ea95a6bc053a7d4"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_204794b707a541dfa40d38e73cd381ab",
+            "format": "full",
+            "query_sha256": "2f7b1783764105bd21d964e0533231755fa5fc512d6f00977ea95a6bc053a7d4"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "798cdd0a8590e2fb781969bdc6722a5a000b64685ec029cbfd796f22b4fa5e24",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "b6753f12c49f118fb8424803c8552f64a085508ab133f9f14a010cb9b71f8b9a",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "8e7f6491aa284bbb4605a1da361a73812cb2eebb17bba1299012d4a83910ec00",
+      "trial": "r2-static-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a86581f0001SZUGaxzaYrB890",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_9ddfa14036eb4e28b8428896ee8f7949",
+            "format": "full",
+            "query_sha256": "09d3c0e0719f73eabb66b2c479fd5f70d49b35c288487f5da74604c08eef0a68"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_9ddfa14036eb4e28b8428896ee8f7949",
+            "format": "full",
+            "query_sha256": "09d3c0e0719f73eabb66b2c479fd5f70d49b35c288487f5da74604c08eef0a68"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "0c9c7e425e946dfd52442f301d34e1a8426f8be4bb08373866b9ea74d501b2d9",
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "1a0509ee5d2297fe7bc14a84e5fcb4083b920d1ca73a90870cb5ef3a66edc0a8",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "e30b2247bca21aafeb4eb1a057ee5f889c6be0cc105ca5280c4563bf638bdeda",
+      "trial": "r2-static-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a86c0b6a001vgoMRXK8dvQwlo",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_fc9c879e540d48f9adb601ac6e975598",
+            "format": "full",
+            "query_sha256": "0e4170bc725681fb2463afefec53fddd382aa56be2471c250cfbfc01202f4c04"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_fc9c879e540d48f9adb601ac6e975598",
+            "format": "full",
+            "query_sha256": "0e4170bc725681fb2463afefec53fddd382aa56be2471c250cfbfc01202f4c04"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "6a988b176cfb0232825f2686699e607e4cb9e94cd5dcae76aee262fa20b99f68",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "8f475fa0e042c12fd6a72842b5bcb476e25afab5916d858f02e1bf9685742c47",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "bb186be24f41db3fa2c4f7a9fa76e2545871b70812a6811293a4c4ce062060ff",
+      "trial": "r3-cami-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a87a98800017AxVDGMQFoGLs8",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_8b104ea11310476394df4906212b110e",
+            "format": "full",
+            "query_sha256": "538e0fef07b2c7cbe3c7a32383f69a0ce833130cb9f9b883e81c0fc20c1166c6"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_8b104ea11310476394df4906212b110e",
+            "format": "full",
+            "query_sha256": "538e0fef07b2c7cbe3c7a32383f69a0ce833130cb9f9b883e81c0fc20c1166c6"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "9a64a9a5ef13c9f1a1953865d687a3880e4c8a51d923d1f9c802db6488bcd495",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "af6d2671ddba885a211000e626d761537beb289533a74b1043eaeefe3ae316ee",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "58541e49c8b4f75ddc0093ce2bf2e403a9adebbbb90010f4ff4be63172feae5b",
+      "trial": "r3-cami-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a87db57f001HJHswl2jwiMS8n",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_a978bb7b47f84f92be8507eca8b30d7e",
+            "format": "full",
+            "query_sha256": "7cd149252ca0439f3a456c0c7d734235f3c7ea0cdc92a0eef5a3ac343c967863"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_a978bb7b47f84f92be8507eca8b30d7e",
+            "format": "full",
+            "query_sha256": "7cd149252ca0439f3a456c0c7d734235f3c7ea0cdc92a0eef5a3ac343c967863"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "7b0e04d378f304eac63ab5e6ff1358d687a9f5cd69fd66375bf8d192e91bb56f",
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "e905a3eb8b3eca92028c20b0487a826d1083e802216cda5aefc78d1a3925e8ec",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "a011738a6a7e7f385932e602aa442aa10697881124afcd90e2a590dbfd293ff4",
+      "trial": "r3-cami-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a8818b22001VRyyoCUvsMkFtD",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_1eea57cfb03f462191cb96fef00e9a02",
+            "format": "full",
+            "query_sha256": "364e683843c8f8b2ce2d3bfc3241355840e40bc3538912019954a57f7599b0fc"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "cami",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_1eea57cfb03f462191cb96fef00e9a02",
+            "format": "full",
+            "query_sha256": "364e683843c8f8b2ce2d3bfc3241355840e40bc3538912019954a57f7599b0fc"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "0897415bec1579a0d2c2aec2c28fbc4ec6ab85dbc1c4868120b8d310edc00f92",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "ba0b16eafad0c240afd0de2783d31844e6ca066ed5f68ef37903d8c80422e537",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "5f040d838f50a36372af2ed3a10eea0dff6db2c86f678f9e1ec4ca0840695b10",
+      "trial": "r3-cami-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a86e9c0d001RINV34O0oIztk4",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "a25af508d4dbbb9eff0dc9f2fd7c95930f8cab61cdc05c8b000386c2c935604a",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "e3e910970b2534775ce79db37cd30facbceacf037aa899fc148f91dfb203547b",
+      "trial": "r3-plain-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a875257e001v3Qs2Zp9tj15Vd",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "2c232c8aeb386841f1c4e17eb16faa86553d14a713e27f9e98e957acfe7d626a",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "f47af966d7034177e8c3f0624bddef31e9d0e86dee15199961b9cb4366e8f614",
+      "trial": "r3-plain-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a87fc0760015mcotXLcSTBxLf",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "feaac2ba8825f0ea6ea6825608a1cbe5fad5452f1d7d1a3417c51537b03ad56e",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "eadf232d09830a20615b26df2c6f37f8d0ad823812fdc38ec957539c8d4306db",
+      "trial": "r3-plain-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a88342fd001WzX6xHq9ziw5Tc",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "2601589753eb984306a5cc2b25e7c828b5c0fd31e9f35635ce3a50bea8a3115c",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 222,
+      "terminal_sha256": "b29e7baad8da08e51ddf3c9cdf8bfbe2ee20163d7756286803977dfe01e28120",
+      "trial": "r3-plain-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a871cb300013qa5C7erd2z26A",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_1a44652de2424a12937ce59586d313d7",
+            "format": "full",
+            "query_sha256": "73b9888607adef1937044a1e5f630eadf1b33a0d5a8ab79c1da8fbd1970ad3f9"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_1a44652de2424a12937ce59586d313d7",
+            "format": "full",
+            "query_sha256": "73b9888607adef1937044a1e5f630eadf1b33a0d5a8ab79c1da8fbd1970ad3f9"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "c8a4f96450cda582a4abe6521c266eb1f69d1ddc7030bd466e0f429ef2b81fb4",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "6737f0845cb30483080b182299db13a93111435e25c9c73b5794295bb43907c4",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 230,
+      "terminal_sha256": "0bdde556bdebadb55737c120de54a83f7a1abdc573d284c94164ad33780557bd",
+      "trial": "r3-static-s1",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 3,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a877a2de001jSs9pXdKWL4lF7",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_c52adc40ccb04ed3883c5b32c5cfc810",
+            "format": "full",
+            "query_sha256": "3b0b38bc0db29854796e3e8a5b2258cabbd2573e250dac248237133c8fa058cc"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_d7be85b30f79490e82ec736ebd6eeb17",
+            "format": "full",
+            "query_sha256": "3b8a6b42ca6fb5b39c9fe43b9658372920c221593c368c9ff15cc65dafc5a181"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_5a65217bd5d7409fabb55630a57f4093",
+            "format": "full",
+            "query_sha256": "3b8a6b42ca6fb5b39c9fe43b9658372920c221593c368c9ff15cc65dafc5a181"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 3,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_c52adc40ccb04ed3883c5b32c5cfc810",
+            "format": "full",
+            "query_sha256": "3b0b38bc0db29854796e3e8a5b2258cabbd2573e250dac248237133c8fa058cc"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_d7be85b30f79490e82ec736ebd6eeb17",
+            "format": "full",
+            "query_sha256": "3b8a6b42ca6fb5b39c9fe43b9658372920c221593c368c9ff15cc65dafc5a181"
+          },
+          {
+            "audit_receipt": null,
+            "call_id": "call_5a65217bd5d7409fabb55630a57f4093",
+            "format": "full",
+            "query_sha256": "3b8a6b42ca6fb5b39c9fe43b9658372920c221593c368c9ff15cc65dafc5a181"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "adab8549da96d02e6538e597d9ceedae13597639d2fa5dc123c18d835f811bfd",
+      "input_filtering": false,
+      "input_message_count": 13,
+      "messages_sha256": "21ac148e0a6684016c7896bae9510a52056ed7d8e1c414ece82a54cf6bec7a3c",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "80e75c1889777978a670d68a2133e73fd0c946543d52e6b2388321b043f1b7a7",
+      "trial": "r3-static-s2",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a87c1e88001A4344EaD0i4UsA",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_449c323a43574199a1eaa79722ae765b",
+            "format": "full",
+            "query_sha256": "ec72da5a4209ca0872885bad12d999582cea767d74287831884931538ece1627"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_449c323a43574199a1eaa79722ae765b",
+            "format": "full",
+            "query_sha256": "ec72da5a4209ca0872885bad12d999582cea767d74287831884931538ece1627"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "10a732d538ecef27efb7bb2bdfed5feeacfbaa8bf3e995220f92a87bddc4e659",
+      "input_filtering": false,
+      "input_message_count": 16,
+      "messages_sha256": "31eb2ad1fdb3357db22bb008c799118eab2dab7c310a8749cb651be094afc417",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "2c48280d422d5fbc0061da5782ed14dfaaa3ad9d3ce042f5e4d97e94de57f18f",
+      "trial": "r3-static-s3",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a885243c001521RbcVePWywcn",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_825cede70b5e499389f95f661ddc53d3",
+            "format": "full",
+            "query_sha256": "6723f808390e78d04d7ccc5189c7e731221eac0c23563be94a89f38ce0a64a3c"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": null,
+            "call_id": "call_825cede70b5e499389f95f661ddc53d3",
+            "format": "full",
+            "query_sha256": "6723f808390e78d04d7ccc5189c7e731221eac0c23563be94a89f38ce0a64a3c"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "full",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "acc121154cc667af2d7568193a1e2efa9df62352f523b6101906581364b25bcd",
+      "input_filtering": false,
+      "input_message_count": 17,
+      "messages_sha256": "140e222c23d33a9d7a64bb5c1e84c99a484b1b2f382861166ba6b0fa79c0e8a9",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "db40d3e7e814e6a7318ab756e51e4c80f4e7106fb162480f544ee4a3c09b58f9",
+      "trial": "r3-static-s4",
+      "version": "v3"
+    },
+    {
+      "after": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a8b46ef6001OmUDTHxfLb5gFR",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "compact",
+        "status": "not_applicable"
+      },
+      "before": {
+        "arm": "plain",
+        "completed_observations": 0,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "compact",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": null,
+      "input_filtering": false,
+      "input_message_count": 14,
+      "messages_sha256": "293216b089a6a055c23e3bb5feffe3b5f70a934c543f7896b5119322a7c04ca2",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 223,
+      "terminal_sha256": "92946f25d9b780e56e22f1940ae4d4d86a56005bfc6ce89cbec2052435224cfd",
+      "trial": "r1-plain-s1",
+      "version": "v4"
+    },
+    {
+      "after": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [],
+        "incomplete_calls": [],
+        "lifecycle_records": [
+          {
+            "has_error": false,
+            "id": "msg_1a8b7246b001xG60JHEkRZ1h12",
+            "outcome": "succeeded"
+          }
+        ],
+        "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+        "observations": [
+          {
+            "audit_receipt": "6654c9009a016c9019a71f2104313f564f067ec450db3215e7d7944be2f7c1c2",
+            "call_id": "call_ae60de0041034a1790d9e6b3c512432a",
+            "format": "compact",
+            "query_sha256": "d07f094a1ede328025dfdd04d2772b0855009555ca143e7ca4ef262155d21710"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "compact",
+        "status": "matched"
+      },
+      "before": {
+        "arm": "static",
+        "completed_observations": 1,
+        "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+        "errors": [
+          {
+            "reason": "unsupported pinned API message schema"
+          }
+        ],
+        "incomplete_calls": [],
+        "observations": [
+          {
+            "audit_receipt": "6654c9009a016c9019a71f2104313f564f067ec450db3215e7d7944be2f7c1c2",
+            "call_id": "call_ae60de0041034a1790d9e6b3c512432a",
+            "format": "compact",
+            "query_sha256": "d07f094a1ede328025dfdd04d2772b0855009555ca143e7ca4ef262155d21710"
+          }
+        ],
+        "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub",
+        "requested_format": "compact",
+        "status": "unsupported_or_mismatch"
+      },
+      "events_sha256": "b919769d79ac04c731cdb96dad4245a6edeb953b5d21a8eb553670cdcc3374da",
+      "input_filtering": false,
+      "input_message_count": 15,
+      "messages_sha256": "9e23abf03850099981bd61d94111c57c5a7ce121e65a1608e8124dece53a2d43",
+      "original_terminal_rewritten": false,
+      "retrospective_observer_only": true,
+      "terminal_artifacts_verified": 47,
+      "terminal_sha256": "d99351ca917f8680f6912ecb6e12519b9a3e69ff4c0976a263fa2931fefabb11",
+      "trial": "r1-static-s1",
+      "version": "v4"
+    }
+  ],
+  "status": "passed",
+  "task_execution": false
+}
