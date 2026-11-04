@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "experiment": "finite-behavior-availability-reachability-v1",
+  "dataset_kind": "synthetic",
+  "analysis": "Exhaustive reachability of a finite abstraction using production selection/advance functions and a separate finite AST oracle at the validation boundary. Not execution of Docker probes.",
+  "program_space": {
+    "f_returns": [
+      "1",
+      "2",
+      "g()"
+    ],
+    "g_returns": [
+      1,
+      2
+    ],
+    "unrelated_values": [
+      0,
+      1
+    ],
+    "expected_programs": 12,
+    "module_template": "def f():\n    return {f}\n\ndef g():\n    return {g}\n",
+    "unrelated_template": "VALUE = {value}\n"
+  },
+  "initial": {
+    "f": "g()",
+    "g": 1,
+    "unrelated": 0,
+    "available": true
+  },
+  "variants": [
+    "all_validate",
+    "intact",
+    "known_missing",
+    "hidden_missing"
+  ],
+  "protocol_version": "1.0",
+  "dependency_depth": 1,
+  "mask": {
+    "repo_id": "behavior-fixture",
+    "seed": 17,
+    "drop": 0.75,
+    "expected_unique_edge": "module.py::f -> module.py::g"
+  },
+  "state_projection": [
+    "program_id",
+    "available"
+  ],
+  "transition_space": "Every successor program, including an unchanged program. Enumerate until no reachable projected state is new. Selection observes only current availability plus immutable claim/provenance and the source transition; metadata lineage is not claimed verified.",
+  "invariants": {
+    "all_validate": "available equals finite truth in every reachable state",
+    "intact": "available equals finite truth in every reachable state",
+    "known_missing": "available equals finite truth in every reachable state",
+    "hidden_missing": "No false withholding; find at least one false availability state and a reachable cycle of false availability whose edges change source but select no validation."
+  },
+  "negative_controls": [
+    "Hide f->g in the intact variant: the required no-mismatch invariant must fail.",
+    "In hidden_missing, suppress previously_unavailable by presenting available=True only to selection: the required no-false-withholding invariant must fail."
+  ],
+  "outputs": [
+    "all 12 source programs, values and blob identities",
+    "all reachable projected states and transitions per variant",
+    "shortest reachability witnesses for errors",
+    "reachable nonempty source-changing false-availability cycle and a prefix from initial state",
+    "negative-control outcomes and source/input/output hashes"
+  ],
+  "limits": [
+    "Finite authored grammar and two-valued unrelated file; not arbitrary Python.",
+    "Validation result is supplied from the finite oracle, not actual probe execution in this study.",
+    "Reachability proves properties of the stated abstraction; projection adequacy is argued from current selection/advance code.",
+    "No population frequencies, cost measurements, real admission, independent human labels, or metadata-lineage proof."
+  ],
+  "source_dependencies_sha256": {
+    "src/cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+    "src/cami/index.py": "617b574f59c0ff54c14ef6ea5d21686b03dc2343c7be21a7ebad74cedfb6d246",
+    "src/cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+    "scripts/finite_behavior_oracle.py": "30e5d20c103e8e526793aaf2a88face9312322bb2d3783d44459e8687c01d8f1"
+  }
+}
