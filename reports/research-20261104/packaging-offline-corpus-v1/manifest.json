@@ -1,0 +1,34 @@
+{
+  "archive": "packaging-development-v2-offline.tar.gz",
+  "archive_bytes": 1130413,
+  "archive_sha256": "423fbc71a9fc7a56b346c8dfb065c830f44db64ab1a78708e8db76749a12b81f",
+  "artifact_hashes": {
+    "corpus-manifest.json": "f215d698efc73922934d5c8740a4406f17f58b710b90f0a058897f0c44d82dff",
+    "extracted/commands.jsonl": "92f9f26eb2b7ca617a4869232af49f363e3bcd676b68afa61b63a486ad36706d",
+    "extracted/corpus-manifest.json": "f215d698efc73922934d5c8740a4406f17f58b710b90f0a058897f0c44d82dff",
+    "extracted/verification.json": "2438e8456b51ee702cbc0a29b548f0adeb3a974b468f1d04c368c541b260cc1e",
+    "original-read-commands.jsonl": "1d3fea794eb2df47d5cfe8fb6e1afc33ccfbd5f0278201587fd5dd59e2103ed3",
+    "packaging-development-v2-offline.tar.gz": "423fbc71a9fc7a56b346c8dfb065c830f44db64ab1a78708e8db76749a12b81f",
+    "source-after.json": "7b82d17e02c0d8dfd31f746503b4242c955ff931644132749d9436ba9f526112",
+    "source-before.json": "7b82d17e02c0d8dfd31f746503b4242c955ff931644132749d9436ba9f526112"
+  },
+  "byte_reproducible": true,
+  "helper_sha256": "a9248dcb660c89421e386bbd68f2a2596f7e46f646f4c4a3a43ae5e40d9947a2",
+  "history_completeness": "not complete Git history; historical metadata objects are retained byte-for-byte",
+  "network": "every Git process runs under unshare --net; Git transports denied and lazy fetch disabled",
+  "object_files_copied_byte_for_byte": 44,
+  "original_file_count": 108,
+  "original_inventory_sha256": "7b82d17e02c0d8dfd31f746503b4242c955ff931644132749d9436ba9f526112",
+  "original_repository_file_identity_unchanged": true,
+  "scope": "bounded Packaging development offline snapshot corpus",
+  "source_bindings": {
+    "acquisition_manifest_sha256": "8886a00a8488447274369c4b69966660b3417395ab288927c76445fa90ac2fc4",
+    "replay_protocol_sha256": "aec4f1fd0b863bb875deb2e1808285a3359461ecd7e4403eced8cb23e235190e",
+    "replay_seal_sha256": "05257c4a0f4d5f950e4ded7fa33734733410001a89dd775b228dafb1bb42d971",
+    "run_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+    "run_source_commit": "b9602184b035f0eb211526c4628e800cb4e9202c"
+  },
+  "status": "complete",
+  "verified_blobs": 296,
+  "verified_snapshots": 72
+}

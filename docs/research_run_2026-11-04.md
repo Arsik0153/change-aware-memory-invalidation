@@ -662,3 +662,7 @@ Installed the reproducible Packaging figure. PNG/SVG/data remain byte-identical 
 ### Four Docker integration skips resolved separately
 
 At `2071f54`, reran only the four skipped Docker integration node IDs with `CAMI_TEST_IMAGE=cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6`. All four passed in 14.96 seconds. Every pre-existing source file matches the full `07cb633` run; the sole added source file is the reviewed plot script. Before/after snapshots also match within this supplement. The original full-run record stays `1361 passed, 4 skipped`; the supplemental record stays `4 passed`. Together they exercise all 1365 collected cases, without presenting that as a single uninterrupted full-suite result.
+
+### Packaging corpus can be checked without GitHub
+
+Published a file-only mirror of the bounded offline corpus, with a 1,130,413-byte deterministic tar.gz (SHA256 `423fbc71a9fc7a56b346c8dfb065c830f44db64ab1a78708e8db76749a12b81f`). The unchanged installed stdlib verifier independently checked all 72 trees and 296 blob contents in actual `unshare --net` namespaces. A parameterized installed control runner reproduced rejection of wrong archive hash, rehashed injected hook and rehashed missing object pack. All 108 original repository file identities remain unchanged. No extracted repository or Gitlink is committed. This is a bounded snapshot corpus, not complete Git history, the CAMI runtime or a full evidence backup.
