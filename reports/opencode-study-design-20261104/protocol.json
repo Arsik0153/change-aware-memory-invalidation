@@ -1,0 +1,104 @@
+{
+  "study_id": "opencode-cami-real-maintenance-v1",
+  "status": "design_frozen_before_first_development_task_model_call; executable source/runtime pins appended in each separately frozen study.json",
+  "task_class": "Bounded Python library maintenance at historical upstream revisions: API refactoring and bug fixes, with persistent source-linked memory across canonical code changes.",
+  "arms": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "model": "openai/gpt-6.1-sol#high",
+  "opencode_version": "2.2.5",
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "development": {
+    "project": "https://github.com/pallets/click",
+    "tasks": [
+      {
+        "id": "click-help-option-api",
+        "upstream_pr": 2563,
+        "base": "9aeb586cbc622c229bbf80ad948e590f596a8d3e",
+        "gold": "26aa7bf3189e19a8a63890b1c2cc7eca24312d6f",
+        "category": "real upstream refactor exposing reusable HelpOption API; authored acceptance tests required"
+      },
+      {
+        "id": "click-help-eagerness",
+        "upstream_pr": 2811,
+        "base": "273fb90106726daa16e1033eca0d677de76345eb",
+        "gold": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+        "category": "real upstream bug fix; upstream regression tests"
+      }
+    ]
+  },
+  "heldout_selection": {
+    "project": "https://github.com/pypa/packaging",
+    "gold_commit_ids": [
+      "c52d2b30465ace6d11f54c01b6ea30419a94b5ef",
+      "cf2cbe2aec28f87c6228a6fb136c27931c9af407"
+    ],
+    "selection_basis": "Two chronological specifier bug fixes in already available metadata, chosen before any task-model measurements. No performance-based replacement allowed.",
+    "source_exposure": "Packaging source was used in earlier structural research, so this is task/outcome-held-out, not a previously unseen project. Final task prompts/evaluator and implementation will be frozen before final model runs.",
+    "unusable_task_rule": "Record a failed preflight; do not substitute a task after observing model results. All final results preserved and implementation cannot be tuned against them.",
+    "freeze": {
+      "archive_path": "examples/opencode_benchmark_heldout_v1/heldout-task-assets-v1.tar.gz",
+      "sha256": "72b4e060612ceefbae4529453a97ca450cfc78ba2e5cd438d66cf2817a41fcab",
+      "rule": "Final task assets sealed before development task model calls. Freeze final implementation after development and before any final model outcome. No implementation tuning from final outcomes; future tuning requires a new separate final study."
+    }
+  },
+  "sequence": [
+    "first_task_local_cold",
+    "first_task_repeat",
+    "second_task_after_canonical_upstream_changes",
+    "second_task_repeat"
+  ],
+  "repetitions": 3,
+  "sessions": "Fresh OpenCode process, database and transcript for each stage; /memory and its index/state caches persist within each repetition/arm. This is repeated use of persistent memory, not a warm OpenCode daemon. Canonical source resets before every stage; previous model patches are never future task input.",
+  "order": "Three cyclic arm orders over repetition blocks, stage index rotates initial arm; no concurrent model trials.",
+  "memory": "Identical deterministic origin-source note catalog, shared retrieval and budget; static notes explicitly unchecked-current; CAMI source-linked notes withheld when current evidence requires review. No future task solutions in memory. Notes are not behavior-verified claims.",
+  "cold_scope": "Fresh local OpenCode/MCP state and memory construction; remote provider cache cannot be forced cold and cached token fields must be recorded.",
+  "cost_boundary": "Each static/CAMI arm independently executes and pays origin-source extraction and memory preparation. Plain has zero memory construction. Charged sequence wall time includes controller guards, construction, startup, private authentication transfer, model/native-tool/MCP work, and session cleanup. Canonical fixture reset, source export and fixed grading are separately timed evaluation infrastructure. Entire controller elapsed time is also retained. Nested component spans are descriptive and never summed twice.",
+  "primary_quality": "All fixed task acceptance checks plus predefined regression suite pass; original tests restored for evaluation, agent modifications cannot weaken evaluator. Base must fail task acceptance and gold must pass before model runs.",
+  "staleness": "Separate changed-source memory exposure, confirmed obsolete snippet exposure, and evidence-backed stale reliance in visible tool/action/final traces. Unknown reliance remains unknown. CAMI withholding is not itself task correctness; zero detected reliance is not proof of absence.",
+  "primary_efficiency": "End-to-end sequence elapsed seconds and provider token fields, with memory setup included; report paired per-block values, medians, ranges and all failures. Provider cost metadata is not verified subscription billing.",
+  "secondary_resources": [
+    "CPU self and descendants",
+    "sampled aggregate RSS with limitations",
+    "stored logical and allocated bytes",
+    "memory preparation and maintenance durations",
+    "provider input/output/reasoning/cache counters separately",
+    "tool counts and durations"
+  ],
+  "success_rule": {
+    "quality": "All 12 CAMI task trials must pass fixed acceptance and regression checks. Report paired per-task outcomes for every arm; no missing or failed trial can be treated as a cheap success.",
+    "efficiency_eligibility": "Primary efficiency superiority is assessed only if all three arms have all 12 operationally complete and quality-passing trials with complete relevant measurements. Otherwise report outcomes and costs, but primary superiority is not established.",
+    "paired_win": "Against each comparator, CAMI must have a strictly lower full four-stage sequence total in all three repetition blocks for at least one predeclared metric: charged end-to-end elapsed seconds or non-cached normalized provider token work. The same winning metric must satisfy all six paired comparisons.",
+    "token_work": "Non-cached normalized provider token work = input + cache.write + output + reasoning; cached reads separately reported and included in provider input volume, not silently discarded from cost evidence. Token counts are resource proxies, not verified subscription bills or equivalent-priced units. Missing/incomplete telemetry prevents a token-win claim.",
+    "population_scope": "Only the two predefined historical final tasks and this sequence/model/runtime. Repetitions do not create new independent task instances; no broad population or noninferiority claim."
+  },
+  "failure_policy": "Timeouts, provider errors, rejected permissions, tool errors and incomplete runs retained and reported. No silent retry/replacement; technical repair creates a new declared protocol/run version.",
+  "optimization": "Development measurements only. Profile measured dominant costs before changes; no Rust rewrite unless a confirmed CPU bottleneck justifies it.",
+  "search_replacement": "Exact symbol lookup does not satisfy native regex grep semantics; retain native search in primary arms. A separately labeled exact-symbol tool experiment requires its own compatibility and task protocol.",
+  "state_trajectory": "Frozen semantic catalog content persists. CAMI maintenance states and caches produced by each arm's own tool calls persist across stages, including sticky manual-review states after temporary edits. Canonical source resets are identical before each task; agent solutions are not used as future source or memory payloads. This is an end-to-end policy effect, not a claim that all arms execute an identical internal state trajectory.",
+  "memory_seed_policy": "All unambiguous direct public Python functions and methods plus __init__/__call__ from source roots; one deterministic source-only note per selector, unique global note key, first2400 source characters. No task-target filtering, max1024 records safety bound. Seed source extraction charged per arm.",
+  "native_search_compatibility": "CAMI find supports exact symbol selectors; native OpenCode grep supports arbitrary regex text matches and line/path results. These contracts differ, so no direct replacement is included or mislabeled as equivalent. A complementary symbol tool can be a separate later experiment.",
+  "historical_task_limitations": "Public historical tasks may be present in model training. No claim of contamination-free benchmark. Same fixed model and prompts across arms, no upstream history/solutions available in task filesystem, network use prohibited in task prompts and native web tools disabled.",
+  "limits": {
+    "wall_seconds_per_task": 900,
+    "agent_steps": 20,
+    "observed_provider_tokens": 250000,
+    "provider_token_limit_scope": "Observed disjoint normalized counters; interruption may overshoot, missing usage may normalize to0; not a provider billing cap.",
+    "container_cpu_quota": 2,
+    "container_memory_bytes": 2147483648,
+    "container_pids": 256,
+    "free_disk_before_trial_bytes": 5368709120
+  },
+  "token_semantics": "Installed OpenCode normalizer input excludes cache, output excludes reasoning. Report input, output, reasoning, cache.read/write separately; provider input=input+cache.read+cache.write; provider output=output+reasoning when telemetry is complete. Missing/nonfinite provider values are normalized to0 by the client, so raw zero does not prove measured zero. Session totals and step sums must never be added together.",
+  "development_selection_rule": "Keep both selected Click tasks and all failed attempts. Development tuning may change implementation only under a new recorded version. Never silently pool attempts across versions.",
+  "runtime_reproducibility": {
+    "image_id": "sha256:0e055f29b8dd191bc51b16df3046c1f986f77db48b028b65b4fcf27aa49ecdf3",
+    "offline_archive": "output/opencode-runtime-20261104-v1.tar.gz",
+    "archive_sha256": "a7919627fc74f4a69fe8e10f119aab4631159ced092b65d8b016675203becbc7",
+    "archive_bytes": 91382285,
+    "model_limit": "Pin provider/model/variant in config and validate returned metadata. Remote model weights and remote cache cannot be pinned by this client."
+  },
+  "pre_model_activity": "Two earlier authored host model smoke sessions (first failed, second passed) are preserved; no development or final task models called at design freeze. One authored container smoke planned before actual study."
+}

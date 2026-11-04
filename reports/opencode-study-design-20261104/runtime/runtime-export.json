@@ -1,0 +1,10 @@
+{
+  "image_id": "sha256:0e055f29b8dd191bc51b16df3046c1f986f77db48b028b65b4fcf27aa49ecdf3",
+  "archive": "output/opencode-runtime-20261104-v1.tar.gz",
+  "sha256": "a7919627fc74f4a69fe8e10f119aab4631159ced092b65d8b016675203becbc7",
+  "bytes": 91382285,
+  "export_wall_seconds": 2.7619223399087787,
+  "contents": "Runtime OS, pinned Python and dependencies, git and ripgrep. CAMI/adapter source, installed OpenCode binary, credentials and task source are external mounts and are not in this image.",
+  "purpose": "Exact offline runtime recovery using docker image load; avoids relying on future apt package availability.",
+  "archive_git_tracked": false
+}

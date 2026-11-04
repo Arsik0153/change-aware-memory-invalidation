@@ -1,0 +1,18 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 786B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6
+#2 ERROR: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+------
+ > [internal] load metadata for docker.io/library/cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6:
+------
+Dockerfile:1
+--------------------
+   1 | >>> FROM cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6
+   2 |     USER root
+   3 |     RUN apt-get update && apt-get install -y --no-install-recommends git ripgrep \
+--------------------
+ERROR: failed to build: failed to solve: cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6: failed to resolve source metadata for docker.io/library/cami-probes@sha256:17ad59a0efd3a62ede046c70b74213d649940e46a8330ac595ead4d647732bd6: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
