@@ -14,6 +14,8 @@ This research will investigate how a coding agent can maintain useful repository
 
 MemGPT studies management of external memory [1], and A-MEM studies linked, evolving agent memories [2]. SWE-agent demonstrates repository interaction by language-model agents [3], while SWE-bench provides an issue-resolution evaluation setting [4]. AST differencing, exemplified by GumTree, identifies structural code edits [5]. These are relevant foundations, but a changed source element does not by itself establish that a particular memory is false.
 
+EA-Graph anchors verification claims to artifact content and separates evidence strength from freshness, including an unprovable state when changed support is unavailable [7]. These mechanisms are prior work, not a novelty claim of this proposal.
+
 Anand's recent preprint distinguishes claim-relative invalidation from change impact [6]. This proposal will extend that work through sequential memory maintenance, measurement of provenance costs, and deliberately incomplete provenance. Selective checking will be compared with checking every claim using the same validator. Claim-relative invalidation itself is not claimed as new.
 
 The main question is whether provenance and symbol-level changes can reduce revalidation cost while retaining useful memory and limiting stale exposure. Supporting questions concern dependency propagation, incomplete provenance, and code localization. Both improvements and negative results will inform the measured cost and reliability trade-off.
@@ -81,3 +83,5 @@ The following dates are proposed research milestones for 2026, not confirmed uni
 [5] J.-R. Falleri, F. Morandat, X. Blanc, M. Martinez, and M. Monperrus. Fine-grained and accurate source code differencing. ASE, pp. 313-324, 2014. https://doi.org/10.1145/2642937.2642982
 
 [6] A. Anand. Impact Is Not Invalidation: Ask About the Claim, Not the Diff. arXiv:2609.25130, preprint, 20 September 2026. https://arxiv.org/abs/2609.25130
+
+[7] H.-J. Hsu, C.-J. Chi, and H. Everett. EA-Graph: Artifact-Anchored Verification Memory for Coding Agents under Upstream Drift. arXiv:2608.04278v1, preprint, 4 August 2026. https://arxiv.org/abs/2608.04278v1
