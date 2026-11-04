@@ -133,7 +133,9 @@ def credential_pipe(container, state, shared_url):
             "credential_body_saved": False, "credential_body_decoded": False, "provider": "openai", "shared_server": shared_url}
 
 
-def configuration(arm, binding):
+def configuration(arm, binding, response_format="full"):
+    if response_format not in ("full", "compact"):
+        raise ValueError("unsupported memory response format")
     result = {"model": "openai/gpt-6.1-sol#high", "update": "disable", "share": "disabled", "warming": False,
         "snapshots": False, "compaction": {"auto": False}, "websearch": False,
         "plugins": ["-opencode.tool." + name for name in ["subagent", "webfetch", "websearch", "image-generate", "schedule", "question", "artifact"]],
@@ -145,6 +147,8 @@ def configuration(arm, binding):
             "--binding", "/memory/" + binding, "--trace", "/state/evidence/memory-backend-trace.jsonl"], "cwd": "/workspace", "codemode": False,
             "environment": {"PYTHONPATH": "/opt/memory-adapter:/opt/cami-src:/opt/cami-deps", "PYTHONSAFEPATH": "1"},
             "timeout": {"startup": 10000, "catalog": 10000, "execution": 30000}}}}
+        if response_format == "compact":
+            result["mcp"]["servers"]["research_memory"]["command"] += ["--response-format", "compact"]
     return result
 
 
@@ -157,6 +161,7 @@ def main():
     parser.add_argument("--prompt-file", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--binding-relative")
+    parser.add_argument("--memory-response-format", choices=["full", "compact"], default="full")
     parser.add_argument("--no-model", action="store_true", help="Explicit default; no auth import/prompt admission")
     parser.add_argument("--run-model", action="store_true")
     parser.add_argument("--boundary-probe", action="store_true")
@@ -185,7 +190,7 @@ def main():
     output = owned(args.out, create=True)
     state, container = None, None
     initial_private_values = set()
-    manifest = {"status": "preflight", "arm": args.arm, "model_requested": args.run_model, "model_calls_in_development_tests": 0}
+    manifest = {"status": "preflight", "arm": args.arm, "model_requested": args.run_model, "model_calls_in_development_tests": 0, "memory_response_format": args.memory_response_format}
     write(output / "manifest.json", manifest)
     try:
         assert sha(BINARY) == EXPECTED_BINARY_SHA, "installed OpenCode identity changed before auth"
@@ -201,7 +206,7 @@ def main():
         for path in [workspace, memory, state]:
             chown_owned(path)
         (state / "config/opencode").mkdir(parents=True)
-        config = configuration(args.arm, args.binding_relative)
+        config = configuration(args.arm, args.binding_relative, args.memory_response_format)
         write(state / "config/opencode/opencode.json", config)
         chown_owned(state)
         write(output / "effective-input-config.json", config)

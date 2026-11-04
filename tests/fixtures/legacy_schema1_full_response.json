@@ -1,0 +1,46 @@
+{
+  "backend": "static",
+  "catalog_sha256": "2a9553c90a9411cb003f2cde3046f963c9816fca1dc54039ca618235a266e87e",
+  "entries": [
+    {
+      "availability": "unchecked_current",
+      "id": "manual",
+      "label": "manual_assertion",
+      "origin_source": {
+        "path": "src/pkg/m.py",
+        "sha256": "854d5c95c53c01074ee1a2b97babdc9cb23dd6d03098f6758a6667a27bdee848",
+        "size": 52
+      },
+      "payload": {
+        "note_key": "unchanged-old-key",
+        "sources": [
+          {
+            "path": "src/pkg/m.py",
+            "sha256": "854d5c95c53c01074ee1a2b97babdc9cb23dd6d03098f6758a6667a27bdee848",
+            "size": 52
+          }
+        ],
+        "subject": {
+          "language": "python",
+          "node_kind": "function",
+          "path": "src/pkg/m.py",
+          "qualname": "alpha"
+        },
+        "text": "historical manual note",
+        "type": "note"
+      }
+    }
+  ],
+  "freshness": "origin only; current validity unchecked",
+  "matched_records": 1,
+  "query": "manual",
+  "schema_version": 1,
+  "selected_records": 1,
+  "selection_budget": {
+    "origin_record_bytes": 16384,
+    "ranking_before_availability": true,
+    "used_bytes": 441
+  },
+  "truncated": false,
+  "withheld": []
+}

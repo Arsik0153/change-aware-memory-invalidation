@@ -1,0 +1,52 @@
+{
+  "tasks": [
+    {
+      "id": "click-help-option-api",
+      "archive": "fixtures/click-help-option-api-base.tar.gz",
+      "archive_sha256": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+      "prompt": "Consolidate Click's duplicated built-in help-option behavior into a reusable public click.HelpOption class derived from Option. It should default to --help, an eager flag that prints help and exits without passing a value to the command. Use the same class for automatically generated command help and the help_option decorator. Preserve custom option names, disabled automatic help, resilient parsing, existing help output/color behavior, explicit option keyword overrides (including callback), and the decorator's custom cls support. Keep existing applications working and add focused tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+      "acceptance": [
+        "oracles/test_help_option_api.py"
+      ],
+      "pytest_selection": null,
+      "oracle_root": "oracles",
+      "replace_regression_tests": null,
+      "regression": "tests"
+    },
+    {
+      "id": "click-help-eagerness",
+      "archive": "fixtures/click-help-eagerness-base.tar.gz",
+      "archive_sha256": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+      "prompt": "Fix the ordering of Click's automatically generated help option when help_option_names supplies a custom name. For a command with a non-eager flag -a, an eager flag -b whose callback prints and exits, and automatic --my-help: --my-help before -b must print help, while -b before --my-help must invoke -b. Help must take precedence over the non-eager flag regardless of order. Keep ordinary callback ordering, disabled help, and other option behavior intact. Add focused regression tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+      "acceptance": [
+        "oracles/test_commands.py"
+      ],
+      "pytest_selection": "help_param_priority or iter_params_for_processing",
+      "oracle_root": "oracles",
+      "replace_regression_tests": null,
+      "regression": "tests"
+    }
+  ],
+  "sequence": [
+    "click-help-option-api",
+    "click-help-option-api",
+    "click-help-eagerness",
+    "click-help-eagerness"
+  ],
+  "seed": "memory-origin/seed-spec.json",
+  "source_roots": [
+    "src/click"
+  ],
+  "asset_hashes": {
+    "fixture-manifest.json": "908a61eaf7ebbd99b7355add5cf5f795c65e942be47a2ddcb3cfc27afc757529",
+    "fixtures/click-help-eagerness-base.tar.gz": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+    "fixtures/click-help-option-api-base.tar.gz": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+    "memory-origin/seed-spec.json": "4477b7a5b524ad9163ef8dfb7f00bc0bf94b994d7d11c58768a5bf0814b2c5a6",
+    "oracles/conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+    "oracles/test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+    "oracles/test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d",
+    "seed_source_notes.py": "197215f529c5007b81d1ced1d28999b915ddbea9184cc132e8ae1a56650d83be",
+    "task-evaluation.json": "89b29c509cd62d8db585721f931a74a94061d4705bc249cca5a5942cd787951d",
+    "task-prompts.json": "71c3c093a217c6c16c35b5e7e04ca8fb253253931aa22aef53e2a8db534e3ab1"
+  }
+}

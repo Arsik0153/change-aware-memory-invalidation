@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 
 from study_common import ARMS, contained, digest, file_hashes, read, verify_files
+from memory_seed_schema import literal_catalog, validate_policy
 
 MODEL = "openai/gpt-6.1-sol#high"
 
@@ -101,23 +102,53 @@ def normalize(bundle, kind):
         for name in task["acceptance"]:
             if Path(name.split("::")[0]).is_absolute() or ".." in Path(name.split("::")[0]).parts:
                 raise ValueError("unsafe fixed pytest node")
-    source_roots = read(bundle / seed)["source_roots"]
+    memory_source = None
+    metadata = bundle / "memory-source.json"
+    if metadata.exists():
+        memory_source = validate_policy(read(metadata))
+        assets = [path for path in assets if path not in {seed, "seed_source_notes.py"}]
+        seed = memory_source["seed"]
+        assets += [
+            "memory-source.json",
+            seed,
+            memory_source["generator"],
+            *memory_source["helpers"],
+        ]
+    spec = read(contained(bundle, seed))
+    if memory_source is not None:
+        literal_catalog(spec)
+    elif spec.get("schema_version") != 1:
+        raise ValueError("nonlegacy seed requires explicit memory-source metadata")
+    source_roots = spec["source_roots"]
     if not source_roots or any(
         not x.startswith("src/") or ".." in Path(x).parts for x in source_roots
     ):
         raise ValueError("v1 memory origin must be source-only under src/")
-    return {
+    result = {
         "tasks": tasks,
         "sequence": sequence,
         "seed": seed,
         "source_roots": source_roots,
         "asset_hashes": {x: digest(contained(bundle, x)) for x in sorted(set(assets))},
     }
+    if memory_source is not None:
+        result["memory_source"] = memory_source
+    return result
 
 
 def make_study(
-    bundle, kind, harness, image, cami_source, adapter, controller, runtime_manifest=None
+    bundle,
+    kind,
+    harness,
+    image,
+    cami_source,
+    adapter,
+    controller,
+    runtime_manifest=None,
+    memory_response_format="full",
 ):
+    if memory_response_format not in ("full", "compact"):
+        raise ValueError("unsupported memory response format")
     data = normalize(bundle, kind)
     return {
         "schema_version": 1,
@@ -130,6 +161,7 @@ def make_study(
         "model": MODEL,
         "timeout_seconds": 900,
         "max_steps": 20,
+        "memory_response_format": memory_response_format,
         "reported_token_budget": 1_000_000,
         "image": image,
         "binary_path": "/root/.opencode/bin/opencode",
@@ -164,6 +196,8 @@ def controller_files(root):
         "study_ledger.py",
         "preparation_worker.py",
         "fixed_grader.py",
+        "memory_seed_schema.py",
+        "memory_format_evidence.py",
     }
     if not required <= {p.name for p in root.glob("*.py")}:
         raise ValueError("required controller/helper module missing")
@@ -195,7 +229,15 @@ def runtime_files(root):
     }
 
 
+def memory_response_format(study):
+    value = study.get("memory_response_format", "full")
+    if value not in ("full", "compact"):
+        raise ValueError("unsupported frozen memory response format")
+    return value
+
+
 def validate(study, *, execute=False):
+    memory_response_format(study)
     if study["schema_version"] != 1 or study["arms"] != list(ARMS) or study["repetitions"] != 3:
         raise ValueError("unsupported study design")
     if study["model"] != MODEL or study["timeout_seconds"] != 900 or study["max_steps"] != 20:

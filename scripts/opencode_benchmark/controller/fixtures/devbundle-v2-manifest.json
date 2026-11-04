@@ -1,0 +1,67 @@
+{
+  "files": {
+    "fixture-manifest.json": "908a61eaf7ebbd99b7355add5cf5f795c65e942be47a2ddcb3cfc27afc757529",
+    "fixtures/click-help-eagerness-base.tar.gz": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+    "fixtures/click-help-eagerness-gold.tar.gz": "1e3ac9c49e7d20744285b17e7b373fbc2a37256ef4a069c7cffdcd43961c3398",
+    "fixtures/click-help-option-api-base.tar.gz": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+    "fixtures/click-help-option-api-gold.tar.gz": "22bb04d58d7e699aead89bacf4b2c60babdbb33b3ed504a3d1112590579d7756",
+    "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+    "memory-origin-literal-v2/metrics.json": "95a19e8e9a2a379e99b6f25462ed5661a1798a3ab00f9f7c34c3bdaa3c304877",
+    "memory-origin-literal-v2/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be",
+    "memory-origin/generation-metrics.json": "51836fd66d0fe4474b29bcd66b2da76d57168013c2b88076a76dff67a9daee6f",
+    "memory-origin/seed-spec.json": "4477b7a5b524ad9163ef8dfb7f00bc0bf94b994d7d11c58768a5bf0814b2c5a6",
+    "memory-source.json": "87c0042f0595387872dd139c3cfd356a0997c3241761321d572f0efd39f44474",
+    "oracles/conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+    "oracles/test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+    "oracles/test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d",
+    "prepare_tasks.py": "dcf26d3320f454f696b67afe0a70ba7f1156d7de44efa1fdada32a650784626b",
+    "protocol-draft.json": "8b04befb03d66038f72766e70c5f60b360072e19365197407d2d09f3a504a28d",
+    "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+    "seed_source_notes.py": "197215f529c5007b81d1ced1d28999b915ddbea9184cc132e8ae1a56650d83be",
+    "task-evaluation.json": "89b29c509cd62d8db585721f931a74a94061d4705bc249cca5a5942cd787951d",
+    "task-prompts.json": "71c3c093a217c6c16c35b5e7e04ca8fb253253931aa22aef53e2a8db534e3ab1"
+  },
+  "gold_source_inspected": false,
+  "heldout_access": false,
+  "literal_records": 329,
+  "model_calls": 0,
+  "new_memory_policy": {
+    "extractor_format": "python.definition-prefix/1",
+    "generator": "seed_source_literals_v2.py",
+    "helpers": [
+      "literal_source.py"
+    ],
+    "payload_kind": "source_excerpt_equals",
+    "schema_version": 2,
+    "seed": "memory-origin-literal-v2/seed-spec.json"
+  },
+  "original_assets_copied_unchanged": {
+    "fixture-manifest.json": "908a61eaf7ebbd99b7355add5cf5f795c65e942be47a2ddcb3cfc27afc757529",
+    "fixtures/click-help-eagerness-base.tar.gz": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+    "fixtures/click-help-eagerness-gold.tar.gz": "1e3ac9c49e7d20744285b17e7b373fbc2a37256ef4a069c7cffdcd43961c3398",
+    "fixtures/click-help-option-api-base.tar.gz": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+    "fixtures/click-help-option-api-gold.tar.gz": "22bb04d58d7e699aead89bacf4b2c60babdbb33b3ed504a3d1112590579d7756",
+    "memory-origin/generation-metrics.json": "51836fd66d0fe4474b29bcd66b2da76d57168013c2b88076a76dff67a9daee6f",
+    "memory-origin/seed-spec.json": "4477b7a5b524ad9163ef8dfb7f00bc0bf94b994d7d11c58768a5bf0814b2c5a6",
+    "oracles/conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+    "oracles/test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+    "oracles/test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d",
+    "prepare_tasks.py": "dcf26d3320f454f696b67afe0a70ba7f1156d7de44efa1fdada32a650784626b",
+    "protocol-draft.json": "8b04befb03d66038f72766e70c5f60b360072e19365197407d2d09f3a504a28d",
+    "seed_source_notes.py": "197215f529c5007b81d1ced1d28999b915ddbea9184cc132e8ae1a56650d83be",
+    "task-evaluation.json": "89b29c509cd62d8db585721f931a74a94061d4705bc249cca5a5942cd787951d",
+    "task-prompts.json": "71c3c093a217c6c16c35b5e7e04ca8fb253253931aa22aef53e2a8db534e3ab1"
+  },
+  "original_bundle": "examples/opencode_benchmark_development_v1",
+  "source_modules": 16,
+  "source_origin_archive": {
+    "archive": "fixtures/click-help-option-api-base.tar.gz",
+    "bytes": 334278,
+    "contains_upstream_git_history": false,
+    "role": "base",
+    "sha256": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+    "task": "click-help-option-api",
+    "upstream_commit": "9aeb586cbc622c229bbf80ad948e590f596a8d3e"
+  },
+  "source_origin_archive_sha256_verified": true
+}

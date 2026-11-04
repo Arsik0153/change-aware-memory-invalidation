@@ -18,44 +18,62 @@ def cgroup():
     }
 
 
+def preparation_commands(backend, source_roots, seed_schema_version=1, environ=None):
+    if type(seed_schema_version) is not int or seed_schema_version not in (1, 2):
+        raise ValueError("unsupported seed schema version")
+    adapter_pythonpath = "/opt/memory-adapter:/opt/cami-src:/opt/cami-deps"
+    generator_pythonpath = adapter_pythonpath
+    generator = "/opt/seed_source_notes.py"
+    if seed_schema_version == 2:
+        generator_pythonpath = "/opt/literal-generator:" + adapter_pythonpath
+        generator = "/opt/literal-generator/seed_source_literals_v2.py"
+    env = dict(os.environ if environ is None else environ)
+    env.update(PYTHONPATH=adapter_pythonpath, PYTHONDONTWRITEBYTECODE="1", PYTHONSAFEPATH="1")
+    generator_env = dict(env, PYTHONPATH=generator_pythonpath)
+    generate = ["python", generator, "--repo", "/workspace", "--out", "/memory/seed"]
+    generate += [arg for root in source_roots for arg in ["--source-root", root]]
+    prepare = [
+        "python",
+        "/opt/memory-adapter/memory_adapter.py",
+        "prepare",
+        "--backend",
+        backend,
+        "--repo",
+        "/workspace",
+        "--seed-spec",
+        "/memory/seed/seed-spec.json",
+        "--out",
+        "/memory/prepared",
+    ]
+    if backend == "cami":
+        prepare += ["--state-home", "/memory/cami-state"]
+    return [generate, prepare], [generator_env, env]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--backend", choices=["static", "cami"], required=True)
     parser.add_argument("--source-root", action="append", required=True)
     parser.add_argument("--seed-sha256", required=True)
+    parser.add_argument("--seed-schema-version", type=int, choices=[1, 2], default=1)
     args = parser.parse_args()
     start = time.monotonic()
     report = {"status": "started", "cgroup_before": cgroup(), "commands": [], "model_calls": 0}
     try:
-        env = dict(
-            os.environ, PYTHONPATH="/opt/cami-src:/opt/cami-deps", PYTHONDONTWRITEBYTECODE="1"
+        commands, environments = preparation_commands(
+            args.backend, args.source_root, args.seed_schema_version
         )
-        commands = [
-            ["python", "/opt/seed_source_notes.py", "--repo", "/workspace", "--out", "/memory/seed"]
-            + [arg for root in args.source_root for arg in ["--source-root", root]]
-        ]
-        prepare = [
-            "python",
-            "/opt/memory-adapter/memory_adapter.py",
-            "prepare",
-            "--backend",
-            args.backend,
-            "--repo",
-            "/workspace",
-            "--seed-spec",
-            "/memory/seed/seed-spec.json",
-            "--out",
-            "/memory/prepared",
-        ]
-        if args.backend == "cami":
-            prepare += ["--state-home", "/memory/cami-state"]
-        commands.append(prepare)
-        for number, argv in enumerate(commands):
+        report["seed_schema_version"] = args.seed_schema_version
+        for number, (argv, env) in enumerate(zip(commands, environments, strict=True)):
             tick = time.monotonic()
             result = subprocess.run(argv, cwd="/", env=env, capture_output=True, timeout=300)
             report["commands"].append(
                 {
                     "argv": argv,
+                    "trusted_python_environment": {
+                        key: env[key]
+                        for key in ["PYTHONPATH", "PYTHONSAFEPATH", "PYTHONDONTWRITEBYTECODE"]
+                    },
                     "returncode": result.returncode,
                     "stdout": result.stdout.decode(errors="replace"),
                     "stderr": result.stderr.decode(errors="replace"),

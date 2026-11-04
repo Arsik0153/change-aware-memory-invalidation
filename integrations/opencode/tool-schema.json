@@ -1,6 +1,6 @@
 {
   "name": "memory_lookup",
-  "description": "Retrieve source-linked origin memory by name, path or text tokens. Results state their freshness. Withheld summaries are not usable facts. After editing code, query again before relying on current memory. Native code search/read tools remain necessary.",
+  "description": "Retrieve origin memory. Statuses distinguish unchecked origin, manual assertions and literal records. A supported source excerpt certifies only the displayed prefix and truncation flag under the current verified readset, not behavior. Withheld summaries are unusable. Query again after edits. Use native tools for missing code or context.",
   "inputSchema": {
     "type": "object",
     "properties": {

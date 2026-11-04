@@ -22,6 +22,9 @@ from study_common import (
     write,
 )
 from study_workspace import evaluation_workspace
+from study_schema import memory_response_format
+from memory_format_evidence import inspect_format
+from memory_seed_schema import literal_catalog, policy_for
 
 
 def container(
@@ -132,14 +135,28 @@ def origin_memory(study, workspace, memory, out, backend):
     chown(workspace)
     chown(memory)
     seed = study["normalized"]["seed"]
+    source_policy = policy_for(study["normalized"])
     mounts = [
         (workspace, "/workspace", False),
         (memory, "/memory", False),
         (Path(study["cami_source"]), "/opt/cami-src", True),
         (Path(study["adapter"]), "/opt/memory-adapter", True),
-        (bundle / "seed_source_notes.py", "/opt/seed_source_notes.py", True),
         (Path(__file__).parent / "preparation_worker.py", "/opt/preparation_worker.py", True),
     ]
+    if source_policy["schema_version"] == 1:
+        mounts.append((bundle / source_policy["generator"], "/opt/seed_source_notes.py", True))
+    else:
+        mounts.append(
+            (
+                bundle / source_policy["generator"],
+                "/opt/literal-generator/seed_source_literals_v2.py",
+                True,
+            )
+        )
+        mounts += [
+            (bundle / path, "/opt/literal-generator/" + Path(path).name, True)
+            for path in source_policy["helpers"]
+        ]
     # Backend supplied by caller; every memory arm pays its own identical source generation.
     if backend not in {"static", "cami"}:
         raise ValueError("unexpected memory namespace")
@@ -150,6 +167,8 @@ def origin_memory(study, workspace, memory, out, backend):
         backend,
         "--seed-sha256",
         digest(bundle / seed),
+        "--seed-schema-version",
+        str(source_policy["schema_version"]),
     ]
     argv += [arg for root in study["normalized"]["source_roots"] for arg in ["--source-root", root]]
     report = container(study, mounts, argv, out, timeout=660)
@@ -197,15 +216,24 @@ def verify_memory(study, memory, backend, expected=None):
         originals
     ):
         raise ValueError("catalog coverage differs from frozen origin seed")
-    for record in catalog["records"]:
-        original, payload = originals[record["id"]], record["payload"]
-        if original["kind"] != "note" or any(
-            payload[key] != original[key] for key in ["subject", "note_key", "text"]
-        ):
-            raise ValueError("catalog altered seed note payload")
-        source = record["source"]
-        if source != payload["sources"][0] or len(payload["sources"]) != 1:
-            raise ValueError("catalog source inconsistency")
+    source_policy = policy_for(study["normalized"])
+    if source_policy["schema_version"] == 2:
+        if catalog != literal_catalog(spec):
+            raise ValueError(
+                "schema2 catalog differs from frozen expected tuple/source/span/subject/policy"
+            )
+    else:
+        if catalog.get("schema_version", 1) != 1:
+            raise ValueError("schema1 seed cannot be reinterpreted as catalog2")
+        for record in catalog["records"]:
+            original, payload = originals[record["id"]], record["payload"]
+            if original["kind"] != "note" or any(
+                payload[key] != original[key] for key in ["subject", "note_key", "text"]
+            ):
+                raise ValueError("catalog altered seed note payload")
+            source = record["source"]
+            if source != payload["sources"][0] or len(payload["sources"]) != 1:
+                raise ValueError("catalog source inconsistency")
     if backend == "cami" and set(binding["mapping"]) != set(originals):
         raise ValueError("CAMI mapping does not cover exact catalog")
     hashes = {
@@ -215,6 +243,27 @@ def verify_memory(study, memory, backend, expected=None):
     if expected is not None and expected != hashes:
         raise ValueError("immutable memory payload/binding changed during trial")
     return hashes
+
+
+def validate_memory_command(config, arm, response_format):
+    server = config.get("mcp", {}).get("servers", {}).get("research_memory")
+    if arm == "plain":
+        if server is not None:
+            raise ValueError("plain session unexpectedly configured memory")
+        return
+    expected = [
+        "python",
+        "/opt/memory-adapter/memory_adapter.py",
+        "serve",
+        "--binding",
+        "/memory/prepared/binding.json",
+        "--trace",
+        "/state/evidence/memory-backend-trace.jsonl",
+    ]
+    if response_format == "compact":
+        expected += ["--response-format", "compact"]
+    if not isinstance(server, dict) or server.get("command") != expected:
+        raise ValueError("effective memory command differs from frozen response format")
 
 
 def session(study, trial, workspace, memory, prompt, out):
@@ -247,6 +296,8 @@ def session(study, trial, workspace, memory, prompt, out):
         "--adapter-dir",
         study["adapter"],
     ]
+    response_format = memory_response_format(study)
+    argv += ["--memory-response-format", response_format]
     if trial["arm"] != "plain":
         argv += ["--binding-relative", "prepared/binding.json"]
     result = command(argv, timeout=1200)
@@ -257,14 +308,32 @@ def session(study, trial, workspace, memory, prompt, out):
         manifest["status"] != "passed"
         or manifest["image_id"] != study["image"]
         or not manifest["model_requested"]
+        or manifest.get("memory_response_format") != response_format
     ):
         raise ValueError("session identity or status mismatch")
     config = read(out / "effective-input-config.json")
     if config["model"] != study["model"] or config["agents"]["research"]["steps"] != 20:
         raise ValueError("effective model/config mismatch")
+    validate_memory_command(config, trial["arm"], response_format)
     for name, expected_sha in manifest["artifact_hashes"].items():
         if digest(out / name) != expected_sha:
             raise ValueError("session evidence hash mismatch")
+    messages_rel = "evidence/messages.json"
+    trace_rel = "evidence/memory-backend-trace.jsonl"
+    required = [messages_rel] + ([trace_rel] if trial["arm"] != "plain" else [])
+    if any(name not in manifest["artifact_hashes"] for name in required):
+        raise ValueError("memory response evidence missing from session manifest")
+    events = (
+        [json.loads(line) for line in (out / trace_rel).read_text().splitlines()]
+        if trial["arm"] != "plain"
+        else []
+    )
+    observed = inspect_format(read(out / messages_rel), events, trial["arm"], response_format)
+    write(out.parent / "memory-response-format.json", observed)
+    if observed["status"] == "unsupported_or_mismatch":
+        raise ValueError(
+            "actual memory response format unsupported or mismatched; inspect memory-response-format.json"
+        )
     return manifest
 
 

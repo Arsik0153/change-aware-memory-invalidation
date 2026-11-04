@@ -72,3 +72,26 @@ The integration has no model execution flag. It tests real container seed/prepar
 
 
 Development protocol v2 records non-source symlinks as metadata without following them. Only regular `src/**` enters fixed grading. The trusted grader imports pytest first, then sets the candidate import path for test subprocesses. Original development base regressions must pass before model admission. Heldout studies require frozen expected base-failure node IDs before execution. The observed total-token ceiling is explicitly pinned to 1,000,000 for all arms; the first 250,000-token development attempt remains preserved separately.
+
+
+## Explicit literal catalog and response format
+
+A new bundle may include `memory-source.json` with schema2, a versioned literal
+seed generator, its source helper, the frozen seed path and the literal format.
+Legacy bundles keep their schema1 note route. The controller hashes all selected
+inputs, mounts the generator and helper under a trusted directory, regenerates the
+seed independently in each memory arm and checks exact seed bytes before prepare.
+It compares every schema2 subject, expected text/truncation tuple, source and span
+against the resulting catalog. The plain arm still performs no memory preparation.
+
+`--memory-response-format full|compact` applies when creating a study. Once a study
+is loaded, a command-line override is rejected. Both memory arms receive the same
+frozen format; the controller checks the effective MCP command, actual completed
+model-visible response markers and their backend argument/receipt observations.
+Missing observations are distinct from a verified match. Original response bytes
+cannot be certified solely by receipt metadata after publication redaction.
+
+Before task-model execution, run a separate no-model container check of both
+backends and both formats, including full origin-catalog equality. Preserve failed
+preflights. Freeze source, bundle and runtime hashes again after development edits;
+do not rewrite an earlier study or pool its manual-note results with literal records.

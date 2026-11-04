@@ -1,8 +1,8 @@
 # Frozen memory lookup for OpenCode
 
-Two Python runtime files implement one small stdio MCP tool, `memory_lookup`, with interchangeable `static` and `cami` backends. Keep `memory_adapter.py` and `memory_backend.py` together. They do not import or execute target source code, launch models, fetch repositories, or replace OpenCode's native coding tools. Static preparation and lookup do not import CAMI at all. CAMI preparation and lookup call the existing `ProductMemory` live-worktree service.
+The Python files in this directory implement one small stdio MCP tool, `memory_lookup`, with interchangeable `static` and `cami` backends. Keep the runtime modules together. They do not import or execute target source code, launch models, fetch repositories, or replace OpenCode's native coding tools. Static preparation and lookup do not import CAMI at all. CAMI preparation and lookup call the existing `ProductMemory` live-worktree service.
 
-The primary notes-only seed catalog is the same semantic content in both arms. Static returns origin assertions marked `unchecked_current`. CAMI returns source-unchanged notes marked `manual_assertion`, and withholds changed/uncertain notes without returning their old prose. Optional supported structural facts are labeled separately. No fresh `AgentContext.code`, inferred behavior or current source enrichment is returned exclusively in the CAMI arm.
+The original study uses a schema1 notes-only catalog with the same semantic content in both arms. A new, explicit schema2 catalog supports literal Python source prefixes; it does not convert existing notes. Static returns origin assertions marked `unchecked_current`. CAMI returns source-unchanged notes marked `manual_assertion`, and withholds changed/uncertain notes without returning their old prose. Optional supported structural facts are labeled separately. No fresh `AgentContext.code`, inferred behavior or current source enrichment is returned exclusively in the CAMI arm.
 
 ## Prepare notes independently at the same origin version
 
@@ -55,6 +55,16 @@ After preparation, advance every arm to the same independently fixed canonical t
 
 An existing frozen `catalog.json` may also be passed with `--catalog` instead of `--seed-spec`. Both backends require matching origin bytes at preparation. Optional typed CAMI seeds use `kind: "symbol_exists"` or `"signature_equals"` and omit note fields; CAMI derives the expectation from the authenticated origin context. Static cannot independently derive those typed seed-spec expectations, but can consume an explicitly frozen typed catalog. The primary notes-only study avoids attributing this typed derivation to the static arm.
 
+## Prepare literal Python source records
+
+`seed_source_literals_v2.py` generates an explicit schema2 seed from direct public Python definitions. Keep it with `literal_source.py`. Both backends independently authenticate the expected text, truncation flag, subject, source digest and physical origin span against the same origin bytes before creating backend state. The static path uses only the standard library. CAMI derives the registered expectation again from its authenticated context; caller-supplied expectations serve only as comparisons.
+
+The `python.definition-prefix/1` value contains at most 2400 Unicode characters, beginning at the physical leading `@` line of a decorated definition and ending at the AST definition boundary before the prefix limit. Line endings, indentation and comments remain literal. The truncation flag is part of the expectation. Unsupported or ambiguous subjects fail preparation; they are not silently omitted after the catalog is frozen.
+
+CAMI may retain a literal record after an unrelated edit or line shift when this exact prefix and truncation flag remain unchanged. It withholds records whose current literal support is contradicted or cannot be established. This certifies displayed source under the verified readset, not program behavior or the unseen suffix. Static returns the same origin payload labeled `origin_literal_source_assertion`; CAMI labels supported records `validated_literal_source`. Manual-note review rules remain unchanged.
+
+Schema2 is a new experimental cohort. Freeze its generator, extractor, catalog, common tool description and runtime separately; never pool its outcomes with the original notes-only experiment. Both arms must produce byte-identical portable catalogs before task sessions.
+
 ## Serve one backend
 
 ```sh
@@ -68,13 +78,21 @@ The trace must be outside the target repository. The server is serial and long-l
 {"name":"memory_lookup","arguments":{"query":"where is the client open method", "limit":5}}
 ```
 
-`query` is required, nonempty and at most 1000 characters. `limit` defaults to 5 and must be an integer 1–20 (booleans are rejected). Matching is shared and deterministic: exact case-folded ID/name/qualname/path-qualified selector first, then token overlap (identifier/path tokens weight 4; note-text/key tokens weight 1), then stable ID. Underscore/dot/path separators split tokens. No embeddings, model ranking, task IDs or future answers are used.
+`query` is required, nonempty and at most 1000 characters. `limit` defaults to 5 and must be an integer 1–20 (booleans are rejected). Matching is shared and deterministic: exact case-folded ID/name/qualname/path-qualified selector first, then token overlap (identifier/path tokens weight 4; note-text/key or literal-prefix tokens weight 1), then stable ID. Underscore/dot/path separators split tokens. No embeddings, model ranking, task IDs or future answers are used.
 
 Selection is a fixed prefix of the ranked origin catalog, capped by the requested limit and **16 KiB of canonical origin record bytes**. This selection occurs before availability filtering. A withheld CAMI hit consumes the same budget slot/bytes as its static counterpart; lower-ranked records do not backfill. Returned envelope metadata is additional, and `selection_budget` explicitly describes this as an origin-record budget, not an exact provider-token or final-response-byte cap. Input/output context/token limits must still be frozen and enforced by the outer harness.
 
 The tool's text content is one JSON object with catalog digest, query, selected/matched counts, truncation/budget, `entries`, `withheld`, backend and freshness. Available entries contain the original frozen payload/source, not fresh code. Withheld entries contain only ID, subject, kind, machine reason and required action. CAMI includes current snapshot/memory-generation IDs. Note labels remain `manual_assertion`; a source-unchanged note is not behaviorally verified. Optional structural predicates cover exact syntax/existence only.
 
 On a CAMI failure, the MCP result has `isError:true`, empty entries, and explicit unavailable freshness. No previous successful result, old prose, historical head or empty-success substitute is returned. Model-visible exception text is generic; local trace diagnostics are bounded. Treat the transport breaking as an error too. Frozen catalog modification or unexpected CAMI catalog/revision changes fail rather than silently updating content.
+
+## Optional compact response
+
+`serve --response-format compact` retains payload text, typed expectations, subjects, status labels, freshness, selection metadata and withheld reasons. It removes redundant envelope provenance and note-source lists, then adds a receipt. Literal payload origin-source and span fields remain present. The default is `full`.
+
+Before returning a compact response, the trace stores the full original MCP result and hashes binding the full result, projection and final model result. This mode therefore adds trace I/O and storage, including full memory content. Keep traces in the same protected evidence location as model messages, and charge those costs. Publication redaction can change bytes: a metadata receipt match after redaction must not be called verification of the original bytes.
+
+The study controller freezes one format for both memory arms and checks actual completed model-visible responses against backend trace receipts. No lookup is recorded as `not_observed`; plain OpenCode is `not_applicable`. Format mismatches and unverifiable completed responses fail operational admission. Response-byte savings alone do not establish token, latency or billing savings.
 
 ## OpenCode 2.2.5 local configuration
 
@@ -86,7 +104,7 @@ The installed runtime has accepted JSONL initialization fallback from requested 
 
 Preparation uses `ProductMemory.context_many` to capture the union of all requested paths, then `remember_batch` to register the catalog atomically. Each record retains its authenticated origin and receipt. One final memory generation replaces the sequential intermediate generations; this changes history granularity without weakening current source checks. Preparation spans include adapter entry, CAMI import/backend work, source capture/authentication, registration, final refresh/equality checks, durable storage and the final storage observation. They exclude interpreter/CLI startup and the final metrics-file write; measure whole process wall/CPU externally. `catalog_capture` and `registration_batch` are nested components of the total, not additional costs to sum again. No per-record time is fabricated from the batch total. The generator's extraction work must also be charged per arm. Failed preparation retains metrics.
 
-Each lookup trace contains chosen limit, a query/arguments hash (not plaintext query or note text), backend/catalog identity, backend/import/retrieval/serialization/storage-observation wall and self+completed-child CPU, state bytes, serialized response bytes, selected/returned/withheld counts and error diagnostics. JSON-RPC input/output and trace append are outside that inner span; measure total server/session overhead externally. Backend import is lazy and charged to the first CAMI lookup, so cold and warm calls must be identified separately.
+In the default full-response mode, each lookup trace contains chosen limit, a query/arguments hash, backend/catalog identity, backend/import/retrieval/serialization/storage-observation wall and self+completed-child CPU, state bytes, serialized response bytes, selected/returned/withheld counts and error diagnostics. JSON-RPC input/output and trace append are outside that inner span; measure total server/session overhead externally. Backend import is lazy and charged to the first CAMI lookup, so cold and warm calls must be identified separately.
 
 Trace `states_checked_type` and `states_carried_type` describe persisted state representations, **not actual validator-call counts in that lookup**. Reusing an unchanged memory generation can retain a `checked` representation without running a new check. Use actual cProfile call counts/explicit backend instrumentation for that metric; do not infer optimization from these state counts. Source hashing, repeated captures, signature projection, index/source cache I/O, full private SQLite validation/serialization and durable publication are real costs even with a reused index. A long-lived server removes repeated Python startup but does not skip these steps or promise persistent Node analysis.
 
@@ -97,10 +115,10 @@ Profile representative operations before optimizing. For example, use `python -m
 ## Verification and current status
 
 ```sh
-.venv/bin/python -m pytest -q tests/test_opencode_memory_adapter.py
+.venv/bin/python -m pytest -q tests/test_opencode_memory_adapter.py tests/test_opencode_literal_adapter.py
 .venv/bin/ruff check integrations/opencode tests/test_opencode_memory_adapter.py
 ```
 
-15 authored tests pass (including duplicate global note-key rejection before capture and distinct-key cross-subject registration). They cover independent static preparation with zero CAMI imports, exact semantic catalog equality, method notes, dirty/untracked edits, sticky note review, failed refresh without old-text fallback, origin mismatch, frozen-catalog tampering, two-worktree state isolation, optional existence/signature carry/mismatch/deletion, shared ranking/budget, 1024-entry cap before capture, JSON-only stdio lifecycle, protocol fallback, invalid arguments, and oversized-message recovery. Tests use newly authored temporary repositories, not benchmark tasks or future oracles.
+The authored tests cover independent static preparation with zero CAMI imports, exact semantic catalog equality, method notes, dirty/untracked edits, sticky note review, failed refresh without old-text fallback, origin mismatch, frozen-catalog tampering, two-worktree state isolation, optional existence/signature carry/mismatch/deletion, shared ranking/budget, 1024-entry cap before capture, JSON-only stdio lifecycle, protocol fallback, invalid arguments, and oversized-message recovery. Tests use newly authored temporary repositories, not benchmark tasks or future oracles.
 
 This integration has passed authored transport/backend tests. Real OpenCode smoke results and task benchmark results are recorded separately. A full-catalog preflight exposed a duplicate note-key error in the first source-note generator; the failed run is preserved and catalog validation now rejects duplicate global note keys before CAMI imports or source capture. No end-to-end efficiency advantage is claimed.
