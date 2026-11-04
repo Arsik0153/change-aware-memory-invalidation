@@ -1,0 +1,197 @@
+{
+  "all": {
+    "cases": 36,
+    "unique_source_hashes": 21,
+    "verdict_counts": {
+      "mechanical": {
+        "contradicted": 9,
+        "supported": 24,
+        "uncertain": 3
+      },
+      "reviewer_a": {
+        "contradicted": 9,
+        "supported": 24,
+        "uncertain": 3
+      },
+      "reviewer_b": {
+        "contradicted": 9,
+        "supported": 24,
+        "uncertain": 3
+      }
+    },
+    "ai_pair_disagreements": 0,
+    "mechanical_disagreements": {
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "control_failures": {
+      "mechanical": 0,
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "unresolved": 3
+  },
+  "authentic": {
+    "cases": 24,
+    "unique_source_hashes": 18,
+    "verdict_counts": {
+      "mechanical": {
+        "supported": 24
+      },
+      "reviewer_a": {
+        "supported": 24
+      },
+      "reviewer_b": {
+        "supported": 24
+      }
+    },
+    "ai_pair_disagreements": 0,
+    "mechanical_disagreements": {
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "control_failures": {
+      "mechanical": 0,
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "unresolved": 0
+  },
+  "controls": {
+    "cases": 12,
+    "unique_source_hashes": 11,
+    "verdict_counts": {
+      "mechanical": {
+        "contradicted": 9,
+        "uncertain": 3
+      },
+      "reviewer_a": {
+        "contradicted": 9,
+        "uncertain": 3
+      },
+      "reviewer_b": {
+        "contradicted": 9,
+        "uncertain": 3
+      }
+    },
+    "ai_pair_disagreements": 0,
+    "mechanical_disagreements": {
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "control_failures": {
+      "mechanical": 0,
+      "reviewer_a": 0,
+      "reviewer_b": 0
+    },
+    "unresolved": 3
+  },
+  "groups": {
+    "click-1c2fc1b0152f": {
+      "cases": 12,
+      "unique_source_hashes": 6,
+      "verdict_counts": {
+        "mechanical": {
+          "contradicted": 3,
+          "supported": 8,
+          "uncertain": 1
+        },
+        "reviewer_a": {
+          "contradicted": 3,
+          "supported": 8,
+          "uncertain": 1
+        },
+        "reviewer_b": {
+          "contradicted": 3,
+          "supported": 8,
+          "uncertain": 1
+        }
+      },
+      "ai_pair_disagreements": 0,
+      "mechanical_disagreements": {
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "control_failures": {
+        "mechanical": 0,
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "unresolved": 1
+    },
+    "click-1e53748f80eb": {
+      "cases": 12,
+      "unique_source_hashes": 8,
+      "verdict_counts": {
+        "mechanical": {
+          "supported": 8,
+          "contradicted": 3,
+          "uncertain": 1
+        },
+        "reviewer_a": {
+          "supported": 8,
+          "contradicted": 3,
+          "uncertain": 1
+        },
+        "reviewer_b": {
+          "supported": 8,
+          "contradicted": 3,
+          "uncertain": 1
+        }
+      },
+      "ai_pair_disagreements": 0,
+      "mechanical_disagreements": {
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "control_failures": {
+        "mechanical": 0,
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "unresolved": 1
+    },
+    "click-8c7491d9b0d7": {
+      "cases": 12,
+      "unique_source_hashes": 8,
+      "verdict_counts": {
+        "mechanical": {
+          "contradicted": 3,
+          "uncertain": 1,
+          "supported": 8
+        },
+        "reviewer_a": {
+          "contradicted": 3,
+          "uncertain": 1,
+          "supported": 8
+        },
+        "reviewer_b": {
+          "contradicted": 3,
+          "uncertain": 1,
+          "supported": 8
+        }
+      },
+      "ai_pair_disagreements": 0,
+      "mechanical_disagreements": {
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "control_failures": {
+        "mechanical": 0,
+        "reviewer_a": 0,
+        "reviewer_b": 0
+      },
+      "unresolved": 1
+    }
+  },
+  "expansion_blocked_by_control_or_disagreement": false,
+  "human_review_count": 0,
+  "labels_created": 0,
+  "receipts_created": 0,
+  "limits": [
+    "Agreement is not independent truth or human annotation.",
+    "All methods may share CPython parser errors; AI models may share training and errors.",
+    "Cases share modules and parent groups; row counts are not independent observations.",
+    "Parent-only development syntax pilot; no behavioral or held-out conclusion."
+  ]
+}

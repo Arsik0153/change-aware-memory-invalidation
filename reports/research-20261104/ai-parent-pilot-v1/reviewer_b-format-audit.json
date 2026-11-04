@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ai_review_format_audit",
+  "status": "passed",
+  "checks": {
+    "ai_provenance_explicit": true,
+    "packet_identity_matches": true,
+    "source_hashes_and_containment_valid": true,
+    "exact_case_coverage": true,
+    "reasoning_present": true,
+    "evidence_shape_and_line_ranges_valid": true
+  },
+  "counts": {
+    "packet_cases": 36,
+    "review_items": 36,
+    "source_files": 21,
+    "declared_verdicts": {
+      "supported": 24,
+      "contradicted": 9,
+      "uncertain": 3
+    },
+    "available_evidence_entries": 75,
+    "unavailable_evidence_entries": 0
+  },
+  "input_hashes": {
+    "packet_sha256": "3b2069e787061695a9d1e3c9028678803155a1804ba86f4d83ddb60d7dfc27c3",
+    "cases_sha256": "5f426b44e941e2d0655a552ed5b2d84236fd18f4c37da3ec1b4c0cd166053181",
+    "review_sha256": "f93a6833b451d7ba02614f6ebfe606531531bc6f9425dce608d12d2e9d976955",
+    "sources": {
+      "source/0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851.py": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+      "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "source/32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1.py": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+      "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py": "45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1",
+      "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "source/70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9.py": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+      "source/7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107.py": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+      "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "source/c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81.py": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+      "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py": "cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be",
+      "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "source/ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d.py": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+      "source/f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803.py": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+      "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py": "fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f"
+    }
+  },
+  "limitations": [
+    "Only declared invocation identity is checked; actual model identity is unverified.",
+    "Model weights and training independence are unverified.",
+    "Verdict truth and evidentiary relevance were not checked.",
+    "This audit is not a label, parent receipt, admission decision, human review, or protocol compliance certificate."
+  ]
+}

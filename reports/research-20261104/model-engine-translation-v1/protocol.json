@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "experiment": "finite-model-to-engine-translation-v1",
+  "input_sha256": {
+    "reports/research-20261104/ternary-audit-invariants-v1/manifest.json": "34fd0e730cea72f127f3d1c0a16f14cb3d06a7a5e75bbe51eb91fb0372f33d0e",
+    "reports/research-20261104/ternary-audit-invariants-v1/summary.json": "2b31cae4fec192fa321c5d8be02a014a1b76d176833fba11b4172ac7de164994",
+    "reports/research-20261104/ternary-audit-invariants-v1/exact_binary-K1.json": "1dad47b5a4ee338330d097e69f45b473fd1d3232057f960fb29da82101ef97be",
+    "reports/research-20261104/ternary-audit-invariants-v1/exact_binary-K2.json": "34f8c99067687cbc0574ed8d5323a9c1bcb60df462aa69b9e7b38f5c11d8d3b3",
+    "reports/research-20261104/ternary-audit-invariants-v1/exact_binary-K4.json": "e6c37b7ac9013661039e1e4693f810bb19aaaee947a55bb6683e7a541374e727",
+    "reports/research-20261104/ternary-audit-invariants-v1/exact_binary-K8.json": "4c1a5edf4b9684f63cf297770a0bd8bbbe04a93bfaa53e684c9232c2fcc940c3",
+    "reports/research-20261104/ternary-audit-invariants-v1/sound_positive_only-K1.json": "5fc8036524eee015a3e9a739a96ac2aca0acc0bc37b1ed16a0f5c50426c8346b",
+    "reports/research-20261104/ternary-audit-invariants-v1/sound_positive_only-K2.json": "27e4e96df1af8d3f567bb323a872656080631ab807206324ccfd7933b28c2b27",
+    "reports/research-20261104/ternary-audit-invariants-v1/sound_positive_only-K4.json": "c4109a7477742030159d6b3c867868f3b73ffc194eb280243364e1788326f3f9",
+    "reports/research-20261104/ternary-audit-invariants-v1/sound_positive_only-K8.json": "12aa28500abce39950aeba4c052467bd04bf4b81d3ec978d10c290cd55abe2fc"
+  },
+  "expected_source_transitions": 403,
+  "expected_canonical_memory_contexts": 76,
+  "expected_translation_cases": 499,
+  "method": [
+    "For every transition of both sound-positive finite models, construct synthetic Claim/Provenance/MemoryState and an empty ChangeSet.",
+    "Realize the arbitrary baseline trigger using known_incomplete on synthetic provenance only; preserve ordinary previously_unavailable handling.",
+    "Map model age to last_checked_commit in a finite unique revision sequence and invoke the real PeriodicAudit adapter.",
+    "For each withheld predecessor use both contradicted/stale and insufficient/needs_validation metadata; available predecessors use supported/valid metadata.",
+    "Invoke actual cami.policies.advance_state with the modeled validation result or None. Verify selection, reasons, availability, derived age, revision, last verdict, last checked/supported and state/basis.",
+    "Every validation result is a modeled input, not an executed probe or independent truth label."
+  ],
+  "negative_controls": [
+    "Suppress periodic selection at the deadline.",
+    "After an inconclusive selected validation, preserve old availability."
+  ],
+  "limits": [
+    "Bounded correspondence check for K=1,2,4,8 and canonical states, not a proof of all production histories.",
+    "Synthetic revision identifiers; no Git or Docker execution in this check.",
+    "Production selector/state functions are exercised but runtime environment, crash consistency and validator correctness are outside scope.",
+    "No real provenance, parent/child labels, receipts, admission or main protocol changes."
+  ]
+}

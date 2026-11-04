@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "evaluation_eligible": false,
+  "analysis_head": "7b9f1de1c4a0bcd705809e52577ef204d6087991",
+  "analyzer_sha256": "f902d0331a972895ea39312c9856b78976083e0cd7381745304c751a7a0fbdea",
+  "packet_sha256": "3b2069e787061695a9d1e3c9028678803155a1804ba86f4d83ddb60d7dfc27c3",
+  "protocol_sha256": "3a9e5dd61bf9963b48f07e5a324bf7e169756c94fc97eb7fa701b5cb17705e17",
+  "reviewer_tasks": [
+    "/root/blinded_ai_reviewer_a",
+    "/root/blinded_ai_reviewer_b"
+  ],
+  "artifact_sha256": {
+    "comparisons.json": "8b92987d06997159facc6d0b7d00e3ce86b5243157e04adeac266d7c08c09b5e",
+    "mechanical-reference.json": "06bbd7d842b83b777b7bb34215909f280d86eb2a63caed8d4791b78cf39f2b14",
+    "reference-run-manifest.json": "2855d66ee088a4fd30ff1dff587edfea08953d881d0c8aa5e382116d6a76193d",
+    "reviewer_a/audit_sources.py": "a2dd7f341228812c630922e1bb05a5018002953ba74ff236b24e517c01aaaf42",
+    "reviewer_a/inspect_packet.py": "f0ec02f364d068395b2ac4e961eede96935b29ca28cbf74a54d0825934efd3a9",
+    "reviewer_a/methodology.json": "f7f6e78cb06e4455f1c1a9309d8ac330e8ded6d3f9a2ff729fe4cecef6f72d4c",
+    "reviewer_a/observations.json": "075019fce043e94d3ec90b020de328cf73c65704096c9aeea9a4c9b3a10547cc",
+    "reviewer_a/review.json": "088018bb5c96da9cd848da5f4056ee37e0890c82d3cb7ce28bf9abdbc2cc0a52",
+    "reviewer_a/source_audit.txt": "7c3dd82d6304de1fb591bb5dfbbdde9ec864541fc618b4e80ed39efbb86bc971",
+    "reviewer_a/validate_review.py": "c6eb9766bc0c5aefc366bb8a6dd59ea5d3ec90a0b58da29a553c5b8d1c68c30c",
+    "reviewer_a/validation.json": "1e05009711514986d8fcea96f64dc05be9df6c4148953ffd39f58c6ec1f8e3e0",
+    "reviewer_a/write_review.py": "1bc2710cef61467f8326ebd2ea3352991ebc9503860adc8c74a913c5cdd4ef86",
+    "reviewer_a-format-audit.json": "553b530fd722cefc8377a88758ed4a7a1629d8724abdd3fa57f123782bdb64a1",
+    "reviewer_b/independent_extraction.json": "8567b7e2260b941f6c62e5573692f930bf2d35b25ba0c7d0760c8510ec1417d0",
+    "reviewer_b/inspect_packet.py": "659b6d6f57b3e7eebec1c8588eece11cb1b33f4e8b1111b30dd544c4c6e7369c",
+    "reviewer_b/methodology.json": "3584e1304db1a7183b45ca2826f56036baf4c1174f9406e4749bac322e974a06",
+    "reviewer_b/review.json": "f93a6833b451d7ba02614f6ebfe606531531bc6f9425dce608d12d2e9d976955",
+    "reviewer_b/write_review.py": "41226f8f5c650ae78bbb238d7d295accf3435b09987b39a6febf89d28a5db222",
+    "reviewer_b-format-audit.json": "897c807c6b5a79279c7053f3cdf1ac2e4fc0b194cbf992b003314622a54fe5dc",
+    "summary.json": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33"
+  }
+}

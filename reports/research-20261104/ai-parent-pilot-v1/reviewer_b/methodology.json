@@ -1,0 +1,56 @@
+{
+  "reviewer_kind": "ai_reviewer",
+  "human": false,
+  "provider": "codex",
+  "model": "codex:gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_basis": "declared_invocation",
+  "agent_task": "/root/blinded_ai_reviewer_b",
+  "independence_disclosure": "Model weights and training independence are unverified.",
+  "tools": [
+    "functions.exec",
+    "exec_command (bash, cat, mkdir, python3)",
+    "apply_patch"
+  ],
+  "parser": {
+    "name": "CPython standard-library ast",
+    "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "ast_dump_include_attributes": false,
+    "source_decoding": "tokenize.open using declared Python source encoding"
+  },
+  "whole_module_inspection_method": "Parsed all bytes of every supplied module, then scanned the whole module AST for module-scope definitions, conditional statement blocks, assignment/deletion targets, import bindings and wildcard imports, loop/with targets, exception bindings, match bindings, and evaluated enclosing-scope declaration expressions. Function bodies and methods are not counted as top-level definitions. AST walking also inspected global declarations; none named a case subject. Inspected the resulting full binding inventories and source declaration excerpts, including appended duplicate definitions at file ends. Nested class/function scopes were distinguished from module scope.",
+  "signature_extraction_method": "inspect_packet.py derives signatures solely from function AST nodes, without reading expected_signature. It right-aligns positional defaults, distinguishes positional-only and positional-or-keyword parameters, includes *args, keyword-only parameters and **kwargs, dumps expression ASTs without locations, and records decorators in source order plus return annotations and async status. Extraction was persisted before predicate comparison. Each case was then judged against its own exact predicate.",
+  "fact_conventions": {
+    "definition_count": "All matching functions in module lexical scope, including conditional ones; nested methods/functions excluded.",
+    "unconditional": "Whether all observed matching definitions are unconditional; null when there is no matching definition.",
+    "target_rebinding": "Includes non-function competing module bindings and later duplicate function definitions.",
+    "type_parameters_present": "Observed subject type parameters; null when there is no subject definition."
+  },
+  "packet_verification": {
+    "packet_sha256": "3b2069e787061695a9d1e3c9028678803155a1804ba86f4d83ddb60d7dfc27c3",
+    "cases_sha256": "5f426b44e941e2d0655a552ed5b2d84236fd18f4c37da3ec1b4c0cd166053181",
+    "source_count": 21,
+    "source_hashes_verified": true,
+    "packet_hash_verified": true,
+    "encoding": "SHA256 over canonical UTF-8 JSON of cases_sha256 and unique sorted sources inventory, using sort_keys=True, separators=(comma, colon), ensure_ascii=False, allow_nan=False. cases_sha256 is the SHA256 of exact cases.json bytes."
+  },
+  "validation": "Standard-library recursive schema-keyword validator checked the supplied review schema, exact 36 unique case IDs, source hashes, and in-bounds evidence ranges. No external validator or repository code was read or invoked.",
+  "access_limitations": [
+    "Read only the authorized cases.json, rubric.md, review.schema.json, and source paths named by cases.json, plus self-authored files in this run directory.",
+    "No network, CAMI implementation, private mapping, original source checkout, mechanical answers, other reviewer answer, imported supplied module, or executed supplied code was used.",
+    "This is a syntax review; runtime effects and decorator execution are outside the rubric. No original-source authenticity is inferred.",
+    "The shell command python was unavailable; python3 (CPython 3.12.3) was used. All supplied sources parsed successfully; no decoding, missing-file, unsupported-syntax, or target-type-parameter issue was found.",
+    "Model weights and training independence are unverified."
+  ],
+  "helpers_preserved": [
+    "inspect_packet.py",
+    "write_review.py"
+  ],
+  "independent_extraction_artifact": "independent_extraction.json",
+  "case_count": 36,
+  "declared_verdict_counts": {
+    "contradicted": 9,
+    "supported": 24,
+    "uncertain": 3
+  }
+}

@@ -1,0 +1,1229 @@
+
+FILE source/0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851.py
+6-6 Import: import contextlib
+7-7 Import: import math
+8-8 Import: import os
+9-9 Import: import sys
+10-10 Import: import time
+11-11 Import: import typing as t
+12-12 ImportFrom: from gettext import gettext as _
+14-14 ImportFrom: from ._compat import _default_text_stdout
+15-15 ImportFrom: from ._compat import CYGWIN
+16-16 ImportFrom: from ._compat import get_best_encoding
+17-17 ImportFrom: from ._compat import isatty
+18-18 ImportFrom: from ._compat import open_stream
+19-19 ImportFrom: from ._compat import strip_ansi
+20-20 ImportFrom: from ._compat import term_len
+21-21 ImportFrom: from ._compat import WIN
+22-22 ImportFrom: from .exceptions import ClickException
+23-23 ImportFrom: from .utils import echo
+25-25 Assign: V = t.TypeVar("V")
+27-32 If: if os.name == "nt":
+  28-28 Assign: BEFORE_BAR = "\r"
+  29-29 Assign: AFTER_BAR = "\n"
+  31-31 Assign: BEFORE_BAR = "\r\033[?25l"
+  32-32 Assign: AFTER_BAR = "\033[?25h\n"
+35-341 ClassDef ProgressBar
+344-370 FunctionDef pager
+373-420 FunctionDef _pipepager
+423-441 FunctionDef _tempfilepager
+444-451 FunctionDef _nullpager
+454-548 ClassDef Editor
+551-608 FunctionDef open_url
+611-621 FunctionDef _translate_ch_to_exc
+624-717 If: if WIN:
+  625-625 Import: import msvcrt
+  628-629 FunctionDef raw_terminal
+  631-676 FunctionDef getchar
+  679-679 Import: import tty
+  680-680 Import: import termios
+  683-707 FunctionDef raw_terminal
+  709-717 FunctionDef getchar
+TARGET HEADERS AND SURROUNDING LINES:
+371: 
+372: 
+373: def _pipepager(generator: t.Iterable[str], cmd: str, color: t.Optional[bool]) -> None:
+374:     """Page through text by feeding it to another program.  Invoking a
+MODULE TAIL:
+706:         except termios.error:
+707:             pass
+708: 
+709:     def getchar(echo: bool) -> str:
+710:         with raw_terminal() as fd:
+711:             ch = os.read(fd, 32).decode(get_best_encoding(sys.stdin), "replace")
+712: 
+713:             if echo and isatty(sys.stdout):
+714:                 sys.stdout.write(ch)
+715: 
+716:             _translate_ch_to_exc(ch)
+717:             return ch
+
+FILE source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py
+1-1 Import: import os
+2-2 Import: import sys
+3-3 Import: import shutil
+4-4 Import: import tempfile
+5-5 Import: import contextlib
+6-6 Import: import shlex
+8-8 ImportFrom: from ._compat import iteritems, PY2, string_types
+15-15 Assign: clickpkg = sys.modules[__name__.rsplit('.', 1)[0]]
+18-22 If: if PY2:
+  19-19 ImportFrom: from cStringIO import StringIO
+  21-21 Import: import io
+  22-22 ImportFrom: from ._compat import _find_binary_reader
+25-51 ClassDef EchoingStdin
+54-70 FunctionDef make_input_stream
+73-98 ClassDef Result
+101-333 ClassDef CliRunner
+TARGET HEADERS AND SURROUNDING LINES:
+52: 
+53: 
+54: def make_input_stream(input, charset):
+55:     # Is already an input stream.
+56:     if hasattr(input, 'read'):
+MODULE TAIL:
+322:         """
+323:         cwd = os.getcwd()
+324:         t = tempfile.mkdtemp()
+325:         os.chdir(t)
+326:         try:
+327:             yield t
+328:         finally:
+329:             os.chdir(cwd)
+330:             try:
+331:                 shutil.rmtree(t)
+332:             except (OSError, IOError):
+333:                 pass
+
+FILE source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py
+1-1 Import: import codecs
+2-2 Import: import io
+3-3 Import: import os
+4-4 Import: import re
+5-5 Import: import sys
+6-6 Import: import typing as t
+7-7 ImportFrom: from weakref import WeakKeyDictionary
+9-9 Assign: CYGWIN = sys.platform.startswith("cygwin")
+10-10 Assign: MSYS2 = sys.platform.startswith("win") and ("GCC" in sys.version)
+12-14 Assign: APP_ENGINE = "APPENGINE_RUNTIME" in os.environ and "Development/" in os.environ.get(
+15-15 Assign: WIN = sys.platform.startswith("win") and not APP_ENGINE and not MSYS2
+16-16 AnnAssign: auto_wrap_for_ansi: t.Optional[t.Callable[[t.TextIO], t.TextIO]] = None
+17-17 Assign: _ansi_re = re.compile(r"\033\[[;?0-9]*[a-zA-Z]")
+20-21 FunctionDef get_filesystem_encoding
+24-42 FunctionDef _make_text_stream
+45-50 FunctionDef is_ascii_encoding
+53-58 FunctionDef get_best_encoding
+61-84 ClassDef _NonClosingTextIOWrapper
+87-153 ClassDef _FixupStream
+156-160 FunctionDef _is_binary_reader
+165-175 FunctionDef _is_binary_writer
+178-193 FunctionDef _find_binary_reader
+196-211 FunctionDef _find_binary_writer
+214-220 FunctionDef _stream_is_misconfigured
+223-229 FunctionDef _is_compat_stream_attr
+232-240 FunctionDef _is_compatible_text_stream
+243-286 FunctionDef _force_correct_text_stream
+289-302 FunctionDef _force_correct_text_reader
+305-318 FunctionDef _force_correct_text_writer
+321-325 FunctionDef get_binary_stdin
+328-332 FunctionDef get_binary_stdout
+335-339 FunctionDef get_binary_stderr
+342-348 FunctionDef get_text_stdin
+351-357 FunctionDef get_text_stdout
+360-366 FunctionDef get_text_stderr
+369-379 FunctionDef _wrap_io_open
+382-459 FunctionDef open_stream
+462-490 ClassDef _AtomicFile
+493-494 FunctionDef strip_ansi
+497-501 FunctionDef _is_jupyter_kernel_output
+504-511 FunctionDef should_strip_ansi
+517-572 If: if sys.platform.startswith("win") and WIN:
+  518-518 ImportFrom: from ._winconsole import _get_windows_console_stream
+  520-523 FunctionDef _get_argv_encoding
+  525-525 AnnAssign: _ansi_stream_wrappers: t.MutableMapping[t.TextIO, t.TextIO] = WeakKeyDictionary()
+  527-562 FunctionDef auto_wrap_for_ansi
+  566-567 FunctionDef _get_argv_encoding
+  569-572 FunctionDef _get_windows_console_stream
+575-576 FunctionDef term_len
+579-583 FunctionDef isatty
+586-606 FunctionDef _make_cached_stream_func
+609-609 Assign: _default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)
+610-610 Assign: _default_text_stdout = _make_cached_stream_func(lambda: sys.stdout, get_text_stdout)
+611-611 Assign: _default_text_stderr = _make_cached_stream_func(lambda: sys.stderr, get_text_stderr)
+614-618 AnnAssign: binary_streams: t.Mapping[str, t.Callable[[], t.BinaryIO]] = {
+620-626 AnnAssign: text_streams: t.Mapping[
+TARGET HEADERS AND SURROUNDING LINES:
+491: 
+492: 
+493: def strip_ansi(value: str) -> str:
+494:     return _ansi_re.sub("", value)
+MODULE TAIL:
+615:     "stdin": get_binary_stdin,
+616:     "stdout": get_binary_stdout,
+617:     "stderr": get_binary_stderr,
+618: }
+619: 
+620: text_streams: t.Mapping[
+621:     str, t.Callable[[t.Optional[str], t.Optional[str]], t.TextIO]
+622: ] = {
+623:     "stdin": get_text_stdin,
+624:     "stdout": get_text_stdout,
+625:     "stderr": get_text_stderr,
+626: }
+
+FILE source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py
+1-1 Import: import codecs
+2-2 Import: import io
+3-3 Import: import os
+4-4 Import: import re
+5-5 Import: import sys
+6-6 Import: import typing as t
+7-7 ImportFrom: from weakref import WeakKeyDictionary
+9-9 Assign: CYGWIN = sys.platform.startswith("cygwin")
+10-10 Assign: MSYS2 = sys.platform.startswith("win") and ("GCC" in sys.version)
+12-14 Assign: APP_ENGINE = "APPENGINE_RUNTIME" in os.environ and "Development/" in os.environ.get(
+15-15 Assign: WIN = sys.platform.startswith("win") and not APP_ENGINE and not MSYS2
+16-16 AnnAssign: auto_wrap_for_ansi: t.Optional[t.Callable[[t.TextIO], t.TextIO]] = None
+17-17 Assign: _ansi_re = re.compile(r"\033\[[;?0-9]*[a-zA-Z]")
+20-21 FunctionDef get_filesystem_encoding
+24-42 FunctionDef _make_text_stream
+45-50 FunctionDef is_ascii_encoding
+53-58 FunctionDef get_best_encoding
+61-84 ClassDef _NonClosingTextIOWrapper
+87-153 ClassDef _FixupStream
+156-160 FunctionDef _is_binary_reader
+165-175 FunctionDef _is_binary_writer
+178-193 FunctionDef _find_binary_reader
+196-211 FunctionDef _find_binary_writer
+214-220 FunctionDef _stream_is_misconfigured
+223-229 FunctionDef _is_compat_stream_attr
+232-240 FunctionDef _is_compatible_text_stream
+243-286 FunctionDef _force_correct_text_stream
+289-302 FunctionDef _force_correct_text_reader
+305-318 FunctionDef _force_correct_text_writer
+321-325 FunctionDef get_binary_stdin
+328-332 FunctionDef get_binary_stdout
+335-339 FunctionDef get_binary_stderr
+342-348 FunctionDef get_text_stdin
+351-357 FunctionDef get_text_stdout
+360-366 FunctionDef get_text_stderr
+369-379 FunctionDef _wrap_io_open
+382-459 FunctionDef open_stream
+462-490 ClassDef _AtomicFile
+493-494 FunctionDef strip_ansi
+497-501 FunctionDef _is_jupyter_kernel_output
+504-511 FunctionDef should_strip_ansi
+517-572 If: if sys.platform.startswith("win") and WIN:
+  518-518 ImportFrom: from ._winconsole import _get_windows_console_stream
+  520-523 FunctionDef _get_argv_encoding
+  525-525 AnnAssign: _ansi_stream_wrappers: t.MutableMapping[t.TextIO, t.TextIO] = WeakKeyDictionary()
+  527-562 FunctionDef auto_wrap_for_ansi
+  566-567 FunctionDef _get_argv_encoding
+  569-572 FunctionDef _get_windows_console_stream
+575-576 FunctionDef term_len
+579-583 FunctionDef isatty
+586-606 FunctionDef _make_cached_stream_func
+609-609 Assign: _default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)
+610-610 Assign: _default_text_stdout = _make_cached_stream_func(lambda: sys.stdout, get_text_stdout)
+611-611 Assign: _default_text_stderr = _make_cached_stream_func(lambda: sys.stderr, get_text_stderr)
+614-618 AnnAssign: binary_streams: t.Mapping[str, t.Callable[[], t.BinaryIO]] = {
+620-626 AnnAssign: text_streams: t.Mapping[
+TARGET HEADERS AND SURROUNDING LINES:
+18: 
+19: 
+20: def get_filesystem_encoding() -> str:
+21:     return sys.getfilesystemencoding() or sys.getdefaultencoding()
+319: 
+320: 
+321: def get_binary_stdin() -> t.BinaryIO:
+322:     reader = _find_binary_reader(sys.stdin)
+326: 
+327: 
+328: def get_binary_stdout() -> t.BinaryIO:
+329:     writer = _find_binary_writer(sys.stdout)
+MODULE TAIL:
+615:     "stdin": get_binary_stdin,
+616:     "stdout": get_binary_stdout,
+617:     "stderr": get_binary_stderr,
+618: }
+619: 
+620: text_streams: t.Mapping[
+621:     str, t.Callable[[t.Optional[str], t.Optional[str]], t.TextIO]
+622: ] = {
+623:     "stdin": get_text_stdin,
+624:     "stdout": get_text_stdout,
+625:     "stderr": get_text_stderr,
+626: }
+
+FILE source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py
+1-1 Import: import errno
+2-2 Import: import os
+3-3 Import: import sys
+4-4 ImportFrom: from contextlib import contextmanager
+5-5 ImportFrom: from itertools import repeat
+6-6 ImportFrom: from functools import update_wrapper
+8-8 ImportFrom: from .types import convert_type, IntRange, BOOL
+9-9 ImportFrom: from .utils import make_str, make_default_short_help, echo, get_os_args
+10-11 ImportFrom: from .exceptions import ClickException, UsageError, BadParameter, Abort, \
+12-12 ImportFrom: from .termui import prompt, confirm
+13-13 ImportFrom: from .formatting import HelpFormatter, join_options
+14-14 ImportFrom: from .parser import OptionParser, split_opt
+15-15 ImportFrom: from .globals import push_context, pop_context
+17-17 ImportFrom: from ._compat import PY2, isidentifier, iteritems
+18-18 ImportFrom: from ._unicodefun import _check_for_unicode_literals, _verify_python3_env
+21-21 Assign: _missing = object()
+24-24 Assign: SUBCOMMAND_METAVAR = 'COMMAND [ARGS]...'
+25-25 Assign: SUBCOMMANDS_METAVAR = 'COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...'
+28-34 FunctionDef fast_exit
+37-47 FunctionDef _bashcomplete
+50-68 FunctionDef _check_multicommand
+71-72 FunctionDef batch
+75-87 FunctionDef invoke_param_callback
+91-106 FunctionDef augment_usage_errors
+109-121 FunctionDef iter_params_for_processing
+124-562 ClassDef Context
+565-731 ClassDef BaseCommand
+734-907 ClassDef Command
+910-1145 ClassDef MultiCommand
+1148-1198 ClassDef Group
+1201-1229 ClassDef CommandCollection
+1232-1433 ClassDef Parameter
+1436-1702 ClassDef Option
+1705-1761 ClassDef Argument
+1765-1765 ImportFrom: from .decorators import command, group
+TARGET HEADERS AND SURROUNDING LINES:
+26: 
+27: 
+28: def fast_exit(code):
+29:     """Exit without garbage collection, this speeds up exit by about 10ms for
+73: 
+74: 
+75: def invoke_param_callback(callback, ctx, param, value):
+76:     code = getattr(callback, '__code__', None)
+MODULE TAIL:
+1754:         return name, [arg], []
+1755: 
+1756:     def get_usage_pieces(self, ctx):
+1757:         return [self.make_metavar()]
+1758: 
+1759:     def add_to_parser(self, parser, ctx):
+1760:         parser.add_argument(dest=self.name, nargs=self.nargs,
+1761:                             obj=self)
+1762: 
+1763: 
+1764: # Circular dependency between decorators and core
+1765: from .decorators import command, group
+
+FILE source/32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1.py
+1-1 Import: import os
+2-2 Import: import sys
+4-4 ImportFrom: from .globals import resolve_color_default
+6-9 ImportFrom: from ._compat import text_type, open_stream, get_filesystem_encoding, \
+11-15 If: if not PY2:
+  12-12 ImportFrom: from ._compat import _find_binary_writer
+  13-15 If: elif WIN:
+    14-15 ImportFrom: from ._winconsole import _get_windows_argv, \
+18-18 Assign: echo_native_types = string_types + (bytes, bytearray)
+21-22 FunctionDef _posixify
+25-32 FunctionDef safecall
+35-42 FunctionDef make_str
+45-67 FunctionDef make_default_short_help
+70-143 ClassDef LazyFile
+146-164 ClassDef KeepOpenFile
+167-261 FunctionDef echo
+264-277 FunctionDef get_binary_stream
+280-294 FunctionDef get_text_stream
+297-327 FunctionDef open_file
+330-348 FunctionDef get_os_args
+351-365 FunctionDef format_filename
+368-416 FunctionDef get_app_dir
+TARGET HEADERS AND SURROUNDING LINES:
+278: 
+279: 
+280: def get_text_stream(name, encoding=None, errors='strict'):
+281:     """Returns a system stream for text processing.  This usually returns
+MODULE TAIL:
+405:         folder = os.environ.get(key)
+406:         if folder is None:
+407:             folder = os.path.expanduser('~')
+408:         return os.path.join(folder, app_name)
+409:     if force_posix:
+410:         return os.path.join(os.path.expanduser('~/.' + _posixify(app_name)))
+411:     if sys.platform == 'darwin':
+412:         return os.path.join(os.path.expanduser(
+413:             '~/Library/Application Support'), app_name)
+414:     return os.path.join(
+415:         os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config')),
+416:         _posixify(app_name))
+
+FILE source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py
+1-1 Import: import os
+2-2 Import: import re
+3-3 Import: import sys
+4-4 Import: import typing as t
+5-5 ImportFrom: from functools import update_wrapper
+6-6 ImportFrom: from types import ModuleType
+8-8 ImportFrom: from ._compat import _default_text_stderr
+9-9 ImportFrom: from ._compat import _default_text_stdout
+10-10 ImportFrom: from ._compat import _find_binary_writer
+11-11 ImportFrom: from ._compat import auto_wrap_for_ansi
+12-12 ImportFrom: from ._compat import binary_streams
+13-13 ImportFrom: from ._compat import get_filesystem_encoding
+14-14 ImportFrom: from ._compat import open_stream
+15-15 ImportFrom: from ._compat import should_strip_ansi
+16-16 ImportFrom: from ._compat import strip_ansi
+17-17 ImportFrom: from ._compat import text_streams
+18-18 ImportFrom: from ._compat import WIN
+19-19 ImportFrom: from .globals import resolve_color_default
+21-22 If: if t.TYPE_CHECKING:
+  22-22 Import: import typing_extensions as te
+24-24 Assign: F = t.TypeVar("F", bound=t.Callable[..., t.Any])
+27-28 FunctionDef _posixify
+31-40 FunctionDef safecall
+43-50 FunctionDef make_str
+53-100 FunctionDef make_default_short_help
+103-182 ClassDef LazyFile
+185-202 ClassDef KeepOpenFile
+205-300 FunctionDef echo
+303-312 FunctionDef get_binary_stream
+315-333 FunctionDef get_text_stream
+336-380 FunctionDef open_file
+383-400 FunctionDef format_filename
+403-449 FunctionDef get_app_dir
+452-474 ClassDef PacifyFlushWrapper
+477-528 FunctionDef _detect_program_name
+531-580 FunctionDef _expand_args
+583-584 FunctionDef make_str
+587-588 FunctionDef make_str
+TARGET HEADERS AND SURROUNDING LINES:
+41: 
+42: 
+43: def make_str(value: t.Any) -> str:
+44:     """Converts a value into a valid string."""
+581: 
+582: 
+583: def make_str(*args, **kwargs):
+584:     pass
+585: 
+586: 
+587: def make_str(*args, **kwargs):
+588:     pass
+MODULE TAIL:
+577:         else:
+578:             out.extend(matches)
+579: 
+580:     return out
+581: 
+582: 
+583: def make_str(*args, **kwargs):
+584:     pass
+585: 
+586: 
+587: def make_str(*args, **kwargs):
+588:     pass
+
+FILE source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py
+1-1 Import: import sys
+2-2 Import: import inspect
+4-4 ImportFrom: from functools import update_wrapper
+6-6 ImportFrom: from ._compat import iteritems
+7-7 ImportFrom: from ._unicodefun import _check_for_unicode_literals
+8-8 ImportFrom: from .utils import echo
+9-9 ImportFrom: from .globals import get_current_context
+12-18 FunctionDef pass_context
+21-28 FunctionDef pass_obj
+31-66 FunctionDef make_pass_decorator
+69-89 FunctionDef _make_command
+92-118 FunctionDef command
+121-127 FunctionDef group
+130-136 FunctionDef _param_memo
+139-153 FunctionDef argument
+156-172 FunctionDef option
+175-202 FunctionDef confirmation_option
+205-222 FunctionDef password_option
+225-280 FunctionDef version_option
+283-304 FunctionDef help_option
+308-308 ImportFrom: from .core import Command, Group, Argument, Option
+TARGET HEADERS AND SURROUNDING LINES:
+154: 
+155: 
+156: def option(*param_decls, **attrs):
+157:     """Attaches an option to the command.  All positional arguments are
+MODULE TAIL:
+297:                 ctx.exit()
+298:         attrs.setdefault('is_flag', True)
+299:         attrs.setdefault('expose_value', False)
+300:         attrs.setdefault('help', 'Show this message and exit.')
+301:         attrs.setdefault('is_eager', True)
+302:         attrs['callback'] = callback
+303:         return option(*(param_decls or ('--help',)), **attrs)(f)
+304:     return decorator
+305: 
+306: 
+307: # Circular dependencies between core and decorators
+308: from .core import Command, Group, Argument, Option
+
+FILE source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py
+1-1 Import: import inspect
+2-2 Import: import io
+3-3 Import: import itertools
+4-4 Import: import os
+5-5 Import: import sys
+6-6 Import: import typing as t
+7-7 ImportFrom: from gettext import gettext as _
+9-9 ImportFrom: from ._compat import isatty
+10-10 ImportFrom: from ._compat import strip_ansi
+11-11 ImportFrom: from ._compat import WIN
+12-12 ImportFrom: from .exceptions import Abort
+13-13 ImportFrom: from .exceptions import UsageError
+14-14 ImportFrom: from .globals import resolve_color_default
+15-15 ImportFrom: from .types import Choice
+16-16 ImportFrom: from .types import convert_type
+17-17 ImportFrom: from .types import ParamType
+18-18 ImportFrom: from .utils import echo
+19-19 ImportFrom: from .utils import LazyFile
+21-22 If: if t.TYPE_CHECKING:
+  22-22 ImportFrom: from ._termui_impl import ProgressBar
+24-24 Assign: V = t.TypeVar("V")
+28-28 AnnAssign: visible_prompt_func: t.Callable[[str], str] = input
+30-48 Assign: _ansi_colors = {
+49-49 Assign: _ansi_reset_all = "\033[0m"
+52-55 FunctionDef hidden_prompt_func
+58-71 FunctionDef _build_prompt
+74-78 FunctionDef _format_default
+81-189 FunctionDef prompt
+192-250 FunctionDef confirm
+253-282 FunctionDef echo_via_pager
+285-434 FunctionDef progressbar
+437-449 FunctionDef clear
+452-462 FunctionDef _interpret_color
+465-591 FunctionDef style
+594-603 FunctionDef unstyle
+606-637 FunctionDef secho
+640-683 FunctionDef edit
+686-712 FunctionDef launch
+717-717 AnnAssign: _getchar: t.Optional[t.Callable[[bool], str]] = None
+720-747 FunctionDef getchar
+750-753 FunctionDef raw_terminal
+756-787 FunctionDef pause
+TARGET HEADERS AND SURROUNDING LINES:
+SCOPE DECLARATION 740: Global(names=['_getchar'])
+450: 
+451: 
+452: def _interpret_color(
+453:     color: t.Union[int, t.Tuple[int, int, int], str], offset: int = 0
+454: ) -> str:
+455:     if isinstance(color, int):
+684: 
+685: 
+686: def launch(url: str, wait: bool = False, locate: bool = False) -> int:
+687:     """This function launches the given URL (or filename) in the default
+MODULE TAIL:
+776:         info = _("Press any key to continue...")
+777: 
+778:     try:
+779:         if info:
+780:             echo(info, nl=False, err=err)
+781:         try:
+782:             getchar()
+783:         except (KeyboardInterrupt, EOFError):
+784:             pass
+785:     finally:
+786:         if info:
+787:             echo(err=err)
+
+FILE source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py
+1-1 Import: import os
+2-2 Import: import re
+3-3 Import: import sys
+4-4 Import: import typing as t
+5-5 ImportFrom: from functools import update_wrapper
+6-6 ImportFrom: from types import ModuleType
+8-8 ImportFrom: from ._compat import _default_text_stderr
+9-9 ImportFrom: from ._compat import _default_text_stdout
+10-10 ImportFrom: from ._compat import _find_binary_writer
+11-11 ImportFrom: from ._compat import auto_wrap_for_ansi
+12-12 ImportFrom: from ._compat import binary_streams
+13-13 ImportFrom: from ._compat import get_filesystem_encoding
+14-14 ImportFrom: from ._compat import open_stream
+15-15 ImportFrom: from ._compat import should_strip_ansi
+16-16 ImportFrom: from ._compat import strip_ansi
+17-17 ImportFrom: from ._compat import text_streams
+18-18 ImportFrom: from ._compat import WIN
+19-19 ImportFrom: from .globals import resolve_color_default
+21-24 If: if t.TYPE_CHECKING:
+  22-22 Import: import typing_extensions as te
+  24-24 Assign: P = te.ParamSpec("P")
+26-26 Assign: R = t.TypeVar("R")
+29-30 FunctionDef _posixify
+33-43 FunctionDef safecall
+46-53 FunctionDef make_str
+56-103 FunctionDef make_default_short_help
+106-185 ClassDef LazyFile
+188-205 ClassDef KeepOpenFile
+208-303 FunctionDef echo
+306-315 FunctionDef get_binary_stream
+318-336 FunctionDef get_text_stream
+339-385 FunctionDef open_file
+388-405 FunctionDef format_filename
+408-454 FunctionDef get_app_dir
+457-479 ClassDef PacifyFlushWrapper
+482-533 FunctionDef _detect_program_name
+536-585 FunctionDef _expand_args
+TARGET HEADERS AND SURROUNDING LINES:
+54: 
+55: 
+56: def make_default_short_help(help: str, max_length: int = 45) -> str:
+57:     """Returns a condensed version of help string."""
+MODULE TAIL:
+574: 
+575:         try:
+576:             matches = glob(arg, recursive=glob_recursive)
+577:         except re.error:
+578:             matches = []
+579: 
+580:         if not matches:
+581:             out.append(arg)
+582:         else:
+583:             out.extend(matches)
+584: 
+585:     return out
+
+FILE source/70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9.py
+24-24 Import: import typing as t
+25-25 ImportFrom: from collections import deque
+26-26 ImportFrom: from gettext import gettext as _
+27-27 ImportFrom: from gettext import ngettext
+29-29 ImportFrom: from .exceptions import BadArgumentUsage
+30-30 ImportFrom: from .exceptions import BadOptionUsage
+31-31 ImportFrom: from .exceptions import NoSuchOption
+32-32 ImportFrom: from .exceptions import UsageError
+34-39 If: if t.TYPE_CHECKING:
+  35-35 Import: import typing_extensions as te
+  36-36 ImportFrom: from .core import Argument as CoreArgument
+  37-37 ImportFrom: from .core import Context
+  38-38 ImportFrom: from .core import Option as CoreOption
+  39-39 ImportFrom: from .core import Parameter as CoreParameter
+41-41 Assign: V = t.TypeVar("V")
+46-46 Assign: _flag_needs_value = object()
+49-106 FunctionDef _unpack_args
+109-115 FunctionDef split_opt
+118-122 FunctionDef normalize_opt
+125-156 FunctionDef split_arg_string
+159-210 ClassDef Option
+213-242 ClassDef Argument
+245-250 ClassDef ParsingState
+253-529 ClassDef OptionParser
+TARGET HEADERS AND SURROUNDING LINES:
+123: 
+124: 
+125: def split_arg_string(string: str) -> t.List[str]:
+126:     """Split an argument string as with :func:`shlex.split`, but don't
+MODULE TAIL:
+518:             # which says, that if we have a two character options prefix
+519:             # (applies to "--foo" for instance), we do not dispatch to the
+520:             # short option code and will instead raise the no option
+521:             # error.
+522:             if arg[:2] not in self._opt_prefixes:
+523:                 self._match_short_opt(arg, state)
+524:                 return
+525: 
+526:             if not self.ignore_unknown_options:
+527:                 raise
+528: 
+529:             state.largs.append(arg)
+
+FILE source/7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107.py
+12-12 Import: import os
+13-13 Import: import sys
+14-14 Import: import time
+15-15 Import: import math
+16-18 ImportFrom: from ._compat import _default_text_stdout, range_type, PY2, isatty, \
+19-19 ImportFrom: from .utils import echo
+20-20 ImportFrom: from .exceptions import ClickException
+23-28 If: if os.name == 'nt':
+  24-24 Assign: BEFORE_BAR = '\r'
+  25-25 Assign: AFTER_BAR = '\n'
+  27-27 Assign: BEFORE_BAR = '\r\033[?25l'
+  28-28 Assign: AFTER_BAR = '\033[?25h\n'
+31-48 FunctionDef _length_hint
+51-272 ClassDef ProgressBar
+275-300 FunctionDef pager
+303-347 FunctionDef _pipepager
+350-362 FunctionDef _tempfilepager
+365-369 FunctionDef _nullpager
+372-446 ClassDef Editor
+449-505 FunctionDef open_url
+508-512 FunctionDef _translate_ch_to_exc
+515-556 If: if WIN:
+  516-516 Import: import msvcrt
+  518-529 FunctionDef getchar
+  531-531 Import: import tty
+  532-532 Import: import termios
+  534-556 FunctionDef getchar
+TARGET HEADERS AND SURROUNDING LINES:
+273: 
+274: 
+275: def pager(text, color=None):
+276:     """Decide what method to use for paging through text."""
+MODULE TAIL:
+545:                 ch = os.read(fd, 32)
+546:                 if echo and isatty(sys.stdout):
+547:                     sys.stdout.write(ch)
+548:             finally:
+549:                 termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+550:                 sys.stdout.flush()
+551:                 if f is not None:
+552:                     f.close()
+553:         except termios.error:
+554:             pass
+555:         _translate_ch_to_exc(ch)
+556:         return ch.decode(get_best_encoding(sys.stdin), 'replace')
+
+FILE source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py
+6-6 Import: import contextlib
+7-7 Import: import math
+8-8 Import: import os
+9-9 Import: import sys
+10-10 Import: import time
+11-11 Import: import typing as t
+12-12 ImportFrom: from gettext import gettext as _
+14-14 ImportFrom: from ._compat import _default_text_stdout
+15-15 ImportFrom: from ._compat import CYGWIN
+16-16 ImportFrom: from ._compat import get_best_encoding
+17-17 ImportFrom: from ._compat import isatty
+18-18 ImportFrom: from ._compat import open_stream
+19-19 ImportFrom: from ._compat import strip_ansi
+20-20 ImportFrom: from ._compat import term_len
+21-21 ImportFrom: from ._compat import WIN
+22-22 ImportFrom: from .exceptions import ClickException
+23-23 ImportFrom: from .utils import echo
+25-25 Assign: V = t.TypeVar("V")
+27-32 If: if os.name == "nt":
+  28-28 Assign: BEFORE_BAR = "\r"
+  29-29 Assign: AFTER_BAR = "\n"
+  31-31 Assign: BEFORE_BAR = "\r\033[?25l"
+  32-32 Assign: AFTER_BAR = "\033[?25h\n"
+35-341 ClassDef ProgressBar
+344-370 FunctionDef pager
+373-420 FunctionDef _pipepager
+423-441 FunctionDef _tempfilepager
+444-451 FunctionDef _nullpager
+454-548 ClassDef Editor
+551-608 FunctionDef open_url
+611-621 FunctionDef _translate_ch_to_exc
+624-717 If: if WIN:
+  625-625 Import: import msvcrt
+  628-629 FunctionDef raw_terminal
+  631-676 FunctionDef getchar
+  679-679 Import: import tty
+  680-680 Import: import termios
+  683-707 FunctionDef raw_terminal
+  709-717 FunctionDef getchar
+TARGET HEADERS AND SURROUNDING LINES:
+342: 
+343: 
+344: def pager(generator: t.Iterable[str], color: t.Optional[bool] = None) -> None:
+345:     """Decide what method to use for paging through text."""
+549: 
+550: 
+551: def open_url(url: str, wait: bool = False, locate: bool = False) -> int:
+552:     import subprocess
+MODULE TAIL:
+706:         except termios.error:
+707:             pass
+708: 
+709:     def getchar(echo: bool) -> str:
+710:         with raw_terminal() as fd:
+711:             ch = os.read(fd, 32).decode(get_best_encoding(sys.stdin), "replace")
+712: 
+713:             if echo and isatty(sys.stdout):
+714:                 sys.stdout.write(ch)
+715: 
+716:             _translate_ch_to_exc(ch)
+717:             return ch
+
+FILE source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py
+1-1 Import: import os
+2-2 Import: import re
+3-3 Import: import typing as t
+4-4 ImportFrom: from gettext import gettext as _
+6-6 ImportFrom: from .core import Argument
+7-7 ImportFrom: from .core import BaseCommand
+8-8 ImportFrom: from .core import Context
+9-9 ImportFrom: from .core import MultiCommand
+10-10 ImportFrom: from .core import Option
+11-11 ImportFrom: from .core import Parameter
+12-12 ImportFrom: from .core import ParameterSource
+13-13 ImportFrom: from .parser import split_arg_string
+14-14 ImportFrom: from .utils import echo
+17-52 FunctionDef shell_complete
+55-89 ClassDef CompletionItem
+93-123 Assign: _SOURCE_BASH = """\
+125-161 Assign: _SOURCE_ZSH = """\
+163-187 Assign: _SOURCE_FISH = """\
+190-293 ClassDef ShellComplete
+296-342 ClassDef BashComplete
+345-364 ClassDef ZshComplete
+367-389 ClassDef FishComplete
+392-396 AnnAssign: _available_shells: t.Dict[str, t.Type[ShellComplete]] = {
+399-414 FunctionDef add_completion_class
+417-424 FunctionDef get_completion_class
+427-448 FunctionDef _is_incomplete_argument
+451-457 FunctionDef _start_of_option
+460-481 FunctionDef _is_incomplete_option
+484-533 FunctionDef _resolve_context
+536-580 FunctionDef _resolve_incomplete
+TARGET HEADERS AND SURROUNDING LINES:
+15: 
+16: 
+17: def shell_complete(
+18:     cli: BaseCommand,
+19:     ctx_args: t.Dict[str, t.Any],
+20:     prog_name: str,
+21:     complete_var: str,
+22:     instruction: str,
+23: ) -> int:
+24:     """Perform shell completion for the given CLI program.
+397: 
+398: 
+399: def add_completion_class(
+400:     cls: t.Type[ShellComplete], name: t.Optional[str] = None
+401: ) -> None:
+402:     """Register a :class:`ShellComplete` subclass under the given name.
+MODULE TAIL:
+569:         if _is_incomplete_option(ctx, args, param):
+570:             return param, incomplete
+571: 
+572:     # It's not an option name or value. The first argument without a
+573:     # parsed value will provide value completions.
+574:     for param in params:
+575:         if _is_incomplete_argument(ctx, param):
+576:             return param, incomplete
+577: 
+578:     # There were no unparsed arguments, the command may be a group that
+579:     # will provide command name completions.
+580:     return ctx.command, incomplete
+
+FILE source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py
+1-1 Import: import collections
+2-2 Import: import copy
+3-3 Import: import os
+4-4 Import: import re
+6-6 ImportFrom: from .utils import echo
+7-7 ImportFrom: from .parser import split_arg_string
+8-8 ImportFrom: from .core import MultiCommand, Option, Argument
+9-9 ImportFrom: from .types import Choice
+11-11 Assign: WORDBREAK = '='
+13-23 Assign: COMPLETION_SCRIPT = '''
+25-25 Assign: _invalid_ident_char_re = re.compile(r'[^a-zA-Z0-9_]')
+28-34 FunctionDef get_completion_script
+37-58 FunctionDef resolve_ctx
+61-66 FunctionDef start_of_option
+69-88 FunctionDef is_incomplete_option
+91-108 FunctionDef is_incomplete_argument
+111-126 FunctionDef get_user_autocompletions
+129-142 FunctionDef add_subcommand_completions
+145-193 FunctionDef get_choices
+196-208 FunctionDef do_complete
+211-217 FunctionDef bashcomplete
+TARGET HEADERS AND SURROUNDING LINES:
+127: 
+128: 
+129: def add_subcommand_completions(ctx, incomplete, completions_out):
+130:     # Add subcommand completions.
+131:     if isinstance(ctx.command, MultiCommand):
+MODULE TAIL:
+206:         echo(item)
+207: 
+208:     return True
+209: 
+210: 
+211: def bashcomplete(cli, prog_name, complete_var, complete_instr):
+212:     if complete_instr == 'source':
+213:         echo(get_completion_script(prog_name, complete_var))
+214:         return True
+215:     elif complete_instr == 'complete':
+216:         return do_complete(cli, prog_name)
+217:     return False
+
+FILE source/c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81.py
+1-1 Import: import enum
+2-2 Import: import errno
+3-3 Import: import inspect
+4-4 Import: import os
+5-5 Import: import sys
+6-6 Import: import typing as t
+7-7 ImportFrom: from collections import abc
+8-8 ImportFrom: from contextlib import contextmanager
+9-9 ImportFrom: from contextlib import ExitStack
+10-10 ImportFrom: from functools import partial
+11-11 ImportFrom: from functools import update_wrapper
+12-12 ImportFrom: from gettext import gettext as _
+13-13 ImportFrom: from gettext import ngettext
+14-14 ImportFrom: from itertools import repeat
+16-16 ImportFrom: from . import types
+17-17 ImportFrom: from .exceptions import Abort
+18-18 ImportFrom: from .exceptions import BadParameter
+19-19 ImportFrom: from .exceptions import ClickException
+20-20 ImportFrom: from .exceptions import Exit
+21-21 ImportFrom: from .exceptions import MissingParameter
+22-22 ImportFrom: from .exceptions import UsageError
+23-23 ImportFrom: from .formatting import HelpFormatter
+24-24 ImportFrom: from .formatting import join_options
+25-25 ImportFrom: from .globals import pop_context
+26-26 ImportFrom: from .globals import push_context
+27-27 ImportFrom: from .parser import _flag_needs_value
+28-28 ImportFrom: from .parser import OptionParser
+29-29 ImportFrom: from .parser import split_opt
+30-30 ImportFrom: from .termui import confirm
+31-31 ImportFrom: from .termui import prompt
+32-32 ImportFrom: from .termui import style
+33-33 ImportFrom: from .utils import _detect_program_name
+34-34 ImportFrom: from .utils import _expand_args
+35-35 ImportFrom: from .utils import echo
+36-36 ImportFrom: from .utils import make_default_short_help
+37-37 ImportFrom: from .utils import make_str
+38-38 ImportFrom: from .utils import PacifyFlushWrapper
+40-42 If: if t.TYPE_CHECKING:
+  41-41 Import: import typing_extensions as te
+  42-42 ImportFrom: from .shell_completion import CompletionItem
+44-44 Assign: F = t.TypeVar("F", bound=t.Callable[..., t.Any])
+45-45 Assign: V = t.TypeVar("V")
+48-64 FunctionDef _complete_visible_commands
+67-88 FunctionDef _check_multicommand
+91-92 FunctionDef batch
+96-111 FunctionDef augment_usage_errors
+114-131 FunctionDef iter_params_for_processing
+134-157 ClassDef ParameterSource
+160-808 ClassDef Context
+811-1130 ClassDef BaseCommand
+1133-1439 ClassDef Command
+1442-1747 ClassDef MultiCommand
+1750-1895 ClassDef Group
+1898-1937 ClassDef CommandCollection
+1940-1947 FunctionDef _check_iter
+1950-2380 ClassDef Parameter
+2383-2893 ClassDef Option
+2896-2969 ClassDef Argument
+TARGET HEADERS AND SURROUNDING LINES:
+SCOPE DECLARATION 2668: Nonlocal(names=['any_prefix_is_slash'])
+89: 
+90: 
+91: def batch(iterable: t.Iterable[V], batch_size: int) -> t.List[t.Tuple[V, ...]]:
+92:     return list(zip(*repeat(iter(iterable), batch_size)))
+MODULE TAIL:
+2958:                 f" {len(decls)}."
+2959:             )
+2960:         return name, [arg], []
+2961: 
+2962:     def get_usage_pieces(self, ctx: Context) -> t.List[str]:
+2963:         return [self.make_metavar()]
+2964: 
+2965:     def get_error_hint(self, ctx: Context) -> str:
+2966:         return f"'{self.make_metavar()}'"
+2967: 
+2968:     def add_to_parser(self, parser: OptionParser, ctx: Context) -> None:
+2969:         parser.add_argument(dest=self.name, nargs=self.nargs, obj=self)
+
+FILE source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py
+1-1 Import: import os
+2-2 Import: import sys
+3-3 Import: import shutil
+4-4 Import: import tempfile
+5-5 Import: import contextlib
+6-6 Import: import shlex
+8-8 ImportFrom: from ._compat import iteritems, PY2, string_types
+15-15 Assign: clickpkg = sys.modules[__name__.rsplit('.', 1)[0]]
+18-22 If: if PY2:
+  19-19 ImportFrom: from cStringIO import StringIO
+  21-21 Import: import io
+  22-22 ImportFrom: from ._compat import _find_binary_reader
+25-51 ClassDef EchoingStdin
+54-70 FunctionDef make_input_stream
+73-98 ClassDef Result
+101-333 ClassDef CliRunner
+336-337 FunctionDef make_input_stream
+340-341 FunctionDef make_input_stream
+TARGET HEADERS AND SURROUNDING LINES:
+52: 
+53: 
+54: def make_input_stream(input, charset):
+55:     # Is already an input stream.
+56:     if hasattr(input, 'read'):
+334: 
+335: 
+336: def make_input_stream(*args, **kwargs):
+337:     pass
+338: 
+339: 
+340: def make_input_stream(*args, **kwargs):
+341:     pass
+MODULE TAIL:
+330:             try:
+331:                 shutil.rmtree(t)
+332:             except (OSError, IOError):
+333:                 pass
+334: 
+335: 
+336: def make_input_stream(*args, **kwargs):
+337:     pass
+338: 
+339: 
+340: def make_input_stream(*args, **kwargs):
+341:     pass
+
+FILE source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py
+1-1 Import: import os
+2-2 Import: import re
+3-3 Import: import sys
+4-4 Import: import typing as t
+5-5 ImportFrom: from functools import update_wrapper
+6-6 ImportFrom: from types import ModuleType
+8-8 ImportFrom: from ._compat import _default_text_stderr
+9-9 ImportFrom: from ._compat import _default_text_stdout
+10-10 ImportFrom: from ._compat import _find_binary_writer
+11-11 ImportFrom: from ._compat import auto_wrap_for_ansi
+12-12 ImportFrom: from ._compat import binary_streams
+13-13 ImportFrom: from ._compat import get_filesystem_encoding
+14-14 ImportFrom: from ._compat import open_stream
+15-15 ImportFrom: from ._compat import should_strip_ansi
+16-16 ImportFrom: from ._compat import strip_ansi
+17-17 ImportFrom: from ._compat import text_streams
+18-18 ImportFrom: from ._compat import WIN
+19-19 ImportFrom: from .globals import resolve_color_default
+21-22 If: if t.TYPE_CHECKING:
+  22-22 Import: import typing_extensions as te
+24-24 Assign: F = t.TypeVar("F", bound=t.Callable[..., t.Any])
+27-28 FunctionDef _posixify
+31-40 FunctionDef safecall
+43-50 FunctionDef make_str
+53-100 FunctionDef make_default_short_help
+103-182 ClassDef LazyFile
+185-202 ClassDef KeepOpenFile
+205-300 FunctionDef echo
+303-312 FunctionDef get_binary_stream
+315-333 FunctionDef get_text_stream
+336-380 FunctionDef open_file
+383-400 FunctionDef format_filename
+403-449 FunctionDef get_app_dir
+452-474 ClassDef PacifyFlushWrapper
+477-528 FunctionDef _detect_program_name
+531-580 FunctionDef _expand_args
+TARGET HEADERS AND SURROUNDING LINES:
+41: 
+42: 
+43: def make_str(value: t.Any) -> str:
+44:     """Converts a value into a valid string."""
+MODULE TAIL:
+569: 
+570:         try:
+571:             matches = glob(arg, recursive=glob_recursive)
+572:         except re.error:
+573:             matches = []
+574: 
+575:         if not matches:
+576:             out.append(arg)
+577:         else:
+578:             out.extend(matches)
+579: 
+580:     return out
+
+FILE source/ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d.py
+1-1 Import: import inspect
+2-2 Import: import types
+3-3 Import: import typing as t
+4-4 ImportFrom: from functools import update_wrapper
+5-5 ImportFrom: from gettext import gettext as _
+7-7 ImportFrom: from .core import Argument
+8-8 ImportFrom: from .core import Command
+9-9 ImportFrom: from .core import Context
+10-10 ImportFrom: from .core import Group
+11-11 ImportFrom: from .core import Option
+12-12 ImportFrom: from .core import Parameter
+13-13 ImportFrom: from .globals import get_current_context
+14-14 ImportFrom: from .utils import echo
+16-19 If: if t.TYPE_CHECKING:
+  17-17 Import: import typing_extensions as te
+  19-19 Assign: P = te.ParamSpec("P")
+21-21 Assign: R = t.TypeVar("R")
+22-22 Assign: T = t.TypeVar("T")
+23-23 Assign: _AnyCallable = t.Callable[..., t.Any]
+24-24 AnnAssign: _Decorator: "te.TypeAlias" = t.Callable[[T], T]
+25-25 Assign: FC = t.TypeVar("FC", bound=t.Union[_AnyCallable, Command])
+28-36 FunctionDef pass_context
+39-48 FunctionDef pass_obj
+51-97 FunctionDef make_pass_decorator
+100-130 FunctionDef pass_meta_key
+133-133 Assign: CmdType = t.TypeVar("CmdType", bound=Command)
+138-139 FunctionDef command
+145-150 FunctionDef command
+160-165 FunctionDef command
+170-173 FunctionDef command
+176-255 FunctionDef command
+258-258 Assign: GrpType = t.TypeVar("GrpType", bound=Group)
+263-264 FunctionDef group
+270-275 FunctionDef group
+285-290 FunctionDef group
+295-298 FunctionDef group
+301-319 FunctionDef group
+322-329 FunctionDef _param_memo
+332-348 FunctionDef argument
+351-369 FunctionDef option
+372-393 FunctionDef confirmation_option
+396-410 FunctionDef password_option
+413-524 FunctionDef version_option
+527-555 FunctionDef help_option
+TARGET HEADERS AND SURROUNDING LINES:
+SCOPE DECLARATION 481: Nonlocal(names=['prog_name'])
+SCOPE DECLARATION 482: Nonlocal(names=['version'])
+370: 
+371: 
+372: def confirmation_option(*param_decls: str, **kwargs: t.Any) -> _Decorator[FC]:
+373:     """Add a ``--yes`` option which shows a prompt before continuing if
+MODULE TAIL:
+544:         echo(ctx.get_help(), color=ctx.color)
+545:         ctx.exit()
+546: 
+547:     if not param_decls:
+548:         param_decls = ("--help",)
+549: 
+550:     kwargs.setdefault("is_flag", True)
+551:     kwargs.setdefault("expose_value", False)
+552:     kwargs.setdefault("is_eager", True)
+553:     kwargs.setdefault("help", _("Show this message and exit."))
+554:     kwargs["callback"] = callback
+555:     return option(*param_decls, **kwargs)
+
+FILE source/f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803.py
+1-1 Import: import os
+2-2 Import: import sys
+3-3 Import: import struct
+5-6 ImportFrom: from ._compat import raw_input, text_type, string_types, \
+7-7 ImportFrom: from .utils import echo
+8-8 ImportFrom: from .exceptions import Abort, UsageError
+9-9 ImportFrom: from .types import convert_type, Choice
+10-10 ImportFrom: from .globals import resolve_color_default
+15-15 Assign: visible_prompt_func = raw_input
+17-18 Assign: _ansi_colors = ('black', 'red', 'green', 'yellow', 'blue', 'magenta',
+19-19 Assign: _ansi_reset_all = '\033[0m'
+22-24 FunctionDef hidden_prompt_func
+27-33 FunctionDef _build_prompt
+36-118 FunctionDef prompt
+121-162 FunctionDef confirm
+165-203 FunctionDef get_terminal_size
+206-221 FunctionDef echo_via_pager
+224-314 FunctionDef progressbar
+317-332 FunctionDef clear
+335-401 FunctionDef style
+404-413 FunctionDef unstyle
+416-430 FunctionDef secho
+433-467 FunctionDef edit
+470-493 FunctionDef launch
+498-498 Assign: _getchar = None
+501-520 FunctionDef getchar
+523-549 FunctionDef pause
+TARGET HEADERS AND SURROUNDING LINES:
+521: 
+522: 
+523: def pause(info='Press any key to continue ...', err=False):
+524:     """This command stops execution and waits for the user to press any
+MODULE TAIL:
+538:     if not isatty(sys.stdin) or not isatty(sys.stdout):
+539:         return
+540:     try:
+541:         if info:
+542:             echo(info, nl=False, err=err)
+543:         try:
+544:             getchar()
+545:         except (KeyboardInterrupt, EOFError):
+546:             pass
+547:     finally:
+548:         if info:
+549:             echo(err=err)
+
+FILE source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py
+1-1 Import: import codecs
+2-2 Import: import io
+3-3 Import: import os
+4-4 Import: import re
+5-5 Import: import sys
+6-6 Import: import typing as t
+7-7 ImportFrom: from weakref import WeakKeyDictionary
+9-9 Assign: CYGWIN = sys.platform.startswith("cygwin")
+10-10 Assign: MSYS2 = sys.platform.startswith("win") and ("GCC" in sys.version)
+12-14 Assign: APP_ENGINE = "APPENGINE_RUNTIME" in os.environ and "Development/" in os.environ.get(
+15-15 Assign: WIN = sys.platform.startswith("win") and not APP_ENGINE and not MSYS2
+16-16 AnnAssign: auto_wrap_for_ansi: t.Optional[t.Callable[[t.TextIO], t.TextIO]] = None
+17-17 Assign: _ansi_re = re.compile(r"\033\[[;?0-9]*[a-zA-Z]")
+20-21 FunctionDef get_filesystem_encoding
+24-42 FunctionDef _make_text_stream
+45-50 FunctionDef is_ascii_encoding
+53-58 FunctionDef get_best_encoding
+61-84 ClassDef _NonClosingTextIOWrapper
+87-153 ClassDef _FixupStream
+156-160 FunctionDef _is_binary_reader
+165-175 FunctionDef _is_binary_writer
+178-193 FunctionDef _find_binary_reader
+196-211 FunctionDef _find_binary_writer
+214-220 FunctionDef _stream_is_misconfigured
+223-229 FunctionDef _is_compat_stream_attr
+232-240 FunctionDef _is_compatible_text_stream
+243-286 FunctionDef _force_correct_text_stream
+289-302 FunctionDef _force_correct_text_reader
+305-318 FunctionDef _force_correct_text_writer
+321-325 FunctionDef get_binary_stdin
+328-332 FunctionDef get_binary_stdout
+335-339 FunctionDef get_binary_stderr
+342-348 FunctionDef get_text_stdin
+351-357 FunctionDef get_text_stdout
+360-366 FunctionDef get_text_stderr
+369-379 FunctionDef _wrap_io_open
+382-459 FunctionDef open_stream
+462-490 ClassDef _AtomicFile
+493-494 FunctionDef strip_ansi
+497-501 FunctionDef _is_jupyter_kernel_output
+504-511 FunctionDef should_strip_ansi
+517-572 If: if sys.platform.startswith("win") and WIN:
+  518-518 ImportFrom: from ._winconsole import _get_windows_console_stream
+  520-523 FunctionDef _get_argv_encoding
+  525-525 AnnAssign: _ansi_stream_wrappers: t.MutableMapping[t.TextIO, t.TextIO] = WeakKeyDictionary()
+  527-562 FunctionDef auto_wrap_for_ansi
+  566-567 FunctionDef _get_argv_encoding
+  569-572 FunctionDef _get_windows_console_stream
+575-576 FunctionDef term_len
+579-583 FunctionDef isatty
+586-606 FunctionDef _make_cached_stream_func
+609-609 Assign: _default_text_stdin = _make_cached_stream_func(lambda: sys.stdin, get_text_stdin)
+610-610 Assign: _default_text_stdout = _make_cached_stream_func(lambda: sys.stdout, get_text_stdout)
+611-611 Assign: _default_text_stderr = _make_cached_stream_func(lambda: sys.stderr, get_text_stderr)
+614-618 AnnAssign: binary_streams: t.Mapping[str, t.Callable[[], t.BinaryIO]] = {
+620-626 AnnAssign: text_streams: t.Mapping[
+629-630 FunctionDef strip_ansi
+633-634 FunctionDef strip_ansi
+TARGET HEADERS AND SURROUNDING LINES:
+491: 
+492: 
+493: def strip_ansi(value: str) -> str:
+494:     return _ansi_re.sub("", value)
+627: 
+628: 
+629: def strip_ansi(*args, **kwargs):
+630:     pass
+631: 
+632: 
+633: def strip_ansi(*args, **kwargs):
+634:     pass
+MODULE TAIL:
+623:     "stdin": get_text_stdin,
+624:     "stdout": get_text_stdout,
+625:     "stderr": get_text_stderr,
+626: }
+627: 
+628: 
+629: def strip_ansi(*args, **kwargs):
+630:     pass
+631: 
+632: 
+633: def strip_ansi(*args, **kwargs):
+634:     pass

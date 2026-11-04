@@ -1,0 +1,37 @@
+{
+  "scope": "Synthetic code/protocol audit only. No actual review answers read.",
+  "inputs": {
+    "scripts/structural_checker.py": "2f3dfc7a3d867d9094c8aae692faf24271cca6704532204ce08528a15ce1df1f",
+    "scripts/validate_ai_review.py": "8cf33bb44899733e66bd322640b096b6cb70712b24f33c191fed3095421919fe",
+    "scripts/analyze_ai_pilot.py": "f902d0331a972895ea39312c9856b78976083e0cd7381745304c751a7a0fbdea",
+    "examples/ai_review_pilot/protocol.json": "3a9e5dd61bf9963b48f07e5a324bf7e169756c94fc97eb7fa701b5cb17705e17"
+  },
+  "nested_class_global": {
+    "source": "def f():\n    pass\n\nclass Outer:\n    class Inner:\n        global f\n        f = 0\n",
+    "rubric_expected": "uncertain",
+    "checker_actual": "supported",
+    "reason": "unique unconditional top-level syntactic function definition",
+    "facts": {
+      "definition_count": 1,
+      "unconditional_definition_count": 1,
+      "exists": true,
+      "signature": {
+        "parameters": [],
+        "returns_ast": null,
+        "decorators_ast": [],
+        "is_async": false
+      }
+    },
+    "mismatch_reproduced": true,
+    "explanation": "The nested class declares global f and assigns f. Class traversal skips this global declaration."
+  },
+  "required_fact_and_methodology_contract": {
+    "format_status": "passed",
+    "extracted_facts": {
+      "placeholder": true
+    },
+    "methodology_sidecar_present": false,
+    "mandatory_rubric_fact_fields_present": false,
+    "interpretation": "Format pass does not establish rubric or methodology compliance."
+  }
+}
