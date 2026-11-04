@@ -229,8 +229,8 @@ runtime sources; Docker image в него не входит. Хеш и инст�
 unresolved-флаги; снятия одного глобального fallback недостаточно для выборочного
 отбора. Проверены parent-источники; child-результаты не использовались.
 
-[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v5/verified-facts.md)
-связывает 69 показателей с точным полем хешированного источника, единицей и
+[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v6/verified-facts.md)
+связывает 82 показателя с точным полем хешированного источника, единицей и
 ограничениями. Проверка и генерация: `.venv/bin/python -m scripts.check_research_facts --out runs/NEW_NAME`.
 
 [Формальные условия гарантий доступности](docs/availability_invariants_2026-11-04_ru.md)
@@ -251,4 +251,4 @@ production-кода независимым proof kernel не заявляетс�
 - [Исправление class-global](docs/class_global_binding_fix_2026-11-04_ru.md): устранён пропуск неоднозначности в индексаторе, обновлены версии кэшей и проверены реальные Git replay fixtures.
 - [Replay реальной истории Click](docs/real_structural_replay_2026-11-04_ru.md): 24 фиксированных claims, 112 наблюдений на вариант; 8/13/112/112 дочерних проверок при одинаковой доступности. Восемь отрицательных наблюдений относятся к одному изменению аннотации одного claim; это development-результат.
 
-Последняя полная проверка: [1248 passed, Ruff и mypy на 700ebf2](reports/research-20261104/full-verification-700ebf2/checks.json), source snapshots и hashes трёх логов совпали.
+Последняя полная проверка: [1259 passed, Ruff и mypy на 49dc9c2](reports/research-20261104/full-verification-49dc9c2/checks.json), source snapshots и hashes трёх логов совпали. Независимый аудитор real replay дополнительно прошёл десять групп контролей; он добавлен после этого полного прогона.

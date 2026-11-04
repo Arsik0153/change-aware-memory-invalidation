@@ -1,0 +1,55 @@
+{
+  "additional_cli_preservation_checks": [
+    {
+      "check": "existing_control_output_refused",
+      "error_type": "FileExistsError",
+      "existing_evidence_unchanged": true,
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "check": "existing_audit_report_refused",
+      "error_type": "FileExistsError",
+      "existing_evidence_unchanged": true,
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "archive_files": 2822,
+      "check": "prior_audit_archive_unchanged",
+      "passed": true
+    },
+    {
+      "check": "auditor_default_root_from_tmp",
+      "passed": true,
+      "report_equals_explicit_root_control_baseline": true
+    }
+  ],
+  "changes": [
+    "Formatted both scripts with Ruff; replaced four assigned lambdas with named functions and removed the unused import.",
+    "Repository root discovery handles both an installed scripts/ location and ignored staging paths; explicit --root remains supported. Relative --result paths resolve from --root.",
+    "Control CLI accepts --root, --result and required --out. It exclusively creates a new output directory, writes baseline and control evidence beneath it, and never deletes existing evidence.",
+    "Auditor --out exclusively creates a new report file. The control script suppresses sibling bytecode generation."
+  ],
+  "control_groups_passed": 10,
+  "frozen_result_manifest_sha256": "7e38f3cd13af5ea597d95c81844859e9cdb1ae13d4b9961882c22e782d0ab727",
+  "integration_commands": [
+    ".venv/bin/python scripts/audit_real_structural_replay.py --root . --out /new/path/audit-report.json",
+    ".venv/bin/python scripts/check_real_structural_replay_audit.py --root . --out /new/path/control-evidence"
+  ],
+  "limits": [
+    "The pinned protocol/seal and local Git object database are the trust roots; artifact hashes are integrity checks, not signatures.",
+    "The bounded independent semantic check supports this exact population of present, unique direct functions passing a conservative immediate binding screen; unsupported future populations stop the audit.",
+    "CPython ast is shared with production/reference. Syntactic predicates do not establish dynamic binding or runtime behavior.",
+    "Source inspection finds references computed after policy transitions and never passed into selection/state; this is not a dynamic information-flow proof.",
+    "Recorded actual calls are reconciled exactly against raw validation/cost rows; this does not independently observe past physical executions or wall time.",
+    "All eight contradicted observations repeat one claim on a dependent trajectory; no population safety estimate or speedup follows."
+  ],
+  "prior_archive": "runs/real-replay-independent-audit-20261104",
+  "prior_archive_files": 2822,
+  "prior_archive_preserved": true,
+  "schema_version": 2,
+  "scientific_scope_changed": false,
+  "source_commit": "56750dd4a38d7e30a60925f6c59040f1704e6634",
+  "status": "pass"
+}

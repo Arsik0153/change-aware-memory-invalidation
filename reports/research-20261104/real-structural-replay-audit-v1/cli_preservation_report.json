@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "check": "existing_control_output_refused",
+      "error_type": "FileExistsError",
+      "existing_evidence_unchanged": true,
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "check": "existing_audit_report_refused",
+      "error_type": "FileExistsError",
+      "existing_evidence_unchanged": true,
+      "passed": true,
+      "returncode": 1
+    },
+    {
+      "archive_files": 2822,
+      "check": "prior_audit_archive_unchanged",
+      "passed": true
+    },
+    {
+      "check": "auditor_default_root_from_tmp",
+      "passed": true,
+      "report_equals_explicit_root_control_baseline": true
+    }
+  ],
+  "status": "pass"
+}

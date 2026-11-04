@@ -486,7 +486,7 @@
     {
       "id": "verification",
       "label": "Полная проверка",
-      "scope": "Неизменный commit 700ebf2; production fix class-global, AI pilot и translation scripts включены.",
+      "scope": "Неизменный commit 49dc9c2; production fix, AI pilot, translation и real replay driver включены.",
       "limits": [
         "Полная проверка относится к указанному HEAD; поздние отдельные auditors не приписываются этому прогону."
       ],
@@ -494,12 +494,12 @@
         {
           "id": "verification.passed",
           "label": "Прошедшие тесты",
-          "source": "reports/research-20261104/full-verification-700ebf2/pytest.log",
-          "source_sha256": "3ae489df7a1cd247f8f05904d113f867440eae9be29a152fbfca67a52d032e51",
+          "source": "reports/research-20261104/full-verification-49dc9c2/pytest.log",
+          "source_sha256": "a01afddfe8468717c396d124dfb889375d4959f3c446d1c23cd5cf897f223b8f",
           "selector": {
             "format": "pytest_summary"
           },
-          "expected": 1248,
+          "expected": 1259,
           "unit": "test"
         }
       ]
@@ -1014,6 +1014,174 @@
           },
           "expected": 0,
           "unit": "claim/transition"
+        }
+      ]
+    },
+    {
+      "id": "real_structural_replay",
+      "label": "Реальная история Click, development",
+      "scope": "24 фиксированных claims; три цепочки длины 1/12/1; 112 наблюдений на вариант; четыре стратегии.",
+      "limits": [
+        "Восемь contradicted observations относятся к одному claim и одному возникновению изменения аннотации.",
+        "Экспериментальный provenance и AI parent-подтверждения не являются допуском основного held-out протокола.",
+        "Счётчики дочерних validations не являются wall-time speedup; parent, reference и общий index учитываются отдельно."
+      ],
+      "facts": [
+        {
+          "id": "real_structural_replay.claims",
+          "label": "Исходные parent claims",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/parent_initialization/symbol_anchor/eligible_parent_claims"
+          },
+          "expected": 24,
+          "unit": "claim"
+        },
+        {
+          "id": "real_structural_replay.observations",
+          "label": "Наблюдения на вариант",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/scored_observations"
+          },
+          "expected": 112,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.symbol_calls",
+          "label": "Проверки по символу",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 8,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.file_calls",
+          "label": "Проверки по файлу",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 13,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.incomplete_calls",
+          "label": "Проверки при известной неполноте",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/known_incomplete/actual_validation_calls"
+          },
+          "expected": 112,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.all_calls",
+          "label": "Полная перепроверка",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/all_validate/actual_validation_calls"
+          },
+          "expected": 112,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.contradicted_observations",
+          "label": "Опровергнутые наблюдения на вариант",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/reference_contradicted"
+          },
+          "expected": 8,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.unique_contradicted",
+          "label": "Различные опровергнутые claims",
+          "source": "reports/research-20261104/real-structural-replay-audit-v1/report.json",
+          "source_sha256": "49f06de8f59c025ead49cb15cdb30c008ec6da87c100102d7230b7aeecabe254",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/unique_contradicted_claims"
+          },
+          "expected": 1,
+          "unit": "claim"
+        },
+        {
+          "id": "real_structural_replay.false_available",
+          "label": "Ложная доступность, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/false_available"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.available_unknown",
+          "label": "Доступность при unknown, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/available_unknown"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.withheld_supported",
+          "label": "Скрытые подтверждённые, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/withheld_supported"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.index_builds",
+          "label": "Общие построения индекса",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/shared_index_builds"
+          },
+          "expected": 17,
+          "unit": "index build"
+        },
+        {
+          "id": "real_structural_replay.child_reference",
+          "label": "Дочерние reference calls",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/child_reference_calls"
+          },
+          "expected": 112,
+          "unit": "reference call"
         }
       ]
     }

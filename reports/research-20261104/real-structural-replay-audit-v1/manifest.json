@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "stage": "posthoc_independent_audit",
+  "evaluation_eligible": false,
+  "scripts": {
+    "scripts/audit_real_structural_replay.py": "7e43e21f39a45eebcc2bb9409e8b2b3b66b8253a481d2c6cac1eea513f6fbc96",
+    "scripts/check_real_structural_replay_audit.py": "98aeb7697bb76c6d032cd871438768f02738dbf1d04e814bc5f31ae3e69b3e55"
+  },
+  "artifacts": {
+    "cli_preservation_report.json": "5a7aabe5c5fab571c0434493efd3800d964a4efb0691f06d3e001605018d9e09",
+    "audit_notes.json": "d2ba1f352ad834b424431fa6c7925f0ac4d7a6aeba188377962dace148a1f300",
+    "tamper_report.json": "6511ba511d11f0908f89da380e16e44d64f4a28114576bb279a34662e55ebbaf",
+    "report.json": "49f06de8f59c025ead49cb15cdb30c008ec6da87c100102d7230b7aeecabe254"
+  },
+  "commands": [
+    ".venv/bin/python scripts/audit_real_structural_replay.py --out NEW_REPORT.json",
+    ".venv/bin/python scripts/check_real_structural_replay_audit.py --out runs/NEW_CONTROL_DIR"
+  ],
+  "limits": [
+    "Same CPython AST; bounded syntactic population.",
+    "Recorded calls, no independent observation of historical physical execution.",
+    "Full rehashed corruptions are reproducible with control CLI; published report retains mutation details and reasons."
+  ]
+}

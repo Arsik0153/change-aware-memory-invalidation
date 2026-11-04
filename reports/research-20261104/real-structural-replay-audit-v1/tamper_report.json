@@ -1,0 +1,132 @@
+{
+  "original_artifacts_preserved": true,
+  "original_file_count": 563,
+  "original_manifest_sha256": "7e38f3cd13af5ea597d95c81844859e9cdb1ae13d4b9961882c22e782d0ab727",
+  "status": "pass",
+  "tamper_controls": [
+    {
+      "artifact_hashes_recomputed_and_valid": true,
+      "audit_rejected": true,
+      "control": "missing_observation",
+      "mutation": {
+        "removed_identity": {
+          "claim_id": "click-8c7491d9b0d7-07",
+          "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+          "group_id": "click-8c7491d9b0d7",
+          "variant": "all_validate"
+        }
+      },
+      "reason": "observation coverage mismatch"
+    },
+    {
+      "artifact_hashes_recomputed_and_valid": true,
+      "audit_rejected": true,
+      "control": "forged_report_metric",
+      "mutation": {
+        "field": "variants.symbol_anchor.actual_validation_calls",
+        "from": 8,
+        "to": 9
+      },
+      "reason": "report metric recomputation mismatch"
+    },
+    {
+      "artifact_hashes_recomputed_and_valid": true,
+      "audit_rejected": true,
+      "control": "state_inconsistency",
+      "mutation": {
+        "field": "state.available",
+        "from": false,
+        "identity": {
+          "claim_id": "click-1e53748f80eb-04",
+          "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+          "group_id": "click-1e53748f80eb",
+          "variant": "symbol_anchor"
+        },
+        "to": true
+      },
+      "reason": "state transition mismatch"
+    },
+    {
+      "artifact_hashes_recomputed_and_valid": true,
+      "audit_rejected": true,
+      "control": "forged_reference_verdict",
+      "mutation": {
+        "all_variant_copies_and_packet_changed": true,
+        "field": "reference.verdict",
+        "from": "supported",
+        "identity": {
+          "claim_id": "click-1c2fc1b0152f-00",
+          "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+          "group_id": "click-1c2fc1b0152f"
+        },
+        "to": "contradicted"
+      },
+      "reason": "reference verdict mismatch for click-1c2fc1b0152f-00"
+    },
+    {
+      "artifact_hashes_recomputed_and_valid": true,
+      "audit_rejected": true,
+      "control": "forged_git_source",
+      "mutation": {
+        "appended": "comment",
+        "artifact": "packets/click-1e53748f80eb/3e66bbf5f1afaecbb4991eab1f7635ea4693eefe/click-1e53748f80eb-05/subject.raw"
+      },
+      "reason": "raw Git source mismatch"
+    },
+    {
+      "available_unknown": 1,
+      "control": "unknown_is_separate_from_contradicted",
+      "false_available": 0,
+      "false_available_per_contradicted": null,
+      "passed": true
+    },
+    {
+      "control": "conservative_binding_screen",
+      "deferred_function_lambda_bodies_excluded": true,
+      "hazard_cases_rejected": [
+        "assignment",
+        "class_definition",
+        "class_global",
+        "class_store_conservative",
+        "deletion",
+        "evaluated_function_default",
+        "evaluated_lambda_default",
+        "except_target",
+        "from_import",
+        "import_alias",
+        "loop_target",
+        "match_mapping_rest",
+        "match_target",
+        "namespace_mutation",
+        "star_import",
+        "walrus",
+        "with_target"
+      ],
+      "passed": true
+    },
+    {
+      "claim_ids": [
+        "click-1c2fc1b0152f-01",
+        "click-1c2fc1b0152f-02"
+      ],
+      "control": "same_module_AI_review_item_swap",
+      "passed": true,
+      "rejected_reason": "AI review item is not the exact authentic original claim",
+      "shared_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2"
+    },
+    {
+      "control": "repository_root_discovery",
+      "installed_script_path": "/root/apps/change-aware-memory-invalidation/scripts/audit_real_structural_replay.py",
+      "passed": true,
+      "staging_script_path": "/root/apps/change-aware-memory-invalidation/scripts/audit_real_structural_replay.py"
+    },
+    {
+      "control": "historical_source_fallback",
+      "historical_commit": "56750dd4a38d7e30a60925f6c59040f1704e6634",
+      "passed": true,
+      "shared_workspace_edited": false,
+      "simulated_current_source_change": "src/cami/policies.py",
+      "verified_frozen_sha256": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040"
+    }
+  ]
+}
