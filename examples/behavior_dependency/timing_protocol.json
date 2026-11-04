@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "experiment": "synthetic-behavior-end-to-end-cost-v1",
+  "claim_to_evaluate": "For these two authored histories on this host, report elapsed CLI-run time and maintenance time for each fixed policy/provenance variant, with work and availability outcomes. Do not infer production or real-data speedup.",
+  "histories": [
+    {
+      "id": "exposure",
+      "protocol": "examples/behavior_dependency/protocol.json",
+      "protocol_sha256": "c79ab561ae2793cea0e305545b094f668ca5d3ad2bb0c2417d7c9e2923a10d7a"
+    },
+    {
+      "id": "recovery",
+      "protocol": "examples/behavior_dependency/recovery_protocol.json",
+      "protocol_sha256": "bdcd2134e59a827a798ca1d88566e3a37aa340ac334333faffe4d90030f43665"
+    }
+  ],
+  "variants": [
+    "all_validate",
+    "intact",
+    "known_missing",
+    "hidden_missing"
+  ],
+  "repetitions": 5,
+  "schedule": [
+    {
+      "repeat": 1,
+      "history": "exposure",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 1,
+      "history": "exposure",
+      "variant": "intact"
+    },
+    {
+      "repeat": 1,
+      "history": "exposure",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 1,
+      "history": "exposure",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 1,
+      "history": "recovery",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 1,
+      "history": "recovery",
+      "variant": "intact"
+    },
+    {
+      "repeat": 1,
+      "history": "recovery",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 1,
+      "history": "recovery",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 2,
+      "history": "recovery",
+      "variant": "intact"
+    },
+    {
+      "repeat": 2,
+      "history": "recovery",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 2,
+      "history": "recovery",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 2,
+      "history": "recovery",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 2,
+      "history": "exposure",
+      "variant": "intact"
+    },
+    {
+      "repeat": 2,
+      "history": "exposure",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 2,
+      "history": "exposure",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 2,
+      "history": "exposure",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 3,
+      "history": "exposure",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 3,
+      "history": "exposure",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 3,
+      "history": "exposure",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 3,
+      "history": "exposure",
+      "variant": "intact"
+    },
+    {
+      "repeat": 3,
+      "history": "recovery",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 3,
+      "history": "recovery",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 3,
+      "history": "recovery",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 3,
+      "history": "recovery",
+      "variant": "intact"
+    },
+    {
+      "repeat": 4,
+      "history": "recovery",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 4,
+      "history": "recovery",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 4,
+      "history": "recovery",
+      "variant": "intact"
+    },
+    {
+      "repeat": 4,
+      "history": "recovery",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 4,
+      "history": "exposure",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 4,
+      "history": "exposure",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 4,
+      "history": "exposure",
+      "variant": "intact"
+    },
+    {
+      "repeat": 4,
+      "history": "exposure",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 5,
+      "history": "exposure",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 5,
+      "history": "exposure",
+      "variant": "intact"
+    },
+    {
+      "repeat": 5,
+      "history": "exposure",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 5,
+      "history": "exposure",
+      "variant": "hidden_missing"
+    },
+    {
+      "repeat": 5,
+      "history": "recovery",
+      "variant": "all_validate"
+    },
+    {
+      "repeat": 5,
+      "history": "recovery",
+      "variant": "intact"
+    },
+    {
+      "repeat": 5,
+      "history": "recovery",
+      "variant": "known_missing"
+    },
+    {
+      "repeat": 5,
+      "history": "recovery",
+      "variant": "hidden_missing"
+    }
+  ],
+  "measured_runs": 40,
+  "expected_measured_probe_executions": 615,
+  "profile": {
+    "history": "exposure",
+    "variant": "all_validate",
+    "expected_probe_executions": 21,
+    "included_in_timing_summary": false,
+    "tool": "cProfile: host call path; Docker child CPU is not profiled"
+  },
+  "clock": "time.perf_counter around fresh subprocess python -m cami.cli run, including startup/preflight/persistence; fixture preparation, verification and scoring excluded",
+  "cache_regime": "CAMI verdict cache disabled; per-run in-memory AST cache normal; Docker image preinstalled, host filesystem/Docker caches not cleared. A separate profiling baseline precedes measured runs.",
+  "order": "Variant order rotates cyclically by repeat; history block order alternates. Deterministic balanced-position first four repeats plus one extra repeat.",
+  "comparisons": "Within each history, each nonbaseline variant versus all_validate. Report all five paired deltas, median, range and counts. Timing repeats are not independent datasets. No population confidence interval. Hidden-missing cost must be shown alongside known availability errors.",
+  "resource_policy": "No simultaneous CAMI test/benchmark jobs; record load and running Docker containers. Do not stop unrelated processes. Existing runner resource limits, retries and pinned images retained.",
+  "failure_policy": "Stop on any CLI failure, missing execution, changed input/source, wrong expected outcome or technical probe failure; preserve partial results; do not silently retry or exclude runs.",
+  "expected_checks": "verify_run validates manifest hashes, complete state/selection/validation coverage, parent support, selected-step expectations, cache disabled and execution counts. Audit every raw probe result as passed or assertion_failure and compare totals.",
+  "limits": [
+    "Two constructed histories with one claim each; not a production workload or real cohort.",
+    "Validation includes three repeats; counts do not represent independent claims.",
+    "Profile distinguishes Docker subprocess waiting from host work, not container-startup from child pytest internals.",
+    "Configs are protocol-fixed, not tuned alternatives; no recommendation about adopting a policy from timings alone."
+  ]
+}
