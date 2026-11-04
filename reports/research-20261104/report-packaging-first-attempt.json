@@ -1,0 +1,18 @@
+{
+  "status": "reproduced",
+  "error": "Unexpected or missing report files",
+  "omitted_inventory_entries": [
+    "evidence/behavior-cycle-witness-v1/manifest.json",
+    "evidence/behavior-reachability-v1/manifest.json",
+    "evidence/behavior-recovery-v1/manifest.json",
+    "evidence/behavior-timing-v1/manifest.json",
+    "evidence/binding-gate-v1/manifest.json",
+    "evidence/impact-graphs-v1/manifest.json",
+    "evidence/requests-projection-v1/manifest.json",
+    "evidence/structural-carry-v1/manifest.json",
+    "evidence/structural-prerequisites-v1/manifest.json"
+  ],
+  "archive_created": false,
+  "published_delivery_still": "output/research-progress-20261104-v2.zip",
+  "first_negative_controls_not_isolated": "All three first controls were rejected by this pre-existing inventory mismatch; they must be rerun after fixing the builder."
+}

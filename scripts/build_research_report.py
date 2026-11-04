@@ -272,7 +272,7 @@ def build(source: Path, out: Path, spec_path: Path | None = None):
         raise
     finally:
         manifest['artifact_hashes'] = {p.relative_to(out).as_posix():sha(p) for p in sorted(out.rglob('*'))
-                                       if p.is_file() and p.name != 'manifest.json'}
+                                       if p.is_file() and p != out / 'manifest.json'}
         write(out / 'manifest.json',manifest)
 
 
