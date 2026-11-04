@@ -1,0 +1,86 @@
+{
+  "status": "complete_no_remaining_blocker_for_bounded_authored_freeze",
+  "reviewed_files_sha256": {
+    "runs/registered-negative-carry-development-20261104/registered_negative_carry.py": "a6d46927be58e01945c51abee33fbb425143ea65d946a6eb6ef069d0f9de8ea0",
+    "runs/registered-negative-carry-development-20261104/registered_negative_carry_challenge.py": "4e13c127cef7295eac8aadc2f9196a5c17c0d1841a5f613cdd623dba3262bcce",
+    "runs/registered-negative-carry-development-20261104/run_registered_negative_carry.py": "098f02ef51f295f4b040a041093afab485e534a1401455f380dabeab7f03236f",
+    "runs/registered-negative-carry-development-20261104/protocol.json": "f497c2b144c8b283a83469a898dc18bdb33386b7d33c46ec957c85bd6acf6129",
+    "runs/registered-negative-carry-development-20261104/test_registered_negative_carry.py": "e676174a13798280daaed00ebb7107b59d695e99fdf7e15d7b852ba60125b4a2"
+  },
+  "original_implementation_hashes_verified": {
+    "scripts/run_negative_carry_challenge.py": "330e7708ae5fd4be2bbd17d34009e692e54226958dcb8617025a48dbbff8a28a",
+    "scripts/negative_carry_challenge.py": "2e75b949770ddc78fc7530b1c9f4720990569496a0e00aec0fd941f4cd2fb2aa",
+    "scripts/negative_carry.py": "e3d16150c1882b20470d80bf681fc9eacc56046cd24823e9b3df096e7d279ba4",
+    "scripts/negative_carry_witness.py": "2da3c42759f4247dc1573928a952d013b91766f285d2361200b0dac896a4ba28",
+    "scripts/blob_negative_carry.py": "9888cfcfc9bcc600cf1f3a0a1d65791c38a0f7846774707ee336e829b36378a0"
+  },
+  "verification": {
+    "authored_fixture_tests_passed": 16,
+    "histories": 17,
+    "transitions_per_pack": 31,
+    "paired_repetitions": 21,
+    "history_pack_repetitions": 100,
+    "actual_histories_per_timed_block": 1700,
+    "actual_transitions_per_timed_block": 3100,
+    "timing_experiment_run": false,
+    "profiling_run": false,
+    "corpus_access": false,
+    "tracked_edits": false
+  },
+  "resolved_findings": [
+    {
+      "id": "policy_boundary",
+      "observed_initial_issue": "Dirty registration forced checking only for symbol_validate despite step accepting arbitrary PolicyConfig. A supported state could remain available for a revised false predicate under unchanged-source file_validate. This was outside the frozen workload but within the initial public method signature.",
+      "resolution": "step now rejects all policies except symbol_validate and intentional keep_all before touching owned state; authored regression passes."
+    },
+    {
+      "id": "four_variant_order",
+      "observed_initial_issue": "Rotation with odd-repetition reversal groups four variants into rank parity classes, unlike the old three-variant cycle.",
+      "resolution": "Latest variant_order reverses whole four-rotation cycles. Static review confirms each variant occupies each position twice per eight-repetition cycle; regression passes.",
+      "evidence": "order_review.json"
+    }
+  ],
+  "ownership_and_registration": {
+    "input_boundary": "Exact Claim/Provenance/ResearchContext types, recursive immutable-value validation, full JSON schema reparse and owned frozen copies. Context fields, roots, limits and run binding validated. Ordinary new object or same-ID predicate/provenance/context edits invalidate the negative witness and force the next symbol_validate check.",
+    "fast_path": "Repeated registration skips work only for the exact originally submitted immutable object identities. Owned copies remain separate from submitted objects. Equal-but-new objects conservatively pay registration and validation.",
+    "actual_result_boundary": "Fresh owner either executes validate_claim or once verifies a trusted actual ValidationResult with schema reparse, claim/commit/input-hash identity, module/definition/source witness, root visibility and size limit. MemoryState and foreign witnesses cannot initialize it.",
+    "last_actual_lineage": "Negative witness is owned by the entry and exact registered input bundle. Guards match last_checked_commit, stale/unavailable/mismatch state, owned provenance identity and regular module OIDs in both snapshots to the last actual negative module. Actual uncertainty/support clears the witness. Policy-switch recovery validates.",
+    "publication_boundary": "Registration is a pending epoch transition: state exposed between register and step is still historical prior-epoch state, not a checked result for newly registered inputs. The frozen runner registers then checks before reporting/publishing current state."
+  },
+  "measurement_review": {
+    "original_three_variants": "Dispatched to unchanged original run_history; protocol hashes and authored test verify original implementation bytes and exact workload match.",
+    "new_variant_charged_each_reset": [
+      "Owner allocation",
+      "Recursive immutable/schema validation and owned cloning",
+      "Context/type/limit/root checks",
+      "Actual parent-result ingress normalization and input-hash/source-witness verification",
+      "Initial owned negative acquisition"
+    ],
+    "charged_each_step": [
+      "Registration attempt, and full re-registration for each new input object/epoch",
+      "Genuine production selection",
+      "Carry eligibility and module metadata checks",
+      "Owned witness replacement after actual validation",
+      "Any actual validate_claim execution",
+      "advance_state and work counters"
+    ],
+    "audit_hashes": "Trace-only claim/provenance/context SHA digests were removed from the domain bundle and are computed only in capture outside measured timing. Cold actual input-hash verification remains charged.",
+    "work_assertions_per_pack": {
+      "registrations": 22,
+      "checked_result_imports": 17,
+      "actual_child_validation_calls": 22,
+      "suppressed_validations": 7
+    },
+    "setup": "Shared authored Git/snapshot/index/reference construction remains outside maintenance, with candidate-only original context binding setup separately disclosed.",
+    "warmup_and_order": "Two fixed warmup blocks precede 21 paired repetitions; balanced whole-cycle rotation order, identical pack sizes, own reset/sequential state for every variant.",
+    "checks_and_profiles": "Correctness matches fresh semantic state fields outside timing; exact suppressed verdict/reason checked. Timed block endpoint/counter assertions run after sample boundaries. Profiles are a separate post-timing phase with their own work counts.",
+    "interpretation": "No optimization success or elapsed benefit is established. Normalization, deep checking, cloning and ingress verification may exceed old hash-loop costs on these short histories. Judge measured paired CPU/wall variation and separate limiter profiles before any recommendation; no corpus or end-to-end index savings follow."
+  },
+  "bounded_premises": [
+    "Genuine production snapshots/indexes are constructed with the matching registered context and complete authentic ChangeSet.",
+    "Trusted sealed builder supplies actual validation results; input hashes are consistency checks, not execution authentication.",
+    "Ordinary frozen-schema APIs are the trust boundary. Arbitrary __dict__, object.__setattr__, class-definition or private-owner tampering is not a supported Python security boundary.",
+    "Only the fixed 17 authored histories and explicit symbol_validate/keep_all owner policies are claimed."
+  ],
+  "remaining_blockers": []
+}
