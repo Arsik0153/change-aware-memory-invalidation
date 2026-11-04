@@ -1,0 +1,17 @@
+{
+  "files": {
+    "report.json": "1d8de48db1cf90014acbb1202a4577da793b4c9ee280b4ccf1adc0e81caa8a8c",
+    "tamper_report.json": "e43bfc4a7805c3f663c7be86266f2dfcb3722ee549761290213e168abdf4d7f3"
+  },
+  "implementation": {
+    "scripts/audit_negative_carry.py": "c1722f86634a03e548886b3c25d0fc301f0ad0156285faee8d738b94b61e3308",
+    "scripts/audit_registered_negative_carry.py": "be8c8fbca5ac3502998acae9188a9b2696ad1bfd3bec0b58e4f653e983a50d4a",
+    "scripts/check_registered_negative_carry_audit.py": "462c81ab09c9e111a0cadfcc1dde069af49f8409d0355e12f249e8db9fb7ff57"
+  },
+  "raw_archive_sha256": "452007ff2a91ccde23b4ed2f5a3915b63e565bb68942d9153a62e29d951f7325",
+  "result_manifest_sha256": "ebbf3ed11de2f62a3b1497f4558d160179b47f1dadac814a29c2b39bdcc493fa",
+  "schema_version": 1,
+  "source_commit": null,
+  "status": "pass",
+  "verification": "Installed auditor checked published file mirror against Git fixtures independently extracted from the published raw archive;10controls passed with original result preserved. No measured rerun."
+}
