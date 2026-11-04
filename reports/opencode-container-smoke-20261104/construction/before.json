@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "exec",
+    "42393980e323d29cc2f1f4f1588b2b94c8ac921b328d5f7f87a0bfe0396e7e50",
+    "python",
+    "-I",
+    "-c",
+    "import json;from pathlib import Path;print(json.dumps({n:(Path('/sys/fs/cgroup')/n).read_text().strip() for n in ['cpu.stat','cpu.max','memory.current','memory.peak','memory.max']}))"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "{\"cpu.stat\": \"usage_usec 86443\\nuser_usec 59616\\nsystem_usec 26827\\ncore_sched.force_idle_usec 0\\nnr_periods 1\\nnr_throttled 0\\nthrottled_usec 0\\nnr_bursts 0\\nburst_usec 0\", \"cpu.max\": \"200000 100000\", \"memory.current\": \"9011200\", \"memory.peak\": \"9011200\", \"memory.max\": \"2147483648\"}\n",
+  "timeout": false,
+  "wall_seconds": 0.0845775711350143
+}

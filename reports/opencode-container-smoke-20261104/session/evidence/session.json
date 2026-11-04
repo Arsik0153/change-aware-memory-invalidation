@@ -1,0 +1,31 @@
+{
+  "id": "ses_e57f0c437ffebTW0XcXSw5qYuE",
+  "projectID": "1ab65f6c4bdf189f42b3da85e8d2f0612c18304d",
+  "agent": "research",
+  "model": {
+    "id": "gpt-6.1-sol",
+    "providerID": "openai",
+    "variant": "high"
+  },
+  "cost": 0,
+  "tokens": {
+    "input": 10631,
+    "output": 260,
+    "reasoning": 206,
+    "cache": {
+      "read": 6912,
+      "write": 0
+    }
+  },
+  "outcome": "succeeded",
+  "time": {
+    "created": 1793820933066,
+    "updated": 1793820965266,
+    "busy": 1793820933140,
+    "idle": 1793820965272
+  },
+  "title": "Fixed research session",
+  "location": {
+    "directory": "/workspace"
+  }
+}

@@ -1,0 +1,4 @@
+from authored import value
+
+def test_value():
+    assert value() == 8

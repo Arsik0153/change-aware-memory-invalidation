@@ -1,0 +1,3 @@
+{
+  "text": "This is an authored integration smoke task. Use memory_lookup for src/authored/__init__.py:value before broad navigation, inspect the current source using native tools, change value() to return 8, and run the existing tests with python -m pytest -q. After editing, query memory_lookup again for the same symbol and report its current availability. Do not use network, upstream history, /state, credentials or runtime implementation. Finish with a concise result.\n"
+}

@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "exec",
+    "-i",
+    "cami-research-bd3fba0beb234c93a2def6b0dd43b79a",
+    "python",
+    "/opt/harness/container_worker.py",
+    "--arm",
+    "cami",
+    "--timeout-seconds",
+    "180",
+    "--reported-token-budget",
+    "250000",
+    "--message-page-size",
+    "200",
+    "--binding-relative",
+    "prepared/binding.json",
+    "--run-model"
+  ],
+  "returncode": 0,
+  "wall_seconds": 33.81072166399099,
+  "stdout": "[Private worker diagnostics not published; see sanitized worker evidence.]",
+  "stderr": "[Private worker diagnostics not published; see sanitized worker evidence.]",
+  "stdout_bytes": 0,
+  "stderr_bytes": 0
+}

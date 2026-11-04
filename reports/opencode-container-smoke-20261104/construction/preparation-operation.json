@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "cgroup_before": {
+    "cpu.stat": "usage_usec 148513\nuser_usec 105654\nsystem_usec 42859\ncore_sched.force_idle_usec 0\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+    "cpu.max": "200000 100000",
+    "memory.current": "11796480",
+    "memory.peak": "11796480",
+    "memory.max": "2147483648"
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "/opt/seed_source_notes.py",
+        "--repo",
+        "/workspace",
+        "--out",
+        "/memory/seed",
+        "--source-root",
+        "src/authored"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall_seconds": 0.046948742121458054
+    },
+    {
+      "argv": [
+        "python",
+        "/opt/memory-adapter/memory_adapter.py",
+        "prepare",
+        "--backend",
+        "cami",
+        "--repo",
+        "/workspace",
+        "--seed-spec",
+        "/memory/seed/seed-spec.json",
+        "--out",
+        "/memory/prepared",
+        "--state-home",
+        "/memory/cami-state"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"prepared\", \"binding\": \"/memory/prepared/binding.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.7396632928866893
+    }
+  ],
+  "model_calls": 0,
+  "cgroup_after": {
+    "cpu.stat": "usage_usec 781444\nuser_usec 575436\nsystem_usec 206008\ncore_sched.force_idle_usec 0\nnr_periods 10\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+    "cpu.max": "200000 100000",
+    "memory.current": "20684800",
+    "memory.peak": "45699072",
+    "memory.max": "2147483648"
+  },
+  "worker_wall_seconds": 0.7874811859801412
+}

@@ -1,0 +1,30 @@
+from pathlib import Path
+import hashlib,json,shutil,subprocess,sys
+ROOT=Path(__file__).resolve().parents[2]
+HERE=Path(__file__).resolve().parent
+TOOLS=HERE/'preparation-tools'
+TOOLS.mkdir()
+origin=ROOT/'runs/opencode-study-controller-development-20261104'
+for name in ['study_common.py','study_runtime.py','study_workspace.py','preparation_worker.py']:
+ shutil.copyfile(origin/name,TOOLS/name)
+sys.path.insert(0,str(TOOLS))
+from study_runtime import origin_memory
+from study_common import write
+workspace=HERE/'workspace';memory=HERE/'memory';bundle=HERE/'bundle'
+(workspace/'src/authored').mkdir(parents=True);(workspace/'tests').mkdir();memory.mkdir();bundle.mkdir()
+(workspace/'src/authored/__init__.py').write_text('def value():\n    return 7\n')
+(workspace/'tests/test_value.py').write_text('from authored import value\n\ndef test_value():\n    assert value() == 8\n')
+(workspace/'.gitignore').write_text('__pycache__/\n.pytest_cache/\n')
+for args in [['init','-q'],['add','.'],['-c','user.name=CAMI Authored Fixture','-c','user.email=fixture@invalid','commit','-qm','Authored fixture before model']]:
+ subprocess.run(['git','-C',str(workspace),*args],check=True)
+shutil.copyfile(ROOT/'examples/opencode_benchmark_development_v1/seed_source_notes.py',bundle/'seed_source_notes.py')
+subprocess.run([sys.executable,str(bundle/'seed_source_notes.py'),'--repo',str(workspace),'--source-root','src/authored','--out',str(bundle/'memory-origin')],check=True)
+runtime=ROOT/'runs/opencode-runtime-development-20261104/batch-v2/extracted'
+study={'image':'sha256:0e055f29b8dd191bc51b16df3046c1f986f77db48b028b65b4fcf27aa49ecdf3','bundle_path':str(bundle),'normalized':{'seed':'memory-origin/seed-spec.json','source_roots':['src/authored']},'cami_source':str(runtime/'src'),'adapter':str(runtime/'integrations/opencode')}
+write(HERE/'preparation-input.json',study)
+write(HERE/'preparation-sources.json',{str(p.relative_to(HERE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),*TOOLS.glob('*.py'),bundle/'seed_source_notes.py']})
+try:
+ result=origin_memory(study,workspace,memory,HERE/'construction','cami');write(HERE/'preparation-result.json',{'status':'passed','immutable_memory':result})
+except BaseException as error:
+ write(HERE/'preparation-result.json',{'status':'failed','error':str(error)});raise
+(HERE/'prompt.txt').write_text('This is an authored integration smoke task. Use memory_lookup for src/authored/__init__.py:value before broad navigation, inspect the current source using native tools, change value() to return 8, and run the existing tests with python -m pytest -q. After editing, query memory_lookup again for the same symbol and report its current availability. Do not use network, upstream history, /state, credentials or runtime implementation. Finish with a concise result.\n')

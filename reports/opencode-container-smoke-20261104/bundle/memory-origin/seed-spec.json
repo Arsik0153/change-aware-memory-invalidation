@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_roots": [
+    "src/authored"
+  ],
+  "excluded_paths": [],
+  "records": [
+    {
+      "id": "source-cbdc911a49c4185c5ff9f6f6",
+      "kind": "note",
+      "selector": "src/authored/__init__.py:value",
+      "note_key": "source-excerpt:cbdc911a49c4185c5ff9f6f6",
+      "text": "Historical source excerpt for src/authored/__init__.py:value.\nOrigin file SHA-256: 37a5ddd282078173f597d9f32edb8e659e5a1b1ea0606d25da31c4c07876bad6. Lines 1-2.\nThis is source text from the memory origin, not a verified behavior claim.\ndef value():\n    return 7\n",
+      "subject": {
+        "language": "python",
+        "path": "src/authored/__init__.py",
+        "qualname": "value",
+        "node_kind": "function"
+      }
+    }
+  ]
+}

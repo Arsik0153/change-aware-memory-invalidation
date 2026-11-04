@@ -1,0 +1,27 @@
+{
+  "status": "partial_integration_smoke",
+  "checks": {
+    "operational_session_passed": true,
+    "source_changed_to_expected_bytes": true,
+    "native_read_completed": true,
+    "native_patch_completed": true,
+    "native_test_output_one_passed": true,
+    "pre_edit_memory_query_observed": false,
+    "post_edit_old_note_withheld": true,
+    "private_state_removed": true
+  },
+  "model_sessions": 1,
+  "assistant_messages": 5,
+  "tokens": {
+    "input": 10631,
+    "output": 260,
+    "reasoning": 206,
+    "cache": {
+      "read": 6912,
+      "write": 0
+    }
+  },
+  "total_host_wall_seconds": 37.67581640603021,
+  "limitations": "Source/test/actual postedit CAMI path proved; model missed required preedit query. Initial unavailability statement is not proof of catalog absence. Not a benchmark or efficiency comparison. Original controller preparation hash-check failure also retained.",
+  "session_manifest_sha256": "1a5fcda0258c515ed7532353ebb46a02b5dde6429923a971622f498b2de2ea48"
+}

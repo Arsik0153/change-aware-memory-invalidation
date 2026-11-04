@@ -1,0 +1,33 @@
+{
+  "session_tokens": {
+    "input": 10631,
+    "output": 260,
+    "reasoning": 206,
+    "cache": {
+      "read": 6912,
+      "write": 0
+    }
+  },
+  "session_client_cost_field": 0,
+  "assistant_message_count": 5,
+  "assistant_step_tokens": {
+    "input": 10631,
+    "output": 260,
+    "reasoning": 206
+  },
+  "installed_normalizer_semantics": "v2.2.5 input=noncached; output=visible output; reasoning and cache are disjoint components. Missing/nonfinite provider fields normalize to0. See pinned reconnaissance/token-semantics source.",
+  "reported_full_input_if_provider_fields_present": 17543,
+  "reported_full_output_if_provider_fields_present": 466,
+  "memory_lookups": [
+    {
+      "message_id": "msg_1a80f6cc1001yrlMd7vXVdP0We",
+      "name": "research_memory_memory_lookup",
+      "input": {
+        "query": "src/authored/__init__.py:value",
+        "limit": 5
+      },
+      "status": "completed"
+    }
+  ],
+  "limits": "Session and message totals retained separately, never summed. Client cost is not subscription billing. Provider missingness lost by normalizer."
+}

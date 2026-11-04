@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "exec",
+    "42393980e323d29cc2f1f4f1588b2b94c8ac921b328d5f7f87a0bfe0396e7e50",
+    "python",
+    "/opt/preparation_worker.py",
+    "--backend",
+    "cami",
+    "--seed-sha256",
+    "0e233ec0f7b0439bb05b0b1bbce1b39b034221d5fea69640b8150d910aa14cd3",
+    "--source-root",
+    "src/authored"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "",
+  "timeout": false,
+  "wall_seconds": 0.8861771761439741
+}

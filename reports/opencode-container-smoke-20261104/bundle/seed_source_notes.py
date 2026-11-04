@@ -1,0 +1,85 @@
+"""Deterministic source-only memory; no model, future patch, or task-specific selection."""
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+from pathlib import Path
+import resource
+import time
+
+
+def build(repo: Path, roots: list[str]) -> tuple[dict, dict]:
+    started, cpu = time.monotonic(), time.process_time()
+    records, sources, excluded = [], {}, []
+    for root in roots:
+        for path in sorted((repo / root).rglob("*.py")):
+            relative = path.relative_to(repo).as_posix()
+            if path.is_symlink() or any(p in {"__pycache__", "_vendor", "vendor"} for p in path.parts):
+                excluded.append({"path": relative, "reason": "symlink_or_vendor"})
+                continue
+            raw = path.read_bytes()
+            sources[relative] = hashlib.sha256(raw).hexdigest()
+            try:
+                tree = ast.parse(raw)
+                text = raw.decode("utf-8")
+            except (SyntaxError, UnicodeDecodeError):
+                excluded.append({"path": relative, "reason": "parse_or_encoding"})
+                continue
+            lines = text.splitlines(keepends=True)
+            candidates = []
+            for node in tree.body:
+                if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    candidates.append((node.name, "function", node))
+                elif isinstance(node, ast.ClassDef):
+                    for member in node.body:
+                        if isinstance(member, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                            candidates.append((node.name + "." + member.name, "method", member))
+            counts = {}
+            for name, _, _ in candidates:
+                counts[name] = counts.get(name, 0) + 1
+            for name, kind, node in candidates:
+                if counts[name] != 1 or (node.name.startswith("_") and node.name not in {"__init__", "__call__"}):
+                    continue
+                selector = relative + ":" + name
+                identity = hashlib.sha256(selector.encode()).hexdigest()[:24]
+                first = min([node.lineno] + [d.lineno for d in node.decorator_list])
+                body = "".join(lines[first - 1:node.end_lineno])
+                snippet = body[:2400]
+                note = (f"Historical source excerpt for {selector}.\n"
+                        f"Origin file SHA-256: {sources[relative]}. Lines {first}-{node.end_lineno}.\n"
+                        "This is source text from the memory origin, not a verified behavior claim.\n"
+                        + snippet + ("\n[excerpt truncated]" if len(body) > 2400 else ""))
+                records.append({"id": "source-" + identity, "kind": "note", "selector": selector,
+                                "note_key": "source-excerpt:" + identity, "text": note,
+                                "subject": {"language": "python", "path": relative,
+                                            "qualname": name, "node_kind": kind}})
+    records.sort(key=lambda x: x["selector"])
+    if len(records) > 1024:
+        raise ValueError("Source catalog exceeds the preregistered 1024-note safety bound")
+    spec = {"schema_version": 1, "source_roots": roots, "excluded_paths": [], "records": records}
+    metrics = {"source_hashes": sources, "excluded": excluded, "records": len(records),
+               "note_characters": sum(len(x["text"]) for x in records),
+               "wall_seconds": time.monotonic() - started,
+               "cpu_seconds": time.process_time() - cpu,
+               "peak_self_rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+               "generation_model_calls": 0, "future_solution_access": False,
+               "selection": "all unambiguous direct public functions and methods plus __init__/__call__, in source roots; no task filtering"}
+    return spec, metrics
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repo", type=Path, required=True)
+    parser.add_argument("--source-root", action="append", required=True)
+    parser.add_argument("--out", type=Path, required=True)
+    args = parser.parse_args()
+    args.out.mkdir(parents=True, exist_ok=False)
+    spec, metrics = build(args.repo.resolve(), args.source_root)
+    for name, value in (("seed-spec.json", spec), ("metrics.json", metrics)):
+        (args.out / name).write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n")
+
+
+if __name__ == "__main__":
+    main()

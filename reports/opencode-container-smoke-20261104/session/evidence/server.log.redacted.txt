@@ -1,0 +1,8 @@
+server listening on http://127.0.0.1:51101
+[19:35:32.962] INFO (#759): spawning process {
+  command: "python",
+  args: [ "/opt/memory-adapter/memory_adapter.py", "serve", "--binding", "/memory/prepared/binding.json",
+    "--trace", "/state/evidence/memory-backend-trace.jsonl"
+  ],
+  cwd: "/workspace",
+}

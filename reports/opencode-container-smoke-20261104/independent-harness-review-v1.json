@@ -1,0 +1,87 @@
+{
+  "status": "complete_no_remaining_material_blocker_for_authored_container_model_smoke",
+  "stable_source_pins_sha256": "e5c6699831defd29b0d868fc71d67b6f45742da23a3a81c19958bea20975236f",
+  "source_sha256": {
+    "container_session.py": "b48ee3f7ed602c52f591072c5b70d95fa50f5c1391ec99c240377c950a9951f8",
+    "container_worker.py": "e97c97a5f4d2908ae7e74133cead73d1fc7a5bfb54920a011425864f305fdcae",
+    "container_common.py": "1b29edba7a291b0066f145a4f596c2ee3848daec98fc0068152b341f511ad765",
+    "evidence_safety.py": "63226d9f1e9795b0bf084e72447609c09d8e4f64eb885c3fc6dd76a47b78c7c2",
+    "trial_guards.py": "03fc81278ae7f0f411a0132c02aec26d8a59405bd6b49d11eca535ebb03f24f1",
+    "boundary-sentinel.txt": "2c254255be5ae1d1741ee5ec813738d044f47f086c5ba13c0f6dfd964bd61212",
+    "test_failure_contracts.py": "bc590f84a777e336fbd8445147c75171d497089a824040fadd63f188e4fc44e1",
+    "test_publication_guards.py": "d698dc9214b997e36800fa383d959088496041b141c72cef607f60e0d2311304"
+  },
+  "material_blockers": [],
+  "verification": {
+    "authored_guard_failure_controls_passed": 22,
+    "reviewer_run_wall_seconds": 3.51,
+    "ruff": "passed",
+    "final_exact_pinned_three_arm_no_model_checks": {
+      "plain": {
+        "host_status": "passed",
+        "worker_status": "passed",
+        "state_removed": true,
+        "model_session_launches": 0,
+        "publication_guard": "passed",
+        "host_manifest_sha256": "eb42f4871159f0d08c114f8ada01b61f2fca5c4f24a03cfb83e297b4f858e36e",
+        "worker_manifest_sha256": "4df851d48f87fa9d5587ae031911185aeda234c32d0b4b4d7526672fd2c8397a",
+        "publication_guard_sha256": "dcb036cfbc0be7cbd8858f620a501d8690830df23d7c5e479196f94a74a97eb9",
+        "runtime_identity_sha256": "2d4f010c7dafacd49d7b3a4de94029587ba70924a415fa539c180769c41f2289",
+        "scope": "authored no-model boundary/connectivity; no benchmark task or live credential supplied"
+      },
+      "static": {
+        "host_status": "passed",
+        "worker_status": "passed",
+        "state_removed": true,
+        "model_session_launches": 0,
+        "publication_guard": "passed",
+        "host_manifest_sha256": "9ab6d2fa6c954119e0bd1800c39faf61b642d44f1b001f8e036a29835785809e",
+        "worker_manifest_sha256": "4e8e31f4d9ac943dc84ce159cc4476c0971338389bbc6f128efd7bb04a2d74c8",
+        "publication_guard_sha256": "92418064f54ed0509e3a97d3a9cdd8d78df3d24d5915cf3721259bc2830ce6b0",
+        "runtime_identity_sha256": "2d4f010c7dafacd49d7b3a4de94029587ba70924a415fa539c180769c41f2289",
+        "scope": "authored no-model boundary/connectivity; no benchmark task or live credential supplied"
+      },
+      "cami": {
+        "host_status": "passed",
+        "worker_status": "passed",
+        "state_removed": true,
+        "model_session_launches": 0,
+        "publication_guard": "passed",
+        "host_manifest_sha256": "ac35a50c808d464e2f00aac811a2f3778a0712c14c5dd50b2dfa1da782b6f309",
+        "worker_manifest_sha256": "17dfeff01a4449091ff06d301e7c132c7ae89761b27cae07913ef6aae2bc4939",
+        "publication_guard_sha256": "805aa065eaa28192871273d94c1b98e1da66579828722ac22bdfa78f065f6504",
+        "runtime_identity_sha256": "2d4f010c7dafacd49d7b3a4de94029587ba70924a415fa539c180769c41f2289",
+        "scope": "authored no-model boundary/connectivity; no benchmark task or live credential supplied"
+      }
+    },
+    "source_pins_current_bytes_verified": true,
+    "actual_model_or_auth_calls_by_reviewer": 0,
+    "task_prompt_gold_heldout_or_real_credential_reads_by_reviewer": false,
+    "tracked_edits": false
+  },
+  "resolved_findings": {
+    "heldout_filesystem_boundary": "Only current workspace/memory/private-state plus trusted runtime/binary/two worker files/sentinel/CA mounted; hostroot/gold/socket not mounted. Fresh Git guard requires exactly one parentless initialcommit/headref, no remotes/alternates/grafts/partial state/unreachable objects; inherited Git env/global config cleared. Root/leaf evidence symlink confused-deputy export reproduced with authoredsentinels then denied by final guards.",
+    "trusted_imports": "Global/worker Python uses trusted paths and PYTHONSAFEPATH=1. Native task processes receive target imports deliberately; MCP explicitly restores trusted adapter/runtime/dependency paths. Project configuration and auxiliary integrations disabled/observed.",
+    "credentials_publication": "OAuth export/import pipe records statuses/bytecounts, not bodies. Initial opaque values retained in host memory before worker; final DB values and private serverpassword/Basic added after container freeze. Regular-file/single-link/size checks on private DB/password/sidecars; evidence root/descendant links/special/binary/hardlinked/unbounded inputs denied. Known values in names or contents blocked/scrubbed; JSON validity rechecked before copy; raw model-worker stdout/stderr not published.",
+    "bounded_cleanup_and_failure_evidence": "Owned container gets unique persisted name before launch; known-name cleanup covers lost launch replies. Publication only after confirmed stop/removal. Cleanup/finalmanifest failures independent. Unsafe evidence withheld with explicit failure, not copied. Failed session usage captured before pagination; unavailable usage null, notzero. Worker-final evidence status checked.",
+    "model_and_location": "Explicit new session at /workspace; exact openai/gpt-6.1-sol#high session and assistant identities plus effective high reasoning metadata verified. Model generation opt-in and requires frozen runtime-manifest check before auth; no-model default.",
+    "resource_and_token_accounting": "2CPU quota/2GiB RAM/pids256/cgroup observations and bounded wall/process handling. Observed disjoint normalized token threshold interrupts and may overshoot. Session and message token totals reconciled but never added; CPU/wall/server spans explicitly overlap. Grading remains outside model execution status.",
+    "arm_comparability": "Authored config equality proof: static/CAMI same configured interface and native controls; plain differs by omission of memory MCP only. All source/runtime identities are observed/pinnable before authentication."
+  },
+  "bounded_conditions_and_limits": [
+    "This clear is for the authored authenticated container smoke and harness execution boundary; it is not approval of unreviewed benchmark tasks or an end-to-end benchmark validity claim.",
+    "Outer study controller must pin identical canonical source/tree and semantic seed catalog across arms, preserve all attempts, and keep task grader/future heldout packets outside mounts.",
+    "Final no-model checks prove native reads/boundaries/MCP connectivity and pagination, not actual memory_lookup or real OAuth/provider execution; planned authored model smoke must establish that.",
+    "Credentials share container UID with native tools; no OS secret separation or strict egress isolation is claimed. Known-value publication scrubbing is not proof against arbitrary encoded exfiltration by an adversarial agent.",
+    "No hard aggregate writable-storage quota or hard provider/billing-token cap; storage/free-space observations and token interruption limits are explicitly bounded. Provider missingness normalized to0 remains unknown.",
+    "A paid failed/OOM attempt may have incomplete in-flight remote usage; export preserves latest available values or null and explicit reason. Unsafe private payloads may be discarded while failure metadata remains.",
+    "Cgroup CPU includes container-owned work; host Docker/controller CPU remains outside. Never add inclusive server/worker/session totals together.",
+    "OpenCode outcome succeeded and harness passed indicate execution, not task correctness; external grader must score separately."
+  ],
+  "historical_interim_evidence": [
+    "interim.json",
+    "publication_symlink_control.py",
+    "publication-symlink-interim.json"
+  ],
+  "owner_stage": "runs/opencode-container-harness-development-20261104"
+}

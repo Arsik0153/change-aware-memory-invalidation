@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "rm",
+    "--force",
+    "42393980e323d29cc2f1f4f1588b2b94c8ac921b328d5f7f87a0bfe0396e7e50"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "42393980e323d29cc2f1f4f1588b2b94c8ac921b328d5f7f87a0bfe0396e7e50\n",
+  "timeout": false,
+  "wall_seconds": 0.09340827306732535
+}
