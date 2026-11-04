@@ -1,0 +1,1452 @@
+{
+  "all_phase_actual_validation_calls_including_setup": 165864,
+  "authored_git_verification": {
+    "commit_ids_by_history": {
+      "absence_ancestor_limitation": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "d6706e367bdf68a6b4b87d224f50888933e1c410",
+        "d50d69e1a198560087d2766c829298976b2cd349"
+      ],
+      "changed_comment_same_ast": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "048c09473cb7acb90382552fb5cd2a9c32fc9234",
+        "a61157f95194eba7cebb3de6b7768d52972a986a"
+      ],
+      "context_flag_change": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "d8b9a2c613021e6c5ea476b282a107297d40a424"
+      ],
+      "context_index_change": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "d8b9a2c613021e6c5ea476b282a107297d40a424"
+      ],
+      "context_size_limit_change": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "bf200331c084abb685cb312532c03d56cd77cf19"
+      ],
+      "direct_class_global": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "371ab9eeeb3eba9d629ca2462b43c071ed9a676c",
+        "b3be4caba8f3db76031f427a44ccf1f35a90e271"
+      ],
+      "known_incomplete": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "d8b9a2c613021e6c5ea476b282a107297d40a424",
+        "01eaae827833418c951b74e8eafdcc7a41c2fe44"
+      ],
+      "nested_class_global": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "7506b1ad068c2e8ef2f7abb9f36e356babafa62e",
+        "3698ab3da9f992a3fb89cee4b4065644198d6368"
+      ],
+      "parse_error_recovery": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "d1c5791c4ff847df7402518a2bf2eb83bdea7fc7",
+        "20a0998de407b58826b5a651dd5e9a221baf1563"
+      ],
+      "policy_switch_lineage": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "85fda26f435bd1f64f40e5e415f29c6be44eb8b8",
+        "d250d658efad99ddcf5f90160328777addcd54f3"
+      ],
+      "regular_mode_equivalence": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "68f80563e041fd3091fc48d8f7cbf37071b3a063",
+        "31a9f7a4c88a08c308a6de45c59d4e381fc4e4d6"
+      ],
+      "same_blob_symlink": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "3be3e284a31bec755a9925b48fd889a9b8ea56b1",
+        "b9a143e82aeea2e688b68d46567e9ee5adf85907",
+        "0bf813171eb5a38ceefb1da38c04c5cec5f260ff"
+      ],
+      "same_id_expected_signature_change": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "d8b9a2c613021e6c5ea476b282a107297d40a424"
+      ],
+      "scope_change": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "d8b9a2c613021e6c5ea476b282a107297d40a424"
+      ],
+      "signature_recovery": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "6ea0c87e197cc9b30e42f433e315945baf2dfa82",
+        "654591ce56b5310eaec2a314cc33a97336b82421"
+      ],
+      "size_limit": [
+        "dec7f9a1ab9382c0ad69ae834931bc3672c56932",
+        "680e7d4973453b2093f878d1cdf64d2c917c3305",
+        "d9031cd90f27294f37c84fa0bfff654519e99ad5"
+      ],
+      "unchanged_module_other_file": [
+        "208fc2bdcf2cbabbf914711d6ef25dd52df40440",
+        "0542b032f1285cabc22bb6da9d182723ab4d530b",
+        "108a835260c7ddbe10eb935dcb0f67fc1d0cdb96",
+        "61d1bf590f1b8c0c59dd39de142904c17b50f114"
+      ]
+    },
+    "fixture_directory": "/root/apps/change-aware-memory-invalidation/runs/negative-carry-archive-check-20261104/run/git-fixtures",
+    "histories": 17,
+    "reference_packets": 31,
+    "scope": "Only self-contained authored fixture repositories; complete source trees checked against protocol operations. No corpus repository reads. Git object directories are outside file-hash inventory; object IDs and protocol-derived trees are checked separately.",
+    "snapshots": 48,
+    "status": "pass"
+  },
+  "bounded_finding": "Both candidates execute fewer structural validations per pack but have larger median CPU and wall maintenance times; every paired CPU/wall delta is positive in this run. This is an authored workload result, not a corpus or adoption recommendation.",
+  "candidate_to_baseline_ratios": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "paired_ratios": {
+          "max": 2.4686754361864938,
+          "median": 2.1211139887673696,
+          "min": 1.8398616772001095
+        },
+        "ratio_of_medians": 2.1526136589437894
+      },
+      "wall_ns": {
+        "paired_ratios": {
+          "max": 2.5747586283949806,
+          "median": 2.0988358123921915,
+          "min": 1.3944797402164224
+        },
+        "ratio_of_medians": 2.170411748944511
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "paired_ratios": {
+          "max": 2.422100977098739,
+          "median": 2.141535693913566,
+          "min": 1.8207802727379363
+        },
+        "ratio_of_medians": 2.1332952723454035
+      },
+      "wall_ns": {
+        "paired_ratios": {
+          "max": 2.702086009079453,
+          "median": 2.1189660798604915,
+          "min": 1.4313702777265591
+        },
+        "ratio_of_medians": 2.1257252128098973
+      }
+    }
+  },
+  "clock_region_totals": {
+    "manifest_elapsed_wall_ns": 29698024000,
+    "setup_wall_ns": 1465691811,
+    "summed_timed_cpu_ns": 25064668299,
+    "summed_timed_wall_ns": 25511194692
+  },
+  "clock_threshold": {
+    "cpu_blocks_below_same_threshold": 0,
+    "minimum_observed_cpu_ns": 209149480,
+    "minimum_observed_wall_ns": 209232794,
+    "minimum_wall_block_ns": 10000000,
+    "wall_blocks_below_threshold": 0
+  },
+  "correctness_by_variant_and_policy": {
+    "module_blob_witness": {
+      "controlled_keep_all": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "supported": 1
+        },
+        "records": 1,
+        "reference_counts": {
+          "supported": 1
+        },
+        "withheld_supported": 1
+      },
+      "ordinary": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "contradicted": 17,
+          "insufficient_evidence": 8,
+          "supported": 5
+        },
+        "records": 30,
+        "reference_counts": {
+          "contradicted": 20,
+          "supported": 5,
+          "uncertain": 5
+        },
+        "withheld_supported": 0
+      }
+    },
+    "production": {
+      "controlled_keep_all": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "supported": 1
+        },
+        "records": 1,
+        "reference_counts": {
+          "supported": 1
+        },
+        "withheld_supported": 1
+      },
+      "ordinary": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "contradicted": 17,
+          "insufficient_evidence": 8,
+          "supported": 5
+        },
+        "records": 30,
+        "reference_counts": {
+          "contradicted": 20,
+          "supported": 5,
+          "uncertain": 5
+        },
+        "withheld_supported": 0
+      }
+    },
+    "signature_witness": {
+      "controlled_keep_all": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "supported": 1
+        },
+        "records": 1,
+        "reference_counts": {
+          "supported": 1
+        },
+        "withheld_supported": 1
+      },
+      "ordinary": {
+        "available_unknown": 0,
+        "false_available": 0,
+        "production_fresh_counts": {
+          "contradicted": 17,
+          "insufficient_evidence": 8,
+          "supported": 5
+        },
+        "records": 30,
+        "reference_counts": {
+          "contradicted": 20,
+          "supported": 5,
+          "uncertain": 5
+        },
+        "withheld_supported": 0
+      }
+    }
+  },
+  "correctness_rows": 93,
+  "frozen_result_manifest_sha256": "ddee049161424b5da53aa138e4423808d217152bed9923ed3f97dfcb85bd28e5",
+  "frozen_source_measurement_review": {
+    "excluded_setup": [
+      "authored Git creation",
+      "snapshot/index/compare",
+      "independent reference",
+      "output serialization"
+    ],
+    "limitation": "Static frozen-source inspection establishes the intended measured call path; it cannot independently observe historical clock placement or untimed warmup executions.",
+    "profile_call_lines": [
+      145,
+      146
+    ],
+    "status": "pass",
+    "timed_clock_lines": [
+      131,
+      133
+    ],
+    "work_included": [
+      "selection",
+      "eligibility/witness gate",
+      "claim/provenance/context hashing",
+      "initial and refresh witness minting",
+      "actual structural validation",
+      "state advance"
+    ]
+  },
+  "implementation_commit": "cbfbe2803cccd9072b7fccfacd8ba80ba5d8d408",
+  "integrity": {
+    "artifact_files_hashed": 151,
+    "dangling_symlinks_in_artifact_hashes": false,
+    "git_object_directories_in_artifact_hashes": false,
+    "historical_fallback_paths": [
+      ".gitignore"
+    ],
+    "historical_source_files_hashed": 237,
+    "sealed_inputs_hashed": 80
+  },
+  "limits": [
+    "No benchmark or production/reference code was executed by this auditor; recorded elapsed times cannot be independently reconstructed from outputs.",
+    "Work counts for untimed capture/calibration/warmup phases are inferred from the frozen schedule and independently checked per-pack transitions; profiling corroborates one separate actual execution per variant.",
+    "The recorded source-before/after snapshots, hashes and historical Git commit bind source identity but cannot prove past execution or timing honesty.",
+    "Shared CPython ast and the narrow authored syntax limit semantic independence; this is not a runtime-behavior oracle or an exhaustive cross-product test.",
+    "The keep_all transition is a deliberate control with one withheld-supported state per variant; ordinary policy transitions are reported separately.",
+    "cProfile is one instrumented post-timing history pack per variant. Cumulative times overlap along call trees; they must not be summed indiscriminately or treated as measured timing samples.",
+    "Shared-host variability remains; paired ordering and 21 repetitions do not establish population generalization, significance, or end-to-end corpus savings."
+  ],
+  "maintenance_history_pack_repetitions_per_variant_all_phases": 2303,
+  "maintenance_total_counts": {
+    "actual_validation_calls": 165816,
+    "effective_selected": 165816,
+    "eligibility_attempts": 138180,
+    "original_selected": 200361,
+    "suppressed": 34545,
+    "witness_mint_attempts": 177331
+  },
+  "paired_delta_distributions_ns": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "max": 320474600,
+        "median": 251123670,
+        "min": 212668590,
+        "pairs": 21,
+        "positive_pairs": 21
+      },
+      "wall_ns": {
+        "max": 343656311,
+        "median": 248237694,
+        "min": 142442003,
+        "pairs": 21,
+        "positive_pairs": 21
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "max": 322076960,
+        "median": 252113990,
+        "min": 213137250,
+        "pairs": 21,
+        "positive_pairs": 21
+      },
+      "wall_ns": {
+        "max": 420804256,
+        "median": 250979031,
+        "min": 155762743,
+        "pairs": 21,
+        "positive_pairs": 21
+      }
+    }
+  },
+  "paired_deltas": {
+    "module_blob_witness": [
+      {
+        "candidate_minus_baseline_cpu_ns": 251417040,
+        "candidate_minus_baseline_wall_ns": 274141204,
+        "repetition": 0
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 260203410,
+        "candidate_minus_baseline_wall_ns": 256482834,
+        "repetition": 1
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 304315600,
+        "candidate_minus_baseline_wall_ns": 304520733,
+        "repetition": 2
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 224127780,
+        "candidate_minus_baseline_wall_ns": 223155928,
+        "repetition": 3
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 299555280,
+        "candidate_minus_baseline_wall_ns": 299669413,
+        "repetition": 4
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 320474600,
+        "candidate_minus_baseline_wall_ns": 343656311,
+        "repetition": 5
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 283788010,
+        "candidate_minus_baseline_wall_ns": 282504102,
+        "repetition": 6
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 263467120,
+        "candidate_minus_baseline_wall_ns": 265367263,
+        "repetition": 7
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 240533940,
+        "candidate_minus_baseline_wall_ns": 238057822,
+        "repetition": 8
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 233775940,
+        "candidate_minus_baseline_wall_ns": 237686949,
+        "repetition": 9
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 236906710,
+        "candidate_minus_baseline_wall_ns": 237452059,
+        "repetition": 10
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 239291330,
+        "candidate_minus_baseline_wall_ns": 241843829,
+        "repetition": 11
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 229252910,
+        "candidate_minus_baseline_wall_ns": 229267250,
+        "repetition": 12
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 248270520,
+        "candidate_minus_baseline_wall_ns": 248237694,
+        "repetition": 13
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 227221190,
+        "candidate_minus_baseline_wall_ns": 208133854,
+        "repetition": 14
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 271303120,
+        "candidate_minus_baseline_wall_ns": 142442003,
+        "repetition": 15
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 279453380,
+        "candidate_minus_baseline_wall_ns": 296376022,
+        "repetition": 16
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 225497890,
+        "candidate_minus_baseline_wall_ns": 230574813,
+        "repetition": 17
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 212668590,
+        "candidate_minus_baseline_wall_ns": 210125156,
+        "repetition": 18
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 268450320,
+        "candidate_minus_baseline_wall_ns": 271355735,
+        "repetition": 19
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 251123670,
+        "candidate_minus_baseline_wall_ns": 254481707,
+        "repetition": 20
+      }
+    ],
+    "signature_witness": [
+      {
+        "candidate_minus_baseline_cpu_ns": 264123390,
+        "candidate_minus_baseline_wall_ns": 264046081,
+        "repetition": 0
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 307505870,
+        "candidate_minus_baseline_wall_ns": 313758614,
+        "repetition": 1
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 249452540,
+        "candidate_minus_baseline_wall_ns": 249443438,
+        "repetition": 2
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 262950150,
+        "candidate_minus_baseline_wall_ns": 280561729,
+        "repetition": 3
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 247942990,
+        "candidate_minus_baseline_wall_ns": 248578716,
+        "repetition": 4
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 259585949,
+        "candidate_minus_baseline_wall_ns": 264331060,
+        "repetition": 5
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 252113990,
+        "candidate_minus_baseline_wall_ns": 250979031,
+        "repetition": 6
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 216866970,
+        "candidate_minus_baseline_wall_ns": 216882272,
+        "repetition": 7
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 243808520,
+        "candidate_minus_baseline_wall_ns": 242235301,
+        "repetition": 8
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 213137250,
+        "candidate_minus_baseline_wall_ns": 211011499,
+        "repetition": 9
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 257660750,
+        "candidate_minus_baseline_wall_ns": 266401355,
+        "repetition": 10
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 247008040,
+        "candidate_minus_baseline_wall_ns": 247578012,
+        "repetition": 11
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 225628720,
+        "candidate_minus_baseline_wall_ns": 225683962,
+        "repetition": 12
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 224379480,
+        "candidate_minus_baseline_wall_ns": 228088618,
+        "repetition": 13
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 322076960,
+        "candidate_minus_baseline_wall_ns": 420804256,
+        "repetition": 14
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 286963200,
+        "candidate_minus_baseline_wall_ns": 155762743,
+        "repetition": 15
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 262416310,
+        "candidate_minus_baseline_wall_ns": 262483015,
+        "repetition": 16
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 250495190,
+        "candidate_minus_baseline_wall_ns": 252430593,
+        "repetition": 17
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 282089540,
+        "candidate_minus_baseline_wall_ns": 283718073,
+        "repetition": 18
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 264126890,
+        "candidate_minus_baseline_wall_ns": 264156159,
+        "repetition": 19
+      },
+      {
+        "candidate_minus_baseline_cpu_ns": 222689800,
+        "candidate_minus_baseline_wall_ns": 223190486,
+        "repetition": 20
+      }
+    ]
+  },
+  "paired_repetitions": 21,
+  "per_pack_counts": {
+    "module_blob_witness": {
+      "actual_validation_calls": 22,
+      "effective_selected": 22,
+      "eligibility_attempts": 30,
+      "original_selected": 29,
+      "suppressed": 7,
+      "witness_mint_attempts": 39
+    },
+    "production": {
+      "actual_validation_calls": 29,
+      "effective_selected": 29,
+      "eligibility_attempts": 0,
+      "original_selected": 29,
+      "suppressed": 0,
+      "witness_mint_attempts": 0
+    },
+    "signature_witness": {
+      "actual_validation_calls": 21,
+      "effective_selected": 21,
+      "eligibility_attempts": 30,
+      "original_selected": 29,
+      "suppressed": 8,
+      "witness_mint_attempts": 38
+    }
+  },
+  "phase_work": {
+    "correctness_capture": {
+      "module_blob_witness": {
+        "counts": {
+          "actual_validation_calls": 22,
+          "effective_selected": 22,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 7,
+          "witness_mint_attempts": 39
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "production": {
+        "counts": {
+          "actual_validation_calls": 29,
+          "effective_selected": 29,
+          "eligibility_attempts": 0,
+          "original_selected": 29,
+          "suppressed": 0,
+          "witness_mint_attempts": 0
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "signature_witness": {
+        "counts": {
+          "actual_validation_calls": 21,
+          "effective_selected": 21,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 8,
+          "witness_mint_attempts": 38
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      }
+    },
+    "expected_work_calibration": {
+      "module_blob_witness": {
+        "counts": {
+          "actual_validation_calls": 22,
+          "effective_selected": 22,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 7,
+          "witness_mint_attempts": 39
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "production": {
+        "counts": {
+          "actual_validation_calls": 29,
+          "effective_selected": 29,
+          "eligibility_attempts": 0,
+          "original_selected": 29,
+          "suppressed": 0,
+          "witness_mint_attempts": 0
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "signature_witness": {
+        "counts": {
+          "actual_validation_calls": 21,
+          "effective_selected": 21,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 8,
+          "witness_mint_attempts": 38
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      }
+    },
+    "separate_profile": {
+      "module_blob_witness": {
+        "counts": {
+          "actual_validation_calls": 22,
+          "effective_selected": 22,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 7,
+          "witness_mint_attempts": 39
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "production": {
+        "counts": {
+          "actual_validation_calls": 29,
+          "effective_selected": 29,
+          "eligibility_attempts": 0,
+          "original_selected": 29,
+          "suppressed": 0,
+          "witness_mint_attempts": 0
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      },
+      "signature_witness": {
+        "counts": {
+          "actual_validation_calls": 21,
+          "effective_selected": 21,
+          "eligibility_attempts": 30,
+          "original_selected": 29,
+          "suppressed": 8,
+          "witness_mint_attempts": 38
+        },
+        "history_executions": 17,
+        "history_pack_repetitions": 1,
+        "transition_executions": 31
+      }
+    },
+    "timed": {
+      "module_blob_witness": {
+        "counts": {
+          "actual_validation_calls": 46200,
+          "effective_selected": 46200,
+          "eligibility_attempts": 63000,
+          "original_selected": 60900,
+          "suppressed": 14700,
+          "witness_mint_attempts": 81900
+        },
+        "history_executions": 35700,
+        "history_pack_repetitions": 2100,
+        "transition_executions": 65100
+      },
+      "production": {
+        "counts": {
+          "actual_validation_calls": 60900,
+          "effective_selected": 60900,
+          "eligibility_attempts": 0,
+          "original_selected": 60900,
+          "suppressed": 0,
+          "witness_mint_attempts": 0
+        },
+        "history_executions": 35700,
+        "history_pack_repetitions": 2100,
+        "transition_executions": 65100
+      },
+      "signature_witness": {
+        "counts": {
+          "actual_validation_calls": 44100,
+          "effective_selected": 44100,
+          "eligibility_attempts": 63000,
+          "original_selected": 60900,
+          "suppressed": 16800,
+          "witness_mint_attempts": 79800
+        },
+        "history_executions": 35700,
+        "history_pack_repetitions": 2100,
+        "transition_executions": 65100
+      }
+    },
+    "warmup": {
+      "module_blob_witness": {
+        "counts": {
+          "actual_validation_calls": 4400,
+          "effective_selected": 4400,
+          "eligibility_attempts": 6000,
+          "original_selected": 5800,
+          "suppressed": 1400,
+          "witness_mint_attempts": 7800
+        },
+        "history_executions": 3400,
+        "history_pack_repetitions": 200,
+        "transition_executions": 6200
+      },
+      "production": {
+        "counts": {
+          "actual_validation_calls": 5800,
+          "effective_selected": 5800,
+          "eligibility_attempts": 0,
+          "original_selected": 5800,
+          "suppressed": 0,
+          "witness_mint_attempts": 0
+        },
+        "history_executions": 3400,
+        "history_pack_repetitions": 200,
+        "transition_executions": 6200
+      },
+      "signature_witness": {
+        "counts": {
+          "actual_validation_calls": 4200,
+          "effective_selected": 4200,
+          "eligibility_attempts": 6000,
+          "original_selected": 5800,
+          "suppressed": 1600,
+          "witness_mint_attempts": 7600
+        },
+        "history_executions": 3400,
+        "history_pack_repetitions": 200,
+        "transition_executions": 6200
+      }
+    }
+  },
+  "profile_evidence": {
+    "module_blob_witness": {
+      "actual_calls": {
+        "negative_carry_challenge.py:run_history": 17,
+        "negative_carry_witness.py:mint_witness": 39,
+        "negative_carry_witness.py:witness_gate": 30,
+        "policies.py:advance_state": 31,
+        "policies.py:select_claims": 31,
+        "run_negative_carry_challenge.py:run_block": 1,
+        "validation.py:validate_claim": 22
+      },
+      "asdict_calls": 39,
+      "context_hash_calls": 39,
+      "dependency_or_unattributed_function_entries": 71,
+      "digest_calls": 177,
+      "frozen_source_function_metadata_checked": 18,
+      "function_entries": 89,
+      "source_attribution_limit": "Stripped filenames can collide. Known frozen function names are matched to definition/decorator start lines; other dependency entries retain binary-to-JSON integrity only and have unknown source attribution.",
+      "top_entries_recomputed": 20,
+      "top_functions": [
+        {
+          "cumulative_seconds": 0.009938382,
+          "function": "run_negative_carry_challenge.py:62:run_block",
+          "own_seconds": 7.887000000000001e-05,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_seconds": 0.009844662,
+          "function": "negative_carry_challenge.py:137:run_history",
+          "own_seconds": 0.00030596000000000003,
+          "primitive_calls": 17,
+          "total_calls": 17
+        },
+        {
+          "cumulative_seconds": 0.0029361300000000003,
+          "function": "artifacts.py:24:digest",
+          "own_seconds": 0.00014651,
+          "primitive_calls": 177,
+          "total_calls": 177
+        },
+        {
+          "cumulative_seconds": 0.0028269970000000004,
+          "function": "policies.py:28:select_claims",
+          "own_seconds": 0.000356132,
+          "primitive_calls": 31,
+          "total_calls": 31
+        },
+        {
+          "cumulative_seconds": 0.0026905780000000003,
+          "function": "negative_carry_witness.py:79:mint_witness",
+          "own_seconds": 0.00012098000000000001,
+          "primitive_calls": 39,
+          "total_calls": 39
+        },
+        {
+          "cumulative_seconds": 0.0026202540000000002,
+          "function": "main.py:240:__init__",
+          "own_seconds": 9.208e-05,
+          "primitive_calls": 260,
+          "total_calls": 260
+        },
+        {
+          "cumulative_seconds": 0.00258142,
+          "function": "artifacts.py:17:canonical",
+          "own_seconds": 0.00018311,
+          "primitive_calls": 177,
+          "total_calls": 177
+        },
+        {
+          "cumulative_seconds": 0.0025281740000000002,
+          "function": "~:0:<method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+          "own_seconds": 0.00042259000000000003,
+          "primitive_calls": 260,
+          "total_calls": 260
+        },
+        {
+          "cumulative_seconds": 0.002141893,
+          "function": "blob_negative_carry.py:8:select_blob_negative_carry",
+          "own_seconds": 5e-05,
+          "primitive_calls": 30,
+          "total_calls": 30
+        },
+        {
+          "cumulative_seconds": 0.002105584,
+          "function": "models.py:29:safe_path",
+          "own_seconds": 0.00022619,
+          "primitive_calls": 159,
+          "total_calls": 159
+        },
+        {
+          "cumulative_seconds": 0.001997623,
+          "function": "negative_carry_witness.py:109:witness_gate",
+          "own_seconds": 4.699e-05,
+          "primitive_calls": 30,
+          "total_calls": 30
+        },
+        {
+          "cumulative_seconds": 0.0019958980000000003,
+          "function": "__init__.py:183:dumps",
+          "own_seconds": 0.000218511,
+          "primitive_calls": 177,
+          "total_calls": 177
+        },
+        {
+          "cumulative_seconds": 0.0019035940000000002,
+          "function": "negative_carry_witness.py:59:context_hash",
+          "own_seconds": 3.261e-05,
+          "primitive_calls": 39,
+          "total_calls": 39
+        },
+        {
+          "cumulative_seconds": 0.001716326,
+          "function": "encoder.py:183:encode",
+          "own_seconds": 0.000188631,
+          "primitive_calls": 177,
+          "total_calls": 177
+        },
+        {
+          "cumulative_seconds": 0.001458415,
+          "function": "encoder.py:205:iterencode",
+          "own_seconds": 0.001458415,
+          "primitive_calls": 177,
+          "total_calls": 177
+        },
+        {
+          "cumulative_seconds": 0.0013667710000000001,
+          "function": "validation.py:24:validate_claim",
+          "own_seconds": 0.00019613,
+          "primitive_calls": 22,
+          "total_calls": 22
+        },
+        {
+          "cumulative_seconds": 0.001341191,
+          "function": "dataclasses.py:1301:asdict",
+          "own_seconds": 2.201e-05,
+          "primitive_calls": 39,
+          "total_calls": 39
+        },
+        {
+          "cumulative_seconds": 0.0012998110000000001,
+          "function": "dataclasses.py:1325:_asdict_inner",
+          "own_seconds": 0.0007346910000000001,
+          "primitive_calls": 39,
+          "total_calls": 1092
+        },
+        {
+          "cumulative_seconds": 0.001014583,
+          "function": "negative_carry_witness.py:63:input_hash",
+          "own_seconds": 7.696000000000001e-05,
+          "primitive_calls": 37,
+          "total_calls": 37
+        },
+        {
+          "cumulative_seconds": 0.0009190820000000001,
+          "function": "pathlib.py:702:parts",
+          "own_seconds": 0.00010774000000000001,
+          "primitive_calls": 159,
+          "total_calls": 159
+        }
+      ]
+    },
+    "production": {
+      "actual_calls": {
+        "negative_carry_challenge.py:run_history": 17,
+        "negative_carry_witness.py:mint_witness": 0,
+        "negative_carry_witness.py:witness_gate": 0,
+        "policies.py:advance_state": 31,
+        "policies.py:select_claims": 31,
+        "run_negative_carry_challenge.py:run_block": 1,
+        "validation.py:validate_claim": 29
+      },
+      "asdict_calls": 0,
+      "context_hash_calls": 0,
+      "dependency_or_unattributed_function_entries": 63,
+      "digest_calls": 29,
+      "frozen_source_function_metadata_checked": 11,
+      "function_entries": 74,
+      "source_attribution_limit": "Stripped filenames can collide. Known frozen function names are matched to definition/decorator start lines; other dependency entries retain binary-to-JSON integrity only and have unknown source attribution.",
+      "top_entries_recomputed": 20,
+      "top_functions": [
+        {
+          "cumulative_seconds": 0.0053696920000000006,
+          "function": "run_negative_carry_challenge.py:62:run_block",
+          "own_seconds": 5.5e-05,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_seconds": 0.005301802,
+          "function": "negative_carry_challenge.py:137:run_history",
+          "own_seconds": 0.000245841,
+          "primitive_calls": 17,
+          "total_calls": 17
+        },
+        {
+          "cumulative_seconds": 0.002698087,
+          "function": "policies.py:28:select_claims",
+          "own_seconds": 0.00035199300000000004,
+          "primitive_calls": 31,
+          "total_calls": 31
+        },
+        {
+          "cumulative_seconds": 0.0025558350000000002,
+          "function": "main.py:240:__init__",
+          "own_seconds": 0.00010432,
+          "primitive_calls": 274,
+          "total_calls": 274
+        },
+        {
+          "cumulative_seconds": 0.002451515,
+          "function": "~:0:<method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+          "own_seconds": 0.000389942,
+          "primitive_calls": 274,
+          "total_calls": 274
+        },
+        {
+          "cumulative_seconds": 0.002061573,
+          "function": "models.py:29:safe_path",
+          "own_seconds": 0.00023622100000000003,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.001837613,
+          "function": "validation.py:24:validate_claim",
+          "own_seconds": 0.00024313100000000003,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.00089734,
+          "function": "pathlib.py:702:parts",
+          "own_seconds": 0.00010089,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.0007693410000000001,
+          "function": "pathlib.py:551:drive",
+          "own_seconds": 0.00015012100000000002,
+          "primitive_calls": 332,
+          "total_calls": 332
+        },
+        {
+          "cumulative_seconds": 0.0006192200000000001,
+          "function": "pathlib.py:407:_load_parts",
+          "own_seconds": 0.00011099,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.000617411,
+          "function": "artifacts.py:24:digest",
+          "own_seconds": 2.6191e-05,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.00053827,
+          "function": "artifacts.py:17:canonical",
+          "own_seconds": 2.763e-05,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.0005298620000000001,
+          "function": "pathlib.py:450:as_posix",
+          "own_seconds": 9.42e-05,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.00049487,
+          "function": "__init__.py:183:dumps",
+          "own_seconds": 4.106e-05,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.00047829000000000003,
+          "function": "pathlib.py:387:_parse_path",
+          "own_seconds": 0.00023249000000000002,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.00044497000000000004,
+          "function": "encoder.py:183:encode",
+          "own_seconds": 3.491e-05,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.00041501200000000003,
+          "function": "pathlib.py:437:__str__",
+          "own_seconds": 0.00020164100000000002,
+          "primitive_calls": 166,
+          "total_calls": 166
+        },
+        {
+          "cumulative_seconds": 0.000398711,
+          "function": "index.py:335:impacted",
+          "own_seconds": 5.5180000000000004e-05,
+          "primitive_calls": 30,
+          "total_calls": 30
+        },
+        {
+          "cumulative_seconds": 0.00039842,
+          "function": "encoder.py:205:iterencode",
+          "own_seconds": 0.00039842,
+          "primitive_calls": 29,
+          "total_calls": 29
+        },
+        {
+          "cumulative_seconds": 0.00037048100000000003,
+          "function": "~:0:<method 'update' of 'set' objects>",
+          "own_seconds": 5.126e-05,
+          "primitive_calls": 121,
+          "total_calls": 121
+        }
+      ]
+    },
+    "signature_witness": {
+      "actual_calls": {
+        "negative_carry_challenge.py:run_history": 17,
+        "negative_carry_witness.py:mint_witness": 38,
+        "negative_carry_witness.py:witness_gate": 30,
+        "policies.py:advance_state": 31,
+        "policies.py:select_claims": 31,
+        "run_negative_carry_challenge.py:run_block": 1,
+        "validation.py:validate_claim": 21
+      },
+      "asdict_calls": 38,
+      "context_hash_calls": 38,
+      "dependency_or_unattributed_function_entries": 72,
+      "digest_calls": 172,
+      "frozen_source_function_metadata_checked": 19,
+      "function_entries": 91,
+      "source_attribution_limit": "Stripped filenames can collide. Known frozen function names are matched to definition/decorator start lines; other dependency entries retain binary-to-JSON integrity only and have unknown source attribution.",
+      "top_entries_recomputed": 20,
+      "top_functions": [
+        {
+          "cumulative_seconds": 0.011622327,
+          "function": "run_negative_carry_challenge.py:62:run_block",
+          "own_seconds": 6.729e-05,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_seconds": 0.011541267000000001,
+          "function": "negative_carry_challenge.py:137:run_history",
+          "own_seconds": 0.000388511,
+          "primitive_calls": 17,
+          "total_calls": 17
+        },
+        {
+          "cumulative_seconds": 0.0033744340000000004,
+          "function": "artifacts.py:24:digest",
+          "own_seconds": 0.000182251,
+          "primitive_calls": 172,
+          "total_calls": 172
+        },
+        {
+          "cumulative_seconds": 0.0031482740000000004,
+          "function": "policies.py:28:select_claims",
+          "own_seconds": 0.00037651000000000004,
+          "primitive_calls": 31,
+          "total_calls": 31
+        },
+        {
+          "cumulative_seconds": 0.002977757,
+          "function": "main.py:240:__init__",
+          "own_seconds": 9.264000000000001e-05,
+          "primitive_calls": 258,
+          "total_calls": 258
+        },
+        {
+          "cumulative_seconds": 0.002958763,
+          "function": "artifacts.py:17:canonical",
+          "own_seconds": 0.00018225,
+          "primitive_calls": 172,
+          "total_calls": 172
+        },
+        {
+          "cumulative_seconds": 0.0029498050000000002,
+          "function": "negative_carry.py:20:select_negative_carry",
+          "own_seconds": 0.00013561,
+          "primitive_calls": 30,
+          "total_calls": 30
+        },
+        {
+          "cumulative_seconds": 0.002885117,
+          "function": "~:0:<method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+          "own_seconds": 0.000461232,
+          "primitive_calls": 258,
+          "total_calls": 258
+        },
+        {
+          "cumulative_seconds": 0.0028469470000000003,
+          "function": "negative_carry_witness.py:79:mint_witness",
+          "own_seconds": 0.00013823,
+          "primitive_calls": 38,
+          "total_calls": 38
+        },
+        {
+          "cumulative_seconds": 0.0025971650000000002,
+          "function": "negative_carry_witness.py:109:witness_gate",
+          "own_seconds": 4.9871000000000004e-05,
+          "primitive_calls": 30,
+          "total_calls": 30
+        },
+        {
+          "cumulative_seconds": 0.002423885,
+          "function": "models.py:29:safe_path",
+          "own_seconds": 0.0002475,
+          "primitive_calls": 158,
+          "total_calls": 158
+        },
+        {
+          "cumulative_seconds": 0.002362007,
+          "function": "negative_carry_witness.py:59:context_hash",
+          "own_seconds": 3.44e-05,
+          "primitive_calls": 38,
+          "total_calls": 38
+        },
+        {
+          "cumulative_seconds": 0.002281093,
+          "function": "__init__.py:183:dumps",
+          "own_seconds": 0.00023618,
+          "primitive_calls": 172,
+          "total_calls": 172
+        },
+        {
+          "cumulative_seconds": 0.002002923,
+          "function": "encoder.py:183:encode",
+          "own_seconds": 0.00019370000000000002,
+          "primitive_calls": 172,
+          "total_calls": 172
+        },
+        {
+          "cumulative_seconds": 0.001721283,
+          "function": "encoder.py:205:iterencode",
+          "own_seconds": 0.001721283,
+          "primitive_calls": 172,
+          "total_calls": 172
+        },
+        {
+          "cumulative_seconds": 0.001636436,
+          "function": "dataclasses.py:1301:asdict",
+          "own_seconds": 2.534e-05,
+          "primitive_calls": 38,
+          "total_calls": 38
+        },
+        {
+          "cumulative_seconds": 0.0016311250000000002,
+          "function": "validation.py:24:validate_claim",
+          "own_seconds": 0.000258081,
+          "primitive_calls": 21,
+          "total_calls": 21
+        },
+        {
+          "cumulative_seconds": 0.0015903660000000002,
+          "function": "dataclasses.py:1325:_asdict_inner",
+          "own_seconds": 0.000995874,
+          "primitive_calls": 38,
+          "total_calls": 1064
+        },
+        {
+          "cumulative_seconds": 0.001094003,
+          "function": "pathlib.py:702:parts",
+          "own_seconds": 0.000105271,
+          "primitive_calls": 158,
+          "total_calls": 158
+        },
+        {
+          "cumulative_seconds": 0.001078811,
+          "function": "negative_carry_witness.py:63:input_hash",
+          "own_seconds": 8.213e-05,
+          "primitive_calls": 36,
+          "total_calls": 36
+        }
+      ]
+    }
+  },
+  "protocol_sha256": "ac7b044b8874caccf44a0a45973f04f3b239e66c5bc974628e72d6c31c6164e3",
+  "schema_version": 1,
+  "seal_sha256": "076ca5cb196819c77883514e06d309e4959ec897e1b54bdf49451bf203305fbd",
+  "setup": {
+    "candidate_context_binding_cpu_ns": 5450030,
+    "candidate_context_binding_wall_ns": 5466696,
+    "candidate_only_context_binding": [
+      {
+        "cpu_ns": 333770,
+        "history": "unchanged_module_other_file",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 335181
+      },
+      {
+        "cpu_ns": 332390,
+        "history": "changed_comment_same_ast",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 333251
+      },
+      {
+        "cpu_ns": 302450,
+        "history": "direct_class_global",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 303360
+      },
+      {
+        "cpu_ns": 344440,
+        "history": "nested_class_global",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 345491
+      },
+      {
+        "cpu_ns": 288300,
+        "history": "same_blob_symlink",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 289311
+      },
+      {
+        "cpu_ns": 375540,
+        "history": "signature_recovery",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 376431
+      },
+      {
+        "cpu_ns": 307200,
+        "history": "same_id_expected_signature_change",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 308221
+      },
+      {
+        "cpu_ns": 390240,
+        "history": "context_flag_change",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 391061
+      },
+      {
+        "cpu_ns": 296480,
+        "history": "context_index_change",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 297611
+      },
+      {
+        "cpu_ns": 292980,
+        "history": "scope_change",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 294041
+      },
+      {
+        "cpu_ns": 345900,
+        "history": "known_incomplete",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 346441
+      },
+      {
+        "cpu_ns": 299360,
+        "history": "size_limit",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 300021
+      },
+      {
+        "cpu_ns": 350240,
+        "history": "context_size_limit_change",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 351111
+      },
+      {
+        "cpu_ns": 286270,
+        "history": "parse_error_recovery",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 287491
+      },
+      {
+        "cpu_ns": 286440,
+        "history": "regular_mode_equivalence",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 287201
+      },
+      {
+        "cpu_ns": 307880,
+        "history": "absence_ancestor_limitation",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 309161
+      },
+      {
+        "cpu_ns": 310150,
+        "history": "policy_switch_lineage",
+        "phase": "candidate_only_context_binding",
+        "wall_ns": 311311
+      }
+    ],
+    "cost_note": "Total setup includes candidate-only context identity creation; this overhead is not a baseline end-to-end saving.",
+    "cpu_ns": 184582430,
+    "fresh_comparison_calls": 31,
+    "histories": 17,
+    "independent_reference_calls": 31,
+    "parent_actual_validation_calls": 17,
+    "transitions": 31,
+    "wall_ns": 1465691811
+  },
+  "setup_work_inferred_from_frozen_source": {
+    "context_bindings": 17,
+    "implementation_file_hash_reads": 85,
+    "independent_reference_calls": 31,
+    "index_builds_including_fresh_comparisons": 79,
+    "index_comparisons": 31,
+    "parent_and_fresh_validation_calls": 48,
+    "snapshot_reads": 48
+  },
+  "status": "pass",
+  "timing_distributions_ns": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "max": 538681150,
+        "median": 481752160,
+        "min": 436467300
+      },
+      "wall_ns": {
+        "max": 561884238,
+        "median": 490317117,
+        "min": 436652850
+      }
+    },
+    "production": {
+      "cpu_ns": {
+        "max": 266862730,
+        "median": 223798710,
+        "min": 209149480
+      },
+      "wall_ns": {
+        "max": 361088260,
+        "median": 225909723,
+        "min": 209232794
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "max": 548556630,
+        "median": 477428730,
+        "min": 431839280
+      },
+      "wall_ns": {
+        "max": 668032806,
+        "median": 480221994,
+        "min": 432423280
+      }
+    }
+  },
+  "timing_rows": 63,
+  "witness_reason_counts": {
+    "module_blob_witness": {
+      "bound_claim_provenance_or_context_changed": 3,
+      "missing_actual_negative_witness": 9,
+      "module_changed_since_actual_negative_validation": 2,
+      "outside_exact_scope_or_incomplete_provenance": 2,
+      "production_reason_or_previous_state_requires_validation": 7,
+      "same_regular_module_as_actual_signature_mismatch": 7
+    },
+    "production": {},
+    "signature_witness": {
+      "bound_claim_provenance_or_context_changed": 3,
+      "missing_actual_negative_witness": 9,
+      "outside_exact_scope_or_incomplete_provenance": 2,
+      "production_reason_or_previous_state_requires_validation": 7,
+      "subject_witness_changed": 1,
+      "unchanged_existing_signature_mismatch_carried": 8
+    }
+  }
+}

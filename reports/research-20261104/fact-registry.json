@@ -1184,6 +1184,175 @@
           "unit": "reference call"
         }
       ]
+    },
+    {
+      "id": "negative_carry_cost",
+      "label": "Цена переноса отрицательного ответа",
+      "scope": "17 авторских Git-историй, 31 переход; 21 парный повтор; блок содержит 100 повторов всего набора, 1700 историй и 3100 переходов.",
+      "limits": [
+        "Индексы, Git и reference подготовлены заранее; witness creation, eligibility, actual validation и state advance входят в измерение.",
+        "Все повторы используют тот же набор, а не независимые программы. Общий хост; диапазоны не являются популяционными confidence intervals.",
+        "Три controlled keep_all состояния intentionally withhold supported claims; обычные 90 переходов анализируются отдельно.",
+        "Снижение числа validation calls не стало ускорением этих реализаций."
+      ],
+      "facts": [
+        {
+          "id": "negative_carry_cost.histories",
+          "label": "Авторские истории",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/setup.json",
+          "source_sha256": "e7173550c67055b68ba95c04b1daeb636c8e7011e569ed2f8209abcd96018226",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/histories"
+          },
+          "expected": 17,
+          "unit": "history"
+        },
+        {
+          "id": "negative_carry_cost.steps",
+          "label": "Различные переходы в наборе",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/setup.json",
+          "source_sha256": "e7173550c67055b68ba95c04b1daeb636c8e7011e569ed2f8209abcd96018226",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/transitions"
+          },
+          "expected": 31,
+          "unit": "transition"
+        },
+        {
+          "id": "negative_carry_cost.production_calls",
+          "label": "Baseline validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/production/counts/actual_validation_calls"
+          },
+          "expected": 29,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.signature_calls",
+          "label": "Signature-witness validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/signature_witness/counts/actual_validation_calls"
+          },
+          "expected": 21,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.blob_calls",
+          "label": "Blob-witness validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/module_blob_witness/counts/actual_validation_calls"
+          },
+          "expected": 22,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.production_cpu",
+          "label": "Baseline CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/production/cpu_ns/median"
+          },
+          "expected": 223798710,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.signature_cpu",
+          "label": "Signature-witness CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/signature_witness/cpu_ns/median"
+          },
+          "expected": 477428730,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.blob_cpu",
+          "label": "Blob-witness CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/module_blob_witness/cpu_ns/median"
+          },
+          "expected": 481752160,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.paired_repetitions",
+          "label": "Парные повторы",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_repetitions"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.timing_rows",
+          "label": "Записи timing",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/timing_rows"
+          },
+          "expected": 63,
+          "unit": "timing sample"
+        },
+        {
+          "id": "negative_carry_cost.signature_slower",
+          "label": "Положительные CPU-разности signature−baseline",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_delta_distributions_ns/signature_witness/cpu_ns/positive_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.blob_slower",
+          "label": "Положительные CPU-разности blob−baseline",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_delta_distributions_ns/module_blob_witness/cpu_ns/positive_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.correctness_rows",
+          "label": "Correctness records",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/correctness_rows"
+          },
+          "expected": 93,
+          "unit": "variant/transition"
+        }
+      ]
     }
   ]
 }

@@ -229,8 +229,8 @@ runtime sources; Docker image в него не входит. Хеш и инст�
 unresolved-флаги; снятия одного глобального fallback недостаточно для выборочного
 отбора. Проверены parent-источники; child-результаты не использовались.
 
-[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v6/verified-facts.md)
-связывает 82 показателя с точным полем хешированного источника, единицей и
+[Проверяемый реестр ключевых чисел](reports/research-20261104/fact-ledger-v7/verified-facts.md)
+связывает 95 показателей с точным полем хешированного источника, единицей и
 ограничениями. Проверка и генерация: `.venv/bin/python -m scripts.check_research_facts --out runs/NEW_NAME`.
 
 [Формальные условия гарантий доступности](docs/availability_invariants_2026-11-04_ru.md)

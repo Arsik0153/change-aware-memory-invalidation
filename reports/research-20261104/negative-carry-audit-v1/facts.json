@@ -1,0 +1,283 @@
+{
+  "all_phase_actual_validation_calls_including_setup": 165864,
+  "artifact_hashes_checked": 151,
+  "authored_histories": 17,
+  "authored_steps": 31,
+  "candidate_to_baseline_ratios": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "paired_ratios": {
+          "max": 2.4686754361864938,
+          "median": 2.1211139887673696,
+          "min": 1.8398616772001095
+        },
+        "ratio_of_medians": 2.1526136589437894
+      },
+      "wall_ns": {
+        "paired_ratios": {
+          "max": 2.5747586283949806,
+          "median": 2.0988358123921915,
+          "min": 1.3944797402164224
+        },
+        "ratio_of_medians": 2.170411748944511
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "paired_ratios": {
+          "max": 2.422100977098739,
+          "median": 2.141535693913566,
+          "min": 1.8207802727379363
+        },
+        "ratio_of_medians": 2.1332952723454035
+      },
+      "wall_ns": {
+        "paired_ratios": {
+          "max": 2.702086009079453,
+          "median": 2.1189660798604915,
+          "min": 1.4313702777265591
+        },
+        "ratio_of_medians": 2.1257252128098973
+      }
+    }
+  },
+  "clock_threshold": {
+    "cpu_blocks_below_same_threshold": 0,
+    "minimum_observed_cpu_ns": 209149480,
+    "minimum_observed_wall_ns": 209232794,
+    "minimum_wall_block_ns": 10000000,
+    "wall_blocks_below_threshold": 0
+  },
+  "controlled_keep_all_records": 3,
+  "controlled_withheld_supported": 3,
+  "correctness_records": 93,
+  "counts_interpretation": "Primary transition/work counters are defined by the frozen runner. Untimed capture/calibration/warmup totals are schedule-derived, not separately logged physical executions. Correctness capture also computes comparison states and serializes witness records outside timed samples.",
+  "file_only_mirror_with_original_Git_fixtures_passed": true,
+  "historical_fallback_paths": [
+    ".gitignore"
+  ],
+  "historical_source_commit": "cbfbe2803cccd9072b7fccfacd8ba80ba5d8d408",
+  "historical_source_hashes_checked": 237,
+  "history_packs_per_timing_row": 100,
+  "limits": [
+    "No benchmark or production/reference code was executed by this auditor; recorded elapsed times cannot be independently reconstructed from outputs.",
+    "Work counts for untimed capture/calibration/warmup phases are inferred from the frozen schedule and independently checked per-pack transitions; profiling corroborates one separate actual execution per variant.",
+    "The recorded source-before/after snapshots, hashes and historical Git commit bind source identity but cannot prove past execution or timing honesty.",
+    "Shared CPython ast and the narrow authored syntax limit semantic independence; this is not a runtime-behavior oracle or an exhaustive cross-product test.",
+    "The keep_all transition is a deliberate control with one withheld-supported state per variant; ordinary policy transitions are reported separately.",
+    "cProfile is one instrumented post-timing history pack per variant. Cumulative times overlap along call trees; they must not be summed indiscriminately or treated as measured timing samples.",
+    "Shared-host variability remains; paired ordering and 21 repetitions do not establish population generalization, significance, or end-to-end corpus savings."
+  ],
+  "maintenance_history_executions_all_variants": 117453,
+  "maintenance_primary_transition_executions_all_variants": 214179,
+  "maintenance_total_counts": {
+    "actual_validation_calls": 165816,
+    "effective_selected": 165816,
+    "eligibility_attempts": 138180,
+    "original_selected": 200361,
+    "suppressed": 34545,
+    "witness_mint_attempts": 177331
+  },
+  "manifest_sha256": "ddee049161424b5da53aa138e4423808d217152bed9923ed3f97dfcb85bd28e5",
+  "measured_region_review": {
+    "excluded_setup": [
+      "authored Git creation",
+      "snapshot/index/compare",
+      "independent reference",
+      "output serialization"
+    ],
+    "limitation": "Static frozen-source inspection establishes the intended measured call path; it cannot independently observe historical clock placement or untimed warmup executions.",
+    "profile_call_lines": [
+      145,
+      146
+    ],
+    "status": "pass",
+    "timed_clock_lines": [
+      131,
+      133
+    ],
+    "work_included": [
+      "selection",
+      "eligibility/witness gate",
+      "claim/provenance/context hashing",
+      "initial and refresh witness minting",
+      "actual structural validation",
+      "state advance"
+    ]
+  },
+  "ordinary_available_unknown": 0,
+  "ordinary_false_available": 0,
+  "ordinary_records": 90,
+  "ordinary_withheld_supported": 0,
+  "original_result_preserved": true,
+  "paired_delta_distributions_ns": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "max": 320474600,
+        "median": 251123670,
+        "min": 212668590,
+        "pairs": 21,
+        "positive_pairs": 21
+      },
+      "wall_ns": {
+        "max": 343656311,
+        "median": 248237694,
+        "min": 142442003,
+        "pairs": 21,
+        "positive_pairs": 21
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "max": 322076960,
+        "median": 252113990,
+        "min": 213137250,
+        "pairs": 21,
+        "positive_pairs": 21
+      },
+      "wall_ns": {
+        "max": 420804256,
+        "median": 250979031,
+        "min": 155762743,
+        "pairs": 21,
+        "positive_pairs": 21
+      }
+    }
+  },
+  "paired_repetitions": 21,
+  "paired_timing_rows": 63,
+  "per_pack_counts": {
+    "module_blob_witness": {
+      "actual_validation_calls": 22,
+      "effective_selected": 22,
+      "eligibility_attempts": 30,
+      "original_selected": 29,
+      "suppressed": 7,
+      "witness_mint_attempts": 39
+    },
+    "production": {
+      "actual_validation_calls": 29,
+      "effective_selected": 29,
+      "eligibility_attempts": 0,
+      "original_selected": 29,
+      "suppressed": 0,
+      "witness_mint_attempts": 0
+    },
+    "signature_witness": {
+      "actual_validation_calls": 21,
+      "effective_selected": 21,
+      "eligibility_attempts": 30,
+      "original_selected": 29,
+      "suppressed": 8,
+      "witness_mint_attempts": 38
+    }
+  },
+  "phase_totals": {
+    "correctness_capture": {
+      "actual_validation_calls": 72,
+      "history_executions": 51,
+      "history_pack_repetitions_all_variants": 3,
+      "primary_transition_executions": 93,
+      "witness_mint_attempts": 77
+    },
+    "expected_work_calibration": {
+      "actual_validation_calls": 72,
+      "history_executions": 51,
+      "history_pack_repetitions_all_variants": 3,
+      "primary_transition_executions": 93,
+      "witness_mint_attempts": 77
+    },
+    "separate_profile": {
+      "actual_validation_calls": 72,
+      "history_executions": 51,
+      "history_pack_repetitions_all_variants": 3,
+      "primary_transition_executions": 93,
+      "witness_mint_attempts": 77
+    },
+    "timed": {
+      "actual_validation_calls": 151200,
+      "history_executions": 107100,
+      "history_pack_repetitions_all_variants": 6300,
+      "primary_transition_executions": 195300,
+      "witness_mint_attempts": 161700
+    },
+    "warmup": {
+      "actual_validation_calls": 14400,
+      "history_executions": 10200,
+      "history_pack_repetitions_all_variants": 600,
+      "primary_transition_executions": 18600,
+      "witness_mint_attempts": 15400
+    }
+  },
+  "profile_calls": {
+    "module_blob_witness": {
+      "actual_validation_calls": 22,
+      "asdict_calls": 39,
+      "context_hash_calls": 39,
+      "digest_calls": 177,
+      "eligibility_gate_calls": 30,
+      "witness_mint_attempts": 39
+    },
+    "production": {
+      "actual_validation_calls": 29,
+      "asdict_calls": 0,
+      "context_hash_calls": 0,
+      "digest_calls": 29,
+      "eligibility_gate_calls": 0,
+      "witness_mint_attempts": 0
+    },
+    "signature_witness": {
+      "actual_validation_calls": 21,
+      "asdict_calls": 38,
+      "context_hash_calls": 38,
+      "digest_calls": 172,
+      "eligibility_gate_calls": 30,
+      "witness_mint_attempts": 38
+    }
+  },
+  "profile_top_entries_checked": 60,
+  "rehashed_corruptions_rejected": 5,
+  "schema_version": 1,
+  "sealed_input_hashes_checked": 80,
+  "setup_actual_validation_calls": 48,
+  "status": "pass",
+  "tamper_groups_passed": 7,
+  "timing_distributions_ns": {
+    "module_blob_witness": {
+      "cpu_ns": {
+        "max": 538681150,
+        "median": 481752160,
+        "min": 436467300
+      },
+      "wall_ns": {
+        "max": 561884238,
+        "median": 490317117,
+        "min": 436652850
+      }
+    },
+    "production": {
+      "cpu_ns": {
+        "max": 266862730,
+        "median": 223798710,
+        "min": 209149480
+      },
+      "wall_ns": {
+        "max": 361088260,
+        "median": 225909723,
+        "min": 209232794
+      }
+    },
+    "signature_witness": {
+      "cpu_ns": {
+        "max": 548556630,
+        "median": 477428730,
+        "min": 431839280
+      },
+      "wall_ns": {
+        "max": 668032806,
+        "median": 480221994,
+        "min": 432423280
+      }
+    }
+  }
+}

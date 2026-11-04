@@ -522,3 +522,13 @@ states остаютсяcontradicted/predicate_mismatch. Триintentionalkeep_al
 и80sourcehash перепроверены внутриархива. ДляGit создана151-filemirror безвложенных
 .git; исходныйrun сохранён. На диске15GiB(80%),очистка не требуется. Графикпросмотрен;
 html_preview сноваexit1,html_render показалPNG. Независимыйаудитидётотдельно.
+
+Независимый аудит отрицательногоcarry завершён:151artifact,80sealed,237historical
+source,48Git snapshots,31referencepacket,93correctnessrecords и63timingsamples.
+Пять перехешированныхподменотклонены,7контрольныхгрупппрошли. Установленныйаудитор
+повторилпроверкуmirror сGitбазами израспакованного опубликованногоrawtar. 90обычных
+записей дают0FA/AU/FW,триkeep_allcontrolsотделены. Профилисверенысполными.prof;
+коллизииbasenameпослеstrip_dirs учитываются безложнойатрибуциизависимостей.
+Первоначальныенеудачныеитерацииаудиторасохраненывruns. Реестрv7:95фактов,
+19разрезов,23источника. GitHubpusha48e5b1 завершилсяHTTPSconnecttimeout;
+локальныеcommitsиартефактысохранены,повторнаяотправкапредстоит.

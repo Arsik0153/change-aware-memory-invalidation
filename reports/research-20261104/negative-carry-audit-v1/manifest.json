@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "result_mirror": "reports/research-20261104/negative-carry-maintenance-evidence-v1",
+  "git_database_source": "Verified archive negative-carry-raw-v1.tar.gz extracted into new runs/negative-carry-archive-check-20261104/run/git-fixtures",
+  "raw_archive_sha256": "01965ad30d2a6f5515acda4fec478b4f36f19263e28261d3a2f5b26fcd0970f8",
+  "scripts": {
+    "scripts/audit_negative_carry.py": "c1722f86634a03e548886b3c25d0fc301f0ad0156285faee8d738b94b61e3308",
+    "scripts/check_negative_carry_audit.py": "bab5e56c72f1fba80177af988367c7c78c65ceb7bfdecf6a900966c8eaca6e1c"
+  },
+  "artifacts": {
+    "facts.json": "8867b71d25f2c17abe841ebf79a016ef44ebb39dce77f7261b4150f6dad6c179",
+    "audit_notes.json": "edc83c255978bf98c8e2e1236e214291bd5de52f5d4032d96df16201163ce730",
+    "tamper_report.json": "607c8396a7b45ed98970d54b36ecfb8f5a996fb10200d21f49cc69eddcac2111",
+    "report.json": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b"
+  },
+  "controls": 7,
+  "rehashed_corruptions_rejected": 5,
+  "limits": [
+    "No benchmark or production/reference code was executed by this auditor; recorded elapsed times cannot be independently reconstructed from outputs.",
+    "Work counts for untimed capture/calibration/warmup phases are inferred from the frozen schedule and independently checked per-pack transitions; profiling corroborates one separate actual execution per variant.",
+    "The recorded source-before/after snapshots, hashes and historical Git commit bind source identity but cannot prove past execution or timing honesty.",
+    "Shared CPython ast and the narrow authored syntax limit semantic independence; this is not a runtime-behavior oracle or an exhaustive cross-product test.",
+    "The keep_all transition is a deliberate control with one withheld-supported state per variant; ordinary policy transitions are reported separately.",
+    "cProfile is one instrumented post-timing history pack per variant. Cumulative times overlap along call trees; they must not be summed indiscriminately or treated as measured timing samples.",
+    "Shared-host variability remains; paired ordering and 21 repetitions do not establish population generalization, significance, or end-to-end corpus savings."
+  ]
+}

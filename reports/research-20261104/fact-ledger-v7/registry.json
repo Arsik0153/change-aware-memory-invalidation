@@ -1,0 +1,1358 @@
+{
+  "schema_version": 1,
+  "studies": [
+    {
+      "id": "parent_graph",
+      "label": "Реальные parent-графы",
+      "scope": "63 фиксированных parent-группы; child-данные не читались.",
+      "limits": [
+        "Флаги анализатора не являются truth labels.",
+        "Модули повторяются между версиями."
+      ],
+      "facts": [
+        {
+          "id": "parent_graph.claims",
+          "label": "Все кандидаты",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claims"
+          },
+          "expected": 630,
+          "unit": "claim"
+        },
+        {
+          "id": "parent_graph.behavior",
+          "label": "Behavior-кандидаты",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/behavior_claims"
+          },
+          "expected": 63,
+          "unit": "claim"
+        },
+        {
+          "id": "parent_graph.prose",
+          "label": "Prose-кандидаты",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/candidate_kinds/prose"
+          },
+          "expected": 63,
+          "unit": "claim"
+        },
+        {
+          "id": "parent_graph.modules",
+          "label": "Модули",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/modules_across_parents"
+          },
+          "expected": 2131,
+          "unit": "parent/module"
+        },
+        {
+          "id": "parent_graph.linking",
+          "label": "Module unresolved добавлен linker",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/modules_unresolved_added_by_linking"
+          },
+          "expected": 2070,
+          "unit": "parent/module"
+        },
+        {
+          "id": "parent_graph.global",
+          "label": "Behavior с global flag",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/behavior_global_unresolved"
+          },
+          "expected": 63,
+          "unit": "claim"
+        },
+        {
+          "id": "parent_graph.direct",
+          "label": "Behavior с subject flag",
+          "source": "reports/research-20261104/parent-graph-profile-v2/summary.json",
+          "source_sha256": "e943f18ec4c2edc74946446a8b6fa185b52e2c24966445b02c458bce4707eb5b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/behavior_subject_direct_unresolved"
+          },
+          "expected": 63,
+          "unit": "claim"
+        }
+      ]
+    },
+    {
+      "id": "binding",
+      "label": "Binding gate",
+      "scope": "Parent-only проверка структурных кандидатов.",
+      "limits": [
+        "Gate pass не является admission или независимым подтверждением."
+      ],
+      "facts": [
+        {
+          "id": "binding.total",
+          "label": "Структурные кандидаты",
+          "source": "reports/research-20261104/binding-gate-v1/summary.json",
+          "source_sha256": "551c58b05df7ae6a4dc0d9b6b37777967976c326a6e43a89ada9f9a19a39728f",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_observations"
+          },
+          "expected": 504,
+          "unit": "claim"
+        },
+        {
+          "id": "binding.pass",
+          "label": "Прошли gate",
+          "source": "reports/research-20261104/binding-gate-v1/summary.json",
+          "source_sha256": "551c58b05df7ae6a4dc0d9b6b37777967976c326a6e43a89ada9f9a19a39728f",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_outcomes/passes_binding_gate_only"
+          },
+          "expected": 30,
+          "unit": "claim"
+        },
+        {
+          "id": "binding.reject",
+          "label": "Отклонены gate",
+          "source": "reports/research-20261104/binding-gate-v1/summary.json",
+          "source_sha256": "551c58b05df7ae6a4dc0d9b6b37777967976c326a6e43a89ada9f9a19a39728f",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_outcomes/binding_gate_rejected"
+          },
+          "expected": 474,
+          "unit": "claim"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "label": "Структурный перенос",
+      "scope": "Авторский конечный набор; сравнение с тем же свежим валидатором.",
+      "limits": [
+        "Не независимая истина.",
+        "Восемь случаев изменения лимита чтения вне аргумента фиксированной конфигурации."
+      ],
+      "facts": [
+        {
+          "id": "carry.cases",
+          "label": "Всего случаев",
+          "source": "reports/research-20261104/structural-carry-v1/summary.json",
+          "source_sha256": "e9d0e502758d21925ecd02b177c82d48e6837e806a55ef7383811697d773c7d6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/cases"
+          },
+          "expected": 168,
+          "unit": "case"
+        },
+        {
+          "id": "carry.carried",
+          "label": "Перенесены",
+          "source": "reports/research-20261104/structural-carry-v1/summary.json",
+          "source_sha256": "e9d0e502758d21925ecd02b177c82d48e6837e806a55ef7383811697d773c7d6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/carried"
+          },
+          "expected": 32,
+          "unit": "case"
+        },
+        {
+          "id": "carry.violations",
+          "label": "Нарушения условного переноса",
+          "source": "reports/research-20261104/structural-carry-v1/summary.json",
+          "source_sha256": "e9d0e502758d21925ecd02b177c82d48e6837e806a55ef7383811697d773c7d6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/carry_violations"
+          },
+          "expected": 0,
+          "unit": "case"
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "label": "Обход графа",
+      "scope": "Конечные пространства трёх- и четырёхвершинных графов.",
+      "limits": [
+        "Счётчик включает совпадающие эффективные seed sets.",
+        "Не проверяет полноту parser."
+      ],
+      "facts": [
+        {
+          "id": "impact.cases",
+          "label": "Входные случаи",
+          "source": "reports/research-20261104/impact-graphs-v1/results.json",
+          "source_sha256": "936424b37eadefa48ca8807e1e65b5e0922b4d219fefd194e909df987e5cee5d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/cases"
+          },
+          "expected": 208896,
+          "unit": "input case"
+        },
+        {
+          "id": "impact.mismatch",
+          "label": "Расхождения",
+          "source": "reports/research-20261104/impact-graphs-v1/results.json",
+          "source_sha256": "936424b37eadefa48ca8807e1e65b5e0922b4d219fefd194e909df987e5cee5d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/mismatches"
+          },
+          "expected": 0,
+          "unit": "case"
+        }
+      ]
+    },
+    {
+      "id": "requests",
+      "label": "Requests package-only projection",
+      "scope": "Отдельный pinned execution context на реальных parents.",
+      "limits": [
+        "Не full-tree execution и не admission."
+      ],
+      "facts": [
+        {
+          "id": "requests.parents",
+          "label": "Parent-группы",
+          "source": "reports/research-20261104/requests-projection-v1/summary.json",
+          "source_sha256": "d0a1a354864e9e8700fd06018c1b464e6774ebb86b031a4cadd09ce26632c392",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/completed_groups"
+          },
+          "expected": 22,
+          "unit": "group"
+        },
+        {
+          "id": "requests.executions",
+          "label": "Успешные исполнения",
+          "source": "reports/research-20261104/requests-projection-v1/summary.json",
+          "source_sha256": "d0a1a354864e9e8700fd06018c1b464e6774ebb86b031a4cadd09ce26632c392",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/completed_group_probe_executions"
+          },
+          "expected": 66,
+          "unit": "Docker execution"
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "label": "Время синтетических историй",
+      "scope": "40 CLI runs; пять повторов каждого варианта двух authored histories.",
+      "limits": [
+        "Общая машина.",
+        "Повторы не являются независимыми новыми историями.",
+        "Отдельный cProfile исключён."
+      ],
+      "facts": [
+        {
+          "id": "timing.runs",
+          "label": "Измеренные CLI runs",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measured_runs"
+          },
+          "expected": 40,
+          "unit": "run"
+        },
+        {
+          "id": "timing.probes",
+          "label": "Измеренные пробы",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measured_probe_executions"
+          },
+          "expected": 615,
+          "unit": "Docker execution"
+        },
+        {
+          "id": "timing.exposure_all",
+          "label": "Exposure all: медиана",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/groups/exposure~1all_validate/cli_wall_seconds/median"
+          },
+          "expected": 10.731269817100838,
+          "unit": "second"
+        },
+        {
+          "id": "timing.exposure_intact",
+          "label": "Exposure intact: медиана",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/groups/exposure~1intact/cli_wall_seconds/median"
+          },
+          "expected": 9.24319527996704,
+          "unit": "second"
+        },
+        {
+          "id": "timing.recovery_all",
+          "label": "Recovery all: медиана",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/groups/recovery~1all_validate/cli_wall_seconds/median"
+          },
+          "expected": 7.69090930884704,
+          "unit": "second"
+        },
+        {
+          "id": "timing.recovery_intact",
+          "label": "Recovery intact: медиана",
+          "source": "reports/research-20261104/behavior-timing-v1/summary.json",
+          "source_sha256": "be0014c028e1a700ef36e16994d5c34809e256591b64e6cb811250ea8d0887b6",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/groups/recovery~1intact/cli_wall_seconds/median"
+          },
+          "expected": 6.201838667970151,
+          "unit": "second"
+        }
+      ]
+    },
+    {
+      "id": "reachability",
+      "label": "Конечная достижимость",
+      "scope": "Две функции и конечная грамматика; точный oracle.",
+      "limits": [
+        "Нулевое число Docker executions в этом обходе.",
+        "Не произвольный Python."
+      ],
+      "facts": [
+        {
+          "id": "reachability.programs",
+          "label": "Программы",
+          "source": "reports/research-20261104/behavior-reachability-v1/summary.json",
+          "source_sha256": "8bd1351cd709d4a70e26a3b6e7da2015841565060d17df5a0e2366f5e434ad1e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/programs"
+          },
+          "expected": 12,
+          "unit": "program"
+        },
+        {
+          "id": "reachability.hidden_states",
+          "label": "Hidden: состояния",
+          "source": "reports/research-20261104/behavior-reachability-v1/summary.json",
+          "source_sha256": "8bd1351cd709d4a70e26a3b6e7da2015841565060d17df5a0e2366f5e434ad1e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/hidden_missing/state_count"
+          },
+          "expected": 14,
+          "unit": "state"
+        },
+        {
+          "id": "reachability.hidden_false",
+          "label": "Hidden: ложная доступность",
+          "source": "reports/research-20261104/behavior-reachability-v1/summary.json",
+          "source_sha256": "8bd1351cd709d4a70e26a3b6e7da2015841565060d17df5a0e2366f5e434ad1e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/hidden_missing/false_availability_states"
+          },
+          "expected": 2,
+          "unit": "state"
+        }
+      ]
+    },
+    {
+      "id": "audit_model",
+      "label": "Периодический аудит: модель",
+      "scope": "K обработанных child commits; корректная завершённая validation.",
+      "limits": [
+        "Граница не в секундах.",
+        "Production policy не изменена."
+      ],
+      "facts": [
+        {
+          "id": "audit_model.k2",
+          "label": "K=2: максимум подряд",
+          "source": "reports/research-20261104/periodic-audit-bound-v1/summary.json",
+          "source_sha256": "92ddd317143d00a718fa9237ff706a25bf54f96b1fc2f917fb727b1f9d994670",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/intervals/2/risk/max_consecutive_false_available"
+          },
+          "expected": 1,
+          "unit": "false-available state"
+        },
+        {
+          "id": "audit_model.k4",
+          "label": "K=4: максимум подряд",
+          "source": "reports/research-20261104/periodic-audit-bound-v1/summary.json",
+          "source_sha256": "92ddd317143d00a718fa9237ff706a25bf54f96b1fc2f917fb727b1f9d994670",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/intervals/4/risk/max_consecutive_false_available"
+          },
+          "expected": 3,
+          "unit": "false-available state"
+        },
+        {
+          "id": "audit_model.k8",
+          "label": "K=8: максимум подряд",
+          "source": "reports/research-20261104/periodic-audit-bound-v1/summary.json",
+          "source_sha256": "92ddd317143d00a718fa9237ff706a25bf54f96b1fc2f917fb727b1f9d994670",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/intervals/8/risk/max_consecutive_false_available"
+          },
+          "expected": 7,
+          "unit": "false-available state"
+        }
+      ]
+    },
+    {
+      "id": "audit_docker",
+      "label": "Периодический аудит: engine",
+      "scope": "Одна авторская история из 12 Git children; исследовательская обёртка.",
+      "limits": [
+        "Не population effect или timing benchmark.",
+        "Parent confirmations включены в executions."
+      ],
+      "facts": [
+        {
+          "id": "audit_docker.executions",
+          "label": "Фактические исполнения",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/manifest.json",
+          "source_sha256": "ba9a1ec061192110081036095fa1abd0b37a407214a76321e4b3d747a65b2696",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/probe_executions"
+          },
+          "expected": 93,
+          "unit": "Docker execution"
+        },
+        {
+          "id": "audit_docker.pass",
+          "label": "Успешные пробы",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/manifest.json",
+          "source_sha256": "ba9a1ec061192110081036095fa1abd0b37a407214a76321e4b3d747a65b2696",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/probe_outcomes/passed"
+          },
+          "expected": 33,
+          "unit": "Docker execution"
+        },
+        {
+          "id": "audit_docker.fail",
+          "label": "Ожидаемые assertion failures",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/manifest.json",
+          "source_sha256": "ba9a1ec061192110081036095fa1abd0b37a407214a76321e4b3d747a65b2696",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/probe_outcomes/assertion_failure"
+          },
+          "expected": 60,
+          "unit": "Docker execution"
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "label": "Полная проверка",
+      "scope": "Неизменный commit 49dc9c2; production fix, AI pilot, translation и real replay driver включены.",
+      "limits": [
+        "Полная проверка относится к указанному HEAD; поздние отдельные auditors не приписываются этому прогону."
+      ],
+      "facts": [
+        {
+          "id": "verification.passed",
+          "label": "Прошедшие тесты",
+          "source": "reports/research-20261104/full-verification-49dc9c2/pytest.log",
+          "source_sha256": "a01afddfe8468717c396d124dfb889375d4959f3c446d1c23cd5cf897f223b8f",
+          "selector": {
+            "format": "pytest_summary"
+          },
+          "expected": 1259,
+          "unit": "test"
+        }
+      ]
+    },
+    {
+      "id": "audit_policy",
+      "label": "Политики в периодическом Git/Docker опыте",
+      "scope": "Одна фиксированная 12-шаговая история; восстановление на child9.",
+      "limits": [
+        "Research-only adapter.",
+        "Число ошибок не является популяционной частотой.",
+        "Parent-проверки исключены из logical validation counts."
+      ],
+      "facts": [
+        {
+          "id": "audit_policy.hidden_missing.maintenance_validations",
+          "label": "hidden_missing: Перепроверки child",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/0/maintenance_validations"
+          },
+          "expected": 0,
+          "unit": "logical validation"
+        },
+        {
+          "id": "audit_policy.hidden_missing.availability_mismatches",
+          "label": "hidden_missing: Ложно доступные состояния",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/0/availability_mismatches"
+          },
+          "expected": 8,
+          "unit": "child state"
+        },
+        {
+          "id": "audit_policy.periodic_2.maintenance_validations",
+          "label": "periodic_2: Перепроверки child",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/1/maintenance_validations"
+          },
+          "expected": 9,
+          "unit": "logical validation"
+        },
+        {
+          "id": "audit_policy.periodic_2.availability_mismatches",
+          "label": "periodic_2: Ложно доступные состояния",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/1/availability_mismatches"
+          },
+          "expected": 1,
+          "unit": "child state"
+        },
+        {
+          "id": "audit_policy.periodic_4.maintenance_validations",
+          "label": "periodic_4: Перепроверки child",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/2/maintenance_validations"
+          },
+          "expected": 6,
+          "unit": "logical validation"
+        },
+        {
+          "id": "audit_policy.periodic_4.availability_mismatches",
+          "label": "periodic_4: Ложно доступные состояния",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/2/availability_mismatches"
+          },
+          "expected": 3,
+          "unit": "child state"
+        },
+        {
+          "id": "audit_policy.all_validate.maintenance_validations",
+          "label": "all_validate: Перепроверки child",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/3/maintenance_validations"
+          },
+          "expected": 12,
+          "unit": "logical validation"
+        },
+        {
+          "id": "audit_policy.all_validate.availability_mismatches",
+          "label": "all_validate: Ложно доступные состояния",
+          "source": "reports/research-20261104/periodic-audit-docker-v1/results.json",
+          "source_sha256": "2802fe55e056ca45d87d0d31647f80bed60c782678c036846d7491e5f377797e",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/3/availability_mismatches"
+          },
+          "expected": 0,
+          "unit": "child state"
+        }
+      ]
+    },
+    {
+      "id": "ternary",
+      "label": "Неполные вердикты и условия гарантии",
+      "scope": "Полный конечный обход для K=1,2,4,8; точная двоичная и только положительно корректная модели.",
+      "limits": [
+        "Не проверяет soundness реального валидатора.",
+        "Нет Docker executions.",
+        "Граница для всех K опирается на отдельный аргумент возраста."
+      ],
+      "facts": [
+        {
+          "id": "ternary.sound_model_states",
+          "label": "Состояния двух моделей",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sound_model_states"
+          },
+          "expected": 64,
+          "unit": "state"
+        },
+        {
+          "id": "ternary.sound_model_transitions",
+          "label": "Переходы двух моделей",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sound_model_transitions"
+          },
+          "expected": 403,
+          "unit": "transition"
+        },
+        {
+          "id": "ternary.negative_control_cycles_verified",
+          "label": "Циклические отрицательные контроли",
+          "source": "reports/research-20261104/ternary-audit-invariants-v1/audit.json",
+          "source_sha256": "448ae84046fd749875180364093de84b88e2e7e60b9fdb0c73a134ada465fbff",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/negative_control_cycles_verified"
+          },
+          "expected": 2,
+          "unit": "control"
+        }
+      ]
+    },
+    {
+      "id": "symbolic",
+      "label": "Символические условия для произвольного K",
+      "scope": "QF_LIA, K>=1, неограниченные Int; один закреплённый Z3 4.16.0.0.",
+      "limits": [
+        "Ручная формализация перехода, не production verification.",
+        "Proof objects не проверены независимым kernel.",
+        "Непротиворечивость предпосылок не доказывает их выполнение на реальных данных."
+      ],
+      "facts": [
+        {
+          "id": "symbolic.checks",
+          "label": "Все solver checks",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/checks"
+          },
+          "expected": 18,
+          "unit": "solver check"
+        },
+        {
+          "id": "symbolic.unsat_refutations",
+          "label": "UNSAT отрицаний целей",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/unsat_refutations"
+          },
+          "expected": 6,
+          "unit": "obligation"
+        },
+        {
+          "id": "symbolic.sat_premises",
+          "label": "SAT предпосылок",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sat_premises"
+          },
+          "expected": 6,
+          "unit": "obligation"
+        },
+        {
+          "id": "symbolic.sat_witnesses",
+          "label": "SAT примеров и контрпримеров",
+          "source": "reports/research-20261104/symbolic-audit-v1/manifest.json",
+          "source_sha256": "6beec662c728c0ed4902a13ec221814d038cca5b0811d0954ed45600a7e18064",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sat_witnesses"
+          },
+          "expected": 6,
+          "unit": "witness"
+        }
+      ]
+    },
+    {
+      "id": "ai_pilot",
+      "label": "Слепой AI development-пилот",
+      "scope": "Три Click parent-группы; исходные claims и авторские контролы; раздельные AI-контексты.",
+      "limits": [
+        "AI agreement не является truth или человеческой разметкой.",
+        "Общий CPython и модель; зависимые строки и простые искусственные контролы.",
+        "Известный nested-class-global gap v1 отдельно раскрыт; целевых global в этих исходниках нет."
+      ],
+      "facts": [
+        {
+          "id": "ai_pilot.cases",
+          "label": "Все случаи",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/cases"
+          },
+          "expected": 36,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.authentic",
+          "label": "Исходные утверждения",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/authentic/cases"
+          },
+          "expected": 24,
+          "unit": "claim"
+        },
+        {
+          "id": "ai_pilot.controls",
+          "label": "Авторские контролы",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/controls/cases"
+          },
+          "expected": 12,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.ai_disagreement",
+          "label": "Расхождения двух AI",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/ai_pair_disagreements"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.reference_a",
+          "label": "Расхождения reference и AI A",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/mechanical_disagreements/reviewer_a"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.reference_b",
+          "label": "Расхождения reference и AI B",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/mechanical_disagreements/reviewer_b"
+          },
+          "expected": 0,
+          "unit": "case"
+        },
+        {
+          "id": "ai_pilot.human",
+          "label": "Человеческие reviews",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/human_review_count"
+          },
+          "expected": 0,
+          "unit": "review"
+        },
+        {
+          "id": "ai_pilot.source_hashes",
+          "label": "Уникальные source hashes",
+          "source": "reports/research-20261104/ai-parent-pilot-v1/summary.json",
+          "source_sha256": "0e294a1593e3150b39fd0f5a9ca527866118f578d049aff2786945447e491f33",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/all/unique_source_hashes"
+          },
+          "expected": 21,
+          "unit": "hash"
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "label": "Связь модели с engine",
+      "scope": "Восемь конечных графов, реальные функции отбора и состояния, канонические synthetic metadata.",
+      "limits": [
+        "ValidationResult задан моделью; probes не исполнялись.",
+        "Ограниченное соответствие, не доказательство произвольных production histories."
+      ],
+      "facts": [
+        {
+          "id": "translation.edges",
+          "label": "Исходные рёбра",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/source_transitions"
+          },
+          "expected": 403,
+          "unit": "edge"
+        },
+        {
+          "id": "translation.contexts",
+          "label": "Канонические контексты",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/canonical_memory_contexts"
+          },
+          "expected": 76,
+          "unit": "context"
+        },
+        {
+          "id": "translation.cases",
+          "label": "Проверенные переходы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/translation_cases"
+          },
+          "expected": 499,
+          "unit": "transition"
+        },
+        {
+          "id": "translation.matched",
+          "label": "Совпавшие переходы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/matched_cases"
+          },
+          "expected": 499,
+          "unit": "transition"
+        },
+        {
+          "id": "translation.controls",
+          "label": "Обнаруженные отрицательные контролы",
+          "source": "reports/research-20261104/model-engine-translation-v1/summary.json",
+          "source_sha256": "74129623739681d2cb060ce36955f28f3a99c9e92ed081ffed942b0e5c37581b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/negative_controls_detected"
+          },
+          "expected": 2,
+          "unit": "control"
+        }
+      ]
+    },
+    {
+      "id": "binding_before",
+      "label": "Class-global: before",
+      "scope": "21 authored mutation × 2 predicates; одинаковый reference v2 до и после production fix.",
+      "limits": [
+        "Available при uncertain означает отсутствие поддержки по rubric, не доказанную ложность.",
+        "Синтетический challenge не измеряет эффект на популяции репозиториев."
+      ],
+      "facts": [
+        {
+          "id": "binding_before.cases",
+          "label": "Claim-переходы",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_transitions"
+          },
+          "expected": 42,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_before.selected",
+          "label": "Выбранные symbol-проверки",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/selected"
+          },
+          "expected": 28,
+          "unit": "validation"
+        },
+        {
+          "id": "binding_before.unsupported",
+          "label": "Доступность при отсутствии поддержки",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/available_when_reference_not_supported"
+          },
+          "expected": 4,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_before.mismatch",
+          "label": "Полный validator против reference",
+          "source": "reports/research-20261104/reference-alignment-before-v2/summary.json",
+          "source_sha256": "ef834f5855bc9f2d330c25c2ad3b060606c2dac0f4e2e82c7056d52bdd516a63",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_1_full_production_vs_reference/child_mismatches"
+          },
+          "expected": 4,
+          "unit": "claim/transition"
+        }
+      ]
+    },
+    {
+      "id": "binding_after",
+      "label": "Class-global: after",
+      "scope": "21 authored mutation × 2 predicates; одинаковый reference v2 до и после production fix.",
+      "limits": [
+        "Available при uncertain означает отсутствие поддержки по rubric, не доказанную ложность.",
+        "Синтетический challenge не измеряет эффект на популяции репозиториев."
+      ],
+      "facts": [
+        {
+          "id": "binding_after.cases",
+          "label": "Claim-переходы",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/claim_transitions"
+          },
+          "expected": 42,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_after.selected",
+          "label": "Выбранные symbol-проверки",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/selected"
+          },
+          "expected": 32,
+          "unit": "validation"
+        },
+        {
+          "id": "binding_after.unsupported",
+          "label": "Доступность при отсутствии поддержки",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_2_research_reference_pipeline/by_selector_variant/symbol_anchor/available_when_reference_not_supported"
+          },
+          "expected": 0,
+          "unit": "claim/transition"
+        },
+        {
+          "id": "binding_after.mismatch",
+          "label": "Полный validator против reference",
+          "source": "reports/research-20261104/reference-alignment-after-v2/summary.json",
+          "source_sha256": "acd3d8690ebe0177cc304deb74e165d68aabb6aa5d3528c199e241a301c2adbf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/measurement_1_full_production_vs_reference/child_mismatches"
+          },
+          "expected": 0,
+          "unit": "claim/transition"
+        }
+      ]
+    },
+    {
+      "id": "real_structural_replay",
+      "label": "Реальная история Click, development",
+      "scope": "24 фиксированных claims; три цепочки длины 1/12/1; 112 наблюдений на вариант; четыре стратегии.",
+      "limits": [
+        "Восемь contradicted observations относятся к одному claim и одному возникновению изменения аннотации.",
+        "Экспериментальный provenance и AI parent-подтверждения не являются допуском основного held-out протокола.",
+        "Счётчики дочерних validations не являются wall-time speedup; parent, reference и общий index учитываются отдельно."
+      ],
+      "facts": [
+        {
+          "id": "real_structural_replay.claims",
+          "label": "Исходные parent claims",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/parent_initialization/symbol_anchor/eligible_parent_claims"
+          },
+          "expected": 24,
+          "unit": "claim"
+        },
+        {
+          "id": "real_structural_replay.observations",
+          "label": "Наблюдения на вариант",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/scored_observations"
+          },
+          "expected": 112,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.symbol_calls",
+          "label": "Проверки по символу",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 8,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.file_calls",
+          "label": "Проверки по файлу",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 13,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.incomplete_calls",
+          "label": "Проверки при известной неполноте",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/known_incomplete/actual_validation_calls"
+          },
+          "expected": 112,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.all_calls",
+          "label": "Полная перепроверка",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/all_validate/actual_validation_calls"
+          },
+          "expected": 112,
+          "unit": "validation call"
+        },
+        {
+          "id": "real_structural_replay.contradicted_observations",
+          "label": "Опровергнутые наблюдения на вариант",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/reference_contradicted"
+          },
+          "expected": 8,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.unique_contradicted",
+          "label": "Различные опровергнутые claims",
+          "source": "reports/research-20261104/real-structural-replay-audit-v1/report.json",
+          "source_sha256": "49f06de8f59c025ead49cb15cdb30c008ec6da87c100102d7230b7aeecabe254",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/unique_contradicted_claims"
+          },
+          "expected": 1,
+          "unit": "claim"
+        },
+        {
+          "id": "real_structural_replay.false_available",
+          "label": "Ложная доступность, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/false_available"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.available_unknown",
+          "label": "Доступность при unknown, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/available_unknown"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.withheld_supported",
+          "label": "Скрытые подтверждённые, symbol",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/symbol_anchor/withheld_supported"
+          },
+          "expected": 0,
+          "unit": "claim/child"
+        },
+        {
+          "id": "real_structural_replay.index_builds",
+          "label": "Общие построения индекса",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/shared_index_builds"
+          },
+          "expected": 17,
+          "unit": "index build"
+        },
+        {
+          "id": "real_structural_replay.child_reference",
+          "label": "Дочерние reference calls",
+          "source": "reports/research-20261104/real-structural-replay-v1/report.json",
+          "source_sha256": "88f142122255861174573523d6aac4504264945ffa6b37003fd8110069802abf",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/child_reference_calls"
+          },
+          "expected": 112,
+          "unit": "reference call"
+        }
+      ]
+    },
+    {
+      "id": "negative_carry_cost",
+      "label": "Цена переноса отрицательного ответа",
+      "scope": "17 авторских Git-историй, 31 переход; 21 парный повтор; блок содержит 100 повторов всего набора, 1700 историй и 3100 переходов.",
+      "limits": [
+        "Индексы, Git и reference подготовлены заранее; witness creation, eligibility, actual validation и state advance входят в измерение.",
+        "Все повторы используют тот же набор, а не независимые программы. Общий хост; диапазоны не являются популяционными confidence intervals.",
+        "Три controlled keep_all состояния intentionally withhold supported claims; обычные 90 переходов анализируются отдельно.",
+        "Снижение числа validation calls не стало ускорением этих реализаций."
+      ],
+      "facts": [
+        {
+          "id": "negative_carry_cost.histories",
+          "label": "Авторские истории",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/setup.json",
+          "source_sha256": "e7173550c67055b68ba95c04b1daeb636c8e7011e569ed2f8209abcd96018226",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/histories"
+          },
+          "expected": 17,
+          "unit": "history"
+        },
+        {
+          "id": "negative_carry_cost.steps",
+          "label": "Различные переходы в наборе",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/setup.json",
+          "source_sha256": "e7173550c67055b68ba95c04b1daeb636c8e7011e569ed2f8209abcd96018226",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/transitions"
+          },
+          "expected": 31,
+          "unit": "transition"
+        },
+        {
+          "id": "negative_carry_cost.production_calls",
+          "label": "Baseline validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/production/counts/actual_validation_calls"
+          },
+          "expected": 29,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.signature_calls",
+          "label": "Signature-witness validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/signature_witness/counts/actual_validation_calls"
+          },
+          "expected": 21,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.blob_calls",
+          "label": "Blob-witness validations на набор",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/expected-work.json",
+          "source_sha256": "980f690c43e8148acaeaa757f870f1c016ea5a09e64ad711419de4b18927ff59",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/module_blob_witness/counts/actual_validation_calls"
+          },
+          "expected": 22,
+          "unit": "validation call"
+        },
+        {
+          "id": "negative_carry_cost.production_cpu",
+          "label": "Baseline CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/production/cpu_ns/median"
+          },
+          "expected": 223798710,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.signature_cpu",
+          "label": "Signature-witness CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/signature_witness/cpu_ns/median"
+          },
+          "expected": 477428730,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.blob_cpu",
+          "label": "Blob-witness CPU median",
+          "source": "reports/research-20261104/negative-carry-maintenance-evidence-v1/summary.json",
+          "source_sha256": "659e69675894a13beacaaeedf2e9bc5d722f7e8b2eda6d3d5c9f73c076eae42d",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/variants/module_blob_witness/cpu_ns/median"
+          },
+          "expected": 481752160,
+          "unit": "ns / 100 history packs"
+        },
+        {
+          "id": "negative_carry_cost.paired_repetitions",
+          "label": "Парные повторы",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_repetitions"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.timing_rows",
+          "label": "Записи timing",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/timing_rows"
+          },
+          "expected": 63,
+          "unit": "timing sample"
+        },
+        {
+          "id": "negative_carry_cost.signature_slower",
+          "label": "Положительные CPU-разности signature−baseline",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_delta_distributions_ns/signature_witness/cpu_ns/positive_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.blob_slower",
+          "label": "Положительные CPU-разности blob−baseline",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/paired_delta_distributions_ns/module_blob_witness/cpu_ns/positive_pairs"
+          },
+          "expected": 21,
+          "unit": "paired block"
+        },
+        {
+          "id": "negative_carry_cost.correctness_rows",
+          "label": "Correctness records",
+          "source": "reports/research-20261104/negative-carry-audit-v1/report.json",
+          "source_sha256": "c45b18633470b07afbea4c34ffd0c7dd504e415b160a041fdc140ca6d1cdcc9b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/correctness_rows"
+          },
+          "expected": 93,
+          "unit": "variant/transition"
+        }
+      ]
+    }
+  ]
+}
