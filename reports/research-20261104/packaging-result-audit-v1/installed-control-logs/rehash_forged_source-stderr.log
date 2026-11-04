@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/root/apps/change-aware-memory-invalidation/scripts/audit_packaging_replay.py", line 713, in <module>
+    main()
+  File "/root/apps/change-aware-memory-invalidation/scripts/audit_packaging_replay.py", line 679, in main
+    result = audit(
+             ^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/scripts/audit_packaging_replay.py", line 372, in audit
+    decision = project.packet(result, gid, commit, c, checker)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/apps/change-aware-memory-invalidation/scripts/packaging_audit_git.py", line 189, in packet
+    require(
+  File "/root/apps/change-aware-memory-invalidation/scripts/packaging_audit_common.py", line 13, in require
+    raise ValueError(message)
+ValueError: raw subject bytes differ from authorized Git blob

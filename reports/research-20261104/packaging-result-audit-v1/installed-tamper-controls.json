@@ -1,0 +1,61 @@
+{
+  "controls": [
+    {
+      "control": "missing_observation",
+      "failure": "ValueError: exact2208 observations / four552 variants",
+      "manifest_sha256": "e7e8c03e4f38e9cbb1cba1aacf9033a4c1e1042910e412768444d332f571cd5a",
+      "rejected": true
+    },
+    {
+      "control": "rehash_forged_source",
+      "failure": "ValueError: raw subject bytes differ from authorized Git blob",
+      "manifest_sha256": "415faded9c8580507ef1434039473c443000f83b5d7d7d099b1fdd34426333b6",
+      "rejected": true
+    },
+    {
+      "control": "rehash_reference",
+      "failure": "ValueError: independent reference decision/facts/evidence mismatch: packaging-derived-b3a5d7d68991-f01-signature @ 7a983f7f0068669ead9d4f7571be24d6c0d83eb9",
+      "manifest_sha256": "bc933e9e4dc1b7f1b6e4e4f1d542a7cd354f4b8c765126e34ebe6ff0d80f4ac7",
+      "rejected": true
+    },
+    {
+      "control": "rehash_state",
+      "failure": "ValueError: independent state/availability transition",
+      "manifest_sha256": "b7397bcd40c2e244a35d0ecab8ebb6e6d3e960892bdae2ffb851681129254870",
+      "rejected": true
+    },
+    {
+      "control": "rehash_cost",
+      "failure": "ValueError: exact actual/logical validation cost/duration",
+      "manifest_sha256": "12cbd34b20ebbe47612a8539b3675c1ade7d5b4fa8f8f221d7c18c4d0db0763f",
+      "rejected": true
+    },
+    {
+      "control": "rehash_aggregate",
+      "failure": "ValueError: full23/prefix12/group/kind/merge aggregate recomputation",
+      "manifest_sha256": "cd13c5774dbbec42307045d11924301cc6fd279fdc0219f9eb92fb95138a0f2e",
+      "rejected": true
+    },
+    {
+      "control": "rehash_topology",
+      "failure": "ValueError: output topology exact frozen mapping",
+      "manifest_sha256": "871fcdd3cb13de885c426ab96d676075a808f7e0bc3b2a20332500a02a84342e",
+      "rejected": true
+    },
+    {
+      "control": "rehash_parent_gate",
+      "failure": "ValueError: parent exact cohort/reference/AI eligibility binding",
+      "manifest_sha256": "614db86b825a6723eb490b3965c830462d2d7648fc394e632877bc46ae25bcd9",
+      "rejected": true
+    },
+    {
+      "control": "unknown_as_contradicted",
+      "reason": "Frozen result has no uncertain reference observations; exercised on the authored fixture.",
+      "rejected": null,
+      "status": "not_applicable"
+    }
+  ],
+  "original_audit_report_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+  "original_result_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+  "status": "pass"
+}

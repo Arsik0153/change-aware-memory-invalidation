@@ -1,0 +1,23 @@
+{
+  "all_applicable_rehashed_rejected": true,
+  "auditor_sha256": "5bca43e31a4bfea9cdfb303bb388ed1ddd4d1470ad186d302ec42c32e62f9db9",
+  "controls_not_applicable": 1,
+  "controls_rejected": 8,
+  "dependency_hashes": {
+    "audit_packaging_replay.py": "5bca43e31a4bfea9cdfb303bb388ed1ddd4d1470ad186d302ec42c32e62f9db9",
+    "check_packaging_result_audit.py": "899ce50c650725d924e0a072216849e2b6b4e27ea8a27b03b2f59b44c18dc154",
+    "packaging_audit_common.py": "390375518d489bb8f525cec9ed6483b9d636b3d92069cc60f6380502aabf8f2b",
+    "packaging_audit_git.py": "9ed93be876b962099b2014bbec0a56bfb759c14fca09be60d7ecb22fd7fe3bb3",
+    "packaging_audit_inputs.py": "10e89d255cbf0f485d6a47aaeb0ab4cbd202d2b24829a7101e4217e2620da53d",
+    "packaging_audit_metrics.py": "b286b7cc26edcf12bf245e8d42602d3d27846b1c7f52bda0f4113eaafe4dfc16",
+    "packaging_audit_syntax.py": "d3cb0b26ff6350744f35b75312c991e356e3da52da49ff2c47eb46e5eaa47ec3"
+  },
+  "external_network": false,
+  "original_audit": "audit-original/report.json",
+  "original_audit_report_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+  "original_result_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+  "real_project_source_access": true,
+  "reference_packets": 576,
+  "status": "pass",
+  "tamper_controls": 9
+}

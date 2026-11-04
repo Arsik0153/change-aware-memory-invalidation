@@ -1,0 +1,52 @@
+{
+  "artifact_hashes": {
+    "README.md": "65042f63519df0a3ff468d33313937829ffef6dc68c0084f5f04d626224b2c5a",
+    "authored-controls-report.json": "b263509226ba2705da4c0b04c4eec7a421cbf08af47fd78b223374e15a8fc617",
+    "authored-tamper-controls.json": "8606d770be81984388d9cd341bba9fbf1143734ef5c2e0fb22083376c6d71bd2",
+    "corrected-stage-report.json": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+    "initial-audit-report.json": "5efb4a803ac94ab3542a07f56a57206dd1d9035fccea9f279206ca562222c99e",
+    "installed-control-logs/missing_observation-stderr.log": "984f4ea82254a04bcd6c230696820296fa4dcc8be3ca1af5f9639fb415cadd44",
+    "installed-control-logs/missing_observation-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/original-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/original-stdout.log": "81b85feba94c39295dc128f5250d196eb80f7b02e5b10542e2ebb7825843c009",
+    "installed-control-logs/rehash_aggregate-stderr.log": "df9eaa094dd5d1e8657b7289a0d45fade3dedba8dca632a9637e22f4631ab941",
+    "installed-control-logs/rehash_aggregate-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_cost-stderr.log": "b3bc72ef279b022481864a4527e5687d9838171eee7fdb5e7bcfab98d9348de7",
+    "installed-control-logs/rehash_cost-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_forged_source-stderr.log": "51883aa89a62ec44deaff75d41a28e13ff45d849e92f465cf23a3c2c85ad436c",
+    "installed-control-logs/rehash_forged_source-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_parent_gate-stderr.log": "7555145e413d3b98fe3e96fc1995f5750e25c411671bfbae3397d85d45277e17",
+    "installed-control-logs/rehash_parent_gate-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_reference-stderr.log": "f222d92d82bfd820e274ff82e37c9603d0dd17f42a6a98e4194d417054960df8",
+    "installed-control-logs/rehash_reference-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_state-stderr.log": "71a58682a634bc465ee80650383c299dfc9071ac930180cecd5487e4dc1c005b",
+    "installed-control-logs/rehash_state-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-control-logs/rehash_topology-stderr.log": "d7b623ee084733457b32a8b5ae7570d7febec369fd4edf50b4e35b52714ee80c",
+    "installed-control-logs/rehash_topology-stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed-controls-report.json": "873f58e4f82b19b39a7667f2016be9d9213414e12bd9ab70951820d74dc3df32",
+    "installed-tamper-controls.json": "e5667e79a2d7420756efb1658093d23253c46c0ca93e29adf6d9071dafbee224",
+    "installed-verification.json": "995ab05bbbb338df1f5387370c881f5c990039964d592a066ec691fe6d5159a7",
+    "report.json": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+    "verified-facts.json": "f4a0257d674a266b1b249f30a2e14a7410e40507936f5b37fcb37c62bc8c63a0"
+  },
+  "audit_result": "report.json",
+  "installed_controls": {
+    "not_applicable": 1,
+    "rejected": 8,
+    "report": "installed-controls-report.json",
+    "tamper_report": "installed-tamper-controls.json",
+    "unknown_note": "No uncertain observations in the real result; authored controls exercise unknown-as-contradicted."
+  },
+  "installed_positive_equals_corrected_stage": true,
+  "result_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+  "source_hashes": {
+    "audit_packaging_replay.py": "5bca43e31a4bfea9cdfb303bb388ed1ddd4d1470ad186d302ec42c32e62f9db9",
+    "check_packaging_result_audit.py": "899ce50c650725d924e0a072216849e2b6b4e27ea8a27b03b2f59b44c18dc154",
+    "packaging_audit_common.py": "390375518d489bb8f525cec9ed6483b9d636b3d92069cc60f6380502aabf8f2b",
+    "packaging_audit_git.py": "9ed93be876b962099b2014bbec0a56bfb759c14fca09be60d7ecb22fd7fe3bb3",
+    "packaging_audit_inputs.py": "10e89d255cbf0f485d6a47aaeb0ab4cbd202d2b24829a7101e4217e2620da53d",
+    "packaging_audit_metrics.py": "b286b7cc26edcf12bf245e8d42602d3d27846b1c7f52bda0f4113eaafe4dfc16",
+    "packaging_audit_syntax.py": "d3cb0b26ff6350744f35b75312c991e356e3da52da49ff2c47eb46e5eaa47ec3"
+  },
+  "status": "passed"
+}

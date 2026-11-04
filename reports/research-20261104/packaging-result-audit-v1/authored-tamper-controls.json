@@ -1,0 +1,61 @@
+{
+  "controls": [
+    {
+      "control": "missing_observation",
+      "failure": "ValueError: exact2208 observations / four552 variants",
+      "manifest_sha256": "c770b954e6293f91bd0e3d4a1006a81582f197322b8533877d15ab8f0e35b8da",
+      "rejected": true
+    },
+    {
+      "control": "rehash_forged_source",
+      "failure": "ValueError: raw subject bytes differ from authorized Git blob",
+      "manifest_sha256": "13aec1bcf4d5c5df075d3ffdb130e18a9a0e093fda85f0d0a008bb0d6e53251b",
+      "rejected": true
+    },
+    {
+      "control": "rehash_reference",
+      "failure": "ValueError: independent reference decision/facts/evidence mismatch: packaging-derived-f2c09d2e143e-f01-exists @ 4c00c42d79bc94230da8e58188dd5f8a72cbd4a0",
+      "manifest_sha256": "ef8a7e6377f282af978d681542e973af245c0258a5146b2373dfb4349af5733f",
+      "rejected": true
+    },
+    {
+      "control": "rehash_state",
+      "failure": "ValueError: independent state/availability transition",
+      "manifest_sha256": "9bb1a269f9e753e2beecdf76500aaac0a0006dcd13794171f144a71553922752",
+      "rejected": true
+    },
+    {
+      "control": "rehash_cost",
+      "failure": "ValueError: exact actual/logical validation cost/duration",
+      "manifest_sha256": "b424289a869509cb504efe020909ccb71eb7db26e76814b8f660b334265b8fc1",
+      "rejected": true
+    },
+    {
+      "control": "rehash_aggregate",
+      "failure": "ValueError: full23/prefix12/group/kind/merge aggregate recomputation",
+      "manifest_sha256": "3429e7ebba26609d6605694f905f4d07c0c78ed68e490d9b952649e6d24f60ee",
+      "rejected": true
+    },
+    {
+      "control": "rehash_topology",
+      "failure": "ValueError: output topology exact frozen mapping",
+      "manifest_sha256": "97cc9b424df4f8b7342498002784d5c94d1562ed70bdf06dfb18a801ed8c89ca",
+      "rejected": true
+    },
+    {
+      "control": "rehash_parent_gate",
+      "failure": "ValueError: parent exact cohort/reference/AI eligibility binding",
+      "manifest_sha256": "9b43df281e813d248d6a14f122126dae23fbaba4a8a5f6e2f26d75f9453ee654",
+      "rejected": true
+    },
+    {
+      "control": "unknown_as_contradicted",
+      "failure": "ValueError: observation exact kind/eligibility/reference/topology",
+      "manifest_sha256": "338fe55b030a367c9733b1b1415a729d8f34602482c4cd820f4b3865cb2ab0be",
+      "rejected": true
+    }
+  ],
+  "original_audit_report_sha256": "69f178fe5eb692f2da415b568b69da44a6fe829e86e8901d383a67d424139915",
+  "original_result_manifest_sha256": "add650d0c78f08ffd891349fa0e46fbd9f1c90c7b362d1661666027fe8c17abe",
+  "status": "pass"
+}

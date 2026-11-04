@@ -486,20 +486,32 @@
     {
       "id": "verification",
       "label": "Полная проверка",
-      "scope": "Неизменный commit a1dc53c; production fix, AI pilot, translation, real replay и 31 тест negative carry включены. First-parent extension добавлен позже.",
+      "scope": "Полный прогон на неизменном коммите 07cb633: 1361 passed, 4 Docker skips. Отдельный прогон на 2071f54: 4 passed на прежнем закреплённом образе. Все прежние исходники совпали; добавлен только скрипт рисунка.",
       "limits": [
-        "Полная проверка относится к указанному HEAD; поздние отдельные auditors не приписываются этому прогону."
+        "Это два запуска, а не 1365 passed в одном непрерывном полном прогоне.",
+        "Поздние аудиторы и упаковщик корпуса проверены отдельно, не приписываются full suite."
       ],
       "facts": [
         {
           "id": "verification.passed",
           "label": "Прошедшие тесты",
-          "source": "reports/research-20261104/full-verification-a1dc53c/pytest.log",
-          "source_sha256": "c09c7f5244be974a356338a22edb38d1560406326779f1063a4f695647daf488",
+          "source": "reports/research-20261104/full-verification-07cb633/pytest.log",
+          "source_sha256": "ac6aeb76f908782a0f2d194cbf50ce9ce907e6ae419227b7d09c15dc7c33bc16",
           "selector": {
             "format": "pytest_summary"
           },
-          "expected": 1290,
+          "expected": 1361,
+          "unit": "test"
+        },
+        {
+          "id": "verification.docker_supplement_passed",
+          "label": "Отдельно прошедшие Docker-тесты",
+          "source": "reports/research-20261104/docker-supplement-2071f54/pytest.log",
+          "source_sha256": "f58b5ff11ceef53e504660c078fcecdc029afe48c1b5ec70e7172727d6ac4939",
+          "selector": {
+            "format": "pytest_summary"
+          },
+          "expected": 4,
           "unit": "test"
         }
       ]
@@ -1667,6 +1679,431 @@
           },
           "expected": 288,
           "unit": "reference_call"
+        }
+      ]
+    },
+    {
+      "id": "packaging_development",
+      "label": "Packaging: новые производные claims, metadata-informed development replay",
+      "scope": "Три parent-группы одного проекта; 12 выбранных функций дают 24 парных claims. 69 child-переходов и три parent дают 72 snapshots; 552 зависимые claim-step записи на вариант. Источник чисел — сохранённые отчёты, не новый независимый аудит.",
+      "limits": [
+        "Исходный h24-план не вместился в 72 позиции при минимуме 75; сохранён failed run. Отдельный h23-план metadata-informed и закреплён до чтения parent/child исходников; это не неизменённая первоначальная пререгистрация.",
+        "Новые derived_parent_claim, не исходные 630 claims и не human admission. Human credit равен нулю; evaluation_eligible=false; held-out сравнение не выполнено.",
+        "Два новых события касаются точного синтаксиса аннотаций. Поведенческий API break или семантическая неэквивалентность типов этим не установлены.",
+        "24 отрицательных наблюдения включают два первых и 22 повтора. Парные predicates, функции, модули и повторные версии зависимы; 552 строки не являются 552 независимыми случаями.",
+        "Нули availability-ошибок проверяются во всех четырёх вариантах; три registry-поля показывают symbol anchor. Совпадение не доказывает независимость ошибок AI/reference/production; reference также использует CPython AST.",
+        "Число child-валидаций не равно времени. Отдельно: 96 parent-валидаций, 576 replay-reference calls (24 parent + 552 child), 36 reference решений более ранней review-фазы и 72 общих индекса.",
+        "Prefix12 вложен в full23. Этот реестр не удостоверяет завершение полного test suite или независимого аудита результата."
+      ],
+      "facts": [
+        {
+          "id": "packaging_development.claims",
+          "label": "Новые производные parent-claims",
+          "source": "reports/research-20261104/packaging-replay-v2/manifest.json",
+          "source_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/protocol/candidate_claims"
+          },
+          "expected": 24,
+          "unit": "claim"
+        },
+        {
+          "id": "packaging_development.snapshots",
+          "label": "Позиции закреплённой first-parent истории",
+          "source": "reports/research-20261104/packaging-topology-v2/topology.json",
+          "source_sha256": "4b67eabbfcc1a3d2f2b9fd79984eca93200102f59c319a8e67aea68a6b3c1c49",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/frame_length"
+          },
+          "expected": 72,
+          "unit": "snapshot"
+        },
+        {
+          "id": "packaging_development.ai_contexts",
+          "label": "Свежие первичные AI-контексты",
+          "source": "reports/research-20261104/packaging-parent-review-results-v2/manifest.json",
+          "source_sha256": "d4b1548fb40a6d5bab25fd5cec07d50c4cf2bdd5163cbe788d25150e45b7f12b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_contexts"
+          },
+          "expected": 6,
+          "unit": "review_context"
+        },
+        {
+          "id": "packaging_development.ai_decisions",
+          "label": "Первичные AI-решения, включая контроли",
+          "source": "reports/research-20261104/packaging-parent-review-results-v2/manifest.json",
+          "source_sha256": "d4b1548fb40a6d5bab25fd5cec07d50c4cf2bdd5163cbe788d25150e45b7f12b",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/primary_AI_decisions"
+          },
+          "expected": 72,
+          "unit": "decision"
+        },
+        {
+          "id": "packaging_development.symbol_anchor",
+          "label": "Symbol anchor: фактические child-валидации",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 28,
+          "unit": "validation"
+        },
+        {
+          "id": "packaging_development.file_anchor",
+          "label": "File anchor: фактические child-валидации",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/file_anchor/actual_validation_calls"
+          },
+          "expected": 71,
+          "unit": "validation"
+        },
+        {
+          "id": "packaging_development.known_incomplete",
+          "label": "Known incomplete: фактические child-валидации",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/known_incomplete/actual_validation_calls"
+          },
+          "expected": 552,
+          "unit": "validation"
+        },
+        {
+          "id": "packaging_development.all_validate",
+          "label": "All validate: фактические child-валидации",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/all_validate/actual_validation_calls"
+          },
+          "expected": 552,
+          "unit": "validation"
+        },
+        {
+          "id": "packaging_development.reference_supported",
+          "label": "Reference-supported на вариант",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/reference_supported"
+          },
+          "expected": 528,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.reference_contradicted",
+          "label": "Reference-contradicted на вариант, включая повторы",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/reference_contradicted"
+          },
+          "expected": 24,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.unique_contradicted",
+          "label": "Различные опровергнутые claims",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/incidence/unique_contradicted_claims"
+          },
+          "expected": 2,
+          "unit": "claim"
+        },
+        {
+          "id": "packaging_development.first_events",
+          "label": "Первое наблюдение опровержения каждого claim",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/incidence/first_contradiction_observations"
+          },
+          "expected": 2,
+          "unit": "event"
+        },
+        {
+          "id": "packaging_development.contradicted_repeats",
+          "label": "Продолжающиеся отрицательные наблюдения после первых",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/incidence/repeated_contradicted_observations"
+          },
+          "expected": 22,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.false_available",
+          "label": "Ложная доступность: symbol anchor",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/false_available"
+          },
+          "expected": 0,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.available_unknown",
+          "label": "Доступность при reference-unknown: symbol anchor",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/available_unknown"
+          },
+          "expected": 0,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.withheld_supported",
+          "label": "Скрытые reference-supported: symbol anchor",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/full23/variants/symbol_anchor/withheld_supported"
+          },
+          "expected": 0,
+          "unit": "claim_step"
+        },
+        {
+          "id": "packaging_development.parent_calls_per_variant",
+          "label": "Фактические parent-валидации одного варианта",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/parent_initialization/symbol_anchor/actual_validation_calls"
+          },
+          "expected": 24,
+          "unit": "validation"
+        },
+        {
+          "id": "packaging_development.child_reference",
+          "label": "Отдельные child-вызовы reference",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/child_reference_calls"
+          },
+          "expected": 552,
+          "unit": "reference_call"
+        },
+        {
+          "id": "packaging_development.parent_reference",
+          "label": "Отдельные parent-вызовы reference во время replay",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/parent_reference_calls"
+          },
+          "expected": 24,
+          "unit": "reference_call"
+        },
+        {
+          "id": "packaging_development.indexes",
+          "label": "Общие для вариантов построения индекса",
+          "source": "reports/research-20261104/packaging-replay-v2/report.json",
+          "source_sha256": "59369648ef24277c339ff8a2b4d970352682c35bd6e10670db8ced36ed2e4896",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/separate_work/shared_index_builds"
+          },
+          "expected": 72,
+          "unit": "index_build"
+        }
+      ]
+    },
+    {
+      "id": "packaging_offline",
+      "label": "Packaging: проверенный офлайн-корпус",
+      "scope": "Ровно 72 разрешённых снимка и 296 blob. Новый извлечённый архив проверен установленным stdlib/Git verifier в сетевых пространствах unshare --net; исходники проекта не исполняются.",
+      "limits": [
+        "Это ограниченный корпус снимков, не вся Git-история, CAMI-среда или весь набор evidence.",
+        "Архив сохраняет ранее полученные исторические метаданные; полнота утверждается только для 72 разрешённых деревьев.",
+        "Проверка воспроизведения байтов относится к зафиксированному рецепту и данной среде сжатия."
+      ],
+      "facts": [
+        {
+          "id": "packaging_offline.verified_snapshots",
+          "label": "Проверенные офлайн-снимки",
+          "source": "reports/research-20261104/packaging-offline-corpus-v1/manifest.json",
+          "source_sha256": "5c9a2c100ff9db09feae4b82c221a6ecf491da0bbb2ae74111c0682f571ecfdb",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/verified_snapshots"
+          },
+          "expected": 72,
+          "unit": "snapshot"
+        },
+        {
+          "id": "packaging_offline.verified_blobs",
+          "label": "Проверенные blob",
+          "source": "reports/research-20261104/packaging-offline-corpus-v1/manifest.json",
+          "source_sha256": "5c9a2c100ff9db09feae4b82c221a6ecf491da0bbb2ae74111c0682f571ecfdb",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/verified_blobs"
+          },
+          "expected": 296,
+          "unit": "blob"
+        },
+        {
+          "id": "packaging_offline.archive_bytes",
+          "label": "Размер архива",
+          "source": "reports/research-20261104/packaging-offline-corpus-v1/manifest.json",
+          "source_sha256": "5c9a2c100ff9db09feae4b82c221a6ecf491da0bbb2ae74111c0682f571ecfdb",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/archive_bytes"
+          },
+          "expected": 1130413,
+          "unit": "byte"
+        },
+        {
+          "id": "packaging_offline.original_repository_file_identity_unchanged",
+          "label": "Исходный репозиторий неизменен",
+          "source": "reports/research-20261104/packaging-offline-corpus-v1/manifest.json",
+          "source_sha256": "5c9a2c100ff9db09feae4b82c221a6ecf491da0bbb2ae74111c0682f571ecfdb",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/original_repository_file_identity_unchanged"
+          },
+          "expected": true,
+          "unit": "boolean"
+        },
+        {
+          "id": "packaging_offline.byte_reproducible",
+          "label": "Повторный архив совпал побайтно",
+          "source": "reports/research-20261104/packaging-offline-corpus-v1/manifest.json",
+          "source_sha256": "5c9a2c100ff9db09feae4b82c221a6ecf491da0bbb2ae74111c0682f571ecfdb",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/byte_reproducible"
+          },
+          "expected": true,
+          "unit": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "packaging_audit",
+      "label": "Независимая повторная проверка Packaging",
+      "scope": "Отдельный stdlib-аудитор заново вычисляет выборку, ограниченные AST-вердикты, политики, состояния, затраты и все срезы. Установленная версия с извлечённым офлайн-корпусом дала тот же полный отчёт.",
+      "limits": [
+        "Автор знал предварительные численные выводы; слепая репликация не заявляется.",
+        "Общая зависимость от CPython AST сохраняется; это не проверка поведения программы или всей семантики Python.",
+        "Сверка записей затрат и времени не является независимым наблюдением прошлого физического исполнения.",
+        "Все 69 переходов этого опыта не являются merges; эмпирических данных о слияниях он не добавляет."
+      ],
+      "facts": [
+        {
+          "id": "packaging_audit.artifact_files_checked",
+          "label": "Проверенные артефакты Packaging",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/artifact_files_checked"
+          },
+          "expected": 2378,
+          "unit": "file"
+        },
+        {
+          "id": "packaging_audit.sealed_files_checked",
+          "label": "Закреплённые входы Packaging",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/sealed_files_checked"
+          },
+          "expected": 578,
+          "unit": "file"
+        },
+        {
+          "id": "packaging_audit.historical_source_files_checked",
+          "label": "Исторические исходные файлы",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/historical_source_files_checked"
+          },
+          "expected": 272,
+          "unit": "file"
+        },
+        {
+          "id": "packaging_audit.observation_records",
+          "label": "Независимо пересчитанные наблюдения",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/observation_records"
+          },
+          "expected": 2208,
+          "unit": "observation"
+        },
+        {
+          "id": "packaging_audit.reference_packets_checked",
+          "label": "Проверенные Git/AST-пакеты",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/reference_packets_checked"
+          },
+          "expected": 576,
+          "unit": "packet"
+        },
+        {
+          "id": "packaging_audit.cost_rows_checked",
+          "label": "Проверенные записи затрат",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/cost_rows_checked"
+          },
+          "expected": 1947,
+          "unit": "row"
+        },
+        {
+          "id": "packaging_audit.status",
+          "label": "Результат независимого аудита",
+          "source": "reports/research-20261104/packaging-result-audit-v1/report.json",
+          "source_sha256": "77206a9b9242982c4485d9f619952aba29d62459f1b061de23766a9fa634540c",
+          "selector": {
+            "format": "json_pointer",
+            "pointer": "/status"
+          },
+          "expected": "pass",
+          "unit": "status"
         }
       ]
     }

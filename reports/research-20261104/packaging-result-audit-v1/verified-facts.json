@@ -1,0 +1,212 @@
+{
+  "actual_validation_calls_by_variant": {
+    "all_validate": 552,
+    "file_anchor": 71,
+    "known_incomplete": 552,
+    "symbol_anchor": 28
+  },
+  "coverage": {
+    "AI_primary_contexts_checked": 6,
+    "artifact_files_checked": 2378,
+    "authored_controls_checked": 12,
+    "authorized_snapshot_count": 72,
+    "authorized_step_count": 69,
+    "cost_rows_checked": 1947,
+    "historical_source_files_checked": 272,
+    "observation_records": 2208,
+    "parent_records": 24,
+    "production_Python_files_checked": 53,
+    "reference_packets_checked": 576,
+    "sealed_files_checked": 578
+  },
+  "extra_file_checks": {
+    "file_only_checks": 43,
+    "file_only_verdicts": {
+      "supported": 43
+    },
+    "symbol_only_checks": 0
+  },
+  "incidence": {
+    "episode_definition": "Maximal observed consecutive contradicted ranks; unknown breaks an observed run but is not proof of recovery.",
+    "first_contradiction_observations": 2,
+    "first_contradictions": [
+      {
+        "claim_id": "packaging-derived-5cbe1e44cc7b-f00-signature",
+        "commit": "cc938f984bbbe43c5734b9656c9837ab3a28191f",
+        "step": 3
+      },
+      {
+        "claim_id": "packaging-derived-cf2cbe2aec28-f00-signature",
+        "commit": "3910129009b25dd1aa1fe32e644bc891188c56fe",
+        "step": 21
+      }
+    ],
+    "observed_contradiction_runs": 2,
+    "repeated_contradicted_observations": 22,
+    "runs": [
+      {
+        "claim_id": "packaging-derived-5cbe1e44cc7b-f00-signature",
+        "first_step": 3,
+        "last_step": 23,
+        "observations": 21
+      },
+      {
+        "claim_id": "packaging-derived-cf2cbe2aec28-f00-signature",
+        "first_step": 21,
+        "last_step": 23,
+        "observations": 3
+      }
+    ],
+    "unique_contradicted_claims": 2
+  },
+  "limits": [
+    "Trust roots are independently pinned final protocol/seal plus local offline Git ODB, not cryptographic signatures.",
+    "Shared CPython3.12 ast/dump; syntactic claims establish no runtime behavior or behavioral equivalence.",
+    "Raw timing/call records reconcile exactly; past physical execution and elapsed time are not independently observed.",
+    "24 claims are paired predicates on12 function occurrences across3 dependent histories;552 rows/variant are repeated observations.",
+    "Prefix and merge/group/kind projections overlap; they provide no independent sample, causal merge effect, speedup or broader-project generalization.",
+    "Review identity/context independence is declared; model weights/training independence and evidence reasoning truth are not established."
+  ],
+  "parent_population": {
+    "packaging-derived-5cbe1e44cc7b": {
+      "eligible_python_modules": 14,
+      "eligible_subjects": 77,
+      "function_occurrences": 216,
+      "retained_parent_module_blobs": 14,
+      "selected_functions": 4,
+      "tree_entries": 85
+    },
+    "packaging-derived-b3a5d7d68991": {
+      "eligible_python_modules": 14,
+      "eligible_subjects": 75,
+      "function_occurrences": 216,
+      "retained_parent_module_blobs": 14,
+      "selected_functions": 4,
+      "tree_entries": 84
+    },
+    "packaging-derived-cf2cbe2aec28": {
+      "eligible_python_modules": 14,
+      "eligible_subjects": 79,
+      "function_occurrences": 219,
+      "retained_parent_module_blobs": 14,
+      "selected_functions": 4,
+      "tree_entries": 85
+    }
+  },
+  "per_variant_reference_observations": {
+    "reference_contradicted": 24,
+    "reference_supported": 528,
+    "reference_unknown": 0
+  },
+  "phase_work": {
+    "all_phase_reference": 612,
+    "child_production_validations": 1203,
+    "parent_production_initializations": 96,
+    "phase3_parent_and_control_reference": 36,
+    "runtime_child_reference": 552,
+    "runtime_parent_reference": 24,
+    "shared_index_builds": 72
+  },
+  "prefix12": {
+    "all_validate": {
+      "actual_validation_calls": 288,
+      "candidate_observations": 288,
+      "false_available": 0,
+      "reference_contradicted": 10
+    },
+    "file_anchor": {
+      "actual_validation_calls": 38,
+      "candidate_observations": 288,
+      "false_available": 0,
+      "reference_contradicted": 10
+    },
+    "known_incomplete": {
+      "actual_validation_calls": 288,
+      "candidate_observations": 288,
+      "false_available": 0,
+      "reference_contradicted": 10
+    },
+    "symbol_anchor": {
+      "actual_validation_calls": 13,
+      "candidate_observations": 288,
+      "false_available": 0,
+      "reference_contradicted": 10
+    }
+  },
+  "safety_by_variant": {
+    "all_validate": {
+      "available_unknown": 0,
+      "false_available": 0,
+      "withheld_supported": 0
+    },
+    "file_anchor": {
+      "available_unknown": 0,
+      "false_available": 0,
+      "withheld_supported": 0
+    },
+    "known_incomplete": {
+      "available_unknown": 0,
+      "false_available": 0,
+      "withheld_supported": 0
+    },
+    "symbol_anchor": {
+      "available_unknown": 0,
+      "false_available": 0,
+      "withheld_supported": 0
+    }
+  },
+  "scope": "new-derived Packaging development syntactic cohort; dependent repeated observations; independent reanalysis with prior awareness of preliminary root claims",
+  "selection_validation_detail": {
+    "all_validate": {
+      "actual_validation_verdicts": {
+        "contradicted": 24,
+        "supported": 528
+      },
+      "selection_reasons": {
+        "all_claims": 552,
+        "previously_unavailable": 22
+      }
+    },
+    "file_anchor": {
+      "actual_validation_verdicts": {
+        "contradicted": 24,
+        "supported": 47
+      },
+      "selection_reasons": {
+        "anchor_file_changed": 54,
+        "previously_unavailable": 22,
+        "subject_file_changed": 54
+      }
+    },
+    "known_incomplete": {
+      "actual_validation_verdicts": {
+        "contradicted": 24,
+        "supported": 528
+      },
+      "selection_reasons": {
+        "known_incomplete": 552,
+        "previously_unavailable": 22,
+        "subject_changed": 6,
+        "symbol_or_dependency_changed": 6
+      }
+    },
+    "symbol_anchor": {
+      "actual_validation_verdicts": {
+        "contradicted": 24,
+        "supported": 4
+      },
+      "selection_reasons": {
+        "previously_unavailable": 22,
+        "subject_changed": 6,
+        "symbol_or_dependency_changed": 6
+      }
+    }
+  },
+  "source_audit_report": "real-audit-v2/report.json",
+  "source_result_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+  "topology": {
+    "merge_transitions": 0,
+    "no_empirical_merge_evidence": true,
+    "nonmerge_transitions": 69
+  }
+}
