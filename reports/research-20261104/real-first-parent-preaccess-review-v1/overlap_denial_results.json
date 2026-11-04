@@ -1,0 +1,82 @@
+{
+  "synthetic_only": true,
+  "explicit_volatile_fields_accepted": true,
+  "semantic_edits_rejected": [
+    {
+      "target": "observation",
+      "field": "provenance.anchors.0.content_hash",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "validation.input_hash",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "full_production_validation.input_hash",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "selection.selected",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "state.last_checked_commit",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "previous_state.revision",
+      "rejected": true
+    },
+    {
+      "target": "observation",
+      "field": "reference.facts.signature.parameters.0.name",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "claim.predicate.expected_signature.is_async",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "claim_sha256",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "ai_confirmation.reviews.0.item_id",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "variants.symbol_anchor.provenance.known_incomplete",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "variants.symbol_anchor.validation.input_hash",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "variants.symbol_anchor.state.available",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "reference.facts.signature.parameters.0.name",
+      "rejected": true
+    },
+    {
+      "target": "parent",
+      "field": "eligible",
+      "rejected": true
+    }
+  ],
+  "corpus_access": false
+}

@@ -1,0 +1,1043 @@
+{
+  "AI_review_answers_read": false,
+  "boundary_commit": "934813e4d421071a1b3db3973c02fe2721359a6e",
+  "candidate_observations_per_variant": 288,
+  "child_trees_sources_diffs_or_outcomes_read": false,
+  "copied_parent_inputs": [
+    {
+      "copied_path": "copied_parent_inputs/cohort.json",
+      "original_path": "examples/real_structural_replay/cohort.json",
+      "sha256": "f87278183722032b9171e776047a39ed312adc118735fb0848d8da94e39655ad"
+    },
+    {
+      "copied_path": "copied_parent_inputs/groups/click-1c2fc1b0152f/claims.jsonl",
+      "original_path": "examples/real_structural_replay/groups/click-1c2fc1b0152f/claims.jsonl",
+      "sha256": "c8540b4550b326e9b1bb83f742bd31586ec0efffa01da13ac84320a1cf6bdb9c"
+    },
+    {
+      "copied_path": "copied_parent_inputs/groups/click-1e53748f80eb/claims.jsonl",
+      "original_path": "examples/real_structural_replay/groups/click-1e53748f80eb/claims.jsonl",
+      "sha256": "cad0f2266b7187738872008155c1acf8196673b0b1392bcaa021d98a2f663bf8"
+    },
+    {
+      "copied_path": "copied_parent_inputs/groups/click-8c7491d9b0d7/claims.jsonl",
+      "original_path": "examples/real_structural_replay/groups/click-8c7491d9b0d7/claims.jsonl",
+      "sha256": "bd93055740df2859bca4b13b27417a49ad043149b9bc245d7fe3513d914410d7"
+    },
+    {
+      "copied_path": "copied_parent_inputs/research_provenance/file_anchor.jsonl",
+      "original_path": "examples/real_structural_replay/research_provenance/file_anchor.jsonl",
+      "sha256": "9c9a2a5858c774e905467e84548ffd51c071707e523af0646ca19f29f028fd42"
+    },
+    {
+      "copied_path": "copied_parent_inputs/research_provenance/known_incomplete.jsonl",
+      "original_path": "examples/real_structural_replay/research_provenance/known_incomplete.jsonl",
+      "sha256": "1542e32ab979f43bff23e5fdc1178fdcd587bd6469cabd74d03966a422c185c4"
+    },
+    {
+      "copied_path": "copied_parent_inputs/research_provenance/symbol_anchor.jsonl",
+      "original_path": "examples/real_structural_replay/research_provenance/symbol_anchor.jsonl",
+      "sha256": "cea3e1faa2f0e2377f61e45b54337aeacc7516195d1240e7a736f54fde7ca69b"
+    }
+  ],
+  "git_fetch_performed": false,
+  "git_metadata_commands": [
+    [
+      "rev-parse",
+      "--verify",
+      "HEAD^{commit}"
+    ],
+    [
+      "rev-parse",
+      "--verify",
+      "refs/tags/8.1.8^{commit}"
+    ],
+    [
+      "symbolic-ref",
+      "-q",
+      "HEAD"
+    ],
+    [
+      "rev-list",
+      "--first-parent",
+      "--reverse",
+      "934813e4d421071a1b3db3973c02fe2721359a6e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "d5741a2ca2ebc21d525c903f628b1bebad75b735"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "a41e349ae738c55bce46dfb8715159463074d6e9"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "456fbb6b0053fb01bedf90b64999b0a3c645a3cd"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "a66119abe973f55b4f5e28dbb0da6f3c32c21af7"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "030f53cf677ee1de534359c535d465eed0ec1d99"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "2f8a3417acf8afd798cab6850e6102c7e3dc43d5"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e1399d20788829ea9b981603251cc413e00ca4eb"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "0f833b6e5ecf2307c23050823fc70644476b4bdb"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "4883c93a786f561108a806cbae7873e5c2b604a3"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "6f35455ddf500d57aa746a4dc06d812ca535dd0e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "d19d0def9a2a5979312b705bbfd53725aa1d5081"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "eb1d760fb433d08278816d7ba49477ce86b691a7"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "e002dbc40ceb6a7e78dbe5e5868744690ba3120f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "8473b3ced140296b9dd869957e0026eebd94634b"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "77838f86fa647ca82f53a88d6495dfc009b24c41"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "1c4099006474875574e233dc92d12c15d659585f"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "5f802ac459557685bd6748c6cc75cb4a4a82617e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "25dfd27c302e212afb436efab2f9b52099f97683"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "9affb021ff0fc71a676511226ac3cf721d2f9e3c"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "ac15816133ef12001ebf6d6aecb7a3cf14487761"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "9c6f032681e38a60ce526335f2abf166191f692d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "3a6d3da15ae5c0672dd5884a2ec229a428058783"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "c7ef4bab075479830a349f9ee2020b7a953c27ff"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "55682f6f5348f5220a557f89c3a796321a52aebf"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "72f1f3e20834d05832cdfc361ca401d586c371f8"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "7a10fe1fbcba466714cfaadcc6c51cdcb656568e"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "1b14bbe8670755719d2c4290e0206db6b086b23d"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "60ef759d0eb480d843c69bae2ce1c38279686e41"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "b8f5744820a1359291f11ae8bf8ad85313da000c"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2"
+    ],
+    [
+      "show",
+      "-s",
+      "--format=%H%x09%P%x09%cI",
+      "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+    ]
+  ],
+  "input_sha256": {
+    "examples/real_structural_replay/cohort.json": "f87278183722032b9171e776047a39ed312adc118735fb0848d8da94e39655ad",
+    "examples/real_structural_replay/groups/click-1c2fc1b0152f/claims.jsonl": "c8540b4550b326e9b1bb83f742bd31586ec0efffa01da13ac84320a1cf6bdb9c",
+    "examples/real_structural_replay/groups/click-1e53748f80eb/claims.jsonl": "cad0f2266b7187738872008155c1acf8196673b0b1392bcaa021d98a2f663bf8",
+    "examples/real_structural_replay/groups/click-8c7491d9b0d7/claims.jsonl": "bd93055740df2859bca4b13b27417a49ad043149b9bc245d7fe3513d914410d7",
+    "examples/real_structural_replay/protocol.json": "52be85483cb1ca14600f48f9090fcb826dc254070d5cab41f24666bb87c6bd21",
+    "examples/real_structural_replay/research_provenance/file_anchor.jsonl": "9c9a2a5858c774e905467e84548ffd51c071707e523af0646ca19f29f028fd42",
+    "examples/real_structural_replay/research_provenance/known_incomplete.jsonl": "1542e32ab979f43bff23e5fdc1178fdcd587bd6469cabd74d03966a422c185c4",
+    "examples/real_structural_replay/research_provenance/symbol_anchor.jsonl": "cea3e1faa2f0e2377f61e45b54337aeacc7516195d1240e7a736f54fde7ca69b",
+    "examples/real_structural_replay/seal.json": "6ec4f30ee7b953de4da5191cc3cad9b35c44849f5eb2f745b4ac3fcad8757cab"
+  },
+  "local_HEAD": "934813e4d421071a1b3db3973c02fe2721359a6e",
+  "merge_steps": 10,
+  "new_candidate_observations_per_variant": 176,
+  "newly_authorizable_steps": 22,
+  "no_main_branch_claim": true,
+  "old_overlap_steps": 14,
+  "old_seal_bindings_without_opening_review_answers": {
+    "examples/ai_review_pilot/packet/rubric.md": "0006ab5a2654970eb09619ba7da0a3f6e916a4d02e1ba4345f703e623ad2d1fa",
+    "examples/ai_review_pilot/structural_checker_README.md": "ec18c8fb4aa064cf4847cbc443ca9c6093fe5e9b3ea806804e8412e80e450d55",
+    "examples/real_structural_replay/ai_case_map.json": "b2524f1ddb1abb6933fa0fb4093f1e129444739146ce4d3d3d49cc432e93c35a",
+    "examples/real_structural_replay/ai_confirmations.jsonl": "73b69ad1d65f2714b1eb0f16029ab4ed0589737f89cc6bc411459eeaea8185e3",
+    "examples/real_structural_replay/ai_public_cases.json": "5f426b44e941e2d0655a552ed5b2d84236fd18f4c37da3ec1b4c0cd166053181",
+    "examples/structural_closure/reference_alignment_v2_addendum.json": "f55394970f2aa99bac6d4eebf9f89002f41aca4a9949f4dc7435df56e5fe20da",
+    "schemas/Claim.json": "ceea4f8aea868556b8408ff0cb2956b8c6184bf2c14127ce2717645754fb7181",
+    "scripts/structural_checker_v2.py": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a"
+  },
+  "original_claim_bindings": [
+    {
+      "claim_id": "click-1c2fc1b0152f-00",
+      "claim_sha256": "479af4a3b2a93eadcc541da091dbfe031a18248bbc237c6ebc7348ded5caa63e",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "99bd74373883fd78df5a1538c26ebaf5735172ec231a3518dab57b7a7d541388",
+      "parent_source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "symbol_ast_sha256": "db0bc1d03f73839df63f86423050ff5ffa57d614394185e2e7538ce31e32b623"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-01",
+      "claim_sha256": "b68e197185eb8bd7b884a7fd30574a28195e362e6c2af69cfc7c070f9d62c64e",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "7be75f8ed8379cf285949dd16ea202ed9211b31ec3fa3a6e7f18e8f5d2100cb3",
+      "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "symbol_ast_sha256": "e2523c62d50f6a4dfd4fe3eeafbe9d77a72749d4b4b82125d96b930f3153f193"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-02",
+      "claim_sha256": "de9c3ba07cb6260927269b96f8d40001f8c4501414b383670ebc8e644cfecfba",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "0d44e14bacbb9c42515f48367b37cc2696d30901108634b08484a1956f1ca07d",
+      "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "symbol_ast_sha256": "e59c896e79f30ff6939739b88a1c193b2eebd70df4fa61f298e6a665d6cf6b79"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-03",
+      "claim_sha256": "adb0132f5d7aa430cbb3ecf60fbbad884de39d4fac592b08b38d60e081c35df0",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "b0447d61aaa52af87ac305ade4ee9322bf2d1dd2248930c97fabf5fd2a103da1",
+      "parent_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "symbol_ast_sha256": "98b277d32a5615c5c3683473753317d9c71ef725babfc6fb378f4c00ce437c02"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-04",
+      "claim_sha256": "13a55b9f328ace1e017d0549e5167e65edab0f299e35969168ae93e7d444ca48",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "4dad9dc8557413021e67e7ab86069eb1c3873bfc63e1af7db8a790126b0dfbbe",
+      "parent_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "symbol_ast_sha256": "68c04c675e351a3a56731d64f475efe2eb66a2f05638d03a2a57e74ca9dde52c"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-05",
+      "claim_sha256": "af0ac358ce172b25493d5328502fea91a3f2f4ccfd0a50b9921cd6b85e932253",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "5f2fd5e932ee76e7c21f7348944bf2d53a50fb761aa02e3b4c68e61594943cd2",
+      "parent_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "symbol_ast_sha256": "3a0047a1539dfeff05de90f3eae3c26d6abb7a4386a68ef2611e4c0f1cceceed"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-06",
+      "claim_sha256": "02303f154ff066a9c664a8af1ae136fe391fa0c78b9a9817630339a17418d2e1",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "d9a3397ac6bee970e011dcc28711d55aef4993b95b56697b95f7db93ed799526",
+      "parent_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "symbol_ast_sha256": "eef82905cf787a516f2397dffe249233a5d6f6a91bdcb4406f44cec530ef669b"
+    },
+    {
+      "claim_id": "click-1c2fc1b0152f-07",
+      "claim_sha256": "036779a959c9261b69a1a05898ce371f56d82c73aef4fe8792da87c31f435344",
+      "group_id": "click-1c2fc1b0152f",
+      "original_provenance_row_sha256": "b1b10d8e5c079dc2d95b362c6b90c4db4d02a0e1613f75e335bded1fce26d1be",
+      "parent_source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+      "symbol_ast_sha256": "d088fa780321bf5bd3714384eafe7b8db6c1b2632be1fd11e1a42d8895e54ac0"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-00",
+      "claim_sha256": "f0d4c92e445bfd3959fd91eb642c9bf4386a7b82bf1d37a3dd099fc6ca46ce27",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "4a9ec41f26e9596e2d9b3cdaa5906a0479fc11fd583d5c8c9cdf79c7af5a9264",
+      "parent_source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "symbol_ast_sha256": "420cf0578129bcca1f80d7c604d8449e530cfec67430cefd9eb629e96935b32f"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-01",
+      "claim_sha256": "e9f2d2fd45beb3a39d8520cccd6786965786ad9647ce2607de4ffccb683c6995",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "4007efb761791761e4b66d9da68e483f7c14ca29773a7f38b3602bcefcc6d2c5",
+      "parent_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "symbol_ast_sha256": "351772625d05ab27e891faf149dc0c434a6c0ce6baf04a643c71aeccde0fb128"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-02",
+      "claim_sha256": "d78480c7bd773a8739647ce86b09fab3b3be0c9daf263e8b67dea478ae336224",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "462eaefb36ac234b8ab72075096eace0270489cb4cff587b3279459ce4a7f106",
+      "parent_source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+      "symbol_ast_sha256": "c6146eab2eb1b5ed988e1438ff9db07f951fef369f6cf8e86ab1396bf3b9c909"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-03",
+      "claim_sha256": "629335e905788ac085c7ca5a9b13908693d9067adc354a9e16995631b960a41e",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "4358343136eb5dd24753d7f4de5d7a5d7f05b27e040970fc22b25dd187020825",
+      "parent_source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+      "symbol_ast_sha256": "041630d5ba98875b55027806acf6bb188d5b99010aa9cc0123a2a0decf70c759"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-04",
+      "claim_sha256": "f01fef1dde75e43ffc9f87992e1b9cd45293f21b435724ad8249462a6d3fb139",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "4689c0114cfdb04b37f79c1fe9eb1fe78a3401dc9faa7de79e63feba75b7f8a8",
+      "parent_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "symbol_ast_sha256": "567107658a188feac4263a8afde68cf2d5d42db2d7c92de08565cf1dd26a30ba"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-05",
+      "claim_sha256": "df70acc32e600b2e257b350f39eafb9e072d7dea13d659ffe181a74e486c1f15",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "d522a2dd51fb1b5b61857f78288fb0323e38409c48f70bf5717d2129a270fa50",
+      "parent_source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "symbol_ast_sha256": "009bc045553d53f9511d303ceb9bb107b8cfe62c5841f02a6e3a789be35c35c9"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-06",
+      "claim_sha256": "bec27a68f0e72851e70db0d8312b7993228c0eef93a9e241ff812fcecab02a80",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "67ab583665a596263dd31e4258196df221b9eab059ac40db6546aa4185b4c926",
+      "parent_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "symbol_ast_sha256": "bb3e8eb59e27b468b8f58026ad23de228d81df05107e3d757cc147252bb90abb"
+    },
+    {
+      "claim_id": "click-1e53748f80eb-07",
+      "claim_sha256": "b5c1541716e9d7ae7f60587a7d1dfb4ab65ff9eb5247f4d5ed9bab44ad5c2cde",
+      "group_id": "click-1e53748f80eb",
+      "original_provenance_row_sha256": "0abe1284aef7d4493374d611bb1b237a1dea6d7e6fe97d7f2b687b60147a0a01",
+      "parent_source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+      "symbol_ast_sha256": "ffcfab989809e2f89d68e19f26846022a2579bf2240d85e6a2ddcafa8678f64b"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-00",
+      "claim_sha256": "5b0ab2e8d76b8b4c26b2331353e919aa65ca9c2e41dddd02ce423abe393faafc",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "cc9d86665ca630deb2a254c084863ff425dd3fab7f7fd43eadfc21f8c4a8fda1",
+      "parent_source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "symbol_ast_sha256": "cd8b9a9437b8e1d2ab653ea203754a4930151b6b15957f14a8e484084a80eb28"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-01",
+      "claim_sha256": "b8eac2d4675d155772db7b16c361ca42a7bca567a2c22eea59407e711ce3cabd",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "706b520e108557ff07abdb22fff99eacbd7f3318dc649d76cda2874deec3e79c",
+      "parent_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "symbol_ast_sha256": "0d920ae7c3b4bec165e229637411473ac3fff5822bcf3de2eed622b99bce7601"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-02",
+      "claim_sha256": "6390061c27ad5afdbe41fd85c9f60d743a9932c5f8e042e94c33ea4693e5db0c",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "81d777b5563bc420d276c6c173b035157c0c901b263dc430c4db89cbdb9af988",
+      "parent_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "symbol_ast_sha256": "ff4530c2bd1a20dac2969eecd55d22af82bc8fc69fe1ede86aa580261b70945a"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-03",
+      "claim_sha256": "2e8b6cba6149b3e1d4abb0398e469fd714a97f14bebddee75c3450e131908792",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "97f67bfb010b07b4cd135ba5f10293f01a78de51a3165a110400f56518f2f39f",
+      "parent_source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+      "symbol_ast_sha256": "59ba56f0e878bc0facdcc3ee4982d6b1eaceb78bc49e5450df50f1f4893280b9"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-04",
+      "claim_sha256": "db73fc32e31d7bf270387d9e3e1476d4a7b3f7d39aa42b57e6c4d9aa10d37e15",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "e1c84b1db6b540d3d0b5fa648a0039a2dd0ec0094f008ff86b30a25db7f7b0b0",
+      "parent_source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "symbol_ast_sha256": "302fc980f1863184ff2a78925f987424c458a828c935300f08e239916a6f6276"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-05",
+      "claim_sha256": "1727d73e44d3d6027ad94e8ee78ed5525adbf98531edf1a451a69c0a1f7cf659",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "0fe25cacf7f47e9265bad52c4509072ba0b60740d833f5f810c0b90062b46a32",
+      "parent_source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "symbol_ast_sha256": "08763787cfd0090e54b0c0f93849025662891ef5e825a3325f1152d32e7297dc"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-06",
+      "claim_sha256": "15f3349129bd04461633bb3b591640e4f8a4e54b4a22c4b494f0611ad25f6abd",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "b1d95ddf182feaae3fc8f1a52073746706483b71e550c669abc4254b4a8678d1",
+      "parent_source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+      "symbol_ast_sha256": "92fb3b3f1fc1a2688936aa82521fcd3e9dee5738ebb856fd8af07fb2ada968a0"
+    },
+    {
+      "claim_id": "click-8c7491d9b0d7-07",
+      "claim_sha256": "ca966f9c52a72f8fbd5bbd796061551004b429f9f585301f11db87e33b4eb802",
+      "group_id": "click-8c7491d9b0d7",
+      "original_provenance_row_sha256": "8e35a837ad8172f013d7c273120c81d7a521dd627acf211b3c1fb4ecf5deaf7d",
+      "parent_source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+      "symbol_ast_sha256": "a85e44661da891c29c6160607b63c101466bdce702649baf28eae1b7b06e1678"
+    }
+  ],
+  "repo_id": "click",
+  "repo_path": "data/corpora/click",
+  "selection_rule": "For each of the same three parents, take exactly the next 12 commits in rev-list --first-parent --reverse PINNED_BOUNDARY. Include merges without skipping. Require the preceding snapshot to equal parents[0].",
+  "split": "development",
+  "status": "prospective_metadata_only_proposal",
+  "symbolic_HEAD": null,
+  "tag_8.1.8_commit": "934813e4d421071a1b3db3973c02fe2721359a6e",
+  "total_steps": 36,
+  "trajectories": [
+    {
+      "child_count": 12,
+      "group_id": "click-1c2fc1b0152f",
+      "merge_count": 7,
+      "new_child_count": 11,
+      "parent": {
+        "commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+        "committer_timestamp": "2022-03-28T10:32:24-07:00",
+        "parents": [
+          "20c88f02788586a80e6d867854c8313eaba5ad6e",
+          "f8d811e5d5644aca8d32eebff196bf7c659ebf45"
+        ]
+      },
+      "previously_frozen_child_count": 1,
+      "repo_id": "click",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development",
+      "steps": [
+        {
+          "already_in_old_protocol": true,
+          "commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+          "committer_timestamp": "2022-03-30T12:45:31-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2"
+          ],
+          "previous_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+          "step": 1
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+          "committer_timestamp": "2022-03-30T13:05:42-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+            "e234cf958d2416d4b20b53ae850c487fed32fa35"
+          ],
+          "previous_commit": "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+          "step": 2
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+          "committer_timestamp": "2022-03-30T13:12:57-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+            "3c301ebacbfe8ec7dc3d9d46ebf517082a8ee4b1"
+          ],
+          "previous_commit": "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+          "step": 3
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+          "committer_timestamp": "2022-03-31T13:35:40-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "a41e349ae738c55bce46dfb8715159463074d6e9"
+          ],
+          "previous_commit": "a41e349ae738c55bce46dfb8715159463074d6e9",
+          "step": 4
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+          "committer_timestamp": "2022-03-31T13:41:49-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+            "92cebe902aa7f03a89f6b261d897964dd9c5fa43"
+          ],
+          "previous_commit": "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+          "step": 5
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+          "committer_timestamp": "2022-03-31T13:46:31-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+            "b36bf8f9b36ab7db8cf03cd8eff714dfc33f0c29"
+          ],
+          "previous_commit": "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+          "step": 6
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+          "committer_timestamp": "2022-03-31T13:49:58-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+            "2f1c35a43652e565802c230dbc47a9a358a0c6fd"
+          ],
+          "previous_commit": "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+          "step": 7
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+          "committer_timestamp": "2022-04-01T12:39:35-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "030f53cf677ee1de534359c535d465eed0ec1d99",
+            "5c36b4d38494723a7dcd288fb01382545ecb5196"
+          ],
+          "previous_commit": "030f53cf677ee1de534359c535d465eed0ec1d99",
+          "step": 8
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+          "committer_timestamp": "2022-04-24T09:56:56-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+            "d005226c71c0064bb3806727edde9463e75fa2db"
+          ],
+          "previous_commit": "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+          "step": 9
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+          "committer_timestamp": "2022-04-25T14:20:51-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "e1399d20788829ea9b981603251cc413e00ca4eb"
+          ],
+          "previous_commit": "e1399d20788829ea9b981603251cc413e00ca4eb",
+          "step": 10
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+          "committer_timestamp": "2022-04-25T14:21:56-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "0f833b6e5ecf2307c23050823fc70644476b4bdb"
+          ],
+          "previous_commit": "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+          "step": 11
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "6f35455ddf500d57aa746a4dc06d812ca535dd0e",
+          "committer_timestamp": "2022-04-26T07:34:30-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "4883c93a786f561108a806cbae7873e5c2b604a3"
+          ],
+          "previous_commit": "4883c93a786f561108a806cbae7873e5c2b604a3",
+          "step": 12
+        }
+      ]
+    },
+    {
+      "child_count": 12,
+      "group_id": "click-1e53748f80eb",
+      "merge_count": 0,
+      "new_child_count": 0,
+      "parent": {
+        "commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+        "committer_timestamp": "2023-05-02T05:54:48-07:00",
+        "parents": [
+          "13627be199a3cbe50c35ec778a9d61b31e1580b2",
+          "d2b12c1c31028a0da5a16ddff368d8260cd6a97e"
+        ]
+      },
+      "previously_frozen_child_count": 12,
+      "repo_id": "click",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development",
+      "steps": [
+        {
+          "already_in_old_protocol": true,
+          "commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+          "committer_timestamp": "2023-05-03T11:16:59-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "9c6f032681e38a60ce526335f2abf166191f692d"
+          ],
+          "previous_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+          "step": 1
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+          "committer_timestamp": "2023-05-07T11:51:18-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "6e05e1fa1c2804410f9916b27edc07076e3b156d"
+          ],
+          "previous_commit": "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+          "step": 2
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+          "committer_timestamp": "2023-05-07T11:52:15-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "d19d0def9a2a5979312b705bbfd53725aa1d5081"
+          ],
+          "previous_commit": "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+          "step": 3
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+          "committer_timestamp": "2023-05-08T00:01:21-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "eb1d760fb433d08278816d7ba49477ce86b691a7"
+          ],
+          "previous_commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+          "step": 4
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+          "committer_timestamp": "2023-05-08T11:03:33-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "e002dbc40ceb6a7e78dbe5e5868744690ba3120f"
+          ],
+          "previous_commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+          "step": 5
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+          "committer_timestamp": "2023-05-09T15:10:59-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "8473b3ced140296b9dd869957e0026eebd94634b"
+          ],
+          "previous_commit": "8473b3ced140296b9dd869957e0026eebd94634b",
+          "step": 6
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "1c4099006474875574e233dc92d12c15d659585f",
+          "committer_timestamp": "2023-05-09T15:25:43-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "77838f86fa647ca82f53a88d6495dfc009b24c41"
+          ],
+          "previous_commit": "77838f86fa647ca82f53a88d6495dfc009b24c41",
+          "step": 7
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+          "committer_timestamp": "2023-05-09T15:54:51-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "1c4099006474875574e233dc92d12c15d659585f"
+          ],
+          "previous_commit": "1c4099006474875574e233dc92d12c15d659585f",
+          "step": 8
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+          "committer_timestamp": "2023-05-09T22:28:55-04:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "5f802ac459557685bd6748c6cc75cb4a4a82617e"
+          ],
+          "previous_commit": "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+          "step": 9
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+          "committer_timestamp": "2023-06-01T10:59:28-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "25dfd27c302e212afb436efab2f9b52099f97683"
+          ],
+          "previous_commit": "25dfd27c302e212afb436efab2f9b52099f97683",
+          "step": 10
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+          "committer_timestamp": "2023-06-01T11:00:04-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe"
+          ],
+          "previous_commit": "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+          "step": 11
+        },
+        {
+          "already_in_old_protocol": true,
+          "commit": "ac15816133ef12001ebf6d6aecb7a3cf14487761",
+          "committer_timestamp": "2023-06-01T11:44:40-07:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "9affb021ff0fc71a676511226ac3cf721d2f9e3c"
+          ],
+          "previous_commit": "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+          "step": 12
+        }
+      ]
+    },
+    {
+      "child_count": 12,
+      "group_id": "click-8c7491d9b0d7",
+      "merge_count": 3,
+      "new_child_count": 11,
+      "parent": {
+        "commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+        "committer_timestamp": "2018-01-04T22:38:40+01:00",
+        "parents": [
+          "d5cddb9e1c433a5fd65739d98d8415dd62d276f7",
+          "2cd71bffc8cf21983a4cf15abe3bd1708ba27ad8"
+        ]
+      },
+      "previously_frozen_child_count": 1,
+      "repo_id": "click",
+      "source_roots": [
+        "src",
+        "click"
+      ],
+      "split": "development",
+      "steps": [
+        {
+          "already_in_old_protocol": true,
+          "commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+          "committer_timestamp": "2018-02-01T11:15:46+01:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9"
+          ],
+          "previous_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+          "step": 1
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+          "committer_timestamp": "2018-02-01T09:14:16-08:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+            "2723b55b539a5f5d41bb929c50a32069389788dd"
+          ],
+          "previous_commit": "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+          "step": 2
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+          "committer_timestamp": "2018-02-01T09:14:44-08:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+            "1e0e9b6210dd33010679ccff5362a791a5f7242a"
+          ],
+          "previous_commit": "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+          "step": 3
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+          "committer_timestamp": "2018-02-09T20:40:22+01:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "c7ef4bab075479830a349f9ee2020b7a953c27ff"
+          ],
+          "previous_commit": "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+          "step": 4
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+          "committer_timestamp": "2018-03-27T00:20:08+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "55682f6f5348f5220a557f89c3a796321a52aebf"
+          ],
+          "previous_commit": "55682f6f5348f5220a557f89c3a796321a52aebf",
+          "step": 5
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+          "committer_timestamp": "2018-03-31T11:35:42+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "2dbc14ea43a522210d98136e39b2552f4e0e5c75"
+          ],
+          "previous_commit": "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+          "step": 6
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+          "committer_timestamp": "2018-03-31T12:50:14+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "72f1f3e20834d05832cdfc361ca401d586c371f8"
+          ],
+          "previous_commit": "72f1f3e20834d05832cdfc361ca401d586c371f8",
+          "step": 7
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+          "committer_timestamp": "2018-03-31T12:56:16+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "7a10fe1fbcba466714cfaadcc6c51cdcb656568e"
+          ],
+          "previous_commit": "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+          "step": 8
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+          "committer_timestamp": "2018-03-31T13:21:12+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": true,
+          "parents": [
+            "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+            "abe982ca91f0bd5c1a79c426c2dbb8febfd96999"
+          ],
+          "previous_commit": "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+          "step": 9
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+          "committer_timestamp": "2018-03-31T13:22:02+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "1b14bbe8670755719d2c4290e0206db6b086b23d"
+          ],
+          "previous_commit": "1b14bbe8670755719d2c4290e0206db6b086b23d",
+          "step": 10
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+          "committer_timestamp": "2018-03-31T13:24:26+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "60ef759d0eb480d843c69bae2ce1c38279686e41"
+          ],
+          "previous_commit": "60ef759d0eb480d843c69bae2ce1c38279686e41",
+          "step": 11
+        },
+        {
+          "already_in_old_protocol": false,
+          "commit": "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2",
+          "committer_timestamp": "2018-03-31T13:24:47+02:00",
+          "comparison_basis": "preceding_first_parent_tree",
+          "is_merge": false,
+          "parents": [
+            "b8f5744820a1359291f11ae8bf8ad85313da000c"
+          ],
+          "previous_commit": "b8f5744820a1359291f11ae8bf8ad85313da000c",
+          "step": 12
+        }
+      ]
+    }
+  ]
+}

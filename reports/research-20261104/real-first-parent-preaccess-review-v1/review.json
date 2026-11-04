@@ -1,0 +1,79 @@
+{
+  "status": "complete_no_remaining_blocker_for_bounded_pre_access_freeze",
+  "reviewed_file_sha256": {
+    "runs/real-structural-extension-runner-development-20261104/run_real_structural_first_parent_replay.py": "86f813c5d1f2c83fbf0a7af329dc348a6fa3c0d0fef6314d773b27fa94319db0",
+    "runs/real-structural-extension-runner-development-20261104/real_structural_first_parent_support.py": "4c6f80cd43e26138cae195acaf8c19fb95f98b1c8d04d98ddc984fd15cb9b238",
+    "runs/real-structural-extension-runner-development-20261104/test_real_structural_first_parent_replay.py": "613a7aff60f7df5a4004b402045d8d860ea5c67ce1a1b3fc617b7a12f4a5179a",
+    "runs/real-structural-extension-planning-20261104/proposed_protocol.json": "4ead114ce023e3da16f575eb03190e21fda16c2f77ee7ac39504948185af1e27",
+    "runs/real-structural-extension-planning-20261104/metadata_manifest.json": "f4ffdd4a371750e959ac2dbb5a828f6490be6b390206dd0f053365a9a0173203",
+    "runs/real-structural-extension-planning-20261104/candidate_population.json": "350514bf0b7de9726f807906b153cd050f959e9c4cb6a59a927940f1c8b33748",
+    "runs/real-structural-extension-planning-20261104/new_candidate_population.json": "b0b652d96d19253b8742e9244aad37b47f8355c83146e198857df20f0ee89d3f",
+    "runs/real-structural-extension-planning-20261104/planning_hashes.json": "0a62158fbad454e65a5829e9f4319ad847d381477645f1c4d965f6b6fab5aa46"
+  },
+  "verification": {
+    "authored_suite_tests_passed": 11,
+    "final_historical_source_guard_regression_passed": true,
+    "independent_synthetic_overlap_semantic_denials_passed": 15,
+    "explicit_volatile_normalization_positive_passed": true,
+    "old_production_python_sources_hash_verified": 53,
+    "actual_extension_execution": false,
+    "real_corpus_commands": false,
+    "real_source_tree_diff_or_outcome_reads": false,
+    "tracked_edits": false,
+    "subagents": false
+  },
+  "resolved_findings": [
+    {
+      "id": "old_code_global_binding",
+      "initial_gap": "New seal froze current implementation but did not require original production/old-runner/support bytes to match the old seal before source access.",
+      "resolution": "Every current and historical old-seal src/cami Python source, original runner and original support require original sealed hashes. Union of inventories also rejects additions/deletions. Denial fixtures reject changed repository/runner/support hashes and a missing historical source without tracked edits."
+    }
+  ],
+  "pre_access_boundary": {
+    "global_inputs": "Existing sealed-input gate verifies complete fixed cohort, exact AI/private/public review binding, provenance assumptions, source hashes, four variants, exact commit IDs and denominators. Extension requires unchanged old paths/hashes, original parent/root/claim inputs, old prefix, old completed artifact identity/inventory and original implementation identity.",
+    "global_topology": "All groups complete metadata-only gate before either read_snapshot or reference_claim. Pinned boundary/HEAD, boundary first-parent path, exact next twelve successors, full ordered parent lists, first-parent==previous, step order/uniqueness/merge flags and global/group strata are checked.",
+    "source_scope": "Execution loops read only original parent and twelve explicitly authorized child snapshots per group. Side parents are recorded metadata, never requested as trees/sources. Authored source-reader denial wrappers enforce this, including octopus merges.",
+    "old_contract": "Original production chain and original runner remain byte-identical and still reject a merge before their source reads. New mode has separate protocol/helper/driver and never monkeypatches the original chain."
+  },
+  "execution_semantics": {
+    "before_current": "Each transition compares current full merged snapshot only against immediately preceding first-parent snapshot/index; loop asserts previous revision and advances both after each step.",
+    "state_selection": "Reinitializes all four variants at original parent using actual production validation, then runs genuine production selection/validation/advance on each variant own states. File variant uses current-index unresolved/limitation fields as original production driver. No imported old policy state.",
+    "reference_separation": "Child reference decisions are computed only after all variant policy transitions. Prior completed results are consulted only for later overlap verification, never to choose policy selections or states.",
+    "merge_behavior": "Authored checks cover merged signature change, merge tree identical to first parent but different from side parent, deletion/ambiguity/parse uncertainty/recovery and multi-parent ordering."
+  },
+  "semantic_overlap": {
+    "inventory": "Exactly 448 old claim-child-variant observations and 24 parent records must match.",
+    "compared": "Entire old parent and observation records, including eligibility/exclusions, AI bindings, claim/predicate/provenance fields, selection reasons, previous/current states, last-check history, validation and full-production input hashes/verdicts/reasons, and reference identities/source hashes/facts/evidence.",
+    "ignored_only": "Validation CPU/duration fields, explicit reference input-case/packet/case paths, and newly added trajectory annotations absent from the old schema.",
+    "failure": "Mismatch produces detailed old/new semantic hashes and differences, then fails preserved run; never silently reseals.",
+    "independent_denial_artifact": "overlap_denial_results.json"
+  },
+  "reporting": {
+    "per_variant": {
+      "full": 288,
+      "new_added": 176,
+      "old_overlap": 112,
+      "merge": 80,
+      "nonmerge": 208
+    },
+    "four_variants": {
+      "full": 1152,
+      "new_added": 704,
+      "old_overlap": 448
+    },
+    "groups_new_per_variant": [
+      88,
+      0,
+      88
+    ],
+    "partitions": "New+old is a coverage partition; merge+nonmerge is a topology partition of the same rows. These are overlapping descriptions, not additive independent samples.",
+    "limits": "Same claims/modules/history, development selection and prior exposure remain dependent and outcome-informed. Merge strata are descriptive, not causal. Reference uncertainty/available_unknown and parent exclusions remain distinct from false availability. Empty new stratum in the previously twelve-step group remains explicit."
+  },
+  "review_artifacts": [
+    "metadata_audit.json",
+    "audit_metadata.py",
+    "overlap_denial_checks.py",
+    "overlap_denial_results.json"
+  ],
+  "remaining_blockers": []
+}

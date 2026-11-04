@@ -1,0 +1,76 @@
+{
+  "metadata_audit": "passed_without_Git_or_corpus_access",
+  "groups": [
+    {
+      "group_id": "click-1c2fc1b0152f",
+      "full_per_variant": 96,
+      "added_per_variant": 88,
+      "old_overlap_per_variant": 8,
+      "merge_per_variant": 56,
+      "nonmerge_per_variant": 40
+    },
+    {
+      "group_id": "click-1e53748f80eb",
+      "full_per_variant": 96,
+      "added_per_variant": 0,
+      "old_overlap_per_variant": 96,
+      "merge_per_variant": 0,
+      "nonmerge_per_variant": 96
+    },
+    {
+      "group_id": "click-8c7491d9b0d7",
+      "full_per_variant": 96,
+      "added_per_variant": 88,
+      "old_overlap_per_variant": 8,
+      "merge_per_variant": 24,
+      "nonmerge_per_variant": 72
+    }
+  ],
+  "full_per_variant": 288,
+  "new_per_variant": 176,
+  "old_overlap_per_variant": 112,
+  "merge_per_variant": 80,
+  "nonmerge_per_variant": 208,
+  "full_four_variants": 1152,
+  "new_four_variants": 704,
+  "old_overlap_four_variants": 448,
+  "critical_old_sources": [
+    {
+      "path": "src/cami/repository.py",
+      "old_sha256": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "current_sha256": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/run_real_structural_replay.py",
+      "old_sha256": "237cc9859832edd5cfdb060646a798a01b9cbd1cbac80ca84a6463006ebf4e2f",
+      "current_sha256": "237cc9859832edd5cfdb060646a798a01b9cbd1cbac80ca84a6463006ebf4e2f",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/real_structural_replay_support.py",
+      "old_sha256": "ea64375e53959c57afbf03bbbd884e14701a7b3a93b85f60d5bd0e18ce4d5b8b",
+      "current_sha256": "ea64375e53959c57afbf03bbbd884e14701a7b3a93b85f60d5bd0e18ce4d5b8b",
+      "unchanged": true
+    },
+    {
+      "path": "src/cami/index.py",
+      "old_sha256": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+      "current_sha256": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+      "unchanged": true
+    },
+    {
+      "path": "src/cami/policies.py",
+      "old_sha256": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "current_sha256": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "unchanged": true
+    },
+    {
+      "path": "src/cami/validation.py",
+      "old_sha256": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535",
+      "current_sha256": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535",
+      "unchanged": true
+    }
+  ],
+  "strata_note": "Coverage partition and topology partition are separate descriptions of the same dependent observations. They are not additive independent samples."
+}

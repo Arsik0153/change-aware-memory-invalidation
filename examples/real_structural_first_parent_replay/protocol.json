@@ -1,0 +1,288 @@
+{
+  "ai_case_map_path": "examples/real_structural_replay/ai_case_map.json",
+  "ai_public_cases_path": "examples/real_structural_replay/ai_public_cases.json",
+  "before_root_freeze": [
+    "Implement a new research driver and metadata-only first-parent preflight. Keep src/cami/repository.chain and the frozen old runner unchanged.",
+    "Pass the authored merge and denial tests in adaptation_and_test_plan.md without reading the real child corpus.",
+    "Seal exact new driver/helper/test and analyzer hashes, unchanged reference v2, full production source, all cohort/provenance/AI bindings, topology metadata and final protocol.",
+    "Record the completed old replay as already observed. This design is prospective only for the added22 transitions, relative to this planner's restricted access, not a claim of no historical exposure during original dataset preparation."
+  ],
+  "boundary_commit": "934813e4d421071a1b3db3973c02fe2721359a6e",
+  "candidate_claim_child_observations_per_variant": 288,
+  "candidate_claims": 24,
+  "cohort_path": "examples/real_structural_replay/cohort.json",
+  "confirmations_path": "examples/real_structural_replay/ai_confirmations.jsonl",
+  "evaluation_eligible": false,
+  "failure_rules": [
+    "Stop on a seal, source hash, commit identity, chain, cohort or implementation mismatch. Do not reseal after looking at child outcomes.",
+    "Record parse or unsupported-syntax uncertainty. Do not drop a difficult child, change a predicate or substitute a trajectory.",
+    "If a semantic checker bug is found after execution, preserve this run and version. Use a separate protocol/reference version for a new run or disclosed sensitivity analysis.",
+    "Zero contradicted reference observations yields no false-availability-rate estimate and no evidence of universal safety.",
+    "Stop if fewer than12 successors are available, the old prefix changes, any full parent list differs, or previous is not first parent. Do not skip merges or substitute another trajectory.",
+    "Never widen this protocol through a permissive default, a monkeypatch of production chain, or reinterpretation of the old seal."
+  ],
+  "freeze_stage": "before_added_child_source_access",
+  "groups": [
+    {
+      "child_commits": [
+        "fb7c6dbab505c319dfcbb882e66f313fcbf06a0f",
+        "d5741a2ca2ebc21d525c903f628b1bebad75b735",
+        "a41e349ae738c55bce46dfb8715159463074d6e9",
+        "456fbb6b0053fb01bedf90b64999b0a3c645a3cd",
+        "a66119abe973f55b4f5e28dbb0da6f3c32c21af7",
+        "77dd30f8c54ebbdfbf461cedcd3d1fc1d7673f95",
+        "030f53cf677ee1de534359c535d465eed0ec1d99",
+        "2f8a3417acf8afd798cab6850e6102c7e3dc43d5",
+        "e1399d20788829ea9b981603251cc413e00ca4eb",
+        "0f833b6e5ecf2307c23050823fc70644476b4bdb",
+        "4883c93a786f561108a806cbae7873e5c2b604a3",
+        "6f35455ddf500d57aa746a4dc06d812ca535dd0e"
+      ],
+      "claims_path": "examples/real_structural_replay/groups/click-1c2fc1b0152f/claims.jsonl",
+      "group_id": "click-1c2fc1b0152f",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repo_path": "data/corpora/click",
+      "source_roots": [
+        "src",
+        "click"
+      ]
+    },
+    {
+      "child_commits": [
+        "6e05e1fa1c2804410f9916b27edc07076e3b156d",
+        "d19d0def9a2a5979312b705bbfd53725aa1d5081",
+        "eb1d760fb433d08278816d7ba49477ce86b691a7",
+        "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+        "8473b3ced140296b9dd869957e0026eebd94634b",
+        "77838f86fa647ca82f53a88d6495dfc009b24c41",
+        "1c4099006474875574e233dc92d12c15d659585f",
+        "5f802ac459557685bd6748c6cc75cb4a4a82617e",
+        "25dfd27c302e212afb436efab2f9b52099f97683",
+        "3e66bbf5f1afaecbb4991eab1f7635ea4693eefe",
+        "9affb021ff0fc71a676511226ac3cf721d2f9e3c",
+        "ac15816133ef12001ebf6d6aecb7a3cf14487761"
+      ],
+      "claims_path": "examples/real_structural_replay/groups/click-1e53748f80eb/claims.jsonl",
+      "group_id": "click-1e53748f80eb",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repo_path": "data/corpora/click",
+      "source_roots": [
+        "src",
+        "click"
+      ]
+    },
+    {
+      "child_commits": [
+        "3a6d3da15ae5c0672dd5884a2ec229a428058783",
+        "10a88a2f260a04cdb44e4d48274e351e9e3a1bbd",
+        "c7ef4bab075479830a349f9ee2020b7a953c27ff",
+        "55682f6f5348f5220a557f89c3a796321a52aebf",
+        "2dbc14ea43a522210d98136e39b2552f4e0e5c75",
+        "72f1f3e20834d05832cdfc361ca401d586c371f8",
+        "7a10fe1fbcba466714cfaadcc6c51cdcb656568e",
+        "5d1df0e042b2f8b0dee8f6dd9ce74edce331a950",
+        "1b14bbe8670755719d2c4290e0206db6b086b23d",
+        "60ef759d0eb480d843c69bae2ce1c38279686e41",
+        "b8f5744820a1359291f11ae8bf8ad85313da000c",
+        "c9633645dd5f568e9ab6a1cf39df9a77b0c83ca2"
+      ],
+      "claims_path": "examples/real_structural_replay/groups/click-8c7491d9b0d7/claims.jsonl",
+      "group_id": "click-8c7491d9b0d7",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repo_path": "data/corpora/click",
+      "source_roots": [
+        "src",
+        "click"
+      ]
+    }
+  ],
+  "implementation_paths": [
+    ".python-version",
+    "pyproject.toml",
+    "scripts/real_structural_first_parent_support.py",
+    "scripts/real_structural_replay_support.py",
+    "scripts/run_real_structural_first_parent_replay.py",
+    "scripts/run_real_structural_replay.py",
+    "scripts/structural_checker_v2.py",
+    "scripts/verify_cami.py",
+    "src/cami/__init__.py",
+    "src/cami/aggregate.py",
+    "src/cami/artifacts.py",
+    "src/cami/behavior.py",
+    "src/cami/cli.py",
+    "src/cami/dataset.py",
+    "src/cami/dataset_models.py",
+    "src/cami/demo.py",
+    "src/cami/ecma_models.py",
+    "src/cami/engine.py",
+    "src/cami/environment_pilot.py",
+    "src/cami/errors.py",
+    "src/cami/evaluation.py",
+    "src/cami/index.py",
+    "src/cami/inputs.py",
+    "src/cami/llm.py",
+    "src/cami/models.py",
+    "src/cami/operational.py",
+    "src/cami/parent_review_html.py",
+    "src/cami/pilot.py",
+    "src/cami/policies.py",
+    "src/cami/probe_runner.py",
+    "src/cami/product/__init__.py",
+    "src/cami/product/ecma.py",
+    "src/cami/product/git_snapshot.py",
+    "src/cami/product/inputs.py",
+    "src/cami/product/memory/__init__.py",
+    "src/cami/product/memory/adapters.py",
+    "src/cami/product/memory/cli.py",
+    "src/cami/product/memory/database.py",
+    "src/cami/product/memory/models.py",
+    "src/cami/product/memory/store.py",
+    "src/cami/product/memory/validation.py",
+    "src/cami/product/models.py",
+    "src/cami/product/observation.py",
+    "src/cami/product/service.py",
+    "src/cami/product/store.py",
+    "src/cami/product/watch/__init__.py",
+    "src/cami/product/watch/cli.py",
+    "src/cami/product/watch/control.py",
+    "src/cami/product/watch/models.py",
+    "src/cami/product/watch/runtime.py",
+    "src/cami/product/watch/worker.py",
+    "src/cami/product/worktree.py",
+    "src/cami/provenance_audit.py",
+    "src/cami/reporting.py",
+    "src/cami/repository.py",
+    "src/cami/scenarios.py",
+    "src/cami/structural_closure.py",
+    "src/cami/symbol_search.py",
+    "src/cami/typescript_analyzer.py",
+    "src/cami/typescript_runtime.py",
+    "src/cami/validation.py",
+    "tests/test_real_structural_first_parent_replay.py",
+    "tests/test_structural_checker_v2.py",
+    "uv.lock"
+  ],
+  "metadata_manifest_path": "examples/real_structural_first_parent_replay/metadata_manifest.json",
+  "metrics": {
+    "available_unknown": "Count and report available=true with reference uncertain separately. It is neither proven false availability nor proven correctness.",
+    "candidate_denominator": "288 per variant, 96 per group. Added subset:176 total, group counts88,0,88. Old overlap:112 total, group counts8,96,8.",
+    "cost_metrics": "Selected logical validations, validation outcomes, carried states and actual executions. Report parent, index and reference costs separately. No wall-time speedup claim.",
+    "false_available_count": "Count production available=true only when independent v2 reference is contradicted.",
+    "false_available_rates": "Report false-available count divided by reference-contradicted scored observations, and separately by all scored observations. Use null with a reason for a zero denominator.",
+    "group_reporting": "Report equal12-step whole trajectories and unequal added coverage11,0,11. Shared claims, prior exposure, modules and histories remain dependent.",
+    "merge_strata": "Report 80 merge-step and208 nonmerge-step candidate observations per variant. These strata describe topology, not a causal estimate of merge effects.",
+    "prospective_subset": "Primary new-coverage table uses the 176 added observations. Also show the full 288, old-overlap112, each group and each variant without pooling them as independent samples.",
+    "scored_denominator": "For each group and variant, eligible parent claim count times its fixed child count. Report exclusions and reference uncertainty; do not silently change the candidate denominator.",
+    "withheld_supported": "Count unavailable production states on reference-supported observations separately from reference-unknown and parent exclusions."
+  },
+  "new_candidate_claim_child_observations_per_variant": 176,
+  "new_provenance": {
+    "dependencies": "No dependencies are asserted for these bounded syntactic claims. Dynamic runtime meaning is outside scope.",
+    "derivation": "Parse each full immutable parent module, identify the exact direct subject definition, derive its AST hash and range, and separately retain the full-file byte hash and range. Hashes are evidence identity, not independent truth labels.",
+    "file_assumption": "The full module is the proposed bounded syntactic evidence scope. This does not certify original provenance completeness or runtime behavior.",
+    "known_incomplete_baseline": "A separately derived symbol-anchor input sets known_incomplete=true and a research reason. It does not rewrite or close any original remark.",
+    "originals": "Original claims, source bytes, configs, known_incomplete flags and unresolved remarks remain unchanged. original_provenance_unchanged.jsonl is a separate record of the original rows.",
+    "symbol_assumption": "Symbol-only research support with known_incomplete=false is a deliberate experimental input assumption. Full-module binding facts may fall outside that anchor. The replay tests this assumption against v2; it is not certified provenance completeness."
+  },
+  "old_protocol": {
+    "frozen_implementation_commit_reported_by_coordinator": "56750dd",
+    "old_candidates_per_variant": 112,
+    "old_child_counts": [
+      1,
+      12,
+      1
+    ],
+    "path": "examples/real_structural_replay/protocol.json",
+    "seal_path": "examples/real_structural_replay/seal.json",
+    "seal_sha256": "6ec4f30ee7b953de4da5191cc3cad9b35c44849f5eb2f745b4ac3fcad8757cab",
+    "sha256": "52be85483cb1ca14600f48f9090fcb826dc254070d5cab41f24666bb87c6bd21"
+  },
+  "old_result": {
+    "manifest_path": "reports/research-20261104/real-structural-replay-v1/manifest.json",
+    "manifest_sha256": "7e38f3cd13af5ea597d95c81844859e9cdb1ae13d4b9961882c22e782d0ab727",
+    "observations_path": "reports/research-20261104/real-structural-replay-v1/observations.jsonl",
+    "observations_sha256": "d3f20a3521e79fa899acf3e5eba6832dd9a6336c51b935a1bdb3c2120eb30b9a",
+    "parents_path": "reports/research-20261104/real-structural-replay-v1/parents.jsonl",
+    "parents_sha256": "be8327da2d090e37c79942eaa8aaaaf91408a5c7e60f052d9fe4d6ca9ed5c391"
+  },
+  "parent_eligibility_check": {
+    "excluded_parents": "Reference contradicted, uncertain or missing confirmation excludes that claim from replay scoring, while retaining its record and exclusion reason. Never fill an exclusion with a different claim.",
+    "fixed_population": "Keep all 24 authentic claims and 288 candidate observations per variant. Excluded-parent claims remain reported without replacements.",
+    "initial_state": "Run the actual full production structural validator on eligible parent claims to initialize each variant's state. Do not initialize availability from AI agreement or from the independent reference verdict.",
+    "repeatability": "Recheck unchanged sealed AI bindings and independent v2 parent support. Recompute initialization; do not import old policy state or outcome labels.",
+    "requirements": "Existing sealed AI-pilot confirmations must bind the same 24 original claim hashes. Independent v2 reference must separately return supported on the exact parent source. AI agreement is not truth or a human review.",
+    "terminology": "This is an internal research eligibility check, not CAMI admission, annotation labels, parent receipts or human double-review."
+  },
+  "preflight": "Before any source read in any group, verify the new seal, unchanged original inputs, all exact IDs, full parent lists and parents[0]==previous. Never use old single-parent chain for this new mode.",
+  "production_protocol_version": "1.1",
+  "protocol_id": "real-click-structural-first-parent-extension-development-v1",
+  "provenance": {
+    "all_validate": "examples/real_structural_replay/research_provenance/symbol_anchor.jsonl",
+    "file_anchor": "examples/real_structural_replay/research_provenance/file_anchor.jsonl",
+    "known_incomplete": "examples/real_structural_replay/research_provenance/known_incomplete.jsonl",
+    "symbol_anchor": "examples/real_structural_replay/research_provenance/symbol_anchor.jsonl"
+  },
+  "reference_contract_paths": [
+    "examples/ai_review_pilot/packet/rubric.md",
+    "schemas/Claim.json",
+    "examples/ai_review_pilot/structural_checker_README.md",
+    "examples/structural_closure/reference_alignment_v2_addendum.json"
+  ],
+  "reference_path": "scripts/structural_checker_v2.py",
+  "reference_sha256": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a",
+  "repo_id": "click",
+  "root": "../..",
+  "schema_version": 1,
+  "scope": "New exploratory ordered-first-parent-snapshot measurement on the same 24 development Click claims",
+  "scope_separation": [
+    "The old protocol explicitly prohibited source access to rejected explored successors and side parents. That restriction and its old result remain unchanged.",
+    "After this separate protocol freeze, this new experiment authorizes source access only to the exact parents and36child IDs listed in groups, including22previously rejected descendants. The old protocol is unchanged.",
+    "All parent IDs of merge commits are recorded as topology metadata. Side-parent snapshots are not authorized for source access unless independently listed among the frozen parent or child snapshots.",
+    "No Requests/pytest groups, new claims, new parent cohorts, main held-out evaluation, labels, receipts, admission or human-review credit are included.",
+    "Fourteen transitions overlap the completed old replay. They are repeated observations, not prospective unseen evidence. Report the 22 added transitions separately."
+  ],
+  "seal_path": "examples/real_structural_first_parent_replay/seal.json",
+  "snapshot_semantics": "At each step compare the frozen child's full tree only against the immediately preceding first-parent snapshot, never a merge base, second parent, combined diff, or an automatically chosen ancestor.",
+  "split": "development",
+  "state_semantics": "Restart all four variants at the original fixed parent. Replay all 12 transitions in order using production index, validator, selector and state transitions. Reference decisions remain observational and never feed policy selection or state.",
+  "status": "sealed",
+  "topology_binding": "metadata_manifest.json records ordered full parent lists, previous_commit and merge flags for every transition.",
+  "trajectory_mode": "ordered_first_parent_snapshots_v1",
+  "variants": [
+    {
+      "id": "symbol_anchor",
+      "policy": {
+        "dependency_depth": 1,
+        "id": "symbol_validate"
+      },
+      "provenance": "research_provenance/symbol_anchor.jsonl"
+    },
+    {
+      "id": "file_anchor",
+      "policy": {
+        "dependency_depth": 1,
+        "id": "file_validate"
+      },
+      "provenance": "research_provenance/file_anchor.jsonl"
+    },
+    {
+      "id": "known_incomplete",
+      "policy": {
+        "dependency_depth": 1,
+        "id": "symbol_validate"
+      },
+      "provenance": "research_provenance/known_incomplete.jsonl"
+    },
+    {
+      "id": "all_validate",
+      "policy": {
+        "dependency_depth": 1,
+        "id": "all_validate"
+      },
+      "provenance": "research_provenance/symbol_anchor.jsonl"
+    }
+  ]
+}
