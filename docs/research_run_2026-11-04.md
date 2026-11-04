@@ -468,3 +468,21 @@ Headless Chrome exited unexpectedly (exit code1); html_render успешно п�
 PDF/DOCX и ZIPv7 опубликованы отдельно от прежних версий. Новый раздел описывает
 AI-пилот с ограничениями,499переходов model/engine и раздельное исправление
 reference/production class-global. Реестрv5 связывает69чисел с17источниками.
+
+## Реальный структурный replay Click
+
+На56750dd закреплены117входов и runtime sources до доступа к дочерним исходникам.
+Реальный прогон завершён на том жеHEAD с одинаковыми source snapshots:24claims,
+три истории длины1/12/1,112observations на вариант,448записей. Symbol/file/known/all
+выполнили8/13/112/112дочерних validations, у всех0false_available,
+0available_unknown и0withheld_supported. Родительские24проверки на вариант,
+136reference calls и17sharedindexbuilds учтены отдельно.
+Восемь contradicted observations — одинclaim shell_complete:ctx_args,
+t.Dict→t.MutableMapping на пятом шаге длинной истории. После первой проверки
+семь повторов вызваны previously_unavailable. Это точное синтаксическое изменение,
+не установленный behavioralbreak. Независимый raw-аудит идёт отдельно.
+
+График PNG/SVG сохранён и просмотрен. Первоначальный запуск renderer вreport-tools
+не нашёлmatplotlib; запуск восновном.venv сзакреплённой зависимостью успешен.
+html_preview снова завершился Headless Chrome exit1; html_render показал тот жеPNG.
+Свободно около16GiB, очистка не нужна. Подробности:real_structural_replay_2026-11-04_ru.md.
