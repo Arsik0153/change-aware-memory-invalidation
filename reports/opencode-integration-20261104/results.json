@@ -1,0 +1,113 @@
+{
+  "model-sentinel-01": {
+    "status": "failed",
+    "source_manifest_sha256": "ddf2e8c2469a14a8a7ba41e5ec2146825e06e723fb21298087b9c838edd26615",
+    "authored_repo_HEAD": "fe4b151d8956e1d4a094ab4460dc627f94274400",
+    "session_model": {
+      "id": "gpt-6.1-sol",
+      "providerID": "openai",
+      "variant": "high"
+    },
+    "session_location": {
+      "directory": "/root/apps/change-aware-memory-invalidation"
+    },
+    "session_title": "Fixture and memory lookup request",
+    "session_tokens": {
+      "input": 6178,
+      "output": 115,
+      "reasoning": 153,
+      "cache": {
+        "read": 5248,
+        "write": 0
+      }
+    },
+    "session_client_cost_field": 0,
+    "observed_cli_assistant_steps": 4,
+    "cli_step_tokens": {
+      "input": 5691,
+      "output": 106,
+      "reasoning": 153
+    },
+    "cli_step_cache_read_sum": 5248,
+    "cli_step_client_cost_sum": 0,
+    "session_minus_step_input": 487,
+    "session_minus_step_output": 9,
+    "total_attempt_wall_seconds": 23.657323451945558,
+    "total_reaped_child_cpu_seconds": 5.01865,
+    "native_tools": [
+      {
+        "tool": "read",
+        "status": "error"
+      },
+      {
+        "tool": "research_memory_memory_lookup",
+        "status": "completed"
+      },
+      {
+        "tool": "read",
+        "status": "error"
+      }
+    ],
+    "event_collector": {
+      "events": 42,
+      "errors": [
+        {
+          "collector_error_type": "TimeoutError",
+          "may_follow_normal_server_shutdown": true
+        }
+      ],
+      "truncated": false
+    }
+  },
+  "model-cami-02": {
+    "status": "passed",
+    "source_manifest_sha256": "1e32da11f5db6740554f366fa71c378c0b638818a4591ecf8cae0669f866c81a",
+    "authored_repo_HEAD": "e6c83b39534a1f6f307b973e2a9c877cd95e8eed",
+    "session_model": {
+      "id": "gpt-6.1-sol",
+      "providerID": "openai",
+      "variant": "high"
+    },
+    "session_location": {
+      "directory": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/authored-repo"
+    },
+    "session_title": "Authored isolated integration smoke",
+    "session_tokens": {
+      "input": 3412,
+      "output": 61,
+      "reasoning": 0,
+      "cache": {
+        "read": 5248,
+        "write": 0
+      }
+    },
+    "session_client_cost_field": 0,
+    "observed_cli_assistant_steps": 3,
+    "cli_step_tokens": {
+      "input": 3412,
+      "output": 61,
+      "reasoning": 0
+    },
+    "cli_step_cache_read_sum": 5248,
+    "cli_step_client_cost_sum": 0,
+    "session_minus_step_input": 0,
+    "session_minus_step_output": 0,
+    "total_attempt_wall_seconds": 10.62943640211597,
+    "total_reaped_child_cpu_seconds": 4.595874,
+    "native_tools": [
+      {
+        "tool": "read",
+        "status": "completed"
+      },
+      {
+        "tool": "research_memory_memory_lookup",
+        "status": "completed"
+      }
+    ],
+    "event_collector": {
+      "events": 30,
+      "errors": [],
+      "truncated": false
+    }
+  }
+}

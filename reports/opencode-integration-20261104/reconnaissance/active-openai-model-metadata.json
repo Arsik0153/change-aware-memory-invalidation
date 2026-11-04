@@ -1,0 +1,1689 @@
+[
+  {
+    "id": "gpt-6.1-terra",
+    "modelID": "gpt-6.1-terra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6.1 Terra",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 628000,
+      "input": 500000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6.1-terra-fast",
+    "modelID": "gpt-6.1-terra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6.1 Terra Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 628000,
+      "input": 500000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6.1-sol",
+    "modelID": "gpt-6.1-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6.1 Sol",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 628000,
+      "input": 500000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6.1-sol-fast",
+    "modelID": "gpt-6.1-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6.1 Sol Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 628000,
+      "input": 500000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6.1-sol-ultrafast",
+    "modelID": "gpt-6.1-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6.1 Sol Ultrafast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 628000,
+      "input": 500000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-sol",
+    "modelID": "gpt-6-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Sol",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-sol-fast",
+    "modelID": "gpt-6-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Sol Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-luna",
+    "modelID": "gpt-6-luna",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Luna",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-luna-fast",
+    "modelID": "gpt-6-luna",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Luna Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-astra",
+    "modelID": "gpt-6-astra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Astra",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-astra-fast",
+    "modelID": "gpt-6-astra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Astra Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-6-astra-ultrafast",
+    "modelID": "gpt-6-astra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-6 Astra Ultrafast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-cyber",
+    "modelID": "gpt-5.6-cyber",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Cyber",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-terra",
+    "modelID": "gpt-5.6-terra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Terra",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-terra-fast",
+    "modelID": "gpt-5.6-terra",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Terra Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-luna",
+    "modelID": "gpt-5.6-luna",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Luna",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-luna-fast",
+    "modelID": "gpt-5.6-luna",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Luna Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-sol",
+    "modelID": "gpt-5.6-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Sol",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  },
+  {
+    "id": "gpt-5.6-sol-fast",
+    "modelID": "gpt-5.6-sol",
+    "providerID": "openai",
+    "type": "chat",
+    "name": "GPT-5.6 Sol Fast",
+    "package": "@opencode/ai/providers/openai/responses",
+    "settings": {
+      "baseURL": "https://chatgpt.com/backend-api/codex"
+    },
+    "capabilities": {
+      "tools": true,
+      "input": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "output": [
+        "text"
+      ],
+      "temperature": false
+    },
+    "variants": [
+      {
+        "id": "none",
+        "settings": {
+          "reasoningEffort": "none",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "low",
+        "settings": {
+          "reasoningEffort": "low",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "medium",
+        "settings": {
+          "reasoningEffort": "medium",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "high",
+        "settings": {
+          "reasoningEffort": "high",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "xhigh",
+        "settings": {
+          "reasoningEffort": "xhigh",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      },
+      {
+        "id": "max",
+        "settings": {
+          "reasoningEffort": "max",
+          "reasoningSummary": "auto",
+          "include": [
+            "reasoning.encrypted_content"
+          ]
+        }
+      }
+    ],
+    "status": "active",
+    "enabled": true,
+    "limit": {
+      "context": 400000,
+      "input": 272000,
+      "output": 128000
+    }
+  }
+]

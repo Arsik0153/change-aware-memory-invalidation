@@ -1,0 +1,68 @@
+{
+  "model": "openai/gpt-6.1-sol#high",
+  "update": "disable",
+  "share": "disabled",
+  "warming": false,
+  "compaction": {
+    "auto": false
+  },
+  "websearch": false,
+  "snapshots": false,
+  "plugins": [
+    "-opencode.tool.shell",
+    "-opencode.tool.subagent",
+    "-opencode.tool.webfetch",
+    "-opencode.tool.websearch",
+    "-opencode.tool.image-generate",
+    "-opencode.tool.schedule",
+    "-opencode.tool.question",
+    "-opencode.tool.edit",
+    "-opencode.tool.write",
+    "-opencode.tool.patch",
+    "-opencode.tool.artifact"
+  ],
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "deny"
+    }
+  ],
+  "agents": {
+    "research": {
+      "mode": "primary",
+      "steps": 4,
+      "system": "This is an authored read-only integration smoke. Use only read and research_memory memory_lookup. Read only fixture.py in this workspace. Do not edit, run shell, create subagents, request network tools or inspect other files. Answer briefly as requested."
+    }
+  },
+  "experimental": {
+    "schedules": false,
+    "artifacts": false,
+    "image_generate": false
+  },
+  "mcp": {
+    "servers": {
+      "research_memory": {
+        "type": "local",
+        "command": [
+          "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/tiny_memory_mcp.py",
+          "--trace",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/mcp-trace.jsonl"
+        ],
+        "cwd": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/authored-repo",
+        "codemode": false,
+        "timeout": {
+          "startup": 10000,
+          "catalog": 10000,
+          "execution": 10000
+        }
+      }
+    }
+  }
+}

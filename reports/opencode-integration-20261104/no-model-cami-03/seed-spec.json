@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_roots": [
+    "."
+  ],
+  "excluded_paths": [],
+  "records": [
+    {
+      "id": "stable-exists",
+      "kind": "symbol_exists",
+      "selector": "fixture.py:stable_value",
+      "subject": {
+        "language": "python",
+        "path": "fixture.py",
+        "qualname": "stable_value",
+        "node_kind": "function"
+      }
+    }
+  ]
+}

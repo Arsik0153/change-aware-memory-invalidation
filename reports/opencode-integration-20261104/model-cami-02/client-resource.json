@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/root/.opencode/bin/opencode",
+    "run",
+    "--server",
+    "http://127.0.0.1:56999",
+    "--session",
+    "ses_e582857f5ffebnl7Aix7MF7Mb2",
+    "--model",
+    "openai/gpt-6.1-sol#high",
+    "--agent",
+    "research",
+    "--format",
+    "json",
+    "Use read on fixture.py and call the research_memory memory_lookup tool with query \"stable_value\". Then answer exactly one short JSON object with native_value equal to the function return value, memory_supported true only if the returned entry availability is supported, and memory_type equal to its payload type. Do not infer the function return value from an existence claim. No other work or tools."
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_seconds": 6.184299383079633,
+  "reaped_child_cpu_seconds": 0.18288300000000013,
+  "child_cpu_scope": "process and reaped descendants; persistent server accounted separately"
+}

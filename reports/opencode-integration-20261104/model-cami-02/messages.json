@@ -1,0 +1,174 @@
+{
+  "data": [
+    {
+      "id": "msg_1a7d7c0360014P2HhGhxv4tGYY",
+      "time": {
+        "created": 1793817296950
+      },
+      "type": "idle",
+      "outcome": "succeeded"
+    },
+    {
+      "id": "msg_1a7d7b97b0018Fl4MM2d5If0JO",
+      "time": {
+        "created": 1793817295233,
+        "streamed": 1793817296942,
+        "completed": 1793817296944
+      },
+      "type": "assistant",
+      "agent": "research",
+      "model": {
+        "id": "gpt-6.1-sol",
+        "providerID": "openai",
+        "variant": "high"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"native_value\":7,\"memory_supported\":true,\"memory_type\":\"symbol_exists\"}"
+        }
+      ],
+      "finish": "stop",
+      "cost": 0,
+      "tokens": {
+        "input": 457,
+        "output": 21,
+        "reasoning": 0,
+        "cache": {
+          "read": 2688,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1a7d7b1a6001Ool0HwN7KnehRZ",
+      "time": {
+        "created": 1793817293229,
+        "streamed": 1793817294910,
+        "completed": 1793817295219
+      },
+      "type": "assistant",
+      "agent": "research",
+      "model": {
+        "id": "gpt-6.1-sol",
+        "providerID": "openai",
+        "variant": "high"
+      },
+      "content": [
+        {
+          "type": "tool",
+          "id": "call_7037b7faabe14dcaaf07e5b97ed95eb1",
+          "name": "research_memory_memory_lookup",
+          "executed": false,
+          "state": {
+            "status": "completed",
+            "input": {
+              "query": "stable_value"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"backend\":\"cami\",\"catalog_sha256\":\"820b8ea0f96e197c983848b0d463e7e3d8d9b89c515096d9691b38663d5f23d1\",\"entries\":[{\"availability\":\"supported\",\"id\":\"stable-exists\",\"label\":\"validated_structural_fact\",\"origin_source\":{\"path\":\"fixture.py\",\"sha256\":\"1f62aeaae610043eca7a4f6e5def5dc72bb10d6d2dd86086f5f37143067f6c5d\",\"size\":90},\"payload\":{\"expected\":true,\"subject\":{\"language\":\"python\",\"node_kind\":\"function\",\"path\":\"fixture.py\",\"qualname\":\"stable_value\"},\"type\":\"symbol_exists\"},\"state_type\":\"checked\"}],\"freshness\":\"verified_readset; may change after verification; refresh after edits\",\"matched_records\":1,\"memory_generation_id\":\"01bc4f442da8f79eb2f6220527c8cfb3616c420ddea54758adffe937fe3e9016\",\"query\":\"stable_value\",\"schema_version\":1,\"selected_records\":1,\"selection_budget\":{\"origin_record_bytes\":16384,\"ranking_before_availability\":true,\"used_bytes\":291},\"snapshot_id\":\"c9487d4e9976e02af13112edffd3b5f72ed4d162fa4df8a38429a0128f6f744c\",\"truncated\":false,\"withheld\":[]}"
+              }
+            ],
+            "metadata": {
+              "truncated": false
+            }
+          },
+          "time": {
+            "created": 1793817294757,
+            "ran": 1793817294897,
+            "completed": 1793817295216
+          }
+        }
+      ],
+      "finish": "tool-calls",
+      "cost": 0,
+      "tokens": {
+        "input": 231,
+        "output": 22,
+        "reasoning": 0,
+        "cache": {
+          "read": 2560,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1a7d7a8d2001idQYRjKKHP42hn",
+      "time": {
+        "created": 1793817290972,
+        "streamed": 1793817293210,
+        "completed": 1793817293213
+      },
+      "type": "assistant",
+      "agent": "research",
+      "model": {
+        "id": "gpt-6.1-sol",
+        "providerID": "openai",
+        "variant": "high"
+      },
+      "content": [
+        {
+          "type": "tool",
+          "id": "call_b56c08f74d344afc8dc9020277d84fb4",
+          "name": "read",
+          "executed": false,
+          "state": {
+            "status": "completed",
+            "input": {
+              "path": "fixture.py"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Read file fixture.py, lines 1-3\n1: def stable_value() -> int:\n2:     \"\"\"Authored smoke only; no benchmark data.\"\"\"\n3:     return 7"
+              }
+            ],
+            "metadata": {
+              "truncated": false
+            }
+          },
+          "time": {
+            "created": 1793817293156,
+            "ran": 1793817293191,
+            "completed": 1793817293200
+          }
+        }
+      ],
+      "finish": "tool-calls",
+      "cost": 0,
+      "tokens": {
+        "input": 2724,
+        "output": 18,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      }
+    },
+    {
+      "id": "msg_1a7d7a8a3001MCjA4l7Reo41LA",
+      "time": {
+        "created": 1793817290935
+      },
+      "text": "\"Use read on fixture.py and call the research_memory memory_lookup tool with query \\\"stable_value\\\". Then answer exactly one short JSON object with native_value equal to the function return value, memory_supported true only if the returned entry availability is supported, and memory_type equal to its payload type. Do not infer the function return value from an existence claim. No other work or tools.\"",
+      "files": [],
+      "type": "user"
+    },
+    {
+      "id": "msg_1a7d7a8a4001Th6cCuWkuAzee7",
+      "time": {
+        "created": 1793817290916
+      },
+      "type": "agent-switched",
+      "agent": "research",
+      "previous": "research"
+    }
+  ],
+  "cursor": {
+    "previous": "eyJpZCI6Im1zZ18xYTdkN2MwMzYwMDE0UDJIaEdoeHY0dEdZWSIsIm9yZGVyIjoiZGVzYyIsImRpcmVjdGlvbiI6InByZXZpb3VzIn0",
+    "next": "eyJpZCI6Im1zZ18xYTdkN2E4YTQwMDFUaDZjQ3VXa3VBemVlNyIsIm9yZGVyIjoiZGVzYyIsImRpcmVjdGlvbiI6Im5leHQifQ"
+  }
+}

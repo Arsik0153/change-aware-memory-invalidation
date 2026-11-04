@@ -1,0 +1,174 @@
+[
+  {
+    "type": "document",
+    "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/private/no-model-cami-03/config/opencode/opencode.json",
+    "info": {
+      "model": {
+        "providerID": "openai",
+        "model": "gpt-6.1-sol",
+        "variant": "high"
+      },
+      "update": "disable",
+      "share": "disabled",
+      "permissions": [
+        {
+          "action": "*",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "deny"
+        }
+      ],
+      "agents": {
+        "research": {
+          "system": "This is an authored read-only integration smoke. Use only read and research_memory memory_lookup. Read only fixture.py in this workspace. Do not edit, run shell, create subagents, request network tools or inspect other files. Answer briefly as requested.",
+          "mode": "primary",
+          "steps": 4
+        }
+      },
+      "snapshots": false,
+      "mcp": {
+        "servers": {
+          "research_memory": {
+            "type": "local",
+            "command": [
+              "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/mcp_recorder.py",
+              "--trace",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/mcp-trace.jsonl",
+              "--",
+              "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+              "/root/apps/change-aware-memory-invalidation/runs/cami-opencode-adapter-development-20261104/memory_adapter.py",
+              "serve",
+              "--binding",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/prepared-memory/binding.json",
+              "--trace",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/adapter-backend-trace.jsonl"
+            ],
+            "cwd": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/authored-repo",
+            "codemode": false,
+            "timeout": {
+              "startup": 10000,
+              "catalog": 10000,
+              "execution": 10000
+            }
+          }
+        }
+      },
+      "compaction": {
+        "auto": false
+      },
+      "websearch": false,
+      "plugins": [
+        "-opencode.tool.shell",
+        "-opencode.tool.subagent",
+        "-opencode.tool.webfetch",
+        "-opencode.tool.websearch",
+        "-opencode.tool.image-generate",
+        "-opencode.tool.schedule",
+        "-opencode.tool.question",
+        "-opencode.tool.edit",
+        "-opencode.tool.write",
+        "-opencode.tool.patch",
+        "-opencode.tool.artifact"
+      ],
+      "warming": false,
+      "experimental": {
+        "image_generate": false,
+        "schedules": false,
+        "artifacts": false
+      }
+    }
+  },
+  {
+    "type": "directory",
+    "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/private/no-model-cami-03/config/opencode"
+  },
+  {
+    "type": "document",
+    "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/private/no-model-cami-03/config/opencode/opencode.json",
+    "info": {
+      "model": {
+        "providerID": "openai",
+        "model": "gpt-6.1-sol",
+        "variant": "high"
+      },
+      "update": "disable",
+      "share": "disabled",
+      "permissions": [
+        {
+          "action": "*",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "deny"
+        }
+      ],
+      "agents": {
+        "research": {
+          "system": "This is an authored read-only integration smoke. Use only read and research_memory memory_lookup. Read only fixture.py in this workspace. Do not edit, run shell, create subagents, request network tools or inspect other files. Answer briefly as requested.",
+          "mode": "primary",
+          "steps": 4
+        }
+      },
+      "snapshots": false,
+      "mcp": {
+        "servers": {
+          "research_memory": {
+            "type": "local",
+            "command": [
+              "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/mcp_recorder.py",
+              "--trace",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/mcp-trace.jsonl",
+              "--",
+              "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+              "/root/apps/change-aware-memory-invalidation/runs/cami-opencode-adapter-development-20261104/memory_adapter.py",
+              "serve",
+              "--binding",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/prepared-memory/binding.json",
+              "--trace",
+              "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/adapter-backend-trace.jsonl"
+            ],
+            "cwd": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/no-model-cami-03/authored-repo",
+            "codemode": false,
+            "timeout": {
+              "startup": 10000,
+              "catalog": 10000,
+              "execution": 10000
+            }
+          }
+        }
+      },
+      "compaction": {
+        "auto": false
+      },
+      "websearch": false,
+      "plugins": [
+        "-opencode.tool.shell",
+        "-opencode.tool.subagent",
+        "-opencode.tool.webfetch",
+        "-opencode.tool.websearch",
+        "-opencode.tool.image-generate",
+        "-opencode.tool.schedule",
+        "-opencode.tool.question",
+        "-opencode.tool.edit",
+        "-opencode.tool.write",
+        "-opencode.tool.patch",
+        "-opencode.tool.artifact"
+      ],
+      "warming": false,
+      "experimental": {
+        "image_generate": false,
+        "schedules": false,
+        "artifacts": false
+      }
+    }
+  }
+]

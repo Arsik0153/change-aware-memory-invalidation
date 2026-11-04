@@ -1,0 +1,15 @@
+server listening on http://127.0.0.1:45703
+[18:28:26.779] INFO (#762): spawning process {
+  command: "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+  args: [ "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/tiny_memory_mcp.py",
+    "--trace", "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/mcp-trace.jsonl"
+  ],
+  cwd: "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/authored-repo",
+}
+[18:28:27.150] INFO (#1421): spawning process {
+  command: "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+  args: [ "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/tiny_memory_mcp.py",
+    "--trace", "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/mcp-trace.jsonl"
+  ],
+  cwd: "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/authored-repo",
+}

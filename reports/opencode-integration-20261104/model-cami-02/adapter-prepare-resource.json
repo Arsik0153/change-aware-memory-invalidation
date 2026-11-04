@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+    "/root/apps/change-aware-memory-invalidation/runs/cami-opencode-adapter-development-20261104/memory_adapter.py",
+    "prepare",
+    "--backend",
+    "cami",
+    "--repo",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/authored-repo",
+    "--seed-spec",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/seed-spec.json",
+    "--out",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/prepared-memory",
+    "--state-home",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/cami-memory-state"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_seconds": 0.636715634027496,
+  "reaped_child_cpu_seconds": 0.369411,
+  "child_cpu_scope": "process and reaped descendants; persistent server accounted separately",
+  "stdout": "{\"status\": \"prepared\", \"binding\": \"/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/prepared-memory/binding.json\"}\n",
+  "stderr": ""
+}

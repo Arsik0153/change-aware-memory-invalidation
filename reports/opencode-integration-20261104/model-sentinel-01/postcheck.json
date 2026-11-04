@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "expected_location": "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-sentinel-01/authored-repo",
+  "actual_location": "/root/apps/change-aware-memory-invalidation",
+  "native_read_statuses": [
+    "error",
+    "error"
+  ],
+  "final_text": [
+    "{\"native_value\":null,\"memory_marker\":\"MCP_SMOKE_20261104\",\"error\":\"fixture.py not found; function return value unknown.\"}"
+  ],
+  "cli_step_tokens": {
+    "input": 5691,
+    "output": 106,
+    "reasoning": 153
+  },
+  "session_tokens": {
+    "input": 6178,
+    "output": 115,
+    "reasoning": 153,
+    "cache": {
+      "read": 5248,
+      "write": 0
+    }
+  },
+  "usage_discrepancy": "Session totals exceed CLI step sums by487 input and9 output; possibly title generation, not yet causally established. Do not double count."
+}

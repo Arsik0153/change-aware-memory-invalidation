@@ -1,0 +1,261 @@
+[
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "help-version.txt",
+    "output_sha256": "e11cd88c5845ad2055f7d68b7920a8caefe55e5d35a3f1be2fd988f3135495c6",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-help.txt",
+    "output_sha256": "be45a575f0ec674c7136bc42695afc5e5566de13d6d8eddc77e1e73b83b45fad",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "run",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-run-help.txt",
+    "output_sha256": "2232aa4c581275174cab8c946375ce839af95189baa73470fa6323e8eda99196",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "serve",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-serve-help.txt",
+    "output_sha256": "d96a692cc439c68c375bc580c56ba2cce9ab90f5d905ac94c5179272bc7c324b",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "api",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-api-help.txt",
+    "output_sha256": "b7ec4e01aba7a502644a5855581843a25a02ec2758a697963f5fb23c88a242e8",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "debug",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-debug-help.txt",
+    "output_sha256": "537f8bb1802db7fe516c33ab3c6546a79f7fd8da765e788b4fcff1086cc78d5d",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "debug",
+      "paths",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-debug-paths-help.txt",
+    "output_sha256": "2f84375b6968bc92255e1e9ae6263ac6a95287d9a3704610cd9e6a8e91b5797f",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "debug",
+      "config",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-debug-config-help.txt",
+    "output_sha256": "2d586248e74908c49eb9f0aee4f13dab38bb15d87f5c119474fd0f80dbb3d065",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "session",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-session-help.txt",
+    "output_sha256": "6aa12aa7253cb2c81805942468865df2baa13e759f358b3fe1868ab4baad1470",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "session",
+      "export",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-session-export-help.txt",
+    "output_sha256": "c4b35e3193012dafb7f73d645ee4ae5065ab03a9fc3d8ccaca32ea61e80b2bcd",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "models",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-models-help.txt",
+    "output_sha256": "08caf34a8211848582fe6d833c464c87e103e6edf5ccb67cca80657c283c4331",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "plugin",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-plugin-help.txt",
+    "output_sha256": "fee38abdf44545fb5adbf39bc94a13d53daf8bd46f5e46f7c94a371a860a2710",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "plugin",
+      "list",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-plugin-list-help.txt",
+    "output_sha256": "c5aad5fe311a8e876b487fadbbcd9a9dc7239b8d1a48db089497bd9f88e90dc6",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "auth",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-auth-help.txt",
+    "output_sha256": "c7758ce92aa76fc287771c6f64358c28f3951b347c55eee21e0a52bcc9402ba4",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "auth",
+      "list",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-auth-list-help.txt",
+    "output_sha256": "f0b00abd16ce4dc5f16c432c5b246e35b71d527961619ab3ac7d3a7954a78377",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "auth",
+      "export",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-auth-export-help.txt",
+    "output_sha256": "55a15fa47d9eb9c57113c876fbc93bdc83671b274a6c2a5bfb99efd77db5a817",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "auth",
+      "import",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-auth-import-help.txt",
+    "output_sha256": "0d8bceda24d33e276f5ce9e345299bb7beda7c8ae488c3441fac29356149fade",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "service",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-service-help.txt",
+    "output_sha256": "604013a92380cc047cb740f97eaaf1562e766dc8d8ea00c2b8b1b898b6c33656",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "service",
+      "get",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-service-get-help.txt",
+    "output_sha256": "bb0470b78b20d60fbf008a7910d7a24ac1c92f7cfa459053e0312d43e48b7ebd",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "acp",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-acp-help.txt",
+    "output_sha256": "eb1184b652f7d8e9ee53fa5d327bd19d59b11c653785b047596d76454685fadd",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  },
+  {
+    "argv": [
+      "/root/.opencode/bin/opencode",
+      "mcp",
+      "add",
+      "--help"
+    ],
+    "exit_code": 0,
+    "output": "help-mcp-add-help.txt",
+    "output_sha256": "f7982683bdf64fe4bda2a1e9ae128bba748a351e94f93b783f0db8621a008dcb",
+    "model_calls": 0,
+    "notes": "help/version only; output contains no credential values"
+  }
+]

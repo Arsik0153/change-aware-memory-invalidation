@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/root/.opencode/bin/opencode",
+    "run",
+    "--server",
+    "http://127.0.0.1:45703",
+    "--model",
+    "openai/gpt-6.1-sol#high",
+    "--agent",
+    "research",
+    "--format",
+    "json",
+    "Use read on fixture.py and call the research_memory memory_lookup tool with query \"smoke\". Then answer exactly one short JSON object with native_value equal to the function return value and memory_marker equal to the stored marker. No other work or tools."
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_seconds": 20.7036540589761,
+  "reaped_child_cpu_seconds": 0.28105800000000003,
+  "child_cpu_scope": "process and reaped descendants; persistent server accounted separately"
+}

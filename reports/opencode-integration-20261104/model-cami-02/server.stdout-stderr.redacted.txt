@@ -1,0 +1,12 @@
+server listening on http://127.0.0.1:56999
+[18:34:50.618] INFO (#762): spawning process {
+  command: "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+  args: [
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/mcp_recorder.py",
+    "--trace", "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/mcp-trace.jsonl",
+    "--", "/root/apps/change-aware-memory-invalidation/.venv/bin/python", "/root/apps/change-aware-memory-invalidation/runs/cami-opencode-adapter-development-20261104/memory_adapter.py",
+    "serve", "--binding", "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/prepared-memory/binding.json",
+    "--trace", "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/adapter-backend-trace.jsonl"
+  ],
+  cwd: "/root/apps/change-aware-memory-invalidation/runs/opencode-isolated-smoke-20261104/model-cami-02/authored-repo",
+}

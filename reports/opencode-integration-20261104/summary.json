@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "integration_smoke_complete_with_preserved_initial_failure",
+  "benchmark": false,
+  "heldout": false,
+  "model": "openai/gpt-6.1-sol#high",
+  "model_sessions": 2,
+  "observed_main_assistant_steps": 7,
+  "no_more_model_calls_authorized_in_this_unit": true,
+  "attempts": {
+    "model-cami-02": "passed",
+    "no-model-location-02": "passed",
+    "model-sentinel-01": "failed",
+    "no-model-01": "passed",
+    "no-model-cami-03": "passed"
+  },
+  "successful_attempt": "model-cami-02",
+  "success_checks": [
+    "exact precreated session ID and authored workspace location",
+    "effective openai/gpt-6.1-sol variant high",
+    "native read completed",
+    "real CAMI memory_lookup completed with supported existence fact",
+    "exact expected JSON answer",
+    "CLI step sums match final session input/output/reasoning",
+    "complete30-event SSE trace without collector errors/truncation"
+  ],
+  "preserved_failures": [
+    "model-sentinel-01 location/read/answer failure; original incorrect-status manifest preserved separately",
+    "model-sentinel-01 incomplete SSE due initial5s read timeout"
+  ],
+  "credential_bodies_in_evidence": false,
+  "full_user_database_copied": false,
+  "private_credential_state_removed": true,
+  "shared_server_or_config_mutation_commands": false,
+  "os_sandbox": false,
+  "resources_scope": "External attempt/client/server wall, reaped-child CPU, sampled server-tree RSS and storage snapshots; limitations in README. Not full cgroup accounting.",
+  "known_missing_metrics": [
+    "Host Python own CPU not in child CPU",
+    "Cleanup/inventory finalserialization outside original wall snapshot",
+    "Potential unreaped descendant CPU",
+    "Unsampled RSS/cgroup peak",
+    "Provider wire/server compute and true subscription billing",
+    "Provider-cache reset and full cross-session benchmark isolation"
+  ],
+  "next_boundary": "Root-owned container harness before benchmark; no future task/gold access or additional model calls in smoke unit",
+  "files": {
+    "results.json": "8feda19e45ede2e4bdb3c7ac09c2b0c326799bbe098bf4436a8ab40ea8a96379",
+    "tiny_memory_mcp.py": "2bb652aa009fe71aacb64eed5539aab953f417e1b15d42d34a18a6ffdf58c8ac",
+    "smoke_harness.py": "015df09b1825ca85f9a1391a4919bb9cd65b31cd9c361d1192015250639f6542",
+    "run_smoke.py": "fbec6d9ebd4086ab00722cd5f53fbf9de7db351c6b14310cc6765128642b0dd9",
+    "README.ru.md": "11cc96441b87aa36e61ef4cc80d12c61a4692bc7416c6a9bf884a9c17266aa78",
+    "mcp_recorder.py": "d962954dd923c36c71deb0c8608684e5bfe0b0104f408f1ef710fbb1c9cfa643",
+    "executed-success-source-pins.json": "80cd56c77d77442318ccb0d5718739f52237c725f66fa9eea2c4e447cee61a1c"
+  },
+  "executed_adapter_v1_source": {
+    "executed-adapter-v1-source/memory_backend.py.txt": "b42d5f21c79fa86b266e66f69fd0918668420b92433cee70dd3364b32a14cdbc",
+    "executed-adapter-v1-source/memory_adapter.py.txt": "f2d2b736ecd0b65a27a058fee9c770b9ab556426bbab16c272f6dbf0e21e4b2b"
+  }
+}

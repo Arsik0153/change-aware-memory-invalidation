@@ -1,0 +1,33 @@
+{
+  "data": {
+    "id": "ses_e582e32f0ffeQII83nfBwYhDG5",
+    "projectID": "f0be2c33bcec3fc3396bd834b47bda176268d0c1",
+    "agent": "research",
+    "model": {
+      "id": "gpt-6.1-sol",
+      "providerID": "openai",
+      "variant": "high"
+    },
+    "cost": 0,
+    "tokens": {
+      "input": 6178,
+      "output": 115,
+      "reasoning": 153,
+      "cache": {
+        "read": 5248,
+        "write": 0
+      }
+    },
+    "outcome": "succeeded",
+    "time": {
+      "created": 1793816907055,
+      "updated": 1793816927551,
+      "busy": 1793816907213,
+      "idle": 1793816927555
+    },
+    "title": "Fixture and memory lookup request",
+    "location": {
+      "directory": "/root/apps/change-aware-memory-invalidation"
+    }
+  }
+}

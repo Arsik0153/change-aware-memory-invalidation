@@ -1,0 +1,2871 @@
+{
+  "schema_source": "installed-openapi.json",
+  "source_sha256": "f5c4571bf7e9afc22a440875a746f593f988c4c31bf824f602601c04b20e6c8e",
+  "schemas": {
+    "Config.InfoEncoded": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "shell": {
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[^/#]+\\/[^#]+(?:#[^#]+)?$"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "providerID": {
+                  "type": "string",
+                  "pattern": "^[^/#]+$"
+                },
+                "model": {
+                  "type": "string",
+                  "pattern": "^[^#]+$"
+                },
+                "variant": {
+                  "type": "string",
+                  "pattern": "^[^#]+$"
+                }
+              },
+              "required": [
+                "providerID",
+                "model"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "default_agent": {
+          "type": "string"
+        },
+        "update": {
+          "type": "string",
+          "enum": [
+            "disable",
+            "notify",
+            "auto"
+          ]
+        },
+        "share": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "auto",
+            "disabled"
+          ]
+        },
+        "enterprise": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "username": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "permissions": {
+          "$ref": "#/components/schemas/Permission.Ruleset"
+        },
+        "policies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "provider.use",
+                  "tool.use",
+                  "integration.connect",
+                  "integration.use",
+                  "mcp.use",
+                  "skill.use",
+                  "plugin.use"
+                ]
+              },
+              "resource": {
+                "type": "string"
+              },
+              "effect": {
+                "type": "string",
+                "enum": [
+                  "allow",
+                  "deny"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "resource",
+              "effect"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "agents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Config.AgentEncoded"
+          }
+        },
+        "snapshots": {
+          "type": "boolean"
+        },
+        "watcher": {
+          "type": "object",
+          "properties": {
+            "ignore": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "formatter": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/Config.Formatter.EntryEncoded"
+              }
+            }
+          ]
+        },
+        "lsp": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "disabled": {
+                        "type": "boolean",
+                        "enum": [
+                          true
+                        ]
+                      }
+                    },
+                    "required": [
+                      "disabled"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "$ref": "#/components/schemas/Config.LSP.ServerEncoded"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "media": {
+          "type": "object",
+          "properties": {
+            "image": {
+              "type": "object",
+              "properties": {
+                "auto_resize": {
+                  "type": "boolean"
+                },
+                "max_width": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                },
+                "max_height": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                },
+                "max_base64_bytes": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "tool_output": {
+          "type": "object",
+          "properties": {
+            "max_lines": {
+              "type": "integer",
+              "maximum": 9007199254740991,
+              "exclusiveMinimum": 0
+            },
+            "max_bytes": {
+              "type": "integer",
+              "maximum": 9007199254740991,
+              "exclusiveMinimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "mcp": {
+          "type": "object",
+          "properties": {
+            "timeout": {
+              "type": "object",
+              "properties": {
+                "startup": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                },
+                "catalog": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                },
+                "execution": {
+                  "type": "integer",
+                  "maximum": 9007199254740991,
+                  "exclusiveMinimum": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "servers": {
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Mcp.LocalConfigEncoded"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Mcp.RemoteConfigEncoded"
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "compaction": {
+          "type": "object",
+          "properties": {
+            "auto": {
+              "type": "boolean"
+            },
+            "keep": {
+              "type": "object",
+              "properties": {
+                "tokens": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "additionalProperties": false
+            },
+            "buffer": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Config.Compaction.Percent"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commands": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Config.CommandEncoded"
+          }
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Config.Reference.GitEncoded"
+              },
+              {
+                "$ref": "#/components/schemas/Config.Reference.LocalEncoded"
+              }
+            ]
+          }
+        },
+        "websearch": {
+          "anyOf": [
+            {
+              "type": "boolean",
+              "enum": [
+                false
+              ]
+            },
+            {
+              "$ref": "#/components/schemas/ConfigWebSearch.InfoEncoded"
+            }
+          ]
+        },
+        "plugins": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Config.Plugin.EntryEncoded"
+              }
+            ]
+          }
+        },
+        "worktree": {
+          "$ref": "#/components/schemas/Config.Worktree"
+        },
+        "warming": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/components/schemas/Config.WarmingEncoded"
+            }
+          ]
+        },
+        "providers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Config.ProviderEncoded"
+          }
+        },
+        "experimental": {
+          "type": "object",
+          "properties": {
+            "portable_shell_scanner": {
+              "type": "boolean"
+            },
+            "todo": {
+              "type": "boolean"
+            },
+            "background_compaction": {
+              "type": "boolean"
+            },
+            "media_blob": {
+              "type": "boolean"
+            },
+            "image_generate": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[^/#]+\\/[^#]+(?:#[^#]+)?$"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "providerID": {
+                              "type": "string",
+                              "pattern": "^[^/#]+$"
+                            },
+                            "model": {
+                              "type": "string",
+                              "pattern": "^[^#]+$"
+                            },
+                            "variant": {
+                              "type": "string",
+                              "pattern": "^[^#]+$"
+                            }
+                          },
+                          "required": [
+                            "providerID",
+                            "model"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "schedules": {
+              "type": "boolean"
+            },
+            "artifacts": {
+              "type": "boolean"
+            },
+            "subagent_depth": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "location_idle_timeout": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ]
+                }
+              ]
+            },
+            "policies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "provider.use",
+                      "tool.use",
+                      "integration.connect",
+                      "integration.use",
+                      "mcp.use",
+                      "skill.use",
+                      "plugin.use"
+                    ]
+                  },
+                  "resource": {
+                    "type": "string"
+                  },
+                  "effect": {
+                    "type": "string",
+                    "enum": [
+                      "allow",
+                      "deny"
+                    ]
+                  }
+                },
+                "required": [
+                  "action",
+                  "resource",
+                  "effect"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "Config.AgentEncoded": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[^/#]+\\/[^#]+(?:#[^#]+)?$"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "providerID": {
+                  "type": "string",
+                  "pattern": "^[^/#]+$"
+                },
+                "model": {
+                  "type": "string",
+                  "pattern": "^[^#]+$"
+                },
+                "variant": {
+                  "type": "string",
+                  "pattern": "^[^#]+$"
+                }
+              },
+              "required": [
+                "providerID",
+                "model"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "request": {
+          "type": "object",
+          "properties": {
+            "headers": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "body": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
+        },
+        "system": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "subagent",
+            "primary",
+            "all"
+          ]
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "steps": {
+          "type": "integer",
+          "maximum": 9007199254740991,
+          "exclusiveMinimum": 0
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "permissions": {
+          "$ref": "#/components/schemas/Permission.Ruleset"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Config.Plugin.EntryEncoded": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "string"
+        },
+        "options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "package"
+      ],
+      "additionalProperties": false
+    },
+    "Mcp.LocalConfigEncoded": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "local"
+          ]
+        },
+        "command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "codemode": {
+          "type": "boolean"
+        },
+        "timeout": {
+          "type": "object",
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "maximum": 9007199254740991,
+              "exclusiveMinimum": 0
+            },
+            "catalog": {
+              "type": "integer",
+              "maximum": 9007199254740991,
+              "exclusiveMinimum": 0
+            },
+            "execution": {
+              "type": "integer",
+              "maximum": 9007199254740991,
+              "exclusiveMinimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "protocol": {
+          "$ref": "#/components/schemas/Mcp.Protocol"
+        }
+      },
+      "required": [
+        "type",
+        "command"
+      ],
+      "additionalProperties": false
+    },
+    "Permission.Rule": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "effect": {
+          "$ref": "#/components/schemas/Permission.Effect"
+        }
+      },
+      "required": [
+        "action",
+        "resource",
+        "effect"
+      ],
+      "additionalProperties": false
+    },
+    "Permission.Ruleset": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Permission.Rule"
+      }
+    },
+    "Model.Ref": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "providerID": {
+          "$ref": "#/components/schemas/Provider.ID"
+        },
+        "variant": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "providerID"
+      ],
+      "additionalProperties": false
+    },
+    "Model.Info": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "modelID": {
+          "type": "string"
+        },
+        "providerID": {
+          "$ref": "#/components/schemas/Provider.ID"
+        },
+        "canonical": {
+          "$ref": "#/components/schemas/Provider.ID"
+        },
+        "type": {
+          "$ref": "#/components/schemas/Model.Type"
+        },
+        "family": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "compatibility": {
+          "$ref": "#/components/schemas/Model.Compatibility"
+        },
+        "package": {
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/components/schemas/Model.Settings"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "type": "object"
+        },
+        "capabilities": {
+          "$ref": "#/components/schemas/Model.Capabilities"
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Model.Variant"
+          }
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "released": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "released"
+          ],
+          "additionalProperties": false
+        },
+        "cost": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Model.Cost"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "alpha",
+            "beta",
+            "deprecated",
+            "active"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "limit": {
+          "type": "object",
+          "properties": {
+            "context": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "input": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "output": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "context",
+            "output"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "modelID",
+        "providerID",
+        "name",
+        "capabilities",
+        "variants",
+        "time",
+        "cost",
+        "status",
+        "enabled",
+        "limit"
+      ],
+      "additionalProperties": false
+    },
+    "Model.Variant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/components/schemas/Model.VariantSettings"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "Model.Settings": {
+      "type": "object",
+      "properties": {
+        "compaction": {
+          "$ref": "#/components/schemas/Provider.Compaction"
+        },
+        "cache": {
+          "$ref": "#/components/schemas/Provider.Cache"
+        },
+        "encoding": {
+          "$ref": "#/components/schemas/Provider.Encoding"
+        }
+      },
+      "allOf": [
+        {
+          "type": "object",
+          "additionalProperties": {}
+        }
+      ]
+    },
+    "TokenUsage.Info": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "number"
+        },
+        "output": {
+          "type": "number"
+        },
+        "reasoning": {
+          "type": "number"
+        },
+        "cache": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "number"
+            },
+            "write": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "read",
+            "write"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "input",
+        "output",
+        "reasoning",
+        "cache"
+      ],
+      "additionalProperties": false
+    },
+    "Session.Info": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/Session.ID"
+        },
+        "parentID": {
+          "$ref": "#/components/schemas/Session.ID"
+        },
+        "fork": {
+          "type": "object",
+          "properties": {
+            "sessionID": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "boundary": {
+              "$ref": "#/components/schemas/Session.ForkBoundary"
+            }
+          },
+          "required": [
+            "sessionID",
+            "boundary"
+          ],
+          "additionalProperties": false
+        },
+        "projectID": {
+          "$ref": "#/components/schemas/Project.ID"
+        },
+        "agent": {
+          "$ref": "#/components/schemas/Agent.ID"
+        },
+        "model": {
+          "$ref": "#/components/schemas/Model.Ref"
+        },
+        "cost": {
+          "$ref": "#/components/schemas/Money.USD"
+        },
+        "tokens": {
+          "$ref": "#/components/schemas/TokenUsage.Info"
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "succeeded",
+            "failed",
+            "interrupted"
+          ]
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "number"
+            },
+            "updated": {
+              "type": "number"
+            },
+            "busy": {
+              "type": "number"
+            },
+            "idle": {
+              "type": "number"
+            },
+            "viewed": {
+              "type": "number"
+            },
+            "archived": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "created",
+            "updated"
+          ],
+          "additionalProperties": false
+        },
+        "title": {
+          "type": "string"
+        },
+        "subpath": {
+          "$ref": "#/components/schemas/RelativePath"
+        },
+        "metadata": {
+          "$ref": "#/components/schemas/Session.Metadata"
+        },
+        "permissions": {
+          "$ref": "#/components/schemas/Permission.Ruleset"
+        },
+        "revert": {
+          "$ref": "#/components/schemas/Session.Revert"
+        },
+        "location": {
+          "$ref": "#/components/schemas/Location.PublicRef"
+        }
+      },
+      "required": [
+        "id",
+        "projectID",
+        "cost",
+        "tokens",
+        "time",
+        "location"
+      ],
+      "additionalProperties": false
+    },
+    "Session.Message.Assistant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/Session.Message.ID"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "number"
+            },
+            "streamed": {
+              "type": "number"
+            },
+            "completed": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "created"
+          ],
+          "additionalProperties": false
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "assistant"
+          ]
+        },
+        "agent": {
+          "$ref": "#/components/schemas/Agent.ID"
+        },
+        "model": {
+          "$ref": "#/components/schemas/Model.Ref"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Session.Message.Assistant.Text"
+              },
+              {
+                "$ref": "#/components/schemas/Session.Message.Assistant.Reasoning"
+              },
+              {
+                "$ref": "#/components/schemas/Session.Message.Assistant.Tool"
+              }
+            ]
+          }
+        },
+        "snapshot": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "$ref": "#/components/schemas/Snapshot.ID"
+            },
+            "end": {
+              "$ref": "#/components/schemas/Snapshot.ID"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/RelativePath"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "finish": {
+          "type": "string",
+          "enum": [
+            "stop",
+            "length",
+            "tool-calls",
+            "content-filter",
+            "error",
+            "unknown"
+          ]
+        },
+        "rawFinish": {
+          "type": "string"
+        },
+        "native": {
+          "$ref": "#/components/schemas/Session.Message.Native"
+        },
+        "cost": {
+          "$ref": "#/components/schemas/Money.USD"
+        },
+        "tokens": {
+          "$ref": "#/components/schemas/TokenUsage.Info"
+        },
+        "error": {
+          "$ref": "#/components/schemas/Session.StructuredError"
+        },
+        "retry": {
+          "$ref": "#/components/schemas/Session.Message.Assistant.Retry"
+        }
+      },
+      "required": [
+        "id",
+        "time",
+        "type",
+        "agent",
+        "model",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "Session.Message.Assistant.Tool": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "tool"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "executed": {
+          "type": "boolean"
+        },
+        "native": {
+          "$ref": "#/components/schemas/Session.Message.Native"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/Session.Message.ToolState.Streaming"
+            },
+            {
+              "$ref": "#/components/schemas/Session.Message.ToolState.Running"
+            },
+            {
+              "$ref": "#/components/schemas/Session.Message.ToolState.Completed"
+            },
+            {
+              "$ref": "#/components/schemas/Session.Message.ToolState.Error"
+            }
+          ]
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "number"
+            },
+            "ran": {
+              "type": "number"
+            },
+            "completed": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "created"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "name",
+        "state",
+        "time"
+      ],
+      "additionalProperties": false
+    },
+    "Session.Message.ToolState.Completed": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "completed"
+          ]
+        },
+        "input": {
+          "type": "object"
+        },
+        "content": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "$ref": "#/components/schemas/Tool.Content"
+            }
+          ],
+          "minItems": 1,
+          "items": {
+            "$ref": "#/components/schemas/Tool.Content"
+          }
+        },
+        "metadata": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "status",
+        "input",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "Session.Metadata": {
+      "type": "object"
+    },
+    "Location.PublicRef": {
+      "type": "object",
+      "properties": {
+        "directory": {
+          "$ref": "#/components/schemas/AbsolutePath"
+        }
+      },
+      "required": [
+        "directory"
+      ],
+      "additionalProperties": false
+    },
+    "Plugin.Info": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/Plugin.ID"
+        },
+        "source": {
+          "$ref": "#/components/schemas/Plugin.Source"
+        },
+        "features": {
+          "$ref": "#/components/schemas/Plugin.Features"
+        },
+        "state": {
+          "$ref": "#/components/schemas/Plugin.State"
+        }
+      },
+      "required": [
+        "source",
+        "features",
+        "state"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "operations": {
+    "/api/session": {
+      "post": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "session.create",
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Session.Info"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a session at the requested location. A parentID creates a linked child session at its parent's location.",
+        "summary": "Create session",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Session.ID"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "parentID": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Session.ID"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "title": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "agent": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Agent.ID"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "model": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Model.Ref"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "location": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Location.PublicRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Session.Metadata"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "permissions": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Permission.Ruleset"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/session/{sessionID}/prompt": {
+      "post": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "session.prompt",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Session.Inbox.User"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError | LocationNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ConflictError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Durably admit one session input and schedule agent-loop execution unless resume is false.",
+        "summary": "Send message",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Session.Message.ID"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PromptInput.FileAttachment"
+                    }
+                  },
+                  "agents": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Prompt.AgentAttachment"
+                    }
+                  },
+                  "skills": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PromptInput.SkillAttachment"
+                    }
+                  },
+                  "metadata": {
+                    "type": "object"
+                  },
+                  "delivery": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Session.Inbox.Delivery"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "resume": {
+                    "anyOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "text"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/session/{sessionID}": {
+      "get": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "session.get",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Session.Info"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a session by ID.",
+        "summary": "Get session"
+      }
+    },
+    "/api/session/{sessionID}/message": {
+      "get": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "session.message.list",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Maximum number of messages to return. When omitted, the endpoint returns its default page size."
+            },
+            "required": false
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Message order for the first page. Use desc for newest first or asc for oldest first."
+            },
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "description": "Opaque pagination cursor returned as cursor.previous or cursor.next in the previous response. Do not combine with order."
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "agent-switched",
+                    "model-switched",
+                    "location-switched",
+                    "user",
+                    "synthetic",
+                    "system",
+                    "skill",
+                    "shell",
+                    "assistant",
+                    "compaction",
+                    "idle"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by message type before pagination. When omitted, all message types are returned. Pass the same type when following cursors."
+            },
+            "required": false
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "SessionMessagesResponse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionMessagesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidCursorError | InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InvalidCursorErrorEncoded"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "UnknownError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnknownErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve projected messages for a session, optionally filtered by type. Items keep the requested order across pages; use cursor.next or cursor.previous to move through the ordered timeline, passing the same type filter on each page.",
+        "summary": "Get session messages"
+      }
+    },
+    "/api/experimental/session/{sessionID}/export": {
+      "get": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "experimental.session.export",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          },
+          {
+            "name": "sanitize",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "true",
+                    "false"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SessionTransfer.Data"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "UnknownError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnknownErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Export a complete projected session transcript.",
+        "summary": "Export session"
+      }
+    },
+    "/api/event": {
+      "get": {
+        "tags": [
+          "event"
+        ],
+        "operationId": "event.subscribe",
+        "parameters": [
+          {
+            "name": "types",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "location.shutdown",
+                    "models-dev.refreshed",
+                    "credential.updated",
+                    "credential.switched",
+                    "integration.updated",
+                    "provider.updated",
+                    "model.updated",
+                    "agent.updated",
+                    "session.created",
+                    "session.agent.selected",
+                    "session.model.selected",
+                    "session.moved",
+                    "session.renamed",
+                    "session.metadata.updated",
+                    "session.permissions",
+                    "session.viewed",
+                    "session.archived",
+                    "session.unarchived",
+                    "session.usage.updated",
+                    "session.deleted",
+                    "session.forked",
+                    "session.inbox.delivered",
+                    "session.inbox.enqueued",
+                    "session.inbox.cancelled",
+                    "session.inbox.delivery.changed",
+                    "session.execution.started",
+                    "session.execution.succeeded",
+                    "session.execution.failed",
+                    "session.execution.interrupted",
+                    "session.instructions.updated",
+                    "session.synthetic",
+                    "session.skill.activated",
+                    "session.shell.started",
+                    "session.shell.ended",
+                    "session.step.started",
+                    "session.step.streamed",
+                    "session.step.ended",
+                    "session.step.failed",
+                    "session.text.started",
+                    "session.text.delta",
+                    "session.text.ended",
+                    "session.reasoning.started",
+                    "session.reasoning.delta",
+                    "session.reasoning.ended",
+                    "session.tool.input.started",
+                    "session.tool.input.delta",
+                    "session.tool.input.ended",
+                    "session.tool.called",
+                    "session.tool.progress",
+                    "session.tool.success",
+                    "session.tool.failed",
+                    "session.retry.scheduled",
+                    "session.compaction.started",
+                    "session.compaction.delta",
+                    "session.compaction.ended",
+                    "session.compaction.failed",
+                    "session.revert.staged",
+                    "session.revert.cleared",
+                    "session.revert.committed",
+                    "filesystem.changed",
+                    "reference.updated",
+                    "permission.asked",
+                    "permission.replied",
+                    "plugin.updated",
+                    "project.updated",
+                    "worktree.updated",
+                    "worktree.resolved",
+                    "command.updated",
+                    "config.updated",
+                    "skill.updated",
+                    "pty.created",
+                    "pty.updated",
+                    "pty.exited",
+                    "pty.deleted",
+                    "persistent-pty.added",
+                    "persistent-pty.removed",
+                    "persistent-pty.updated",
+                    "shell.created",
+                    "shell.exited",
+                    "shell.deleted",
+                    "form.created",
+                    "form.replied",
+                    "form.cancelled",
+                    "websearch.updated",
+                    "artifact.updated",
+                    "session.status",
+                    "session.idle",
+                    "tui.prompt.append",
+                    "tui.command.execute",
+                    "tui.toast.show",
+                    "tui.session.select",
+                    "installation.updated",
+                    "installation.update-available",
+                    "vcs.branch.updated",
+                    "mcp.status.changed",
+                    "mcp.resources.changed"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "pattern": "^rpc\\.[\\s\\S]*?$"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "location.shutdown",
+                          "models-dev.refreshed",
+                          "credential.updated",
+                          "credential.switched",
+                          "integration.updated",
+                          "provider.updated",
+                          "model.updated",
+                          "agent.updated",
+                          "session.created",
+                          "session.agent.selected",
+                          "session.model.selected",
+                          "session.moved",
+                          "session.renamed",
+                          "session.metadata.updated",
+                          "session.permissions",
+                          "session.viewed",
+                          "session.archived",
+                          "session.unarchived",
+                          "session.usage.updated",
+                          "session.deleted",
+                          "session.forked",
+                          "session.inbox.delivered",
+                          "session.inbox.enqueued",
+                          "session.inbox.cancelled",
+                          "session.inbox.delivery.changed",
+                          "session.execution.started",
+                          "session.execution.succeeded",
+                          "session.execution.failed",
+                          "session.execution.interrupted",
+                          "session.instructions.updated",
+                          "session.synthetic",
+                          "session.skill.activated",
+                          "session.shell.started",
+                          "session.shell.ended",
+                          "session.step.started",
+                          "session.step.streamed",
+                          "session.step.ended",
+                          "session.step.failed",
+                          "session.text.started",
+                          "session.text.delta",
+                          "session.text.ended",
+                          "session.reasoning.started",
+                          "session.reasoning.delta",
+                          "session.reasoning.ended",
+                          "session.tool.input.started",
+                          "session.tool.input.delta",
+                          "session.tool.input.ended",
+                          "session.tool.called",
+                          "session.tool.progress",
+                          "session.tool.success",
+                          "session.tool.failed",
+                          "session.retry.scheduled",
+                          "session.compaction.started",
+                          "session.compaction.delta",
+                          "session.compaction.ended",
+                          "session.compaction.failed",
+                          "session.revert.staged",
+                          "session.revert.cleared",
+                          "session.revert.committed",
+                          "filesystem.changed",
+                          "reference.updated",
+                          "permission.asked",
+                          "permission.replied",
+                          "plugin.updated",
+                          "project.updated",
+                          "worktree.updated",
+                          "worktree.resolved",
+                          "command.updated",
+                          "config.updated",
+                          "skill.updated",
+                          "pty.created",
+                          "pty.updated",
+                          "pty.exited",
+                          "pty.deleted",
+                          "persistent-pty.added",
+                          "persistent-pty.removed",
+                          "persistent-pty.updated",
+                          "shell.created",
+                          "shell.exited",
+                          "shell.deleted",
+                          "form.created",
+                          "form.replied",
+                          "form.cancelled",
+                          "websearch.updated",
+                          "artifact.updated",
+                          "session.status",
+                          "session.idle",
+                          "tui.prompt.append",
+                          "tui.command.execute",
+                          "tui.toast.show",
+                          "tui.session.select",
+                          "installation.updated",
+                          "installation.update-available",
+                          "vcs.branch.updated",
+                          "mcp.status.changed",
+                          "mcp.resources.changed"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^rpc\\.[\\s\\S]*?$"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Only send events of these types, plus the initial server.connected event. When omitted, all events are sent."
+            },
+            "required": false
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "event": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/V2EventEncoded"
+                    }
+                  },
+                  "required": [
+                    "event",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "x-effect-stream": {
+                  "encoding": "sse",
+                  "causeSchema": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "_tag": {
+                              "type": "string",
+                              "enum": [
+                                "Fail"
+                              ]
+                            },
+                            "error": {
+                              "not": {}
+                            }
+                          },
+                          "required": [
+                            "_tag",
+                            "error"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "_tag": {
+                              "type": "string",
+                              "enum": [
+                                "Die"
+                              ]
+                            },
+                            "defect": {}
+                          },
+                          "required": [
+                            "_tag",
+                            "defect"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "_tag": {
+                              "type": "string",
+                              "enum": [
+                                "Interrupt"
+                              ]
+                            },
+                            "fiberId": {
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "_tag",
+                            "fiberId"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "errorSchema": {
+                    "not": {}
+                  },
+                  "failureEvent": "effect/http-api/stream/failure"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Subscribe to native events and plugin RPC events across all server locations. Volatile by contract: a slow consumer overflows and fails the stream, and events during disconnection are missed.",
+        "summary": "Subscribe to events"
+      }
+    },
+    "/api/model": {
+      "get": {
+        "tags": [
+          "model"
+        ],
+        "operationId": "model.list",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "directory": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false,
+            "style": "deepObject",
+            "explode": true
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Model.Type"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Model.Type"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Only list models of these types. Defaults to chat, the only type offered for sessions."
+            },
+            "required": false
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "$ref": "#/components/schemas/Location.PublicRef"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Model.Info"
+                      }
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "LocationNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "ServiceUnavailableError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve the current snapshot of available models of the requested types, chat by default, ordered by release date within each type. The snapshot may precede initial plugin settlement.",
+        "summary": "List models"
+      }
+    },
+    "/api/config": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "operationId": "config.get",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "directory": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false,
+            "style": "deepObject",
+            "explode": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Config.Entry"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "LocationNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Return configuration documents and discovery sources for the requested location, from lowest to highest priority.",
+        "summary": "Get configuration"
+      }
+    },
+    "/api/plugin": {
+      "get": {
+        "tags": [
+          "plugin"
+        ],
+        "operationId": "plugin.list",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "directory": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false,
+            "style": "deepObject",
+            "explode": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "$ref": "#/components/schemas/Location.PublicRef"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Plugin.Info"
+                      }
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "LocationNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve enabled server plugins and their current status.",
+        "summary": "List plugins"
+      }
+    },
+    "/api/session/{sessionID}/permission/{requestID}/reply": {
+      "post": {
+        "tags": [
+          "permission"
+        ],
+        "operationId": "session.permission.reply",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          },
+          {
+            "name": "requestID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Permission.ID"
+            },
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "204": {
+            "description": "<No Content>"
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError | PermissionNotFoundError | LocationNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                    },
+                    {
+                      "$ref": "#/components/schemas/PermissionNotFoundErrorEncoded"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LocationNotFoundErrorEncoded"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Respond to a pending permission request owned by a session.",
+        "summary": "Reply to pending permission request",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "$ref": "#/components/schemas/Permission.Reply"
+                  },
+                  "message": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/experimental/session/{sessionID}/instructions/entries/{key}": {
+      "put": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "experimental.session.instructions.entry.put",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/InstructionEntry.Key"
+            },
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "204": {
+            "description": "<No Content>"
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "InstructionEntryValueTooLargeError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructionEntryValueTooLargeErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Attach or replace one durable instruction entry. Changes announce as updates at the next step boundary.",
+        "summary": "Put instruction entry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {}
+                },
+                "required": [
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "delete": {
+        "tags": [
+          "session"
+        ],
+        "operationId": "experimental.session.instructions.entry.remove",
+        "parameters": [
+          {
+            "name": "sessionID",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/Session.ID"
+            },
+            "required": true
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/InstructionEntry.Key"
+            },
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "204": {
+            "description": "<No Content>"
+          },
+          "400": {
+            "description": "InvalidRequestError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidRequestErrorEncoded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnauthorizedError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedErrorEncoded"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "SessionNotFoundError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionNotFoundErrorEncoded"
+                }
+              }
+            }
+          }
+        },
+        "description": "Remove one instruction entry; the removal is announced to the model at the next step boundary.",
+        "summary": "Remove instruction entry"
+      }
+    }
+  }
+}
