@@ -231,3 +231,17 @@ Hidden_missing exposure быстрее, но оставляет2ложных д�
 Новая версия включает timings и post-hoc prerequisite profile. Предыдущийv1
 сохранён вoutput и Git history; текущиеPDF/DOCX обновлены вreport-delivery.
 Архив: `output/research-progress-20261104-v2.zip`.
+
+## Конечная достижимость и реальный свидетель повторяющейся ошибки
+
+План f339152, runtime64d0f19:12программ,50достижимых состояний,600переходов.
+All/intact/known не имеют расхождений доступности; hidden имеет2ложно доступных
+состояния и source-changing цикл без проверки. Отдельная stdlib-формула сверила
+все600переходов и полноту графа. Два model negative controls и пять подмен
+выходных артефактов отклонены.49focused tests прошли.
+
+Извлечённый witness закреплён и исполнен вb8a804d:5Git commits,48Docker
+executions (21passed,27assertion failures), всеожидаемые состояния подтверждены.
+Две стороны цикла меняют только unrelated.py, дерево после оборота совпадает
+сначалом. Hidden не выполняет maintenance validations и имеет3ложные доступности.
+[Разбор модели, аудита и реального воспроизведения](behavior_reachability_2026-11-04.md).

@@ -76,17 +76,25 @@ def audit(root: Path, original_protocol: Path) -> dict:
         for outgoing in adjacency.values():
             assert len(outgoing) == 12 and {e['to_program'] for e in outgoing} == set(range(12))
         seen, queue = {result['initial_state']}, deque([result['initial_state']])
+        distances = {result['initial_state']: 0}
         while queue:
-            for edge in adjacency[queue.popleft()]:
+            current = queue.popleft()
+            for edge in adjacency[current]:
                 if edge['to'] not in seen:
                     seen.add(edge['to'])
+                    distances[edge['to']] = distances[current] + 1
                     queue.append(edge['to'])
         assert seen == states.keys()
         assert len(result['transitions']) == result['transition_count'] == 12*len(states)
         for field in ('false_availability', 'false_withholding'):
             assert result[field+'_states'] == sum(s[field] for s in states.values())
+        assert result['false_withholding_states'] == 0
+        assert (result['false_availability_states'] > 0) == (variant == 'hidden_missing')
         assert summary['variants'][variant] == {k:result[k] for k in summary['variants'][variant]}
+        assert result['error_witnesses'].keys() == {
+            sid for sid, state in states.items() if state['false_availability'] or state['false_withholding']}
         for target, path in result['error_witnesses'].items():
+            assert len(path) == distances[target]
             current = result['initial_state']
             for edge in path:
                 assert edge in adjacency[current]
@@ -94,6 +102,7 @@ def audit(root: Path, original_protocol: Path) -> dict:
             assert current == target
             assert states[target]['false_availability'] or states[target]['false_withholding']
         cycle = result['source_changing_unsafe_cycle']
+        assert bool(cycle) == (variant == 'hidden_missing')
         if cycle:
             current = result['initial_state']
             for edge in result['cycle_prefix']:
@@ -110,6 +119,8 @@ def audit(root: Path, original_protocol: Path) -> dict:
     return {'status':'passed', 'programs':12, 'reachable_states':total_states,
             'transitions_checked_against_explicit_rule':total_edges,
             'artifact_hashes_checked':len(manifest['artifact_hashes']),
+            'auditor_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            'original_protocol_sha256':manifest['protocol_sha256'],
             'uses_cami_imports':False, 'independent_human_review':False,
             'scope':'Finite semantic formula plus graph completeness and witness checks; not arbitrary Python or execution attestation.'}
 
