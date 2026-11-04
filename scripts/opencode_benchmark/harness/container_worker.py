@@ -74,6 +74,33 @@ def reported_tokens(tokens):
     return tokens["input"] + tokens["output"] + tokens["reasoning"] + tokens["cache"]["read"] + tokens["cache"]["write"]
 
 
+def await_mcp(server, location, arm, timeout=30):
+    started = time.monotonic()
+    observations = []
+    while True:
+        remaining = timeout - (time.monotonic() - started)
+        if remaining <= 0:
+            raise TimeoutError("MCP startup did not settle before model admission")
+        result = server.request("GET", "/api/mcp" + location, timeout=min(5, remaining))
+        observations.append({"elapsed_seconds": time.monotonic() - started,
+                             "servers": public(result["data"])})
+        write(OUT / "mcp-readiness.json", {"observations": observations,
+              "timeout_seconds": timeout, "scope": "startup only; no prompt admission or trial retry"})
+        write(OUT / "observed-mcp.json", public(result))
+        if arm == "plain":
+            assert not result["data"], "plain arm unexpectedly exposes MCP servers"
+            return result
+        assert all(item["name"] == "research_memory" for item in result["data"]), "unexpected MCP server"
+        if result["data"]:
+            assert len(result["data"]) == 1, "duplicate memory MCP server"
+            status = result["data"][0]["status"]["status"]
+            if status == "connected":
+                return result
+            if status != "pending":
+                raise RuntimeError("memory MCP startup terminal status: " + status)
+        time.sleep(min(0.1, max(0, timeout - (time.monotonic() - started))))
+
+
 def capture_failure(server, session_id, page_size, manifest):
     try:
         latest = server.request("GET", "/api/session/" + session_id, timeout=3)["data"]
@@ -181,7 +208,7 @@ def main():
         password_path.chmod(0o600)
         write(OUT / "readiness.json", public(server.wait_ready()))
         location = "?" + urllib.parse.urlencode({"location[directory]": "/workspace"})
-        for name, path in (("config", "/api/config"), ("agents", "/api/agent"), ("plugins", "/api/plugin"), ("mcp", "/api/mcp")):
+        for name, path in (("config", "/api/config"), ("agents", "/api/agent"), ("plugins", "/api/plugin")):
             result = server.request("GET", path + location)
             write(OUT / ("observed-" + name + ".json"), public(result))
             if name == "config":
@@ -189,8 +216,16 @@ def main():
             if name == "plugins":
                 forbidden = {"opencode.tool." + n for n in ["subagent", "webfetch", "websearch", "image-generate", "schedule", "question", "artifact"]}
                 assert not any(item.get("id") in forbidden for item in result["data"]), "disabled plugin remains available"
-            if name == "mcp":
-                assert (not result["data"]) if args.arm == "plain" else any(item["name"] == "research_memory" and item["status"]["status"] == "connected" for item in result["data"]), "MCP arm configuration not settled"
+        await_mcp(server, location, args.arm)
+        registry_started = time.monotonic()
+        time.sleep(1)
+        write(OUT / "tool-registry-stabilization.json", {
+            "requested_seconds": 1,
+            "elapsed_seconds": time.monotonic() - registry_started,
+            "all_arms": True,
+            "reason": "Installed client reloads MCP tools through a 100ms debounced registry after connected status.",
+            "limitation": "No public tool-registry completion endpoint; a settling interval is not proof of first-request tool availability.",
+        })
         created = server.request("POST", "/api/session", {"location": {"directory": "/workspace"},
             "title": "Fixed research session", "agent": "research",
             "model": {"providerID": "openai", "id": "gpt-6.1-sol", "variant": "high"}})

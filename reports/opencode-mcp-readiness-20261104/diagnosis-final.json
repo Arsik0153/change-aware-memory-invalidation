@@ -1,0 +1,53 @@
+{
+  "scope": "Read-only installed OpenCode 2.2.5 static callpath and public authored smoke evidence; no model, authentication, API, task/gold, or credential reads.",
+  "decision": "No material blocker to authored E2E and development tasks with the installed bounded MCP poll plus shared one-second stabilization heuristic.",
+  "worker_sha256": "04f2531d63938802dc7a99c22700537584aa1f9b9cb4ee6fecf78264051d5346",
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "findings": [
+    {
+      "kind": "proven_startup_race",
+      "fact": "GET /api/mcp can return pending while initial connection runs asynchronously. The observed static-stage1 no-model failure recorded pending. Polling missing/pending with a bound, and rejecting terminal status, addresses this failure."
+    },
+    {
+      "kind": "remaining_unacknowledged_window",
+      "fact": "MCP connection fetches and assigns tools before setting connected. Native McpTool subsequently updates its registration on mcp.tools.changed through a 100 ms debounce; its flush waits the initial registration fiber only. Thus connected is insufficient proof that a future first request includes the native MCP tool."
+    },
+    {
+      "kind": "no_existing_readonly_barrier",
+      "fact": "REST session.context returns decoded stored messages, not SessionContext.select/load prepared tool definitions. Internal Tool.snapshot synchronously rebuilds an invalidated registry but does not drain the pending debounce. No public native-tool catalog completion endpoint was found in the installed OpenAPI/callpath."
+    },
+    {
+      "kind": "smoke_attribution_unknown",
+      "fact": "The authored model smoke first claimed the tool unavailable, then later invoked research_memory_memory_lookup successfully and admitted the omission. Public evidence contains no first-request tool definition snapshot. A registry race and model omission both remain possible; the pre-edit-query criterion remains unmet."
+    }
+  ],
+  "patch_review": {
+    "poll": "Appropriate for the observed pending failure; before session creation/model admission.",
+    "stabilization": "Installed worker sleeps one second identically across all arms before POST session, records actual elapsed time and explicitly denies completion-proof semantics. Practical heuristic accepted; long scheduler stalls could exceed it.",
+    "additional_gates_requested": false
+  },
+  "reproduction_evidence": {
+    "mcp_connected_assignment_binary_offset": 174715540,
+    "mcp_registration_binary_offset": 174768468,
+    "session_context_select_binary_offset": 174811621,
+    "rest_message_context_handler_binary_offset": 175687828,
+    "registry_state_helper_binary_offset": 174124002
+  },
+  "limitations": [
+    "No actual first-request model tool catalog was exposed in saved evidence.",
+    "The one-second interval is not a guaranteed catalog-readiness acknowledgement.",
+    "No new model or authentication calls were run."
+  ],
+  "artifact_hashes": {
+    "mcp-aisdk-layer.js.txt": "2d7fdf7c492199035fe520c1d5f8244ca99191f56541f5ed9775f76ff86dbc73",
+    "mcp-native-adapter.js.txt": "970dca9fe94f70caf998518c722225b6cf36612ce6e8f40ab3f1bf259c17d14b",
+    "mcp-service.js.txt": "90dcfc2da4f32928eec8be83181e02c19344b430ff3afe983ce8115451abd162",
+    "mcp-tool-context.js.txt": "3baabbcf9087963bb13d89e93a2f6c52b305000413d2acbf4b05bbdeef7c3f01",
+    "native-tool-registry.js.txt": "68aa44cade31a6d74073896e475b62cf28fab936201860c47fd5b8dfd0da11e5",
+    "registry-reload-helper.js.txt": "bfbb83446e76da14dd28f3b37f06796a90042b4a6712c5fa9218e4ddd4337aeb",
+    "session-context.js.txt": "0729738d2a4f00500de353289dfaf8005a144199b465e62864cd01d0a3653484",
+    "session-prepared-context.js.txt": "8c33701a941c2bce56496e3f75b5ea37f6860657260835ae883c2e15340a2da2",
+    "tool-registry.js.txt": "a7a232cd414c58c1cf89f2068f5d637306a2ff38beb159b64171bc9340b1144a",
+    "tool-service.js.txt": "4214db3c73fcdc9d5ec558ad11a12274fbc49f89312a28d08ea09f39cd501e90"
+  }
+}

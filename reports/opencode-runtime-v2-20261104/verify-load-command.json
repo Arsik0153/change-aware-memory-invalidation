@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "image",
+    "load",
+    "--input",
+    "/root/apps/change-aware-memory-invalidation/output/opencode-runtime-v2-20261104/cami-opencode-runtime-v2.tar"
+  ],
+  "returncode": 0,
+  "wall_seconds": 0.6659274650737643,
+  "stdout": "Loaded image ID: sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387\n",
+  "stderr": ""
+}

@@ -21,6 +21,35 @@ def git(repo, *args):
     return subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True)
 
 
+@pytest.mark.parametrize("statuses,arm,error", [
+    (["pending", "connected"], "cami", None),
+    (["failed", "connected"], "static", RuntimeError),
+    (["pending"], "cami", TimeoutError),
+    (["connected"], "plain", AssertionError),
+])
+def test_mcp_readiness_waits_only_for_startup(tmp_path, monkeypatch, statuses, arm, error):
+    monkeypatch.setattr(worker, "OUT", tmp_path)
+    clock = [0.0]
+    monkeypatch.setattr(worker.time, "monotonic", lambda: clock[0])
+    monkeypatch.setattr(worker.time, "sleep", lambda seconds: clock.__setitem__(0, clock[0] + seconds))
+    calls = []
+    class StartupServer:
+        def request(self, method, path, *, timeout):
+            assert method == "GET" and path.startswith("/api/mcp")
+            status = statuses[min(len(calls), len(statuses) - 1)]
+            calls.append(status)
+            return {"data": [{"name": "research_memory", "status": {"status": status}}]}
+    if error:
+        with pytest.raises(error):
+            worker.await_mcp(StartupServer(), "?location=test", arm, timeout=0.2)
+    else:
+        assert worker.await_mcp(StartupServer(), "?location=test", arm)["data"][0]["status"]["status"] == "connected"
+        assert calls == statuses
+    if statuses[0] == "failed":
+        assert calls == ["failed"]
+    assert json.loads((tmp_path / "mcp-readiness.json").read_text())["observations"]
+
+
 def repo(path):
     path.mkdir()
     git(path, "init", "-q")

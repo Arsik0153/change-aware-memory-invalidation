@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "run",
+    "--rm",
+    "--network=none",
+    "--read-only",
+    "--user",
+    "65534:65534",
+    "--workdir",
+    "/",
+    "--entrypoint",
+    "python",
+    "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+    "-c",
+    "import sys,json,hashlib,importlib.metadata,pretend,pytest,pydantic; from pathlib import Path; assert pretend.stub(value=7).value==7; print(json.dumps({'python':sys.version.split()[0],'pretend':importlib.metadata.version('pretend'),'pretend_path':pretend.__file__,'pretend_sha256':hashlib.sha256(Path(pretend.__file__).read_bytes()).hexdigest(),'pytest':pytest.__version__,'pydantic':pydantic.__version__}))"
+  ],
+  "returncode": 0,
+  "wall_seconds": 0.4275983199477196,
+  "stdout": "{\"python\": \"3.12.12\", \"pretend\": \"1.0.9\", \"pretend_path\": \"/opt/cami-deps/pretend.py\", \"pretend_sha256\": \"4bbb2de058c069a2b4540dc2d6b0b9e69f13af09a460f58c9d77e7ae75c19fed\", \"pytest\": \"8.4.2\", \"pydantic\": \"2.12.5\"}\n",
+  "stderr": ""
+}

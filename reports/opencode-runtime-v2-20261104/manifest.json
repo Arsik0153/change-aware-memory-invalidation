@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "base_image_id": "sha256:0e055f29b8dd191bc51b16df3046c1f986f77db48b028b65b4fcf27aa49ecdf3",
+  "image_id": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "tag": "cami-opencode-runtime:development-v2",
+  "v1_preserved": true,
+  "runtime_config_unchanged": true,
+  "dependency": "pretend==1.0.9",
+  "import_probe": {
+    "python": "3.12.12",
+    "pretend": "1.0.9",
+    "pretend_path": "/opt/cami-deps/pretend.py",
+    "pretend_sha256": "4bbb2de058c069a2b4540dc2d6b0b9e69f13af09a460f58c9d77e7ae75c19fed",
+    "pytest": "8.4.2",
+    "pydantic": "2.12.5"
+  },
+  "archive_path": "output/opencode-runtime-v2-20261104/cami-opencode-runtime-v2.tar",
+  "archive_sha256": "a2ca0a587f915d6577a78962ea8e24ab90cde66518b90a8363f40f5eeb574dc9",
+  "archive_bytes": 92334080,
+  "oci_blob_hashes_verified": 12,
+  "new_layer_files": {
+    "opt/cami-deps/pretend-1.0.9.dist-info/INSTALLER": "e6184ce10e266134fdcfa401e8f1a95005bcd4f18d16b62b757323e2833fe9a9",
+    "opt/cami-deps/pretend-1.0.9.dist-info/METADATA": "d643fea19ef7ac5f39df134c23d7b90f1cecab6d42920d643b6d7ca36c9ab102",
+    "opt/cami-deps/pretend-1.0.9.dist-info/RECORD": "10d459d7001eb42998ddda49d96f3745096868657192aca6a5a1466eb22decf8",
+    "opt/cami-deps/pretend-1.0.9.dist-info/REQUESTED": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "opt/cami-deps/pretend-1.0.9.dist-info/WHEEL": "2770ac4e4ecc7f624d532848988fa68d7f9f988e280e3ca25e0593e2a8198821",
+    "opt/cami-deps/pretend-1.0.9.dist-info/top_level.txt": "88cb9be6d82d29f05ccd54a1bcd3ceeed1ed8137f4d5daff07853f7f33518983",
+    "opt/cami-deps/pretend.py": "4bbb2de058c069a2b4540dc2d6b0b9e69f13af09a460f58c9d77e7ae75c19fed"
+  },
+  "load_probe_same_image_id": true,
+  "config_digest_is_not_image_id": true,
+  "archive_identity_semantics": "Docker29 Image.Id is OCI manifest digest; manifest config descriptor identifies the separate config digest.",
+  "preserved_first_failure": "manifest.first-failed-config-assumption.json",
+  "source_provenance": "dependency-source.json",
+  "source_provenance_sha256": "00b783796e4188da1aa681b235d706ce576e6fe4ffaa5b671d0ee9761c5ad1aa",
+  "requirements_lock_sha256": "cee9febe1b7af7001ed4a378636e21f5d666eb131230a264715aef5694f7c58c",
+  "model_calls": 0,
+  "task_source_prompt_solution_reads": 0,
+  "dependency_network_fetches": 0
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "dependency_verified_before_build",
+  "dependency": {
+    "name": "pretend",
+    "version": "1.0.9",
+    "requires_dist": []
+  },
+  "source_scope": "Only explicit environment lock andpretend library/dist-info; no task source,prompt,solution oroutcome read",
+  "source_environment_path": "runs/opencode-heldout-preparation-20261104/environment",
+  "requirements_lock_sha256": "cee9febe1b7af7001ed4a378636e21f5d666eb131230a264715aef5694f7c58c",
+  "verification": "Local installed artifact metadata/version plus every RECORD hash/size checked; RECORD selfentry hasno digest bywheelcontract",
+  "files": [
+    {
+      "path": "pretend-1.0.9.dist-info/INSTALLER",
+      "bytes": 2,
+      "sha256": "e6184ce10e266134fdcfa401e8f1a95005bcd4f18d16b62b757323e2833fe9a9",
+      "record_hash_verified": true
+    },
+    {
+      "path": "pretend-1.0.9.dist-info/METADATA",
+      "bytes": 4387,
+      "sha256": "d643fea19ef7ac5f39df134c23d7b90f1cecab6d42920d643b6d7ca36c9ab102",
+      "record_hash_verified": true
+    },
+    {
+      "path": "pretend-1.0.9.dist-info/RECORD",
+      "bytes": 539,
+      "sha256": "10d459d7001eb42998ddda49d96f3745096868657192aca6a5a1466eb22decf8",
+      "record_hash_verified": false
+    },
+    {
+      "path": "pretend-1.0.9.dist-info/REQUESTED",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "record_hash_verified": true
+    },
+    {
+      "path": "pretend-1.0.9.dist-info/WHEEL",
+      "bytes": 110,
+      "sha256": "2770ac4e4ecc7f624d532848988fa68d7f9f988e280e3ca25e0593e2a8198821",
+      "record_hash_verified": true
+    },
+    {
+      "path": "pretend-1.0.9.dist-info/top_level.txt",
+      "bytes": 8,
+      "sha256": "88cb9be6d82d29f05ccd54a1bcd3ceeed1ed8137f4d5daff07853f7f33518983",
+      "record_hash_verified": true
+    },
+    {
+      "path": "pretend.py",
+      "bytes": 3040,
+      "sha256": "4bbb2de058c069a2b4540dc2d6b0b9e69f13af09a460f58c9d77e7ae75c19fed",
+      "record_hash_verified": true
+    }
+  ],
+  "copy_source_hashes": {
+    "pretend.py": "4bbb2de058c069a2b4540dc2d6b0b9e69f13af09a460f58c9d77e7ae75c19fed",
+    "pretend-1.0.9.dist-info/METADATA": "d643fea19ef7ac5f39df134c23d7b90f1cecab6d42920d643b6d7ca36c9ab102",
+    "pretend-1.0.9.dist-info/WHEEL": "2770ac4e4ecc7f624d532848988fa68d7f9f988e280e3ca25e0593e2a8198821",
+    "pretend-1.0.9.dist-info/INSTALLER": "e6184ce10e266134fdcfa401e8f1a95005bcd4f18d16b62b757323e2833fe9a9",
+    "pretend-1.0.9.dist-info/top_level.txt": "88cb9be6d82d29f05ccd54a1bcd3ceeed1ed8137f4d5daff07853f7f33518983",
+    "pretend-1.0.9.dist-info/REQUESTED": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pretend-1.0.9.dist-info/RECORD": "10d459d7001eb42998ddda49d96f3745096868657192aca6a5a1466eb22decf8"
+  },
+  "actual_model_calls": 0,
+  "network_fetches": 0
+}

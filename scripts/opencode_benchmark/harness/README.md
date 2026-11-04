@@ -57,3 +57,12 @@ Own-session shell имеет тот же UID и теоретически мож�
 Финальные `check-{plain,static,cami}-final` прошли на exact pinned helpers: no model/auth, UID/cgroup caps, explicit session path, shell API read, writable own workspace, RO sentinel EROFS30, host repo/gold/socket недоступны, два shell messages прочитаны полностью через три API pages при limit1; private state и собственный контейнер удалены. Для memory-режимов подтверждены OpenCode MCP connection/catalog и реальная container-side preparation. Сам memory_lookup через OpenCode в контейнере ещё не вызывался: его проверяет следующий root-owned authored model smoke.
 
 `check-*-02` сохранены failed: probe ошибочно использовал Path.exists на запрещённом `/root`, получил PermissionError; это ошибка probe, не утечка mount boundary. Исправление явно измеряет unreadability. Первые вызовы memory-arm без обязательного binding отвергнуты CLI до launch; это отдельно указано в verification report. Все более ранние checks сохранены, а финальный набор отмечен явно. Это development verification, не измерение производительности.
+
+
+Installed harness revision after the authored container smoke:
+
+- MCP startup polls only pending status for at most 30 seconds before admitting a prompt; terminal failures remain failures.
+- All three arms receive the same one-second tool-registry settling interval. The installed client has a 100 ms asynchronous registry reload; this delay is a practical barrier, not a public completion acknowledgement. Startup time is charged.
+- The common agent instruction names `research_memory_memory_lookup` exactly. Native tools and instructions remain identical between arms except the configured MCP server.
+- Installed authored checks: 26 passed. The earlier real smoke proved native editing/testing and post-edit withholding, but missed the requested pre-edit lookup; that partial result is preserved in `reports/opencode-container-smoke-20261104`.
+- Pass the exact study image with `--image`; development/final study runtime v2 adds pinned `pretend==1.0.9` for fixed tests. Its ID and offline archive are recorded in `reports/opencode-runtime-v2-20261104/manifest.json`. The historical default image is retained for reproducing the first smoke.

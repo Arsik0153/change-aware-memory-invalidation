@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "run",
+    "--rm",
+    "--network=none",
+    "--read-only",
+    "--user",
+    "65534:65534",
+    "--workdir",
+    "/",
+    "--entrypoint",
+    "python",
+    "sha256:0e055f29b8dd191bc51b16df3046c1f986f77db48b028b65b4fcf27aa49ecdf3",
+    "-c",
+    "import importlib.util,json; print(json.dumps({'pretend_absent':importlib.util.find_spec('pretend') is None}))"
+  ],
+  "returncode": 0,
+  "wall_seconds": 0.4052274802234024,
+  "stdout": "{\"pretend_absent\": true}\n",
+  "stderr": ""
+}
