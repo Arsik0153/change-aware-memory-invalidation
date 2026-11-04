@@ -238,6 +238,8 @@ def session(study, trial, workspace, memory, prompt, out):
         study["runtime_manifest_path"],
         "--timeout-seconds",
         "900",
+        "--reported-token-budget",
+        str(study["reported_token_budget"]),
         "--image",
         study["image"],
         "--cami-source",
@@ -376,12 +378,26 @@ def regression_allowance(study, task, canonical_workspace, output):
         outcomes = result["outcomes"].get("regression")
         if not outcomes or outcomes["counts"]["executed"] == 0 or outcomes["counts"]["errors"]:
             raise ValueError("canonical-base regression collection/execution invalid")
+        expected_failures = (
+            []
+            if study["bundle_kind"] == "development"
+            else study.get("baseline_failure_allowances", {}).get(task["id"])
+        )
+        if expected_failures is None:
+            raise ValueError("heldout baseline requires a frozen expected failure-node allowance")
+        if set(outcomes["node_ids"]["failed"]) != set(expected_failures) or outcomes[
+            "exit_code"
+        ] != (1 if expected_failures else 0):
+            raise ValueError(
+                "canonical-base regression has unexpected failures; model admission denied"
+            )
         write(
             binding,
             {
                 "task": task["id"],
                 "canonical_archive_sha256": task["archive_sha256"],
                 "outcomes": outcomes,
+                "expected_failed_nodes": expected_failures,
                 "artifact_hashes": file_hashes(directory),
                 "infrastructure_only": True,
                 "model_calls": 0,
@@ -394,4 +410,16 @@ def regression_allowance(study, task, canonical_workspace, output):
         or baseline["canonical_archive_sha256"] != task["archive_sha256"]
     ):
         raise ValueError("canonical-base allowance identity mismatch")
+    expected = (
+        []
+        if study["bundle_kind"] == "development"
+        else study.get("baseline_failure_allowances", {}).get(task["id"])
+    )
+    if (
+        expected is None
+        or set(baseline.get("expected_failed_nodes", [])) != set(expected)
+        or set(baseline["outcomes"]["node_ids"]["failed"]) != set(expected)
+        or baseline["outcomes"]["exit_code"] != (1 if expected else 0)
+    ):
+        raise ValueError("stored baseline failure allowance differs from frozen policy")
     return baseline["outcomes"], digest(binding)

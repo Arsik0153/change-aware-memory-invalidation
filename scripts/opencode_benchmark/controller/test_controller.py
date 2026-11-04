@@ -16,7 +16,7 @@ from unittest.mock import patch
 from study_common import command, digest, inventory, write
 from study_controller import run_trial
 from study_ledger import complete, summarize, terminals
-from study_runtime import quality_valid, verify_memory
+from study_runtime import quality_valid, regression_allowance, verify_memory
 from study_schema import ARMS, plan
 from study_workspace import capture, create_namespace, evaluation_workspace, extract, reset
 
@@ -116,6 +116,19 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(record["deleted"], ["pkg/deleted.py"])
         self.assertEqual(record["changed"], ["pkg/a.py"])
         self.assertIn("tests/test_a.py", record["outside_source_changes"])
+
+    def test_outside_source_pytest_symlink_recorded_without_following(self):
+        temp = self.workspace / ".test-tmp/pytest"
+        temp.mkdir(parents=True)
+        (temp / "test_current").symlink_to("/missing-or-sensitive-target")
+        record = capture(
+            self.workspace, self.canonical["canonical_files"], self.root / "candidate-links"
+        )
+        row = record["workspace_files_excluding_git"][".test-tmp/pytest/test_current"]
+        self.assertEqual(row["kind"], "symlink")
+        self.assertEqual(row["target"], "/missing-or-sensitive-target")
+        self.assertFalse(row["contents_read"])
+        self.assertFalse((self.root / "candidate-links/.test-tmp").exists())
 
     def test_source_symlink_rejected(self):
         (self.workspace / "src/pkg/leak.py").symlink_to("/etc/passwd")
@@ -367,6 +380,25 @@ class ControllerTests(unittest.TestCase):
                 "static",
                 result,
             )
+
+    def test_development_base_failure_blocks_model_admission(self):
+        study = {"bundle_kind": "development"}
+        task = {"id": "authored", "archive_sha256": "a" * 64}
+        outcomes = {
+            "exit_code": 1,
+            "counts": {"executed": 1, "errors": 0},
+            "node_ids": {"failed": ["tests/test_original.py::test_child"]},
+        }
+
+        def failed_grade(study, task, candidate, out, **kwargs):
+            out.mkdir(parents=True)
+            return {"outcomes": {"regression": outcomes}}
+
+        with (
+            patch("study_runtime.grade", side_effect=failed_grade),
+            self.assertRaisesRegex(ValueError, "unexpected failures"),
+        ):
+            regression_allowance(study, task, self.workspace, self.root / "baseline-run")
 
     def test_plain_dummy_memory_mutation_rejected(self):
         memory = self.namespace / "memory"

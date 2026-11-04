@@ -44,7 +44,7 @@ def contained(root, relative):
     return path
 
 
-def inventory(root, *, omit_git=False, max_bytes=None, max_files=None):
+def inventory(root, *, omit_git=False, max_bytes=None, max_files=None, describe_nonregular=False):
     """Never follow links or read special files, including agent-created paths."""
     result = {}
     seen_bytes = 0
@@ -58,6 +58,15 @@ def inventory(root, *, omit_git=False, max_bytes=None, max_files=None):
             path = Path(directory) / name
             mode = path.lstat().st_mode
             if stat.S_ISDIR(mode):
+                continue
+            if not stat.S_ISREG(mode) and describe_nonregular:
+                result[path.relative_to(root).as_posix()] = {
+                    "kind": "symlink" if stat.S_ISLNK(mode) else "special",
+                    "mode": stat.S_IMODE(mode),
+                    "target": os.readlink(path) if stat.S_ISLNK(mode) else None,
+                    "bytes": path.lstat().st_size if stat.S_ISLNK(mode) else 0,
+                    "contents_read": False,
+                }
                 continue
             if not stat.S_ISREG(mode):
                 raise ValueError("nonregular candidate/asset: " + str(path.relative_to(root)))

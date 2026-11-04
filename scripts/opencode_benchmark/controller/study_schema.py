@@ -130,6 +130,7 @@ def make_study(
         "model": MODEL,
         "timeout_seconds": 900,
         "max_steps": 20,
+        "reported_token_budget": 1_000_000,
         "image": image,
         "binary_path": "/root/.opencode/bin/opencode",
         "binary_sha256": digest(Path("/root/.opencode/bin/opencode")),
@@ -199,6 +200,10 @@ def validate(study, *, execute=False):
         raise ValueError("unsupported study design")
     if study["model"] != MODEL or study["timeout_seconds"] != 900 or study["max_steps"] != 20:
         raise ValueError("frozen model/resource mismatch")
+    if study.get("reported_token_budget") != 1_000_000:
+        raise ValueError(
+            "declared development v2 requires the frozen 1000000 reported-token threshold"
+        )
     if not re.fullmatch(r"sha256:[a-f0-9]{64}", study["image"]):
         raise ValueError("runtime requires an immutable image ID")
     if execute and study["execution_authorized"] is not True:

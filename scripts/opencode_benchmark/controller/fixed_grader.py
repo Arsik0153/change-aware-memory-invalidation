@@ -67,6 +67,8 @@ def main():
     for name in list(sys.modules):
         if any(name == module or name.startswith(module + ".") for module in args.subject_module):
             del sys.modules[name]
+    # The runner is already trusted. Test-spawned Python must see the same subject.
+    os.environ["PYTHONPATH"] = "/workspace/src:/opt/cami-deps"
     sys.path.insert(0, "/workspace/src")
     os.chdir("/workspace")
     options = args.pytest_args[1:] if args.pytest_args[:1] == ["--"] else args.pytest_args

@@ -1,0 +1,294 @@
+{
+  "default_plan_only": true,
+  "model_calls": 0,
+  "trials": [
+    {
+      "arm": "plain",
+      "id": "r1-plain-s1",
+      "predecessor": null,
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r1-static-s1",
+      "predecessor": null,
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r1-cami-s1",
+      "predecessor": null,
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r1-static-s2",
+      "predecessor": "r1-static-s1",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r1-cami-s2",
+      "predecessor": "r1-cami-s1",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r1-plain-s2",
+      "predecessor": "r1-plain-s1",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r1-cami-s3",
+      "predecessor": "r1-cami-s2",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "id": "r1-plain-s3",
+      "predecessor": "r1-plain-s2",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r1-static-s3",
+      "predecessor": "r1-static-s2",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "id": "r1-plain-s4",
+      "predecessor": "r1-plain-s3",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r1-static-s4",
+      "predecessor": "r1-static-s3",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r1-cami-s4",
+      "predecessor": "r1-cami-s3",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r2-static-s1",
+      "predecessor": null,
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r2-cami-s1",
+      "predecessor": null,
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r2-plain-s1",
+      "predecessor": null,
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r2-cami-s2",
+      "predecessor": "r2-cami-s1",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r2-plain-s2",
+      "predecessor": "r2-plain-s1",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r2-static-s2",
+      "predecessor": "r2-static-s1",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r2-plain-s3",
+      "predecessor": "r2-plain-s2",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r2-static-s3",
+      "predecessor": "r2-static-s2",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r2-cami-s3",
+      "predecessor": "r2-cami-s2",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r2-static-s4",
+      "predecessor": "r2-static-s3",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r2-cami-s4",
+      "predecessor": "r2-cami-s3",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "id": "r2-plain-s4",
+      "predecessor": "r2-plain-s3",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r3-cami-s1",
+      "predecessor": null,
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r3-plain-s1",
+      "predecessor": null,
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r3-static-s1",
+      "predecessor": null,
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "id": "r3-plain-s2",
+      "predecessor": "r3-plain-s1",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r3-static-s2",
+      "predecessor": "r3-static-s1",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "id": "r3-cami-s2",
+      "predecessor": "r3-cami-s1",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "id": "r3-static-s3",
+      "predecessor": "r3-static-s2",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r3-cami-s3",
+      "predecessor": "r3-cami-s2",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "id": "r3-plain-s3",
+      "predecessor": "r3-plain-s2",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "id": "r3-cami-s4",
+      "predecessor": "r3-cami-s3",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "id": "r3-plain-s4",
+      "predecessor": "r3-plain-s3",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "id": "r3-static-s4",
+      "predecessor": "r3-static-s3",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    }
+  ]
+}

@@ -154,7 +154,7 @@ def capture(workspace, canonical, out):
     if inventory(out / "src") != current:
         raise ValueError("candidate changed during source export")
     # Non-source modifications are recorded independently of Git. They never enter grading.
-    all_files = inventory(workspace, omit_git=True)
+    all_files = inventory(workspace, omit_git=True, describe_nonregular=True)
     outside = sorted(
         name
         for name in set(all_files) | set(canonical)

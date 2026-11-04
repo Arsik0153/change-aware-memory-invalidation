@@ -69,3 +69,6 @@ Per-trial costs retain container cgroup CPU deltas/peak memory, host controller/
 ```
 
 The integration has no model execution flag. It tests real container seed/preparation and no-model sessions for three arms at two canonical synthetic versions, plus fixed grading. A deliberate `src/pytest.py` poison module verifies the test runner comes from the trusted runtime.
+
+
+Development protocol v2 records non-source symlinks as metadata without following them. Only regular `src/**` enters fixed grading. The trusted grader imports pytest first, then sets the candidate import path for test subprocesses. Original development base regressions must pass before model admission. Heldout studies require frozen expected base-failure node IDs before execution. The observed total-token ceiling is explicitly pinned to 1,000,000 for all arms; the first 250,000-token development attempt remains preserved separately.

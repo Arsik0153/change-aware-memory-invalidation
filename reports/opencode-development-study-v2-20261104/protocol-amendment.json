@@ -1,0 +1,14 @@
+{
+  "supersedes_development_execution": "opencode-development-v1-20261104 (one interrupted task, invalid grading environment; preserved separately)",
+  "development_task_model_calls_before_this_freeze": 1,
+  "heldout_task_model_calls": 0,
+  "unchanged": "Tasks, model, source catalog, CAMI source5328a45, image3e5f5a, 3arms,3repetitions,4stages, quality and superiority criteria. No previous trial pooled into this version.",
+  "changes": [
+    "Observed total provider-token ceiling1000000 for every arm; still20steps/900s, countedcached andnoncachedcomponents, mayovershoot.",
+    "Trusted pytest initializes before candidate import; child Python receives candidate source path.",
+    "Development original-base regression failure blocks model admission.",
+    "Non-source pytest-generated symlinks recorded withoutfollowing and excludedfromgrading; src remainsstrictregularfiles.",
+    "Email scrub preserves diff-decorator lines; sourcepatches no longer corrupted by +@pytest.fixture falsepositive."
+  ],
+  "validation": "23 controller controls,27 harness controls; exact isolated runtime both development base acceptance fails, gold acceptance passes, originalbase/gold regressions pass; zero model calls in preflight."
+}
