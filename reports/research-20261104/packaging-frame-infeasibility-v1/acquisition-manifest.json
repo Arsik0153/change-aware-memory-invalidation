@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-11-04T16:38:33.175074+00:00",
+  "protocol_sha256": "31240e005be50776f376a3930b2ca660dca17de1d3451e8d808b9111e971af59",
+  "implementation_commit": "ac6ac6218c5f493c5c4a0b5b66e1c16e99670f09",
+  "command": [
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--no-checkout",
+    "--single-branch",
+    "--branch",
+    "25.0",
+    "https://github.com/pypa/packaging.git",
+    "data/corpora/packaging-development-v1"
+  ],
+  "source_access": "blob-filtered no-checkout acquisition; no repository source or tree inspection",
+  "exit_code": 0,
+  "status": "complete",
+  "head": "f58537628042c7f29780b9d33f31597e7fc9d664",
+  "object_counts": "count: 0\nsize: 0\nin-pack: 2401\npacks: 1\nsize-pack: 594\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0",
+  "finished_at": "2026-11-04T16:38:33.839056+00:00"
+}

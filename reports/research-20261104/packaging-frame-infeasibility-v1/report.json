@@ -1,0 +1,24 @@
+{
+  "status": "infeasible_before_source_access",
+  "protocol_path": "examples/packaging_structural_development/metadata_protocol.json",
+  "protocol_sha256": "31240e005be50776f376a3930b2ca660dca17de1d3451e8d808b9111e971af59",
+  "time_utc": "2026-11-04T16:39:18.220614+00:00",
+  "command": [
+    "git",
+    "-C",
+    "data/corpora/packaging-development-v1",
+    "rev-list",
+    "--first-parent",
+    "--reverse",
+    "f58537628042c7f29780b9d33f31597e7fc9d664"
+  ],
+  "frame_length": 72,
+  "required_minimum_frame_length": 75,
+  "start_commit": "b3a5d7d68991c040615d5345bb55f61de53ba176",
+  "boundary_commit": "f58537628042c7f29780b9d33f31597e7fc9d664",
+  "selected_parent_sources_read": 0,
+  "child_sources_read": 0,
+  "fallback_activated": false,
+  "frame_sha256": "3e944f973fb828f2655b2d4672ce89d6ae927722122752f4cb888c256ecc2b36",
+  "finding": "The registered three disjoint24-successor windows do not fit. Preserve failedrun; no tag/horizon/parent substitutions or packaging source collection under this protocol."
+}
