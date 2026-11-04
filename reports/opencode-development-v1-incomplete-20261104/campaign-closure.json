@@ -1,0 +1,13 @@
+{
+  "status": "closed_incomplete_development_protocol",
+  "model_trials_executed": 1,
+  "planned_trials": 36,
+  "resume_allowed_by_research_decision": false,
+  "reason": [
+    "Original fixed grader omitted workspace source from child Python environment; baseline light-import regression failure is infrastructure invalidity.",
+    "Observed250000 total token threshold interrupted first model at264281, mostly cached reads; preserved as resource-limit failure, not silentretry.",
+    "Candidate capture rejected pytest-created non-source symlink; actual src snapshot copied beforefailure and retained."
+  ],
+  "next": "Separate declared v2 fixes child environment/non-source inventory and uses1M observed token ceiling equally across arms. No trials pooled betweenversions.",
+  "first_trial": "r1-plain-s1"
+}

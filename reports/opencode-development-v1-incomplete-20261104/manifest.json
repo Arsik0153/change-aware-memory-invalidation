@@ -1,0 +1,29 @@
+{
+  "status": "incomplete_closed_protocol; no efficiency or quality comparison",
+  "model_trials": 1,
+  "model_trial": "r1-plain-s1",
+  "planned": 36,
+  "raw_usage": {
+    "scope": "best effort, not complete remote billing record",
+    "session_client_cost_field": 0,
+    "session_tokens": {
+      "cache": {
+        "read": 230144,
+        "write": 0
+      },
+      "input": 27129,
+      "output": 4689,
+      "reasoning": 2319
+    },
+    "status": "failed_attempt_latest_reported"
+  },
+  "archive": "complete-incomplete-development-v1.tar.gz",
+  "archive_sha256": "6923fb4829501ac6b19fcc79e7056ecec84599b44e0dfb539bd306247ed7a2c0",
+  "archive_bytes": 1433558,
+  "regular_files": 555,
+  "credential_pattern_file_hits": [],
+  "private_states_present": false,
+  "historical_runtime_source_commit": "b292b8c37fe0340a8c1a6fc45b64659bee7ca2b7",
+  "source_export": "Original source snapshot copied before non-source pytest symlink rejection; preserved for separately labeled corrected grading.",
+  "archive_symlinks": "Stores original pytest links without dereferencing; not a benchmark input fixture."
+}

@@ -1,0 +1,124 @@
+{
+  "artifact_hashes": {
+    "attempt.json": "c961821ac06fab532d51127ca7b1b4fec5399da91be085f0e118463190942aaa",
+    "candidate/src/click/__init__.py": "9798c7e0a201fc933d5d3c9d2623f2b9c6984e26feefe38d2952751618a2f387",
+    "candidate/src/click/_compat.py": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+    "candidate/src/click/_termui_impl.py": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+    "candidate/src/click/_textwrap.py": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+    "candidate/src/click/_winconsole.py": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+    "candidate/src/click/core.py": "6c4f1126daa5f7e816eccd342a5419c19fd53ef5bfb30a5fb570a83deda590e9",
+    "candidate/src/click/decorators.py": "a96949a8d39ab413244de78508e52c8eca573eedc3b571ac67b7bff99943c4c0",
+    "candidate/src/click/exceptions.py": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+    "candidate/src/click/formatting.py": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+    "candidate/src/click/globals.py": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+    "candidate/src/click/parser.py": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+    "candidate/src/click/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "candidate/src/click/shell_completion.py": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+    "candidate/src/click/termui.py": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+    "candidate/src/click/testing.py": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+    "candidate/src/click/types.py": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+    "candidate/src/click/utils.py": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+    "canonical-reset.json": "1582c62924dddf4579eb69eb29ee9bf1fd9a5a5876fe7e0963143a9dbc17d86b",
+    "memory-before.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "prompt.txt": "00fe741dc91a3bfcc1dc7457840852bae745d7ff0e6755755e814fc2318a6d20",
+    "session-process.json": "54f72a28390e0604e7898de33024f03c371fd509b2ddb88b77499507de5e7dad",
+    "session/cgroup-after-worker.json": "5b18ee8455a0047184bfd3185d42b5ef9d74a728c7825facf2deb0841073d4c9",
+    "session/cgroup-before-auth.json": "0d7bccbf4df1ee7f40e93576d1bfcb5d9fb4cb5dd6e2fb97c2d58d323fbd7c58",
+    "session/container-launch.json": "b307a61d9bdb7bb2b16ba3b52859e60a42e44e7d7dcc3fbb5ec976112e7281b8",
+    "session/credential-transfer.json": "40c5596ed6dd2202040a875b451c3bf36f910f377d79fe60fedc48e5bd38d157",
+    "session/effective-input-config.json": "2d189ab3e0d811a29bd04d27f199960478d25d42e1e32e7f67abbb5d9de40c79",
+    "session/evidence/created-session.json": "5f4baab3e250b8af8cfb356fb81d97c88df041ddde158a40808d6e85d5b824d0",
+    "session/evidence/effective-input-config.json": "2d189ab3e0d811a29bd04d27f199960478d25d42e1e32e7f67abbb5d9de40c79",
+    "session/evidence/event-collector.json": "4018ced69f8a76dc8c360b1580f07ec2c377859d9e7a556e4289ef9607d146c6",
+    "session/evidence/events.jsonl": "56be57dae691b4e13d33ab09aca2844ad4a190efdeaa08f6e9876b82c0d4ea21",
+    "session/evidence/failure-usage.json": "63ccddceb16ea6d67879bc105c1b8872d6bac52ac79b00278ba11eb9810fd2ef",
+    "session/evidence/manifest.json": "1856bb81fcd55d5fd6257f02e604969259c398d8806f4be61499c4271b465d85",
+    "session/evidence/mcp-readiness.json": "9b87e9c01da651d1f677651efd7b24becd3557a996c4990902d94eb71f5588a1",
+    "session/evidence/message-pages.json": "56fa864bc98dbac2793a1d187e2fc014da51186bb1799192a61cc319d2adef55",
+    "session/evidence/messages.json": "f1f84b0937b97816bc3114ab366612daf5e1aff0fa4cd1475255862796ae58d4",
+    "session/evidence/model-admission.json": "96d397a0f2d47bb30df458f3a71146a80f138b0ea616912fb05a7ae7fbd683f8",
+    "session/evidence/observed-agents.json": "6451183dc41b2ac17d75cb1d2e4954a5a8712c3dafc10cde7f068c47d34b516b",
+    "session/evidence/observed-config.json": "aefd1cf85a84ee459531242f6e68c6f6a7e4b87d616daf336a176e7f18338de9",
+    "session/evidence/observed-mcp.json": "cfb51b8cb4730010c0a42cf36cfcdb3b4ff1017a1f48e09e6d5915da94bd1b1b",
+    "session/evidence/observed-model.json": "8e4f9a19641c23f62fbac09516320759cf7b42c260c027919791f1e095d8a035",
+    "session/evidence/observed-plugins.json": "5690861d18243c2cbb4329eec072f8b7f9db0753b62b1df4ebea7feb4a9a68c6",
+    "session/evidence/partial-message-pages.json": "56fa864bc98dbac2793a1d187e2fc014da51186bb1799192a61cc319d2adef55",
+    "session/evidence/prompt-admitted.json": "dd12a8b2eb11df2752a95ec19e8d6882c08273c31ad6661303d508c349291767",
+    "session/evidence/prompt.json": "dd69e7d982c30fb041122d7778f1ce417e896df8a914d796cb41fb1e63e826bb",
+    "session/evidence/readiness.json": "0e471b5d63b1ec95294479eebd5b1b8ab908d109582e4504b129268ac9db0fb5",
+    "session/evidence/server-resource.json": "bc10bf08a74645d70ad3d4e5450169c2f01c06301d689647e8315f2e3401047b",
+    "session/evidence/server.log.redacted.txt": "e29547adeeb615427c0986c7b5e402747206222c528f24ff7836d7811645aee7",
+    "session/evidence/session.json": "36334e4abdfcce8385de5b2a6d1e6e01eb83bb8c076c4dc223cf8360ef812a9b",
+    "session/evidence/tool-registry-stabilization.json": "1f47ffb18f80fb582195add6aa83a73e204eb9b28c8ee88942c4110186c47604",
+    "session/evidence/usage.json": "63ccddceb16ea6d67879bc105c1b8872d6bac52ac79b00278ba11eb9810fd2ef",
+    "session/evidence/worker-sanitation-complete.json": "d816010709592d7686ecd9a7a9c8430aeeaccac56b3edae7f04e690faaa9c967",
+    "session/manifest.json": "a7bf6aa6e61bc2154f397dfd20e415347fecea8cf78e94c8a7abc5b4e24ce85f",
+    "session/owned-container-remove.json": "25370918e40d3e82122a1d5f7aee0d49a9355edd8e1854da4fcd5173994b8a8b",
+    "session/publication-guard.json": "0034d2eb63a8bcee0fbfa79a6529381dd66ad5478a5e26a796481f71392afe9b",
+    "session/runtime-identity.json": "667b3f3ba443ddc841cd4593250839804a54222266b6bfd9fedd7e631c399b1e",
+    "session/worker-process.json": "2cc6c9fd5fcdb7714e2bff649eebf55fba9bb4e1deed06880a3fafa388d879a2"
+  },
+  "costs": {
+    "charged_host_wall_seconds": 181.3309013841208,
+    "complete": false,
+    "construction_host_wall_seconds": 0,
+    "controller_self_cpu_seconds": 0.494644,
+    "controller_total_host_wall_seconds": 183.55874710902572,
+    "guard_and_orchestration_host_wall_seconds": 0.22458038618788123,
+    "host_child_cpu_seconds": 1.364331,
+    "infrastructure_host_wall_seconds": 2.2278457249049097,
+    "session_cgroup": {
+      "cpu_seconds": 14.913281,
+      "peak_memory_bytes": 289435648,
+      "raw_after": {
+        "cpu.max": "200000 100000\n",
+        "cpu.stat": "usage_usec 15004609\nuser_usec 12830996\nsystem_usec 2173612\ncore_sched.force_idle_usec 0\nnr_periods 1628\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "memory.current": "41181184\n",
+        "memory.max": "2147483648\n",
+        "memory.peak": "289435648\n"
+      }
+    },
+    "session_host_wall_seconds": 181.10632099793293
+  },
+  "failures": [
+    {
+      "failure": "RuntimeError: bounded command failed; see preserved command evidence",
+      "phase": "model_session"
+    },
+    {
+      "failure": "ValueError: nonregular candidate/asset: .test-tmp/pytest/test_add_completion_class_withcurrent",
+      "phase": "source_export_and_fixed_grading"
+    }
+  ],
+  "immutable_memory": {},
+  "memory_bytes_after": 0,
+  "memory_files_after": {},
+  "memory_usable": true,
+  "operational_status": "failed",
+  "quality": "not_evaluated",
+  "regression_allowance_sha256": "4304a38d82f104236acdc4656aade802cdf947e7bedea26202985584626f7102",
+  "session_status": "failed",
+  "status": "failed",
+  "trial": {
+    "arm": "plain",
+    "id": "r1-plain-s1",
+    "predecessor": null,
+    "repetition": 1,
+    "stage": 1,
+    "task": "click-help-option-api"
+  },
+  "usage": {
+    "scope": "best effort, not complete remote billing record",
+    "session_client_cost_field": 0,
+    "session_tokens": {
+      "cache": {
+        "read": 230144,
+        "write": 0
+      },
+      "input": 27129,
+      "output": 4689,
+      "reasoning": 2319
+    },
+    "status": "failed_attempt_latest_reported"
+  }
+}

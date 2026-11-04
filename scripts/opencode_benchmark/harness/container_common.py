@@ -38,7 +38,7 @@ def tree_bytes(path):
 
 
 def redact(text):
-    text = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
+    text = re.sub(r"(?<![A-Za-z0-9._%+-])(?=[A-Za-z0-9._%+-]*[A-Za-z0-9][A-Za-z0-9._%+-]*@)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
     text = re.sub(r"(?i)(authorization[\s\"':=]+)(?:bearer|basic)\s+[A-Za-z0-9+/=._-]+", r"\1[REDACTED_AUTH]", text)
     text = re.sub(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", "[REDACTED_JWT]", text)
     text = re.sub(r'(?i)(["\']?(?:access_token|refresh_token|id_token|api_key|account_id)["\']?\s*[:=]\s*)["\'][^"\']+["\']', r'\1"[REDACTED]"', text)

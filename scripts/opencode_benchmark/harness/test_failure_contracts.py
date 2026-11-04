@@ -21,6 +21,13 @@ def git(repo, *args):
     return subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True)
 
 
+def test_redaction_preserves_diff_decorators_but_scrubs_email_addresses():
+    patch = "-@pytest.fixture(params=[None])\n+@pytest.fixture(params=[1])\n"
+    assert worker.redact(patch) == patch
+    for address in ["person@example.invalid", "+tag.person@example.invalid"]:
+        assert worker.redact(address) == "[REDACTED_EMAIL]"
+
+
 @pytest.mark.parametrize("statuses,arm,error", [
     (["pending", "connected"], "cami", None),
     (["failed", "connected"], "static", RuntimeError),
