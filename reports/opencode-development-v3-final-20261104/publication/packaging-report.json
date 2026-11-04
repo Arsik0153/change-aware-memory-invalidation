@@ -1,0 +1,122 @@
+{
+  "archives": [
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence",
+        "files": 8583,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 8583,
+      "manifest_sha256": "5963fb190d33c2a3706b6a25b6ef3369b9e8da663a1e10234b4d479c64e0e8e2",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence.tar.gz",
+      "sha256": "858023276938a2909c1a36a6c25435b79c3e77cc884c2051efb91be365642474",
+      "size": 25318799,
+      "source_bytes": 92803869
+    },
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/final-memory-state",
+        "files": 92,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 92,
+      "manifest_sha256": "ca295f67534a2285ea674927366b72614b6cac8fab46a74e37065bcca86e6e15",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/final-memory-state.tar.gz",
+      "sha256": "29e467ef2bb45fc9c253b2a1171d0f4596d6b91b3d00e5dd177475ec1b359a4b",
+      "size": 6527441,
+      "source_bytes": 100544118
+    }
+  ],
+  "catalogs": [
+    {
+      "namespace": "r1-cami",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r1-cami/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    },
+    {
+      "namespace": "r1-static",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    },
+    {
+      "namespace": "r2-cami",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r2-cami/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    },
+    {
+      "namespace": "r2-static",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r2-static/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    },
+    {
+      "namespace": "r3-cami",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r3-cami/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    },
+    {
+      "namespace": "r3-static",
+      "path": "runs/opencode-development-v3-20261104/namespaces/r3-static/memory/prepared/catalog.json",
+      "raw_sha256": "16c28a7e34dbd87e31c11d657b498216b5ca80f81665f7eb1a38e937c9f68ac4",
+      "records": 329,
+      "semantic_sha256": "77ecf2849f53f2ed725bba3b7c1d71796a87ce1380b47691b50a41fda0735772"
+    }
+  ],
+  "docker_calls": 0,
+  "final_memory_scope": "Three final CAMI namespaces only, including ProductMemory SQLite/index generations/source CAS. This is not OpenCode session/auth state and not a complete dataset/history backup.",
+  "historical_sources": [
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_controller.py",
+      "sha256": "57e2cc37c4254120db92966881735b6fbff1b349ad98bfaefd8770e65e363fed"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_runtime.py",
+      "sha256": "ec02e90745b1e8621e16d48aa600f064f59eac4f3389909cba2d13b28586c029"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_schema.py",
+      "sha256": "daff91ac9c8351e097d9fef060d07ebb3be74c079680b58e413aba73398e3054"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/harness/container_session.py",
+      "sha256": "7040ab3c2123f1641c8dcb9777839a18ce3c2b1d69a0099b147afc68566fcc7e"
+    }
+  ],
+  "model_calls": 0,
+  "network_calls": 0,
+  "publication_overhead": {
+    "cpu_seconds_self_and_completed_children": 13.698595000000001,
+    "free_disk_after_bytes": 11979673600,
+    "free_disk_before_bytes": 12242874368,
+    "scope": "Packaging/admission/hash checks/double compression/extraction/source recheck only; evaluation/publication overhead, never trial cost.",
+    "wall_seconds": 13.988449220079929
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "zlib": "1.3"
+  },
+  "source_inputs_unchanged": true,
+  "status": "passed",
+  "terminal_hashes_verified": 8058,
+  "terminal_trials": 36,
+  "tracked_writes": false
+}

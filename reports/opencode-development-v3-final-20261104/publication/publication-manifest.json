@@ -1,0 +1,198 @@
+{
+  "archives": [
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence",
+        "files": 8583,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 8583,
+      "manifest_sha256": "5963fb190d33c2a3706b6a25b6ef3369b9e8da663a1e10234b4d479c64e0e8e2",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence.tar.gz",
+      "sha256": "858023276938a2909c1a36a6c25435b79c3e77cc884c2051efb91be365642474",
+      "size": 25318799,
+      "source_bytes": 92803869
+    },
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/final-memory-state",
+        "files": 92,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 92,
+      "manifest_sha256": "ca295f67534a2285ea674927366b72614b6cac8fab46a74e37065bcca86e6e15",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/final-memory-state.tar.gz",
+      "sha256": "29e467ef2bb45fc9c253b2a1171d0f4596d6b91b3d00e5dd177475ec1b359a4b",
+      "size": 6527441,
+      "source_bytes": 100544118
+    }
+  ],
+  "artifact_sha256": {
+    "HANDOFF.md": "f2f70731dad3c4883989382685d112f00d7e37c5ab802e1bd1fc571de3feeea4",
+    "README.md": "58fd4e3636b1f06bbb96a2b419a92ba13adbb213c19e10365989e16f1d0d60ec",
+    "admission.json": "d6a1cd2be5636797a7c5008ae1ee7832b41ec2d9d69109bc3c15da2fc9ba45a6",
+    "build_publication.py": "42b6f67bfc283b7186de47b1d10106a412450759186845a844d552ef568fdf10",
+    "final-memory-state.tar.gz": "29e467ef2bb45fc9c253b2a1171d0f4596d6b91b3d00e5dd177475ec1b359a4b",
+    "offline-analysis-resource.json": "7554285b6174e6e93458c5967dd36e32251f88d42af42bf3c196fb060f80db28",
+    "offline-analysis-verification/aggregate/blocks.csv": "788f9ce7731b714afc35458ba90d95f88d4adde2b0d4eac36f3e8f709760ab12",
+    "offline-analysis-verification/aggregate/paired.csv": "3b52942290cb5aa76d8fe0c00d0aabd4e9d7a6fd3eccae82057e92b7697a882e",
+    "offline-analysis-verification/aggregate/report.json": "7b6773631bf130a993cbde9a19164b5c4b62a9d4e86aedba1b4df446b6f93c5a",
+    "offline-analysis-verification/aggregate/trials.csv": "364fa9b3b4b91028a5d0145f7b0b5bd1e172adce55f5c982f9d90f4c14fa0298",
+    "offline-analysis-verification/command-0.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-analysis-verification/command-0.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-analysis-verification/command-1.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-analysis-verification/command-1.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-analysis-verification/staleness/report.json": "61884de1e89599d4b89e3f47f1e4ad08f85558e7eb6671274f777447bb163b74",
+    "offline-analysis-verification/timing-caveats-relocated.json": "a85d12f0a3c8b4d6218d06906434d015128f08e2fe81a45ed10a1f6892cf2fbf",
+    "offline-analysis-verification/verification.json": "d1980ffe37f6b8b316dc444acef00c19ad8fd5033bf7dc8573c80e9c4875ce5a",
+    "offline-analysis.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "offline-analysis.stdout.txt": "ee6bbd6153446a350f6892b13f24f262f85f11e439549bca0f06dad5945eae76",
+    "packaging-failure.json": "673674540b5038843a866ab5344bda7848462b0eb5d8b736d82184960649db94",
+    "packaging-report.json": "de05f5ce32794e6f5eaccfb4d3e6ce39a713036903bb162b78aec18f14fe65d7",
+    "public-evidence.tar.gz": "858023276938a2909c1a36a6c25435b79c3e77cc884c2051efb91be365642474",
+    "reproduce_analysis.py": "77531cfac4f38eb2b206f6b24f63a210d97fa62a538b1e7b1a8710db15a55016"
+  },
+  "docker_calls": 0,
+  "excluded": [
+    "namespace workspaces",
+    "OpenCode/global/private/auth/export state",
+    "final heldout task/source/gold",
+    "raw v1/v2 failed study payloads (remain separately preserved)",
+    "OpenCode binary and Docker images"
+  ],
+  "final_memory_scope": "Three final CAMI namespaces only, including ProductMemory SQLite/index generations/source CAS. This is not OpenCode session/auth state and not a complete dataset/history backup.",
+  "frozen_pin_files_verified": 86,
+  "historical_sources": [
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_controller.py",
+      "sha256": "57e2cc37c4254120db92966881735b6fbff1b349ad98bfaefd8770e65e363fed"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_runtime.py",
+      "sha256": "ec02e90745b1e8621e16d48aa600f064f59eac4f3389909cba2d13b28586c029"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/controller/study_schema.py",
+      "sha256": "daff91ac9c8351e097d9fef060d07ebb3be74c079680b58e413aba73398e3054"
+    },
+    {
+      "commit": "18188a7",
+      "path": "scripts/opencode_benchmark/harness/container_session.py",
+      "sha256": "7040ab3c2123f1641c8dcb9777839a18ce3c2b1d69a0099b147afc68566fcc7e"
+    }
+  ],
+  "later_resource_addendum": "Intentionally separate: runs/opencode-development-v3-final-resources-20261104/report.json; frozen archives not rebuilt.",
+  "model_calls": 0,
+  "network_calls": 0,
+  "offline_verification": {
+    "aggregate_summary_exact": true,
+    "docker_calls": 0,
+    "model_calls": 0,
+    "network_calls": 0,
+    "offline_analysis_commands": [
+      {
+        "argv": [
+          "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/opencode_benchmark/analysis/aggregate_study.py",
+          "--run",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104",
+          "--protocol",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/reports/opencode-study-design-20261104/protocol.json",
+          "--study",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104/frozen-study.json",
+          "--study-sha256",
+          "de6f5afda7b3d22f404dae76276106308d24d6829b2d8217b2e5adc33e62fd65",
+          "--timing-caveats",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/timing-caveats-relocated.json",
+          "--out",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/aggregate"
+        ],
+        "returncode": 0
+      },
+      {
+        "argv": [
+          "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/opencode_benchmark/analysis/summarize_terminal_staleness.py",
+          "--run",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104",
+          "--analyzer",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/analyze_opencode_staleness.py",
+          "--catalog",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+          "--origin",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+          "--stage1",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+          "--stage3",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/stage3",
+          "--out",
+          "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/staleness"
+        ],
+        "returncode": 0
+      }
+    ],
+    "scope": "Publication/evaluation overhead only, not trial cost; absolute output paths differ.",
+    "source_or_model_execution": false,
+    "staleness_counts_coverage_exact": true,
+    "status": "passed",
+    "terminal_hashes_and_coverage_exact": true,
+    "timing_caveat": "Original untouched; derived evidence-path-only rebinding with matching content SHA for relocation.",
+    "wall_seconds": 5.970866951858625
+  },
+  "original_admitted_inputs_unchanged": true,
+  "privacy_refusal": {
+    "excluded_artifact": "runs/opencode-heldout-runtime-preflight-20261104/resume-01.json",
+    "failure_preserved": "packaging-failure.json",
+    "raw_rejected_payload_quarantined": false,
+    "reason": "Sensitive-named field; broad approval/account/preflight metadata unnecessary and not admitted. Only caveat-referenced phase timing metadata retained."
+  },
+  "publication_overhead": {
+    "failed_admission": {
+      "cpu_seconds": 2.3719120000000005,
+      "wall_seconds": 4.343805969925597
+    },
+    "observed_script_spans_total_cpu_seconds": 21.001349000000005,
+    "observed_script_spans_total_wall_seconds": 24.353265241952613,
+    "offline_analysis": {
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/reproduce_analysis.py",
+        "--root",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence",
+        "--out",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification"
+      ],
+      "completed_child_cpu_seconds": 4.930842,
+      "docker_calls": 0,
+      "model_calls": 0,
+      "network_calls": 0,
+      "returncode": 0,
+      "scope": "Offline archive verification/analysis publication overhead only; not trial cost",
+      "wall_seconds": 6.021010051947087
+    },
+    "scope": "Publication/evaluation overhead only. Includes refused admission, successful admission/double compression/extraction/recheck, offline analyses. Excludes interactive authoring/listing/debug time; not a whole-turn resource claim and never trial cost.",
+    "successful_packaging": {
+      "cpu_seconds_self_and_completed_children": 13.698595000000001,
+      "free_disk_after_bytes": 11979673600,
+      "free_disk_before_bytes": 12242874368,
+      "scope": "Packaging/admission/hash checks/double compression/extraction/source recheck only; evaluation/publication overhead, never trial cost.",
+      "wall_seconds": 13.988449220079929
+    }
+  },
+  "raw_outcomes_rewritten": false,
+  "run": "runs/opencode-development-v3-20261104",
+  "status": "complete_verified_ready_for_review",
+  "terminal_artifact_hashes_verified": 8058,
+  "terminal_attempts": 36,
+  "tracked_writes": false,
+  "unpacked_verification_copies": "Retained only in this ignored stage for review; publish archives and small manifests/scripts, not duplicate unpacked trees."
+}

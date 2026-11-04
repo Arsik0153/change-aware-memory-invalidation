@@ -1,0 +1,14 @@
+{
+  "caveats": [
+    {
+      "evidence_path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-heldout-runtime-preflight-20261104/phase-timing-final.json",
+      "evidence_sha256": "858c17754e8efd7d169da2f82b198e3b651507904822be2496ad52b9a22b91e2",
+      "reason": "Known concurrent heldout evaluator infrastructure: four early phases overlapped this v3 trial on the 2 CPU host. Retain every observation; disqualify charged-wall superiority for the study.",
+      "trial_ids": [
+        "r1-plain-s1"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "study_sha256": "de6f5afda7b3d22f404dae76276106308d24d6829b2d8217b2e5adc33e62fd65"
+}

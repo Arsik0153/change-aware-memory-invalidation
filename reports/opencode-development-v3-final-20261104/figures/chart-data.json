@@ -1,0 +1,62 @@
+{
+  "report_sha256": "9a061da05bdd649835c9924dcbecd5939ff341799e186cfa880330224bb6e0da",
+  "blocks": [
+    {
+      "repetition": 1,
+      "arm": "plain",
+      "tokens": 118180,
+      "wall": 613.6474432575051
+    },
+    {
+      "repetition": 1,
+      "arm": "static",
+      "tokens": 127112,
+      "wall": 591.0324212659616
+    },
+    {
+      "repetition": 1,
+      "arm": "cami",
+      "tokens": 123409,
+      "wall": 582.3406511310022
+    },
+    {
+      "repetition": 2,
+      "arm": "plain",
+      "tokens": 124294,
+      "wall": 605.0823934972286
+    },
+    {
+      "repetition": 2,
+      "arm": "static",
+      "tokens": 142954,
+      "wall": 608.9710136521608
+    },
+    {
+      "repetition": 2,
+      "arm": "cami",
+      "tokens": 145214,
+      "wall": 596.7828731820919
+    },
+    {
+      "repetition": 3,
+      "arm": "plain",
+      "tokens": 122990,
+      "wall": 620.2288833628409
+    },
+    {
+      "repetition": 3,
+      "arm": "static",
+      "tokens": 118455,
+      "wall": 581.9134687194601
+    },
+    {
+      "repetition": 3,
+      "arm": "cami",
+      "tokens": 113254,
+      "wall": 624.5430389519315
+    }
+  ],
+  "primary_superiority": "not_established",
+  "timing_caveat": "Known auxiliary overlap in r1-plain-s1; primary wall metric ineligible.",
+  "token_definition": "input + cache_write + output + reasoning; cache_read reported separately; not actual billing"
+}

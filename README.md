@@ -65,13 +65,19 @@ The [frozen comparison protocol](reports/opencode-study-design-20261104/protocol
 compares plain OpenCode, static memory and CAMI on the same model, task versions
 and limits, including construction and repeated tasks after source changes.
 Development runs and failed attempts are retained separately from the sealed
-final task set. The [first complete development block](reports/opencode-first-block-resource-breakdown-20261104/resource-breakdown.json)
-is diagnostic only: CAMI did not reduce token work against plain OpenCode, and
-known auxiliary work disqualifies its primary wall-time comparison. A separate
-[compact-response candidate](reports/opencode-compact-response-candidate-20261104/README.md)
-preserves complete note text and reduces model-facing bytes on three saved
-responses, while increasing audit storage; it has not been used in the active
-frozen comparison or shown a model-level benefit.
+final task set. The [completed development v3 series](reports/opencode-development-v3-final-20261104/summary.json) contains 36 operationally
+complete, quality-passing trials. It did not establish superiority under the
+frozen six-pair criterion; a recorded auxiliary workload also disqualifies the
+primary wall-time claim. All failures from earlier versions remain separate.
+
+The next development variant uses authenticated `source_excerpt_equals` records:
+exact Python definition prefixes and truncation flags, including physical decorator
+opening lines. Unrelated edits can preserve literal support without changing
+manual-note review rules. [Capability evidence](reports/opencode-source-excerpt-capability-20261104/report.json)
+includes the failed prototype, its independent counterexample, correction and
+241 passing memory tests. Optional compact responses retain payload content and
+write full audit receipts, whose I/O and storage must be charged. These changes
+have not yet established a model-level benefit.
 
 ## Install and run the offline demo
 

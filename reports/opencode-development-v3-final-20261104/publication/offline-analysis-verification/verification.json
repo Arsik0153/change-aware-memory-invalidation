@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "offline_analysis_commands": [
+    {
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/opencode_benchmark/analysis/aggregate_study.py",
+        "--run",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104",
+        "--protocol",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/reports/opencode-study-design-20261104/protocol.json",
+        "--study",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104/frozen-study.json",
+        "--study-sha256",
+        "de6f5afda7b3d22f404dae76276106308d24d6829b2d8217b2e5adc33e62fd65",
+        "--timing-caveats",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/timing-caveats-relocated.json",
+        "--out",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/aggregate"
+      ],
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/opencode_benchmark/analysis/summarize_terminal_staleness.py",
+        "--run",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104",
+        "--analyzer",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/scripts/analyze_opencode_staleness.py",
+        "--catalog",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+        "--origin",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+        "--stage1",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+        "--stage3",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/public-evidence/runs/opencode-development-v3-staleness-20261104/stage3",
+        "--out",
+        "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-publication-20261104/offline-analysis-verification/staleness"
+      ],
+      "returncode": 0
+    }
+  ],
+  "aggregate_summary_exact": true,
+  "terminal_hashes_and_coverage_exact": true,
+  "staleness_counts_coverage_exact": true,
+  "timing_caveat": "Original untouched; derived evidence-path-only rebinding with matching content SHA for relocation.",
+  "source_or_model_execution": false,
+  "model_calls": 0,
+  "docker_calls": 0,
+  "network_calls": 0,
+  "wall_seconds": 5.970866951858625,
+  "scope": "Publication/evaluation overhead only, not trial cost; absolute output paths differ."
+}
