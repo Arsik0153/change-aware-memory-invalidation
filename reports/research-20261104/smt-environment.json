@@ -1,0 +1,16 @@
+{
+  "solver": "Z3",
+  "version": "4.16.0.0",
+  "wheel": "z3_solver-4.16.0.0-py3-none-manylinux_2_27_x86_64.whl",
+  "wheel_sha256": "afae2551f795670f0522cfce82132d129c408a2694adff71eb01ba0f2ece44f9",
+  "binary_sha256": "a06c2a851d58c5f5a7c1e5de188fd0e1b1135e778112aee83ffd1a433685516b",
+  "version_output": "Z3 version 4.16.0 - 64 bit",
+  "sources": [
+    "https://pypi.org/project/z3-solver/4.16.0.0/",
+    "https://github.com/Z3Prover/z3",
+    "https://microsoft.github.io/z3guide/docs/logic/intro/"
+  ],
+  "environment": "runs/smt-tools-20261104-v2",
+  "initial_setup_failure": "python -m venv could not seed pip because ensurepip is absent; a new uv --seed environment was used.",
+  "production_dependencies_changed": false
+}
