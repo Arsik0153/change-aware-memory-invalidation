@@ -1,0 +1,13 @@
+{
+  "status": "closed_incomplete_development_protocol",
+  "model_trials": 1,
+  "planned_trials": 36,
+  "trial": "r1-plain-s1",
+  "fixed_quality": "pass",
+  "model_worker_returncode": 0,
+  "operational_session": "failed_evidence_publication",
+  "reason": "Email regex applied to serialized JSON corrupted an escape; publication rejected and private-state cleanup discarded the evidence payload. This prevents full token/trace reconstruction.",
+  "available": "Candidate source, fixed-test outcomes, host and container resource data, timing, publication failure metadata.",
+  "unavailable": "Full model messages and usage; unknown rather than zero. Cannot recover deleted private evidence.",
+  "next": "Separate v3 structured JSON redaction and partial-failure evidence retention, verified without new model calls. No pooling."
+}
