@@ -1,0 +1,65 @@
+{
+  "alias_rule": "case- plus first 20 hex characters of SHA256(seed + newline + 'alias' + newline + private_identity)",
+  "analysis": [
+    "Report verdict counts, abstentions, pairwise disagreement, mechanical disagreement, and control failures separately.",
+    "AI agreement is not truth and is not independent human annotation.",
+    "Same-family models can share errors. Record actual model identity, tools, prompts, and independence limits.",
+    "Public Click source may have appeared in training. Blinding does not establish absence of benchmark leakage.",
+    "Repeated modules and parent groups are correlated. Report unique source hashes and group-level results, without treating 36 rows as independent evidence.",
+    "This small pilot cannot establish a population error rate or validate replacement of human semantic annotation."
+  ],
+  "authentic_reference_answers": "Not computed during preparation. No CAMI validator or oracle is run.",
+  "counts": {
+    "authentic_structural_claims": 24,
+    "groups": 3,
+    "private_controls": 12,
+    "public_cases": 36,
+    "reviewers": 2
+  },
+  "decision_rules": {
+    "comparison": "Keep both AI decisions and the mechanical decision. Never replace disagreement with an AI majority.",
+    "contradicted": "Independent mechanical evidence establishes absence or signature mismatch, with no uncertainty rule triggered.",
+    "controls": "All nine clear negative controls must be contradicted. All three duplicate controls must be uncertain. Any different result blocks expansion and is reported.",
+    "exclusions": "Keep all 36 cases in the denominator. Record excluded or uncertain cases and reasons. No replacements, post-outcome sampling, or assertion repair.",
+    "failure": "Fail closed on reviewer disagreement, mechanical disagreement, unexpected controls, missing decisions, hash mismatch, or evidence outside the packet.",
+    "supported": "Independent mechanical evidence confirms the exact supplied syntactic predicate under the rubric.",
+    "uncertain": "Any stated ambiguity, unsupported construct, missing evidence, or unresolved conflict."
+  },
+  "duplicate_control_choice": "First symbol_exists claim in each selected group by original claim_id, with two duplicate subject definitions appended",
+  "freeze_and_scope": [
+    "Root records the exact protocol and packet hashes before reviewers run. Any later change creates a new proposal and is disclosed.",
+    "Only the public packet is provided to fresh reviewers. Private files remain with the coordinator.",
+    "No child sources, child outcomes, held-out repository cases, policy runs, or main evaluation are accessed.",
+    "No authentic labels, receipts, admission, final freeze, tracked edits, commits, or existing main-protocol changes are authorized by this proposal.",
+    "Controls are authored development cases and must never enter real labels or be described as unchanged Git parent snapshots."
+  ],
+  "mechanical_reference": {
+    "abstention": "Duplicate, conditional, target rebinding, generic type parameters, source or parse limitation, or unresolved ambiguity gives uncertain.",
+    "evidence": "Record Python version, implementation hash, source hashes, extracted facts, and line evidence before comparison with AI answers.",
+    "implementation": "A separate implementation must derive facts from packet source bytes using CPython ast. It must not import cami, copy CAMI extraction code, or use CAMI results.",
+    "shared_dependency": "CPython ast is shared infrastructure. Implementation independence does not imply parser independence.",
+    "status": "Future work after root seals this proposal and before review comparison",
+    "syntax_contract": "All fields of supplied expected_signature, including AST expression syntax, decorators, and async. No runtime signature inference."
+  },
+  "nonexistent_control_choice": "First symbol_exists claim in each selected group by original claim_id",
+  "order_rule": "Ascending SHA256(seed + newline + 'order' + newline + public_id), then public_id",
+  "packet_hashes_path": "packet_hashes.json",
+  "private_case_map_path": "private/case_map.json",
+  "private_controls": {
+    "duplicate_definition_source_variant": 3,
+    "nonexistent_name": 3,
+    "signature_mismatch": 6
+  },
+  "protocol_id": "20261104-ai-parent-pilot-v1",
+  "reviewer_access": [
+    "packet/cases.json",
+    "packet/rubric.md",
+    "packet/source/*"
+  ],
+  "reviewer_blinding": "Fresh separate contexts. No CAMI code, prior review, mechanical answers, private map, original candidate identities, or source origins.",
+  "scope": "Exploratory development Click parent-only annotation-method pilot",
+  "seed": "20261104-ai-parent-pilot-v1",
+  "selection": "Three lowest SHA256(seed + newline + group_id) ranks among development Click groups. All eight structural claims in each group.",
+  "signature_control_choice": "First two signature_equals claims in each selected group by original claim_id",
+  "status": "proposed_fixed_content_awaiting_root_seal"
+}

@@ -1,0 +1,120 @@
+{
+  "eligibility": "Parent packet repo_id=click and matching dataset run split=development",
+  "eligible_group_ranks": [
+    {
+      "group_id": "click-1c2fc1b0152f",
+      "rank_sha256": "0283a78b864dd2abcc91f385b1106f67ea5e4bfd127f59677038d5bccf64dee5"
+    },
+    {
+      "group_id": "click-1e53748f80eb",
+      "rank_sha256": "03d810548be792382568fabdb2d5beae3f874e9003f07ef6a2b22951a1c15357"
+    },
+    {
+      "group_id": "click-8c7491d9b0d7",
+      "rank_sha256": "0ff1d695a3eb73f92778be570368e12a3c1df91ca464d3efcb6e0ce20449315a"
+    },
+    {
+      "group_id": "click-ba0c2389ce12",
+      "rank_sha256": "118320e888e32114170b73196127e23db052d5219ba69e870aca66b3fff59357"
+    },
+    {
+      "group_id": "click-f4f1e0f7f390",
+      "rank_sha256": "16994f85a5c17244932a001255bceba07e6b2e9fd067e9b17d6f07cbac273c55"
+    },
+    {
+      "group_id": "click-24fee975f12b",
+      "rank_sha256": "286c36db23a3425fd392175cae0b33c89429f0617cc1a70d782bafc973a6b59c"
+    },
+    {
+      "group_id": "click-f71f1c52a038",
+      "rank_sha256": "5f9b999d746794d51816128222bd9ba7568e97714572323ed01f7e585be3659e"
+    },
+    {
+      "group_id": "click-ca440aa8f45e",
+      "rank_sha256": "69c187aadfc10104f6231043810f6a19a3597e35329c8079d73e01c82aafb327"
+    },
+    {
+      "group_id": "click-d5ecf8836def",
+      "rank_sha256": "814cab4fa772dda8f9139be36dc4a8169e40d0b6f1408c033740b50988560d33"
+    },
+    {
+      "group_id": "click-f8be32806414",
+      "rank_sha256": "9f0aa481709a43106e83900a114a6016d962a01a459be3f0a29d14b7dbe77b6d"
+    },
+    {
+      "group_id": "click-da7aff1670fc",
+      "rank_sha256": "a11f8041db0ee39ca0fba7b3d9b0e21ce370b7399128aedc4d760ff84a6949df"
+    },
+    {
+      "group_id": "click-dcc2c4a4a831",
+      "rank_sha256": "a44cb821c25ed87abe9706f7667d2d16575aa42086954e2ffbda2c0daf18c3ab"
+    },
+    {
+      "group_id": "click-3104e40ec3f2",
+      "rank_sha256": "bd227c1f348b0d616c3140490b99423e1be01639f42974d1c58b74bc96f7258d"
+    },
+    {
+      "group_id": "click-c3d22bdc1137",
+      "rank_sha256": "bf59efc7f4cd0bdcc3bc4e8d2f9fb393d0789ec28f2d84f23ef2760ff0357048"
+    },
+    {
+      "group_id": "click-7fac33c0484f",
+      "rank_sha256": "c82a3a770e6d600f0669ae399033441fef6dd40daf2ddb691eeba88581f4535d"
+    },
+    {
+      "group_id": "click-9c393d9ef140",
+      "rank_sha256": "d0227cc7412572635b5e294b86935d938ffbfb8405b207c23ca98544ffbffaec"
+    },
+    {
+      "group_id": "click-bd1d2fcb5eca",
+      "rank_sha256": "d372fa088ac9ccb3c759674b587bf63e50de8028546286cade41f999c0e17f33"
+    },
+    {
+      "group_id": "click-2d36ed9b7332",
+      "rank_sha256": "f42e5f175350179a5fb56436e97280b0594b09c5b6ab9c622105469184064d1e"
+    },
+    {
+      "group_id": "click-196cfaa5c2e9",
+      "rank_sha256": "f4843cab45d7d7c3850be89429af34c411236d481eb26897e9c4d0ae016fb56a"
+    },
+    {
+      "group_id": "click-7dc755755989",
+      "rank_sha256": "ff426c3ce8b39e92f9f3e47b8bbd0877188b584de5ff928ff413baeb5b8d32c8"
+    }
+  ],
+  "group_rank_rule": "SHA256(UTF8(seed + '\\n' + group_id)); ascending digest, then group_id",
+  "seed": "20261104-ai-parent-pilot-v1",
+  "selected_groups": [
+    {
+      "group_id": "click-1c2fc1b0152f",
+      "metadata": {
+        "cluster_id": "click-episode-bba4914a46ab",
+        "run_id": "click-1c2fc1b0152f",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "rank_sha256": "0283a78b864dd2abcc91f385b1106f67ea5e4bfd127f59677038d5bccf64dee5"
+    },
+    {
+      "group_id": "click-1e53748f80eb",
+      "metadata": {
+        "cluster_id": "click-episode-e6be5af8a821",
+        "run_id": "click-1e53748f80eb",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "rank_sha256": "03d810548be792382568fabdb2d5beae3f874e9003f07ef6a2b22951a1c15357"
+    },
+    {
+      "group_id": "click-8c7491d9b0d7",
+      "metadata": {
+        "cluster_id": "click-episode-6b4af947f312",
+        "run_id": "click-8c7491d9b0d7",
+        "sequence_id": null,
+        "split": "development"
+      },
+      "rank_sha256": "0ff1d695a3eb73f92778be570368e12a3c1df91ca464d3efcb6e0ce20449315a"
+    }
+  ],
+  "selection_uses_source_contents_or_outcomes": false
+}

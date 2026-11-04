@@ -1,0 +1,36 @@
+{
+  "CAMI_validator_or_oracle_run": false,
+  "authentic_annotations_created": false,
+  "authentic_cases": 24,
+  "authentic_reference_answers_computed": false,
+  "child_sources_or_outcomes_read": false,
+  "development_metadata_verified": true,
+  "input_hashes": {
+    "runs/main-restored-20261029/ready/dataset.json": "f58be29e364bda8671aa771a81e9bc1be2f0926042a9f119a58773620d6b0f21",
+    "runs/parent-review-20261104/packets.jsonl": "d40bebff6d8b366a6548f5004e77da74421e2d89445aa4cd22d6d2dc51f1c85c"
+  },
+  "input_scope": "Dataset run metadata, parent-only structural packets, and selected subject parent module bytes",
+  "original_git_blob_identity_checked": true,
+  "original_modules_copied_in_full": true,
+  "private_controls": {
+    "duplicate_definition_source_variant": 3,
+    "nonexistent_name": 3,
+    "signature_mismatch": 6
+  },
+  "public_cases": 36,
+  "receipts_created": false,
+  "repo_ids_in_selected_cases": [
+    "click"
+  ],
+  "reproduce": ".venv/bin/python runs/ai-review-pilot-planning-20261104/build_packet.py with only build_packet.py and verify_packet.py in the output directory",
+  "seed": "20261104-ai-parent-pilot-v1",
+  "selected_groups": [
+    "click-1c2fc1b0152f",
+    "click-1e53748f80eb",
+    "click-8c7491d9b0d7"
+  ],
+  "source_bytes_hash_checked": true,
+  "status": "prepared_not_sealed_not_reviewed",
+  "unique_original_sources": 19,
+  "unique_public_source_files": 21
+}

@@ -1,0 +1,1906 @@
+[
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-8810691b50960340f777",
+    "identity": "signature-mismatch:click-1c2fc1b0152f-05",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1c2fc1b0152f-05",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-05",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cls"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "name"
+            }
+          ],
+          "returns_ast": "Constant(value=None)"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "add_completion_class"
+      },
+      "text": "The exact definition src/click/shell_completion.py:add_completion_class has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cls\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\",\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"name\"}],\"returns_ast\":\"Constant(value=None)\"}."
+    },
+    "original_claim_sha256": "af0ac358ce172b25493d5328502fea91a3f2f4ccfd0a50b9921cd6b85e932253",
+    "public_source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+    "public_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/shell_completion.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_85cedda1ed9a6eeda5e5de2f",
+      "old_first_parameter": {
+        "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())",
+        "default_ast": null,
+        "kind": "positional_or_keyword",
+        "name": "cls"
+      },
+      "operation": "rename_first_parameter",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-cfe735f7fe6d94e8d37f",
+    "identity": "authentic:click-1c2fc1b0152f-03",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-03",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-03",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "open_url"
+      },
+      "text": "src/click/_termui_impl.py contains the exact top-level function definition open_url."
+    },
+    "original_claim_sha256": "adb0132f5d7aa430cbb3ecf60fbbad884de39d4fac592b08b38d60e081c35df0",
+    "public_source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+    "public_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "4b979bcc1edcb33feb9b385156492221d92253dc",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_termui_impl.py",
+      "source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-7377f449b4ef54345266",
+    "identity": "authentic:click-1c2fc1b0152f-04",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-04",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-04",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [],
+          "returns_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdin"
+      },
+      "text": "The exact definition src/click/_compat.py:get_binary_stdin has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[],\"returns_ast\":\"Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "13a55b9f328ace1e017d0549e5167e65edab0f299e35969168ae93e7d444ca48",
+    "public_source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+    "public_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-dda544104a253ce1f2af",
+    "identity": "authentic:click-1e53748f80eb-04",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-04",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-04",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='BaseCommand', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cli"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx_args"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "prog_name"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "complete_var"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "instruction"
+            }
+          ],
+          "returns_ast": "Name(id='int', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "shell_complete"
+      },
+      "text": "The exact definition src/click/shell_completion.py:shell_complete has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='BaseCommand', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cli\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx_args\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"prog_name\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"complete_var\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"instruction\"}],\"returns_ast\":\"Name(id='int', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "f01fef1dde75e43ffc9f87992e1b9cd45293f21b435724ad8249462a6d3fb139",
+    "public_source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+    "public_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/shell_completion.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-8f76208c55aa31b28f93",
+    "identity": "signature-mismatch:click-8c7491d9b0d7-05",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-8c7491d9b0d7-05",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-05",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "param_decls"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_keyword",
+              "name": "attrs"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/decorators.py",
+        "qualname": "option"
+      },
+      "text": "The exact definition click/decorators.py:option has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_positional\",\"name\":\"param_decls\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_keyword\",\"name\":\"attrs\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "1727d73e44d3d6027ad94e8ee78ed5525adbf98531edf1a451a69c0a1f7cf659",
+    "public_source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+    "public_source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "c0b9e85a392a59d3106ac10624ad3db23205f2ab",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/decorators.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/decorators.py",
+      "source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_8e35469b32bbd2ebc8600fc4",
+      "old_first_parameter": {
+        "annotation_ast": null,
+        "default_ast": null,
+        "kind": "var_positional",
+        "name": "param_decls"
+      },
+      "operation": "rename_first_parameter",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-40171ec6c75287dd3791",
+    "identity": "missing:click-8c7491d9b0d7",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-8c7491d9b0d7-00",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-00",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/testing.py",
+        "qualname": "make_input_stream"
+      },
+      "text": "click/testing.py contains the exact top-level function definition make_input_stream."
+    },
+    "original_claim_sha256": "5b0ab2e8d76b8b4c26b2331353e919aa65ca9c2e41dddd02ce423abe393faafc",
+    "public_source_path": "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py",
+    "public_source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "ae36d10144e64f9b2a0227a132dbb80e481f9111",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/testing.py",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_qualname": "_case_48aeb98c608b7a55429e4f2e",
+      "source_bytes_changed": false,
+      "type": "nonexistent_name"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-05ba048b5794cf8f990f",
+    "identity": "duplicate:click-8c7491d9b0d7",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-8c7491d9b0d7-00",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-00",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/testing.py",
+        "qualname": "make_input_stream"
+      },
+      "text": "click/testing.py contains the exact top-level function definition make_input_stream."
+    },
+    "original_claim_sha256": "5b0ab2e8d76b8b4c26b2331353e919aa65ca9c2e41dddd02ce423abe393faafc",
+    "public_source_path": "source/cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be.py",
+    "public_source_sha256": "cb7c9bbec0933d7493c80fefc35379c8f279fbcbb9186cb060f035c155f192be",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "ae36d10144e64f9b2a0227a132dbb80e481f9111",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/testing.py",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "split": "development"
+    },
+    "transformation": {
+      "appended_utf8": "\n\ndef make_input_stream(*args, **kwargs):\n    pass\n\n\ndef make_input_stream(*args, **kwargs):\n    pass\n",
+      "expected_verdict": "uncertain",
+      "operation": "append_two_unconditional_definitions_of_subject_name",
+      "reason": "Two appended definitions guarantee a duplicate even without a baseline reference answer.",
+      "source_bytes_changed": true,
+      "type": "duplicate_definition_source_variant"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-693c3ef0c09519c317d5",
+    "identity": "authentic:click-1e53748f80eb-01",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-01",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-01",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/termui.py",
+        "qualname": "launch"
+      },
+      "text": "src/click/termui.py contains the exact top-level function definition launch."
+    },
+    "original_claim_sha256": "e9f2d2fd45beb3a39d8520cccd6786965786ad9647ce2607de4ffccb683c6995",
+    "public_source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+    "public_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "f3ad4ca9febfcffad2e1dae43f4e84c68212cedd",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/termui.py",
+      "source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-a6fedc18232ebb4b0bcd",
+    "identity": "authentic:click-1c2fc1b0152f-02",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-02",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-02",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_filesystem_encoding"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition get_filesystem_encoding."
+    },
+    "original_claim_sha256": "de9c3ba07cb6260927269b96f8d40001f8c4501414b383670ebc8e644cfecfba",
+    "public_source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+    "public_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-1df49ff79b3e89f43e17",
+    "identity": "authentic:click-8c7491d9b0d7-03",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-03",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-03",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/_termui_impl.py",
+        "qualname": "pager"
+      },
+      "text": "click/_termui_impl.py contains the exact top-level function definition pager."
+    },
+    "original_claim_sha256": "2e8b6cba6149b3e1d4abb0398e469fd714a97f14bebddee75c3450e131908792",
+    "public_source_path": "source/7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107.py",
+    "public_source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "cebf3bbf5e67512ee900e86a614b54ae7f311f92",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_termui_impl.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/_termui_impl.py",
+      "source_sha256": "7cd71cfb6a8d9b2b58504c8ccc8d91972cbd2c4a0f57b4074162a3b56ae78107",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-ff7d4a7d85fc7f93e36b",
+    "identity": "authentic:click-8c7491d9b0d7-01",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-01",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-01",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "invoke_param_callback"
+      },
+      "text": "click/core.py contains the exact top-level function definition invoke_param_callback."
+    },
+    "original_claim_sha256": "b8eac2d4675d155772db7b16c361ca42a7bca567a2c22eea59407e711ce3cabd",
+    "public_source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+    "public_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "83581723239580945a05b2615dc69a996aa2a5bb",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/core.py",
+      "source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-5206d40b4bfd3d830632",
+    "identity": "authentic:click-1e53748f80eb-03",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-03",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-03",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "_pipepager"
+      },
+      "text": "src/click/_termui_impl.py contains the exact top-level function definition _pipepager."
+    },
+    "original_claim_sha256": "629335e905788ac085c7ca5a9b13908693d9067adc354a9e16995631b960a41e",
+    "public_source_path": "source/0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851.py",
+    "public_source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "a050471f20c82cb03b10455a4d560c05f66e5fc5",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_termui_impl.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_termui_impl.py",
+      "source_sha256": "0a69d462d2e6181abf2091786abd8e35e03b13686f5e8ff01917a21080c25851",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-abecd108af7dc7a86e2c",
+    "identity": "authentic:click-8c7491d9b0d7-05",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-05",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-05",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_positional",
+              "name": "param_decls"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "var_keyword",
+              "name": "attrs"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/decorators.py",
+        "qualname": "option"
+      },
+      "text": "The exact definition click/decorators.py:option has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_positional\",\"name\":\"param_decls\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"var_keyword\",\"name\":\"attrs\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "1727d73e44d3d6027ad94e8ee78ed5525adbf98531edf1a451a69c0a1f7cf659",
+    "public_source_path": "source/476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441.py",
+    "public_source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "c0b9e85a392a59d3106ac10624ad3db23205f2ab",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/decorators.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/decorators.py",
+      "source_sha256": "476d32a3217de8e071fbfdff253cfcf6ea5e1952de41cfccf3ed7b7238a4a441",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-70fba0e5e4d4b10d4a53",
+    "identity": "authentic:click-1e53748f80eb-07",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-07",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-07",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "string"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/parser.py",
+        "qualname": "split_arg_string"
+      },
+      "text": "The exact definition src/click/parser.py:split_arg_string has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"string\"}],\"returns_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\"}."
+    },
+    "original_claim_sha256": "b5c1541716e9d7ae7f60587a7d1dfb4ab65ff9eb5247f4d5ed9bab44ad5c2cde",
+    "public_source_path": "source/70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9.py",
+    "public_source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "2d5a2ed7ba744f0eb6cd561d98c667b09cff4cc0",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/parser.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/parser.py",
+      "source_sha256": "70012dd6e411f20ab7f92f72b2a6d553e7dd01936f8a5c70e11789fd3d4e40c9",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-8e4662b35a277e089071",
+    "identity": "authentic:click-8c7491d9b0d7-07",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-07",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-07",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "name"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "encoding"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value='strict')",
+              "kind": "positional_or_keyword",
+              "name": "errors"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/utils.py",
+        "qualname": "get_text_stream"
+      },
+      "text": "The exact definition click/utils.py:get_text_stream has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"name\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"encoding\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value='strict')\",\"kind\":\"positional_or_keyword\",\"name\":\"errors\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "ca966f9c52a72f8fbd5bbd796061551004b429f9f585301f11db87e33b4eb802",
+    "public_source_path": "source/32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1.py",
+    "public_source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "fdf4f62847f7804943ccf4b0f5e17afe5d756007",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/utils.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/utils.py",
+      "source_sha256": "32d33c9e0aa7236a4b41a80bd0a093b479edad19228ded243dcc820a6b532af1",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-e90051c92c6d97f15a2c",
+    "identity": "authentic:click-1e53748f80eb-02",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-02",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-02",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/decorators.py",
+        "qualname": "confirmation_option"
+      },
+      "text": "src/click/decorators.py contains the exact top-level function definition confirmation_option."
+    },
+    "original_claim_sha256": "d78480c7bd773a8739647ce86b09fab3b3be0c9daf263e8b67dea478ae336224",
+    "public_source_path": "source/ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d.py",
+    "public_source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "b8b273185b5e201ff74515cfbae892f254936286",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/decorators.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/decorators.py",
+      "source_sha256": "ec509368c256fa54ffc26de66fa95828029b49dba2fc47a323d48ae0d334551d",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-97aa74864140fa4be270",
+    "identity": "signature-mismatch:click-8c7491d9b0d7-04",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-8c7491d9b0d7-04",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-04",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "incomplete"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "completions_out"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/_bashcomplete.py",
+        "qualname": "add_subcommand_completions"
+      },
+      "text": "The exact definition click/_bashcomplete.py:add_subcommand_completions has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"incomplete\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"completions_out\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "db73fc32e31d7bf270387d9e3e1476d4a7b3f7d39aa42b57e6c4d9aa10d37e15",
+    "public_source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+    "public_source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "e0e739579cbbac9038d8e5dc59e6bef8f673fce3",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_bashcomplete.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/_bashcomplete.py",
+      "source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_8775f56b824ba2ed5a09a278",
+      "old_first_parameter": {
+        "annotation_ast": null,
+        "default_ast": null,
+        "kind": "positional_or_keyword",
+        "name": "ctx"
+      },
+      "operation": "rename_first_parameter",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-62bbc36e988f01facdc1",
+    "identity": "authentic:click-1e53748f80eb-00",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-00",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-00",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "strip_ansi"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition strip_ansi."
+    },
+    "original_claim_sha256": "f0d4c92e445bfd3959fd91eb642c9bf4386a7b82bf1d37a3dd099fc6ca46ce27",
+    "public_source_path": "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py",
+    "public_source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "e55a713028b3dee82103e552f00f624d218192af",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-d2b1ccfc7e13d13b8f2d",
+    "identity": "authentic:click-8c7491d9b0d7-06",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-06",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-06",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value='Press any key to continue ...')",
+              "kind": "positional_or_keyword",
+              "name": "info"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": "Constant(value=False)",
+              "kind": "positional_or_keyword",
+              "name": "err"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/termui.py",
+        "qualname": "pause"
+      },
+      "text": "The exact definition click/termui.py:pause has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":\"Constant(value='Press any key to continue ...')\",\"kind\":\"positional_or_keyword\",\"name\":\"info\"},{\"annotation_ast\":null,\"default_ast\":\"Constant(value=False)\",\"kind\":\"positional_or_keyword\",\"name\":\"err\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "15f3349129bd04461633bb3b591640e4f8a4e54b4a22c4b494f0611ad25f6abd",
+    "public_source_path": "source/f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803.py",
+    "public_source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "9a89afebdece006239314816b895b93d1ecae17e",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/termui.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/termui.py",
+      "source_sha256": "f2fe86b0ff7da609aebeb663c954279d3159f67a6c117864c113f6fb13bdd803",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-d4d3535c4fe15a32739e",
+    "identity": "authentic:click-1c2fc1b0152f-05",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-05",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-05",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cls"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "name"
+            }
+          ],
+          "returns_ast": "Constant(value=None)"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "add_completion_class"
+      },
+      "text": "The exact definition src/click/shell_completion.py:add_completion_class has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Type', ctx=Load()), slice=Name(id='ShellComplete', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cls\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\",\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"name\"}],\"returns_ast\":\"Constant(value=None)\"}."
+    },
+    "original_claim_sha256": "af0ac358ce172b25493d5328502fea91a3f2f4ccfd0a50b9921cd6b85e932253",
+    "public_source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+    "public_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/shell_completion.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-66802ae48c314463e3ca",
+    "identity": "authentic:click-8c7491d9b0d7-04",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-04",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-04",
+      "kind": "signature_equals",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "incomplete"
+            },
+            {
+              "annotation_ast": null,
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "completions_out"
+            }
+          ],
+          "returns_ast": null
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/_bashcomplete.py",
+        "qualname": "add_subcommand_completions"
+      },
+      "text": "The exact definition click/_bashcomplete.py:add_subcommand_completions has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"incomplete\"},{\"annotation_ast\":null,\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"completions_out\"}],\"returns_ast\":null}."
+    },
+    "original_claim_sha256": "db73fc32e31d7bf270387d9e3e1476d4a7b3f7d39aa42b57e6c4d9aa10d37e15",
+    "public_source_path": "source/aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a.py",
+    "public_source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "e0e739579cbbac9038d8e5dc59e6bef8f673fce3",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/_bashcomplete.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/_bashcomplete.py",
+      "source_sha256": "aeab7f40d9a014efb6aa2dda15488ddbed8ef1f6ef722e69f4c37523ba90116a",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-165babea9c1f3185fd3e",
+    "identity": "authentic:click-1e53748f80eb-06",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-06",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-06",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='int', ctx=Load()), Name(id='int', ctx=Load())], ctx=Load()), ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "color"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": "Constant(value=0)",
+              "kind": "positional_or_keyword",
+              "name": "offset"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/termui.py",
+        "qualname": "_interpret_color"
+      },
+      "text": "The exact definition src/click/termui.py:_interpret_color has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='int', ctx=Load()), Name(id='int', ctx=Load())], ctx=Load()), ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"color\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":\"Constant(value=0)\",\"kind\":\"positional_or_keyword\",\"name\":\"offset\"}],\"returns_ast\":\"Name(id='str', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "bec27a68f0e72851e70db0d8312b7993228c0eef93a9e241ff812fcecab02a80",
+    "public_source_path": "source/51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a.py",
+    "public_source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "f3ad4ca9febfcffad2e1dae43f4e84c68212cedd",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/termui.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/termui.py",
+      "source_sha256": "51fb21400eec48edd30155cca6234962d19f31e396d487f7ff0d45493124185a",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-fa56fa6d0d50eeabd960",
+    "identity": "authentic:click-8c7491d9b0d7-00",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-00",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-00",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/testing.py",
+        "qualname": "make_input_stream"
+      },
+      "text": "click/testing.py contains the exact top-level function definition make_input_stream."
+    },
+    "original_claim_sha256": "5b0ab2e8d76b8b4c26b2331353e919aa65ca9c2e41dddd02ce423abe393faafc",
+    "public_source_path": "source/0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db.py",
+    "public_source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "ae36d10144e64f9b2a0227a132dbb80e481f9111",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/testing.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/testing.py",
+      "source_sha256": "0e3b14785341ee27914d97aca77070a29bb07085bc71029594846f50d76963db",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-f795a594f3c16a85b76b",
+    "identity": "signature-mismatch:click-1e53748f80eb-04",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1e53748f80eb-04",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-04",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='BaseCommand', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "cli"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "ctx_args"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "prog_name"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "complete_var"
+            },
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "instruction"
+            }
+          ],
+          "returns_ast": "Name(id='int', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/shell_completion.py",
+        "qualname": "shell_complete"
+      },
+      "text": "The exact definition src/click/shell_completion.py:shell_complete has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='BaseCommand', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"cli\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Attribute(value=Name(id='t', ctx=Load()), attr='Any', ctx=Load())], ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"ctx_args\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"prog_name\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"complete_var\"},{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"instruction\"}],\"returns_ast\":\"Name(id='int', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "f01fef1dde75e43ffc9f87992e1b9cd45293f21b435724ad8249462a6d3fb139",
+    "public_source_path": "source/a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106.py",
+    "public_source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "c17a8e643c6e3bf281819b0116017a97bdf6c997",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/shell_completion.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/shell_completion.py",
+      "source_sha256": "a8ea7f05e0bd7ac10e4992b2bb91bb448c4451a2ec5d45fe9936fb841d6be106",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_19fee5b73e98cf9990334ca9",
+      "old_first_parameter": {
+        "annotation_ast": "Name(id='BaseCommand', ctx=Load())",
+        "default_ast": null,
+        "kind": "positional_or_keyword",
+        "name": "cli"
+      },
+      "operation": "rename_first_parameter",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-42500e4d0e990a7fafe5",
+    "identity": "duplicate:click-1e53748f80eb",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1e53748f80eb-00",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-00",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "strip_ansi"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition strip_ansi."
+    },
+    "original_claim_sha256": "f0d4c92e445bfd3959fd91eb642c9bf4386a7b82bf1d37a3dd099fc6ca46ce27",
+    "public_source_path": "source/fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f.py",
+    "public_source_sha256": "fd4ffea11c8cb6ce3ada12371bca33df4eb241c416ec50ede92a3d579c62a63f",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "e55a713028b3dee82103e552f00f624d218192af",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "split": "development"
+    },
+    "transformation": {
+      "appended_utf8": "\n\ndef strip_ansi(*args, **kwargs):\n    pass\n\n\ndef strip_ansi(*args, **kwargs):\n    pass\n",
+      "expected_verdict": "uncertain",
+      "operation": "append_two_unconditional_definitions_of_subject_name",
+      "reason": "Two appended definitions guarantee a duplicate even without a baseline reference answer.",
+      "source_bytes_changed": true,
+      "type": "duplicate_definition_source_variant"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-149a8b0e0385711225c7",
+    "identity": "authentic:click-8c7491d9b0d7-02",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-8c7491d9b0d7-02",
+    "original_claim": {
+      "claim_id": "click-8c7491d9b0d7-02",
+      "kind": "symbol_exists",
+      "origin_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "click/core.py",
+        "qualname": "fast_exit"
+      },
+      "text": "click/core.py contains the exact top-level function definition fast_exit."
+    },
+    "original_claim_sha256": "6390061c27ad5afdbe41fd85c9f60d743a9932c5f8e042e94c33ea4693e5db0c",
+    "public_source_path": "source/29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d.py",
+    "public_source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+    "source_origin": {
+      "cluster_id": "click-episode-6b4af947f312",
+      "git_blob_object_id": "83581723239580945a05b2615dc69a996aa2a5bb",
+      "group_id": "click-8c7491d9b0d7",
+      "package_evidence_path": "sources/fe4c2abca0515705/132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9/click/core.py",
+      "parent_commit": "132d66ac7d69a2b0e8f218a4cd39e50be3e0bcb9",
+      "repo_id": "click",
+      "repository_path": "click/core.py",
+      "source_sha256": "29572ce677f7639d5b980f0a5387671d55175963b65a8bbb26a07afbb356d76d",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-dac3570a02520e6cee76",
+    "identity": "authentic:click-1c2fc1b0152f-00",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-00",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-00",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_str"
+      },
+      "text": "src/click/utils.py contains the exact top-level function definition make_str."
+    },
+    "original_claim_sha256": "479af4a3b2a93eadcc541da091dbfe031a18248bbc237c6ebc7348ded5caa63e",
+    "public_source_path": "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py",
+    "public_source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "8283788ace64e92ef77e3a7d1ff6aea5fda1854e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-0b4b57db58e52db5eef8",
+    "identity": "signature-mismatch:click-1c2fc1b0152f-04",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1c2fc1b0152f-04",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-04",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [],
+          "returns_ast": "Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdin"
+      },
+      "text": "The exact definition src/click/_compat.py:get_binary_stdin has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[],\"returns_ast\":\"Attribute(value=Name(id='t', ctx=Load()), attr='BinaryIO', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "13a55b9f328ace1e017d0549e5167e65edab0f299e35969168ae93e7d444ca48",
+    "public_source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+    "public_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_b8ca6e06cf008794771e6376",
+      "old_first_parameter": null,
+      "operation": "add_parameter_to_empty_signature",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-b773f7da706ed01a3d5e",
+    "identity": "signature-mismatch:click-1e53748f80eb-05",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1e53748f80eb-05",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-05",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "help"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": "Constant(value=45)",
+              "kind": "positional_or_keyword",
+              "name": "max_length"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_default_short_help"
+      },
+      "text": "The exact definition src/click/utils.py:make_default_short_help has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"help\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":\"Constant(value=45)\",\"kind\":\"positional_or_keyword\",\"name\":\"max_length\"}],\"returns_ast\":\"Name(id='str', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "df70acc32e600b2e257b350f39eafb9e072d7dea13d659ffe181a74e486c1f15",
+    "public_source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+    "public_source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "e9310e548fafeb7e8d10de67f7d13b5fb0fe141e",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/utils.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_parameter_name": "_case_0352818f05d75b1d7a7c406f",
+      "old_first_parameter": {
+        "annotation_ast": "Name(id='str', ctx=Load())",
+        "default_ast": null,
+        "kind": "positional_or_keyword",
+        "name": "help"
+      },
+      "operation": "rename_first_parameter",
+      "qualification": "Any rubric uncertainty is an unexpected control result and stops expansion.",
+      "source_bytes_changed": false,
+      "type": "signature_mismatch"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-3d038f1e676ac720fdc9",
+    "identity": "authentic:click-1c2fc1b0152f-07",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-07",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-07",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='V', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "iterable"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "batch_size"
+            }
+          ],
+          "returns_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='V', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load()), ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/core.py",
+        "qualname": "batch"
+      },
+      "text": "The exact definition src/click/core.py:batch has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='V', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"iterable\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"batch_size\"}],\"returns_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='List', ctx=Load()), slice=Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='V', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load()), ctx=Load())\"}."
+    },
+    "original_claim_sha256": "036779a959c9261b69a1a05898ce371f56d82c73aef4fe8792da87c31f435344",
+    "public_source_path": "source/c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81.py",
+    "public_source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "18431cd1d7620b25dde29f5fcd2b2803393ee796",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/core.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/core.py",
+      "source_sha256": "c04416e1eb69795a61638f16aba9defc694b53ce20228c1f962721cf7b61be81",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-9aea31bd6cefe8771357",
+    "identity": "authentic:click-1c2fc1b0152f-01",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-01",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-01",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "get_binary_stdout"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition get_binary_stdout."
+    },
+    "original_claim_sha256": "b68e197185eb8bd7b884a7fd30574a28195e362e6c2af69cfc7c070f9d62c64e",
+    "public_source_path": "source/2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2.py",
+    "public_source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "766d286bee8e6186341c9e4d5b783fb3390bc16e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_compat.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "2481cb62cec9cf3e0a4fdb7e76ce28e230732e39f00a22502aababfb98b008a2",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-679aa00fdafa7e9a8520",
+    "identity": "duplicate:click-1c2fc1b0152f",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1c2fc1b0152f-00",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-00",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_str"
+      },
+      "text": "src/click/utils.py contains the exact top-level function definition make_str."
+    },
+    "original_claim_sha256": "479af4a3b2a93eadcc541da091dbfe031a18248bbc237c6ebc7348ded5caa63e",
+    "public_source_path": "source/45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1.py",
+    "public_source_sha256": "45f5a8d1e5a3455e13e3da0aa3717a1fcf7b45aabee52e00aa824a160fed85c1",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "8283788ace64e92ef77e3a7d1ff6aea5fda1854e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "split": "development"
+    },
+    "transformation": {
+      "appended_utf8": "\n\ndef make_str(*args, **kwargs):\n    pass\n\n\ndef make_str(*args, **kwargs):\n    pass\n",
+      "expected_verdict": "uncertain",
+      "operation": "append_two_unconditional_definitions_of_subject_name",
+      "reason": "Two appended definitions guarantee a duplicate even without a baseline reference answer.",
+      "source_bytes_changed": true,
+      "type": "duplicate_definition_source_variant"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-478d6725ff1f810fc08e",
+    "identity": "authentic:click-1c2fc1b0152f-06",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1c2fc1b0152f-06",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-06",
+      "kind": "signature_equals",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "generator"
+            },
+            {
+              "annotation_ast": "Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())",
+              "default_ast": "Constant(value=None)",
+              "kind": "positional_or_keyword",
+              "name": "color"
+            }
+          ],
+          "returns_ast": "Constant(value=None)"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_termui_impl.py",
+        "qualname": "pager"
+      },
+      "text": "The exact definition src/click/_termui_impl.py:pager has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"generator\"},{\"annotation_ast\":\"Subscript(value=Attribute(value=Name(id='t', ctx=Load()), attr='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())\",\"default_ast\":\"Constant(value=None)\",\"kind\":\"positional_or_keyword\",\"name\":\"color\"}],\"returns_ast\":\"Constant(value=None)\"}."
+    },
+    "original_claim_sha256": "02303f154ff066a9c664a8af1ae136fe391fa0c78b9a9817630339a17418d2e1",
+    "public_source_path": "source/a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708.py",
+    "public_source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "4b979bcc1edcb33feb9b385156492221d92253dc",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/_termui_impl.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/_termui_impl.py",
+      "source_sha256": "a8ae827f2e26445c6fc44f1dc9af110612e9482f078c5fa5bc173a68dacf7708",
+      "split": "development"
+    },
+    "transformation": null
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-92fac7ba1b0e33c9f130",
+    "identity": "missing:click-1c2fc1b0152f",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1c2fc1b0152f-00",
+    "original_claim": {
+      "claim_id": "click-1c2fc1b0152f-00",
+      "kind": "symbol_exists",
+      "origin_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_str"
+      },
+      "text": "src/click/utils.py contains the exact top-level function definition make_str."
+    },
+    "original_claim_sha256": "479af4a3b2a93eadcc541da091dbfe031a18248bbc237c6ebc7348ded5caa63e",
+    "public_source_path": "source/df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa.py",
+    "public_source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+    "source_origin": {
+      "cluster_id": "click-episode-bba4914a46ab",
+      "git_blob_object_id": "8283788ace64e92ef77e3a7d1ff6aea5fda1854e",
+      "group_id": "click-1c2fc1b0152f",
+      "package_evidence_path": "sources/fe4c2abca0515705/e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2/src/click/utils.py",
+      "parent_commit": "e4aceee8d2bf7fe9461915b0a21c4359ddcb8dc2",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "df70fa13ba681ff9eb281fb1afe5320c45e7c4e702890ab1b912edaea795bfaa",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_qualname": "_case_5e53cdd4c9da3c75de0544d3",
+      "source_bytes_changed": false,
+      "type": "nonexistent_name"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-bf21190da236925a4ce3",
+    "identity": "missing:click-1e53748f80eb",
+    "origin_class": "private_authored_control",
+    "original_candidate_id": "click-1e53748f80eb-00",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-00",
+      "kind": "symbol_exists",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected": true,
+        "type": "symbol_exists"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact syntactic definition identity only.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/_compat.py",
+        "qualname": "strip_ansi"
+      },
+      "text": "src/click/_compat.py contains the exact top-level function definition strip_ansi."
+    },
+    "original_claim_sha256": "f0d4c92e445bfd3959fd91eb642c9bf4386a7b82bf1d37a3dd099fc6ca46ce27",
+    "public_source_path": "source/1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561.py",
+    "public_source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "e55a713028b3dee82103e552f00f624d218192af",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/_compat.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/_compat.py",
+      "source_sha256": "1ac5914366e975d93e27a9a7863e93202aa4cf7b8922049de33c879cfd723561",
+      "split": "development"
+    },
+    "transformation": {
+      "expected_verdict": "contradicted",
+      "fresh_name_absent_from_original_source_bytes": true,
+      "new_qualname": "_case_c0ac466127d73535a4da35b0",
+      "source_bytes_changed": false,
+      "type": "nonexistent_name"
+    }
+  },
+  {
+    "authentic_reference_answer_computed": false,
+    "id": "case-6c9bc5be30c50e49d47e",
+    "identity": "authentic:click-1e53748f80eb-05",
+    "origin_class": "authentic_parent_claim",
+    "original_candidate_id": "click-1e53748f80eb-05",
+    "original_claim": {
+      "claim_id": "click-1e53748f80eb-05",
+      "kind": "signature_equals",
+      "origin_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "predicate": {
+        "expected_signature": {
+          "decorators_ast": [],
+          "is_async": false,
+          "parameters": [
+            {
+              "annotation_ast": "Name(id='str', ctx=Load())",
+              "default_ast": null,
+              "kind": "positional_or_keyword",
+              "name": "help"
+            },
+            {
+              "annotation_ast": "Name(id='int', ctx=Load())",
+              "default_ast": "Constant(value=45)",
+              "kind": "positional_or_keyword",
+              "name": "max_length"
+            }
+          ],
+          "returns_ast": "Name(id='str', ctx=Load())"
+        },
+        "type": "signature_equals"
+      },
+      "repo_id": "click",
+      "schema_version": 1,
+      "scope": "Exact normalized syntax, including defaults, annotations, decorators, and async status.",
+      "subject": {
+        "node_kind": "function",
+        "path": "src/click/utils.py",
+        "qualname": "make_default_short_help"
+      },
+      "text": "The exact definition src/click/utils.py:make_default_short_help has normalized signature {\"decorators_ast\":[],\"is_async\":false,\"parameters\":[{\"annotation_ast\":\"Name(id='str', ctx=Load())\",\"default_ast\":null,\"kind\":\"positional_or_keyword\",\"name\":\"help\"},{\"annotation_ast\":\"Name(id='int', ctx=Load())\",\"default_ast\":\"Constant(value=45)\",\"kind\":\"positional_or_keyword\",\"name\":\"max_length\"}],\"returns_ast\":\"Name(id='str', ctx=Load())\"}."
+    },
+    "original_claim_sha256": "df70acc32e600b2e257b350f39eafb9e072d7dea13d659ffe181a74e486c1f15",
+    "public_source_path": "source/60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108.py",
+    "public_source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+    "source_origin": {
+      "cluster_id": "click-episode-e6be5af8a821",
+      "git_blob_object_id": "e9310e548fafeb7e8d10de67f7d13b5fb0fe141e",
+      "group_id": "click-1e53748f80eb",
+      "package_evidence_path": "sources/fe4c2abca0515705/9c6f032681e38a60ce526335f2abf166191f692d/src/click/utils.py",
+      "parent_commit": "9c6f032681e38a60ce526335f2abf166191f692d",
+      "repo_id": "click",
+      "repository_path": "src/click/utils.py",
+      "source_sha256": "60d1c94584c2fb0aeaa1bd41b6343747f8dfe9c411f153d0146116fe8d62e108",
+      "split": "development"
+    },
+    "transformation": null
+  }
+]
