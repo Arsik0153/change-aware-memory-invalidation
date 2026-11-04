@@ -1,0 +1,88 @@
+{
+  "amendment_path": "examples/packaging_structural_development_v2/amendment.json",
+  "amendment_sha256": "df5630cba7354301de5dee95db361ff5ac01c7240f6413086c82f7ef5f32d022",
+  "boundary_commit": "f58537628042c7f29780b9d33f31597e7fc9d664",
+  "evaluation_eligible": false,
+  "failure_rule": "Preserve failed metadata/result. Do not widen tags, change horizon, replace parents or automatically activate Click fallback.",
+  "frame_binding_path": "reports/research-20261104/packaging-frame-infeasibility-v1/frame-commits.txt",
+  "frame_binding_sha256": "3e944f973fb828f2655b2d4672ce89d6ae927722122752f4cb888c256ecc2b36",
+  "metadata_informed": true,
+  "next_phase_gate": "The exact metadata result and its three-parent allowlist must be committed before a separately sealed parent-only collector can read those parents. Neither this protocol nor its output authorizes child source access.",
+  "original_plan_succeeded": false,
+  "phase": "metadata_only",
+  "protocol_id": "packaging-derived-development-collection-v2",
+  "repo_path": "data/corpora/packaging-development-v1",
+  "repository_acquisition": "Reuse exact no-checkout blob-filtered v1 clone; acquisition is recorded in the sealed infeasibility evidence. No new source reads.",
+  "repository_url": "https://github.com/pypa/packaging.git",
+  "resource_budget": {
+    "AI_input_tokens_max": 384000,
+    "AI_output_tokens_max": 48000,
+    "AI_packet_limit_policy": "Preflight complete-module packet size with a pinned tokenizer; at most64k input and8k output tokens per context. If a packet exceeds this budget, stop before reviewers; do not truncate a source module or replace its claims.",
+    "AI_primary_contexts_max": 6,
+    "ceiling_policy": "A resource stop preserves partial artifacts and failure status. It does not license dropping cases or silently shortening the registered horizon.",
+    "child_reference_calls_including_parent_exclusions": 552,
+    "child_snapshots": 69,
+    "child_validation_calls_max_all_four_variants": 2208,
+    "control_reference_calls": 12,
+    "estimated_engineering_effort_hours": [
+      2,
+      4
+    ],
+    "local_analysis_cpu_ceiling_seconds": 1200,
+    "new_projects": 1,
+    "parent_initialization_validation_calls_max": 96,
+    "parents": 3,
+    "planning_ceiling_not_measurement": true,
+    "raw_storage_ceiling_GiB": 2,
+    "real_parent_reference_calls": 24,
+    "replay_wall_ceiling_minutes": 30,
+    "shared_index_builds": 72,
+    "token_estimate_scope": "o200k_base named research-envelope estimate, excludes harness/system/tool overhead and does not claim actual model context or billing. Responses checked after return against8k estimate."
+  },
+  "review_mode": "two_fresh_AI_plus_reference; six fresh parent reviewer contexts,12 controls; packet seal before any review/reference decisions",
+  "root": "../..",
+  "schema_version": 1,
+  "seal_path": "examples/packaging_structural_development_v2/metadata_seal.json",
+  "selection": {
+    "horizon": 23,
+    "minimum_frame": 72,
+    "minimum_parent_gap": 24,
+    "parents": 3,
+    "positions": "0, (L-24)//2, L-24",
+    "prefix": 12
+  },
+  "source_access": "Only repository/ref and commit identity/ordered parent/timestamp metadata. No source files, file lists, trees, blobs, diffs or commit subjects. A no-checkout blob-filtered clone is allowed; its contents must not be inspected.",
+  "source_configuration": {
+    "eligible_module_prefixes": [
+      "src/packaging/",
+      "packaging/"
+    ],
+    "excluded_path_components": [
+      "tests",
+      "test",
+      "_vendor",
+      "vendor",
+      "__pycache__"
+    ],
+    "extensions": [
+      ".py"
+    ],
+    "max_file_bytes": 2097152,
+    "parser": "Pinned CPython3.12; disclose shared ast infrastructure. Source is never imported or executed.",
+    "proposed_index_source_roots": [
+      "src",
+      "packaging"
+    ],
+    "regular_modes": [
+      "100644",
+      "100755"
+    ],
+    "rules": "No automatic root expansion or file-limit change. Unsupported modes, encodings, syntax or binding hazards are reported. Feasibility and exclusions are recorded before child access."
+  },
+  "split": "development",
+  "start_commit": "b3a5d7d68991c040615d5345bb55f61de53ba176",
+  "status": "sealed",
+  "study_plan_path": "examples/packaging_structural_development_v2/study-plan.json",
+  "study_plan_sha256": "d37a494fa3e6db574a21c26ce424f9eec64f75c8a08aa34ba73b752f9c94b0f8",
+  "token_budget_definition": "Pinned tiktoken0.12.0 o200k_base measures the sealed research envelope (research system/task text, complete sources, cases, rubric and schema) as an explicit packet-size estimate. It does not count provider/harness/tool metadata or establish actual GPT6 context, reasoning-token or billing limits. No source truncation. Each returned primary review JSON is checked against the named8k output estimate before acceptance."
+}

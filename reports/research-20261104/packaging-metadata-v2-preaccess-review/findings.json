@@ -1,0 +1,93 @@
+{
+  "amendment_sha256": "df5630cba7354301de5dee95db361ff5ac01c7240f6413086c82f7ef5f32d022",
+  "authored_flow_checks": {
+    "cases": 18,
+    "committed_input_guard_identical_to_reviewed_v1": true,
+    "existing_output_preserved": true,
+    "failures_preserved": true,
+    "false_adaptive_disclosure_rejected_before_project_access": true,
+    "false_v1_success_rejected_before_project_access": true,
+    "global_gap_discontinuity_rejected": true,
+    "method_hash_mismatch_rejected_before_project_access": true,
+    "returned_frame_mismatch_rejected": true,
+    "unsealed_amendment_frame_or_study_plan_rejected_before_project_access": true
+  },
+  "independent_real_frame_check": {
+    "frame_length": 72,
+    "frame_sha256": "3e944f973fb828f2655b2d4672ce89d6ae927722122752f4cb888c256ecc2b36",
+    "matches_preserved_v1_frame": true,
+    "new_source_tree_blob_diff_reads": 0,
+    "only_project_command": "rev-list --first-parent --reverse pinned25.0, with replacement/lazy-fetch disabled"
+  },
+  "material_findings_open": [],
+  "method_review": {
+    "classification": "metadata-informed, pre-source amendment; not pristine nonadaptive preregistration and not success of v1",
+    "endpoints_source_roots_and_rank_seed_unchanged": true,
+    "no_automatic_fallback": true,
+    "prior_failure_and_frame_pointers_match_actual_bytes": true,
+    "prior_seal_inheritance": {
+      "required_prior_paths": [
+        "examples/packaging_structural_development/inventory/all-parent-groups.json",
+        "examples/packaging_structural_development/inventory/development-claims.json",
+        "examples/packaging_structural_development/inventory/fallback-claims.json",
+        "examples/packaging_structural_development/inventory/fallback-groups.json",
+        "examples/packaging_structural_development/inventory/input-hashes.json",
+        "examples/packaging_structural_development/inventory/selection-trace.json",
+        "examples/packaging_structural_development/inventory/summary.json",
+        "examples/packaging_structural_development/metadata_protocol.json",
+        "examples/packaging_structural_development/metadata_seal.json",
+        "examples/packaging_structural_development/planning-note.ru.md",
+        "examples/packaging_structural_development/remote-ref-query.json",
+        "examples/packaging_structural_development/remote-refs.raw",
+        "examples/packaging_structural_development/study-plan.json",
+        "examples/packaging_structural_development/tokenizer/o200k_base.config.json",
+        "examples/packaging_structural_development/tokenizer/o200k_base.tiktoken",
+        "examples/packaging_structural_development/tokenizer/requirements.txt",
+        "examples/packaging_structural_development/tokenizer/tokenizer-manifest.json",
+        "reports/research-20261104/packaging-frame-infeasibility-v1/acquisition-clone.stderr.log",
+        "reports/research-20261104/packaging-frame-infeasibility-v1/acquisition-clone.stdout.log",
+        "reports/research-20261104/packaging-frame-infeasibility-v1/acquisition-manifest.json",
+        "reports/research-20261104/packaging-frame-infeasibility-v1/frame-commits.txt",
+        "reports/research-20261104/packaging-frame-infeasibility-v1/report.json",
+        "reports/research-20261104/packaging-metadata-preaccess-review-v1/findings.json",
+        "reports/research-20261104/packaging-metadata-preaccess-review-v1/report.json",
+        "reports/research-20261104/packaging-metadata-preaccess-review-v1/review_authored.py.txt",
+        "reports/research-20261104/packaging-topology-v1/manifest.json",
+        "scripts/collect_packaging_topology.py",
+        "tests/test_packaging_topology.py"
+      ],
+      "status": "pending_root_freeze"
+    },
+    "source_or_AI_reference_decisions_before_amendment_declared": 0,
+    "v1_hash_inventory_unchanged": true,
+    "v1_status": "failed and preserved"
+  },
+  "protocol_sha256": "e30a1d5c5e780815eb0124a01500be0de834e072c8bd3e79554221712bec11e5",
+  "reviewed_collector_sha256": "5bd7f92e99e558474bed38da9d91d21566086c933d32c194594b4162d5554b4a",
+  "reviewed_test_sha256": "e1a432c74092ea1b67ae60b55816e1abb6d152a25d2856d6293701b91462f8aa",
+  "sampling": {
+    "all_frame_positions_accounted_for": true,
+    "candidate_observations_all_four_variants": 2208,
+    "candidate_observations_per_variant": 552,
+    "child_positions": 69,
+    "horizon": 23,
+    "parents": [
+      0,
+      24,
+      48
+    ],
+    "prefix": 12,
+    "short_lengths_rejected": 72,
+    "total_unique_snapshots": 72,
+    "valid_lengths_checked": 529
+  },
+  "scope_limits": [
+    "Authored collector-flow tests mock project Git and successful committed input checks. The committed-input guard is structurally identical to the reviewed v1 guard.",
+    "The amendment records zero prior source/AI/reference access. This review checks that record and metadata-only code path, not an independent historical-access attestation.",
+    "Only one permitted real project rev-list command was run by this reviewer. No project source/tree/blob/diff, checkout, clone, fetch, network, AI or reference execution occurred.",
+    "The final v2 seal must include all inherited v1 files, v1 protocol/seal, failed manifest, all infeasibility files, three v2 method files, collector and tests before collection."
+  ],
+  "status": "no_open_material_findings",
+  "study_plan_sha256": "d37a494fa3e6db574a21c26ce424f9eec64f75c8a08aa34ba73b752f9c94b0f8",
+  "tracked_edits": false
+}

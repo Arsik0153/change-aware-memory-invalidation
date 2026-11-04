@@ -1,0 +1,61 @@
+{
+  "AI_or_reference_decisions_before_amendment": 0,
+  "child_sources_read_before_amendment": 0,
+  "decision": "Separate new protocol before any project source inspection; no automatic Click fallback; no alterations to v1 inputs/results.",
+  "frame_binding": {
+    "path": "reports/research-20261104/packaging-frame-infeasibility-v1/frame-commits.txt",
+    "sha256": "3e944f973fb828f2655b2d4672ce89d6ae927722122752f4cb888c256ecc2b36"
+  },
+  "infeasibility_report": {
+    "path": "reports/research-20261104/packaging-frame-infeasibility-v1/report.json",
+    "sha256": "b4f8ea28103ee9171557071ab4d856fe3fd0aa90a1f5559b15acad984a37b7ef"
+  },
+  "kind": "metadata_informed_pre_source_amendment",
+  "new_horizon": 23,
+  "not_claimed": [
+    "success of v1",
+    "pristine nonadaptive preregistration",
+    "outcome-independent project selection across all possible projects",
+    "independent claim observations"
+  ],
+  "observed_frame_length": 72,
+  "original_horizon": 24,
+  "original_plan_succeeded": false,
+  "parent_positions": [
+    0,
+    24,
+    48
+  ],
+  "parent_sources_read_before_amendment": 0,
+  "prefix12_candidate_observations_per_variant": 288,
+  "primary_candidate_observations_per_variant": 552,
+  "prior_failure_manifest": {
+    "path": "reports/research-20261104/packaging-topology-v1/manifest.json",
+    "sha256": "6a73ca0a77d623bdc9b5e8721c08595e6de1864f67bd547bcca16b24f007bf12"
+  },
+  "prior_metadata_protocol": {
+    "path": "examples/packaging_structural_development/metadata_protocol.json",
+    "sha256": "31240e005be50776f376a3930b2ca660dca17de1d3451e8d808b9111e971af59"
+  },
+  "prior_metadata_seal": {
+    "path": "examples/packaging_structural_development/metadata_seal.json",
+    "sha256": "b8efa0eb9ff5f66548af1ca697f5cac9a5e572f31ce0cf80d645a81c199dfa0a"
+  },
+  "reason": "The unchanged23.2-to25.0 first-parent frame has72 positions; the original3disjoint24-successor windows require75. V1 stopped and remains failed. New23-step windows fit exactly without using source or outcome information.",
+  "schema_version": 1,
+  "unchanged": [
+    "repository",
+    "start_commit",
+    "boundary_commit",
+    "source_configuration",
+    "rank_seed",
+    "three_parent_groups",
+    "four_functions_per_parent",
+    "paired_claim_kinds",
+    "six_AI_contexts",
+    "twelve_authored_controls",
+    "reference_v2",
+    "four_production_variants",
+    "12-step_prefix"
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "amendment": {
+    "AI_or_reference_decisions_before_amendment": 0,
+    "child_sources_read_before_amendment": 0,
+    "decision": "Separate new protocol before any project source inspection; no automatic Click fallback; no alterations to v1 inputs/results.",
+    "frame_binding": {
+      "path": "reports/research-20261104/packaging-frame-infeasibility-v1/frame-commits.txt",
+      "sha256": "3e944f973fb828f2655b2d4672ce89d6ae927722122752f4cb888c256ecc2b36"
+    },
+    "infeasibility_report": {
+      "path": "reports/research-20261104/packaging-frame-infeasibility-v1/report.json",
+      "sha256": "b4f8ea28103ee9171557071ab4d856fe3fd0aa90a1f5559b15acad984a37b7ef"
+    },
+    "kind": "metadata_informed_pre_source_amendment",
+    "new_horizon": 23,
+    "not_claimed": [
+      "success of v1",
+      "pristine nonadaptive preregistration",
+      "outcome-independent project selection across all possible projects",
+      "independent claim observations"
+    ],
+    "observed_frame_length": 72,
+    "original_horizon": 24,
+    "original_plan_succeeded": false,
+    "parent_positions": [
+      0,
+      24,
+      48
+    ],
+    "parent_sources_read_before_amendment": 0,
+    "prefix12_candidate_observations_per_variant": 288,
+    "primary_candidate_observations_per_variant": 552,
+    "prior_failure_manifest": {
+      "path": "reports/research-20261104/packaging-topology-v1/manifest.json",
+      "sha256": "6a73ca0a77d623bdc9b5e8721c08595e6de1864f67bd547bcca16b24f007bf12"
+    },
+    "prior_metadata_protocol": {
+      "path": "examples/packaging_structural_development/metadata_protocol.json",
+      "sha256": "31240e005be50776f376a3930b2ca660dca17de1d3451e8d808b9111e971af59"
+    },
+    "prior_metadata_seal": {
+      "path": "examples/packaging_structural_development/metadata_seal.json",
+      "sha256": "b8efa0eb9ff5f66548af1ca697f5cac9a5e572f31ce0cf80d645a81c199dfa0a"
+    },
+    "reason": "The unchanged23.2-to25.0 first-parent frame has72 positions; the original3disjoint24-successor windows require75. V1 stopped and remains failed. New23-step windows fit exactly without using source or outcome information.",
+    "schema_version": 1,
+    "unchanged": [
+      "repository",
+      "start_commit",
+      "boundary_commit",
+      "source_configuration",
+      "rank_seed",
+      "three_parent_groups",
+      "four_functions_per_parent",
+      "paired_claim_kinds",
+      "six_AI_contexts",
+      "twelve_authored_controls",
+      "reference_v2",
+      "four_production_variants",
+      "12-step_prefix"
+    ]
+  },
+  "endpoints": {
+    "comparison": "Use all_validate as within-run production comparison; reference decisions are attached after production selection/state transitions. Also report symbol/file/incomplete provenance assumptions separately.",
+    "dependence": "24 rows are12 function occurrences, potentially repeated functions/modules across three parents. Neither552 observations nor paired existence/signature claims are independent samples.",
+    "no_performance_endpoint": "Selected and actual validation calls, parent/index/reference work are recorded separately. This proposal contains no wall-time speedup benchmark and no new negative-carry optimization.",
+    "primary": "Independent-reference staleness incidence by project, parent group, syntactic claim kind and successor rank. Report unique contradicted claims and distinct first-staleness episodes separately from repeated contradicted observations.",
+    "safety": "False availability only for reference contradicted. Available-unknown, withheld-supported, parent exclusions and zero denominators stay separate. Unknown is never treated as contradiction.",
+    "zero_staleness_rule": "If no contradicted observations occur, report that outcome and a null false-availability-per-contradicted rate. Do not extend until a desired result appears."
+  },
+  "metadata_phase": {
+    "minimum_frame_length": 72,
+    "minimum_parent_gap": 24,
+    "observed_frame_length": 72,
+    "parent_positions_rule": "0, (L-24)//2, L-24",
+    "phase_rule": "Seal metadata acquisition; commit exact topology before parent bytes; seal packets before AI/reference decisions; seal final inputs/driver before child bytes."
+  },
+  "new_project": {
+    "alternate_unverified_project_proposal": "python-jsonschema/jsonschema may be considered only in a separate future proposal. It is not an automatic substitute if packaging fails.",
+    "relation_to_existing_cohort": "A new derived development dataset; not a relabelled part of the original630. Existing Click evidence is already observed historical context, not a fresh blinded arm.",
+    "remote_ref_metadata": {
+      "HEAD_excluded_from_sampling": "ae4946b30f8ae5226e92500722e55618e91f9864",
+      "end_peeled_commit": "f58537628042c7f29780b9d33f31597e7fc9d664",
+      "end_tag": "25.0",
+      "refs": "runs/new-project-metadata-20261104/refs.raw",
+      "source": "runs/new-project-metadata-20261104/metadata.json",
+      "start_peeled_commit": "b3a5d7d68991c040615d5345bb55f61de53ba176",
+      "start_tag": "23.2"
+    },
+    "repo_id_proposal": "packaging",
+    "repository_url_proposal": "https://github.com/pypa/packaging.git",
+    "verification_status": "Remote refs and72-commit first-parent frame verified. No project tree/blob/source read. Roots/function feasibility remain unknown."
+  },
+  "parent_claim_derivation": {
+    "candidate_claims": 24,
+    "claims_per_group": 8,
+    "emission": "Emit one symbol_exists and one full signature_equals claim for each selected function. Keep paired-function dependence explicit.",
+    "function_rank": "SHA256(UTF8(\"20261104-packaging-derived-development-v1\\n\" + parent_oid + \"\\n\" + relative_path + \"\\n\" + qualname)); ascending full hash, then path, then qualname. Take the first four eligible distinct subjects per parent. Do not use child metadata content/outcomes or AI/reference verdicts to rank.",
+    "groups": 3,
+    "insufficient_subject_rule": "Fewer than four eligible subjects at any selected parent stops the proposal. Do not choose another parent or widen roots.",
+    "kind_counts": {
+      "signature_equals": 12,
+      "symbol_exists": 12
+    },
+    "new_claim_id_rule": "<group_id>-f<00..03>-exists or <group_id>-f<00..03>-signature",
+    "new_group_id_rule": "packaging-derived- plus first12 hex characters of exact parent OID",
+    "origin": "new_derived_parent_claim; original_candidate_id=null in cohort metadata. These are generated bounded syntactic claims, not original curated630 claims, human labels or admission records.",
+    "population": "Enumerate the entire allowed parent package first. Record every module and every direct module-level FunctionDef/AsyncFunctionDef with eligibility/exclusion reason. Public and private names are included; class methods, nested/conditional definitions, duplicates, generic type parameters and ambiguous bindings are outside this bounded subject population.",
+    "subjects_per_group": 4,
+    "truth_limit": "Parent-derived expected signatures and an independent reference can share parser errors; deriving expected values is not independent truth. Freeze separate generator/reference implementations and all complete parent-module byte hashes."
+  },
+  "parent_review": {
+    "AI_primary_contexts": 6,
+    "authored_controls": {
+      "duplicate_function_uncertain": 3,
+      "nonexistent_function": 3,
+      "signature_mismatch": 6
+    },
+    "cases_per_context": 12,
+    "control_gate": "All nine authored negatives must be contradicted and all three duplicate controls uncertain by each configured checker/reviewer. Failures stop expansion; no retry until expected answers appear.",
+    "human_credit": 0,
+    "main_admission": "None. Original630 claims, provenance flags, receipts, labels and heldout protocol remain unchanged.",
+    "mode_before_packet_seal": "Root selected two_fresh_AI_plus_reference: two fresh separate AI contexts per parent, six contexts total. This decision is fixed before the packet seal and any reviewer decisions.",
+    "parent_eligibility": "Reference and both fresh AI decisions must be supported. Retain all candidates, disagreements and uncertainty; record exclusions without replacements. At least four of eight eligible claims per group is a preregistered feasibility gate before child access.",
+    "real_cases": 24,
+    "reference": "Independently authored bounded syntactic reference derives facts from full immutable module bytes, never imports CAMI or generator extraction helpers, never executes project source. Shared CPython ast is disclosed.",
+    "review_design": "Two fresh separate AI contexts per parent packet. Hide coordinator answers, private case map, control class, policy output and the other reviewer. Full source can reveal project identity; no claim of project-blinding, training independence or zero historical exposure. Preserve actual model/provider identity.",
+    "total_cases": 36
+  },
+  "phase_boundaries": [
+    {
+      "freeze_before": "commit-topology acquisition beyond saved refs",
+      "phase": 1,
+      "required_artifact": "sealed metadata-only acquisition/selection protocol",
+      "source_access": "none"
+    },
+    {
+      "freeze_before": "first parent-module bytes",
+      "phase": 2,
+      "required_artifact": "committed exact parent topology, rank calculations, three parent OIDs, fixed roots and allowlist",
+      "source_access": "only named parents after root authorization"
+    },
+    {
+      "freeze_before": "AI/reference parent decisions",
+      "phase": 3,
+      "required_artifact": "claim/control packet, rubric, generator/reference implementation and tests, full source-module hashes",
+      "source_access": "only sealed parent packet"
+    },
+    {
+      "freeze_before": "any child source/tree/diff",
+      "phase": 4,
+      "required_artifact": "final claim+AI+reference bindings, exclusions, exact24-step OID lists/full parent lists, production/driver/helper/test source hashes, complete seal",
+      "source_access": "only named parent+child snapshots; side-parent metadata is not source authorization"
+    }
+  ],
+  "prior_study_plan": {
+    "path": "examples/packaging_structural_development/study-plan.json",
+    "sha256": "da475226e12f27efe0dac642605a27994b3dd39757aac19d1477de2cc3c5fb06"
+  },
+  "proposal_id": "packaging-derived-development-v2",
+  "provenance_contract": "Use separate research symbol/file and known-incomplete inputs for these newly derived bounded claims. Full-module scope is an explicit research assumption, not a claim of runtime completeness or closure of any original630 provenance remark. Dependencies are not asserted for the bounded syntactic predicates.",
+  "resource_budget": {
+    "AI_input_tokens_max": 384000,
+    "AI_output_tokens_max": 48000,
+    "AI_packet_limit_policy": "Preflight complete-module packet size with a pinned tokenizer; at most64k input and8k output tokens per context. If a packet exceeds this budget, stop before reviewers; do not truncate a source module or replace its claims.",
+    "AI_primary_contexts_max": 6,
+    "ceiling_policy": "A resource stop preserves partial artifacts and failure status. It does not license dropping cases or silently shortening the registered horizon.",
+    "child_reference_calls_including_parent_exclusions": 552,
+    "child_snapshots": 69,
+    "child_validation_calls_max_all_four_variants": 2208,
+    "control_reference_calls": 12,
+    "estimated_engineering_effort_hours": [
+      2,
+      4
+    ],
+    "local_analysis_cpu_ceiling_seconds": 1200,
+    "new_projects": 1,
+    "parent_initialization_validation_calls_max": 96,
+    "parents": 3,
+    "planning_ceiling_not_measurement": true,
+    "raw_storage_ceiling_GiB": 2,
+    "real_parent_reference_calls": 24,
+    "replay_wall_ceiling_minutes": 30,
+    "shared_index_builds": 72,
+    "token_estimate_scope": "o200k_base named research-envelope estimate, excludes harness/system/tool overhead and does not claim actual model context or billing. Responses checked after return against8k estimate."
+  },
+  "schema_version": 1,
+  "source_configuration": {
+    "eligible_module_prefixes": [
+      "src/packaging/",
+      "packaging/"
+    ],
+    "excluded_path_components": [
+      "tests",
+      "test",
+      "_vendor",
+      "vendor",
+      "__pycache__"
+    ],
+    "extensions": [
+      ".py"
+    ],
+    "max_file_bytes": 2097152,
+    "parser": "Pinned CPython3.12; disclose shared ast infrastructure. Source is never imported or executed.",
+    "proposed_index_source_roots": [
+      "src",
+      "packaging"
+    ],
+    "regular_modes": [
+      "100644",
+      "100755"
+    ],
+    "rules": "No automatic root expansion or file-limit change. Unsupported modes, encodings, syntax or binding hazards are reported. Feasibility and exclusions are recorded before child access."
+  },
+  "status": "metadata_informed_before_source_access",
+  "successor_sampling": {
+    "candidate_observations_per_variant": 552,
+    "no_posthoc_replacement": "No skipped merge, parse failure, weak staleness result, excluded claim, alternative branch, longer horizon or replacement project in this run. No further Click tail is triggered by a zero-contradiction result.",
+    "prefix_candidate_observations_per_variant": 288,
+    "preregistered_prefix_table": 12,
+    "primary_horizon": 23,
+    "registered_negative_carry_variant_included": false,
+    "rule": "Exactly the next23 first-parent successors per frozen parent, including merges; fullorderedparent lists. Fullsnapshots of exactly72named parent/child IDs authorized only by final replay seal; side-parent trees excluded. Index/claim roots remainfixed.",
+    "seal_before_child_source": [
+      "exact candidate claims and source hashes",
+      "complete eligible/excluded parent decisions",
+      "all exact successor OIDs and full parent lists",
+      "new research provenance inputs and explicit scope assumptions",
+      "runner/reference/production source and focused authored-test hashes",
+      "protocol and complete byte inventory"
+    ],
+    "shared_parent_and_child_snapshots": 72,
+    "total_candidate_policy_observations": 2208,
+    "transitions": 69,
+    "variant_ids": [
+      "symbol_anchor",
+      "file_anchor",
+      "known_incomplete",
+      "all_validate"
+    ]
+  }
+}

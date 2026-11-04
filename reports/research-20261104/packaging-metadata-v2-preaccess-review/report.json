@@ -1,0 +1,154 @@
+{
+  "authored_flow_cases": [
+    {
+      "case": "good72",
+      "error": null,
+      "existing_output_unchanged_and_no_commands": true,
+      "finished_manifest_preserved": true,
+      "project_command_count": 149,
+      "status": "complete"
+    },
+    {
+      "case": "good100",
+      "error": null,
+      "existing_output_unchanged_and_no_commands": true,
+      "finished_manifest_preserved": true,
+      "project_command_count": 205,
+      "status": "complete"
+    },
+    {
+      "case": "bad-seal",
+      "error": "ValueError: protocol hash mismatch",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "dirty-input",
+      "error": "ValueError: collection inputs must be committed before metadata access",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "uncommitted-input",
+      "error": "ValueError: authored uncommitted input",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "changed-selection",
+      "error": "ValueError: unsupported selection rule; do not widen a failed frame",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "wrong-origin",
+      "error": "ValueError: unexpected repository identity",
+      "finished_manifest_preserved": true,
+      "project_command_count": 1,
+      "status": "failed"
+    },
+    {
+      "case": "wrong-head",
+      "error": "ValueError: repository HEAD must equal pinned25.0 boundary",
+      "finished_manifest_preserved": true,
+      "project_command_count": 2,
+      "status": "failed"
+    },
+    {
+      "case": "missing-start",
+      "error": "ValueError: 23.2 start is not on25.0 first-parent ancestry",
+      "finished_manifest_preserved": true,
+      "project_command_count": 5,
+      "status": "failed"
+    },
+    {
+      "case": "short71",
+      "error": "ValueError: requires at least72 distinct first-parent positions",
+      "finished_manifest_preserved": true,
+      "project_command_count": 5,
+      "status": "failed"
+    },
+    {
+      "case": "gap-discontinuity",
+      "error": "ValueError: frame first-parent discontinuity",
+      "finished_manifest_preserved": true,
+      "project_command_count": 66,
+      "status": "failed"
+    },
+    {
+      "case": "not-metadata-informed",
+      "error": "ValueError: v2 must disclose the failed v1 and metadata-informed amendment",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "claims-v1-success",
+      "error": "ValueError: v2 must disclose the failed v1 and metadata-informed amendment",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "unsealed-amendment",
+      "error": "ValueError: unsealed v2 method binding: amendment",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "unsealed-frame",
+      "error": "ValueError: unsealed v2 method binding: frame_binding",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "unsealed-study-plan",
+      "error": "ValueError: unsealed v2 method binding: study_plan",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "wrong-method-hash",
+      "error": "ValueError: unsealed v2 method binding: amendment",
+      "finished_manifest_preserved": true,
+      "project_command_count": 0,
+      "status": "failed"
+    },
+    {
+      "case": "changed-bound-frame",
+      "error": "ValueError: v2 frame differs from the preserved72-position feasibility evidence",
+      "finished_manifest_preserved": true,
+      "project_command_count": 5,
+      "status": "failed"
+    }
+  ],
+  "checks": [
+    {
+      "check": "every_frame_length_72_through_600",
+      "lengths": 529,
+      "passed": true
+    },
+    {
+      "check": "every_short_frame_length_0_through_71_rejected",
+      "lengths": 72,
+      "passed": true
+    },
+    {
+      "check": "committed_input_guard_identical_to_reviewed_v1",
+      "new_Git_calls": 0,
+      "passed": true
+    }
+  ],
+  "committed_guard_mocked_only_for_authored_flow": true,
+  "reviewed_collector_sha256": "5bd7f92e99e558474bed38da9d91d21566086c933d32c194594b4162d5554b4a",
+  "reviewed_test_sha256": "e1a432c74092ea1b67ae60b55816e1abb6d152a25d2856d6293701b91462f8aa",
+  "scope": "Only source infrastructure review and authored mock project metadata. The unchanged committed-byte guard is compared with reviewed v1 source. No packaging repository, project source/tree/diff, clone, network, or real project Git command in this harness.",
+  "status": "pass"
+}
