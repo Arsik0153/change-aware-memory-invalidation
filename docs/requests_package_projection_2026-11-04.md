@@ -65,3 +65,25 @@ Git-репозитории по путям frozen plan, Docker и уже уст�
 Raw run: `runs/requests-projection-20261104-v1`.
 Компактные manifests, observations, summary и отдельные файлы ранее заблокированного
 parent: `reports/research-20261104/requests-projection-v1/`.
+
+## Повторная проверка без Docker
+
+```bash
+.venv/bin/python scripts/audit_requests_projection.py \
+  --run runs/requests-projection-20261104-v1 \
+  --out reports/requests-projection-audit-NEW.json
+```
+
+Этот отдельный verifier использует только стандартную библиотеку и Git. Он
+сверяет полный состав parent tree, включения/исключения проекции, hashes исходников,
+claim identity, frozen probe, Python version, pytest node ID и setup/call/teardown
+в каждом сыром stdout с summary. Он ограничен завершённым успешным диагностическим
+прогоном и не предназначен для оценки произвольных failures. Требуются исходные
+candidate files и локальный Git; контейнеры повторно не запускаются.
+
+Проверены четыре отрицательных контроля: изменение payload, удаление записи
+из дерева, подмена claim ID и изменение exit_code в stdout. Последние три случая
+отклонены даже после пересчёта затронутых artifact hashes. Python с отключёнными
+assertions (`-O`) явно отклоняется до создания отчёта. Финальный результат и
+контроли сохранены рядом с остальными свидетельствами. Это проверка согласованности
+артефактов, а не независимое удостоверение авторства или факта исполнения.
