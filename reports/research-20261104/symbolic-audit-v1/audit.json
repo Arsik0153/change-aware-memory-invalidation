@@ -1,0 +1,226 @@
+{
+  "status": "passed",
+  "artifact_hashes_verified": 57,
+  "sat_transitions_evaluated": 12,
+  "unsat_proof_objects_present": 6,
+  "proof_kernel_checked": false,
+  "models": [
+    {
+      "id": "initial_invariant.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 2,
+        "b0": 0,
+        "t0": true,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 1,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 1
+      }
+    },
+    {
+      "id": "transition_invariant.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 3,
+        "b0": 1,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 1,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 2
+      }
+    },
+    {
+      "id": "false_availability_requires_skip.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 3,
+        "b0": 1,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 1,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 2
+      }
+    },
+    {
+      "id": "unsafe_rank_increases.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 3,
+        "b0": 1,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 1,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 2
+      }
+    },
+    {
+      "id": "exact_no_false_withholding.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 3,
+        "b0": 1,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": true,
+        "v": 1,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 2
+      }
+    },
+    {
+      "id": "tight_carry_template.premises",
+      "kind": "nonvacuity",
+      "values": {
+        "K": 3,
+        "b0": 1,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 1,
+        "changed": false,
+        "step": 2,
+        "selected": false,
+        "a1": true,
+        "b1": 2
+      }
+    },
+    {
+      "id": "incomplete_can_withhold",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 0,
+        "t0": true,
+        "a0": true,
+        "hint": true,
+        "t1": true,
+        "v": 2,
+        "changed": false,
+        "step": 0,
+        "selected": true,
+        "a1": false,
+        "b1": 0
+      }
+    },
+    {
+      "id": "false_positive_supported",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 3,
+        "t0": true,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 0,
+        "changed": false,
+        "step": 0,
+        "selected": true,
+        "a1": true,
+        "b1": 0
+      }
+    },
+    {
+      "id": "carry_on_insufficient",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 3,
+        "t0": true,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 2,
+        "changed": false,
+        "step": 0,
+        "selected": true,
+        "a1": true,
+        "b1": 0
+      }
+    },
+    {
+      "id": "deadline_off_by_one",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 3,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 0,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 4
+      }
+    },
+    {
+      "id": "reset_on_change",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 2,
+        "t0": false,
+        "a0": true,
+        "hint": false,
+        "t1": false,
+        "v": 0,
+        "changed": true,
+        "step": 0,
+        "selected": false,
+        "a1": true,
+        "b1": 1
+      }
+    },
+    {
+      "id": "missing_unavailable_retry",
+      "kind": "witness",
+      "values": {
+        "K": 4,
+        "b0": 0,
+        "t0": false,
+        "a0": false,
+        "hint": false,
+        "t1": true,
+        "v": 0,
+        "changed": false,
+        "step": 0,
+        "selected": false,
+        "a1": false,
+        "b1": 1
+      }
+    }
+  ],
+  "auditor_sha256": "54195e4b3f4b1b8983f8ff8a0e5783e419995be9bae5fb0f25a24d1eb1d7b206"
+}
