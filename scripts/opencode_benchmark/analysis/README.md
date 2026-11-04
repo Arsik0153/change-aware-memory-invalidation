@@ -1,11 +1,11 @@
 # Read-only independent study aggregator
 
-Implementation uses only Python's standard library and does not import the controller, harness or CAMI. It was verified only against authored synthetic records. It makes no model calls and does not load task source, candidate source, heldout outcomes, or private session state.
+Implementation uses only Python's standard library and does not import the controller, harness or CAMI. Verification includes authored controls and separately preserved development-run analyses. It makes no model calls and does not load task source, candidate source, heldout outcomes, or private session state.
 
 Install `aggregate_study.py`, `aggregate_metrics.py` and `supported_rules.json` together. The JSON file freezes the independently implemented success rule and cost/token semantics from `reports/opencode-study-design-20261104/protocol.json`. A different success rule is rejected rather than silently interpreted. Runtime image/token-limit revisions remain identified by each input study SHA; attempts from different versions are never pooled.
 
 ```sh
-.venv/bin/python runs/opencode-study-analysis-development-20261104/aggregate_study.py \
+.venv/bin/python scripts/opencode_benchmark/analysis/aggregate_study.py \
   --run runs/ONE_FROZEN_STUDY_VERSION \
   --protocol reports/opencode-study-design-20261104/protocol.json \
   --study-sha256 EXACT_FROZEN_STUDY_SHA \
@@ -35,9 +35,9 @@ Outputs:
 ## Authored verification
 
 ```sh
-.venv/bin/python -m unittest discover -s runs/opencode-study-analysis-development-20261104 -p test_aggregate.py -v
-.venv/bin/ruff check runs/opencode-study-analysis-development-20261104/*.py
-.venv/bin/python runs/opencode-study-analysis-development-20261104/verify_authored.py \
+.venv/bin/python -m unittest discover -s scripts/opencode_benchmark/analysis -p test_aggregate.py -v
+.venv/bin/ruff check scripts/opencode_benchmark/analysis/*.py
+.venv/bin/python scripts/opencode_benchmark/analysis/verify_authored.py \
   --out runs/opencode-study-analysis-development-20261104/NEW_AUTHORED_EVIDENCE
 ```
 
@@ -45,7 +45,7 @@ Fourteen controls cover complete wins, paid failures, missing/partial telemetry,
 
 ## Timing-caveat extension (analysis v2)
 
-This is a separate staging copy. Earlier analysis source, all measured runs and installed/frozen benchmark modules remain unchanged. Verification used only quick authored unit checks, with no model/auth calls, Docker, task source or heldout outcome access.
+This extension is installed in the analysis tools. Earlier analysis evidence, measured runs and frozen benchmark modules remain unchanged. Verification used only quick authored unit checks, with no model/auth calls, Docker, task source or heldout outcome access.
 
 Add `--timing-caveats PATH.json` to the same CLI. The file uses this shape:
 
@@ -67,6 +67,6 @@ The report retains the full caveat input path/SHA, normalized entries and eviden
 
 If any trial is affected, `primary_metric_eligibility.charged_wall` is false and charged-wall cannot appear in `winning_metrics_satisfying_all_six_pairs`. This applies to the entire wall metric; no selective trial removal or retry occurs. `primary_metric_eligibility.token_work` continues to depend on the original all36 operational/quality/complete-telemetry gate. A valid token-work win can still satisfy all six comparisons. CSV pairs include a `primary_metric_eligible` column so raw faster timings cannot be mistaken for an eligible time claim.
 
-`timing-caveats-v3-example.json` stages the known v3 `r1-plain-s1` overlap declaration, referencing only the authorized timing metadata and its full file hash. Root should add its frozen study SHA before freezing a run-specific declaration. Supplying known caveats is the caller's responsibility; omission is not evidence of timing isolation. No actual study aggregation was performed here.
+The v3 run uses a study-bound `timing-caveats.json` for the known `r1-plain-s1` overlap. Its publication is in `reports/opencode-study-analysis-v2-20261104/`, together with an actual partial development analysis. Supplying known caveats is the caller's responsibility; omission is not evidence of timing isolation.
 
 Nineteen authored checks pass. The five new checks cover wall-only false-win prevention, preserving a valid token win and unchanged raw pairs, unknown IDs, evidence-hash mismatch, and declared hash-only provenance. See `unit-final.json` and `ruff-final.json`.

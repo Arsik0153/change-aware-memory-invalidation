@@ -1,0 +1,2320 @@
+{
+  "claim_scope": "Development/synthetic application of frozen criterion; not a final heldout success claim.",
+  "externally_expected_study_sha_verified": true,
+  "integrity": {
+    "active_trial_payloads_read": false,
+    "private_state_read": false,
+    "terminal_artifact_hashes_verified": 2686,
+    "terminal_sha256": {
+      "r1-cami-s1": "f24fe58a91d74136215eaf1ba94bcf0c1ca36864c503554880220564e62d0767",
+      "r1-cami-s2": "abe6fbd25f5f1ce8ace7853aa99930941d5f97e57402e5eca0dfdfa446b1fe55",
+      "r1-cami-s3": "13cfa400f5350fd4eca30ff1f4e3c8faf41909c42b59cf85101ebc333502229d",
+      "r1-cami-s4": "1894cd40a4f6dd99998074c807566dd1e00333d9c5cbc60ccaf95ffee59b555c",
+      "r1-plain-s1": "f25c2e3442666844362b9aaa25d8ab45db79bd453bdd7f273eda68df3a42620d",
+      "r1-plain-s2": "16b69d6560641253d0b2ff329cdae1e9684ef0cefa7a26deb8e3ba6ed8d8289f",
+      "r1-plain-s3": "8548f01ea3164a375a3315535d9a13f8e5206f975b4e42ed3c26190b16890762",
+      "r1-plain-s4": "2271d8ba84a063dbb58b4e756285c5bef1817d86038c0d93bd9441ca3d76bbd2",
+      "r1-static-s1": "c5378756be7544dfc6a9ff51860d97c990c3a4808736adc72713917a74c28bc9",
+      "r1-static-s2": "768ec4949020ac58afbaa2b7ebb07c21e22787093af566a28f02488ada389aeb",
+      "r1-static-s3": "a698cab8d8ed09f47541f37cf5c6258e4f6b04af3aae82c29c0f4459f9f7396a",
+      "r1-static-s4": "1bea736f39be09bb00474fdd252c0e6b28ba42ba4a386bf4c6be5783714d3102"
+    }
+  },
+  "limits": [
+    "One frozen version only; no retry or cross-version pooling.",
+    "Normalized counters are resource proxies, not bills. Client-normalized zero cannot prove raw-provider zero; provider missingness may be unrecoverable.",
+    "Input/cache.read/cache.write/output/reasoning are disjoint normalized counters; token work excludes cached reads but retains them separately.",
+    "Session totals and assistant-step sums are never added. Resource component spans remain nested; charged wall is used once, with construction included.",
+    "Final ledger hashing/publication is controller bookkeeping outside its operational timer; fixture/export/fixed grading are separate infrastructure.",
+    "Three dependent four-stage blocks per arm, only two task instances; no population, causal, contamination-free or billing claim."
+  ],
+  "protocol_sha256": "a95875de6d5fc802a1e604a2e79c888a450292da9584b9031af632398c9418d6",
+  "reported_token_budget": 1000000,
+  "run": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-20261104",
+  "runtime_image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "schema_version": 1,
+  "study_kind": "development",
+  "study_sha256": "de6f5afda7b3d22f404dae76276106308d24d6829b2d8217b2e5adc33e62fd65",
+  "summary": {
+    "all_primary_metrics_complete": false,
+    "all_trials_operational_quality_pass": false,
+    "all_trials_terminal": false,
+    "blocks": [
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 613.6474432575051,
+          "total": 613.6474432575051,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [
+          "r1-plain-s1"
+        ],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 118180,
+          "total": 118180,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 841472,
+            "total": 841472
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 97011,
+            "total": 97011
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13914,
+            "total": 13914
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 7255,
+            "total": 7255
+          }
+        },
+        "trials": [
+          "r1-plain-s1",
+          "r1-plain-s2",
+          "r1-plain-s3",
+          "r1-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "static",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 591.0324212659616,
+          "total": 591.0324212659616,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 127112,
+          "total": 127112,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 1034368,
+            "total": 1034368
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 107034,
+            "total": 107034
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 14194,
+            "total": 14194
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 5884,
+            "total": 5884
+          }
+        },
+        "trials": [
+          "r1-static-s1",
+          "r1-static-s2",
+          "r1-static-s3",
+          "r1-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 582.3406511310022,
+          "total": 582.3406511310022,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 123409,
+          "total": 123409,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 952064,
+            "total": 952064
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 103564,
+            "total": 103564
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13705,
+            "total": 13705
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6140,
+            "total": 6140
+          }
+        },
+        "trials": [
+          "r1-cami-s1",
+          "r1-cami-s2",
+          "r1-cami-s3",
+          "r1-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-plain-s1",
+            "r2-plain-s2",
+            "r2-plain-s3",
+            "r2-plain-s4"
+          ]
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-plain-s1",
+            "r2-plain-s2",
+            "r2-plain-s3",
+            "r2-plain-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-plain-s1",
+          "r2-plain-s2",
+          "r2-plain-s3",
+          "r2-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-static-s1",
+            "r2-static-s2",
+            "r2-static-s3",
+            "r2-static-s4"
+          ]
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-static-s1",
+            "r2-static-s2",
+            "r2-static-s3",
+            "r2-static-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-static-s1",
+          "r2-static-s2",
+          "r2-static-s3",
+          "r2-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-cami-s1",
+            "r2-cami-s2",
+            "r2-cami-s3",
+            "r2-cami-s4"
+          ]
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-cami-s1",
+            "r2-cami-s2",
+            "r2-cami-s3",
+            "r2-cami-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-cami-s1",
+          "r2-cami-s2",
+          "r2-cami-s3",
+          "r2-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-plain-s1",
+            "r3-plain-s2",
+            "r3-plain-s3",
+            "r3-plain-s4"
+          ]
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-plain-s1",
+            "r3-plain-s2",
+            "r3-plain-s3",
+            "r3-plain-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-plain-s1",
+          "r3-plain-s2",
+          "r3-plain-s3",
+          "r3-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-static-s1",
+            "r3-static-s2",
+            "r3-static-s3",
+            "r3-static-s4"
+          ]
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-static-s1",
+            "r3-static-s2",
+            "r3-static-s3",
+            "r3-static-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-static-s1",
+          "r3-static-s2",
+          "r3-static-s3",
+          "r3-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-cami-s1",
+            "r3-cami-s2",
+            "r3-cami-s3",
+            "r3-cami-s4"
+          ]
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-cami-s1",
+            "r3-cami-s2",
+            "r3-cami-s3",
+            "r3-cami-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-cami-s1",
+          "r3-cami-s2",
+          "r3-cami-s3",
+          "r3-cami-s4"
+        ]
+      }
+    ],
+    "cami_quality_rule_met": false,
+    "charged_wall_disqualified_by_timing_caveats": true,
+    "descriptive_block_statistics": {
+      "cami": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 582.3406511310022,
+          "median": 582.3406511310022,
+          "min": 582.3406511310022
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 123409,
+          "median": 123409,
+          "min": 123409
+        }
+      },
+      "plain": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 613.6474432575051,
+          "median": 613.6474432575051,
+          "min": 613.6474432575051
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 118180,
+          "median": 118180,
+          "min": 118180
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 591.0324212659616,
+          "median": 591.0324212659616,
+          "min": 591.0324212659616
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 1,
+          "max": 127112,
+          "median": 127112,
+          "min": 127112
+        }
+      }
+    },
+    "descriptive_paired_statistics": {
+      "plain": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": -31.30679212650284,
+            "median": -31.30679212650284,
+            "min": -31.30679212650284
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": 0.9489824450985848,
+            "median": 0.9489824450985848,
+            "min": 0.9489824450985848
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": 5229,
+            "median": 5229,
+            "min": 5229
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": 1.044246065324082,
+            "median": 1.044246065324082,
+            "min": 1.044246065324082
+          }
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": -8.69177013495937,
+            "median": -8.69177013495937,
+            "min": -8.69177013495937
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": 0.9852939198896364,
+            "median": 0.9852939198896364,
+            "min": 0.9852939198896364
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": -3703,
+            "median": -3703,
+            "min": -3703
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 1,
+            "max": 0.9708682107118132,
+            "median": 0.9708682107118132,
+            "min": 0.9708682107118132
+          }
+        }
+      }
+    },
+    "excluded_trial_ids": [],
+    "expected_trials": 36,
+    "failure_or_missing_trials": [
+      "r2-static-s1",
+      "r2-cami-s1",
+      "r2-plain-s1",
+      "r2-cami-s2",
+      "r2-plain-s2",
+      "r2-static-s2",
+      "r2-plain-s3",
+      "r2-static-s3",
+      "r2-cami-s3",
+      "r2-static-s4",
+      "r2-cami-s4",
+      "r2-plain-s4",
+      "r3-cami-s1",
+      "r3-plain-s1",
+      "r3-static-s1",
+      "r3-plain-s2",
+      "r3-static-s2",
+      "r3-cami-s2",
+      "r3-static-s3",
+      "r3-cami-s3",
+      "r3-plain-s3",
+      "r3-cami-s4",
+      "r3-plain-s4",
+      "r3-static-s4"
+    ],
+    "incomplete_study": true,
+    "paired_comparisons": [
+      {
+        "charged_wall": {
+          "cami": 582.3406511310022,
+          "comparator": 613.6474432575051,
+          "delta_cami_minus_comparator": -31.30679212650284,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9489824450985848,
+          "strictly_lower": true
+        },
+        "comparator": "plain",
+        "repetition": 1,
+        "token_work": {
+          "cami": 123409,
+          "comparator": 118180,
+          "delta_cami_minus_comparator": 5229,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.044246065324082,
+          "strictly_lower": false
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 582.3406511310022,
+          "comparator": 591.0324212659616,
+          "delta_cami_minus_comparator": -8.69177013495937,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9852939198896364,
+          "strictly_lower": true
+        },
+        "comparator": "static",
+        "repetition": 1,
+        "token_work": {
+          "cami": 123409,
+          "comparator": 127112,
+          "delta_cami_minus_comparator": -3703,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9708682107118132,
+          "strictly_lower": true
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "plain",
+        "repetition": 2,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "static",
+        "repetition": 2,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "plain",
+        "repetition": 3,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "static",
+        "repetition": 3,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      }
+    ],
+    "primary_efficiency_eligible": false,
+    "primary_metric_eligibility": {
+      "charged_wall": false,
+      "token_work": false
+    },
+    "primary_superiority": "not_established",
+    "study_status": "incomplete",
+    "terminal_trials": 12,
+    "timing_caveat_trial_ids": [
+      "r1-plain-s1"
+    ],
+    "unknown_measurement_trials": [
+      "r2-static-s1",
+      "r2-cami-s1",
+      "r2-plain-s1",
+      "r2-cami-s2",
+      "r2-plain-s2",
+      "r2-static-s2",
+      "r2-plain-s3",
+      "r2-static-s3",
+      "r2-cami-s3",
+      "r2-static-s4",
+      "r2-cami-s4",
+      "r2-plain-s4",
+      "r3-cami-s1",
+      "r3-plain-s1",
+      "r3-static-s1",
+      "r3-plain-s2",
+      "r3-static-s2",
+      "r3-cami-s2",
+      "r3-static-s3",
+      "r3-cami-s3",
+      "r3-plain-s3",
+      "r3-cami-s4",
+      "r3-plain-s4",
+      "r3-static-s4"
+    ],
+    "winning_metrics_satisfying_all_six_pairs": []
+  },
+  "supported_rules_sha256": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4",
+  "timing_caveats": {
+    "affected_trial_ids": [
+      "r1-plain-s1"
+    ],
+    "entries": [
+      {
+        "evidence_path": "/root/apps/change-aware-memory-invalidation/runs/opencode-heldout-runtime-preflight-20261104/phase-timing-final.json",
+        "evidence_sha256": "858c17754e8efd7d169da2f82b198e3b651507904822be2496ad52b9a22b91e2",
+        "evidence_verification": "file_hash_verified",
+        "reason": "Known concurrent heldout evaluator infrastructure: four early phases overlapped this v3 trial on the 2 CPU host. Retain every observation; disqualify charged-wall superiority for the study.",
+        "trial_ids": [
+          "r1-plain-s1"
+        ]
+      }
+    ],
+    "provided": true,
+    "source_path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-20261104/timing-caveats.json",
+    "source_sha256": "d3d1bb44685287971e3a47dfe59848da05f85983ec5db8778e8acf165bea52e8",
+    "trials_excluded": []
+  },
+  "trials": [
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 222,
+      "charged_wall_seconds": 215.83170697977766,
+      "failures": [],
+      "id": "r1-plain-s1",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 215.83170697977766,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.87176829,
+        "controller_total_host_wall_seconds": 221.3774990120437,
+        "guard_and_orchestration_host_wall_seconds": 0.45126766874454916,
+        "host_child_cpu_seconds": 2.326252,
+        "infrastructure_host_wall_seconds": 5.545792032266036,
+        "session_cgroup": {
+          "cpu_seconds": 17.374406,
+          "peak_memory_bytes": 300515328,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 17475212\nuser_usec 14950399\nsystem_usec 2524813\ncore_sched.force_idle_usec 0\nnr_periods 1925\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "50405376\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "300515328\n"
+          }
+        },
+        "session_host_wall_seconds": 215.38043931103311
+      },
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "f25c2e3442666844362b9aaa25d8ab45db79bd453bdd7f273eda68df3a42620d",
+      "timing_caveat": true,
+      "token_work": 30914,
+      "tokens": {
+        "cache_read": 269184,
+        "cache_write": 0,
+        "input": 23249,
+        "output": 4747,
+        "reasoning": 2918
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 230,
+      "charged_wall_seconds": 181.76519137900323,
+      "failures": [],
+      "id": "r1-static-s1",
+      "memory_bytes_after": 870159,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 181.76519137900323,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 0.371865,
+          "peak_memory_bytes": 28266496,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 456735\nuser_usec 344278\nsystem_usec 112457\ncore_sched.force_idle_usec 0\nnr_periods 6\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "9932800",
+            "memory.max": "2147483648",
+            "memory.peak": "28266496"
+          }
+        },
+        "construction_host_wall_seconds": 0.8319555330090225,
+        "controller_self_cpu_seconds": 0.7803951199999999,
+        "controller_total_host_wall_seconds": 184.8469621508848,
+        "guard_and_orchestration_host_wall_seconds": 0.4702301360666752,
+        "host_child_cpu_seconds": 2.294497,
+        "infrastructure_host_wall_seconds": 3.0817707718815655,
+        "session_cgroup": {
+          "cpu_seconds": 16.090606,
+          "peak_memory_bytes": 289316864,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16174558\nuser_usec 13912453\nsystem_usec 2262105\ncore_sched.force_idle_usec 0\nnr_periods 1631\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "32538624\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289316864\n"
+          }
+        },
+        "session_host_wall_seconds": 180.46300570992753
+      },
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "c5378756be7544dfc6a9ff51860d97c990c3a4808736adc72713917a74c28bc9",
+      "timing_caveat": false,
+      "token_work": 34010,
+      "tokens": {
+        "cache_read": 314496,
+        "cache_write": 0,
+        "input": 27428,
+        "output": 4874,
+        "reasoning": 1708
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 230,
+      "charged_wall_seconds": 196.7943050537724,
+      "failures": [],
+      "id": "r1-cami-s1",
+      "memory_bytes_after": 14521690,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 196.7943050537724,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 3.146935,
+          "peak_memory_bytes": 156839936,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 3239009\nuser_usec 2729536\nsystem_usec 509473\ncore_sched.force_idle_usec 0\nnr_periods 35\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "30810112",
+            "memory.max": "2147483648",
+            "memory.peak": "156839936"
+          }
+        },
+        "construction_host_wall_seconds": 3.8296548291109502,
+        "controller_self_cpu_seconds": 0.8278132300000001,
+        "controller_total_host_wall_seconds": 199.9854231600184,
+        "guard_and_orchestration_host_wall_seconds": 0.5049752504564822,
+        "host_child_cpu_seconds": 2.366294,
+        "infrastructure_host_wall_seconds": 3.1911181062459946,
+        "session_cgroup": {
+          "cpu_seconds": 18.101964,
+          "peak_memory_bytes": 398667776,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 18190165\nuser_usec 15551612\nsystem_usec 2638553\ncore_sched.force_idle_usec 0\nnr_periods 1735\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "64937984\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "398667776\n"
+          }
+        },
+        "session_host_wall_seconds": 192.45967497420497
+      },
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "f24fe58a91d74136215eaf1ba94bcf0c1ca36864c503554880220564e62d0767",
+      "timing_caveat": false,
+      "token_work": 34097,
+      "tokens": {
+        "cache_read": 277120,
+        "cache_write": 0,
+        "input": 27255,
+        "output": 4468,
+        "reasoning": 2374
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 184.64423046121374,
+      "failures": [],
+      "id": "r1-static-s2",
+      "memory_bytes_after": 870159,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 184.64423046121374,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8538783799999999,
+        "controller_total_host_wall_seconds": 187.7427928680554,
+        "guard_and_orchestration_host_wall_seconds": 0.48052510037086904,
+        "host_child_cpu_seconds": 2.1450649999999998,
+        "infrastructure_host_wall_seconds": 3.0985624068416655,
+        "session_cgroup": {
+          "cpu_seconds": 15.799989,
+          "peak_memory_bytes": 289341440,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15886329\nuser_usec 13667721\nsystem_usec 2218608\ncore_sched.force_idle_usec 0\nnr_periods 1661\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "30711808\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289341440\n"
+          }
+        },
+        "session_host_wall_seconds": 184.16370536084287
+      },
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "768ec4949020ac58afbaa2b7ebb07c21e22787093af566a28f02488ada389aeb",
+      "timing_caveat": false,
+      "token_work": 30681,
+      "tokens": {
+        "cache_read": 221056,
+        "cache_write": 0,
+        "input": 23713,
+        "output": 4438,
+        "reasoning": 2530
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 176.3121959301643,
+      "failures": [],
+      "id": "r1-cami-s2",
+      "memory_bytes_after": 14521690,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 176.3121959301643,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8378746799999999,
+        "controller_total_host_wall_seconds": 179.30596551205963,
+        "guard_and_orchestration_host_wall_seconds": 0.5658987930510193,
+        "host_child_cpu_seconds": 2.2511970000000003,
+        "infrastructure_host_wall_seconds": 2.9937695818953216,
+        "session_cgroup": {
+          "cpu_seconds": 18.2327,
+          "peak_memory_bytes": 381218816,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 18320744\nuser_usec 15761666\nsystem_usec 2559078\ncore_sched.force_idle_usec 0\nnr_periods 1604\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "42135552\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "381218816\n"
+          }
+        },
+        "session_host_wall_seconds": 175.7462971371133
+      },
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "abe6fbd25f5f1ce8ace7853aa99930941d5f97e57402e5eca0dfdfa446b1fe55",
+      "timing_caveat": false,
+      "token_work": 33117,
+      "tokens": {
+        "cache_read": 253568,
+        "cache_write": 0,
+        "input": 26316,
+        "output": 4762,
+        "reasoning": 2039
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 222,
+      "charged_wall_seconds": 193.85065309726633,
+      "failures": [],
+      "id": "r1-plain-s2",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 193.85065309726633,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7322667599999999,
+        "controller_total_host_wall_seconds": 196.98836604412645,
+        "guard_and_orchestration_host_wall_seconds": 0.44170306413434446,
+        "host_child_cpu_seconds": 2.157577,
+        "infrastructure_host_wall_seconds": 3.1377129468601197,
+        "session_cgroup": {
+          "cpu_seconds": 18.738184,
+          "peak_memory_bytes": 289583104,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 18824426\nuser_usec 16321301\nsystem_usec 2503124\ncore_sched.force_idle_usec 0\nnr_periods 1750\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "36909056\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289583104\n"
+          }
+        },
+        "session_host_wall_seconds": 193.408950033132
+      },
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "16b69d6560641253d0b2ff329cdae1e9684ef0cefa7a26deb8e3ba6ed8d8289f",
+      "timing_caveat": false,
+      "token_work": 33795,
+      "tokens": {
+        "cache_read": 272768,
+        "cache_write": 0,
+        "input": 26539,
+        "output": 4619,
+        "reasoning": 2637
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 89.20422884006985,
+      "failures": [],
+      "id": "r1-cami-s3",
+      "memory_bytes_after": 26568945,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 89.20422884006985,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.9505740900000004,
+        "controller_total_host_wall_seconds": 94.37703537615016,
+        "guard_and_orchestration_host_wall_seconds": 0.5532562281005085,
+        "host_child_cpu_seconds": 2.370080999999999,
+        "infrastructure_host_wall_seconds": 5.172806536080316,
+        "session_cgroup": {
+          "cpu_seconds": 14.649941,
+          "peak_memory_bytes": 451125248,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14739720\nuser_usec 12724496\nsystem_usec 2015223\ncore_sched.force_idle_usec 0\nnr_periods 798\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "61853696\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "451125248\n"
+          }
+        },
+        "session_host_wall_seconds": 88.65097261196934
+      },
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "13cfa400f5350fd4eca30ff1f4e3c8faf41909c42b59cf85101ebc333502229d",
+      "timing_caveat": false,
+      "token_work": 23984,
+      "tokens": {
+        "cache_read": 143488,
+        "cache_write": 0,
+        "input": 21294,
+        "output": 1998,
+        "reasoning": 692
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 222,
+      "charged_wall_seconds": 100.70110052963719,
+      "failures": [],
+      "id": "r1-plain-s3",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 100.70110052963719,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7702055699999999,
+        "controller_total_host_wall_seconds": 103.80384323792532,
+        "guard_and_orchestration_host_wall_seconds": 0.47811796073801816,
+        "host_child_cpu_seconds": 2.074592,
+        "infrastructure_host_wall_seconds": 3.102742708288133,
+        "session_cgroup": {
+          "cpu_seconds": 11.969138,
+          "peak_memory_bytes": 289501184,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12057100\nuser_usec 10380652\nsystem_usec 1676447\ncore_sched.force_idle_usec 0\nnr_periods 896\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "32141312\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289501184\n"
+          }
+        },
+        "session_host_wall_seconds": 100.22298256889917
+      },
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "8548f01ea3164a375a3315535d9a13f8e5206f975b4e42ed3c26190b16890762",
+      "timing_caveat": false,
+      "token_work": 26106,
+      "tokens": {
+        "cache_read": 126464,
+        "cache_write": 0,
+        "input": 22901,
+        "output": 2267,
+        "reasoning": 938
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 109.91654695477337,
+      "failures": [],
+      "id": "r1-static-s3",
+      "memory_bytes_after": 870159,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 109.91654695477337,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7445183599999998,
+        "controller_total_host_wall_seconds": 113.03833451191895,
+        "guard_and_orchestration_host_wall_seconds": 0.47409865260124207,
+        "host_child_cpu_seconds": 2.1195590000000006,
+        "infrastructure_host_wall_seconds": 3.1217875571455806,
+        "session_cgroup": {
+          "cpu_seconds": 14.083779,
+          "peak_memory_bytes": 288940032,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14167811\nuser_usec 12220882\nsystem_usec 1946929\ncore_sched.force_idle_usec 0\nnr_periods 991\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "33050624\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "288940032\n"
+          }
+        },
+        "session_host_wall_seconds": 109.44244830217212
+      },
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "a698cab8d8ed09f47541f37cf5c6258e4f6b04af3aae82c29c0f4459f9f7396a",
+      "timing_caveat": false,
+      "token_work": 26289,
+      "tokens": {
+        "cache_read": 255360,
+        "cache_write": 0,
+        "input": 23102,
+        "output": 2400,
+        "reasoning": 787
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 222,
+      "charged_wall_seconds": 103.26398265082389,
+      "failures": [],
+      "id": "r1-plain-s4",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 103.26398265082389,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7027153399999992,
+        "controller_total_host_wall_seconds": 106.3267319300212,
+        "guard_and_orchestration_host_wall_seconds": 0.4433703219983727,
+        "host_child_cpu_seconds": 2.1183419999999993,
+        "infrastructure_host_wall_seconds": 3.0627492791973054,
+        "session_cgroup": {
+          "cpu_seconds": 13.150413,
+          "peak_memory_bytes": 289378304,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 13241676\nuser_usec 11316125\nsystem_usec 1925550\ncore_sched.force_idle_usec 0\nnr_periods 928\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "33792000\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289378304\n"
+          }
+        },
+        "session_host_wall_seconds": 102.82061232882552
+      },
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "2271d8ba84a063dbb58b4e756285c5bef1817d86038c0d93bd9441ca3d76bbd2",
+      "timing_caveat": false,
+      "token_work": 27365,
+      "tokens": {
+        "cache_read": 173056,
+        "cache_write": 0,
+        "input": 24322,
+        "output": 2281,
+        "reasoning": 762
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 114.70645247097127,
+      "failures": [],
+      "id": "r1-static-s4",
+      "memory_bytes_after": 870159,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 114.70645247097127,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7364318600000006,
+        "controller_total_host_wall_seconds": 117.69780903705396,
+        "guard_and_orchestration_host_wall_seconds": 0.4620512949768454,
+        "host_child_cpu_seconds": 2.1689769999999973,
+        "infrastructure_host_wall_seconds": 2.991356566082686,
+        "session_cgroup": {
+          "cpu_seconds": 14.069542,
+          "peak_memory_bytes": 294998016,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14154739\nuser_usec 12218539\nsystem_usec 1936199\ncore_sched.force_idle_usec 0\nnr_periods 1021\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "31203328\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "294998016\n"
+          }
+        },
+        "session_host_wall_seconds": 114.24440117599443
+      },
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "1bea736f39be09bb00474fdd252c0e6b28ba42ba4a386bf4c6be5783714d3102",
+      "timing_caveat": false,
+      "token_work": 36132,
+      "tokens": {
+        "cache_read": 243456,
+        "cache_write": 0,
+        "input": 32791,
+        "output": 2482,
+        "reasoning": 859
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 120.02992130699567,
+      "failures": [],
+      "id": "r1-cami-s4",
+      "memory_bytes_after": 26568945,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 120.02992130699567,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8678021999999999,
+        "controller_total_host_wall_seconds": 123.10078691714443,
+        "guard_and_orchestration_host_wall_seconds": 0.6084913061931729,
+        "host_child_cpu_seconds": 2.122123,
+        "infrastructure_host_wall_seconds": 3.0708656101487577,
+        "session_cgroup": {
+          "cpu_seconds": 15.537408,
+          "peak_memory_bytes": 393342976,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15627847\nuser_usec 13333611\nsystem_usec 2294236\ncore_sched.force_idle_usec 0\nnr_periods 1085\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "44433408\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "393342976\n"
+          }
+        },
+        "session_host_wall_seconds": 119.4214300008025
+      },
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "1894cd40a4f6dd99998074c807566dd1e00333d9c5cbc60ccaf95ffee59b555c",
+      "timing_caveat": false,
+      "token_work": 32211,
+      "tokens": {
+        "cache_read": 277888,
+        "cache_write": 0,
+        "input": 28699,
+        "output": 2477,
+        "reasoning": 1035
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "timing_caveat": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    }
+  ]
+}

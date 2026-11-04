@@ -1,0 +1,69 @@
+{
+  "scope": "Exactly 2 static and 1 CAMI preserved public first-task responses. Actual compact v1 implementation; full note text including headers retained. No token, billing, model quality, end-to-end speed or trace-storage saving claim.",
+  "cost_boundary": "Compact adds projection/hashing plus full-response receipt trace storage. Projection/hashing/serialization are inside lookup timing; trace append remains outside lookup span as before and must be charged by the outer session harness.",
+  "inputs": {
+    "runs/opencode-development-v3-20261104/trials/r1-static-s1/session/evidence/messages.json": "00b349ac4e8e7ca3eeb806121826eaa80de502b7a11885b84e6966148bb80fb9",
+    "runs/opencode-development-v3-20261104/trials/r1-static-s1/session/evidence/memory-backend-trace.jsonl": "2fbb955b93d191113267cff813fb7392c3a0a6072460e65c7bc441b3a023406c",
+    "runs/opencode-development-v3-20261104/trials/r1-cami-s1/session/evidence/messages.json": "53dca017793c19483cf5a69b3e4f967b36681234c4f7afbcd3ee25d3bd1c0e03",
+    "runs/opencode-development-v3-20261104/trials/r1-cami-s1/session/evidence/memory-backend-trace.jsonl": "11fb74ffb3da83e84acf636e3036ddbd1f7a21e46ce3cd94b6af13fe1a35ec9a"
+  },
+  "responses": [
+    {
+      "arm": "static",
+      "ordinal": 1,
+      "full_text_utf8_bytes": 9808,
+      "compact_text_utf8_bytes": 8513,
+      "text_bytes_removed": 1295,
+      "text_byte_reduction_fraction": 0.13203507340946166,
+      "full_mcp_result_canonical_bytes": 10526,
+      "compact_mcp_result_canonical_bytes": 9115,
+      "extra_audit_object_canonical_bytes": 10954,
+      "audit_receipt_sha256": "1669c35b8f44c1273a940c79f75c4cc5038abb67001de24f005d28573957048f",
+      "full_result_sha256": "e353fa6e299f0aee3332c9b93ada5fdcd7028f4d52f9da7431bf5f019ae470ea",
+      "compact_result_sha256": "899698ed996749d4c6d4ab220f5b110f2d544848abd59cba3b60b39fe1884488",
+      "notes_unchanged": true,
+      "entry_ids_unchanged": true,
+      "budget_unchanged": true
+    },
+    {
+      "arm": "static",
+      "ordinal": 27,
+      "full_text_utf8_bytes": 3217,
+      "compact_text_utf8_bytes": 2730,
+      "text_bytes_removed": 487,
+      "text_byte_reduction_fraction": 0.15138327634442028,
+      "full_mcp_result_canonical_bytes": 3513,
+      "compact_mcp_result_canonical_bytes": 2982,
+      "extra_audit_object_canonical_bytes": 3941,
+      "audit_receipt_sha256": "06372053f27705875ac2ae0798feecc1b2e35ebbb53fa5751b614a921e22361b",
+      "full_result_sha256": "343c60a49d8c9691f8c4ccbd567548ebe00590109309bf02569b2133c60f1f3e",
+      "compact_result_sha256": "93ba9fe7281fedd41a2fb5c6fa856537c772e92ca83e2cec7ff7194ad5ef87f7",
+      "notes_unchanged": true,
+      "entry_ids_unchanged": true,
+      "budget_unchanged": true
+    },
+    {
+      "arm": "cami",
+      "ordinal": 1,
+      "full_text_utf8_bytes": 9425,
+      "compact_text_utf8_bytes": 7969,
+      "text_bytes_removed": 1456,
+      "text_byte_reduction_fraction": 0.15448275862068966,
+      "full_mcp_result_canonical_bytes": 10124,
+      "compact_mcp_result_canonical_bytes": 8544,
+      "extra_audit_object_canonical_bytes": 10552,
+      "audit_receipt_sha256": "43a3227d035e86b2c4196fe319d7ff361779fe54ec0c200aa2b05d07cdd44423",
+      "full_result_sha256": "fe95c5a9987b015dd2da97e15a521a3f6d4068f80a0c08bfe88da10eb84dec3b",
+      "compact_result_sha256": "95ef1442211c9eeb5ef22895da136692fc0b69f29b3acb72eeab1a73af7f69a5",
+      "notes_unchanged": true,
+      "entry_ids_unchanged": true,
+      "budget_unchanged": true
+    }
+  ],
+  "totals": {
+    "full_text_utf8_bytes": 22450,
+    "compact_text_utf8_bytes": 19212,
+    "text_bytes_removed": 3238,
+    "extra_audit_object_canonical_bytes": 25447
+  }
+}

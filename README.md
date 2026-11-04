@@ -61,6 +61,18 @@ and [the preserved failure](reports/opencode-preflight-20261104/summary.json)
 are separate from agent-task results. An end-to-end speed or quality advantage
 has not yet been established.
 
+The [frozen comparison protocol](reports/opencode-study-design-20261104/protocol.json)
+compares plain OpenCode, static memory and CAMI on the same model, task versions
+and limits, including construction and repeated tasks after source changes.
+Development runs and failed attempts are retained separately from the sealed
+final task set. The [first complete development block](reports/opencode-first-block-resource-breakdown-20261104/resource-breakdown.json)
+is diagnostic only: CAMI did not reduce token work against plain OpenCode, and
+known auxiliary work disqualifies its primary wall-time comparison. A separate
+[compact-response candidate](reports/opencode-compact-response-candidate-20261104/README.md)
+preserves complete note text and reduces model-facing bytes on three saved
+responses, while increasing audit storage; it has not been used in the active
+frozen comparison or shown a model-level benefit.
+
 ## Install and run the offline demo
 
 Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:

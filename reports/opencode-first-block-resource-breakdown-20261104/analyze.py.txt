@@ -1,0 +1,74 @@
+"""Read existing verified first-block results; never touch active trial payloads."""
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+OUT = Path(__file__).resolve().parent
+RUN = ROOT / 'runs/opencode-development-v3-20261104'
+ANALYSIS = ROOT / 'runs/opencode-development-v3-partial-analysis-03-20261104/report.json'
+
+
+def main():
+    data = json.loads(ANALYSIS.read_text())
+    rows = []
+    for trial in data['trials']:
+        if trial['repetition'] != 1:
+            continue
+        assert trial['terminal_present'] and trial['artifact_hashes_verified']
+        path = RUN / 'trials' / trial['id']
+        terminal_bytes = (path / 'terminal.json').read_bytes()
+        assert hashlib.sha256(terminal_bytes).hexdigest() == trial['terminal_sha256']
+        terminal = json.loads(terminal_bytes)
+        calls, trace_sha = [], None
+        if trial['arm'] != 'plain':
+            rel = 'session/evidence/memory-backend-trace.jsonl'
+            raw = (path / rel).read_bytes()
+            trace_sha = hashlib.sha256(raw).hexdigest()
+            assert trace_sha == terminal['artifact_hashes'][rel]
+            calls = [value for line in raw.splitlines()
+                     if (value := json.loads(line))['event'] == 'memory_lookup']
+        costs = trial['resource_components']
+        rows.append({
+            'id': trial['id'], 'arm': trial['arm'],
+            'charged_wall_seconds': trial['charged_wall_seconds'],
+            'construction_wall_seconds': costs['construction_host_wall_seconds'],
+            'session_cpu_seconds': costs['session_cgroup']['cpu_seconds'],
+            'session_peak_memory_bytes': costs['session_cgroup']['peak_memory_bytes'],
+            'memory_bytes_after': trial['memory_bytes_after'],
+            'lookup_calls': len(calls),
+            'lookup_wall_seconds': sum(x['wall_seconds'] for x in calls),
+            'lookup_cpu_seconds': sum(x['cpu_seconds_self_and_completed_children'] for x in calls),
+            'lookup_response_bytes': sum(x['response_bytes'] for x in calls),
+            'returned_records': sum(x['returned_records'] for x in calls),
+            'withheld_records': sum(x['withheld_records'] for x in calls),
+            'trace_sha256': trace_sha,
+        })
+    summary = {}
+    for arm in ('plain', 'static', 'cami'):
+        selected = [row for row in rows if row['arm'] == arm]
+        assert len(selected) == 4
+        summary[arm] = {key: sum(row[key] for row in selected) for key in [
+            'charged_wall_seconds', 'construction_wall_seconds', 'session_cpu_seconds',
+            'lookup_calls', 'lookup_wall_seconds', 'lookup_cpu_seconds',
+            'lookup_response_bytes', 'returned_records', 'withheld_records',
+        ]}
+        summary[arm]['max_session_peak_memory_bytes'] = max(row['session_peak_memory_bytes'] for row in selected)
+        summary[arm]['last_memory_bytes'] = selected[-1]['memory_bytes_after']
+    result = {
+        'scope': 'First complete development block only; no superiority or causal speedup claim. '
+                 'Charged wall has known auxiliary overlap in r1-plain-s1. Lookup spans are nested '
+                 'inside session wall and CPU; never add them to charged totals. Construction is '
+                 'already included in charged wall. Session CPU includes OpenCode and task commands, '
+                 'not only CAMI. Difference between wall and CPU is not uniquely model/network wait. '
+                 'Response bytes are serialized MCP result bytes, not tokens. No new runs or profiling workloads.',
+        'analysis_report_sha256': hashlib.sha256(ANALYSIS.read_bytes()).hexdigest(),
+        'rows': rows, 'by_arm': summary,
+    }
+    with (OUT / 'resource-breakdown.json').open('x') as stream:
+        stream.write(json.dumps(result, indent=2) + '\n')
+    print(json.dumps(summary, indent=2))
+
+
+if __name__ == '__main__':
+    main()

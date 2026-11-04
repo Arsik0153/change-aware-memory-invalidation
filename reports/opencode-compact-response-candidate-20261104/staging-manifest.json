@@ -1,0 +1,32 @@
+{
+  "status": "ready_for_review",
+  "runtime_install_files": [
+    "memory_adapter.py",
+    "compact_response.py"
+  ],
+  "unchanged_dependency": "memory_backend.py",
+  "backward_compatible_default": "full",
+  "optin": "serve --response-format compact",
+  "authored_tests": {
+    "passed": 20,
+    "seconds": 0.2,
+    "scope": "Pure fake-backend/projection/CLI/stdio tests; no CAMI import or registration"
+  },
+  "ruff": "passed",
+  "tracked_writes": false,
+  "model_calls": 0,
+  "auth_calls": 0,
+  "docker_calls": 0,
+  "heldout_reads": false,
+  "artifact_sha256": {
+    "README.md": "720b7d537068c26555177afe6107470c7936eb54966b9144738edfa06cb90b7d",
+    "baseline-source-pins.json": "7de02f22a6ca76721dcade1c777feb024f01915d685e6ee8d6915fbf105a2ab3",
+    "compact_response.py": "326cf1d5e3949aaf89e596e5836ed799b6570a8faabe8f9f5e068b96c4a35172",
+    "measure_preserved_responses.py": "88936c96f49345c3045bde7402b4b5208bba56289b183dd03d142d129dea0c40",
+    "memory_adapter.py": "05fac3a88b207bcbe92d502ecafb7727022861d85850f0a8e1310db2e7a7fb20",
+    "memory_backend.py": "f8774a2635e93c0ade8617e053f2bfba838616e4237241a9ad3f4b04e263c5c2",
+    "preserved-response-byte-measurement.json": "a93552c624aa559dfcea2d3bb2a726bc93b79345c2647a9d454563c804868553",
+    "reviewable.patch": "aa0ce1df80ded48f9421ff26d0f7c1f2ca5de4d38d34280c485078ae7091656a",
+    "test_compact_response.py": "9dd3d0904047403e3ac78a71e25abe023c21bfcee5aaa6d1b0c6db0cdcf52554"
+  }
+}
