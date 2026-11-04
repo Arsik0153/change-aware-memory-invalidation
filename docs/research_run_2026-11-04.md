@@ -124,3 +124,13 @@ claim/probe identity и summary. Четыре отрицательных кон�
 числе три с пересчитанными artifact hashes. Отключение assertions через-O
 отклоняется до выдачи отчёта. Случайный пересчёт checksum не маскирует подмену
 подлежащих проверке данных; криптографическая аттестация исполнения не заявлена.
+
+## Применимость критерия closure на реальных parent-данных
+
+Read-only gate diagnostic:30/504structural candidates проходят только binding gate,
+474отклоняются. На уровне distinct parent/module:23/345pass,322reject. Ни один
+real claim не закрыт и не допущен. Основные первые причины — indirect writes и
+dynamic namespace на уровне всего модуля. Это существенное ограничение переноса
+fixture-критерия на реальные данные, а не ошибка truth labels.
+[Отчёт](structural_closure_feasibility_2026-11-04.md).112focused tests прошли;
+input/source/output hashes сверены, подготовленный набор остался неизменным.
