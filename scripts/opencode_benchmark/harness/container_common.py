@@ -38,11 +38,71 @@ def tree_bytes(path):
 
 
 def redact(text):
-    text = re.sub(r"(?<![A-Za-z0-9._%+-])(?=[A-Za-z0-9._%+-]*[A-Za-z0-9][A-Za-z0-9._%+-]*@)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
+    text = re.sub(r"(?:(?<=\\[nrt])|(?<![A-Za-z0-9._%+\\-]))(?=[A-Za-z0-9._%+-]*[A-Za-z0-9][A-Za-z0-9._%+-]*@)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
     text = re.sub(r"(?i)(authorization[\s\"':=]+)(?:bearer|basic)\s+[A-Za-z0-9+/=._-]+", r"\1[REDACTED_AUTH]", text)
     text = re.sub(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", "[REDACTED_JWT]", text)
     text = re.sub(r'(?i)(["\']?(?:access_token|refresh_token|id_token|api_key|account_id)["\']?\s*[:=]\s*)["\'][^"\']+["\']', r'\1"[REDACTED]"', text)
     return text
+
+
+PRIVATE_KEYS = {"authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey",
+                "email", "account_id", "accountid", "encrypted_content"}
+
+
+def redact_string(text, private_values=()):
+    # Include JSON-escaped spellings for strings containing nested serialized data.
+    spellings = {spelling for value in private_values if value for spelling in
+                 (value, json.dumps(value, ensure_ascii=False)[1:-1], json.dumps(value)[1:-1])}
+    for value in sorted(spellings, key=lambda value: (-len(value), value)):
+        text = text.replace(value, "[REDACTED_PRIVATE_VALUE]")
+    return redact(text)
+
+
+def redact_data(value, private_values=(), *, _depth=0):
+    """Scrub decoded data; JSON serialization is always the final operation."""
+    if isinstance(value, dict):
+        result = {}
+        for key, item in value.items():
+            clean_key = redact_string(key, private_values)
+            if clean_key in result:
+                raise ValueError("redaction would merge JSON object keys")
+            result[clean_key] = "[REDACTED]" if key.lower() in PRIVATE_KEYS else redact_data(item, private_values, _depth=_depth)
+        return result
+    if isinstance(value, list):
+        return [redact_data(item, private_values, _depth=_depth) for item in value]
+    if isinstance(value, str):
+        if value.lstrip().startswith(("{", "[", '"')):
+            try:
+                nested = json.loads(value)
+            except (ValueError, RecursionError):
+                pass
+            else:
+                if _depth >= 8:
+                    raise ValueError("nested serialized JSON safety limit reached")
+                cleaned = redact_data(nested, private_values, _depth=_depth + 1)
+                # Never regex-scrub reserialized JSON, including JSON inside a string.
+                return json.dumps(cleaned, ensure_ascii=False, allow_nan=False) if cleaned != nested else value
+        return redact_string(value, private_values)
+    return value
+
+
+def sanitize_artifact(path, private_values=()):
+    """Reject malformed structured evidence rather than publishing it as JSON."""
+    original = path.read_text()
+    if path.suffix == ".json":
+        text = json.dumps(redact_data(json.loads(original), private_values), ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+    elif path.suffix == ".jsonl":
+        text = "".join(json.dumps(redact_data(json.loads(line), private_values), ensure_ascii=False, allow_nan=False) + "\n"
+                       for line in original.splitlines())
+    elif path.suffix == ".txt":
+        text = redact_data(original, private_values)
+    else:
+        raise ValueError("unsupported evidence extension")
+    if any(value and value in text for value in private_values):
+        raise ValueError("known private value remains after scrub")
+    if text != original:
+        path.write_text(text)
+    return text != original
 
 
 def bounded(argv, *, cwd, env, timeout=120, capture=True):

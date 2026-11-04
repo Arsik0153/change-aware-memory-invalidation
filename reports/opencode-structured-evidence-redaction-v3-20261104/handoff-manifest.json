@@ -1,0 +1,40 @@
+{
+  "status": "ready_for_review",
+  "tracked_writes": false,
+  "model_calls": 0,
+  "auth_calls": 0,
+  "tests": {
+    "passed": 46,
+    "existing": 27,
+    "new_cases": 19,
+    "final_seconds": null
+  },
+  "ruff": "passed",
+  "public_v1_trace": "passed: 24 files, source unchanged",
+  "v2_lost_payload_recoverable": false,
+  "runtime_files": [
+    "container_common.py",
+    "container_worker.py",
+    "evidence_safety.py",
+    "container_session.py"
+  ],
+  "base_sha256": {
+    "container_common.py": "5e2dd21611123cc376ae1a0eb11eda2f5ff415aa320901c356e73a32a92dc3ad",
+    "container_worker.py": "04f2531d63938802dc7a99c22700537584aa1f9b9cb4ee6fecf78264051d5346",
+    "evidence_safety.py": "63226d9f1e9795b0bf084e72447609c09d8e4f64eb885c3fc6dd76a47b78c7c2",
+    "container_session.py": "07705d6fa7945983afdad8fdb5f0b2fe3e5e2a08a498fa16b90576c12c66712b",
+    "test_failure_contracts.py": "ebc76524aead6e6eb3217817768cfa8d0ab505548fe9b9b7989aa9c29b301b54"
+  },
+  "staged_sha256": {
+    "container_common.py": "0b6b17f08a38beabbcb76a96f6021b92bc9e29139c580419045652638573f03e",
+    "container_worker.py": "cd42b259e47eb7b9bf52d97a61199d2ab619ace830349f88e3af252a1a503758",
+    "evidence_safety.py": "3ff3d798413f7ced9202a9d7ac0ecd16d8643390c3f7790df5fea270936ce430",
+    "container_session.py": "7040ab3c2123f1641c8dcb9777839a18ce3c2b1d69a0099b147afc68566fcc7e",
+    "test_failure_contracts.py": "4c594e0aeae4502a19bbc9edd87b6bfea8be5e5a539af651a2590e7706edbd8a",
+    "test_structured_redaction.py": "c5959253d25f4d2e4e6721a30292e38bc57fb702120f7f666e4d89e352ddf7b6",
+    "verify_public_trace.py": "2781ba8c81952c58589b70ad418ad29f24b3d13df78fd48d94ea2378e9ad7bf5",
+    "reviewable.patch": "3a34a3f8eb3ace1189905a323a856e5c8e5e1fbacd6138fc24eb13f781010a34",
+    "public-v1-trace-verification.json": "d9f73becf6d4e0b76a871f83ded450b7fb17c80fa2436e32bbffc12ef94e9943",
+    "HANDOFF.md": "308a38d5947ef0a752978119703d70cc6570f14edd25d704274906aedf09ff4b"
+  }
+}

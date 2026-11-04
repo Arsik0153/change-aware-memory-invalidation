@@ -13,7 +13,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, redact, sha, tree_bytes, write
+from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, redact as redact, redact_data, redact_string, sanitize_artifact, sha, tree_bytes, write
 
 OUT = Path("/state/evidence")
 PRIVATE = Path("/state/server-private")
@@ -45,18 +45,23 @@ def load_redaction_secrets():
 
 
 def secret_redact(text):
-    for secret in SECRETS:
-        text = text.replace(secret, "[REDACTED_PRIVATE_VALUE]")
-    return redact(text)
+    return redact_string(text, SECRETS)
 
 
 def public(value):
     if isinstance(value, dict):
-        return {key: public(item) for key, item in value.items() if key.lower() not in {
-            "native", "authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey", "email", "account_id", "accountid", "encrypted_content"}}
+        result = {}
+        for key, item in value.items():
+            if key.lower() in {"native", "authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey", "email", "account_id", "accountid", "encrypted_content"}:
+                continue
+            clean_key = secret_redact(key)
+            if clean_key in result:
+                raise ValueError("redaction would merge JSON object keys")
+            result[clean_key] = public(item)
+        return result
     if isinstance(value, list):
         return [public(item) for item in value]
-    return secret_redact(value) if isinstance(value, str) else value
+    return redact_data(value, SECRETS) if isinstance(value, str) else value
 
 
 def cgroup():
@@ -379,10 +384,19 @@ print(json.dumps(result))
         # text evidence again before the host copies it out of the private mount.
         try:
             load_redaction_secrets()
+            rejected = []
             for path in OUT.rglob("*"):
                 if not path.is_symlink() and path.is_file() and path.suffix in [".json", ".jsonl", ".txt"]:
-                    path.write_text(secret_redact(path.read_text()))
-            write(OUT / "worker-sanitation-complete.json", {"status": "passed", "host_must_still_freeze_and_scrub": True})
+                    try:
+                        sanitize_artifact(path, SECRETS)
+                    except (ValueError, UnicodeError, RecursionError) as error:
+                        path.unlink()
+                        rejected.append({"artifact": secret_redact(str(path.relative_to(OUT))), "error_type": type(error).__name__})
+            if rejected:
+                manifest.update(status="failed", sanitation_rejected_artifacts=rejected)
+                write(OUT / "manifest.json", redact_data(public(manifest), SECRETS))
+            write(OUT / "worker-sanitation-complete.json", {"status": "partial" if rejected else "passed",
+                  "rejected_artifacts": rejected, "host_must_still_freeze_and_scrub": True})
         except BaseException as error:
             manifest.update(status="failed", sanitation_failure=type(error).__name__)
             write(OUT / "manifest.json", public(manifest))

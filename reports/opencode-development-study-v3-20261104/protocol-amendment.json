@@ -1,0 +1,12 @@
+{
+  "supersedes": "Incomplete development v2; both previous realtaskattempts and their costs/failures remain separatelypublished.",
+  "development_task_model_calls_before_freeze": 2,
+  "heldout_task_model_calls": 0,
+  "changes": [
+    "Worker and host redact decoded JSON/JSONL values and serialize safely, preserving code decorators and escapedstrings.",
+    "A malformed artifact is rejected individually with diagnostic; other safe artifacts includingusage are retained, and overallattempt markedfailed."
+  ],
+  "unchanged": "All model/task/CAMI/runtime settings,1Mobservedtokenlimit,20steps,900s,3arms\u00d74stages\u00d73repetitions and quality/efficiencycriteria fromv2. No previous trial pooled.",
+  "verification": "46 authoredharnesscontrols; preservedpublicv1trace24files passesworker+hostpublication; originaltrace unchanged. No modelcalls duringredactionverification.",
+  "unrecoverable": "v2 discardedmodelpayload remainsunavailable, neverimputedzero."
+}

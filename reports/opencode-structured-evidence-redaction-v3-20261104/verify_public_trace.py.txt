@@ -1,0 +1,57 @@
+"""Re-run v3 sanitation on a COPY of the already-public authored v1 evidence."""
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+import shutil
+
+from container_common import sanitize_artifact
+from evidence_safety import scrub_state_evidence
+
+STAGE = Path(__file__).resolve().parent
+ROOT = next(p for p in STAGE.parents if (p / 'src/cami').is_dir())
+SOURCE = ROOT / 'reports/opencode-container-smoke-20261104/session/evidence'
+
+
+def inventory(root):
+    return {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in sorted(root.rglob('*')) if p.is_file()}
+
+
+def main():
+    before = inventory(SOURCE)
+    state = STAGE / 'public-v1-trace-copy'
+    if state.exists():
+        shutil.rmtree(state)
+    shutil.copytree(SOURCE, state / 'evidence')
+    # Same shared artifact helper used by the worker; no private DB access.
+    for path in (state / 'evidence').rglob('*'):
+        if path.is_file():
+            sanitize_artifact(path)
+    result = scrub_state_evidence(state, expect_credential=False)
+    assert result['status'] == 'passed'
+    after = inventory(SOURCE)
+    assert before == after
+    copied = inventory(state / 'evidence')
+    assert before.keys() == copied.keys()
+    parsed = {'json': 0, 'jsonl': 0, 'txt': 0}
+    for path in (state / 'evidence').rglob('*'):
+        if not path.is_file():
+            continue
+        parsed[path.suffix[1:]] += 1
+        if path.suffix == '.json':
+            json.loads(path.read_text())
+        elif path.suffix == '.jsonl':
+            for line in path.read_text().splitlines():
+                json.loads(line)
+    report = {'status': 'passed', 'source': str(SOURCE.relative_to(ROOT)),
+              'scope': 'Already-public v1 trace only; cannot recover v2 discarded payload or reverse v1 prior decorator erasure.',
+              'source_unchanged': True, 'source_artifact_hashes': before,
+              'sanitized_copy_artifact_hashes': copied, 'parsed_files': parsed, 'host_publication_result': result}
+    (STAGE / 'public-v1-trace-verification.json').write_text(json.dumps(report, indent=2) + '\n')
+    print(json.dumps({'status': 'passed', 'parsed_files': parsed, 'source_unchanged': True}))
+
+
+if __name__ == '__main__':
+    main()

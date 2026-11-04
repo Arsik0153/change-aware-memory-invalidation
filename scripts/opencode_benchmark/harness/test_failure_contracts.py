@@ -168,7 +168,7 @@ def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch):
         assert "runtime identity" in json.loads((output / "manifest.json").read_text())["failure"]
 
 
-@pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence"])
+@pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence", "bad-json"])
 def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch):
     with tempfile.TemporaryDirectory(prefix="cleanup-", dir=host.ROOT / "runs") as name:
         case = Path(name)
@@ -203,6 +203,8 @@ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch):
                     evidence.mkdir()
                     (evidence / "manifest.json").write_text(json.dumps({"status": "failed" if mode == "worker-failed" else "passed"}))
                     (evidence / "usage.json").write_text(json.dumps({"session_tokens": None, "status": "authored unavailable"}))
+                    if mode == "bad-json":
+                        (evidence / "bad.json").write_text('{"broken":"\\[INVALID]"}')
                 return {"returncode": int(mode == "worker-failed"), "stdout": "", "stderr": ""}
             return {"returncode": 0, "stdout": "{}", "stderr": ""}
         monkeypatch.setattr(host, "command", local_command)
@@ -216,3 +218,9 @@ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch):
         elif mode == "worker-failed":
             assert order.index("remove") < order.index("publish")
             assert json.loads((output / "evidence/usage.json").read_text())["session_tokens"] is None
+
+        if mode == "bad-json":
+            assert not (output / "evidence/bad.json").exists()
+            assert json.loads((output / "evidence/usage.json").read_text())["session_tokens"] is None
+            assert json.loads((output / "publication-guard.json").read_text())["status"] == "partial"
+            assert not result.get("publication_blocked")

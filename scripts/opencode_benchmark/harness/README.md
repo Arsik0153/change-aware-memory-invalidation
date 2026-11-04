@@ -66,3 +66,6 @@ Installed harness revision after the authored container smoke:
 - The common agent instruction names `research_memory_memory_lookup` exactly. Native tools and instructions remain identical between arms except the configured MCP server.
 - Installed authored checks: 26 passed. The earlier real smoke proved native editing/testing and post-edit withholding, but missed the requested pre-edit lookup; that partial result is preserved in `reports/opencode-container-smoke-20261104`.
 - Pass the exact study image with `--image`; development/final study runtime v2 adds pinned `pretend==1.0.9` for fixed tests. Its ID and offline archive are recorded in `reports/opencode-runtime-v2-20261104/manifest.json`. The historical default image is retained for reproducing the first smoke.
+
+
+Evidence publication v3 parses JSON/JSONL before redacting values and serializes afterward. Code decorators and escaped source strings survive. Invalid structured files are rejected individually with diagnostics; safe sibling evidence is retained and the attempt remains failed. Verification: 46 authored checks plus a full roundtrip of 24 preserved public evidence files. The v2 payload discarded by the earlier publication failure cannot be recovered and is explicitly reported as unavailable.

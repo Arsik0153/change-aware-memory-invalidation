@@ -4,9 +4,10 @@ from __future__ import annotations
 import base64
 import json
 from pathlib import Path
-import re
 import sqlite3
 import stat
+
+from container_common import sanitize_artifact
 
 
 def collect_private_values(state, *, expect_credential):
@@ -80,24 +81,15 @@ def scrub_state_evidence(state, *, expect_credential, initial_private_values=())
         if total > 128 * 1024**2:
             raise ValueError("evidence publication safety ceiling128MiB reached")
         paths.append(path)
-    changed = []
+    changed, rejected = [], []
     for path in paths:
-        original = path.read_text()
-        text = original
-        for value in secrets:
-            text = text.replace(value, "[REDACTED_PRIVATE_VALUE]")
-        text = re.sub(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", "[REDACTED_JWT]", text)
-        text = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
-        if path.suffix == ".json":
-            json.loads(text)
-        elif path.suffix == ".jsonl":
-            for line in text.splitlines():
-                json.loads(line)
-        if any(value in text for value in secrets):
-            raise ValueError("known private value remains after scrub")
-        if text != original:
-            path.write_text(text)
-            changed.append(str(path.relative_to(evidence)))
-    return {"status": "passed", "files_checked": len(paths), "bytes_before_scrub": total,
-        "changed_artifact_names": changed, "secret_bodies_exported": False,
+        try:
+            if sanitize_artifact(path, secrets):
+                changed.append(str(path.relative_to(evidence)))
+        except (ValueError, UnicodeError, RecursionError) as error:
+            # No raw text/exception body is exported. Other safe artifacts survive.
+            path.unlink()
+            rejected.append({"artifact": str(path.relative_to(evidence)), "error_type": type(error).__name__})
+    return {"status": "partial" if rejected else "passed", "files_checked": len(paths), "bytes_before_scrub": total,
+        "changed_artifact_names": changed, "rejected_artifacts": rejected, "secret_bodies_exported": False,
         "publication_limit_bytes": 128 * 1024**2}

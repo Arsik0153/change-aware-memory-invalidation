@@ -1,0 +1,335 @@
+--- a/scripts/opencode_benchmark/harness/container_common.py
++++ b/scripts/opencode_benchmark/harness/container_common.py
+@@ -38,11 +38,71 @@
+ 
+ 
+ def redact(text):
+-    text = re.sub(r"(?<![A-Za-z0-9._%+-])(?=[A-Za-z0-9._%+-]*[A-Za-z0-9][A-Za-z0-9._%+-]*@)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
++    text = re.sub(r"(?:(?<=\\[nrt])|(?<![A-Za-z0-9._%+\\-]))(?=[A-Za-z0-9._%+-]*[A-Za-z0-9][A-Za-z0-9._%+-]*@)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
+     text = re.sub(r"(?i)(authorization[\s\"':=]+)(?:bearer|basic)\s+[A-Za-z0-9+/=._-]+", r"\1[REDACTED_AUTH]", text)
+     text = re.sub(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", "[REDACTED_JWT]", text)
+     text = re.sub(r'(?i)(["\']?(?:access_token|refresh_token|id_token|api_key|account_id)["\']?\s*[:=]\s*)["\'][^"\']+["\']', r'\1"[REDACTED]"', text)
+     return text
++
++
++PRIVATE_KEYS = {"authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey",
++                "email", "account_id", "accountid", "encrypted_content"}
++
++
++def redact_string(text, private_values=()):
++    # Include JSON-escaped spellings for strings containing nested serialized data.
++    spellings = {spelling for value in private_values if value for spelling in
++                 (value, json.dumps(value, ensure_ascii=False)[1:-1], json.dumps(value)[1:-1])}
++    for value in sorted(spellings, key=lambda value: (-len(value), value)):
++        text = text.replace(value, "[REDACTED_PRIVATE_VALUE]")
++    return redact(text)
++
++
++def redact_data(value, private_values=(), *, _depth=0):
++    """Scrub decoded data; JSON serialization is always the final operation."""
++    if isinstance(value, dict):
++        result = {}
++        for key, item in value.items():
++            clean_key = redact_string(key, private_values)
++            if clean_key in result:
++                raise ValueError("redaction would merge JSON object keys")
++            result[clean_key] = "[REDACTED]" if key.lower() in PRIVATE_KEYS else redact_data(item, private_values, _depth=_depth)
++        return result
++    if isinstance(value, list):
++        return [redact_data(item, private_values, _depth=_depth) for item in value]
++    if isinstance(value, str):
++        if value.lstrip().startswith(("{", "[", '"')):
++            try:
++                nested = json.loads(value)
++            except (ValueError, RecursionError):
++                pass
++            else:
++                if _depth >= 8:
++                    raise ValueError("nested serialized JSON safety limit reached")
++                cleaned = redact_data(nested, private_values, _depth=_depth + 1)
++                # Never regex-scrub reserialized JSON, including JSON inside a string.
++                return json.dumps(cleaned, ensure_ascii=False, allow_nan=False) if cleaned != nested else value
++        return redact_string(value, private_values)
++    return value
++
++
++def sanitize_artifact(path, private_values=()):
++    """Reject malformed structured evidence rather than publishing it as JSON."""
++    original = path.read_text()
++    if path.suffix == ".json":
++        text = json.dumps(redact_data(json.loads(original), private_values), ensure_ascii=False, indent=2, allow_nan=False) + "\n"
++    elif path.suffix == ".jsonl":
++        text = "".join(json.dumps(redact_data(json.loads(line), private_values), ensure_ascii=False, allow_nan=False) + "\n"
++                       for line in original.splitlines())
++    elif path.suffix == ".txt":
++        text = redact_data(original, private_values)
++    else:
++        raise ValueError("unsupported evidence extension")
++    if any(value and value in text for value in private_values):
++        raise ValueError("known private value remains after scrub")
++    if text != original:
++        path.write_text(text)
++    return text != original
+ 
+ 
+ def bounded(argv, *, cwd, env, timeout=120, capture=True):
+--- a/scripts/opencode_benchmark/harness/container_worker.py
++++ b/scripts/opencode_benchmark/harness/container_worker.py
+@@ -13,7 +13,7 @@
+ import urllib.parse
+ import urllib.request
+ 
+-from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, redact, sha, tree_bytes, write
++from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, redact as redact, redact_data, redact_string, sanitize_artifact, sha, tree_bytes, write
+ 
+ OUT = Path("/state/evidence")
+ PRIVATE = Path("/state/server-private")
+@@ -45,18 +45,23 @@
+ 
+ 
+ def secret_redact(text):
+-    for secret in SECRETS:
+-        text = text.replace(secret, "[REDACTED_PRIVATE_VALUE]")
+-    return redact(text)
++    return redact_string(text, SECRETS)
+ 
+ 
+ def public(value):
+     if isinstance(value, dict):
+-        return {key: public(item) for key, item in value.items() if key.lower() not in {
+-            "native", "authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey", "email", "account_id", "accountid", "encrypted_content"}}
++        result = {}
++        for key, item in value.items():
++            if key.lower() in {"native", "authorization", "access_token", "refresh_token", "id_token", "api_key", "apikey", "email", "account_id", "accountid", "encrypted_content"}:
++                continue
++            clean_key = secret_redact(key)
++            if clean_key in result:
++                raise ValueError("redaction would merge JSON object keys")
++            result[clean_key] = public(item)
++        return result
+     if isinstance(value, list):
+         return [public(item) for item in value]
+-    return secret_redact(value) if isinstance(value, str) else value
++    return redact_data(value, SECRETS) if isinstance(value, str) else value
+ 
+ 
+ def cgroup():
+@@ -379,10 +384,19 @@
+         # text evidence again before the host copies it out of the private mount.
+         try:
+             load_redaction_secrets()
++            rejected = []
+             for path in OUT.rglob("*"):
+                 if not path.is_symlink() and path.is_file() and path.suffix in [".json", ".jsonl", ".txt"]:
+-                    path.write_text(secret_redact(path.read_text()))
+-            write(OUT / "worker-sanitation-complete.json", {"status": "passed", "host_must_still_freeze_and_scrub": True})
++                    try:
++                        sanitize_artifact(path, SECRETS)
++                    except (ValueError, UnicodeError, RecursionError) as error:
++                        path.unlink()
++                        rejected.append({"artifact": secret_redact(str(path.relative_to(OUT))), "error_type": type(error).__name__})
++            if rejected:
++                manifest.update(status="failed", sanitation_rejected_artifacts=rejected)
++                write(OUT / "manifest.json", redact_data(public(manifest), SECRETS))
++            write(OUT / "worker-sanitation-complete.json", {"status": "partial" if rejected else "passed",
++                  "rejected_artifacts": rejected, "host_must_still_freeze_and_scrub": True})
+         except BaseException as error:
+             manifest.update(status="failed", sanitation_failure=type(error).__name__)
+             write(OUT / "manifest.json", public(manifest))
+--- a/scripts/opencode_benchmark/harness/evidence_safety.py
++++ b/scripts/opencode_benchmark/harness/evidence_safety.py
+@@ -4,9 +4,10 @@
+ import base64
+ import json
+ from pathlib import Path
+-import re
+ import sqlite3
+ import stat
++
++from container_common import sanitize_artifact
+ 
+ 
+ def collect_private_values(state, *, expect_credential):
+@@ -80,24 +81,15 @@
+         if total > 128 * 1024**2:
+             raise ValueError("evidence publication safety ceiling128MiB reached")
+         paths.append(path)
+-    changed = []
++    changed, rejected = [], []
+     for path in paths:
+-        original = path.read_text()
+-        text = original
+-        for value in secrets:
+-            text = text.replace(value, "[REDACTED_PRIVATE_VALUE]")
+-        text = re.sub(r"eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", "[REDACTED_JWT]", text)
+-        text = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", text)
+-        if path.suffix == ".json":
+-            json.loads(text)
+-        elif path.suffix == ".jsonl":
+-            for line in text.splitlines():
+-                json.loads(line)
+-        if any(value in text for value in secrets):
+-            raise ValueError("known private value remains after scrub")
+-        if text != original:
+-            path.write_text(text)
+-            changed.append(str(path.relative_to(evidence)))
+-    return {"status": "passed", "files_checked": len(paths), "bytes_before_scrub": total,
+-        "changed_artifact_names": changed, "secret_bodies_exported": False,
++        try:
++            if sanitize_artifact(path, secrets):
++                changed.append(str(path.relative_to(evidence)))
++        except (ValueError, UnicodeError, RecursionError) as error:
++            # No raw text/exception body is exported. Other safe artifacts survive.
++            path.unlink()
++            rejected.append({"artifact": str(path.relative_to(evidence)), "error_type": type(error).__name__})
++    return {"status": "partial" if rejected else "passed", "files_checked": len(paths), "bytes_before_scrub": total,
++        "changed_artifact_names": changed, "rejected_artifacts": rejected, "secret_bodies_exported": False,
+         "publication_limit_bytes": 128 * 1024**2}
+--- a/scripts/opencode_benchmark/harness/container_session.py
++++ b/scripts/opencode_benchmark/harness/container_session.py
+@@ -286,9 +286,14 @@
+             if state and state.exists() and writers_stopped:
+                 publication = scrub_state_evidence(state, expect_credential=args.run_model, initial_private_values=initial_private_values)
+                 write(output / "publication-guard.json", publication)
+-                if publication["status"] == "passed":
++                if publication["status"] in {"passed", "partial"}:
+                     shutil.copytree(state / "evidence", output / "evidence", symlinks=True)
+-                    if manifest["status"] == "passed" and json.loads((output / "evidence/manifest.json").read_text()).get("status") != "passed":
++                    if publication["status"] == "partial":
++                        manifest.update(status="failed", failure="Some worker evidence was rejected; safe artifacts retained")
++                    worker_manifest = output / "evidence/manifest.json"
++                    if not worker_manifest.exists():
++                        manifest.update(status="failed", failure="Worker manifest unavailable; safe artifacts retained")
++                    elif manifest["status"] == "passed" and json.loads(worker_manifest.read_text()).get("status") != "passed":
+                         manifest.update(status="failed", failure="worker final evidence status is not passed")
+                 else:
+                     manifest["status"] = "failed"
+--- a/scripts/opencode_benchmark/harness/test_failure_contracts.py
++++ b/scripts/opencode_benchmark/harness/test_failure_contracts.py
+@@ -168,7 +168,7 @@
+         assert "runtime identity" in json.loads((output / "manifest.json").read_text())["failure"]
+ 
+ 
+-@pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence"])
++@pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence", "bad-json"])
+ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch):
+     with tempfile.TemporaryDirectory(prefix="cleanup-", dir=host.ROOT / "runs") as name:
+         case = Path(name)
+@@ -203,6 +203,8 @@
+                     evidence.mkdir()
+                     (evidence / "manifest.json").write_text(json.dumps({"status": "failed" if mode == "worker-failed" else "passed"}))
+                     (evidence / "usage.json").write_text(json.dumps({"session_tokens": None, "status": "authored unavailable"}))
++                    if mode == "bad-json":
++                        (evidence / "bad.json").write_text('{"broken":"\\[INVALID]"}')
+                 return {"returncode": int(mode == "worker-failed"), "stdout": "", "stderr": ""}
+             return {"returncode": 0, "stdout": "{}", "stderr": ""}
+         monkeypatch.setattr(host, "command", local_command)
+@@ -216,3 +218,9 @@
+         elif mode == "worker-failed":
+             assert order.index("remove") < order.index("publish")
+             assert json.loads((output / "evidence/usage.json").read_text())["session_tokens"] is None
++
++        if mode == "bad-json":
++            assert not (output / "evidence/bad.json").exists()
++            assert json.loads((output / "evidence/usage.json").read_text())["session_tokens"] is None
++            assert json.loads((output / "publication-guard.json").read_text())["status"] == "partial"
++            assert not result.get("publication_blocked")
+--- /dev/null
++++ b/scripts/opencode_benchmark/harness/test_structured_redaction.py
+@@ -0,0 +1,96 @@
++"""Authored redaction regression controls; no live credentials or model calls."""
++import json
++from pathlib import Path
++import sys
++
++import pytest
++
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++import container_worker as worker  # noqa: E402
++from container_common import redact, redact_data, sanitize_artifact  # noqa: E402
++from evidence_safety import scrub_state_evidence  # noqa: E402
++
++
++PATCH = '-@pytest.fixture(params=[None])\n+@pytest.fixture(params=[1])\n'
++FAKE = 'AUTHORED_ONLY_SECRET_"quote"_\\path\nnewline_123456'
++JWT = 'eyJhdXRob3JlZCI6dHJ1ZX0.bm90X3JlYWw.c2lnbmF0dXJl'
++
++
++@pytest.mark.parametrize('payload', [PATCH, PATCH.replace('\n', r'\n'), json.dumps({'patch': PATCH}),
++                                    json.dumps({'nested': json.dumps({'patch': PATCH})})])
++@pytest.mark.parametrize('extension', ['.json', '.jsonl'])
++def test_worker_and_host_preserve_decorators_in_code_and_nested_json(tmp_path, payload, extension):
++    evidence = tmp_path / 'evidence'
++    evidence.mkdir()
++    path = evidence / ('messages' + extension)
++    before = worker.public({'code': payload, 'email_text': 'person+tag@example.invalid'})
++    path.write_text(json.dumps(before) + '\n')
++    sanitize_artifact(path, worker.SECRETS)
++    result = scrub_state_evidence(tmp_path, expect_credential=False)
++    assert result['status'] == 'passed'
++    actual = json.loads(path.read_text())
++    assert actual['code'] == payload
++    assert actual['email_text'] == '[REDACTED_EMAIL]'
++
++
++@pytest.mark.parametrize('address', ['person@example.invalid', '+tag.person@example.invalid', 'person+tag@example.invalid'])
++def test_email_redaction_preserves_surrounding_newline_escape(address):
++    assert redact(address) == '[REDACTED_EMAIL]'
++    assert redact(r'\n' + address) == r'\n[REDACTED_EMAIL]'
++    assert redact('\n' + address) == '\n[REDACTED_EMAIL]'
++
++
++def test_nested_oauth_jwt_private_values_keys_and_safe_serialization(tmp_path):
++    evidence = tmp_path / 'evidence'
++    evidence.mkdir()
++    payload = {FAKE: FAKE, 'nested': json.dumps({'access_token': FAKE, 'id_token': JWT,
++              'code': PATCH, 'opaque': FAKE}), 'jwt': JWT, 'refresh_token': 'authored opaque refresh'}
++    path = evidence / 'messages.json'
++    path.write_text(json.dumps(payload))
++    sanitize_artifact(path, {FAKE})
++    result = scrub_state_evidence(tmp_path, expect_credential=False, initial_private_values={FAKE})
++    assert result['status'] == 'passed'
++    data = json.loads(path.read_text())
++    assert FAKE not in data and FAKE not in path.read_text() and JWT not in path.read_text()
++    nested = json.loads(data['nested'])
++    assert nested['code'] == PATCH and nested['access_token'] == '[REDACTED]'
++    assert data['refresh_token'] == '[REDACTED]'
++    assert data['[REDACTED_PRIVATE_VALUE]'] == '[REDACTED_PRIVATE_VALUE]'
++
++
++@pytest.mark.parametrize('bad_name,bad_body', [('bad.json', r'{"x":"\[bad]"}'),
++                  ('bad.jsonl', '{}\n' + r'{"x":"\[bad]"}'), ('bad.json', '{invalid')])
++def test_malformed_artifact_rejected_without_losing_safe_usage(tmp_path, bad_name, bad_body):
++    evidence = tmp_path / 'evidence'
++    evidence.mkdir()
++    (evidence / bad_name).write_text(bad_body)
++    (evidence / 'usage.json').write_text(json.dumps({'tokens': 17}))
++    (evidence / 'good.jsonl').write_text(json.dumps({'patch': PATCH}) + '\n')
++    result = scrub_state_evidence(tmp_path, expect_credential=False)
++    assert result['status'] == 'partial' and not (evidence / bad_name).exists()
++    assert result['rejected_artifacts'] == [{'artifact': bad_name, 'error_type': 'JSONDecodeError'}]
++    assert json.loads((evidence / 'usage.json').read_text()) == {'tokens': 17}
++    assert json.loads((evidence / 'good.jsonl').read_text()) == {'patch': PATCH}
++
++
++def test_redacted_key_collision_rejects_whole_artifact_safely(tmp_path):
++    evidence = tmp_path / 'evidence'
++    evidence.mkdir()
++    (evidence / 'keys.json').write_text(json.dumps({'a@example.invalid': 1, 'b@example.invalid': 2}))
++    result = scrub_state_evidence(tmp_path, expect_credential=False)
++    assert result['status'] == 'partial' and not (evidence / 'keys.json').exists()
++
++
++def test_plain_text_and_nested_private_value_escape_spellings(tmp_path):
++    path = tmp_path / 'log.txt'
++    path.write_text(PATCH + '\n' + json.dumps({'opaque': FAKE}) + '\n' + JWT)
++    sanitize_artifact(path, {FAKE})
++    assert path.read_text().startswith(PATCH)
++    assert FAKE not in path.read_text() and json.dumps(FAKE)[1:-1] not in path.read_text()
++    assert JWT not in path.read_text()
++
++
++def test_json_strings_and_private_nested_data_are_idempotent():
++    data = {'nested': json.dumps({'opaque': FAKE, 'patch': PATCH}), 'code': PATCH}
++    first = redact_data(data, {FAKE})
++    assert redact_data(first, {FAKE}) == first

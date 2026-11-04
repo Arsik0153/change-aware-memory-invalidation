@@ -286,9 +286,14 @@ def main():
             if state and state.exists() and writers_stopped:
                 publication = scrub_state_evidence(state, expect_credential=args.run_model, initial_private_values=initial_private_values)
                 write(output / "publication-guard.json", publication)
-                if publication["status"] == "passed":
+                if publication["status"] in {"passed", "partial"}:
                     shutil.copytree(state / "evidence", output / "evidence", symlinks=True)
-                    if manifest["status"] == "passed" and json.loads((output / "evidence/manifest.json").read_text()).get("status") != "passed":
+                    if publication["status"] == "partial":
+                        manifest.update(status="failed", failure="Some worker evidence was rejected; safe artifacts retained")
+                    worker_manifest = output / "evidence/manifest.json"
+                    if not worker_manifest.exists():
+                        manifest.update(status="failed", failure="Worker manifest unavailable; safe artifacts retained")
+                    elif manifest["status"] == "passed" and json.loads(worker_manifest.read_text()).get("status") != "passed":
                         manifest.update(status="failed", failure="worker final evidence status is not passed")
                 else:
                     manifest["status"] = "failed"
