@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "clear_no_material_blocker_in_bounded_scope",
+  "review_kind": "independent_code_read_plus_authored_local_rerun_and_record_audit",
+  "source_sha256": {
+    "acquire_packaging_parent_blobs.py": "6e5d4833b2a0a7ab6d07597285523bb80eb30216f35f515e78200679623acfa4",
+    "check_packaging_parent_blobs.py": "3ca2f87750fe63657d5e349e6bb52276d53e365639c2053c5c6f8125efbbd970",
+    "controls-final/report.json": "6777016f011cb6114dc3620938e26c569df3896a1a38543fc8c90456ca68f386",
+    "README.md": "95f72b7a6be2fe7851c8d4903d0cfec7b6189fceb9a215727f3f68b0edbbb0a2",
+    "protocol-template.json": "e417a8724dd942fce9e74d3de0afa98715213b3ec0fe1d41ac72d336ea7eb381"
+  },
+  "scope": {
+    "real_packaging_commands": 0,
+    "external_network_commands": 0,
+    "real_project_source_reads": 0,
+    "tracked_source_edits": 0,
+    "additional_agents": 0,
+    "authored_local_git_execution": true
+  },
+  "checks": {
+    "saved_controls_helper_hash_matches_final_source": true,
+    "independent_rerun_helper_hash_matches_final_source": true,
+    "fourteen_local_authored_tests_pass": true,
+    "all_preserved_manifest_artifact_hashes_match": true,
+    "all_recorded_fetches_are_exact_authorized_oids_over_local_file_transport": true,
+    "no_real_packaging_command_in_authored_records": true,
+    "observed_overshoot_is_failure_with_acquisitions_retained": true
+  },
+  "authored_evidence": {
+    "report": "authored-controls/report.json",
+    "tests": 14,
+    "errors": 0,
+    "failures": 0,
+    "preserved_manifests_audited": 12,
+    "artifact_hash_entries_verified": 164,
+    "local_file_fetch_commands_audited": 5,
+    "object_inventory_artifacts": 12,
+    "overshoot_target_bytes": 1048576,
+    "overshoot_observed_git_plus_attempt_bytes": 2170608
+  },
+  "findings": [],
+  "assessment": {
+    "authorization": "Exactly three distinct SHA1 parent commits must match the sealed topology and committed protocol. Current bytes of every seal input, protocol and seal are checked against frozen workspace HEAD before first project command; repeated afterward. Ignored and assume-unchanged inputs are caught by committed raw blob verification.",
+    "source_scope": "Only ls-tree -rz --full-tree on three authorized parents. No -l, checkout, project blob body read, child tree access, source execution or reference call. Eligible path/mode filtering precedes acquisition. Oversize eligible blobs are acquired before size discovery but excluded from later body/AST reads.",
+    "fetch_scope": "Explicit stdin wants consist only of missing eligible regular package .py blob OIDs. No ref/branch fallback; tags, recursive submodules, automatic maintenance, write-fetch-head and commit graph writes disabled. Nonfetch transports disabled; GIT_NO_LAZY_FETCH set; object inventories before/after enumeration and each batch deny unrequested new objects on successful run.",
+    "identity_and_aliases": "Raw tree inventories preserve parent/path/mode/OID. Excluded paths sharing an allowed OID are explicitly reported; distinct excluded OIDs remain absent in authored tests. Blob identity, not path ownership, defines acquisition.",
+    "limits": "Unknown wire sizes and transient storage overshoot require explicit sealed acknowledgement. Storage and free-space targets are observed checkpoints, not hard quotas. Git command deadlines cover child processes; local bookkeeping is outside those command durations. No network-throughput or hard aggregate-resource claim is warranted.",
+    "failure_and_repeat": "Each attempt requires a new output directory; failed manifests, stderr, command records, inventories and acquired objects are retained. Same-output refusal leaves prior manifest unchanged; a new attempt after successful provisioning performs zero fetches."
+  },
+  "bounded_assumptions": [
+    "Trusted local Git executable/configuration and stable filesystem, not a hostile concurrent mutation or malicious transport review.",
+    "Git/object hashes and local inventory behavior are trusted at their documented boundaries.",
+    "Real HTTPS server acceptance of exact blob wants remains operationally untested here; failure must stop without widening.",
+    "This review does not authorize real source acquisition; root must freeze the actual parent-source authorization first."
+  ]
+}

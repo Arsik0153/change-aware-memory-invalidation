@@ -1,0 +1,51 @@
+{
+  "authorized_parent_commits": [
+    "b3a5d7d68991c040615d5345bb55f61de53ba176",
+    "5cbe1e44cc7b0497a11ab441310a86a5ebf1658a",
+    "cf2cbe2aec28f87c6228a6fb136c27931c9af407"
+  ],
+  "boundary_commit": "f58537628042c7f29780b9d33f31597e7fc9d664",
+  "budget": {
+    "command_timeout_seconds": 120,
+    "fetch_batch_objects": 64,
+    "max_study_storage_bytes": 2147483648,
+    "minimum_free_bytes": 5368709120,
+    "network_size_policy": "unknown_transfer_sizes_explicitly_acknowledged_postfetch_observed_cap",
+    "total_seconds": 1200,
+    "unknown_transfer_and_transient_storage_overshoot_acknowledged": true
+  },
+  "child_source_access_authorized": false,
+  "mode": "parent_filtered_blobs_only",
+  "phase": "parent_blob_acquisition",
+  "protocol_id": "packaging-parent-blob-acquisition-v1",
+  "recorded_remote_HEAD": "ae4946b30f8ae5226e92500722e55618e91f9864",
+  "repo_path": "data/corpora/packaging-development-v1",
+  "repository_url": "https://github.com/pypa/packaging.git",
+  "schema_version": 1,
+  "seal_path": "examples/packaging_structural_development_v2/parent_blob_seal.json",
+  "source_access_authorized": true,
+  "source_configuration": {
+    "eligible_module_prefixes": [
+      "src/packaging/",
+      "packaging/"
+    ],
+    "excluded_path_components": [
+      "tests",
+      "test",
+      "_vendor",
+      "vendor",
+      "__pycache__"
+    ],
+    "extensions": [
+      ".py"
+    ],
+    "max_file_bytes": 2097152,
+    "regular_modes": [
+      "100644",
+      "100755"
+    ]
+  },
+  "status": "sealed",
+  "topology_path": "reports/research-20261104/packaging-topology-v2/topology.json",
+  "topology_sha256": "4b67eabbfcc1a3d2f2b9fd79984eca93200102f59c319a8e67aea68a6b3c1c49"
+}

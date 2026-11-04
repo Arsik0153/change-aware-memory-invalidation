@@ -1,0 +1,37 @@
+{
+  "status": "complete_no_remaining_material_blocker",
+  "source_sha256": {
+    "collect_packaging_parents_v2.py": "109bc71f20aa311b029da03d2495ff7c81e55d541be443f20b1086b66161f3af",
+    "packaging_parent_collection_support_v2.py": "22d626ae94ca3acd6dbd46233577ee1fe8f0cbeb3b9abf471157c487c36c4c01",
+    "packaging_parent_packets_v2.py": "465f204b94ec46b6186f459393bc16cc2624782a52ba4dd1b1251ffda26cc4cd",
+    "packaging_token_count.py": "06b50ae1bf40aabc4544ae3bfd6b7063388aced11ff0c62dd7a3a9b13ad447be",
+    "test_packaging_parent_collector_v2.py": "62ef18af3bfb52004e425ecf96c8e8dbbc03eec4bdb88ecbc7338ca60c609a53"
+  },
+  "verification": {
+    "authored_tests_passed": 12,
+    "staging_hash_inventory_verified": true,
+    "real_project_source_Git_network_or_parent_outcomes_read": false,
+    "tracked_changes": false
+  },
+  "resolved_finding": {
+    "issue": "Acquisition status/phase and completed metadata collection identity were initially not required; the authored fixture itself omitted status/phase.",
+    "fix": "Requires sealed metadata_only acquisition and exact acquisition-seal protocol/input hashes inside parent seal. Requires completed collection manifest, exact embedded acquisition seal/protocol, topology artifact hashes, frame length and parent positions. Eight authored denial subcases cover missing/draft phase/status and failed/missing/changed collection bindings before parent enumeration."
+  },
+  "reviewed_boundaries": {
+    "metadata_before_bytes": "All three exact parent IDs selected from the bound72-position frame; amendedh23 windows, full ordered parents/timestamps and first-parent continuity are checked globally using metadata only. Only then enumerate_parent may issue a tree read for one of the three authorized parents.",
+    "tree_and_size_scope": "ls-tree -rz omits size expansion. Outside-package/excluded-component/non-Python/nonregular entries receive inventory reasons without cat-file size/body reads. Only eligible regular package .py blobs are sized; bodies larger than2MiB are not read. Raw retained bytes, full tree metadata and exclusion inventories remain available on failure.",
+    "ranking": "Complete readable parent package inventory and AST/production-definition eligibility precede ranking. Rank is the frozen SHA seed+parent/path/qualname, full digest ascending then path/qualname. Direct unique functions only; conditional/nested/method/duplicate/type-param/production-ambiguous subjects excluded. Fewerfour or later packet-size failure stops, never substitutes.",
+    "expected_vs_truth": "Expected normalized signatures/AST hashes deliberately come from shared production syntax. This is generation, not independent truth. Collector never imports/calls reference checker or AI; manifest remains prepared_awaiting_packet_seal_and_independent_review with zero reference/AI calls.",
+    "claims_provenance": "New-derived IDs and original_candidate_id=null; paired exists/signature claims preserve complete canonical claim hashes, parent fullsource SHA/GitOID, symbol AST SHA/range, ranks and research provenance. File scope uses complete module hash/range; symbol scope uses definition hash/range. Known-incomplete input remains explicit; no original630 remark/admission is modified.",
+    "controls": "Each packet contains eight realcases plus two signature mismatches, one nonexistent name and one appended-duplicate uncertainty control. Fresh names collision-check original bytes; mismatch handles empty signatures; duplicates appended at module indentation. Public sources are complete.raw bytes, not snippets. Private maps and answer keys stay outside public packet; deterministic opaque IDs/order hide control labels, not project/source identity.",
+    "prompts_and_tokens": "Envelope includes every public case/source file, rubric, review schema and all copied sealed prompt files. Local pinned tiktoken0.12.0/o200k_base helper computes a named estimate offline. Complete envelope and digest retained; >64k stops without truncation/substitution. Native model context, harness overhead and billing are explicitly outside estimate claim; final response8k acceptance remains a later bound artifact.",
+    "method": "Study-plan/amendment identity, prior v1 failure hashes, unchanged frame binding, zero pre-amendment source/AI/reference counters, actual72frame andh23 disjoint parent windows are enforced. Original v1 failure is preserved.",
+    "resources": "Observed output-storage/self+completed-childCPU/wall checks are charged from collection entry and preserve failed outputs; a single operation may overshoot before next guard. No real collection or benchmark was performed by reviewer."
+  },
+  "bounded_limits": [
+    "Eligibility is deliberately production/AST generation scope; later independent reference/AI may exclude selected candidates, with no replacement.",
+    "Hashes/declared invocation identities are integrity bindings, not signatures or proof of model/training independence.",
+    "Sealed analysis/tokenizer code and ordinary local Git/object environment are trusted; project source is never executed."
+  ],
+  "remaining_material_blockers": []
+}

@@ -622,3 +622,11 @@ source не прочитан. Исходный протокол не измен�
 те же endpoints/roots/rank seed, parents0/24/48. Это изменение по результату
 проверки выполнимости, до любых source/AI/reference исходов. Оно не выдаётся
 за успех исходного плана или полностью неадаптивную пререгистрацию.
+
+### Packaging v2: freeze before parent source access
+
+Installed the reference-free parent collector and explicit parent-blob provisioning helper. The collector passed 12 authored tests and independent review; the installed provisioning helper passed 14 authored local-Git controls, independently rerun. Whole-repository Ruff passed. Both reviews are retained in `reports/research-20261104/packaging-parent-preaccess-review-v2/`.
+
+Separate parent collection and blob protocols seal the exact three parents from the completed metadata v2 result. The acquisition helper requests only missing eligible package blob OIDs, checks committed input bytes, disables implicit lazy fetching, and records all object inventories. Unknown transfer size is explicitly acknowledged: the 2 GiB storage target is observed after fetch, with >5 GiB free-space checks, not a hard network or transient storage quota. No child access is authorized. Collector metadata-only preflight passed before any Packaging source/tree access.
+
+Complete public packets and the checker must be sealed separately before AI/reference decisions. Named o200k_base counts screen the research envelope only; they do not claim actual model context or billing. The original h24 metadata failure remains unchanged; this is the disclosed metadata-informed h23 amendment.

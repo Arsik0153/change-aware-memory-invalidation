@@ -1,0 +1,116 @@
+{
+  "amendment_path": "examples/packaging_structural_development_v2/amendment.json",
+  "amendment_sha256": "df5630cba7354301de5dee95db361ff5ac01c7240f6413086c82f7ef5f32d022",
+  "boundary_commit": "f58537628042c7f29780b9d33f31597e7fc9d664",
+  "implementation_paths": [
+    "scripts/collect_packaging_parents_v2.py",
+    "scripts/packaging_parent_collection_support_v2.py",
+    "scripts/packaging_parent_packets_v2.py",
+    "scripts/packaging_token_count.py",
+    "tests/test_packaging_parent_collector_v2.py",
+    "scripts/validate_ai_review.py"
+  ],
+  "metadata_collection_manifest_path": "reports/research-20261104/packaging-topology-v2/manifest.json",
+  "metadata_manifest_path": "reports/research-20261104/packaging-topology-v2/topology.json",
+  "metadata_protocol_path": "examples/packaging_structural_development_v2/metadata_protocol.json",
+  "phase_boundary": "Reference-free derivation only. Seal all packets, rubric, checker and tests before any reference or AI decisions. The separate replay phase requires global parent eligibility before child-source authorization.",
+  "protocol_id": "packaging-derived-parent-collection-v2",
+  "rank_seed": "20261104-packaging-derived-development-v1",
+  "reference_contract_paths": [
+    "tests/test_structural_checker_v2.py"
+  ],
+  "reference_path": "scripts/structural_checker_v2.py",
+  "repo": {
+    "path": "data/corpora/packaging-development-v1",
+    "repo_id": "packaging",
+    "source_roots": [
+      "src",
+      "packaging"
+    ]
+  },
+  "resource_budget": {
+    "AI_input_tokens_max": 384000,
+    "AI_output_tokens_max": 48000,
+    "AI_packet_limit_policy": "Preflight complete-module packet size with a pinned tokenizer; at most64k input and8k output tokens per context. If a packet exceeds this budget, stop before reviewers; do not truncate a source module or replace its claims.",
+    "AI_primary_contexts_max": 6,
+    "ceiling_policy": "A resource stop preserves partial artifacts and failure status. It does not license dropping cases or silently shortening the registered horizon.",
+    "child_reference_calls_including_parent_exclusions": 552,
+    "child_snapshots": 69,
+    "child_validation_calls_max_all_four_variants": 2208,
+    "control_reference_calls": 12,
+    "estimated_engineering_effort_hours": [
+      2,
+      4
+    ],
+    "local_analysis_cpu_ceiling_seconds": 1200,
+    "new_projects": 1,
+    "parent_initialization_validation_calls_max": 96,
+    "parents": 3,
+    "planning_ceiling_not_measurement": true,
+    "raw_storage_ceiling_GiB": 2,
+    "real_parent_reference_calls": 24,
+    "replay_wall_ceiling_minutes": 30,
+    "shared_index_builds": 72,
+    "token_estimate_scope": "o200k_base named research-envelope estimate, excludes harness/system/tool overhead and does not claim actual model context or billing. Responses checked after return against8k estimate."
+  },
+  "resource_enforcement": "Observed output storage, self plus completed-child CPU, and wall checks; one operation can overshoot before the next boundary. Preserve failure; no replacement or horizon change.",
+  "review_prompt_paths": [
+    "examples/packaging_structural_development_v2/review_template/system.txt",
+    "examples/packaging_structural_development_v2/review_template/task.txt"
+  ],
+  "review_schema_path": "examples/packaging_structural_development_v2/review_template/review.schema.json",
+  "root": "../..",
+  "rubric_path": "examples/packaging_structural_development_v2/review_template/rubric.md",
+  "schema_version": 1,
+  "seal_path": "examples/packaging_structural_development_v2/parent_collection_seal.json",
+  "source_access": "Only regular allowed package Python blobs of exactly the three frozen parents. No child source access. Separate committed explicit-blob provisioning precedes offline collection.",
+  "source_access_parent_commits": [
+    "b3a5d7d68991c040615d5345bb55f61de53ba176",
+    "5cbe1e44cc7b0497a11ab441310a86a5ebf1658a",
+    "cf2cbe2aec28f87c6228a6fb136c27931c9af407"
+  ],
+  "source_configuration": {
+    "eligible_module_prefixes": [
+      "src/packaging/",
+      "packaging/"
+    ],
+    "excluded_path_components": [
+      "tests",
+      "test",
+      "_vendor",
+      "vendor",
+      "__pycache__"
+    ],
+    "extensions": [
+      ".py"
+    ],
+    "max_file_bytes": 2097152,
+    "parser": "Pinned CPython3.12; disclose shared ast infrastructure. Source is never imported or executed.",
+    "proposed_index_source_roots": [
+      "src",
+      "packaging"
+    ],
+    "regular_modes": [
+      "100644",
+      "100755"
+    ],
+    "rules": "No automatic root expansion or file-limit change. Unsupported modes, encodings, syntax or binding hazards are reported. Feasibility and exclusions are recorded before child access."
+  },
+  "split": "development",
+  "start_commit": "b3a5d7d68991c040615d5345bb55f61de53ba176",
+  "status": "sealed",
+  "study_plan_path": "examples/packaging_structural_development_v2/study-plan.json",
+  "study_plan_sha256": "d37a494fa3e6db574a21c26ce424f9eec64f75c8a08aa34ba73b752f9c94b0f8",
+  "tokenizer": {
+    "config_path": "examples/packaging_structural_development/tokenizer/o200k_base.config.json",
+    "config_sha256": "ae318e15e0abf6a602284f6f81ec9199c50291988fb8e75f88abe87c36b31143",
+    "environment_root": "runs/packaging-review-tools-20261104",
+    "helper_path": "scripts/packaging_token_count.py",
+    "manifest_path": "examples/packaging_structural_development/tokenizer/tokenizer-manifest.json",
+    "manifest_sha256": "7f707719f7364d3e21f462773257d89bc0175c0bb579835f1e3686589e99b74c",
+    "python_executable": "/root/apps/change-aware-memory-invalidation/runs/packaging-review-tools-20261104/bin/python",
+    "python_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+    "vocab_path": "examples/packaging_structural_development/tokenizer/o200k_base.tiktoken",
+    "vocab_sha256": "446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d"
+  }
+}
