@@ -28,6 +28,7 @@ strict = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = ["docker: executes prepared Docker images"]
 
 [tool.hatch.build.targets.wheel]

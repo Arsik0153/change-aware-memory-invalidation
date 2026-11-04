@@ -1,0 +1,1114 @@
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = -1-x = +1]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = ++counter-x = --counter]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = counter++-x = counter--]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = left + right-x = left - right]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = left && right-x = left || right]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = left < right-x = left > right]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = left ?? right-x = left || right]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x: keyof string[]-x: readonly string[]]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x: {readonly key: string}-x: {key: string}]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x: {key?: string}-x: {key: string}]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x: [string, number]-x: [number, string]]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = [1, 2]-x = [2, 1]]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = "first"-x = "second"]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = /a/i-x = /a/g]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x = `a${left}b`-x = `a${right}b`]
+tests/memory/test_boundaries.py::test_ecma_semantic_syntax_changes_contradict[x: {[K in keyof T]+?: T[K]}-x: {[K in keyof T]-?: T[K]}]
+tests/memory/test_boundaries.py::test_ecma_comments_and_format_are_equal
+tests/memory/test_boundaries.py::test_cas_special_files_fail_without_losing_head[fifo]
+tests/memory/test_boundaries.py::test_cas_special_files_fail_without_losing_head[directory]
+tests/memory/test_boundaries.py::test_cas_special_files_fail_without_losing_head[symlink]
+tests/memory/test_boundaries.py::test_cas_special_files_fail_without_losing_head[oversized]
+tests/memory/test_boundaries.py::test_missing_established_database_is_not_recreated
+tests/memory/test_boundaries.py::test_existing_unknown_database_is_never_initialized
+tests/memory/test_boundaries.py::test_old_signature_format_is_withheld_without_retargeting
+tests/memory/test_boundaries.py::test_legacy_database_is_adopted_without_changing_knowledge
+tests/memory/test_boundaries.py::test_legacy_source_objects_prove_missing_database_is_loss
+tests/memory/test_boundaries.py::test_database_special_paths_do_not_block_or_create_empty[fifo]
+tests/memory/test_boundaries.py::test_database_special_paths_do_not_block_or_create_empty[directory]
+tests/memory/test_boundaries.py::test_database_special_paths_do_not_block_or_create_empty[symlink]
+tests/memory/test_boundaries.py::test_database_special_paths_do_not_block_or_create_empty[dangling]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[before-schema]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[after-schema]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[before-db-publish]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[after-db-publish]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[before-owner-publish]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[after-owner-publish]
+tests/memory/test_boundaries.py::test_first_use_kill_and_retry_is_idempotent[before-yield]
+tests/memory/test_boundaries.py::test_context_input_reads_are_bounded_and_do_not_follow[fifo]
+tests/memory/test_boundaries.py::test_context_input_reads_are_bounded_and_do_not_follow[directory]
+tests/memory/test_boundaries.py::test_context_input_reads_are_bounded_and_do_not_follow[symlink]
+tests/memory/test_boundaries.py::test_context_input_reads_are_bounded_and_do_not_follow[oversized]
+tests/memory/test_boundaries.py::test_cas_permission_error_preserves_head_and_history
+tests/memory/test_boundaries.py::test_cas_growth_is_bounded_and_rejected
+tests/memory/test_boundaries.py::test_integrator_can_supply_trusted_compiler_location
+tests/memory/test_database_open.py::test_cli_rejects_connection_to_replacement_with_restored_path[blank]
+tests/memory/test_database_open.py::test_cli_rejects_connection_to_replacement_with_restored_path[unknown-schema]
+tests/memory/test_database_open.py::test_cli_rejects_connection_to_replacement_with_restored_path[other-scope]
+tests/memory/test_database_open.py::test_cli_rejects_connection_to_replacement_with_restored_path[saved-empty-current]
+tests/memory/test_database_open.py::test_first_use_publication_never_overwrites_an_appearing_database
+tests/memory/test_database_open.py::test_disappearance_during_sqlite_open_cannot_create_a_database
+tests/memory/test_database_open.py::test_legacy_adoption_rejects_another_scope_before_publishing_proof
+tests/memory/test_database_open.py::test_sqlite_uri_quotes_state_path
+tests/memory/test_database_open.py::test_hot_journal_recovery_preserves_history_and_receipt
+tests/memory/test_database_open.py::test_rejected_sqlite_open_preserves_original_hot_journal_and_next_cli_recovery
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[before-intent]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-intent]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-intent-sync]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[before-journal-remove]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-journal-remove]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-journal-remove-sync]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[before-main]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-main]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-main-sync]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[before-retire]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-retire]
+tests/memory/test_database_publication.py::test_hot_journal_publication_crash_recovers_exact_history_and_context[after-retire-sync]
+tests/memory/test_database_publication.py::test_hot_journal_mutation_crash_and_retry_has_one_receipt[before-intent]
+tests/memory/test_database_publication.py::test_hot_journal_mutation_crash_and_retry_has_one_receipt[after-intent-sync]
+tests/memory/test_database_publication.py::test_hot_journal_mutation_crash_and_retry_has_one_receipt[after-journal-remove-sync]
+tests/memory/test_database_publication.py::test_hot_journal_mutation_crash_and_retry_has_one_receipt[after-main-sync]
+tests/memory/test_database_publication.py::test_active_external_sqlite_transaction_is_bounded_and_preserves_recovery[read]
+tests/memory/test_database_publication.py::test_active_external_sqlite_transaction_is_bounded_and_preserves_recovery[write]
+tests/memory/test_database_publication.py::test_unsupported_recovery_keeps_every_byte_for_control_recovery[super-journal]
+tests/memory/test_database_publication.py::test_unsupported_recovery_keeps_every_byte_for_control_recovery[unknown-journal]
+tests/memory/test_database_publication.py::test_unsupported_recovery_keeps_every_byte_for_control_recovery[oversized-recovery]
+tests/memory/test_database_publication.py::test_damaged_pending_publication_does_not_overwrite_original_and_can_retry
+tests/memory/test_database_publication.py::test_retirement_sync_failure_keeps_intact_intent_and_next_query_works
+tests/memory/test_database_publication.py::test_intent_sync_failure_keeps_original_pair_and_retry_completes
+tests/memory/test_hybrid.py::test_unsupported_identity_is_withheld_not_deleted[const target = wrap(() => 1);]
+tests/memory/test_hybrid.py::test_unsupported_identity_is_withheld_not_deleted[const {target} = library;]
+tests/memory/test_hybrid.py::test_unsupported_identity_is_withheld_not_deleted[import {target} from "missing";]
+tests/memory/test_hybrid.py::test_unsupported_identity_is_withheld_not_deleted[namespace target { export function nested() {} }]
+tests/memory/test_hybrid.py::test_member_uncertainty_does_not_withhold_unrelated_function
+tests/memory/test_hybrid.py::test_projection_normalizer_uses_trusted_cache_only
+tests/memory/test_hybrid.py::test_wrapped_default_export_does_not_prove_absence
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds["method"() {}-None]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds["metho\\u0064"() {}-None]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[["method"]() {}-None]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds["method" = wrap(() => 1);-binding_unresolved]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[["method"] = wrap(() => 1);-binding_unresolved]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[get "method"() {}-binding_unresolved]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[[key]() {}-binding_unresolved]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[["meth" + "od"]() {}-binding_unresolved]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[method() {} "method"() {}-ambiguous_binding]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds[static method() {} "method"() {}-ambiguous_binding]
+tests/memory/test_hybrid.py::test_static_member_spelling_preserves_identity_or_withholds["method"(): void;-binding_unresolved]
+tests/memory/test_hybrid.py::test_known_unsupported_member_keeps_other_member_supported["method" = wrap(() => 1);]
+tests/memory/test_hybrid.py::test_known_unsupported_member_keeps_other_member_supported[["method"] = wrap(() => 1);]
+tests/memory/test_hybrid.py::test_known_unsupported_member_keeps_other_member_supported[get "method"() {}]
+tests/memory/test_hybrid.py::test_invalid_member_syntax_never_proves_absence
+tests/memory/test_hybrid.py::test_known_unsupported_member_withholds_nested_function["method" = wrap(() => 1);]
+tests/memory/test_hybrid.py::test_known_unsupported_member_withholds_nested_function[get "method"() {}]
+tests/memory/test_hybrid.py::test_nested_identity_gap_is_scoped_to_its_source_file
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-[("method")]() {{ {body} }}]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-[key]() {{ {body} }}]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-get [key]() {{ {body} }}]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-[key] = wrap(() => {{ {body} }});]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-"method" = wrap(() => {{ {body} }});]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[16-[0x10] = wrap(() => {{ {body} }});]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[#private-#private = wrap(() => {{ {body} }});]
+tests/memory/test_identity_scopes.py::test_unknown_owner_withholds_all_descendant_kinds[method-constructor(public method: () => void) {{}}]
+tests/memory/test_identity_scopes.py::test_unknown_scope_preserves_file_and_qualified_owner_boundaries
+tests/memory/test_identity_scopes.py::test_exact_binding_gap_does_not_cover_class_members
+tests/memory/test_identity_scopes.py::test_covered_deletion_and_recovery_keep_immutable_check_history
+tests/memory/test_memory.py::test_real_cli_driver
+tests/memory/test_memory.py::test_concurrent_remember_and_cas_updates
+tests/memory/test_memory.py::test_stale_origin_and_context_tampering
+tests/memory/test_memory.py::test_uncovered_is_not_absence[exclude]
+tests/memory/test_memory.py::test_uncovered_is_not_absence[ignore]
+tests/memory/test_memory.py::test_uncovered_is_not_absence[symlink]
+tests/memory/test_memory.py::test_missing_parent_path_has_captured_witness
+tests/memory/test_memory.py::test_failed_refresh_keeps_historical_head_and_returns_error
+tests/memory/test_memory.py::test_old_source_and_corrupt_database_are_not_empty_memory
+tests/memory/test_memory.py::test_rename_and_removed_edges_remain_in_invalidation_scopes
+tests/memory/test_memory.py::test_python_default_none_type_parameters_and_body_independence
+tests/memory/test_memory.py::test_actual_ecma_port_and_neutral_predicates
+tests/memory/test_memory.py::test_kill_and_retry_has_one_revision_and_receipt[before-index]
+tests/memory/test_memory.py::test_kill_and_retry_has_one_revision_and_receipt[after-index]
+tests/memory/test_memory.py::test_kill_and_retry_has_one_revision_and_receipt[before-db]
+tests/memory/test_memory.py::test_kill_and_retry_has_one_revision_and_receipt[after-db]
+tests/memory/test_memory.py::test_concurrent_context_and_mutation_never_mix_generations
+tests/memory/test_memory.py::test_actual_ecma_unsupported_method_unresolved_and_schema_mismatch
+tests/memory/test_memory.py::test_exact_snapshot_revert_preserves_intermediate_history
+tests/test_aggregate.py::test_two_cluster_bootstrap_and_macro
+tests/test_aggregate.py::test_reject_partial_policy_set
+tests/test_aggregate.py::test_separate_chronological_and_enriched
+tests/test_aggregate.py::test_distinct_dependency_depth_policies
+tests/test_aggregate.py::test_replay_sequences_separate_without_population_ci
+tests/test_aggregate.py::test_cluster_is_not_claim
+tests/test_aggregate.py::test_source_tampering_rejected
+tests/test_aggregate.py::test_duplicate_policy_artifacts_rejected
+tests/test_aggregate.py::test_optional_parent_evidence_hashes_verified
+tests/test_aggregate.py::test_break_even_observed_only
+tests/test_aggregate.py::test_cli_exports_interval_support_and_unavailable_reasons
+tests/test_aggregate.py::test_sparse_metric_reports_support_without_dropping_empty_cluster
+tests/test_behavior.py::test_classification_requires_collected_target_and_assertion
+tests/test_behavior.py::test_docker_real_git_parent_child_and_environment
+tests/test_behavior.py::test_docker_timeout_is_uncertainty
+tests/test_behavior.py::test_behavior_hidden_dependency_masks_real_contradiction
+tests/test_behavior_history_inputs.py::test_frozen_behavior_inputs_keep_synthetic_truth_out_of_public_masks
+tests/test_behavior_history_inputs.py::test_authored_expectation_mismatch_stops_before_policy_execution
+tests/test_bootstrap_availability.py::test_exact_formula_matches_independent_exhaustive_enumeration[2-1-q0]
+tests/test_bootstrap_availability.py::test_exact_formula_matches_independent_exhaustive_enumeration[2-2-q1]
+tests/test_bootstrap_availability.py::test_exact_formula_matches_independent_exhaustive_enumeration[2-3-q2]
+tests/test_bootstrap_availability.py::test_exact_formula_matches_independent_exhaustive_enumeration[3-2-q3]
+tests/test_bootstrap_availability.py::test_all_empty_and_all_active_boundaries[0.0]
+tests/test_bootstrap_availability.py::test_all_empty_and_all_active_boundaries[1.0]
+tests/test_bootstrap_availability.py::test_tiny_empty_probability_does_not_destroy_expected_iteration_count
+tests/test_bootstrap_availability.py::test_probability_partition_and_monotonicity[5]
+tests/test_bootstrap_availability.py::test_probability_partition_and_monotonicity[20]
+tests/test_bootstrap_availability.py::test_probability_partition_and_monotonicity[50]
+tests/test_bootstrap_availability.py::test_invalid_conditional_arguments_rejected[args0]
+tests/test_bootstrap_availability.py::test_invalid_conditional_arguments_rejected[args1]
+tests/test_bootstrap_availability.py::test_invalid_conditional_arguments_rejected[args2]
+tests/test_bootstrap_availability.py::test_invalid_conditional_arguments_rejected[args3]
+tests/test_bootstrap_availability.py::test_invalid_conditional_arguments_rejected[args4]
+tests/test_bootstrap_availability.py::test_invalid_activity_probability_rejected[-0.1]
+tests/test_bootstrap_availability.py::test_invalid_activity_probability_rejected[1.1]
+tests/test_bootstrap_availability.py::test_invalid_activity_probability_rejected[nan]
+tests/test_bootstrap_availability.py::test_invalid_activity_probability_rejected[True]
+tests/test_bootstrap_contract.py::test_unequal_clusters_estimate_micro_difference
+tests/test_bootstrap_contract.py::test_identical_policies_have_zero_difference_under_paired_sampling
+tests/test_bootstrap_contract.py::test_swapping_policies_reverses_interval
+tests/test_bootstrap_contract.py::test_undefined_resample_does_not_silently_condition_interval
+tests/test_bootstrap_contract.py::test_invalid_counters_are_rejected[counts0]
+tests/test_bootstrap_contract.py::test_invalid_counters_are_rejected[counts1]
+tests/test_bootstrap_contract.py::test_invalid_counters_are_rejected[counts2]
+tests/test_bootstrap_contract.py::test_denominator_support_keeps_policy_sides_separate
+tests/test_bootstrap_contract.py::test_support_remains_visible_when_estimate_undefined
+tests/test_bootstrap_contract.py::test_historical_interval_does_not_invent_support
+tests/test_bootstrap_study.py::test_analytical_undefined_probability
+tests/test_bootstrap_study.py::test_generator_truth_and_paired_counts
+tests/test_bootstrap_study.py::test_null_scenario_has_exact_zero_interval
+tests/test_bootstrap_study.py::test_summary_keeps_unavailable_trials_in_denominator
+tests/test_bootstrap_study.py::test_runner_artifacts_and_no_overwrite
+tests/test_bootstrap_study.py::test_invalid_protocol_rejected[changes0]
+tests/test_bootstrap_study.py::test_invalid_protocol_rejected[changes1]
+tests/test_bootstrap_study.py::test_invalid_protocol_rejected[changes2]
+tests/test_bootstrap_study.py::test_invalid_protocol_rejected[changes3]
+tests/test_bootstrap_study.py::test_invalid_protocol_rejected[changes4]
+tests/test_bootstrap_study.py::test_report_rechecks_counts_even_if_summary_hash_updated
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[defined_estimates]
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[mean_width_when_available]
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[bias_when_estimate_defined]
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[max_mcse_unconditional]
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[max_mcse_conditional]
+tests/test_bootstrap_study.py::test_report_rechecks_every_summary_field[expected_unavailable_count]
+tests/test_bootstrap_study.py::test_report_derives_truth_from_generator_not_reported_values
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[empty_clusters]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[undefined_probability]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[cluster_identity]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[paired_denominator]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[noninteger_counter]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[nested_numerator]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[repetitions]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[denominator_support]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[interval_bounds]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[unavailable_reason]
+tests/test_bootstrap_study.py::test_report_checks_raw_generator_and_diagnostic_contracts[boolean_trial]
+tests/test_bootstrap_study.py::test_report_accepts_legacy_rows_without_optional_support
+tests/test_bootstrap_study.py::test_report_rejects_unverified_extra_summary_fields
+tests/test_bootstrap_study.py::test_report_accepts_verified_truth_rounding_at_interval_boundary
+tests/test_bootstrap_study.py::test_report_rejects_impossible_generator_support[probabilities0-1-5-0]
+tests/test_bootstrap_study.py::test_report_rejects_impossible_generator_support[probabilities1-0-5-1]
+tests/test_bootstrap_study.py::test_report_rejects_impossible_generator_support[probabilities2-0.5-1-0]
+tests/test_bootstrap_study.py::test_report_rejects_impossible_generator_support[probabilities3-0.5-9-5]
+tests/test_bootstrap_study.py::test_report_rejects_impossible_generator_support[probabilities4-1-5-5]
+tests/test_cost_accounting.py::test_full_run_cost_includes_output_publication
+tests/test_cost_accounting.py::test_pareto_cost_accounts_for_preflight
+tests/test_cost_accounting.py::test_old_validator_cache_is_not_reused_after_semantic_fix[1]
+tests/test_cost_accounting.py::test_old_validator_cache_is_not_reused_after_semantic_fix[2]
+tests/test_cost_accounting.py::test_initial_index_cost_is_the_cold_parent_build
+tests/test_dataset.py::test_export_blind_source_packet_and_never_reads_labels
+tests/test_dataset.py::test_freeze_copies_inputs_resolves_refs_and_preserves_checkout
+tests/test_dataset.py::test_frozen_config_checks_live_input_and_seal_but_never_labels
+tests/test_dataset.py::test_freeze_hashes_labels_but_gate_ignores_label_content
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[duplicate_repo-duplicate repository]
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[duplicate_run-duplicate run]
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[split-run split]
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[protocol-run split]
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[path-repository path]
+tests/test_dataset.py::test_reject_dataset_membership_inconsistency[roots-source roots]
+tests/test_dataset.py::test_reject_overlap_clusters_and_split_leakage
+tests/test_dataset.py::test_replay_overlap_rejected_even_same_cluster
+tests/test_dataset.py::test_disagreements_omitted_and_agreement_is_pre_adjudication
+tests/test_dataset.py::test_single_annotation_no_fabricated_coverage_or_kappa
+tests/test_dataset.py::test_adjudication_chain_retains_original_and_unresolved_latest
+tests/test_dataset.py::test_adjudicated_label_uses_explicit_author
+tests/test_dataset.py::test_reject_invalid_annotation_histories[duplicate_id]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[duplicate_author]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[production]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[identity]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[not_independent]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[unknown]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[missing_reference]
+tests/test_dataset.py::test_reject_invalid_annotation_histories[unchained]
+tests/test_dataset.py::test_protocol_locator_does_not_change_sealed_configuration
+tests/test_dataset.py::test_heldout_cli_requires_seal_and_runs_without_labels
+tests/test_dataset.py::test_degenerate_kappa_has_reason_and_full_population_denominator
+tests/test_dataset.py::test_reject_numeric_independence_spoof
+tests/test_dataset.py::test_export_reports_absent_child_source
+tests/test_dataset.py::test_kappa_does_not_pool_different_annotator_pairs
+tests/test_dataset.py::test_extra_environment_paths_belong_to_git_snapshot
+tests/test_dataset.py::test_heldout_preserves_exclusions_already_frozen
+tests/test_dataset.py::test_heldout_multiple_frozen_policies_analyze_as_one_population
+tests/test_dataset.py::test_independent_test_keeps_actual_reviewer_kind[human-1]
+tests/test_dataset.py::test_independent_test_keeps_actual_reviewer_kind[independent_oracle-0]
+tests/test_engine.py::test_policies_replay_and_cache
+tests/test_engine.py::test_labels_do_not_affect_run
+tests/test_engine.py::test_uncertainty_rechecked
+tests/test_engine.py::test_depth_and_independent_change
+tests/test_engine.py::test_exact_subject_selected_even_with_other_anchor
+tests/test_engine.py::test_import_rebinding_selects_unchanged_caller
+tests/test_engine.py::test_file_policy_conservatively_checks_unresolved_transitive_support[False]
+tests/test_engine.py::test_file_policy_conservatively_checks_unresolved_transitive_support[True]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[src/click/core.py-supported-test_passed]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[src/click/core.py-contradicted-assertion_failed]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[src/click/core.py-insufficient_evidence-collection_error]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[click/core.py-supported-test_passed]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[click/core.py-contradicted-assertion_failed]
+tests/test_environment_pilot.py::test_environment_pilot_observes_only_parent_and_never_admits[click/core.py-insufficient_evidence-collection_error]
+tests/test_environment_pilot.py::test_environment_pilot_rejects_invalid_parent_inputs_before_output[duplicate]
+tests/test_environment_pilot.py::test_environment_pilot_rejects_invalid_parent_inputs_before_output[escape]
+tests/test_environment_pilot.py::test_environment_pilot_rejects_invalid_parent_inputs_before_output[wrong_repo]
+tests/test_environment_pilot.py::test_environment_pilot_rejects_invalid_parent_inputs_before_output[wrong_parent]
+tests/test_environment_pilot.py::test_environment_pilot_docker_failure_does_not_claim_completion
+tests/test_environment_pilot.py::test_environment_failure_retains_completed_parents_and_terminal_status
+tests/test_evaluation.py::test_manual_five_claims
+tests/test_evaluation.py::test_clear_all_nulls
+tests/test_evaluation.py::test_missing_labels_rejected
+tests/test_evaluation.py::test_duplicate_labels_rejected
+tests/test_evaluation.py::test_tampered_artifacts_rejected
+tests/test_evaluation.py::test_incomplete_run_rejected
+tests/test_evaluation.py::test_comparison_one_cluster
+tests/test_evaluation.py::test_bootstrap_pairs_and_reproducibility
+tests/test_evaluation.py::test_no_overwrite
+tests/test_evaluation.py::test_carried_forward_contradiction_not_current_prediction
+tests/test_evaluation.py::test_failed_run_without_artifacts_is_incomplete
+tests/test_evaluation.py::test_f1_zero_with_false_negative
+tests/test_evaluation.py::test_uncertain_not_counted_as_false_positive
+tests/test_evaluation.py::test_population_mismatch_rejected
+tests/test_evaluation.py::test_duplicate_states_rejected_even_with_valid_hash
+tests/test_evaluation.py::test_real_scoring_rejects_synthetic_reference_labels
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[human_review-True]
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[independent_oracle-True]
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[independent_test-True]
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[synthetic_manual-False]
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[production_validator-False]
+tests/test_evaluation.py::test_real_scoring_confirmation_methods[unknown_method-False]
+tests/test_evaluation.py::test_real_score_checks_only_labels_used_for_its_cohort
+tests/test_export_parent_review.py::test_parent_export_omits_child_files_metadata_and_assignments
+tests/test_export_parent_review.py::test_invalid_parent_materials_fail_before_output[answer]
+tests/test_export_parent_review.py::test_invalid_parent_materials_fail_before_output[source]
+tests/test_export_parent_review.py::test_invalid_parent_materials_fail_before_output[packet_hash]
+tests/test_export_parent_review.py::test_invalid_parent_materials_fail_before_output[population]
+tests/test_export_parent_review.py::test_unknown_fields_cannot_leak_child_or_policy_metadata[primary_form]
+tests/test_export_parent_review.py::test_unknown_fields_cannot_leak_child_or_policy_metadata[secondary_form]
+tests/test_export_parent_review.py::test_unknown_fields_cannot_leak_child_or_policy_metadata[source]
+tests/test_export_parent_review.py::test_signature_claim_json_arrays_are_accepted
+tests/test_export_parent_review.py::test_viewer_shows_parent_evidence_without_executing_source_markup
+tests/test_export_parent_review.py::test_evidence_cannot_overwrite_exported_artifacts[review.html]
+tests/test_export_parent_review.py::test_evidence_cannot_overwrite_exported_artifacts[review-assets/source.py]
+tests/test_export_parent_review.py::test_evidence_cannot_overwrite_exported_artifacts[primary_form.jsonl]
+tests/test_export_parent_review.py::test_viewer_retains_missing_evidence_limitation_and_probe
+tests/test_finite_behavior_oracle.py::test_reads_called_function_and_direct_return
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[import os\ndef f(): return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(x=1): return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return True\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return 1 + 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return g(1)\ndef g(): return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return f()\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return missing()\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return 1\ndef f(): return 2\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): pass\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[@decorator\ndef f(): return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[async def f(): return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f():\n    global x\n    return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f() -> int: return 1\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return\n]
+tests/test_finite_behavior_oracle.py::test_rejects_unsupported_semantics_instead_of_guessing[def f(): return '1'\n]
+tests/test_index.py::test_comments_signature_and_checkout
+tests/test_index.py::test_graph_union_depth_cycle
+tests/test_index.py::test_ambiguity_and_parse
+tests/test_index.py::test_explicit_import
+tests/test_index.py::test_blob_limits_and_symlink
+tests/test_index.py::test_shadowed_call_is_unresolved
+tests/test_index.py::test_repeated_enclosing_class_and_function
+tests/test_index.py::test_rebound_import_is_unresolved
+tests/test_index.py::test_staged_index_and_sha256_repository
+tests/test_inputs.py::test_cli_checks_real_git
+tests/test_inputs.py::test_reject_nonlinear_and_duplicate
+tests/test_inputs.py::test_receipt_symlink_escape
+tests/test_inputs.py::test_missing_anchor_rejected
+tests/test_inputs.py::test_merge_rejected
+tests/test_inputs.py::test_real_input_rejects_synthetic_parent_confirmation
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[human_review-True]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[independent_oracle-True]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[independent_test-True]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[independent_tokenizer_parent_oracle-True]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[synthetic_manual-False]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[production_validator-False]
+tests/test_inputs.py::test_real_structural_parent_confirmation_methods[unknown_method-False]
+tests/test_inputs.py::test_real_behavior_receipts_require_independent_test_even_in_preview[human_review-False]
+tests/test_inputs.py::test_real_behavior_receipts_require_independent_test_even_in_preview[independent_oracle-False]
+tests/test_inputs.py::test_real_behavior_receipts_require_independent_test_even_in_preview[independent_test-True]
+tests/test_inputs.py::test_real_behavior_receipts_require_independent_test_even_in_preview[synthetic_manual-False]
+tests/test_inputs.py::test_real_parent_method_scope_matches_claim_kind[prose-human_review-True]
+tests/test_inputs.py::test_real_parent_method_scope_matches_claim_kind[prose-independent_oracle-False]
+tests/test_inputs.py::test_real_parent_method_scope_matches_claim_kind[signature_equals-independent_tokenizer_parent_oracle-False]
+tests/test_inputs.py::test_real_parent_method_scope_matches_claim_kind[signature_equals-independent_oracle-True]
+tests/test_models.py::test_strict_claim
+tests/test_models.py::test_reject_invalid_json[{"x":1,"x":2}]
+tests/test_models.py::test_reject_invalid_json[{"x":NaN}]
+tests/test_models.py::test_reject_invalid_json[{"x":Infinity}]
+tests/test_models.py::test_paths[../x]
+tests/test_models.py::test_paths[/tmp/x]
+tests/test_models.py::test_paths[a/../../x]
+tests/test_models.py::test_paths[a\\x]
+tests/test_models.py::test_paths[a//x]
+tests/test_models.py::test_run_schema_has_no_labels
+tests/test_models.py::test_literal_boolean_is_not_integer
+tests/test_paired_bootstrap_availability.py::test_single_resample_probability_matches_exhaustive_support_and_draws[2]
+tests/test_paired_bootstrap_availability.py::test_single_resample_probability_matches_exhaustive_support_and_draws[3]
+tests/test_paired_bootstrap_availability.py::test_single_resample_probability_matches_exhaustive_support_and_draws[4]
+tests/test_paired_bootstrap_availability.py::test_production_availability_matches_all_two_resample_sequences
+tests/test_paired_bootstrap_availability.py::test_shared_support_reduces_to_original_formula[2-1]
+tests/test_paired_bootstrap_availability.py::test_shared_support_reduces_to_original_formula[5-2]
+tests/test_paired_bootstrap_availability.py::test_shared_support_reduces_to_original_formula[20-2]
+tests/test_paired_bootstrap_availability.py::test_shared_support_reduces_to_original_formula[20-8]
+tests/test_paired_bootstrap_availability.py::test_shared_support_reduces_to_original_formula[50-50]
+tests/test_paired_bootstrap_availability.py::test_disjoint_support_can_produce_valid_interval_and_tiny_values_survive_serialization
+tests/test_paired_bootstrap_availability.py::test_probability_boundaries_symmetry_and_monotonicity
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts0]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts1]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts2]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts3]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts4]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts5]
+tests/test_paired_bootstrap_availability.py::test_impossible_support_counts_rejected[counts6]
+tests/test_paired_bootstrap_availability.py::test_invalid_repetition_count_rejected[0]
+tests/test_paired_bootstrap_availability.py::test_invalid_repetition_count_rejected[-1]
+tests/test_paired_bootstrap_availability.py::test_invalid_repetition_count_rejected[True]
+tests/test_paired_bootstrap_availability.py::test_invalid_repetition_count_rejected[2.0]
+tests/test_paired_bootstrap_availability.py::test_protocol_refuses_duplicate_scenarios_and_repetitions
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[if True:\n    def f(): pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[def f(): pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[def outer():\n    def f(): pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[class C:\n    def f(): pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[class f: pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f = 1\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f, other = (1, 2)\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[(f, other) = (1, 2)\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[[other, f] = (1, 2)\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[other = f = 1\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f /= 2\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f //= 2\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f **= 2\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[f: int\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[del f\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[import other as f\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[from other import f\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[from other import *\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[for f in []: pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[with other as f: pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[if (f := 1): pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[try:\n    pass\nexcept Exception as f:\n    pass\n]
+tests/test_parent_candidates.py::test_rebinding_or_other_definition_is_excluded[match 1:\n    case f: pass\n]
+tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def f() pass\n]
+tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def 123(): pass\n]
+tests/test_parent_candidates.py::test_malformed_parent_cannot_receive_confirmation[def f(): pass\nx =\n]
+tests/test_parent_candidates.py::test_unambiguous_top_level_functions_remain_candidates
+tests/test_parent_candidates.py::test_pilot_initial_regression
+tests/test_parent_candidates.py::test_inline_rebinding_is_excluded
+tests/test_parent_candidates.py::test_outer_definition_bindings_are_excluded[def g(x=(f := 1)): pass\n]
+tests/test_parent_candidates.py::test_outer_definition_bindings_are_excluded[def g(x: (f := int)): pass\n]
+tests/test_parent_candidates.py::test_outer_definition_bindings_are_excluded[def g() -> (f := int): pass\n]
+tests/test_parent_candidates.py::test_outer_definition_bindings_are_excluded[@(f := decorator)\ndef g(): pass\n]
+tests/test_parent_candidates.py::test_outer_definition_bindings_are_excluded[class C((f := object)): pass\n]
+tests/test_parent_environments.py::test_only_parent_snapshot_is_observed_without_receipts[3.12.12]
+tests/test_parent_environments.py::test_only_parent_snapshot_is_observed_without_receipts[3.9.25]
+tests/test_parent_environments.py::test_invalid_parent_inputs_rejected_before_execution[child_fields]
+tests/test_parent_environments.py::test_invalid_parent_inputs_rejected_before_execution[probe]
+tests/test_parent_environments.py::test_invalid_parent_inputs_rejected_before_execution[claim_hash]
+tests/test_parent_environments.py::test_explicit_capture_limit_preserves_full_large_blob
+tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[snapshot]
+tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[probe]
+tests/test_parent_environments.py::test_failed_run_preserves_completed_observations_and_partial_logs[interrupt]
+tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[candidates]
+tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[inputs]
+tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[repository]
+tests/test_parent_environments.py::test_output_inside_inputs_rejected_before_docker[symlink]
+tests/test_parent_function_diagnostics.py::test_direct_observation_requires_bound_parent_origins[returned]
+tests/test_parent_function_diagnostics.py::test_direct_observation_requires_bound_parent_origins[assertion_failed]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[version]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[optimized]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[dependencies]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[probe]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[preloaded]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[target]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[outside_origin]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[mixed_origin]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[missing_package]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[origins_list]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[origin_list]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[payload_list]
+tests/test_parent_function_diagnostics.py::test_rejects_wrong_runtime_or_source_attestation[exit]
+tests/test_parent_function_diagnostics.py::test_import_failure_is_not_a_contradicted_claim
+tests/test_parent_function_diagnostics.py::test_parent_only_orchestration_preserves_partial_progress[False]
+tests/test_parent_function_diagnostics.py::test_parent_only_orchestration_preserves_partial_progress[True]
+tests/test_parent_function_diagnostics.py::test_invalid_inputs_rejected_before_output[probe]
+tests/test_parent_function_diagnostics.py::test_invalid_inputs_rejected_before_output[claim_hash]
+tests/test_parent_function_diagnostics.py::test_invalid_inputs_rejected_before_output[parent_binding]
+tests/test_parent_function_diagnostics.py::test_invalid_inputs_rejected_before_output[output]
+tests/test_parent_function_diagnostics.py::test_invalid_inputs_rejected_before_output[repo_output]
+tests/test_parent_function_diagnostics.py::test_cleanup_timeout_retains_each_attempt_and_partial_stdout
+tests/test_parent_function_diagnostics.py::test_all_technical_errors_are_not_reported_as_successful_observations
+tests/test_parent_function_diagnostics.py::test_dependency_profile_is_bound_to_actual_runtime_metadata
+tests/test_pilot.py::test_independent_parent_tokenizer
+tests/test_pilot.py::test_pilot_generator_leaves_labels_pending
+tests/test_predicate_scope.py::test_exact_syntax_ignores_unrelated_unresolved_calls[symbol_validate-0]
+tests/test_predicate_scope.py::test_exact_syntax_ignores_unrelated_unresolved_calls[file_validate-1]
+tests/test_predicate_scope.py::test_v1_keeps_conservative_structural_contract
+tests/test_predicate_scope.py::test_exact_syntax_selects_deletion_uncertainty_and_recovery
+tests/test_predicate_scope.py::test_exact_syntax_preserves_declared_unknown_support[known_incomplete]
+tests/test_predicate_scope.py::test_exact_syntax_preserves_declared_unknown_support[empty_anchors]
+tests/test_predicate_scope.py::test_exact_syntax_preserves_declared_unknown_support[explicit_dependency]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfrom other import f\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfrom other import *\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nimport other as f\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\ndel f\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nfor f in [1]: pass\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nwith thing as f: pass\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nif (f := 1): pass\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\nmatch 1:\n    case f: pass\n]
+tests/test_predicate_scope.py::test_rebound_definition_is_uncertain[def f(): pass\ntry: pass\nexcept Exception as f: pass\n]
+tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[return X]
+tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[def nested():\n        X = 9\n    return X]
+tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[global X\n    X += 1\n    return X]
+tests/test_predicate_scope.py::test_global_value_dependency_is_conservative_for_behavior[values = [X for X in range(3)]\n    return X]
+tests/test_predicate_scope.py::test_signature_change_remains_relevant_in_v11
+tests/test_predicate_scope.py::test_v11_preserves_file_anchor_scope
+tests/test_predicate_scope.py::test_default_expression_global_is_not_a_local_parameter
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[def g(x=(f := 1)): pass\n]
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[def g(x: (f := int)): pass\n]
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[def g() -> (f := int): pass\n]
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[@(f := decorator)\ndef g(): pass\n]
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[class C((f := object)): pass\n]
+tests/test_predicate_scope.py::test_enclosing_definition_expressions_can_rebind_subject[g = lambda x=(f := 1): x\n]
+tests/test_prepare_main.py::test_selection_is_deterministic_disjoint_and_preserves_replay_episode
+tests/test_prepare_main.py::test_known_episodes_share_cluster_until_a_merge_boundary
+tests/test_prepare_main.py::test_merge_boundary_is_not_a_replay_transition
+tests/test_prepare_main.py::test_parent_generator_all_kinds_zero_receipts_and_checkout_unchanged
+tests/test_prepare_main.py::test_parent_generator_rejects_future_inputs[child_commit]
+tests/test_prepare_main.py::test_parent_generator_rejects_future_inputs[diff]
+tests/test_prepare_main.py::test_parent_generator_rejects_future_inputs[changed_symbols]
+tests/test_prepare_main.py::test_parent_generator_rejects_future_inputs[stratum]
+tests/test_prepare_main.py::test_review_forms_blank_seeded_and_blinded
+tests/test_prepare_main.py::test_import_parent_records_only_external_supported_reviews_and_preserves_preview
+tests/test_prepare_main.py::test_parent_nonsupported_decisions_never_get_receipts[contradicted]
+tests/test_prepare_main.py::test_parent_nonsupported_decisions_never_get_receipts[uncertain]
+tests/test_prepare_main.py::test_parent_import_rejects_child_decisions
+tests/test_prepare_main.py::test_behavior_parent_import_requires_independent_test
+tests/test_prepare_main.py::test_provenance_audit_context_and_parent_evidence
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[missing_anchor-anchor_missing]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[empty_anchors-no_anchors_recorded]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[target_file-unresolved_declared_dependency]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[target_symbol-unresolved_declared_dependency]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[source_symbol-unresolved_declared_dependency]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[anchor_commit-anchor_observed_commit_not_parent]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[anchor_hash-anchor_hash_mismatch]
+tests/test_prepare_main.py::test_provenance_audit_reports_parent_defects[anchor_lines-anchor_line_range_invalid]
+tests/test_prepare_main.py::test_provenance_audit_records_snapshot_unresolved_and_limits
+tests/test_prepare_main.py::test_anchor_display_range_does_not_require_symbol_coverage[1-None-False]
+tests/test_prepare_main.py::test_anchor_display_range_does_not_require_symbol_coverage[None-1-False]
+tests/test_prepare_main.py::test_anchor_display_range_does_not_require_symbol_coverage[1-1-False]
+tests/test_prepare_main.py::test_anchor_display_range_does_not_require_symbol_coverage[1000000-None-True]
+tests/test_prepare_main.py::test_parent_only_audit_preserves_conservative_selection[file_validate]
+tests/test_prepare_main.py::test_parent_only_audit_preserves_conservative_selection[symbol_validate]
+tests/test_prepare_main.py::test_parent_only_audit_preserves_conservative_selection[file_invalidate]
+tests/test_prepare_main.py::test_parent_only_audit_preserves_conservative_selection[symbol_invalidate]
+tests/test_prepare_main.py::test_provenance_review_preserves_bytes_evidence_and_group_rows
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[blank]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[not_independent]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[numeric_independent]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[missing_evidence]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[wrong_parent]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[wrong_claim_hash]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[wrong_provenance_hash]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[dependency_shape]
+tests/test_prepare_main.py::test_provenance_review_rejects_unconfirmed_or_unbound_answers[duplicate]
+tests/test_prepare_main.py::test_review_cannot_follow_changed_claim_or_provenance[claim]
+tests/test_prepare_main.py::test_review_cannot_follow_changed_claim_or_provenance[provenance]
+tests/test_prepare_main.py::test_review_rejects_nested_output_and_tampered_audit
+tests/test_prepare_main.py::test_nonpositive_behavior_parent_review_is_retained_without_receipt[uncertain]
+tests/test_prepare_main.py::test_nonpositive_behavior_parent_review_is_retained_without_receipt[contradicted]
+tests/test_prepare_main.py::test_human_independent_behavior_test_can_confirm_parent
+tests/test_prepare_main.py::test_parent_batch_preserves_both_answers_and_full_population_coverage
+tests/test_prepare_main.py::test_parent_batch_retains_disagreement_and_adjudication_history[disagreement]
+tests/test_prepare_main.py::test_parent_batch_retains_disagreement_and_adjudication_history[adjudicated]
+tests/test_prepare_main.py::test_parent_batch_retains_disagreement_and_adjudication_history[reopened]
+tests/test_prepare_main.py::test_behavior_parent_adjudication_requires_independent_execution[human_review]
+tests/test_prepare_main.py::test_behavior_parent_adjudication_requires_independent_execution[independent_test]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[same_author]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[same_id]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[child]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[unknown]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[partial_population]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[child_adjudication]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[missing_original]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[synthetic]
+tests/test_prepare_main.py::test_parent_batch_rejects_invalid_reviews_before_writing[assignment_hash]
+tests/test_prepare_main.py::test_parent_review_cannot_overwrite_prior_uncertain_originals
+tests/test_prepare_main.py::test_parent_batch_distinguishes_assigned_reviews_from_global_fraction
+tests/test_prepare_main.py::test_parent_reviews_are_bound_to_prepared_claims_and_probes[claim]
+tests/test_prepare_main.py::test_parent_reviews_are_bound_to_prepared_claims_and_probes[probe]
+tests/test_prepare_main.py::test_parent_reviews_are_bound_to_prepared_claims_and_probes[packet]
+tests/test_prepare_main.py::test_parent_batch_cli_writes_preview_from_external_fixture_answers
+tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[source_evidence]
+tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[exported_probe]
+tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[preview]
+tests/test_prepare_main.py::test_parent_import_rejects_drifted_preparation_before_copy[run_parent]
+tests/test_probe_collision.py::test_preloaded_pytest_cannot_validate_historical_pytest
+tests/test_product_memory_driver.py::test_rejects_experiment_artifacts_inside_repository[output]
+tests/test_product_memory_driver.py::test_rejects_experiment_artifacts_inside_repository[cache]
+tests/test_product_memory_driver.py::test_rejects_paths_outside_fixture_before_any_mutation[../outside.py]
+tests/test_product_memory_driver.py::test_rejects_paths_outside_fixture_before_any_mutation[/tmp/outside.py]
+tests/test_product_memory_driver.py::test_rejects_paths_outside_fixture_before_any_mutation[link.py]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[hash]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[head]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[anchor]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[root]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[empty_root]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[schema]
+tests/test_product_memory_driver.py::test_rejects_invalid_mutation_profile_without_creating_evidence[null]
+tests/test_product_memory_driver.py::test_python_cli_lifecycle_and_restoration[False]
+tests/test_product_memory_driver.py::test_python_cli_lifecycle_and_restoration[True]
+tests/test_product_watch_driver.py::test_protocol_or_fixture_mismatch_rejected_before_output[head]
+tests/test_product_watch_driver.py::test_protocol_or_fixture_mismatch_rejected_before_output[source_hash]
+tests/test_product_watch_driver.py::test_protocol_or_fixture_mismatch_rejected_before_output[profile_hash]
+tests/test_product_watch_driver.py::test_protocol_or_fixture_mismatch_rejected_before_output[scope]
+tests/test_product_watch_driver.py::test_protocol_or_fixture_mismatch_rejected_before_output[phases]
+tests/test_product_watch_driver.py::test_evidence_and_cache_cannot_mutate_fixture[output]
+tests/test_product_watch_driver.py::test_evidence_and_cache_cannot_mutate_fixture[cache]
+tests/test_product_watch_driver.py::test_timeout_preserves_output_and_restores_source
+tests/test_product_watch_driver.py::test_existing_watcher_rejected_without_mutation_or_stop
+tests/test_product_watch_driver.py::test_lost_start_race_never_stops_another_session
+tests/test_product_watch_driver.py::test_v2_only_separates_explicit_note_publication[None]
+tests/test_product_watch_driver.py::test_v2_only_separates_explicit_note_publication[signature]
+tests/test_product_watch_driver.py::test_v2_only_separates_explicit_note_publication[note_review]
+tests/test_restore_preparation.py::test_relocation_changes_only_paths_and_preserves_inputs
+tests/test_restore_preparation.py::test_relocation_rejects_invalid_inputs_before_writing[pin]
+tests/test_restore_preparation.py::test_relocation_rejects_invalid_inputs_before_writing[parent]
+tests/test_restore_preparation.py::test_relocation_rejects_invalid_inputs_before_writing[child]
+tests/test_restore_preparation.py::test_relocation_rejects_invalid_inputs_before_writing[origin]
+tests/test_scenarios.py::test_hidden_mask_and_zero_drop
+tests/test_structural.py::test_structural_outcomes
+tests/test_structural_closure.py::test_broader_claim_text_cannot_borrow_an_exact_scope
+tests/test_structural_closure.py::test_source_root_must_be_a_directory_containing_the_subject
+tests/test_structural_closure.py::test_aliased_namespace_access_is_rejected[from builtins import globals as ns\ndef target():\n    return ns()\n]
+tests/test_structural_closure.py::test_aliased_namespace_access_is_rejected[from builtins import globals as ns\ndef target():\n    ns().update({'target': 7})\n]
+tests/test_structural_closure.py::test_aliased_namespace_access_is_rejected[from sys import modules as registry\ndef target():\n    return registry\n]
+tests/test_structural_closure.py::test_closes_both_predicates_with_bound_evidence_and_immutable_sources
+tests/test_structural_closure.py::test_partial_closure_leaves_unrequested_conservative_fallback[symbol_validate]
+tests/test_structural_closure.py::test_partial_closure_leaves_unrequested_conservative_fallback[file_validate]
+tests/test_structural_closure.py::test_partial_closure_leaves_unrequested_conservative_fallback[symbol_invalidate]
+tests/test_structural_closure.py::test_partial_closure_leaves_unrequested_conservative_fallback[file_invalidate]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[dataset_kind-real]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[split-heldout]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[stratum-chronological]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[authority-None]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[authority-value4]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[authority-value5]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[authority-value6]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[protocol_version-1.0]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[schema_version-True]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[schema_version-1]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[addendum_version-unknown]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[addendum_sha256-0000000000000000000000000000000000000000000000000000000000000000]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[parent_commit-HEAD]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[parent_commit-0000000000000000000000000000000000000000]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[child_commits-value14]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[labels_path-do-not-read-labels]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[parent_receipts_path-do-not-read-receipts]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[graph_views_path-do-not-read-graphs]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[diff-do-not-read-diff]
+tests/test_structural_closure.py::test_strict_request_rejects_nonfixture_authority_and_extra_inputs[closures-value19]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[deps]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[scope]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[method]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[nested]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[type]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[scenario]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[already_complete]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[unknown_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[extra_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[absent_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[duplicate_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_close_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[missing_close_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[duplicate_close_reason]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[missing_anchor]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_symbol]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_anchor_commit]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_anchor_hash]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_lines]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_repo]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[wrong_parent]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[duplicate_claim]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[duplicate_provenance]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[unmatched_provenance]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[duplicate_closure]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[unknown_closure]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[outside_roots]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[signature]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[decorators]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[async]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[defaults]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[annotations]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[claim_digest]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[provenance_digest]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[claims_file_hash]
+tests/test_structural_closure.py::test_ineligible_or_tampered_closure_is_atomic[provenance_file_hash]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[if True:\n    def target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nif False:\n    def target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\ntarget = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[target: int\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[from external import target\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[import other as target\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[from external import *\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\n(target := 1)\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\ndef setter():\n    global target\n    target = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def outer():\n    def target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[class C:\n    def target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nglobals()['target'] = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target():\n    return globals()\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nnamespace = globals\nnamespace()['target'] = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[import builtins\ndef target(): pass\nbuiltins.exec('target = 1')\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target():\n    obj.__dict__['target'] = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target():\n    obj.target = 1\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target():\n    return sys.modules\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nrun_arbitrary_code()\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(x=run_arbitrary_code()): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[@factory()\ndef target(): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target[T](x: T): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target():\n    def nested[T](): pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nfor target in []: pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\ndel target\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\ntry:\n    pass\nexcept Exception as target:\n    pass\n]
+tests/test_structural_closure.py::test_binding_hazards_and_unsupported_forms_fail_closed[def target(): pass\nmatch value:\n    case {'key': target}: pass\n]
+tests/test_structural_closure.py::test_relevant_blob_limitations_are_atomic[parse]
+tests/test_structural_closure.py::test_relevant_blob_limitations_are_atomic[lfs]
+tests/test_structural_closure.py::test_relevant_blob_limitations_are_atomic[size]
+tests/test_structural_closure.py::test_relevant_blob_limitations_are_atomic[symlink]
+tests/test_structural_closure.py::test_all_additional_anchors_checked_and_scope_preserved
+tests/test_structural_closure.py::test_missing_schema_and_authority_and_duplicate_json_keys_rejected
+tests/test_structural_closure.py::test_no_overwrite_or_nested_output_or_escaping_input
+tests/test_structural_closure.py::test_parent_only_boundary_with_no_child_and_forbidden_operations_guarded
+tests/test_structural_closure.py::test_request_and_authorization_are_frozen_and_strict
+tests/test_structural_closure.py::test_relative_repository_and_generated_scope_allowlist
+tests/test_structural_closure.py::test_every_additional_anchor_must_be_valid[missing_file]
+tests/test_structural_closure.py::test_every_additional_anchor_must_be_valid[missing_symbol]
+tests/test_structural_closure.py::test_every_additional_anchor_must_be_valid[parse_error]
+tests/test_structural_closure.py::test_every_additional_anchor_must_be_valid[identity]
+tests/test_structural_closure.py::test_bad_encoding_and_symlink_input_escape_are_rejected
+tests/test_structural_closure.py::test_cli_uses_parent_manifest_and_returns_artifact
+tests/test_structural_closure_demo.py::test_independent_fixture_oracle_uses_authored_expectations
+tests/test_structural_closure_demo.py::test_cli_demonstrates_selection_fallback_and_recovery
+tests/test_structural_closure_demo.py::test_fixture_verification_rejects_oracle_disagreement
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[None-symbol_exists-contradicted]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[-symbol_exists-contradicted]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x):\n    return x\n-signature_equals-supported]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x):\n    raise RuntimeError("must never execute")\n-symbol_exists-supported]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x, extra=None):\n    return x\n-signature_equals-contradicted]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x, extra=None):\n    return x\n-symbol_exists-supported]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x):\n    return x\n\ndef f0(x):\n    return x\n-symbol_exists-insufficient_evidence]
+tests/test_structural_stress.py::test_oracle_observable_frozen_grammar[def f0(x):\n    return x\n\ndef broken(:\n-symbol_exists-insufficient_evidence]
+tests/test_structural_stress.py::test_oracle_refuses_unsupported_grammar[f0 = 1\n]
+tests/test_structural_stress.py::test_oracle_refuses_unsupported_grammar[def f0(y):\n    return y\n]
+tests/test_structural_stress.py::test_oracle_refuses_unsupported_grammar[class f0:\n    pass\n]
+tests/test_structural_stress.py::test_oracle_refuses_unsupported_grammar[import os\n]
+tests/test_structural_stress.py::test_generation_is_reproducible_and_preserves_required_event_coverage
+tests/test_structural_stress.py::test_real_cli_history_matches_oracle_and_detects_corrupt_states
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[seeds-value0]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[seeds-value1]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[seeds-value2]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[files-0]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[functions_per_file--1]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[dataset_kind-real]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[split-heldout]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[variants-value7]
+tests/test_structural_stress.py::test_invalid_protocol_rejected_before_output[random_event_choices-value8]
+tests/test_structural_stress.py::test_verifier_failure_is_reported_and_other_variants_still_execute
+tests/test_symbol_search.py::test_cli_contract_signature_and_both_directions
+tests/test_symbol_search.py::test_exact_and_qualified_lookup_preserves_duplicates
+tests/test_symbol_search.py::test_repeated_and_conditional_bindings_remain_ambiguous
+tests/test_symbol_search.py::test_revision_rename_delete_and_dirty_checkout_are_independent
+tests/test_symbol_search.py::test_explicit_git_revision_does_not_require_worktree_backend
+tests/test_symbol_search.py::test_source_roots_and_paths_with_spaces
+tests/test_symbol_search.py::test_partial_graph_and_parse_limits_are_explicit
+tests/test_symbol_search.py::test_generic_async_signature_keeps_type_parameters_and_decorators
+tests/test_symbol_search.py::test_local_import_calls_are_candidates_without_changing_research_index
+tests/test_symbol_search.py::test_relative_import_overflow_never_calls_root_init_target
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-cli.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-__init__.py-1]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-pkg/cli.py-2]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-pkg/__init__.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-pkg/nested/cli.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[-pkg/nested/__init__.py-4]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-cli.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-__init__.py-1]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-pkg/cli.py-2]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-pkg/__init__.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-pkg/nested/cli.py-3]
+tests/test_symbol_search.py::test_relative_import_overflow_stays_unresolved[name-pkg/nested/__init__.py-4]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/cli.py-pkg/engine.py-.engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/cli.py-pkg/__init__.py-.]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/nested/cli.py-pkg/engine.py-..engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/nested/cli.py-pkg/__init__.py-..]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/__init__.py-pkg/engine.py-.engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[target-pkg/nested/__init__.py-pkg/__init__.py-..]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/cli.py-pkg/engine.py-.engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/cli.py-pkg/__init__.py-.]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/nested/cli.py-pkg/engine.py-..engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/nested/cli.py-pkg/__init__.py-..]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/__init__.py-pkg/engine.py-.engine]
+tests/test_symbol_search.py::test_valid_relative_local_import_keeps_call[run-pkg/nested/__init__.py-pkg/__init__.py-..]
+tests/test_symbol_search.py::test_unresolvable_relative_import_keeps_competing_binding_ambiguous[from .. import target\n    from .engine import target]
+tests/test_symbol_search.py::test_unresolvable_relative_import_keeps_competing_binding_ambiguous[from .engine import target\n    from .. import target]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[from engine import target\n    target = replacement\n    target()]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[from engine import target\n    del target\n    target()]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[from engine import target\n    import other as target\n    target()]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[from engine import target\n    from other import target\n    target()]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[from engine import target\n    def target(): pass\n    target()]
+tests/test_symbol_search.py::test_shadowed_local_import_never_invents_a_call[global target\n    from engine import target\n    target()]
+tests/test_symbol_search.py::test_local_import_does_not_choose_between_colliding_module_names
+tests/test_symbol_search.py::test_json_is_byte_deterministic_across_hash_seeds
+tests/test_symbol_search.py::test_human_output_is_default_and_mentions_incomplete_graph
+tests/test_symbol_search.py::test_invalid_arguments_report_stderr[extra0]
+tests/test_symbol_search.py::test_invalid_arguments_report_stderr[extra1]
+tests/test_symbol_search.py::test_invalid_arguments_report_stderr[extra2]
+tests/test_symbol_search.py::test_invalid_arguments_report_stderr[extra3]
+tests/test_symbol_search.py::test_invalid_repo_empty_symbol_and_empty_history
+tests/test_symbol_search.py::test_cami_finds_static_call_from_its_own_cli
+tests/test_typescript_analyzer.py::test_next_fixture_independent_expected_graph
+tests/test_typescript_analyzer.py::test_edit_delete_revert_and_new_consumer_captures
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer(createUser) { createUser() }-parameter_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { createUser(); const createUser = unknown }-unsupported_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { { createUser(); let createUser = () => 1 } }-before_initialization]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { try {} catch(createUser) { createUser() } }-catch_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { for (let createUser of []) { createUser() } }-unsupported_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer({createUser}) { createUser() }-parameter_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { const {createUser} = obj; createUser() }-unsupported_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { createUser = replacement; createUser() }-reassigned_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { [createUser] = list; createUser() }-reassigned_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { ({x:createUser} = obj); createUser() }-reassigned_binding]
+tests/test_typescript_analyzer.py::test_shadowing_and_writes_never_fall_through_to_import[function outer() { for(createUser of xs) {} createUser() }-reassigned_binding]
+tests/test_typescript_analyzer.py::test_conditional_duplicate_alias_and_temporal_bindings
+tests/test_typescript_analyzer.py::test_default_named_function_expressions_nested_methods_and_signatures
+tests/test_typescript_analyzer.py::test_anonymous_callbacks_have_own_scope_and_function_props_are_uses
+tests/test_typescript_analyzer.py::test_namespace_typeonly_external_dynamic_and_declaration_files
+tests/test_typescript_analyzer.py::test_syntax_error_excludes_file_and_fix_restores_without_stale_edges
+tests/test_typescript_analyzer.py::test_config_paths_edit_relative_extends_jsonc_and_jsconfig
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"extends":"./base"}-extra0-config_cycle_or_depth]
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"extends":"package-config"}-extra1-external_extends]
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"extends":"../outside"}-extra2-config_escape]
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"extends":"./absent"}-extra3-missing_config]
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"compilerOptions":{"moduleResolution":"nonsense"}}-extra4-TS6046]
+tests/test_typescript_analyzer.py::test_invalid_configs_are_explicit_and_disable_resolution[{"references":[]}-extra5-project_references_unsupported]
+tests/test_typescript_analyzer.py::test_reexport_cycle_star_and_duplicate_exports_do_not_guess
+tests/test_typescript_analyzer.py::test_unicode_offsets_are_utf16_and_hashes_ignore_comments_only_in_ast
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[../a.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[/a.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[a//b.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[a/./b.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[a\\b.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[C:a.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[node_modules/a.ts]
+tests/test_typescript_analyzer.py::test_reject_unsafe_capture_paths[a\x00.ts]
+tests/test_typescript_analyzer.py::test_node_absence_timeout_and_environment_sanitization
+tests/test_typescript_analyzer.py::test_missing_dependency_is_explicit
+tests/test_typescript_analyzer.py::test_boundary_rejects_wrong_request_unknown_paths_and_dangling_targets
+tests/test_typescript_analyzer.py::test_catch_and_loop_bindings_do_not_leak_and_function_hoisting_is_supported
+tests/test_typescript_analyzer.py::test_dynamic_eval_and_with_scopes_are_explicit
+tests/test_typescript_analyzer.py::test_direct_node_transport_uses_capture_only_without_executing_sources
+tests/test_typescript_analyzer.py::test_index_extensions_default_anonymous_and_commonjs_are_explicit
+tests/test_typescript_analyzer.py::test_barrel_edit_recomputes_targets_with_unchanged_consumer
+tests/test_typescript_analyzer.py::test_overloads_and_mutated_default_export_are_not_chosen
+tests/test_typescript_analyzer.py::test_recursive_arrow_and_jsx_function_argument_are_not_conflated
+tests/test_typescript_analyzer.py::test_wire_schema_rejects_bool_version_and_extra_fields
+tests/test_typescript_analyzer.py::test_implicit_arguments_binding_and_ts_wrapped_assignments
+tests/test_typescript_analyzer.py::test_case_collisions_and_excluded_namespace_bodies
+tests/test_typescript_analyzer.py::test_transport_limits_invalid_utf8_and_explicit_root_config
+tests/test_typescript_analyzer.py::test_nodenext_package_format_changes_extensionless_resolution
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {handler = (createUser) => createUser()} = {}; }-expected0-parameter_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const [handler = (createUser) => createUser()] = []; }-expected1-parameter_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {outer: {handler = (createUser) => createUser()}} = {}; }-expected2-parameter_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {handler = () => { function createUser(){} createUser(); }} = {}; }-expected3-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {handler = () => createUser()} = {}; }-expected4-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {[(() => createUser())()]: handler} = {}; }-expected5-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {handler = () => { const createUser = unknown; createUser(); }} = {}; }-expected6-unsupported_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const {handler = () => { try {} catch(createUser) { createUser(); } }} = {}; }-expected7-catch_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(cb = () => createUser()){ function createUser(){} cb(); }-expected8-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(cb = createUser()){ function createUser(){} }-expected9-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run({cb = () => createUser()} = {}){ var createUser; }-expected10-None]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run([cb = (createUser) => createUser()] = []){}-expected11-parameter_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(cb = () => createUser(), createUser = unknown){}-expected12-parameter_binding]
+tests/test_typescript_analyzer.py::test_binding_expression_scopes_and_parameter_body_environments[function run(){ const handler = () => createUser(); handler(); }-expected13-None]
+tests/test_typescript_analyzer.py::test_unsupported_export_expression_still_collects_lexical_scopes[export default [(createUser) => createUser()]]
+tests/test_typescript_analyzer.py::test_unsupported_export_expression_still_collects_lexical_scopes[export default ((createUser) => createUser())(unknown)]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-method-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-metho\\u0064-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"method"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-'method'-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"metho\\u0064"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-["method"]-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-16-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-0x10-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-0b10000-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-1.6e1-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"16"-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-[16]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-[0x10]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-1.5-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"1.5"-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"01"-"01"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"a.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-""-""]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"#method"-"#method"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ {member} }}-C.-"\\u0061.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-method-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-metho\\u0064-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"method"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-'method'-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"metho\\u0064"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-["method"]-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-16-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-0x10-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-0b10000-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-1.6e1-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"16"-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-[16]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-[0x10]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-1.5-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"1.5"-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"01"-"01"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"a.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-""-""]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"#method"-"#method"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[class C {{ static {member} }}-C.-"\\u0061.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--method-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--metho\\u0064-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"method"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--'method'-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"metho\\u0064"-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--["method"]-method]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--16-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--0x10-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--0b10000-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--1.6e1-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"16"-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--[16]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--[0x10]-16]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--1.5-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"1.5"-"1.5"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"01"-"01"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"a.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--""-""]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"#method"-"#method"]
+tests/test_typescript_member_identity.py::test_static_member_names_share_one_identity[const api = {{ {member} }};--"\\u0061.b"-"a.b"]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only["method" = wrap(() => 1);]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[["method"] = wrap(() => 1);]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[get "method"() {}]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[set ["method"](value) {}]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[[key]() {}]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[["meth" + "od"]() {}]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[[`method`]() {}]
+tests/test_typescript_member_identity.py::test_unsupported_names_and_fields_cover_affected_member_only[[("method")]() {}]
+tests/test_typescript_member_identity.py::test_duplicate_normalized_keys_are_ambiguous[method() {} "method"() {}]
+tests/test_typescript_member_identity.py::test_duplicate_normalized_keys_are_ambiguous[method() {} ["method"]() {}]
+tests/test_typescript_member_identity.py::test_duplicate_normalized_keys_are_ambiguous[static method() {} "metho\\u0064"() {}]
+tests/test_typescript_member_identity.py::test_duplicate_normalized_keys_are_ambiguous[16() {} "16"() {}]
+tests/test_typescript_member_identity.py::test_private_public_and_nested_segments_do_not_alias
+tests/test_typescript_member_identity.py::test_constructors_stay_distinct_from_indexed_methods
+tests/test_typescript_member_identity.py::test_known_unsupported_member_covers_nested_identities["method" = wrap(() => 1);]
+tests/test_typescript_member_identity.py::test_known_unsupported_member_covers_nested_identities[get "method"() {}]
+tests/test_typescript_search.py::test_next_cli_expected_signature_calls_uses_exports_and_cache
+tests/test_typescript_search.py::test_live_signature_body_delete_revert_and_git_isolation
+tests/test_typescript_search.py::test_untracked_consumers_targets_and_ignored_outputs
+tests/test_typescript_search.py::test_config_jsonc_relative_extends_and_unrelated_huge_json[worktree]
+tests/test_typescript_search.py::test_config_jsonc_relative_extends_and_unrelated_huge_json[git]
+tests/test_typescript_search.py::test_barrel_retarget_keeps_unchanged_consumer_honest
+tests/test_typescript_search.py::test_syntax_failure_other_definitions_and_recovery
+tests/test_typescript_search.py::test_unavailable_compiler_preserves_python_and_never_false_absence
+tests/test_typescript_search.py::test_installing_compiler_invalidates_incomplete_generation
+tests/test_typescript_search.py::test_node_disappears_after_cache_hit_never_returns_stale_ts
+tests/test_typescript_search.py::test_transient_bridge_failure_recovers_with_new_result_id_then_reuses_across_processes
+tests/test_typescript_search.py::test_python_index_has_no_ecma_records_and_exclude_is_capture_policy
+tests/test_typescript_search.py::test_alias_default_method_duplicates_shadowing_and_unresolved
+tests/test_typescript_search.py::test_all_extensions_and_unicode_positions[js]
+tests/test_typescript_search.py::test_all_extensions_and_unicode_positions[jsx]
+tests/test_typescript_search.py::test_all_extensions_and_unicode_positions[ts]
+tests/test_typescript_search.py::test_all_extensions_and_unicode_positions[tsx]
+tests/test_typescript_search.py::test_source_root_keeps_configs_and_relative_base_outside_source
+tests/test_typescript_search.py::test_source_exclusion_cannot_hide_effective_configuration_metadata[tsconfig.json]
+tests/test_typescript_search.py::test_source_exclusion_cannot_hide_effective_configuration_metadata[config]
+tests/test_typescript_search.py::test_source_exclusion_cannot_hide_effective_configuration_metadata[package.json]
+tests/test_typescript_search.py::test_ignored_untracked_config_metadata_is_still_effective
+tests/test_typescript_search.py::test_git_directory_symlink_keeps_conservative_coverage_without_target_reads
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[build-worktree]
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[build-git]
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[dist-worktree]
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[dist-git]
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[excluded-worktree]
+tests/test_typescript_search.py::test_active_metadata_under_source_exclusions[excluded-git]
+tests/test_typescript_search.py::test_missing_excluded_metadata_created_after_query
+tests/test_typescript_setup.py::test_setup_is_idempotent_and_does_not_use_target_manifest
+tests/test_typescript_setup.py::test_failed_new_setup_preserves_published_compiler_and_removes_pending
+tests/test_typescript_setup.py::test_setup_missing_node_and_wrong_versions_are_actionable
+tests/test_typescript_setup.py::test_setup_nonzero_npm_is_nonzero_cli
+tests/test_typescript_setup.py::test_setup_repairs_owned_invalid_cache[missing]
+tests/test_typescript_setup.py::test_setup_repairs_owned_invalid_cache[syntax]
+tests/test_typescript_setup.py::test_setup_repairs_owned_invalid_cache[incomplete]
+tests/test_typescript_setup.py::test_setup_repairs_owned_invalid_cache[manifest]
+tests/test_typescript_setup.py::test_setup_repairs_owned_invalid_cache[ready]
+tests/test_typescript_setup.py::test_failed_repair_preserves_invalid_cache_for_retry
+tests/test_typescript_setup.py::test_cache_ancestor_symlink_is_not_a_trusted_compiler
+tests/test_typescript_setup.py::test_setup_quarantines_symlink_cache_without_touching_target
+tests/test_verification_manifest.py::test_source_snapshot_tracks_edits_additions_deletions
+tests/test_verification_manifest.py::test_manifest_rejects_changed_sources_and_failed_checks[False-0]
+tests/test_verification_manifest.py::test_manifest_rejects_changed_sources_and_failed_checks[True-0]
+tests/test_verification_manifest.py::test_manifest_rejects_changed_sources_and_failed_checks[False-1]
+tests/test_verification_manifest.py::test_root_configuration_is_part_of_snapshot
+tests/test_worktree_search.py::test_separate_process_live_lifecycle_and_head_isolation
+tests/test_worktree_search.py::test_parse_error_drops_old_definitions_and_edges_but_healthy_search_works
+tests/test_worktree_search.py::test_gitignore_hard_excludes_source_roots_and_configured_paths
+tests/test_worktree_search.py::test_global_and_repository_info_excludes_are_part_of_capture
+tests/test_worktree_search.py::test_symlinks_special_files_and_product_state_are_not_followed
+tests/test_worktree_search.py::test_large_file_bytes_and_lfs_limitations_have_honest_identity
+tests/test_worktree_search.py::test_submodule_is_reported_without_entering_its_directory
+tests/test_worktree_search.py::test_cached_index_reused_in_fresh_process_without_invoking_builder
+tests/test_worktree_search.py::test_cached_capture_is_verified_again_before_reuse
+tests/test_worktree_search.py::test_json_payload_is_sorted_and_stable_across_process_hash_seeds
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[index]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[manifest]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[schema]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[boolean_schema]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[identity]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[duplicate_keys]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[missing_index]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[pointer]
+tests/test_worktree_search.py::test_corrupt_or_incompatible_state_rebuilds_with_diagnostics[orphan]
+tests/test_worktree_search.py::test_linked_worktrees_have_independent_current_pointers
+tests/test_worktree_search.py::test_sha256_git_and_unborn_worktree_are_supported
+tests/test_worktree_search.py::test_change_during_build_discards_candidate_and_retries[edit]
+tests/test_worktree_search.py::test_change_during_build_discards_candidate_and_retries[rename]
+tests/test_worktree_search.py::test_change_during_build_discards_candidate_and_retries[delete]
+tests/test_worktree_search.py::test_continuous_changes_fail_bounded_retry_without_publishing_or_returning_old
+tests/test_worktree_search.py::test_permission_failure_during_verification_is_not_a_delete_or_partial_publish
+tests/test_worktree_search.py::test_growing_file_read_terminates_without_chasing_appended_bytes
+tests/test_worktree_search.py::test_directory_replaced_by_symlink_never_reads_the_target
+tests/test_worktree_search.py::test_crash_recovery_publishes_only_complete_immutable_generations[before_generation]
+tests/test_worktree_search.py::test_crash_recovery_publishes_only_complete_immutable_generations[after_generation]
+tests/test_worktree_search.py::test_crash_recovery_publishes_only_complete_immutable_generations[before_pointer]
+tests/test_worktree_search.py::test_crash_recovery_publishes_only_complete_immutable_generations[after_pointer]
+tests/test_worktree_search.py::test_concurrent_finds_serialize_refresh_and_pin_the_same_generation
+tests/test_worktree_search.py::test_storage_failure_preserves_pointer_and_does_not_return_stale
+tests/test_worktree_search.py::test_policy_and_indexer_fingerprints_change_generation_identity
+tests/test_worktree_search.py::test_git_effective_external_ignore_is_verified_and_reused[regular]
+tests/test_worktree_search.py::test_git_effective_external_ignore_is_verified_and_reused[symlink]
+tests/test_worktree_search.py::test_git_effective_external_ignore_is_verified_and_reused[dev_null]
+tests/test_worktree_search.py::test_git_effective_external_ignore_is_verified_and_reused[info]
+tests/test_worktree_search.py::test_git_effective_external_ignore_is_verified_and_reused[global]
+tests/test_worktree_search.py::test_source_exclusion_does_not_hide_active_ignore_policy[]
+tests/test_worktree_search.py::test_source_exclusion_does_not_hide_active_ignore_policy[pkg/]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[fifo-index.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[fifo-manifest.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[fifo-current.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[fifo-generation]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[fifo-generations]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[directory-index.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[directory-manifest.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[directory-current.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[directory-generation]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[directory-generations]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[symlink-index.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[symlink-manifest.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[symlink-current.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[symlink-generation]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[symlink-generations]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[socket-index.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[socket-manifest.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[socket-current.json]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[socket-generation]
+tests/test_worktree_search.py::test_cache_artifact_types_repair_persistently_without_following_targets[socket-generations]
+tests/test_worktree_search.py::test_repaired_fifo_index_releases_lock_for_concurrent_process_reuse
+tests/test_worktree_search.py::test_unsupported_external_ignore_fails_before_git_can_block[fifo]
+tests/test_worktree_search.py::test_unsupported_external_ignore_fails_before_git_can_block[directory]
+tests/test_worktree_search.py::test_unsupported_external_ignore_fails_before_git_can_block[device]
+tests/test_worktree_search.py::test_unsupported_external_ignore_fails_before_git_can_block[loop]
+tests/test_worktree_search.py::test_unsupported_external_ignore_fails_before_git_can_block[oversize]
+tests/test_worktree_search.py::test_explicit_empty_excludes_file_disables_default_global_ignore
+tests/test_worktree_search.py::test_ignore_metadata_changed_after_cache_load_discards_candidate[external_symlink]
+tests/test_worktree_search.py::test_ignore_metadata_changed_after_cache_load_discards_candidate[excluded_local]
+tests/test_worktree_search.py::test_oversized_cache_index_repairs_before_reading_bytes
+tests/test_worktree_search.py::test_cache_open_race_to_invalid_type_is_bounded_and_repairs[fifo]
+tests/test_worktree_search.py::test_cache_open_race_to_invalid_type_is_bounded_and_repairs[socket]
+tests/test_worktree_search.py::test_cache_open_race_to_invalid_type_is_bounded_and_repairs[directory]
+tests/test_worktree_search.py::test_cache_open_race_to_invalid_type_is_bounded_and_repairs[symlink]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[open-13]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[open-5]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[open-6]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[read-13]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[read-5]
+tests/test_worktree_search.py::test_regular_cache_io_errors_remain_fatal_without_repair[read-6]
+tests/test_worktree_search.py::test_cache_replacement_before_open_is_rejected_before_read
+tests/test_worktree_search.py::test_cache_read_growth_stops_at_initial_size
+tests/test_worktree_search.py::test_cache_permission_failure_is_fatal_and_preserves_pointer
+tests/test_worktree_search.py::test_invalid_writer_lock_fails_without_blocking_or_following[fifo]
+tests/test_worktree_search.py::test_invalid_writer_lock_fails_without_blocking_or_following[symlink]
+tests/test_worktree_search.py::test_invalid_writer_lock_fails_without_blocking_or_following[directory]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[write]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[flush]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[cancel]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[after_flush]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[exited]
+tests/watch/test_cleanup.py::test_failed_start_reaps_child_and_preserves_error[resists]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[publication-False]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[publication-True]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[cancel-False]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[cancel-True]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[normal-False]
+tests/watch/test_cleanup.py::test_endpoint_cleanup_preserves_replacement[normal-True]
+tests/watch/test_cleanup.py::test_analyzer_wait_failure_reaps_node[cancel]
+tests/watch/test_cleanup.py::test_analyzer_wait_failure_reaps_node[error]
+tests/watch/test_cleanup.py::test_analyzer_wait_failure_reaps_node[timeout]
+tests/watch/test_cleanup.py::test_analyzer_wait_failure_reaps_node[exited]
+tests/watch/test_cleanup.py::test_watch_stop_reaps_real_node
+tests/watch/test_cleanup.py::test_unprovable_bound_endpoint_is_preserved
+tests/watch/test_control.py::test_foreground_lifetime_and_pinned_restart
+tests/watch/test_control.py::test_established_lifetime_lease_is_never_recreated_or_quarantined[missing]
+tests/watch/test_control.py::test_established_lifetime_lease_is_never_recreated_or_quarantined[replace]
+tests/watch/test_control.py::test_established_lifetime_lease_is_never_recreated_or_quarantined[symlink]
+tests/watch/test_control.py::test_established_lifetime_lease_is_never_recreated_or_quarantined[fifo]
+tests/watch/test_control.py::test_established_lifetime_lease_is_never_recreated_or_quarantined[bytes]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[missing]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[fifo]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[symlink]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[oversized]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[malformed]
+tests/watch/test_control.py::test_discovery_damage_cannot_authorize_control_or_pid_signals[stale-pid]
+tests/watch/test_control.py::test_unrelated_socket_and_capability_cannot_control_active_session
+tests/watch/test_control.py::test_initial_lease_installation_crash_fails_closed
+tests/watch/test_observation.py::test_observe_before_first_refresh_does_not_initialize
+tests/watch/test_observation.py::test_observe_uses_canonical_probes_and_never_prepares_or_publishes
+tests/watch/test_observation.py::test_observe_cannot_turn_damaged_database_into_empty_knowledge[missing]
+tests/watch/test_observation.py::test_observe_cannot_turn_damaged_database_into_empty_knowledge[corrupt]
+tests/watch/test_observation.py::test_observe_cannot_turn_damaged_database_into_empty_knowledge[fifo]
+tests/watch/test_observation.py::test_observe_pending_recovery_never_completes_or_changes_live_image
+tests/watch/test_observation.py::test_observe_catalog_and_declared_note_sources_join_shared_capture
+tests/watch/test_operations.py::test_operation_deadline_reaps_its_actual_subprocess
+tests/watch/test_operations.py::test_cancelled_refresh_preserves_committed_product_head
+
+1112 tests collected in 0.65s
