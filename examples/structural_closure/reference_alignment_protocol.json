@@ -162,6 +162,14 @@
         "symbol_exists": "uncertain",
         "signature_equals": "uncertain"
       }
+    },
+    {
+      "id": "nested_class_global",
+      "child_source": "def f(x):\n    return x\nclass Outer:\n    class Inner:\n        global f\n        f = 0\n",
+      "authored_expected": {
+        "symbol_exists": "uncertain",
+        "signature_equals": "uncertain"
+      }
     }
   ],
   "predicates": [
@@ -173,9 +181,9 @@
     "file_anchor",
     "all_validate"
   ],
-  "expected_input_pairs": 20,
-  "expected_claim_transitions": 40,
-  "expected_policy_states": 120,
+  "expected_input_pairs": 21,
+  "expected_claim_transitions": 42,
+  "expected_policy_states": 126,
   "protocol_version": "1.1",
   "known_incomplete": false,
   "frozen_reference_sha256": "2f3dfc7a3d867d9094c8aae692faf24271cca6704532204ce08528a15ce1df1f",
@@ -193,5 +201,6 @@
     "Reference uses shared CPython AST and has stated scope/coverage limits.",
     "No Git/Docker execution; policies are invoked on synthetic snapshots.",
     "Any fix or changed reference requires a separately identified after-run; never overwrite baseline."
-  ]
+  ],
+  "pre_execution_amendment": "Read-only reviewer found a nested-class-global coverage gap in frozen reference on a separately authored example; add explicit challenge before any transition experiment execution. Preserve frozen reference and report any expected-verdict mismatch, not an experiment failure."
 }
