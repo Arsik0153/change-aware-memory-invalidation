@@ -1,0 +1,18 @@
+{
+  "status": "verified",
+  "archive_path": "reports/research-20261104/negative-carry-raw-v1.tar.gz",
+  "archive_sha256": "01965ad30d2a6f5515acda4fec478b4f36f19263e28261d3a2f5b26fcd0970f8",
+  "archive_bytes": 508667,
+  "record_mirror": "reports/research-20261104/negative-carry-maintenance-evidence-v1",
+  "original_manifest_sha256": "ddee049161424b5da53aa138e4423808d217152bed9923ed3f97dfcb85bd28e5",
+  "original_artifact_files_checked": 151,
+  "runtime_files_checked": 80,
+  "authored_git_repositories": 17,
+  "preserved_symlinks": [
+    {
+      "name": "run/git-fixtures/absence_ancestor_limitation/pkg",
+      "target": "elsewhere"
+    }
+  ],
+  "scope": "Authored fixtures only; all original Git databases retained in raw archive; mirror omits .git and non-file symlink, matching original file inventory."
+}

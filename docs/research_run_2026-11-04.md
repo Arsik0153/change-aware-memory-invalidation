@@ -507,3 +507,18 @@ rawpackets реальногоClick replay, независимый аудит, п
 проверены finalizer. Предыдущие версии сохранены. Частотаfalse_available
 не интерпретируется как популяционная оценка, восьмикратное повторение одного
 claim явно указано.
+
+## Цена переноса отрицательного результата
+
+Наcbfbe28 закреплены80файлов,17авторскихисторий31переход,три стратегии,21парный
+повтор иотдельныеprofiles.14installedtests иRuff прошли до измерений. Результат:
+29/21/22validations заодиннабор; CPUmedian223.799/477.429/481.752ms за100наборов.
+Оба кандидата медленнее во всех21парахCPU иwall. Сохранены93correctnessrecords,
+63timingsamples,отдельныеwarmup/profilecosts и151artifacthash. Все15suppressed
+states остаютсяcontradicted/predicate_mismatch. Триintentionalkeep_all состояния
+оставляют восстановленнуюистину скрытой, затемвсе вариантыеёперепроверяют.
+
+Полныйrawtar508667bytes сохраняет17Gitfixtures,symlink и80runtimefiles; 151payload
+и80sourcehash перепроверены внутриархива. ДляGit создана151-filemirror безвложенных
+.git; исходныйrun сохранён. На диске15GiB(80%),очистка не требуется. Графикпросмотрен;
+html_preview сноваexit1,html_render показалPNG. Независимыйаудитидётотдельно.

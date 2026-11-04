@@ -1,0 +1,6 @@
+def f(x=2):
+    return x
+class C:
+    class D:
+        global f
+        f = 7
