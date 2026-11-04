@@ -1,0 +1,20 @@
+[
+  {
+    "control": "changed_raw_log",
+    "detected": true,
+    "outer_hash_recomputed": true,
+    "reason": "Original artifact mismatch: raw/git_docker/runs/all_validate/logs/maintenance/07cf4f0b7f17034dfb83a1b74dcf567478de29d48fd88531562bd60565fab444/repeat-0.log"
+  },
+  {
+    "control": "changed_runtime_source",
+    "detected": true,
+    "outer_hash_recomputed": true,
+    "reason": "Runtime source mismatch: src/cami/policies.py"
+  },
+  {
+    "control": "incomplete_run",
+    "detected": true,
+    "outer_hash_recomputed": true,
+    "reason": "Incomplete original run"
+  }
+]
