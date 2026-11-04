@@ -1,0 +1,27 @@
+{
+  "actual_results_analyzed": false,
+  "authored_cli_cases": 6,
+  "authored_cli_manifest_sha256": "a3cdd27f464cfc8647291ef7c0b3079621f09ebb910db6f87ef42e2dd5468f1c",
+  "heldout_results_or_source_read": false,
+  "implementation_files": {
+    "aggregate_metrics.py": "d7a5ca8cebf11026c171bb46d6654ba5c53cedf185fbd54160f5397152443b88",
+    "aggregate_study.py": "ceb373718581fd48bf3227dcfc35a06e2f04ee815070e937af197b5ef643b5e3",
+    "supported_rules.json": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4"
+  },
+  "model_calls": 0,
+  "new_only_outputs": true,
+  "primary_gate": "all36 operational+quality pass; complete charged wall and all5normalized token fields; one same metric strictly lower in all6pairs",
+  "private_state_access": false,
+  "protocol_source_path": "reports/opencode-study-design-20261104/protocol.json",
+  "protocol_source_sha256": "a95875de6d5fc802a1e604a2e79c888a450292da9584b9031af632398c9418d6",
+  "readme_sha256": "89c764768853e4a24d066c58535208c051e53a99232f74ea6f1d406620a12e42",
+  "ruff": "passed",
+  "schema_version": 1,
+  "status": "ready_for_parent_integration",
+  "tracked_writes": false,
+  "unit_controls": 14,
+  "verification_files": {
+    "test_aggregate.py": "7948ccc67805f8e058bf4b17fc93e3ce6219726c6afa2231567f13ef3054d7ac",
+    "verify_authored.py": "7e70b1a08e85352144fd70880b1b3de3f01f5f027fff8f27bfd97c7f0eb4ad42"
+  }
+}

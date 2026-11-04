@@ -1,0 +1,1990 @@
+{
+  "claim_scope": "Development/synthetic application of frozen criterion; not a final heldout success claim.",
+  "externally_expected_study_sha_verified": true,
+  "integrity": {
+    "active_trial_payloads_read": false,
+    "private_state_read": false,
+    "terminal_artifact_hashes_verified": 57,
+    "terminal_sha256": {
+      "r1-plain-s1": "bb957d127cc295ff795463cd378f340a813e7f8db677c8312811cad11ff828c4"
+    }
+  },
+  "limits": [
+    "One frozen version only; no retry or cross-version pooling.",
+    "Normalized counters are resource proxies, not bills. Client-normalized zero cannot prove raw-provider zero; provider missingness may be unrecoverable.",
+    "Input/cache.read/cache.write/output/reasoning are disjoint normalized counters; token work excludes cached reads but retains them separately.",
+    "Session totals and assistant-step sums are never added. Resource component spans remain nested; charged wall is used once, with construction included.",
+    "Final ledger hashing/publication is controller bookkeeping outside its operational timer; fixture/export/fixed grading are separate infrastructure.",
+    "Three dependent four-stage blocks per arm, only two task instances; no population, causal, contamination-free or billing claim."
+  ],
+  "protocol_sha256": "a95875de6d5fc802a1e604a2e79c888a450292da9584b9031af632398c9418d6",
+  "reported_token_budget": null,
+  "run": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v1-20261104",
+  "runtime_image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "schema_version": 1,
+  "study_kind": "development",
+  "study_sha256": "1d9c49d0a120a5af61d293b764270a84aac38e362a11d327ba217f564c080fed",
+  "summary": {
+    "all_primary_metrics_complete": false,
+    "all_trials_operational_quality_pass": false,
+    "all_trials_terminal": false,
+    "blocks": [
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 1,
+          "observed_subtotal": 181.3309013841208,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-plain-s1",
+            "r1-plain-s2",
+            "r1-plain-s3",
+            "r1-plain-s4"
+          ]
+        },
+        "repetition": 1,
+        "token_work": {
+          "complete": false,
+          "known_stages": 1,
+          "observed_subtotal": 34137,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-plain-s1",
+            "r1-plain-s2",
+            "r1-plain-s3",
+            "r1-plain-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 1,
+            "observed_subtotal": 230144,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 1,
+            "observed_subtotal": 0,
+            "total": null
+          },
+          "input": {
+            "known_stages": 1,
+            "observed_subtotal": 27129,
+            "total": null
+          },
+          "output": {
+            "known_stages": 1,
+            "observed_subtotal": 4689,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 1,
+            "observed_subtotal": 2319,
+            "total": null
+          }
+        },
+        "trials": [
+          "r1-plain-s1",
+          "r1-plain-s2",
+          "r1-plain-s3",
+          "r1-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-static-s1",
+            "r1-static-s2",
+            "r1-static-s3",
+            "r1-static-s4"
+          ]
+        },
+        "repetition": 1,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-static-s1",
+            "r1-static-s2",
+            "r1-static-s3",
+            "r1-static-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r1-static-s1",
+          "r1-static-s2",
+          "r1-static-s3",
+          "r1-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-cami-s1",
+            "r1-cami-s2",
+            "r1-cami-s3",
+            "r1-cami-s4"
+          ]
+        },
+        "repetition": 1,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r1-cami-s1",
+            "r1-cami-s2",
+            "r1-cami-s3",
+            "r1-cami-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r1-cami-s1",
+          "r1-cami-s2",
+          "r1-cami-s3",
+          "r1-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-plain-s1",
+            "r2-plain-s2",
+            "r2-plain-s3",
+            "r2-plain-s4"
+          ]
+        },
+        "repetition": 2,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-plain-s1",
+            "r2-plain-s2",
+            "r2-plain-s3",
+            "r2-plain-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-plain-s1",
+          "r2-plain-s2",
+          "r2-plain-s3",
+          "r2-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-static-s1",
+            "r2-static-s2",
+            "r2-static-s3",
+            "r2-static-s4"
+          ]
+        },
+        "repetition": 2,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-static-s1",
+            "r2-static-s2",
+            "r2-static-s3",
+            "r2-static-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-static-s1",
+          "r2-static-s2",
+          "r2-static-s3",
+          "r2-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-cami-s1",
+            "r2-cami-s2",
+            "r2-cami-s3",
+            "r2-cami-s4"
+          ]
+        },
+        "repetition": 2,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r2-cami-s1",
+            "r2-cami-s2",
+            "r2-cami-s3",
+            "r2-cami-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r2-cami-s1",
+          "r2-cami-s2",
+          "r2-cami-s3",
+          "r2-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-plain-s1",
+            "r3-plain-s2",
+            "r3-plain-s3",
+            "r3-plain-s4"
+          ]
+        },
+        "repetition": 3,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-plain-s1",
+            "r3-plain-s2",
+            "r3-plain-s3",
+            "r3-plain-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-plain-s1",
+          "r3-plain-s2",
+          "r3-plain-s3",
+          "r3-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-static-s1",
+            "r3-static-s2",
+            "r3-static-s3",
+            "r3-static-s4"
+          ]
+        },
+        "repetition": 3,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-static-s1",
+            "r3-static-s2",
+            "r3-static-s3",
+            "r3-static-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-static-s1",
+          "r3-static-s2",
+          "r3-static-s3",
+          "r3-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-cami-s1",
+            "r3-cami-s2",
+            "r3-cami-s3",
+            "r3-cami-s4"
+          ]
+        },
+        "repetition": 3,
+        "token_work": {
+          "complete": false,
+          "known_stages": 0,
+          "observed_subtotal": null,
+          "total": null,
+          "unknown_or_incomplete_trials": [
+            "r3-cami-s1",
+            "r3-cami-s2",
+            "r3-cami-s3",
+            "r3-cami-s4"
+          ]
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "cache_write": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "input": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "output": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          },
+          "reasoning": {
+            "known_stages": 0,
+            "observed_subtotal": null,
+            "total": null
+          }
+        },
+        "trials": [
+          "r3-cami-s1",
+          "r3-cami-s2",
+          "r3-cami-s3",
+          "r3-cami-s4"
+        ]
+      }
+    ],
+    "cami_quality_rule_met": false,
+    "descriptive_block_statistics": {
+      "cami": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        }
+      },
+      "plain": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        },
+        "token_work": {
+          "all_three_blocks": false,
+          "complete_blocks": 0,
+          "max": null,
+          "median": null,
+          "min": null
+        }
+      }
+    },
+    "descriptive_paired_statistics": {
+      "plain": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          }
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          },
+          "ratio": {
+            "all_three_blocks": false,
+            "complete_blocks": 0,
+            "max": null,
+            "median": null,
+            "min": null
+          }
+        }
+      }
+    },
+    "expected_trials": 36,
+    "failure_or_missing_trials": [
+      "r1-plain-s1",
+      "r1-static-s1",
+      "r1-cami-s1",
+      "r1-static-s2",
+      "r1-cami-s2",
+      "r1-plain-s2",
+      "r1-cami-s3",
+      "r1-plain-s3",
+      "r1-static-s3",
+      "r1-plain-s4",
+      "r1-static-s4",
+      "r1-cami-s4",
+      "r2-static-s1",
+      "r2-cami-s1",
+      "r2-plain-s1",
+      "r2-cami-s2",
+      "r2-plain-s2",
+      "r2-static-s2",
+      "r2-plain-s3",
+      "r2-static-s3",
+      "r2-cami-s3",
+      "r2-static-s4",
+      "r2-cami-s4",
+      "r2-plain-s4",
+      "r3-cami-s1",
+      "r3-plain-s1",
+      "r3-static-s1",
+      "r3-plain-s2",
+      "r3-static-s2",
+      "r3-cami-s2",
+      "r3-static-s3",
+      "r3-cami-s3",
+      "r3-plain-s3",
+      "r3-cami-s4",
+      "r3-plain-s4",
+      "r3-static-s4"
+    ],
+    "incomplete_study": true,
+    "paired_comparisons": [
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "plain",
+        "repetition": 1,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "static",
+        "repetition": 1,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "plain",
+        "repetition": 2,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "static",
+        "repetition": 2,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "plain",
+        "repetition": 3,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        },
+        "comparator": "static",
+        "repetition": 3,
+        "token_work": {
+          "cami": null,
+          "comparator": null,
+          "delta_cami_minus_comparator": null,
+          "ratio_cami_over_comparator": null,
+          "strictly_lower": null
+        }
+      }
+    ],
+    "primary_efficiency_eligible": false,
+    "primary_superiority": "not_established",
+    "study_status": "incomplete",
+    "terminal_trials": 1,
+    "unknown_measurement_trials": [
+      "r1-plain-s1",
+      "r1-static-s1",
+      "r1-cami-s1",
+      "r1-static-s2",
+      "r1-cami-s2",
+      "r1-plain-s2",
+      "r1-cami-s3",
+      "r1-plain-s3",
+      "r1-static-s3",
+      "r1-plain-s4",
+      "r1-static-s4",
+      "r1-cami-s4",
+      "r2-static-s1",
+      "r2-cami-s1",
+      "r2-plain-s1",
+      "r2-cami-s2",
+      "r2-plain-s2",
+      "r2-static-s2",
+      "r2-plain-s3",
+      "r2-static-s3",
+      "r2-cami-s3",
+      "r2-static-s4",
+      "r2-cami-s4",
+      "r2-plain-s4",
+      "r3-cami-s1",
+      "r3-plain-s1",
+      "r3-static-s1",
+      "r3-plain-s2",
+      "r3-static-s2",
+      "r3-cami-s2",
+      "r3-static-s3",
+      "r3-cami-s3",
+      "r3-plain-s3",
+      "r3-cami-s4",
+      "r3-plain-s4",
+      "r3-static-s4"
+    ],
+    "winning_metrics_satisfying_all_six_pairs": []
+  },
+  "supported_rules_sha256": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4",
+  "trials": [
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 57,
+      "charged_wall_seconds": 181.3309013841208,
+      "failures": [
+        {
+          "failure": "RuntimeError: bounded command failed; see preserved command evidence",
+          "phase": "model_session"
+        },
+        {
+          "failure": "ValueError: nonregular candidate/asset: .test-tmp/pytest/test_add_completion_class_withcurrent",
+          "phase": "source_export_and_fixed_grading"
+        }
+      ],
+      "id": "r1-plain-s1",
+      "memory_bytes_after": 0,
+      "operational_status": "failed",
+      "predecessor": null,
+      "quality": "not_evaluated",
+      "quality_eligible": false,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 181.3309013841208,
+        "complete": false,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.494644,
+        "controller_total_host_wall_seconds": 183.55874710902572,
+        "guard_and_orchestration_host_wall_seconds": 0.22458038618788123,
+        "host_child_cpu_seconds": 1.364331,
+        "infrastructure_host_wall_seconds": 2.2278457249049097,
+        "session_cgroup": {
+          "cpu_seconds": 14.913281,
+          "peak_memory_bytes": 289435648,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15004609\nuser_usec 12830996\nsystem_usec 2173612\ncore_sched.force_idle_usec 0\nnr_periods 1628\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "41181184\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289435648\n"
+          }
+        },
+        "session_host_wall_seconds": 181.10632099793293
+      },
+      "session_status": "failed",
+      "stage": 1,
+      "status": "failed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "bb957d127cc295ff795463cd378f340a813e7f8db677c8312811cad11ff828c4",
+      "token_work": 34137,
+      "tokens": {
+        "cache_read": 230144,
+        "cache_write": 0,
+        "input": 27129,
+        "output": 4689,
+        "reasoning": 2319
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "wall",
+        "normalized_tokens"
+      ],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "failed_attempt_latest_reported",
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-static-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-cami-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-static-s2",
+      "operational_status": "unknown",
+      "predecessor": "r1-static-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-cami-s2",
+      "operational_status": "unknown",
+      "predecessor": "r1-cami-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-plain-s2",
+      "operational_status": "unknown",
+      "predecessor": "r1-plain-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-cami-s3",
+      "operational_status": "unknown",
+      "predecessor": "r1-cami-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-plain-s3",
+      "operational_status": "unknown",
+      "predecessor": "r1-plain-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-static-s3",
+      "operational_status": "unknown",
+      "predecessor": "r1-static-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-plain-s4",
+      "operational_status": "unknown",
+      "predecessor": "r1-plain-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-static-s4",
+      "operational_status": "unknown",
+      "predecessor": "r1-static-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r1-cami-s4",
+      "operational_status": "unknown",
+      "predecessor": "r1-cami-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 1,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s2",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s3",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-static-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-static-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-cami-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-cami-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r2-plain-s4",
+      "operational_status": "unknown",
+      "predecessor": "r2-plain-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 2,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s1",
+      "operational_status": "unknown",
+      "predecessor": null,
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 1,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s2",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s1",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 2,
+      "status": "missing_or_in_progress",
+      "task": "click-help-option-api",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s3",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s2",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 3,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-cami-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-cami-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-plain-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-plain-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds": null,
+      "failures": [],
+      "id": "r3-static-s4",
+      "operational_status": "unknown",
+      "predecessor": "r3-static-s3",
+      "quality": "unknown",
+      "quality_eligible": false,
+      "repetition": 3,
+      "session_status": "unknown",
+      "stage": 4,
+      "status": "missing_or_in_progress",
+      "task": "click-help-eagerness",
+      "terminal_present": false,
+      "token_work": null,
+      "tokens": {
+        "cache_read": null,
+        "cache_write": null,
+        "input": null,
+        "output": null,
+        "reasoning": null
+      },
+      "tokens_complete": false,
+      "unknown_reasons": [
+        "no terminal artifact; trial contents not inspected"
+      ],
+      "wall_complete": false
+    }
+  ]
+}
