@@ -204,10 +204,12 @@ projection и исправление кеша при смене Git mode. Пол
 1124 passed на e810a09. Независимые parent reviews и child labels остаются
 незавершёнными; основная held-out оценка ещё не выполнена.
 
-Текущий [PDF-отчёт v9](reports/research-20261104/report-delivery/CAMI_research_progress_2026-11-04.pdf)
-содержит 14 страниц и 10 рисунков: реальные истории Click с merges, два опыта
-negative carry, независимые аудиты и прежние результаты о доступности.
-В комплекте 2661 файл evidence и реестр 119 проверяемых чисел.
+Текущий [PDF-отчёт v10](reports/research-20261104/report-delivery/CAMI_research_progress_2026-11-04.pdf)
+содержит 17 страниц и 11 рисунков: новую когорту Packaging с завершённым независимым
+аудитом и офлайн-корпусом, реальные истории Click с merges, два опыта negative carry
+и прежние результаты о доступности. Все страницы визуально проверены.
+В [ZIP v10](output/research-progress-20261104-v10.zip) включены 7005 файлов evidence
+и реестр 152 проверяемых чисел; сверены 7026 payload hashes.
 [Запись доставки и SHA-256 архива](reports/research-20261104/report-delivery/delivery.json).
 Команды сборки и упаковки: `scripts/build_research_report.py` и
 `scripts/finalize_research_report.py`; упаковка требует записи визуальной проверки,

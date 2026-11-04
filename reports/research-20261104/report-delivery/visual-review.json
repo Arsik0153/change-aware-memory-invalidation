@@ -1,27 +1,31 @@
 {
   "status": "passed",
-  "reviewer": "root visual inspection of all rendered PDF pages",
-  "pages": 14,
-  "pdf_sha256": "28099855d17af9f100330652437f1a01b30e607a7a0ffc39db1bb060c4ed4f39",
-  "method": "pdftoppm PNG at1100px; every page viewed; checked text and figure bounds, legibility, table continuation headers, no clipped/overlapping content. Source text extraction independently checked193blocks.",
+  "reviewer": "Codex publication agent; every page inspected with view_image",
+  "pages": 17,
+  "pdf_sha256": "7b570ba94836f98eb254229a6d5c1c059d68042260dc435da271418854ff80c4",
+  "method": "pdftoppm PNG at1400px width; all17 images individually viewed through view_image; checked page bounds, text legibility, figure axes/labels, table continuations, no clipped or overlapping content. PDF text extraction independently checked222blocks.",
   "page_sha256": {
-    "page-01.png": "5bc784e58fb488c3d83b77cf7ac06e557931ff432b768996109f74755f117e42",
-    "page-02.png": "93ee77cfc478f7b605cc542e78ab747bce38d0366d4d20bc70596aeedd7eac7e",
-    "page-03.png": "f9ea701d735304e070ddae9e277dfef450b155d603290df2cb568c54fbd6f59a",
-    "page-04.png": "76eb298495aaad3b7a617f2d2411ec7cb9038199c4ef2ac63c8985e3c5fa06e8",
-    "page-05.png": "f5219af50cb6bc0e951a8c4571c798f65fd0578c76daa00b7517b846c88de7a3",
-    "page-06.png": "09f317d7e501d8a679ad176fdcbf482587969a0243803aa155e78221944049d1",
-    "page-07.png": "33d0c28ed8ed9b3e508ff93f9e3f7d651d79149c1e1dd6e7f1a689e210f8f47e",
-    "page-08.png": "fb0f558bd2ba5d25feefddda143b22accad36abbc5a738b7d7a367a9d3860255",
-    "page-09.png": "2ad8eff2fb33c96181ce929c2eb435d2721eb0a298017445cee6eb262dab431f",
-    "page-10.png": "b08d8057ea77004bf22ade1663beb08e0b657c74e6af5277b3395c2d07ac3a31",
-    "page-11.png": "cfb6aef825ef8cd71741e57748e5ec9e95f2be62c6007f54d7f827cd1720bfdc",
-    "page-12.png": "ba37e8fb8299155c8b9fb43e26a5f552d8ce29da06e6ee7f4c5e7422ea137d9e",
-    "page-13.png": "5e01e47fe2afb9bca0935d79afd8e10ed2318e7f06f4ce19f7687f869d6e06ad",
-    "page-14.png": "2bbc27bda82051adcc08d57cc59a17ff55b7a043a91b4cf5c33c58331945538d"
+    "page-01.png": "7cd35688ff7ec84d0909e11f4d350b8f41584ae746de42ace904b237d07856b9",
+    "page-02.png": "aa3b8a2c2c2b0f0b43af3fe6d97c673eed61ae88754c342a4423c78f21ac6496",
+    "page-03.png": "fc4d362b8a2ce1d7cfdc394d7a12035fe7d2d5dc60a42d569a0a7f9fcad500c4",
+    "page-04.png": "5b1b4e7cf9bc7db3b326991dd496297b6d2648911ed8112c0e3433b8fff9beb4",
+    "page-05.png": "f7ecd9d14cd2115ea99fc54ee0b70be2f9c90bf7a62f61f83ffda34781cce793",
+    "page-06.png": "4ef479593e040ff38d60cc844b6d8253c2d32d2cbbb3dbe7fa320146dc150a6d",
+    "page-07.png": "cc66488e88b475419dca6db6a6733141c556056830c609e3f62d6db3ac8196c9",
+    "page-08.png": "305c1876a10c4b087345c157eedfeff948c439b937041f8975a00eb241d309c5",
+    "page-09.png": "aed2b166ee82b645d97fd5ec0e2b856b2551ac549f4e895bcd63dba84c629f6a",
+    "page-10.png": "367a67bd16af53c08e17dc814265583db60a541663ddf3735270fa227a32966d",
+    "page-11.png": "f5f549f7d5dd0b9bee2807142edc4ed8d44588e11ce2bfb11df6afac6292ace8",
+    "page-12.png": "40248bf397cf42ab9a92fbbe803ce1e6a9bcfe0de8e2814374450f825cba248d",
+    "page-13.png": "316d8eb4a17b450d909f2379609572f8d413049f3b09dd34a5f845027a1d9dd6",
+    "page-14.png": "0f629ec7f5bc48a1a8123292dbfd43726a8178de739aaa3977f2156e3a223829",
+    "page-15.png": "aea8f6c72ad70dce6f29c80998b071d4836c8c1c1221b92ac6165082f42ba63a",
+    "page-16.png": "51b48a5e3efad638bdb667680802330c9498e933bc944eb0f8fc00c3f0042d65",
+    "page-17.png": "0b304e4b496926226ded46c8cea118684654c3a3df20705e129101c1927871fc"
   },
   "observations": [
-    "The first-parent comparison table continues from page11 to12 with a repeated header; every row is readable.",
-    "All10figures are visible and their labels remain within page bounds."
+    "Summary table continues from page1 to2 with a repeated header; Click first-parent table continues from12 to13 with a repeated header. All rows remain readable.",
+    "All11 figures are fully visible; Packaging table and trajectory graphic on14 and independent audit paragraph on15 are readable.",
+    "Reproducibility on17 retains bounded offline-corpus scope and152facts/24studies; no clipped paragraphs or overlapping content were found."
   ]
 }
