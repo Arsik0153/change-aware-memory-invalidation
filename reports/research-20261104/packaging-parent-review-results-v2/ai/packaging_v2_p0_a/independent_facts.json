@@ -1,0 +1,542 @@
+[
+  {
+    "id": "case-f91bdb996b90ed0675ec",
+    "source_path": "source/a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/tags.py",
+      "qualname": "mac_platforms"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 383,
+        "line_end": 468,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "version",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='MacVersion', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "arch",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 553
+  },
+  {
+    "id": "case-892cdc291de819219038",
+    "source_path": "source/787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/markers.py",
+      "qualname": "_normalize"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 125,
+        "line_end": 134,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "values",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "key",
+              "kind": "keyword_only",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 252
+  },
+  {
+    "id": "case-c820f6a5f1b18bab1f45",
+    "source_path": "source/787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/markers.py",
+      "qualname": "_normalize"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 125,
+        "line_end": 134,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "values",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "key",
+              "kind": "keyword_only",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 252
+  },
+  {
+    "id": "case-2f6a14499ea750843fa5",
+    "source_path": "source/92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/_musllinux.py",
+      "qualname": "platform_tags"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 54,
+        "line_end": 70,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "archs",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 83
+  },
+  {
+    "id": "case-9d89bd563bbdd2dc2ef5",
+    "source_path": "source/92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/_musllinux.py",
+      "qualname": "platform_tags"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 54,
+        "line_end": 70,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "archs",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 83
+  },
+  {
+    "id": "case-c0096906128b9d07c873",
+    "source_path": "source/a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/tags.py",
+      "qualname": "generic_tags"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 270,
+        "line_end": 298,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "interpreter",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "abis",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "platforms",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "warn",
+              "kind": "keyword_only",
+              "default_ast": "Constant(value=False)",
+              "annotation_ast": "Name(id='bool', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 553
+  },
+  {
+    "id": "case-616fdb53fdac8138fd3a",
+    "source_path": "source/92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/_musllinux.py",
+      "qualname": "platform_tags"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 54,
+        "line_end": 70,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "archs",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 83
+  },
+  {
+    "id": "case-880a87b00e42ba28d989",
+    "source_path": "source/ced0034017529652a772d2bed59c9dace35d99a92cb098ef9bee7cef507ee7ce.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/_musllinux.py",
+      "qualname": "platform_tags"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 3,
+    "observed_definitions": [
+      {
+        "line_start": 54,
+        "line_end": 70,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "archs",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='Sequence', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      {
+        "line_start": 86,
+        "line_end": 87,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "args",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "kwargs",
+              "kind": "var_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      {
+        "line_start": 90,
+        "line_end": 91,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "args",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": null
+            },
+            {
+              "name": "kwargs",
+              "kind": "var_keyword",
+              "default_ast": null,
+              "annotation_ast": null
+            }
+          ],
+          "returns_ast": null,
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 91
+  },
+  {
+    "id": "case-7badc941848ce0695beb",
+    "source_path": "source/92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/_musllinux.py",
+      "qualname": "_case_7e5cde2d6cec743e66423a9a"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 0,
+    "observed_definitions": [],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 83
+  },
+  {
+    "id": "case-0314a856b951571aec37",
+    "source_path": "source/a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/tags.py",
+      "qualname": "generic_tags"
+    },
+    "kind": "symbol_exists",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 270,
+        "line_end": 298,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "interpreter",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "abis",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "platforms",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "warn",
+              "kind": "keyword_only",
+              "default_ast": "Constant(value=False)",
+              "annotation_ast": "Name(id='bool', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 553
+  },
+  {
+    "id": "case-49848f00888857a697df",
+    "source_path": "source/a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/tags.py",
+      "qualname": "mac_platforms"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 383,
+        "line_end": 468,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "version",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='MacVersion', ctx=Load()), ctx=Load())"
+            },
+            {
+              "name": "arch",
+              "kind": "positional_or_keyword",
+              "default_ast": "Constant(value=None)",
+              "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 553
+  },
+  {
+    "id": "case-cdbe9577102a95bfb325",
+    "source_path": "source/787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9.raw",
+    "subject": {
+      "node_kind": "function",
+      "path": "src/packaging/markers.py",
+      "qualname": "_normalize"
+    },
+    "kind": "signature_equals",
+    "definition_count": 1,
+    "observed_definitions": [
+      {
+        "line_start": 125,
+        "line_end": 134,
+        "unconditional": true,
+        "type_parameters_present": false,
+        "signature": {
+          "parameters": [
+            {
+              "name": "values",
+              "kind": "var_positional",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            },
+            {
+              "name": "key",
+              "kind": "keyword_only",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      }
+    ],
+    "target_rebinding": false,
+    "bindings": [],
+    "class_globals": [],
+    "wildcard_imports": [],
+    "line_count": 252
+  }
+]

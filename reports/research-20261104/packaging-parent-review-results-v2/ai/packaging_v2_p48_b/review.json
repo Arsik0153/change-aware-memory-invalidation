@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "reviewer_kind": "ai_reviewer",
+  "human": false,
+  "provider": "codex",
+  "model": "codex:gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "agent_task": "/root/packaging_v2_p48_b",
+  "packet_sha256": "77c4a11d4639a0590c9c22368b7683801568be064b3dcdb1ce101b36a654ce00",
+  "independence_disclosure": "Model weights and training independence are unverified.",
+  "identity_basis": "declared_invocation",
+  "items": [
+    {
+      "id": "case-7f94633837e662610ec5",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "reasoning": "Exactly one unconditional top-level function definition has the exact name parse_marker; no additional target binding occurs.",
+      "scope_notes": "Inspected the whole module, lines 1-354; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-59b797fb4b76830426cc",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "reasoning": "The independently extracted signature matches all expected parameter names, order, kinds, defaults, annotations, return annotation, decorators and async status.",
+      "scope_notes": "Inspected the whole module, lines 1-354; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-818477b7a7d45cbdd4ff",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 0,
+        "unconditional": null,
+        "target_rebinding": false,
+        "type_parameters_present": null
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        }
+      ],
+      "reasoning": "Inspected the whole module: no top-level function named _case_9df6e2f9f4ea45d4c60e42c9 exists, and no binding ambiguity applies.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-3971df344c2a789799c3",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "reasoning": "Parameter names differ: source has ['markers', 'environment'], while the predicate requires ['_case_0a026c163bb84b9e099fbdbf', 'environment']. All other normalized signature fields match.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-7234a8c26cb3bb49ac85",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 274,
+          "line_end": 293
+        }
+      ],
+      "reasoning": "Exactly one unconditional top-level function definition has the exact name _parse_marker_atom; no additional target binding occurs.",
+      "scope_notes": "Inspected the whole module, lines 1-354; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-afde14daf67b1ca41b10",
+      "source_sha256": "c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10",
+      "verdict": "uncertain",
+      "extracted_facts": {
+        "definition_count": 3,
+        "unconditional": true,
+        "target_rebinding": true,
+        "type_parameters_present": false,
+        "observed_definitions": [
+          {
+            "name": "_evaluate_markers",
+            "line_start": 204,
+            "line_end": 231,
+            "unconditional": true,
+            "parameters": [
+              "markers",
+              "environment"
+            ]
+          },
+          {
+            "name": "_evaluate_markers",
+            "line_start": 334,
+            "line_end": 335,
+            "unconditional": true,
+            "parameters": [
+              "args",
+              "kwargs"
+            ]
+          },
+          {
+            "name": "_evaluate_markers",
+            "line_start": 338,
+            "line_end": 339,
+            "unconditional": true,
+            "parameters": [
+              "args",
+              "kwargs"
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        },
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 334,
+          "line_end": 335
+        },
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 338,
+          "line_end": 339
+        }
+      ],
+      "reasoning": "Three unconditional top-level definitions have this exact name. The definitions at lines 334 and 338 bind it again after line 204. The rubric requires uncertainty for duplicate definitions; no unique subject can be selected.",
+      "scope_notes": "Inspected the whole module, lines 1-339; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-a6a1bd3c3ec8ec04e72c",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "reasoning": "Parameter names differ: source has ['source'], while the predicate requires ['_case_ebca478c83cc72fda3fc3f77']. All other normalized signature fields match.",
+      "scope_notes": "Inspected the whole module, lines 1-354; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-4cd1475b14b1300a6d8e",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "tokenizer",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerAtom', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 274,
+          "line_end": 293
+        }
+      ],
+      "reasoning": "The independently extracted signature matches all expected parameter names, order, kinds, defaults, annotations, return annotation, decorators and async status.",
+      "scope_notes": "Inspected the whole module, lines 1-354; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-bee7fc1bc119ea8bce69",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "reasoning": "Exactly one unconditional top-level function definition has the exact name _evaluate_markers; no additional target binding occurs.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-7c24c19be0b9d2ea64a5",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "reasoning": "The independently extracted signature matches all expected parameter names, order, kinds, defaults, annotations, return annotation, decorators and async status.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-f37a08e0e3aed302beb2",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [],
+          "returns_ast": "Name(id='Environment', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 242,
+          "line_end": 257
+        }
+      ],
+      "reasoning": "The independently extracted signature matches all expected parameter names, order, kinds, defaults, annotations, return annotation, decorators and async status.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    },
+    {
+      "id": "case-13fada19f628012149b2",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 242,
+          "line_end": 257
+        }
+      ],
+      "reasoning": "Exactly one unconditional top-level function definition has the exact name default_environment; no additional target binding occurs.",
+      "scope_notes": "Inspected the whole module, lines 1-331; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    }
+  ]
+}

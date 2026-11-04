@@ -1,0 +1,74 @@
+"""Assemble independently judged review using previously extracted source facts."""
+import ast
+import hashlib
+import json
+import pathlib
+import sys
+
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUT = pathlib.Path('runs/packaging-v2-review-p48-a-20261104')
+source_facts = json.loads((OUT / 'source_facts.json').read_text())
+cases_bytes = (PACKET / 'cases.json').read_bytes()
+cases = json.loads(cases_bytes)
+assert len(cases) == 12
+assert {c['source_path'] for c in cases} == set(source_facts['modules'])
+# These individual judgments were made by reading complete sources and the rubric.
+judgments = {
+    'case-7f94633837e662610ec5': ('supported', 'Exactly one unconditional top-level parse_marker definition exists at lines 252-253; no ambiguity rule applies.'),
+    'case-59b797fb4b76830426cc': ('supported', 'The independently extracted signature matches: source is positional_or_keyword, annotated str, without a default; return is MarkerList; no decorators; synchronous.'),
+    'case-818477b7a7d45cbdd4ff': ('contradicted', 'Inspected the whole 331-line module. No top-level function has the exact name _case_9df6e2f9f4ea45d4c60e42c9, and no ambiguity rule applies.'),
+    'case-3971df344c2a789799c3': ('contradicted', 'The first parameter is named markers, whereas the predicate names it _case_0a026c163bb84b9e099fbdbf. All other normalized signature fields match.'),
+    'case-7234a8c26cb3bb49ac85': ('supported', 'Exactly one unconditional top-level _parse_marker_atom definition exists at lines 274-293; no ambiguity rule applies.'),
+    'case-afde14daf67b1ca41b10': ('uncertain', 'Three unconditional top-level _evaluate_markers definitions occur at lines 204, 334, and 338. The first has annotated markers and environment parameters; the latter two have unannotated *args and **kwargs. Duplicate definitions require uncertainty; no unique eligible definition can be selected.'),
+    'case-a6a1bd3c3ec8ec04e72c': ('contradicted', 'The parameter is named source, whereas the predicate names it _case_ebca478c83cc72fda3fc3f77. All other normalized signature fields match.'),
+    'case-4cd1475b14b1300a6d8e': ('supported', 'The independently extracted signature matches: tokenizer is positional_or_keyword, annotated Tokenizer, without a default; return is MarkerAtom; no decorators; synchronous.'),
+    'case-bee7fc1bc119ea8bce69': ('supported', 'Exactly one unconditional top-level _evaluate_markers definition exists at lines 204-231; no ambiguity rule applies.'),
+    'case-7c24c19be0b9d2ea64a5': ('supported', 'The independently extracted signature matches: markers and environment are positional_or_keyword, without defaults, annotated MarkerList and dict[str, str] respectively; return is bool; no decorators; synchronous.'),
+    'case-f37a08e0e3aed302beb2': ('supported', 'The independently extracted signature matches: no parameters, return annotation Environment, no decorators, and synchronous.'),
+    'case-13fada19f628012149b2': ('supported', 'Exactly one unconditional top-level default_environment definition exists at lines 242-257; no ambiguity rule applies.'),
+}
+
+def normalize_extracted(s):
+    return dict(parameters=s['parameters'], returns_ast=s['return_annotation_ast'], decorators_ast=s['decorators'], is_async=s['is_async'])
+
+items = []
+for case in cases:
+    module = source_facts['modules'][case['source_path']]
+    assert hashlib.sha256((PACKET / case['source_path']).read_bytes()).hexdigest() == module['sha256'] == case['source_sha256']
+    definitions = [d for d in module['definitions'] if d['name'] == case['subject']['qualname']]
+    verdict, reasoning = judgments[case['id']]
+    facts = dict(subject_path=case['subject']['path'], subject_name=case['subject']['qualname'], definition_count=len(definitions), unconditional=bool(definitions), target_rebinding=len(definitions) > 1, type_parameters_present=any(d['type_parameters_present'] for d in definitions))
+    if case['kind'] == 'signature_equals':
+        facts['actual_signature'] = normalize_extracted(definitions[0]['signature']) if len(definitions) == 1 else None
+        if verdict != 'uncertain':
+            matches = facts['actual_signature'] == case['predicate']['expected_signature']
+            assert matches == (verdict == 'supported')
+    if len(definitions) > 1:
+        facts['observed_definitions'] = [dict(line_start=d['line_start'], line_end=d['line_end'], signature=normalize_extracted(d['signature'])) for d in definitions]
+    evidence = [dict(source_path=case['source_path'], available=True, line_start=1, line_end=module['lines'])]
+    evidence += [dict(source_path=case['source_path'], available=True, line_start=d['line_start'], line_end=d['line_end']) for d in definitions]
+    notes = f"Inspected the complete supplied module, lines 1-{module['lines']}, including imports, class bodies, and definition expressions. "
+    if len(definitions) > 1:
+        notes += 'Repeated definitions rebind the target; no other target bindings were found. The rubric forbids choosing the last definition.'
+    else:
+        notes += 'No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim.'
+    items.append(dict(id=case['id'], source_sha256=case['source_sha256'], verdict=verdict, extracted_facts=facts, reasoning=reasoning, evidence=evidence, scope_notes=notes))
+
+review = dict(schema_version=1, reviewer_kind='ai_reviewer', human=False, provider='codex', model='codex:gpt-6.1-sol', reasoning_effort='high', agent_task='/root/packaging_v2_p48_a', packet_sha256='77c4a11d4639a0590c9c22368b7683801568be064b3dcdb1ce101b36a654ce00', independence_disclosure='Model weights and training independence are unverified.', identity_basis='declared_invocation', items=items)
+(OUT / 'review.json').write_text(json.dumps(review, indent=2) + '\n')
+methodology = dict(
+    tools=['Shell pwd, rg --files, wc -l, cat, mkdir', '.venv/bin/python: Python standard library ast, hashlib, json, pathlib, sys'],
+    parser=dict(implementation='CPython ast.parse', version=sys.version, normalization='ast.dump(expression, include_attributes=False)'),
+    whole_module_inspection='Read all three complete modules (331, 354, and 339 lines). Independently parsed every module and saved every direct top-level function signature before reading cases.json expected predicates. Manually inspected module bindings, class bodies and definition-time expressions; deferred function/method bodies do not create top-level definitions. Found no target-related globals, wildcards, conditional definitions, or non-definition rebinding. The 339-line module repeats _evaluate_markers three times.',
+    signature_extraction='extract.py constructs names, kinds and parameter order from ast.arguments, aligns positional defaults to the right, preserves null missing annotations/defaults, handles variadic and keyword-only parameters, dumps expressions, and records return annotation, decorator order and async status. build_review.py renames the independently extracted signature keys to the predicate vocabulary and only then compares expected signatures.',
+    sequence=['Read rubric, schema and supplied prompts.', 'Read every source in full.', 'Run extract.py and preserve source_facts.json without reading expected predicates.', 'Read all twelve cases and compare independently extracted facts.', 'Assemble one primary review and validate its shape, source hashes and evidence bounds.'],
+    cases_sha256=hashlib.sha256(cases_bytes).hexdigest(),
+    source_hashes={p:m['sha256'] for p,m in source_facts['modules'].items()},
+    supplied_packet_sha256=review['packet_sha256'],
+    packet_digest_note='Coordinator-supplied aggregate packet identity retained; no aggregate digest construction was specified. Independently computed the exact cases.json byte hash and verified every referenced source byte hash against cases.json and its filename.',
+    access_limitations='Only the assigned public packet and newly authored output were read. No Git, network, project imports/execution, private maps, policy results, generators, reference code, other reviewers, or other packets were used. Subject repository paths are the packet-provided mapping, not independently inspected repository files.',
+    identity_basis='declared_invocation', independence_disclosure=review['independence_disclosure'],
+    token_budget_note='Primary review intentionally concise; o200k_base tokenizer not accessed because only stdlib tooling is permitted.'
+)
+(OUT / 'methodology.json').write_text(json.dumps(methodology, indent=2) + '\n')
+print('Wrote twelve judgments, methodology, and preserved helpers/source extraction.')

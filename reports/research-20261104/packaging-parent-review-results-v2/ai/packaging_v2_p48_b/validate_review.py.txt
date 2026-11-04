@@ -1,0 +1,74 @@
+"""Validate this packet's declared schema using only the standard library."""
+import hashlib
+import json
+from pathlib import Path
+import re
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUTPUT = Path('runs/packaging-v2-review-p48-b-20261104')
+schema = json.loads((PACKET / 'review.schema.json').read_text())
+review = json.loads((OUTPUT / 'review.json').read_text())
+cases = json.loads((PACKET / 'cases.json').read_text())
+
+def valid(value, rule):
+    if '$ref' in rule:
+        target = schema
+        for part in rule['$ref'].removeprefix('#/').split('/'):
+            target = target[part]
+        if not valid(value, target):
+            return False
+    if 'type' in rule:
+        matches = {'object':isinstance(value, dict), 'array':isinstance(value, list), 'string':isinstance(value, str), 'integer':isinstance(value, int) and not isinstance(value, bool), 'boolean':isinstance(value, bool)}
+        if not matches[rule['type']]:
+            return False
+    if 'const' in rule and (value != rule['const'] or type(value) is not type(rule['const'])):
+        return False
+    if 'enum' in rule and value not in rule['enum']:
+        return False
+    if isinstance(value, dict):
+        if any(k not in value for k in rule.get('required', [])):
+            return False
+        if len(value) < rule.get('minProperties', 0):
+            return False
+        properties = rule.get('properties', {})
+        if rule.get('additionalProperties') is False and any(k not in properties for k in value):
+            return False
+        if any(not valid(value[k], r) for k,r in properties.items() if k in value):
+            return False
+    if isinstance(value, list):
+        if len(value) < rule.get('minItems', 0) or len(value) > rule.get('maxItems', float('inf')):
+            return False
+        if 'items' in rule and any(not valid(x, rule['items']) for x in value):
+            return False
+    if isinstance(value, str) and 'pattern' in rule and re.search(rule['pattern'], value) is None:
+        return False
+    if isinstance(value, int) and 'minimum' in rule and value < rule['minimum']:
+        return False
+    if 'oneOf' in rule and sum(valid(value, r) for r in rule['oneOf']) != 1:
+        return False
+    if any(not valid(value, r) for r in rule.get('allOf', [])):
+        return False
+    if 'if' in rule and valid(value, rule['if']) and 'then' in rule and not valid(value, rule['then']):
+        return False
+    return True
+
+assert valid(review, schema), 'Review does not match the supplied schema'
+assert len(review['items']) == len(cases) == 12
+assert [x['id'] for x in review['items']] == [x['id'] for x in cases]
+assert len({x['id'] for x in review['items']}) == 12
+for case, item in zip(cases, review['items']):
+    raw = (PACKET / case['source_path']).read_bytes()
+    assert item['source_sha256'] == case['source_sha256'] == hashlib.sha256(raw).hexdigest()
+    for evidence in item['evidence']:
+        assert evidence['source_path'] == case['source_path']
+        assert evidence['available'] is True
+        assert 1 <= evidence['line_start'] <= evidence['line_end'] <= len(raw.decode('utf-8').splitlines())
+    extracted = item['extracted_facts']
+    assert {'definition_count', 'unconditional', 'target_rebinding', 'type_parameters_present'} <= extracted.keys()
+    if case['kind'] == 'signature_equals':
+        assert 'actual_signature' in extracted
+assert review['agent_task'] == '/root/packaging_v2_p48_b'
+assert review['packet_sha256'] == '77c4a11d4639a0590c9c22368b7683801568be064b3dcdb1ce101b36a654ce00'
+result = dict(schema_valid=True, exact_case_ids_valid=True, source_hashes_valid=True, evidence_bounds_valid=True, items=len(cases), primary_sha256=hashlib.sha256((OUTPUT / 'review.json').read_bytes()).hexdigest())
+(OUTPUT / 'validation.json').write_text(json.dumps(result, indent=2) + '\n')
+print(json.dumps(result))

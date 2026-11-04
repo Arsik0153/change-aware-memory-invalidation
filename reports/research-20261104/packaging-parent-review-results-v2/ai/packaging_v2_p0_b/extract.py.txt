@@ -1,0 +1,181 @@
+"""Stdlib-only packet syntax extraction. Never imports or executes packet source.
+
+Phase 1 emits source facts, without reading predicate or text fields. Phase 2
+may compare those frozen facts with predicates in a separate review writer.
+The reviewer separately read every source line and checked scope boundaries.
+"""
+import ast
+import hashlib
+import json
+from pathlib import Path
+import sys
+import tokenize
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+OUT = Path('runs/packaging-v2-review-p0-b-20261104')
+
+
+def dump(node):
+    return None if node is None else ast.dump(node, include_attributes=False)
+
+
+def signature(node):
+    args = node.args
+    positional = [*args.posonlyargs, *args.args]
+    defaults = [None] * (len(positional) - len(args.defaults)) + args.defaults
+    parameters = []
+    for i, (arg, default) in enumerate(zip(positional, defaults)):
+        parameters.append(dict(name=arg.arg,
+            kind='positional_only' if i < len(args.posonlyargs) else 'positional_or_keyword',
+            default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.vararg:
+        parameters.append(dict(name=args.vararg.arg, kind='var_positional',
+            default_ast=None, annotation_ast=dump(args.vararg.annotation)))
+    for arg, default in zip(args.kwonlyargs, args.kw_defaults):
+        parameters.append(dict(name=arg.arg, kind='keyword_only',
+            default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.kwarg:
+        parameters.append(dict(name=args.kwarg.arg, kind='var_keyword',
+            default_ast=None, annotation_ast=dump(args.kwarg.annotation)))
+    return dict(parameters=parameters, returns_ast=dump(node.returns),
+        decorators_ast=[dump(d) for d in node.decorator_list],
+        is_async=isinstance(node, ast.AsyncFunctionDef))
+
+
+class BindingScan(ast.NodeVisitor):
+    """Audit evaluated module/class syntax, excluding deferred function bodies.
+
+    Comprehension iteration targets are local; walrus expressions are visited.
+    All class-global declarations are recorded for the rubric's uncertainty rule.
+    """
+    def __init__(self, target):
+        self.target = target
+        self.class_depth = 0
+        self.events = []
+
+    def record(self, node, kind):
+        self.events.append(dict(kind=kind, line_start=node.lineno,
+                                line_end=node.end_lineno))
+
+    def bind(self, node, name, kind):
+        if not self.class_depth and name == self.target:
+            self.record(node, kind)
+
+    def visit_Name(self, node):
+        if isinstance(node.ctx, (ast.Store, ast.Del)):
+            self.bind(node, node.id, type(node.ctx).__name__)
+
+    def visit_FunctionDef(self, node):
+        # Function-definition bindings are counted separately, except class locals.
+        for expression in [*node.decorator_list, *node.args.defaults,
+                           *node.args.kw_defaults, node.returns]:
+            if expression is not None:
+                self.visit(expression)
+        for arg in [*node.args.posonlyargs, *node.args.args, *node.args.kwonlyargs,
+                    node.args.vararg, node.args.kwarg]:
+            if arg is not None and arg.annotation is not None:
+                self.visit(arg.annotation)
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def visit_Lambda(self, node):
+        for value in [*node.args.defaults, *node.args.kw_defaults]:
+            if value is not None:
+                self.visit(value)
+
+    def visit_ClassDef(self, node):
+        self.bind(node, node.name, 'class_definition')
+        for value in [*node.bases, *node.keywords, *node.decorator_list]:
+            self.visit(value)
+        self.class_depth += 1
+        for stmt in node.body:
+            self.visit(stmt)
+        self.class_depth -= 1
+
+    def visit_Global(self, node):
+        if self.class_depth and self.target in node.names:
+            self.record(node, 'class_global_declaration')
+
+    def visit_Import(self, node):
+        for alias in node.names:
+            self.bind(node, alias.asname or alias.name.split('.')[0], 'import')
+
+    def visit_ImportFrom(self, node):
+        for alias in node.names:
+            if alias.name == '*':
+                self.record(node, 'wildcard_import')
+            else:
+                self.bind(node, alias.asname or alias.name, 'import')
+
+    def visit_ExceptHandler(self, node):
+        if node.name:
+            self.bind(node, node.name, 'exception_binding')
+        self.generic_visit(node)
+
+    def visit_MatchAs(self, node):
+        self.bind(node, node.name, 'match_binding')
+        self.generic_visit(node)
+
+    visit_MatchStar = visit_MatchAs
+
+    def visit_MatchMapping(self, node):
+        self.bind(node, node.rest, 'match_mapping_rest')
+        self.generic_visit(node)
+
+    def visit_comprehension(self, node):
+        self.visit(node.iter)
+        for value in node.ifs:
+            self.visit(value)
+
+
+def module_definitions(tree, target):
+    result = []
+    def walk(node, direct=False):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if node.name == target:
+                result.append(dict(line_start=node.lineno, line_end=node.end_lineno,
+                    unconditional=direct, type_parameters_present=bool(getattr(node, 'type_params', [])),
+                    signature=signature(node)))
+            return
+        if isinstance(node, (ast.ClassDef, ast.Lambda)):
+            return
+        for child in ast.iter_child_nodes(node):
+            walk(child)
+    for stmt in tree.body:
+        walk(stmt, direct=True)
+    return result
+
+
+def main():
+    case_bytes = (PACKET / 'cases.json').read_bytes()
+    cases = json.loads(case_bytes)
+    # Only identity and source-routing fields are used in phase 1.
+    routing = [(c['id'], c['source_path'], c['source_sha256'],
+                c['subject']['qualname'], c['subject']['path']) for c in cases]
+    modules = {}
+    results = []
+    for ident, path, claimed_hash, target, subject_path in routing:
+        if path not in modules:
+            file = PACKET / path
+            data = file.read_bytes()
+            digest = hashlib.sha256(data).hexdigest()
+            assert digest == claimed_hash, (path, digest)
+            with tokenize.open(file) as stream:
+                source = stream.read()
+            modules[path] = (ast.parse(source, filename=path), digest, len(source.splitlines()))
+        tree, digest, lines = modules[path]
+        assert digest == claimed_hash
+        definitions = module_definitions(tree, target)
+        scanner = BindingScan(target)
+        scanner.visit(tree)
+        results.append(dict(id=ident, source_path=path, subject_path=subject_path,
+            target=target, source_sha256=digest, module_lines=lines,
+            definitions=definitions, binding_events=scanner.events))
+    facts = dict(parser='CPython ast', parser_version=sys.version,
+        cases_sha256=hashlib.sha256(case_bytes).hexdigest(), items=results)
+    (OUT / 'source_facts.json').write_text(json.dumps(facts, indent=2) + '\n')
+    print(json.dumps(facts, indent=2))
+
+
+if __name__ == '__main__':
+    main()

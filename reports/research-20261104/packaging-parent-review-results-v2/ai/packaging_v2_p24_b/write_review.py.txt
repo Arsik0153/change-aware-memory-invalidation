@@ -1,0 +1,97 @@
+"""Assemble one primary review from previously saved source-only facts."""
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-5cbe1e44cc7b')
+OUTPUT = Path('runs/packaging-v2-review-p24-b-20261104')
+cases = json.loads((PACKET / 'cases.json').read_text())
+facts = json.loads((OUTPUT / 'syntax-facts.json').read_text())
+items = []
+comparisons = []
+
+for case in cases:
+    source = case['source_path']
+    module = facts['modules'][source]
+    name = case['subject']['qualname']
+    definitions = [d for d in module['direct_top_level_definitions'] if d['name'] == name]
+    assert hashlib.sha256((PACKET / source).read_bytes()).hexdigest() == case['source_sha256'] == module['sha256']
+    relevant_events = [e for e in module['evaluated_scope_events'] if e['name'] in (name, '*')]
+    # These inspected modules contain only direct target definitions, no other
+    # target bindings, conditional target definitions, globals, or star imports.
+    assert all(e['scope'] == 'module' and e['kind'] == 'function_definition' for e in relevant_events)
+    assert len(relevant_events) == len(definitions)
+    actual = definitions[0]['signature'] if len(definitions) == 1 else None
+    extracted = {
+        'definition_count': len(definitions),
+        'unconditional': bool(definitions),
+        'target_rebinding': len(definitions) > 1,
+        'type_parameters_present': any(d['type_parameters_present'] for d in definitions),
+    }
+    if case['kind'] == 'signature_equals':
+        extracted['actual_signature'] = actual
+    evidence = [{'source_path': source, 'available': True, 'line_start': d['line'], 'line_end': d['end_line']} for d in definitions]
+    scope = f'Inspected the complete {module["line_count"]}-line module, including imports, class bodies, defaults, annotations and decorators; deferred function bodies do not supply module bindings. Exact subject: {case["subject"]["path"]}:{name}.'
+    if len(definitions) > 1:
+        verdict = 'uncertain'
+        extracted['observed_definitions'] = [
+            {'name': name, 'line_start': d['line'], 'line_end': d['end_line'], 'signature': d['signature']}
+            for d in definitions
+        ]
+        reasoning = 'Three unconditional top-level definitions have the exact target name. The rubric requires uncertainty for duplicate definitions, so none can be selected as the unique subject.'
+        scope += ' The later definitions rebind the target; no additional binding form was found.'
+    elif not definitions:
+        verdict = 'contradicted'
+        reasoning = 'Whole-module inspection found no top-level function with this exact name and no conditional definition, rebinding, wildcard import or class-global ambiguity.'
+        evidence = [{'source_path': source, 'available': True, 'line_start': 1, 'line_end': module['line_count']}]
+    elif case['kind'] == 'symbol_exists':
+        verdict = 'supported'
+        reasoning = 'Exactly one unconditional top-level function has the exact target name. No duplicate, other target binding, class-global declaration or type parameter was found.'
+    else:
+        matched = actual == case['predicate']['expected_signature']
+        comparisons.append({'id': case['id'], 'actual_equals_expected': matched})
+        verdict = 'supported' if matched else 'contradicted'
+        if matched:
+            reasoning = 'The independently extracted AST signature matches all parameter names, order, kinds, defaults and annotations, return annotation, decorator order and synchronous status.'
+        elif name == '_format_marker':
+            reasoning = 'The actual first parameter is marker, while the predicate names _case_fdfb8448438c8b800befdf2d. All remaining normalized signature fields match; the exact-name difference contradicts signature equality.'
+        else:
+            reasoning = 'The actual parameter is is_32bit, while the predicate names _case_440732c472fee2074aed49c6. All remaining normalized signature fields match; the exact-name difference contradicts signature equality.'
+    items.append({'id': case['id'], 'source_sha256': case['source_sha256'], 'verdict': verdict, 'extracted_facts': extracted, 'reasoning': reasoning, 'evidence': evidence, 'scope_notes': scope})
+
+review = {
+    'schema_version': 1,
+    'reviewer_kind': 'ai_reviewer',
+    'human': False,
+    'provider': 'codex',
+    'model': 'codex:gpt-6.1-sol',
+    'reasoning_effort': 'high',
+    'agent_task': '/root/packaging_v2_p24_b',
+    'packet_sha256': '6e61d95267e1eef93408b2e4ffa24e049f3b1bdc9c714666a76e0ad66c1b0868',
+    'independence_disclosure': 'Model weights and training independence are unverified.',
+    'identity_basis': 'declared_invocation',
+    'items': items,
+}
+(OUTPUT / 'review.json').write_text(json.dumps(review, indent=2) + '\n')
+methodology = {
+    'agent_task': review['agent_task'],
+    'packet_path': str(PACKET),
+    'packet_sha256': review['packet_sha256'],
+    'packet_hash_basis': 'Coordinator-supplied packet identity; no aggregate hashing formula was provided. Raw cases and all referenced source hashes were independently calculated below.',
+    'cases_sha256': hashlib.sha256((PACKET / 'cases.json').read_bytes()).hexdigest(),
+    'source_hashes_verified_against_every_case': True,
+    'source_hashes': {s: m['sha256'] for s, m in facts['modules'].items()},
+    'tools': ['shell: pwd, ls, find, cat, wc, nl', 'apply_patch for new output helpers only', '.venv/bin/python with standard-library ast, hashlib, json, pathlib and sys'],
+    'parser': {'implementation': 'CPython ast.parse and ast.dump(include_attributes=False)', 'version': sys.version},
+    'whole_module_inspection': 'Read the rubric, schema, both supplied prompts, all 12 cases, and complete line-numbered text of all three source modules (261, 571 and 253 lines). Parsed complete modules and inspected direct top-level definitions plus evaluated-scope event inventories, including class bodies. Checked imports, stores/deletes, globals, defaults, annotations, decorators and binding forms. Ignored deferred function/method/lambda bodies for module-binding judgment. Manually checked the source because the helper inventories syntax rather than serving as a general semantic validator.',
+    'signature_extraction': 'extract_syntax.py reads only source/*.raw, not cases or predicates. It records every direct top-level function signature directly from AST arguments, defaults, annotations, returns, decorator expressions and async nodes. syntax-facts.json was saved before the comparison pass. Positional defaults are aligned from the right; missing expressions use JSON null and literal None uses its AST dump.',
+    'predicate_exposure': 'The initial cases metadata command also displayed nested expected_signature and text fields before the source-only helper ran. Actual facts were subsequently extracted exclusively from source ASTs, without supplying expected values to the extractor; comparisons used the saved facts only afterward. No private expected answers or labels were accessed.',
+    'comparison_results': comparisons,
+    'uncertainty': 'One case has three exact-name top-level function definitions; all three are listed in review.json and no unique definition is selected.',
+    'scope_limitations': ['Syntactic judgment only; no runtime binding or behavioral promise.', 'No module source imported or executed; no network, Git, project implementation, other packets, reviewer output, private map/key, CAMI/generator/reference code or policy result accessed.', 'No unsupported syntax, missing source, decoding problem, source hash mismatch or parsing failure encountered.', 'No tokenizer was loaded; compactness is an estimate, not an actual o200k_base token measurement.'],
+    'preserved_helpers': ['extract_syntax.py', 'write_review.py', 'validate_review.py'],
+    'preserved_extraction': 'syntax-facts.json',
+}
+(OUTPUT / 'methodology.json').write_text(json.dumps(methodology, indent=2) + '\n')
+print(json.dumps({'review_items': len(items), 'source_modules': len(facts['modules']), 'review_bytes': (OUTPUT / 'review.json').stat().st_size}))

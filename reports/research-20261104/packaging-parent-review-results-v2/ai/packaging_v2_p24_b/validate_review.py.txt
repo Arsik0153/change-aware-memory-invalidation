@@ -1,0 +1,85 @@
+"""Validate the supplied schema subset and packet evidence using stdlib only."""
+import hashlib
+import json
+from pathlib import Path
+import re
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-5cbe1e44cc7b')
+OUTPUT = Path('runs/packaging-v2-review-p24-b-20261104')
+schema = json.loads((PACKET / 'review.schema.json').read_text())
+review = json.loads((OUTPUT / 'review.json').read_text())
+cases = json.loads((PACKET / 'cases.json').read_text())
+
+
+def check(value, rule):
+    if '$ref' in rule:
+        resolved = schema
+        for segment in rule['$ref'].split('/')[1:]:
+            resolved = resolved[segment]
+        check(value, resolved)
+    if 'const' in rule:
+        assert value == rule['const'] and type(value) is type(rule['const'])
+    if 'enum' in rule:
+        assert value in rule['enum']
+    if 'type' in rule:
+        expected_type = {'object': dict, 'array': list, 'integer': int, 'string': str, 'boolean': bool}[rule['type']]
+        assert type(value) is expected_type
+    if isinstance(value, dict):
+        assert all(key in value for key in rule.get('required', []))
+        if rule.get('additionalProperties') is False:
+            assert set(value) <= set(rule.get('properties', {}))
+        if 'minProperties' in rule:
+            assert len(value) >= rule['minProperties']
+        for key, child in rule.get('properties', {}).items():
+            if key in value:
+                check(value[key], child)
+    if isinstance(value, list):
+        assert len(value) >= rule.get('minItems', 0)
+        assert len(value) <= rule.get('maxItems', float('inf'))
+        if 'items' in rule:
+            for element in value:
+                check(element, rule['items'])
+    if isinstance(value, str) and 'pattern' in rule:
+        assert re.search(rule['pattern'], value)
+    if type(value) is int and 'minimum' in rule:
+        assert value >= rule['minimum']
+    for child in rule.get('allOf', []):
+        check(value, child)
+    if 'oneOf' in rule:
+        successes = 0
+        for child in rule['oneOf']:
+            try:
+                check(value, child)
+                successes += 1
+            except AssertionError:
+                pass
+        assert successes == 1
+    if 'if' in rule:
+        try:
+            check(value, rule['if'])
+        except AssertionError:
+            pass
+        else:
+            check(value, rule.get('then', {}))
+
+
+check(review, schema)
+assert [x['id'] for x in review['items']] == [x['id'] for x in cases]
+assert len({x['id'] for x in review['items']}) == 12
+for item, case in zip(review['items'], cases):
+    assert item['source_sha256'] == case['source_sha256']
+    source = PACKET / case['source_path']
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == item['source_sha256']
+    assert source.resolve().is_relative_to(PACKET.resolve())
+    for entry in item['evidence']:
+        assert entry['source_path'] == case['source_path']
+        assert entry['available'] is True
+        assert 1 <= entry['line_start'] <= entry['line_end'] <= len(source.read_text().splitlines())
+    extracted = item['extracted_facts']
+    assert {'definition_count', 'unconditional', 'target_rebinding', 'type_parameters_present'} <= set(extracted)
+    if case['kind'] == 'signature_equals':
+        assert 'actual_signature' in extracted
+        assert (extracted['actual_signature'] == case['predicate']['expected_signature']) == (item['verdict'] == 'supported')
+print('PASS: strict supplied-schema subset, 12 unique matching case IDs, source hashes, containment, evidence bounds and signature comparisons.')
+for item, case in zip(review['items'], cases):
+    print(item['id'], case['subject']['qualname'], item['verdict'], 'definitions=' + str(item['extracted_facts']['definition_count']))

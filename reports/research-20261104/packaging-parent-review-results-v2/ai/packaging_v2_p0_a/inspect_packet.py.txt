@@ -1,0 +1,142 @@
+"""Stdlib-only static extraction. Never import or execute packet source.
+
+Run before predicate comparison. Expected signature/text is never passed into
+signature extraction. The binding audit supplements a complete numbered read.
+"""
+import ast
+import hashlib
+import json
+import pathlib
+import platform
+
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+OUT = pathlib.Path(__file__).resolve().parent
+
+
+def dump(node):
+    return None if node is None else ast.dump(node, include_attributes=False)
+
+
+def signature(node):
+    args = node.args
+    params = []
+    positional = args.posonlyargs + args.args
+    defaults = [None] * (len(positional) - len(args.defaults)) + args.defaults
+    for index, (arg, default) in enumerate(zip(positional, defaults)):
+        params.append(dict(name=arg.arg, kind='positional_only' if index < len(args.posonlyargs) else 'positional_or_keyword', default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.vararg:
+        params.append(dict(name=args.vararg.arg, kind='var_positional', default_ast=None, annotation_ast=dump(args.vararg.annotation)))
+    for arg, default in zip(args.kwonlyargs, args.kw_defaults):
+        params.append(dict(name=arg.arg, kind='keyword_only', default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.kwarg:
+        params.append(dict(name=args.kwarg.arg, kind='var_keyword', default_ast=None, annotation_ast=dump(args.kwarg.annotation)))
+    return dict(parameters=params, returns_ast=dump(node.returns), decorators_ast=[dump(d) for d in node.decorator_list], is_async=isinstance(node, ast.AsyncFunctionDef))
+
+
+class Audit(ast.NodeVisitor):
+    def __init__(self, target):
+        self.target = target
+        self.scope = 'module'
+        self.direct = False
+        self.definitions = []
+        self.bindings = []
+        self.class_globals = []
+        self.wildcards = []
+
+    def visit_Module(self, node):
+        for statement in node.body:
+            self.direct = True
+            self.visit(statement)
+        self.direct = False
+
+    def generic_visit(self, node):
+        direct = self.direct
+        self.direct = False
+        super().generic_visit(node)
+        self.direct = direct
+
+    def visit_FunctionDef(self, node):
+        if self.scope == 'module' and node.name == self.target:
+            self.definitions.append(dict(line_start=node.lineno, line_end=node.end_lineno, unconditional=self.direct, type_parameters_present=bool(getattr(node, 'type_params', [])), signature=signature(node)))
+        # Defaults/annotations/decorators execute in the enclosing scope; bodies
+        # and any globals within their deferred execution are not traversed.
+        expressions = list(node.decorator_list) + list(node.args.defaults) + [d for d in node.args.kw_defaults if d is not None]
+        expressions += [a.annotation for a in node.args.posonlyargs + node.args.args + node.args.kwonlyargs if a.annotation is not None]
+        expressions += [a.annotation for a in [node.args.vararg, node.args.kwarg] if a is not None and a.annotation is not None]
+        if node.returns is not None:
+            expressions.append(node.returns)
+        for expression in expressions:
+            self.visit(expression)
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def visit_ClassDef(self, node):
+        if self.scope == 'module' and node.name == self.target:
+            self.bindings.append(dict(kind='class', line=node.lineno))
+        for expression in list(node.decorator_list) + list(node.bases) + [k.value for k in node.keywords]:
+            self.visit(expression)
+        old_scope, old_direct = self.scope, self.direct
+        self.scope, self.direct = 'class', False
+        for statement in node.body:
+            self.visit(statement)
+        self.scope, self.direct = old_scope, old_direct
+
+    def visit_Global(self, node):
+        if self.scope == 'class' and self.target in node.names:
+            self.class_globals.append(node.lineno)
+
+    def visit_Name(self, node):
+        if self.scope == 'module' and node.id == self.target and isinstance(node.ctx, (ast.Store, ast.Del)):
+            self.bindings.append(dict(kind=type(node.ctx).__name__, line=node.lineno))
+
+    def visit_Import(self, node):
+        if self.scope == 'module':
+            for alias in node.names:
+                if (alias.asname or alias.name.split('.')[0]) == self.target:
+                    self.bindings.append(dict(kind='import', line=node.lineno))
+
+    def visit_ImportFrom(self, node):
+        if self.scope == 'module':
+            for alias in node.names:
+                if alias.name == '*':
+                    self.wildcards.append(node.lineno)
+                elif (alias.asname or alias.name) == self.target:
+                    self.bindings.append(dict(kind='import', line=node.lineno))
+
+    def visit_ExceptHandler(self, node):
+        if self.scope == 'module' and node.name == self.target:
+            self.bindings.append(dict(kind='exception', line=node.lineno))
+        self.generic_visit(node)
+
+    def visit_Lambda(self, node):
+        for expression in list(node.args.defaults) + [d for d in node.args.kw_defaults if d is not None]:
+            self.visit(expression)
+
+
+def main():
+    case_bytes = (PACKET / 'cases.json').read_bytes()
+    cases = json.loads(case_bytes)
+    facts, sources = [], {}
+    for case in cases:
+        path = case['source_path']
+        raw = (PACKET / path).read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        assert digest == case['source_sha256']
+        text = raw.decode('utf-8')
+        tree = ast.parse(text, filename=path)
+        target = case['subject']['qualname']
+        audit = Audit(target)
+        audit.visit(tree)
+        definitions = audit.definitions
+        facts.append(dict(id=case['id'], source_path=path, subject=case['subject'], kind=case['kind'], definition_count=len(definitions), observed_definitions=definitions, target_rebinding=bool(audit.bindings), bindings=audit.bindings, class_globals=audit.class_globals, wildcard_imports=audit.wildcards, line_count=len(text.splitlines())))
+        sources[path] = dict(sha256=digest, line_count=len(text.splitlines()), utf8_decode='success', ast_parse='success')
+    (OUT / 'independent_facts.json').write_text(json.dumps(facts, indent=2) + '\n')
+    integrity = dict(python=platform.python_version(), parser='CPython ast', cases_sha256=hashlib.sha256(case_bytes).hexdigest(), sources=sources)
+    (OUT / 'integrity.json').write_text(json.dumps(integrity, indent=2) + '\n')
+    print(json.dumps(integrity, indent=2))
+    for fact in facts:
+        print(json.dumps(fact))
+
+
+if __name__ == '__main__':
+    main()

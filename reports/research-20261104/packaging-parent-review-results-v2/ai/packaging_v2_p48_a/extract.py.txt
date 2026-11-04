@@ -1,0 +1,35 @@
+"""Extract source-only syntax before examining expected predicates; never executes sources."""
+import ast
+import hashlib
+import json
+import pathlib
+import sys
+
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUT = pathlib.Path('runs/packaging-v2-review-p48-a-20261104')
+
+def dump(expr):
+    return None if expr is None else ast.dump(expr, include_attributes=False)
+
+def signature(node):
+    args = node.args
+    params = []
+    positional = args.posonlyargs + args.args
+    defaults = [None] * (len(positional) - len(args.defaults)) + args.defaults
+    for i, (arg, default) in enumerate(zip(positional, defaults)):
+        params.append(dict(name=arg.arg, kind='positional_only' if i < len(args.posonlyargs) else 'positional_or_keyword', default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.vararg:
+        params.append(dict(name=args.vararg.arg, kind='var_positional', default_ast=None, annotation_ast=dump(args.vararg.annotation)))
+    for arg, default in zip(args.kwonlyargs, args.kw_defaults):
+        params.append(dict(name=arg.arg, kind='keyword_only', default_ast=dump(default), annotation_ast=dump(arg.annotation)))
+    if args.kwarg:
+        params.append(dict(name=args.kwarg.arg, kind='var_keyword', default_ast=None, annotation_ast=dump(args.kwarg.annotation)))
+    return dict(parameters=params, return_annotation_ast=dump(node.returns), decorators=[dump(x) for x in node.decorator_list], is_async=isinstance(node, ast.AsyncFunctionDef))
+
+facts = dict(parser=sys.version, modules={})
+for path in sorted((PACKET / 'source').glob('*.raw')):
+    raw = path.read_bytes()
+    tree = ast.parse(raw.decode('utf-8'), filename=str(path))
+    facts['modules'][str(path.relative_to(PACKET))] = dict(sha256=hashlib.sha256(raw).hexdigest(), lines=len(raw.splitlines()), definitions=[dict(name=n.name, line_start=n.lineno, line_end=n.end_lineno, type_parameters_present=bool(getattr(n, 'type_params', [])), signature=signature(n)) for n in tree.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))], module_node_types=[dict(type=type(n).__name__, line_start=n.lineno, line_end=n.end_lineno) for n in tree.body])
+(OUT / 'source_facts.json').write_text(json.dumps(facts, indent=2) + '\n')
+print(json.dumps(facts, indent=2))

@@ -1,0 +1,89 @@
+"""Validate the supplied schema's used keywords and packet evidence with stdlib."""
+import hashlib
+import json
+from pathlib import Path
+import re
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+OUT = Path('runs/packaging-v2-review-p0-b-20261104')
+schema = json.loads((PACKET / 'review.schema.json').read_text())
+review = json.loads((OUT / 'review.json').read_text())
+
+
+def validate(value, rule):
+    if '$ref' in rule:
+        resolved = schema
+        for part in rule['$ref'][2:].split('/'):
+            resolved = resolved[part]
+        validate(value, resolved)
+    if 'type' in rule:
+        kind = rule['type']
+        assert {'object': lambda: isinstance(value, dict),
+                'array': lambda: isinstance(value, list),
+                'string': lambda: isinstance(value, str),
+                'integer': lambda: type(value) is int,
+                'boolean': lambda: type(value) is bool}[kind](), (kind, value)
+    if 'const' in rule:
+        assert value == rule['const'] and type(value) is type(rule['const'])
+    if 'enum' in rule:
+        assert value in rule['enum']
+    if 'pattern' in rule:
+        assert re.search(rule['pattern'], value)
+    if 'minimum' in rule:
+        assert value >= rule['minimum']
+    if isinstance(value, dict):
+        assert all(k in value for k in rule.get('required', []))
+        if rule.get('additionalProperties') is False:
+            assert set(value) <= set(rule.get('properties', {}))
+        assert len(value) >= rule.get('minProperties', 0)
+        for key, child in rule.get('properties', {}).items():
+            if key in value:
+                validate(value[key], child)
+    if isinstance(value, list):
+        assert len(value) >= rule.get('minItems', 0)
+        assert len(value) <= rule.get('maxItems', float('inf'))
+        if 'items' in rule:
+            for item in value:
+                validate(item, rule['items'])
+    if 'oneOf' in rule:
+        passes = 0
+        for child in rule['oneOf']:
+            try:
+                validate(value, child)
+            except (AssertionError, TypeError, KeyError):
+                pass
+            else:
+                passes += 1
+        assert passes == 1
+    for child in rule.get('allOf', []):
+        validate(value, child)
+    if 'if' in rule:
+        try:
+            validate(value, rule['if'])
+        except (AssertionError, TypeError, KeyError):
+            pass
+        else:
+            validate(value, rule.get('then', {}))
+
+
+validate(review, schema)
+cases = json.loads((PACKET / 'cases.json').read_text())
+assert [item['id'] for item in review['items']] == [case['id'] for case in cases]
+for item, case in zip(review['items'], cases):
+    raw = (PACKET / case['source_path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == case['source_sha256'] == item['source_sha256']
+    lines = len(raw.decode('utf-8').splitlines())
+    for evidence in item['evidence']:
+        assert evidence['source_path'] == case['source_path']
+        assert evidence['available'] is True
+        assert 1 <= evidence['line_start'] <= evidence['line_end'] <= lines
+    assert set(['definition_count', 'unconditional', 'target_rebinding',
+                'type_parameters_present']) <= item['extracted_facts'].keys()
+    if case['kind'] == 'signature_equals':
+        assert 'actual_signature' in item['extracted_facts']
+assert review['agent_task'] == '/root/packaging_v2_p0_b'
+assert review['packet_sha256'] == '663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123'
+summary = dict(validation='passed', cases=12, source_modules=4,
+    compact_json_characters=len(json.dumps(review, separators=(',', ':'))))
+(OUT / 'validation.json').write_text(json.dumps(summary, indent=2) + '\n')
+print(json.dumps(summary))

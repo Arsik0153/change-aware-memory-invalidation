@@ -1,0 +1,112 @@
+"""Phase 2: compare preserved source-derived signatures and write one review."""
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+OUT = Path('runs/packaging-v2-review-p0-b-20261104')
+PACKET_SHA256 = '663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123'
+facts = json.loads((OUT / 'source_facts.json').read_text())
+cases = json.loads((PACKET / 'cases.json').read_text())
+assert len(cases) == len(facts['items']) == 12
+items = []
+for case, fact in zip(cases, facts['items']):
+    assert case['id'] == fact['id']
+    assert case['source_sha256'] == fact['source_sha256']
+    defs = fact['definitions']
+    count = len(defs)
+    actual = defs[0]['signature'] if count == 1 else None
+    extracted = dict(definition_count=count,
+        unconditional=all(d['unconditional'] for d in defs) if defs else None,
+        target_rebinding=bool(fact['binding_events']) or count > 1,
+        type_parameters_present=any(d['type_parameters_present'] for d in defs) if defs else None)
+    if case['kind'] == 'signature_equals':
+        extracted['actual_signature'] = actual
+    evidence = [dict(source_path=fact['source_path'], available=True,
+                     line_start=d['line_start'], line_end=d['line_end']) for d in defs]
+    subject = fact['subject_path'] + ':' + fact['target']
+    scope = (f"Whole module inspected (lines 1-{fact['module_lines']}); exact subject {subject}. "
+             "Class bodies and enclosing-scope defaults, annotations and decorators checked; "
+             "deferred bodies do not affect binding. No wildcard import or class-global ambiguity. "
+             "Syntax only; no runtime or behavioral claim.")
+    if count > 1:
+        verdict = 'uncertain'
+        extracted['observed_definitions'] = [dict(line_start=d['line_start'],
+            line_end=d['line_end'], unconditional=d['unconditional'],
+            signature=d['signature']) for d in defs]
+        reasoning = ('Three unconditional module-level platform_tags definitions occur at lines 54, 86 and 90. '
+                     'The later definitions rebind the same name. The rubric requires uncertainty for '
+                     'duplicate definitions; existence alone does not establish its unique-definition scope.')
+    elif fact['binding_events'] or any(not d['unconditional'] or d['type_parameters_present'] for d in defs):
+        raise AssertionError('Unexpected ambiguity requires independent reasoning')
+    elif count == 0:
+        verdict = 'contradicted'
+        evidence = [dict(source_path=fact['source_path'], available=True,
+                         line_start=1, line_end=fact['module_lines'])]
+        reasoning = (f"Inspected the entire module, lines 1-{fact['module_lines']}; there is no function "
+                     f"definition named {fact['target']} and no applicable binding or syntax ambiguity.")
+    elif case['kind'] == 'symbol_exists':
+        verdict = 'supported'
+        reasoning = (f"Exactly one unconditional top-level function named {fact['target']} exists. "
+                     "No other target binding, conditional definition or type parameter occurs.")
+    else:
+        expected = case['predicate']['expected_signature']
+        verdict = 'supported' if actual == expected else 'contradicted'
+        if verdict == 'supported':
+            reasoning = ('The source-derived signature matches every parameter name, order, kind, default and '
+                         'annotation, return annotation, empty decorator list and synchronous status.')
+        elif fact['target'] == 'platform_tags':
+            reasoning = ('The sole parameter is archs, not the expected _case_2a1343eff33bb7a0edce4147. '
+                         'All other normalized signature fields match. This clear name mismatch contradicts equality.')
+        elif fact['target'] == '_normalize':
+            reasoning = ('The var_positional parameter is values, not the expected _case_245b871fa4432abea59d9844. '
+                         'The keyword-only key and all other normalized fields match. The parameter-name mismatch '
+                         'contradicts equality.')
+        else:
+            raise AssertionError('Unexpected signature mismatch')
+    items.append(dict(id=case['id'], source_sha256=fact['source_sha256'], verdict=verdict,
+        extracted_facts=extracted, reasoning=reasoning, evidence=evidence, scope_notes=scope))
+
+review = dict(schema_version=1, reviewer_kind='ai_reviewer', human=False,
+    provider='codex', model='codex:gpt-6.1-sol', reasoning_effort='high',
+    agent_task='/root/packaging_v2_p0_b', packet_sha256=PACKET_SHA256,
+    independence_disclosure='Model weights and training independence are unverified.',
+    identity_basis='declared_invocation', items=items)
+(OUT / 'review.json').write_text(json.dumps(review, indent=2) + '\n')
+
+module_hashes = {f['source_path']: dict(sha256=f['source_sha256'], lines=f['module_lines'])
+                 for f in facts['items']}
+methodology = dict(
+    tools=['exec_command for packet-only file listing, line-numbered full text reads and .venv/bin/python',
+           'apply_patch for new output helpers', 'CPython standard library ast, hashlib, json, pathlib, sys, tokenize'],
+    parser=dict(name='CPython ast.parse', version=sys.version, include_attributes=False),
+    packet_sha256=dict(value=PACKET_SHA256, basis='Coordinator-supplied packet identity; aggregate hashing algorithm not specified in packet, not independently recomputed.'),
+    cases_hash=dict(sha256=facts['cases_sha256'], basis='SHA-256 of exact cases.json bytes'),
+    source_hashes=module_hashes,
+    whole_module_inspection_method=('Read all 12 cases and every complete referenced module with one-based line numbers. '
+        'Reviewed all module statements and class bodies, including conditional blocks and expression contexts; '
+        'checked imports, assignments/deletions, loop/with/except/match targets, class-global declarations, '
+        'function defaults, annotations and decorators. Nested function/method bodies are deferred. '
+        'The preserved AST helper independently traversed evaluated syntax and counted module-level definitions. '
+        'Manual source inspection confirmed the absence of rebinding events beyond the explicit duplicate definitions.'),
+    signature_extraction_method=('extract.py phase 1 reads only case identity/routing fields and derives signatures from AST nodes, '
+        'then persists source_facts.json. Positional defaults are aligned to trailing positional parameters; '
+        'varargs and keyword-only kinds are preserved; absent expressions are null and actual None is Constant(value=None). '
+        'ast.dump(include_attributes=False) represents annotations, defaults, returns and decorators in order. '
+        'write_review.py phase 2 compares the preserved actual signature to expected_signature. '
+        'The initial case listing exposed predicate values before extraction; no expected signature was copied into extracted facts.'),
+    ambiguity_method=('Applied rubric precedence: duplicate, conditional, target rebinding, type parameters or unresolved '
+        'syntax/binding ambiguity require uncertainty. Observed three direct platform_tags definitions in one complete module. '
+        'No verdict-count assumptions or source-origin inference.'),
+    access_limitations=('Only the supplied public packet was read; only the new designated run directory was written. '
+        'No project source was imported or executed, and no network, Git, other packet/review, policy result, '
+        'private map/key, CAMI, generator or reference code was accessed. Parser supported every supplied module. '
+        'Signatures establish normalized syntax only. No aggregate packet-hash verification was possible without a specified algorithm.'),
+    preserved_helpers=['extract.py', 'write_review.py', 'validate.py'],
+    validation='validate.py checks the strict supplied schema subset, all 12 identities, source byte hashes and evidence bounds using stdlib only.',
+    primary_review_token_estimate=dict(method='Conservative compact-JSON character-count proxy divided by 3; not actual tokenization or billing.',
+        value=(len(json.dumps(review, separators=(',', ':'))) + 2) // 3,
+        target_maximum=8000, tokenizer_not_available='o200k_base was not invoked; third-party packages were not imported.'))
+(OUT / 'methodology.json').write_text(json.dumps(methodology, indent=2) + '\n')
+print('Wrote one 12-item primary review and methodology.')

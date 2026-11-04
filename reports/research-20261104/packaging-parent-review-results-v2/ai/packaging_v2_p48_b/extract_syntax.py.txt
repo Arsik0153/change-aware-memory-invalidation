@@ -1,0 +1,122 @@
+"""Extract packet syntax only; never read expected signatures or execute sources."""
+import ast
+import hashlib
+import json
+from pathlib import Path
+import platform
+import sys
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUTPUT = Path('runs/packaging-v2-review-p48-b-20261104')
+
+def expression(node):
+    return None if node is None else ast.dump(node, include_attributes=False)
+
+def signature(node):
+    args = node.args
+    parameters = []
+    positional = args.posonlyargs + args.args
+    defaults = [None] * (len(positional) - len(args.defaults)) + list(args.defaults)
+    for i, (arg, default) in enumerate(zip(positional, defaults)):
+        parameters.append(dict(name=arg.arg, kind='positional_only' if i < len(args.posonlyargs) else 'positional_or_keyword', default_ast=expression(default), annotation_ast=expression(arg.annotation)))
+    if args.vararg:
+        parameters.append(dict(name=args.vararg.arg, kind='var_positional', default_ast=None, annotation_ast=expression(args.vararg.annotation)))
+    for arg, default in zip(args.kwonlyargs, args.kw_defaults):
+        parameters.append(dict(name=arg.arg, kind='keyword_only', default_ast=expression(default), annotation_ast=expression(arg.annotation)))
+    if args.kwarg:
+        parameters.append(dict(name=args.kwarg.arg, kind='var_keyword', default_ast=None, annotation_ast=expression(args.kwarg.annotation)))
+    return dict(parameters=parameters, returns_ast=expression(node.returns), decorators_ast=[expression(x) for x in node.decorator_list], is_async=isinstance(node, ast.AsyncFunctionDef))
+
+class EnclosingSyntax(ast.NodeVisitor):
+    """Inventory evaluated syntax, excluding deferred bodies and lambda bodies.
+
+    Class scopes are retained as context; their globals can be assessed manually.
+    All inputs also receive whole-text inspection; this inventory is not an oracle.
+    """
+    def __init__(self):
+        self.classes = []
+        self.bindings = []
+        self.globals = []
+        self.functions = []
+
+    def event(self, name, node, kind):
+        self.bindings.append(dict(name=name, line=node.lineno, kind=kind, classes=list(self.classes)))
+
+    def visit_Name(self, node):
+        if isinstance(node.ctx, (ast.Store, ast.Del)):
+            self.event(node.id, node, type(node.ctx).__name__)
+
+    def visit_Import(self, node):
+        for alias in node.names:
+            self.event(alias.asname or alias.name.split('.')[0], node, 'import')
+
+    def visit_ImportFrom(self, node):
+        for alias in node.names:
+            self.event(alias.asname or alias.name, node, 'from_import')
+
+    def visit_Global(self, node):
+        self.globals.append(dict(names=node.names, line=node.lineno, classes=list(self.classes)))
+
+    def visit_ExceptHandler(self, node):
+        if node.name:
+            self.event(node.name, node, 'exception')
+        self.generic_visit(node)
+
+    def visit_MatchAs(self, node):
+        if node.name:
+            self.event(node.name, node, 'match')
+        self.generic_visit(node)
+
+    def visit_MatchStar(self, node):
+        if node.name:
+            self.event(node.name, node, 'match')
+
+    def visit_MatchMapping(self, node):
+        if node.rest:
+            self.event(node.rest, node, 'match')
+        self.generic_visit(node)
+
+    def visit_FunctionDef(self, node):
+        self.event(node.name, node, 'function_definition')
+        self.functions.append(dict(name=node.name, line=node.lineno, end_line=node.end_lineno, classes=list(self.classes), type_parameters_present=bool(getattr(node, 'type_params', [])), signature=signature(node)))
+        for expr in node.decorator_list + node.args.defaults + [x for x in node.args.kw_defaults if x is not None]:
+            self.visit(expr)
+        for arg in node.args.posonlyargs + node.args.args + node.args.kwonlyargs + ([node.args.vararg] if node.args.vararg else []) + ([node.args.kwarg] if node.args.kwarg else []):
+            if arg.annotation:
+                self.visit(arg.annotation)
+        if node.returns:
+            self.visit(node.returns)
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def visit_Lambda(self, node):
+        for expr in node.args.defaults + [x for x in node.args.kw_defaults if x is not None]:
+            self.visit(expr)
+
+    def visit_ClassDef(self, node):
+        self.event(node.name, node, 'class_definition')
+        for expr in node.bases + [x.value for x in node.keywords] + node.decorator_list:
+            self.visit(expr)
+        self.classes.append(node.name)
+        for stmt in node.body:
+            self.visit(stmt)
+        self.classes.pop()
+
+cases_bytes = (PACKET / 'cases.json').read_bytes()
+cases = json.loads(cases_bytes)
+# Routing only: predicates are deliberately not accessed during extraction.
+paths = sorted({case['source_path'] for case in cases})
+modules = {}
+for relative in paths:
+    raw = (PACKET / relative).read_bytes()
+    source = raw.decode('utf-8')
+    digest = hashlib.sha256(raw).hexdigest()
+    assert all(case['source_sha256'] == digest for case in cases if case['source_path'] == relative)
+    tree = ast.parse(source, filename=relative)
+    visitor = EnclosingSyntax()
+    visitor.visit(tree)
+    modules[relative] = dict(sha256=digest, line_count=len(source.splitlines()), direct_definitions=[dict(name=n.name, line=n.lineno, end_line=n.end_lineno) for n in tree.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))], enclosing_syntax_bindings=visitor.bindings, evaluated_scope_globals=visitor.globals, functions=visitor.functions)
+
+result = dict(parser='CPython ast.parse/ast.dump(include_attributes=False)', python_version=sys.version, implementation=platform.python_implementation(), cases_sha256=hashlib.sha256(cases_bytes).hexdigest(), modules=modules)
+(OUTPUT / 'source_facts.json').write_text(json.dumps(result, indent=2) + '\n')
+print(json.dumps(dict(python_version=sys.version, cases_sha256=result['cases_sha256'], modules={k:dict(sha256=v['sha256'], line_count=v['line_count'], direct_definitions=v['direct_definitions'], globals=v['evaluated_scope_globals']) for k,v in modules.items()}), indent=2))

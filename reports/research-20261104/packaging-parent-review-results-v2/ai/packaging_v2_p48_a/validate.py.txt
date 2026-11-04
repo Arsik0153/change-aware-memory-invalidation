@@ -1,0 +1,75 @@
+"""Stdlib-only validation of the supplied review schema and packet linkage."""
+import hashlib
+import json
+import pathlib
+import re
+
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUT = pathlib.Path('runs/packaging-v2-review-p48-a-20261104')
+schema = json.loads((PACKET / 'review.schema.json').read_text())
+review = json.loads((OUT / 'review.json').read_text())
+
+def validate(value, spec):
+    if '$ref' in spec:
+        resolved = schema
+        for part in spec['$ref'].split('/')[1:]:
+            resolved = resolved[part]
+        validate(value, resolved)
+    if 'const' in spec:
+        assert type(value) is type(spec['const']) and value == spec['const']
+    if 'enum' in spec:
+        assert value in spec['enum']
+    if 'type' in spec:
+        types = dict(object=dict, array=list, string=str, integer=int, boolean=bool)
+        assert type(value) is types[spec['type']]
+    if isinstance(value, dict):
+        assert all(key in value for key in spec.get('required', []))
+        if spec.get('additionalProperties') is False:
+            assert set(value) <= set(spec.get('properties', {}))
+        assert len(value) >= spec.get('minProperties', 0)
+        for key, child in spec.get('properties', {}).items():
+            if key in value:
+                validate(value[key], child)
+    if isinstance(value, list):
+        assert len(value) >= spec.get('minItems', 0)
+        assert len(value) <= spec.get('maxItems', len(value))
+        for item in value:
+            if 'items' in spec:
+                validate(item, spec['items'])
+    if isinstance(value, str) and 'pattern' in spec:
+        assert re.search(spec['pattern'], value)
+    if type(value) is int and 'minimum' in spec:
+        assert value >= spec['minimum']
+    if 'oneOf' in spec:
+        passing = 0
+        for candidate in spec['oneOf']:
+            try:
+                validate(value, candidate)
+                passing += 1
+            except AssertionError:
+                pass
+        assert passing == 1
+    for child in spec.get('allOf', []):
+        validate(value, child)
+    if 'if' in spec:
+        try:
+            validate(value, spec['if'])
+        except AssertionError:
+            if 'else' in spec:
+                validate(value, spec['else'])
+        else:
+            if 'then' in spec:
+                validate(value, spec['then'])
+
+validate(review, schema)
+cases = json.loads((PACKET / 'cases.json').read_text())
+assert [i['id'] for i in review['items']] == [c['id'] for c in cases]
+for case, item in zip(cases, review['items']):
+    source = PACKET / case['source_path']
+    assert item['source_sha256'] == case['source_sha256'] == hashlib.sha256(source.read_bytes()).hexdigest()
+    for evidence in item['evidence']:
+        assert evidence['source_path'] == case['source_path']
+        assert evidence['available'] is True
+        assert 1 <= evidence['line_start'] <= evidence['line_end'] <= len(source.read_bytes().splitlines())
+print('Schema, twelve exact case IDs, source hashes, and all evidence bounds pass.')
+print('Primary review bytes:', len((OUT / 'review.json').read_bytes()))

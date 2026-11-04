@@ -1,0 +1,90 @@
+"""Assemble the single review from previously extracted source facts; verify packet hashes.
+The review judgments were assigned after reading every complete module and all cases.
+"""
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-5cbe1e44cc7b')
+OUT = Path('runs/packaging-v2-review-p24-a-20261104')
+cases_bytes = (PACKET / 'cases.json').read_bytes()
+cases = json.loads(cases_bytes)
+source_facts = json.loads((OUT / 'source_facts.json').read_text())
+modules = {m['source_path']: m for m in source_facts['modules']}
+assert len(cases) == 12 and len({c['id'] for c in cases}) == 12
+assert set(modules) == {c['source_path'] for c in cases}
+
+reasoning = {
+'case-a784b0bdc5699440075b': 'Exactly one unconditional top-level _version_nodot function occurs at lines 547–548; no competing definition or target rebinding occurs in the fully inspected module.',
+'case-6a131aa3d06c5eb1acce': 'The independently extracted first parameter is marker, whereas the predicate requires _case_fdfb8448438c8b800befdf2d. Every other signature field matches; the parameter-name mismatch contradicts exact equality.',
+'case-de9fd1bce0b6c2b30b34': 'The sole definition has positional-or-keyword is_32bit: bool with default syntax _32_BIT_INTERPRETER, return Iterator[str], no decorators and synchronous status. All normalized signature fields match.',
+'case-cbd4a60856b5941e60d9': 'The entire 253-line module was inspected. It has no top-level function named _case_010fe22596dcc985d2b2a047, and no conditional definition, rebinding, wildcard import or other ambiguity applies.',
+'case-05a068658accb7260fc8': 'Exactly one unconditional top-level _eval_op definition occurs at lines 111–123, with no competing definition or target rebinding in the fully inspected module.',
+'case-c6af8dba0bb550411b77': 'Exactly one unconditional top-level _linux_platforms definition occurs at lines 489–505, with no competing definition or target rebinding in the fully inspected module.',
+'case-3949e5e983e19c51764f': 'Exactly one unconditional top-level _format_marker definition occurs at lines 71–96, with no competing definition or target rebinding in this fully inspected 253-line module.',
+'case-c2375cc54187748b8d4e': 'The sole definition has positional-or-keyword version: PythonVersion without a default, return str, no decorators and synchronous status. All normalized signature fields match.',
+'case-47f20eeb54fd6f1211d4': 'The independently extracted parameter is is_32bit, whereas the predicate requires _case_440732c472fee2074aed49c6. All other fields match; exact signature equality fails.',
+'case-296ac9e389a2f1918f1a': 'The sole definition has positional-or-keyword lhs: str, op: Op and rhs: str in that order, all without defaults, return bool, no decorators and synchronous status. All normalized signature fields match.',
+'case-97c72ba82ea87e4e3446': 'The sole definition has positional-or-keyword marker: Union[List[str], MarkerAtom, str] without a default and first: Optional[bool] defaulting to literal True, return str, no decorators and synchronous status. All normalized signature fields match.',
+'case-2ed1bda8c3ce2c50f855': 'Three unconditional top-level _format_marker definitions occur at lines 71–96, 256–257 and 260–261. The latter two redefine the name with *args and **kwargs. The rubric requires uncertainty for duplicate definitions; no unique subject can be selected.'
+}
+verdicts = {
+'case-a784b0bdc5699440075b':'supported',
+'case-6a131aa3d06c5eb1acce':'contradicted',
+'case-de9fd1bce0b6c2b30b34':'supported',
+'case-cbd4a60856b5941e60d9':'contradicted',
+'case-05a068658accb7260fc8':'supported',
+'case-c6af8dba0bb550411b77':'supported',
+'case-3949e5e983e19c51764f':'supported',
+'case-c2375cc54187748b8d4e':'supported',
+'case-47f20eeb54fd6f1211d4':'contradicted',
+'case-296ac9e389a2f1918f1a':'supported',
+'case-97c72ba82ea87e4e3446':'supported',
+'case-2ed1bda8c3ce2c50f855':'uncertain'
+}
+items = []
+for c in cases:
+    m = modules[c['source_path']]
+    raw = (PACKET / c['source_path']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == c['source_sha256'] == m['sha256']
+    name = c['subject']['qualname']
+    defs = [d for d in m['definitions'] if d['name'] == name and d['class_depth'] == 0]
+    other_bindings = [b for b in m['bindings'] if b['name'] == name and b['class_depth'] == 0 and b['kind'] != 'function_definition']
+    assert not other_bindings
+    assert not m['class_globals']
+    assert not any(b['name'] == '*' for b in m['bindings'])
+    assert not any(d['conditional'] or d['type_parameters_present'] for d in defs)
+    facts = dict(definition_count=len(defs), unconditional=True if defs else None, target_rebinding=len(defs)>1, type_parameters_present=False if defs else None)
+    if len(defs) > 1:
+        facts['observed_definitions'] = [dict(name=name, line_start=d['line_start'], line_end=d['line_end'], unconditional=True) for d in defs]
+    if c['kind'] == 'signature_equals':
+        assert len(defs) == 1
+        extracted = defs[0]['signature']
+        actual = {k:v for k,v in extracted.items() if k != 'return_annotation_ast'}
+        actual['returns_ast'] = extracted['return_annotation_ast']
+        facts['actual_signature'] = actual
+        assert (actual == c['predicate']['expected_signature']) == (verdicts[c['id']] == 'supported')
+    evidence = [dict(source_path=c['source_path'], available=True, line_start=1, line_end=m['line_count'])]
+    evidence.extend(dict(source_path=c['source_path'], available=True, line_start=d['line_start'], line_end=d['line_end']) for d in defs)
+    scope = f"Inspected the complete supplied module (lines 1–{m['line_count']}) for {c['subject']['path']}:{name}. Exact top-level syntax only; deferred function/method bodies do not establish module bindings."
+    if len(defs) <= 1:
+        scope += ' No wildcard import, relevant class-body global, conditional target definition, or target type parameters were found.'
+    else:
+        scope += ' All three definitions are unconditional and lack type parameters; duplicate identity is the uncertainty, not missing source.'
+    items.append(dict(id=c['id'], source_sha256=c['source_sha256'], verdict=verdicts[c['id']], extracted_facts=facts, reasoning=reasoning[c['id']], evidence=evidence, scope_notes=scope))
+review = dict(schema_version=1, reviewer_kind='ai_reviewer', human=False, provider='codex', model='codex:gpt-6.1-sol', reasoning_effort='high', agent_task='/root/packaging_v2_p24_a', packet_sha256='6e61d95267e1eef93408b2e4ffa24e049f3b1bdc9c714666a76e0ad66c1b0868', independence_disclosure='Model weights and training independence are unverified.', identity_basis='declared_invocation', items=items)
+(OUT / 'review.json').write_text(json.dumps(review, indent=2, ensure_ascii=False) + '\n')
+methodology = dict(
+    reviewer_kind='ai_reviewer', human=False,
+    chronology=['Read complete rubric, schema and both supplied prompt files.', 'Read every complete source module with numbered lines.', 'Authored and ran extract.py, saving all source signatures and binding inventories before opening cases.json.', 'Read all 12 cases; compared independently saved source signatures against expected predicates.', 'Authored assemble_review.py to preserve judgments, verify case/source identities, format the strict review and record methodology.', 'Validated review schema and evidence bounds with preserved stdlib validation helper.'],
+    tools=['exec_command shell: pwd, rg --files restricted to the packet, cat, wc -l, nl -ba, mkdir', '.venv/bin/python running only authored stdlib helpers'],
+    parser=dict(implementation='CPython ast.parse and ast.dump(include_attributes=False)', version=sys.version),
+    whole_module_inspection='Read all 261, 571 and 253 source lines respectively; examined every module statement and class body, import binding, definition, assignment target and enclosing expression. Deferred function/method bodies were read but not treated as evaluated module-binding scopes. AST inventory supplements this reading; it is not a general-purpose Python scope engine.',
+    signature_extraction='extract.py derives ordered parameters from posonlyargs/args/defaults/vararg/kwonlyargs/kw_defaults/kwarg, dumping annotation/default/return/decorator expressions and async status directly from AST before reading predicates. Missing expressions are JSON null. During assembly only the independently chosen return_annotation_ast field name is renamed to the packet expected-signature vocabulary returns_ast.',
+    hash_verification=dict(cases_json_sha256=hashlib.sha256(cases_bytes).hexdigest(), cases='Computed raw cases.json SHA256 and checked 12 distinct IDs and exact source coverage.', sources=[dict(source_path=m['source_path'], sha256=m['sha256'], line_count=m['line_count'], matches_every_referencing_case=True) for m in modules.values()], packet_sha256=review['packet_sha256'], packet_hash_basis='Coordinator-supplied packet identity; packet digest framing algorithm was not supplied. No claim of independently recomputing that aggregate digest.'),
+    access_limitations=['Only this public packet and this newly created output directory were read for task evidence.', 'No network, Git, other packets/reviewers, private maps/keys, policy outputs, CAMI/generator/reference code, project imports or source execution were used.', 'Review assesses bounded syntax; runtime decorator effects, import resolution, behavior and actual binding execution are outside scope.', 'Source path identities are those mapped by cases.json; no repository source outside the packet was consulted.'],
+    independence_disclosure='Model weights and training independence are unverified.'
+)
+(OUT / 'methodology.json').write_text(json.dumps(methodology, indent=2, ensure_ascii=False) + '\n')
+print(json.dumps(dict(items=len(items), review_bytes=(OUT/'review.json').stat().st_size, source_hashes_verified=len(modules), cases_json_sha256=methodology['hash_verification']['cases_json_sha256'])))

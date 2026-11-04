@@ -1,0 +1,67 @@
+"""Stdlib validator for the schema constructs in the assigned public schema."""
+import json
+import pathlib
+import re
+
+OUT = pathlib.Path(__file__).resolve().parent
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+schema = json.loads((PACKET / 'review.schema.json').read_text())
+review = json.loads((OUT / 'review.json').read_text())
+cases = json.loads((PACKET / 'cases.json').read_text())
+
+
+def valid(value, rule):
+    if '$ref' in rule:
+        target = schema
+        for part in rule['$ref'].split('/')[1:]:
+            target = target[part]
+        return valid(value, target)
+    if 'const' in rule and (type(value) is not type(rule['const']) or value != rule['const']):
+        return False
+    if 'enum' in rule and value not in rule['enum']:
+        return False
+    if 'type' in rule:
+        kind = rule['type']
+        if not {'object': isinstance(value, dict), 'array': isinstance(value, list), 'string': isinstance(value, str), 'integer': type(value) is int}.get(kind, False):
+            return False
+    if isinstance(value, dict):
+        if any(key not in value for key in rule.get('required', [])):
+            return False
+        props = rule.get('properties', {})
+        if rule.get('additionalProperties') is False and any(key not in props for key in value):
+            return False
+        if len(value) < rule.get('minProperties', 0):
+            return False
+        if not all(valid(value[key], sub) for key, sub in props.items() if key in value):
+            return False
+    if isinstance(value, list):
+        if not rule.get('minItems', 0) <= len(value) <= rule.get('maxItems', float('inf')):
+            return False
+        if 'items' in rule and not all(valid(v, rule['items']) for v in value):
+            return False
+    if isinstance(value, str) and 'pattern' in rule and re.search(rule['pattern'], value) is None:
+        return False
+    if type(value) is int and value < rule.get('minimum', -float('inf')):
+        return False
+    if 'oneOf' in rule and sum(valid(value, sub) for sub in rule['oneOf']) != 1:
+        return False
+    if 'allOf' in rule and not all(valid(value, sub) for sub in rule['allOf']):
+        return False
+    if 'if' in rule and valid(value, rule['if']) and not valid(value, rule.get('then', {})):
+        return False
+    return True
+
+
+assert valid(review, schema), 'Schema validation failed'
+assert [i['id'] for i in review['items']] == [c['id'] for c in cases]
+for item, case in zip(review['items'], cases):
+    assert item['source_sha256'] == case['source_sha256']
+    for evidence in item['evidence']:
+        assert evidence['source_path'] == case['source_path']
+        count = len((PACKET / evidence['source_path']).read_text().splitlines())
+        assert 1 <= evidence['line_start'] <= evidence['line_end'] <= count
+assert review['provider'] == 'codex' and review['model'] == 'codex:gpt-6.1-sol'
+assert review['reasoning_effort'] == 'high' and review['agent_task'] == '/root/packaging_v2_p0_a'
+assert review['packet_sha256'] == '663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123'
+print('Passed supplied schema, exact case IDs, identity, source references, and evidence bounds.')
+print('Primary review size:', (OUT / 'review.json').stat().st_size, 'bytes; tokenizer not measured.')

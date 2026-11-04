@@ -1,0 +1,71 @@
+{
+  "agent_task": "/root/packaging_v2_p24_b",
+  "packet_path": "reports/research-20261104/packaging-parents-v2/packets/packaging-derived-5cbe1e44cc7b",
+  "packet_sha256": "6e61d95267e1eef93408b2e4ffa24e049f3b1bdc9c714666a76e0ad66c1b0868",
+  "packet_hash_basis": "Coordinator-supplied packet identity; no aggregate hashing formula was provided. Raw cases and all referenced source hashes were independently calculated below.",
+  "cases_sha256": "64667ea63d05b4a82d17b39355a7d7ebea3ad33dd6180013dbde76b931c487f2",
+  "source_hashes_verified_against_every_case": true,
+  "source_hashes": {
+    "source/3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e.raw": "3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e",
+    "source/7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0.raw": "7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0",
+    "source/fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0.raw": "fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0"
+  },
+  "tools": [
+    "shell: pwd, ls, find, cat, wc, nl",
+    "apply_patch for new output helpers only",
+    ".venv/bin/python with standard-library ast, hashlib, json, pathlib and sys"
+  ],
+  "parser": {
+    "implementation": "CPython ast.parse and ast.dump(include_attributes=False)",
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "whole_module_inspection": "Read the rubric, schema, both supplied prompts, all 12 cases, and complete line-numbered text of all three source modules (261, 571 and 253 lines). Parsed complete modules and inspected direct top-level definitions plus evaluated-scope event inventories, including class bodies. Checked imports, stores/deletes, globals, defaults, annotations, decorators and binding forms. Ignored deferred function/method/lambda bodies for module-binding judgment. Manually checked the source because the helper inventories syntax rather than serving as a general semantic validator.",
+  "signature_extraction": "extract_syntax.py reads only source/*.raw, not cases or predicates. It records every direct top-level function signature directly from AST arguments, defaults, annotations, returns, decorator expressions and async nodes. syntax-facts.json was saved before the comparison pass. Positional defaults are aligned from the right; missing expressions use JSON null and literal None uses its AST dump.",
+  "predicate_exposure": "The initial cases metadata command also displayed nested expected_signature and text fields before the source-only helper ran. Actual facts were subsequently extracted exclusively from source ASTs, without supplying expected values to the extractor; comparisons used the saved facts only afterward. No private expected answers or labels were accessed.",
+  "comparison_results": [
+    {
+      "id": "case-6a131aa3d06c5eb1acce",
+      "actual_equals_expected": false
+    },
+    {
+      "id": "case-de9fd1bce0b6c2b30b34",
+      "actual_equals_expected": true
+    },
+    {
+      "id": "case-c2375cc54187748b8d4e",
+      "actual_equals_expected": true
+    },
+    {
+      "id": "case-47f20eeb54fd6f1211d4",
+      "actual_equals_expected": false
+    },
+    {
+      "id": "case-296ac9e389a2f1918f1a",
+      "actual_equals_expected": true
+    },
+    {
+      "id": "case-97c72ba82ea87e4e3446",
+      "actual_equals_expected": true
+    }
+  ],
+  "uncertainty": "One case has three exact-name top-level function definitions; all three are listed in review.json and no unique definition is selected.",
+  "scope_limitations": [
+    "Syntactic judgment only; no runtime binding or behavioral promise.",
+    "No module source imported or executed; no network, Git, project implementation, other packets, reviewer output, private map/key, CAMI/generator/reference code or policy result accessed.",
+    "No unsupported syntax, missing source, decoding problem, source hash mismatch or parsing failure encountered.",
+    "No tokenizer was loaded; compactness is an estimate, not an actual o200k_base token measurement."
+  ],
+  "preserved_helpers": [
+    "extract_syntax.py",
+    "write_review.py",
+    "validate_review.py"
+  ],
+  "preserved_extraction": "syntax-facts.json",
+  "validation": {
+    "schema": "Passed a preserved standard-library validator covering the constraints used in the complete supplied review.schema.json.",
+    "packet_checks": "Passed exactly 12 unique matching case IDs, all source hashes, packet containment, evidence line bounds and signature comparison checks.",
+    "primary_json_bytes": 19823,
+    "rough_token_estimate": 6608,
+    "token_estimate_method": "UTF-8 byte count divided by three, rounded up; heuristic only, not an actual o200k_base tokenization."
+  }
+}

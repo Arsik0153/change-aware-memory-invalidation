@@ -1,0 +1,67 @@
+"""Record the review after inspecting independently extracted source facts."""
+import json
+from pathlib import Path
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-cf2cbe2aec28')
+OUTPUT = Path('runs/packaging-v2-review-p48-b-20261104')
+cases = json.loads((PACKET / 'cases.json').read_text())
+facts = json.loads((OUTPUT / 'source_facts.json').read_text())
+
+items = []
+for case in cases:
+    module = facts['modules'][case['source_path']]
+    name = case['subject']['qualname']
+    definitions = [x for x in module['functions'] if x['name'] == name and not x['classes']]
+    direct_lines = {x['line'] for x in module['direct_definitions'] if x['name'] == name}
+    assert all(x['line'] in direct_lines for x in definitions)
+    nondefinition_bindings = [x for x in module['enclosing_syntax_bindings'] if x['name'] == name and not x['classes'] and x['kind'] != 'function_definition']
+    assert not nondefinition_bindings
+    extracted = dict(definition_count=len(definitions), unconditional=True if definitions else None,
+                     target_rebinding=len(definitions) > 1, type_parameters_present=False if definitions else None)
+    evidence = [dict(source_path=case['source_path'], available=True, line_start=x['line'], line_end=x['end_line']) for x in definitions]
+    scope = f"Inspected the whole module, lines 1-{module['line_count']}; no wildcard import or evaluated class-body global names the target. Deferred bodies are not module definitions."
+    if len(definitions) > 1:
+        verdict = 'uncertain'
+        extracted['observed_definitions'] = [dict(name=name, line_start=x['line'], line_end=x['end_line'], unconditional=True, parameters=[p['name'] for p in x['signature']['parameters']]) for x in definitions]
+        reason = 'Three unconditional top-level definitions have this exact name. The definitions at lines 334 and 338 bind it again after line 204. The rubric requires uncertainty for duplicate definitions; no unique subject can be selected.'
+    elif not definitions:
+        verdict = 'contradicted'
+        evidence = [dict(source_path=case['source_path'], available=True, line_start=1, line_end=module['line_count'])]
+        reason = f"Inspected the whole module: no top-level function named {name} exists, and no binding ambiguity applies."
+    elif case['kind'] == 'symbol_exists':
+        verdict = 'supported'
+        reason = f"Exactly one unconditional top-level function definition has the exact name {name}; no additional target binding occurs."
+    else:
+        actual = definitions[0]['signature']
+        extracted['actual_signature'] = actual
+        expected = case['predicate']['expected_signature']
+        verdict = 'supported' if actual == expected else 'contradicted'
+        if verdict == 'supported':
+            reason = 'The independently extracted signature matches all expected parameter names, order, kinds, defaults, annotations, return annotation, decorators and async status.'
+        else:
+            actual_names = [p['name'] for p in actual['parameters']]
+            expected_names = [p['name'] for p in expected['parameters']]
+            assert actual_names != expected_names
+            reason = f"Parameter names differ: source has {actual_names}, while the predicate requires {expected_names}. All other normalized signature fields match."
+            assert dict(actual, parameters=[dict(p, name=e['name']) for p,e in zip(actual['parameters'], expected['parameters'])]) == expected
+    items.append(dict(id=case['id'], source_sha256=module['sha256'], verdict=verdict, extracted_facts=extracted, evidence=evidence, reasoning=reason, scope_notes=scope))
+
+review = dict(schema_version=1, reviewer_kind='ai_reviewer', human=False, provider='codex', model='codex:gpt-6.1-sol', reasoning_effort='high', agent_task='/root/packaging_v2_p48_b', packet_sha256='77c4a11d4639a0590c9c22368b7683801568be064b3dcdb1ce101b36a654ce00', independence_disclosure='Model weights and training independence are unverified.', identity_basis='declared_invocation', items=items)
+(OUTPUT / 'review.json').write_text(json.dumps(review, indent=2) + '\n')
+methodology = dict(
+    tools=['Shell pwd/ls/cat/find/nl/sed for packet inspection; mkdir for the new output directory', 'apply_patch for authored helpers', '.venv/bin/python: Python standard library ast, hashlib, json, pathlib, platform and sys'],
+    parser_version=facts['python_version'], parser_implementation=facts['implementation'],
+    source_execution=False, network_access=False, agents_spawned=False,
+    input_scope='Only the named public packet was read for review inputs: complete rubric, schema, both prompt files, all 12 cases, all three complete referenced source modules. Review-created output files were read for verification.',
+    whole_module_inspection_method='Read every source module with one-based line numbers; re-read the truncated middle of the 331-line module separately. Parsed every complete UTF-8 module. Examined module-body definitions, enclosing-scope bindings, imports, defaults, annotations, decorator expressions, evaluated class bodies and globals; excluded deferred function/method/lambda bodies from module binding judgments. No conditional target definitions, target type parameters, wildcard imports, or class-body globals occurred. The AST inventory is advisory and manually checked against full source.',
+    signature_extraction_method='extract_syntax.py reads case routing paths and hash fields only, never predicates. It extracts names, kinds, ordered defaults and annotations directly from source AST nodes and serializes expressions with ast.dump(include_attributes=False); absent expressions remain null. source_facts.json was saved and inspected before write_review.py compared actual signatures to expected_signature.',
+    duplicate_handling='Listed all three observed module-level _evaluate_markers definitions; repeated definitions count as rebinding and force uncertainty under the duplicate rule.',
+    case_hash_verification=dict(cases_sha256=facts['cases_sha256'], note='Independently computed over the supplied cases.json bytes. No separate asserted cases.json digest was supplied for comparison.'),
+    source_hash_verification={path:dict(computed_sha256=m['sha256'], matches_every_case_source_sha256=True, inspected_line_count=m['line_count']) for path,m in facts['modules'].items()},
+    packet_identity=dict(coordinator_supplied_sha256=review['packet_sha256'], note='Retained as supplied. The public packet does not specify a packet-level aggregation hash algorithm, so no independent aggregate verification is claimed. No Git operation was performed.'),
+    access_limitations='No missing sources, decoding problems, parse failures or unsupported syntax were encountered. No project source imports/execution, network, other packets, other reviewers, private maps/keys, CAMI/generator/reference code, policy results or Git state were accessed.',
+    authored_helpers=['extract_syntax.py', 'write_review.py', 'validate_review.py'],
+    review_size=dict(utf8_bytes=len((OUTPUT / 'review.json').read_bytes()), estimated_tokens=(len((OUTPUT / 'review.json').read_bytes()) + 2)//3, estimation_method='Conservative UTF-8 bytes/3 heuristic for the requested <=8000 o200k_base estimate target; no tokenizer was imported and this is not an exact o200k_base count.')
+)
+(OUTPUT / 'methodology.json').write_text(json.dumps(methodology, indent=2) + '\n')
+print(json.dumps(dict(items=len(items), primary_bytes=methodology['review_size']['utf8_bytes'], estimated_tokens=methodology['review_size']['estimated_tokens'])))

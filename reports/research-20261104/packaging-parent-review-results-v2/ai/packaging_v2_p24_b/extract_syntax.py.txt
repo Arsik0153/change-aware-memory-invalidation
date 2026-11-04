@@ -1,0 +1,121 @@
+"""Source-only syntax extraction; never reads predicates or executes supplied code."""
+import ast
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+
+def dump(node):
+    return ast.dump(node, include_attributes=False) if node is not None else None
+
+
+def signature(node):
+    args = node.args
+    positional = [*args.posonlyargs, *args.args]
+    defaults = [None] * (len(positional) - len(args.defaults)) + list(args.defaults)
+    parameters = []
+    for i, (arg, default) in enumerate(zip(positional, defaults)):
+        parameters.append({"name": arg.arg, "kind": "positional_only" if i < len(args.posonlyargs) else "positional_or_keyword", "default_ast": dump(default), "annotation_ast": dump(arg.annotation)})
+    if args.vararg:
+        parameters.append({"name": args.vararg.arg, "kind": "var_positional", "default_ast": None, "annotation_ast": dump(args.vararg.annotation)})
+    for arg, default in zip(args.kwonlyargs, args.kw_defaults):
+        parameters.append({"name": arg.arg, "kind": "keyword_only", "default_ast": dump(default), "annotation_ast": dump(arg.annotation)})
+    if args.kwarg:
+        parameters.append({"name": args.kwarg.arg, "kind": "var_keyword", "default_ast": None, "annotation_ast": dump(args.kwarg.annotation)})
+    return {"parameters": parameters, "returns_ast": dump(node.returns), "decorators_ast": [dump(d) for d in node.decorator_list], "is_async": isinstance(node, ast.AsyncFunctionDef)}
+
+
+class EvaluatedScopes(ast.NodeVisitor):
+    """Inventory evaluated syntax, excluding deferred function/lambda bodies.
+
+    Class-local events are retained with their scope for manual judgment.
+    This inventories evidence rather than executing or resolving expressions.
+    """
+    def __init__(self):
+        self.scope = "module"
+        self.events = []
+
+    def event(self, node, kind, name):
+        self.events.append({"scope": self.scope, "kind": kind, "name": name, "line": node.lineno, "end_line": node.end_lineno})
+
+    def visit_Name(self, node):
+        if isinstance(node.ctx, (ast.Store, ast.Del)):
+            self.event(node, type(node.ctx).__name__, node.id)
+
+    def visit_Global(self, node):
+        for name in node.names:
+            self.event(node, "global", name)
+
+    def visit_Import(self, node):
+        for alias in node.names:
+            self.event(node, "import", alias.asname or alias.name.split(".")[0])
+
+    def visit_ImportFrom(self, node):
+        for alias in node.names:
+            self.event(node, "import", alias.asname or alias.name)
+
+    def visit_FunctionDef(self, node):
+        self.event(node, "function_definition", node.name)
+        for expr in [*node.decorator_list, *node.args.defaults, *node.args.kw_defaults, node.returns]:
+            if expr is not None:
+                self.visit(expr)
+        for arg in [*node.args.posonlyargs, *node.args.args, *node.args.kwonlyargs, node.args.vararg, node.args.kwarg]:
+            if arg is not None and arg.annotation is not None:
+                self.visit(arg.annotation)
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def visit_Lambda(self, node):
+        for expr in [*node.args.defaults, *node.args.kw_defaults]:
+            if expr is not None:
+                self.visit(expr)
+
+    def visit_ClassDef(self, node):
+        self.event(node, "class_definition", node.name)
+        for expr in [*node.decorator_list, *node.bases, *[k.value for k in node.keywords]]:
+            self.visit(expr)
+        outer = self.scope
+        self.scope = outer + ".class:" + node.name
+        for statement in node.body:
+            self.visit(statement)
+        self.scope = outer
+
+    def visit_ExceptHandler(self, node):
+        if node.name:
+            self.event(node, "exception_binding", node.name)
+        self.generic_visit(node)
+
+    def visit_MatchAs(self, node):
+        if node.name:
+            self.event(node, "match_binding", node.name)
+        self.generic_visit(node)
+
+    def visit_MatchStar(self, node):
+        if node.name:
+            self.event(node, "match_binding", node.name)
+
+    def visit_MatchMapping(self, node):
+        if node.rest:
+            self.event(node, "match_binding", node.rest)
+        self.generic_visit(node)
+
+
+def extract(path):
+    raw = path.read_bytes()
+    text = raw.decode("utf-8")
+    tree = ast.parse(text, filename=path.name)
+    visitor = EvaluatedScopes()
+    visitor.visit(tree)
+    definitions = []
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            definitions.append({"name": node.name, "line": node.lineno, "end_line": node.end_lineno, "type_parameters_present": bool(getattr(node, "type_params", [])), "signature": signature(node)})
+    return {"sha256": hashlib.sha256(raw).hexdigest(), "line_count": len(text.splitlines()), "direct_top_level_definitions": definitions, "evaluated_scope_events": visitor.events}
+
+
+if __name__ == "__main__":
+    packet = Path(sys.argv[1])
+    output = Path(sys.argv[2])
+    facts = {"parser": sys.version, "modules": {"source/" + path.name: extract(path) for path in sorted((packet / "source").glob("*.raw"))}}
+    output.write_text(json.dumps(facts, indent=2) + "\n")

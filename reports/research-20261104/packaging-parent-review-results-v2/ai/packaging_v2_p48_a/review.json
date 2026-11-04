@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "reviewer_kind": "ai_reviewer",
+  "human": false,
+  "provider": "codex",
+  "model": "codex:gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "agent_task": "/root/packaging_v2_p48_a",
+  "packet_sha256": "77c4a11d4639a0590c9c22368b7683801568be064b3dcdb1ce101b36a654ce00",
+  "independence_disclosure": "Model weights and training independence are unverified.",
+  "identity_basis": "declared_invocation",
+  "items": [
+    {
+      "id": "case-7f94633837e662610ec5",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/_parser.py",
+        "subject_name": "parse_marker",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "reasoning": "Exactly one unconditional top-level parse_marker definition exists at lines 252-253; no ambiguity rule applies.",
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 354
+        },
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-354, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-59b797fb4b76830426cc",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/_parser.py",
+        "subject_name": "parse_marker",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The independently extracted signature matches: source is positional_or_keyword, annotated str, without a default; return is MarkerList; no decorators; synchronous.",
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 354
+        },
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-354, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-818477b7a7d45cbdd4ff",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "_case_9df6e2f9f4ea45d4c60e42c9",
+        "definition_count": 0,
+        "unconditional": false,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "reasoning": "Inspected the whole 331-line module. No top-level function has the exact name _case_9df6e2f9f4ea45d4c60e42c9, and no ambiguity rule applies.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-3971df344c2a789799c3",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "_evaluate_markers",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The first parameter is named markers, whereas the predicate names it _case_0a026c163bb84b9e099fbdbf. All other normalized signature fields match.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        },
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-7234a8c26cb3bb49ac85",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/_parser.py",
+        "subject_name": "_parse_marker_atom",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "reasoning": "Exactly one unconditional top-level _parse_marker_atom definition exists at lines 274-293; no ambiguity rule applies.",
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 354
+        },
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 274,
+          "line_end": 293
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-354, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-afde14daf67b1ca41b10",
+      "source_sha256": "c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10",
+      "verdict": "uncertain",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "_evaluate_markers",
+        "definition_count": 3,
+        "unconditional": true,
+        "target_rebinding": true,
+        "type_parameters_present": false,
+        "observed_definitions": [
+          {
+            "line_start": 204,
+            "line_end": 231,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "markers",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+                },
+                {
+                  "name": "environment",
+                  "kind": "positional_or_keyword",
+                  "default_ast": null,
+                  "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+                }
+              ],
+              "returns_ast": "Name(id='bool', ctx=Load())",
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 334,
+            "line_end": 335,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          },
+          {
+            "line_start": 338,
+            "line_end": 339,
+            "signature": {
+              "parameters": [
+                {
+                  "name": "args",
+                  "kind": "var_positional",
+                  "default_ast": null,
+                  "annotation_ast": null
+                },
+                {
+                  "name": "kwargs",
+                  "kind": "var_keyword",
+                  "default_ast": null,
+                  "annotation_ast": null
+                }
+              ],
+              "returns_ast": null,
+              "decorators_ast": [],
+              "is_async": false
+            }
+          }
+        ]
+      },
+      "reasoning": "Three unconditional top-level _evaluate_markers definitions occur at lines 204, 334, and 338. The first has annotated markers and environment parameters; the latter two have unannotated *args and **kwargs. Duplicate definitions require uncertainty; no unique eligible definition can be selected.",
+      "evidence": [
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 339
+        },
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        },
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 334,
+          "line_end": 335
+        },
+        {
+          "source_path": "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw",
+          "available": true,
+          "line_start": 338,
+          "line_end": 339
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-339, including imports, class bodies, and definition expressions. Repeated definitions rebind the target; no other target bindings were found. The rubric forbids choosing the last definition."
+    },
+    {
+      "id": "case-a6a1bd3c3ec8ec04e72c",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "contradicted",
+      "extracted_facts": {
+        "subject_path": "src/packaging/_parser.py",
+        "subject_name": "parse_marker",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "source",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='str', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerList', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The parameter is named source, whereas the predicate names it _case_ebca478c83cc72fda3fc3f77. All other normalized signature fields match.",
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 354
+        },
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 252,
+          "line_end": 253
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-354, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-4cd1475b14b1300a6d8e",
+      "source_sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/_parser.py",
+        "subject_name": "_parse_marker_atom",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "tokenizer",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='MarkerAtom', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The independently extracted signature matches: tokenizer is positional_or_keyword, annotated Tokenizer, without a default; return is MarkerAtom; no decorators; synchronous.",
+      "evidence": [
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 354
+        },
+        {
+          "source_path": "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw",
+          "available": true,
+          "line_start": 274,
+          "line_end": 293
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-354, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-bee7fc1bc119ea8bce69",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "_evaluate_markers",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "reasoning": "Exactly one unconditional top-level _evaluate_markers definition exists at lines 204-231; no ambiguity rule applies.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        },
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-7c24c19be0b9d2ea64a5",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "_evaluate_markers",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [
+            {
+              "name": "markers",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+            },
+            {
+              "name": "environment",
+              "kind": "positional_or_keyword",
+              "default_ast": null,
+              "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+            }
+          ],
+          "returns_ast": "Name(id='bool', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The independently extracted signature matches: markers and environment are positional_or_keyword, without defaults, annotated MarkerList and dict[str, str] respectively; return is bool; no decorators; synchronous.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        },
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 204,
+          "line_end": 231
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-f37a08e0e3aed302beb2",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "default_environment",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false,
+        "actual_signature": {
+          "parameters": [],
+          "returns_ast": "Name(id='Environment', ctx=Load())",
+          "decorators_ast": [],
+          "is_async": false
+        }
+      },
+      "reasoning": "The independently extracted signature matches: no parameters, return annotation Environment, no decorators, and synchronous.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        },
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 242,
+          "line_end": 257
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    },
+    {
+      "id": "case-13fada19f628012149b2",
+      "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "verdict": "supported",
+      "extracted_facts": {
+        "subject_path": "src/packaging/markers.py",
+        "subject_name": "default_environment",
+        "definition_count": 1,
+        "unconditional": true,
+        "target_rebinding": false,
+        "type_parameters_present": false
+      },
+      "reasoning": "Exactly one unconditional top-level default_environment definition exists at lines 242-257; no ambiguity rule applies.",
+      "evidence": [
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 1,
+          "line_end": 331
+        },
+        {
+          "source_path": "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+          "available": true,
+          "line_start": 242,
+          "line_end": 257
+        }
+      ],
+      "scope_notes": "Inspected the complete supplied module, lines 1-331, including imports, class bodies, and definition expressions. No conditional/duplicate target definitions, target rebinding, class-body target globals, wildcard imports, or subject type parameters found. Syntactic scope only; no runtime or behavioral claim."
+    }
+  ]
+}

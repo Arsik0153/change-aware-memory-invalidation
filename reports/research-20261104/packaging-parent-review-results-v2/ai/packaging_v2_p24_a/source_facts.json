@@ -1,0 +1,2392 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "modules": [
+    {
+      "source_path": "source/3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e.raw",
+      "sha256": "3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e",
+      "line_count": 261,
+      "definitions": [
+        {
+          "name": "_normalize_extra_values",
+          "line_start": 55,
+          "line_end": 68,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "results",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Any', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 71,
+          "line_end": 96,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='Union', ctx=Load()), slice=Tuple(elts=[Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), Name(id='MarkerAtom', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "first",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=True)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_eval_op",
+          "line_start": 111,
+          "line_end": 123,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "lhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "op",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Op', ctx=Load())"
+              },
+              {
+                "name": "rhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_normalize",
+          "line_start": 126,
+          "line_end": 135,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "values",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "key",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 138,
+          "line_end": 165,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "markers",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "format_full_version",
+          "line_start": 168,
+          "line_end": 173,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "info",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Constant(value='sys._version_info')"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "default_environment",
+          "line_start": 176,
+          "line_end": 191,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__init__",
+          "line_start": 195,
+          "line_end": 218,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Constant(value=None)",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__str__",
+          "line_start": 220,
+          "line_end": 221,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__repr__",
+          "line_start": 223,
+          "line_end": 224,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__hash__",
+          "line_start": 226,
+          "line_end": 227,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='int', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__eq__",
+          "line_start": 229,
+          "line_end": 233,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "other",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "evaluate",
+          "line_start": 235,
+          "line_end": 253,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 256,
+          "line_end": 257,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "args",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "kwargs",
+                "kind": "var_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": null,
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 260,
+          "line_end": 261,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "args",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "kwargs",
+                "kind": "var_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": null,
+            "decorators_ast": [],
+            "is_async": false
+          }
+        }
+      ],
+      "bindings": [
+        {
+          "name": "operator",
+          "kind": "import",
+          "line_start": 5,
+          "line_end": 5,
+          "class_depth": 0
+        },
+        {
+          "name": "os",
+          "kind": "import",
+          "line_start": 6,
+          "line_end": 6,
+          "class_depth": 0
+        },
+        {
+          "name": "platform",
+          "kind": "import",
+          "line_start": 7,
+          "line_end": 7,
+          "class_depth": 0
+        },
+        {
+          "name": "sys",
+          "kind": "import",
+          "line_start": 8,
+          "line_end": 8,
+          "class_depth": 0
+        },
+        {
+          "name": "Any",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Callable",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Dict",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "List",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Optional",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Tuple",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Union",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "MarkerAtom",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "MarkerList",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Op",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Value",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Variable",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "_parse_marker",
+          "kind": "import_from",
+          "line_start": 18,
+          "line_end": 20,
+          "class_depth": 0
+        },
+        {
+          "name": "ParserSyntaxError",
+          "kind": "import_from",
+          "line_start": 21,
+          "line_end": 21,
+          "class_depth": 0
+        },
+        {
+          "name": "InvalidSpecifier",
+          "kind": "import_from",
+          "line_start": 22,
+          "line_end": 22,
+          "class_depth": 0
+        },
+        {
+          "name": "Specifier",
+          "kind": "import_from",
+          "line_start": 22,
+          "line_end": 22,
+          "class_depth": 0
+        },
+        {
+          "name": "canonicalize_name",
+          "kind": "import_from",
+          "line_start": 23,
+          "line_end": 23,
+          "class_depth": 0
+        },
+        {
+          "name": "__all__",
+          "kind": "Store",
+          "line_start": 25,
+          "line_end": 25,
+          "class_depth": 0
+        },
+        {
+          "name": "Operator",
+          "kind": "Store",
+          "line_start": 33,
+          "line_end": 33,
+          "class_depth": 0
+        },
+        {
+          "name": "InvalidMarker",
+          "kind": "class_definition",
+          "line_start": 36,
+          "line_end": 39,
+          "class_depth": 0
+        },
+        {
+          "name": "UndefinedComparison",
+          "kind": "class_definition",
+          "line_start": 42,
+          "line_end": 45,
+          "class_depth": 0
+        },
+        {
+          "name": "UndefinedEnvironmentName",
+          "kind": "class_definition",
+          "line_start": 48,
+          "line_end": 52,
+          "class_depth": 0
+        },
+        {
+          "name": "_normalize_extra_values",
+          "kind": "function_definition",
+          "line_start": 55,
+          "line_end": 68,
+          "class_depth": 0
+        },
+        {
+          "name": "_format_marker",
+          "kind": "function_definition",
+          "line_start": 71,
+          "line_end": 96,
+          "class_depth": 0
+        },
+        {
+          "name": "_operators",
+          "kind": "Store",
+          "line_start": 99,
+          "line_end": 99,
+          "class_depth": 0
+        },
+        {
+          "name": "_eval_op",
+          "kind": "function_definition",
+          "line_start": 111,
+          "line_end": 123,
+          "class_depth": 0
+        },
+        {
+          "name": "_normalize",
+          "kind": "function_definition",
+          "line_start": 126,
+          "line_end": 135,
+          "class_depth": 0
+        },
+        {
+          "name": "_evaluate_markers",
+          "kind": "function_definition",
+          "line_start": 138,
+          "line_end": 165,
+          "class_depth": 0
+        },
+        {
+          "name": "format_full_version",
+          "kind": "function_definition",
+          "line_start": 168,
+          "line_end": 173,
+          "class_depth": 0
+        },
+        {
+          "name": "default_environment",
+          "kind": "function_definition",
+          "line_start": 176,
+          "line_end": 191,
+          "class_depth": 0
+        },
+        {
+          "name": "Marker",
+          "kind": "class_definition",
+          "line_start": 194,
+          "line_end": 253,
+          "class_depth": 0
+        },
+        {
+          "name": "__init__",
+          "kind": "function_definition",
+          "line_start": 195,
+          "line_end": 218,
+          "class_depth": 1
+        },
+        {
+          "name": "__str__",
+          "kind": "function_definition",
+          "line_start": 220,
+          "line_end": 221,
+          "class_depth": 1
+        },
+        {
+          "name": "__repr__",
+          "kind": "function_definition",
+          "line_start": 223,
+          "line_end": 224,
+          "class_depth": 1
+        },
+        {
+          "name": "__hash__",
+          "kind": "function_definition",
+          "line_start": 226,
+          "line_end": 227,
+          "class_depth": 1
+        },
+        {
+          "name": "__eq__",
+          "kind": "function_definition",
+          "line_start": 229,
+          "line_end": 233,
+          "class_depth": 1
+        },
+        {
+          "name": "evaluate",
+          "kind": "function_definition",
+          "line_start": 235,
+          "line_end": 253,
+          "class_depth": 1
+        },
+        {
+          "name": "_format_marker",
+          "kind": "function_definition",
+          "line_start": 256,
+          "line_end": 257,
+          "class_depth": 0
+        },
+        {
+          "name": "_format_marker",
+          "kind": "function_definition",
+          "line_start": 260,
+          "line_end": 261,
+          "class_depth": 0
+        }
+      ],
+      "class_globals": []
+    },
+    {
+      "source_path": "source/7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0.raw",
+      "sha256": "7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0",
+      "line_count": 571,
+      "definitions": [
+        {
+          "name": "__init__",
+          "line_start": 55,
+          "line_end": 64,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "interpreter",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "abi",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "platform",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Constant(value=None)",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "interpreter",
+          "line_start": 67,
+          "line_end": 68,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [
+              "Name(id='property', ctx=Load())"
+            ],
+            "is_async": false
+          }
+        },
+        {
+          "name": "abi",
+          "line_start": 71,
+          "line_end": 72,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [
+              "Name(id='property', ctx=Load())"
+            ],
+            "is_async": false
+          }
+        },
+        {
+          "name": "platform",
+          "line_start": 75,
+          "line_end": 76,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [
+              "Name(id='property', ctx=Load())"
+            ],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__eq__",
+          "line_start": 78,
+          "line_end": 87,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "other",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='object', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__hash__",
+          "line_start": 89,
+          "line_end": 90,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='int', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__str__",
+          "line_start": 92,
+          "line_end": 93,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__repr__",
+          "line_start": 95,
+          "line_end": 96,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "parse_tag",
+          "line_start": 99,
+          "line_end": 112,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tag",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='FrozenSet', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_get_config_var",
+          "line_start": 115,
+          "line_end": 121,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "name",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "warn",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Union', ctx=Load()), slice=Tuple(elts=[Name(id='int', ctx=Load()), Name(id='str', ctx=Load()), Constant(value=None)], ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_normalize_string",
+          "line_start": 124,
+          "line_end": 125,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "string",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_is_threaded_cpython",
+          "line_start": 128,
+          "line_end": 141,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "abis",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_abi3_applies",
+          "line_start": 144,
+          "line_end": 151,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "python_version",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='PythonVersion', ctx=Load())"
+              },
+              {
+                "name": "threading",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_cpython_abis",
+          "line_start": 154,
+          "line_end": 184,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "py_version",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='PythonVersion', ctx=Load())"
+              },
+              {
+                "name": "warn",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "cpython_tags",
+          "line_start": 187,
+          "line_end": 244,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "python_version",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='PythonVersion', ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "abis",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "platforms",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "warn",
+                "kind": "keyword_only",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_generic_abi",
+          "line_start": 247,
+          "line_end": 285,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "generic_tags",
+          "line_start": 288,
+          "line_end": 316,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "interpreter",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "abis",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "platforms",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "warn",
+                "kind": "keyword_only",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_py_interpreter_range",
+          "line_start": 319,
+          "line_end": 331,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "py_version",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='PythonVersion', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "compatible_tags",
+          "line_start": 334,
+          "line_end": 356,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "python_version",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='PythonVersion', ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "interpreter",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "platforms",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Iterable', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_mac_arch",
+          "line_start": 359,
+          "line_end": 366,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "arch",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "is_32bit",
+                "kind": "positional_or_keyword",
+                "default_ast": "Name(id='_32_BIT_INTERPRETER', ctx=Load())",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_mac_binary_formats",
+          "line_start": 369,
+          "line_end": 398,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "version",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='MacVersion', ctx=Load())"
+              },
+              {
+                "name": "cpu_arch",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "mac_platforms",
+          "line_start": 401,
+          "line_end": 486,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "version",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='MacVersion', ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "arch",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_linux_platforms",
+          "line_start": 489,
+          "line_end": 505,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "is_32bit",
+                "kind": "positional_or_keyword",
+                "default_ast": "Name(id='_32_BIT_INTERPRETER', ctx=Load())",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_generic_platforms",
+          "line_start": 508,
+          "line_end": 509,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "platform_tags",
+          "line_start": 512,
+          "line_end": 521,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "interpreter_name",
+          "line_start": 524,
+          "line_end": 532,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "interpreter_version",
+          "line_start": 535,
+          "line_end": 544,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "warn",
+                "kind": "keyword_only",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_version_nodot",
+          "line_start": 547,
+          "line_end": 548,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "version",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='PythonVersion', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "sys_tags",
+          "line_start": 551,
+          "line_end": 571,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "warn",
+                "kind": "keyword_only",
+                "default_ast": "Constant(value=False)",
+                "annotation_ast": "Name(id='bool', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Iterator', ctx=Load()), slice=Name(id='Tag', ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        }
+      ],
+      "bindings": [
+        {
+          "name": "logging",
+          "kind": "import",
+          "line_start": 5,
+          "line_end": 5,
+          "class_depth": 0
+        },
+        {
+          "name": "platform",
+          "kind": "import",
+          "line_start": 6,
+          "line_end": 6,
+          "class_depth": 0
+        },
+        {
+          "name": "re",
+          "kind": "import",
+          "line_start": 7,
+          "line_end": 7,
+          "class_depth": 0
+        },
+        {
+          "name": "struct",
+          "kind": "import",
+          "line_start": 8,
+          "line_end": 8,
+          "class_depth": 0
+        },
+        {
+          "name": "subprocess",
+          "kind": "import",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "sys",
+          "kind": "import",
+          "line_start": 10,
+          "line_end": 10,
+          "class_depth": 0
+        },
+        {
+          "name": "sysconfig",
+          "kind": "import",
+          "line_start": 11,
+          "line_end": 11,
+          "class_depth": 0
+        },
+        {
+          "name": "EXTENSION_SUFFIXES",
+          "kind": "import_from",
+          "line_start": 12,
+          "line_end": 12,
+          "class_depth": 0
+        },
+        {
+          "name": "Dict",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "FrozenSet",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Iterable",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Iterator",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "List",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Optional",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Sequence",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Tuple",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "Union",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "cast",
+          "kind": "import_from",
+          "line_start": 13,
+          "line_end": 24,
+          "class_depth": 0
+        },
+        {
+          "name": "_manylinux",
+          "kind": "import_from",
+          "line_start": 26,
+          "line_end": 26,
+          "class_depth": 0
+        },
+        {
+          "name": "_musllinux",
+          "kind": "import_from",
+          "line_start": 26,
+          "line_end": 26,
+          "class_depth": 0
+        },
+        {
+          "name": "logger",
+          "kind": "Store",
+          "line_start": 28,
+          "line_end": 28,
+          "class_depth": 0
+        },
+        {
+          "name": "PythonVersion",
+          "kind": "Store",
+          "line_start": 30,
+          "line_end": 30,
+          "class_depth": 0
+        },
+        {
+          "name": "MacVersion",
+          "kind": "Store",
+          "line_start": 31,
+          "line_end": 31,
+          "class_depth": 0
+        },
+        {
+          "name": "INTERPRETER_SHORT_NAMES",
+          "kind": "Store",
+          "line_start": 33,
+          "line_end": 33,
+          "class_depth": 0
+        },
+        {
+          "name": "_32_BIT_INTERPRETER",
+          "kind": "Store",
+          "line_start": 42,
+          "line_end": 42,
+          "class_depth": 0
+        },
+        {
+          "name": "Tag",
+          "kind": "class_definition",
+          "line_start": 45,
+          "line_end": 96,
+          "class_depth": 0
+        },
+        {
+          "name": "__slots__",
+          "kind": "Store",
+          "line_start": 53,
+          "line_end": 53,
+          "class_depth": 1
+        },
+        {
+          "name": "__init__",
+          "kind": "function_definition",
+          "line_start": 55,
+          "line_end": 64,
+          "class_depth": 1
+        },
+        {
+          "name": "interpreter",
+          "kind": "function_definition",
+          "line_start": 67,
+          "line_end": 68,
+          "class_depth": 1
+        },
+        {
+          "name": "abi",
+          "kind": "function_definition",
+          "line_start": 71,
+          "line_end": 72,
+          "class_depth": 1
+        },
+        {
+          "name": "platform",
+          "kind": "function_definition",
+          "line_start": 75,
+          "line_end": 76,
+          "class_depth": 1
+        },
+        {
+          "name": "__eq__",
+          "kind": "function_definition",
+          "line_start": 78,
+          "line_end": 87,
+          "class_depth": 1
+        },
+        {
+          "name": "__hash__",
+          "kind": "function_definition",
+          "line_start": 89,
+          "line_end": 90,
+          "class_depth": 1
+        },
+        {
+          "name": "__str__",
+          "kind": "function_definition",
+          "line_start": 92,
+          "line_end": 93,
+          "class_depth": 1
+        },
+        {
+          "name": "__repr__",
+          "kind": "function_definition",
+          "line_start": 95,
+          "line_end": 96,
+          "class_depth": 1
+        },
+        {
+          "name": "parse_tag",
+          "kind": "function_definition",
+          "line_start": 99,
+          "line_end": 112,
+          "class_depth": 0
+        },
+        {
+          "name": "_get_config_var",
+          "kind": "function_definition",
+          "line_start": 115,
+          "line_end": 121,
+          "class_depth": 0
+        },
+        {
+          "name": "_normalize_string",
+          "kind": "function_definition",
+          "line_start": 124,
+          "line_end": 125,
+          "class_depth": 0
+        },
+        {
+          "name": "_is_threaded_cpython",
+          "kind": "function_definition",
+          "line_start": 128,
+          "line_end": 141,
+          "class_depth": 0
+        },
+        {
+          "name": "_abi3_applies",
+          "kind": "function_definition",
+          "line_start": 144,
+          "line_end": 151,
+          "class_depth": 0
+        },
+        {
+          "name": "_cpython_abis",
+          "kind": "function_definition",
+          "line_start": 154,
+          "line_end": 184,
+          "class_depth": 0
+        },
+        {
+          "name": "cpython_tags",
+          "kind": "function_definition",
+          "line_start": 187,
+          "line_end": 244,
+          "class_depth": 0
+        },
+        {
+          "name": "_generic_abi",
+          "kind": "function_definition",
+          "line_start": 247,
+          "line_end": 285,
+          "class_depth": 0
+        },
+        {
+          "name": "generic_tags",
+          "kind": "function_definition",
+          "line_start": 288,
+          "line_end": 316,
+          "class_depth": 0
+        },
+        {
+          "name": "_py_interpreter_range",
+          "kind": "function_definition",
+          "line_start": 319,
+          "line_end": 331,
+          "class_depth": 0
+        },
+        {
+          "name": "compatible_tags",
+          "kind": "function_definition",
+          "line_start": 334,
+          "line_end": 356,
+          "class_depth": 0
+        },
+        {
+          "name": "_mac_arch",
+          "kind": "function_definition",
+          "line_start": 359,
+          "line_end": 366,
+          "class_depth": 0
+        },
+        {
+          "name": "_mac_binary_formats",
+          "kind": "function_definition",
+          "line_start": 369,
+          "line_end": 398,
+          "class_depth": 0
+        },
+        {
+          "name": "mac_platforms",
+          "kind": "function_definition",
+          "line_start": 401,
+          "line_end": 486,
+          "class_depth": 0
+        },
+        {
+          "name": "_linux_platforms",
+          "kind": "function_definition",
+          "line_start": 489,
+          "line_end": 505,
+          "class_depth": 0
+        },
+        {
+          "name": "_generic_platforms",
+          "kind": "function_definition",
+          "line_start": 508,
+          "line_end": 509,
+          "class_depth": 0
+        },
+        {
+          "name": "platform_tags",
+          "kind": "function_definition",
+          "line_start": 512,
+          "line_end": 521,
+          "class_depth": 0
+        },
+        {
+          "name": "interpreter_name",
+          "kind": "function_definition",
+          "line_start": 524,
+          "line_end": 532,
+          "class_depth": 0
+        },
+        {
+          "name": "interpreter_version",
+          "kind": "function_definition",
+          "line_start": 535,
+          "line_end": 544,
+          "class_depth": 0
+        },
+        {
+          "name": "_version_nodot",
+          "kind": "function_definition",
+          "line_start": 547,
+          "line_end": 548,
+          "class_depth": 0
+        },
+        {
+          "name": "sys_tags",
+          "kind": "function_definition",
+          "line_start": 551,
+          "line_end": 571,
+          "class_depth": 0
+        }
+      ],
+      "class_globals": []
+    },
+    {
+      "source_path": "source/fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0.raw",
+      "sha256": "fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0",
+      "line_count": 253,
+      "definitions": [
+        {
+          "name": "_normalize_extra_values",
+          "line_start": 55,
+          "line_end": 68,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "results",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Any', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 71,
+          "line_end": 96,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='Union', ctx=Load()), slice=Tuple(elts=[Subscript(value=Name(id='List', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), Name(id='MarkerAtom', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              },
+              {
+                "name": "first",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=True)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Name(id='bool', ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_eval_op",
+          "line_start": 111,
+          "line_end": 123,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "lhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "op",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Op', ctx=Load())"
+              },
+              {
+                "name": "rhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_normalize",
+          "line_start": 126,
+          "line_end": 135,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "values",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "key",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='Tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 138,
+          "line_end": 165,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "markers",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "format_full_version",
+          "line_start": 168,
+          "line_end": 173,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "info",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Constant(value='sys._version_info')"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "default_environment",
+          "line_start": 176,
+          "line_end": 191,
+          "class_depth": 0,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__init__",
+          "line_start": 195,
+          "line_end": 218,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Constant(value=None)",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__str__",
+          "line_start": 220,
+          "line_end": 221,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__repr__",
+          "line_start": 223,
+          "line_end": 224,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__hash__",
+          "line_start": 226,
+          "line_end": 227,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": "Name(id='int', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "__eq__",
+          "line_start": 229,
+          "line_end": 233,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "other",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "evaluate",
+          "line_start": 235,
+          "line_end": 253,
+          "class_depth": 1,
+          "conditional": false,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "self",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=None)",
+                "annotation_ast": "Subscript(value=Name(id='Optional', ctx=Load()), slice=Subscript(value=Name(id='Dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators_ast": [],
+            "is_async": false
+          }
+        }
+      ],
+      "bindings": [
+        {
+          "name": "operator",
+          "kind": "import",
+          "line_start": 5,
+          "line_end": 5,
+          "class_depth": 0
+        },
+        {
+          "name": "os",
+          "kind": "import",
+          "line_start": 6,
+          "line_end": 6,
+          "class_depth": 0
+        },
+        {
+          "name": "platform",
+          "kind": "import",
+          "line_start": 7,
+          "line_end": 7,
+          "class_depth": 0
+        },
+        {
+          "name": "sys",
+          "kind": "import",
+          "line_start": 8,
+          "line_end": 8,
+          "class_depth": 0
+        },
+        {
+          "name": "Any",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Callable",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Dict",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "List",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Optional",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Tuple",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "Union",
+          "kind": "import_from",
+          "line_start": 9,
+          "line_end": 9,
+          "class_depth": 0
+        },
+        {
+          "name": "MarkerAtom",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "MarkerList",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Op",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Value",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "Variable",
+          "kind": "import_from",
+          "line_start": 11,
+          "line_end": 17,
+          "class_depth": 0
+        },
+        {
+          "name": "_parse_marker",
+          "kind": "import_from",
+          "line_start": 18,
+          "line_end": 20,
+          "class_depth": 0
+        },
+        {
+          "name": "ParserSyntaxError",
+          "kind": "import_from",
+          "line_start": 21,
+          "line_end": 21,
+          "class_depth": 0
+        },
+        {
+          "name": "InvalidSpecifier",
+          "kind": "import_from",
+          "line_start": 22,
+          "line_end": 22,
+          "class_depth": 0
+        },
+        {
+          "name": "Specifier",
+          "kind": "import_from",
+          "line_start": 22,
+          "line_end": 22,
+          "class_depth": 0
+        },
+        {
+          "name": "canonicalize_name",
+          "kind": "import_from",
+          "line_start": 23,
+          "line_end": 23,
+          "class_depth": 0
+        },
+        {
+          "name": "__all__",
+          "kind": "Store",
+          "line_start": 25,
+          "line_end": 25,
+          "class_depth": 0
+        },
+        {
+          "name": "Operator",
+          "kind": "Store",
+          "line_start": 33,
+          "line_end": 33,
+          "class_depth": 0
+        },
+        {
+          "name": "InvalidMarker",
+          "kind": "class_definition",
+          "line_start": 36,
+          "line_end": 39,
+          "class_depth": 0
+        },
+        {
+          "name": "UndefinedComparison",
+          "kind": "class_definition",
+          "line_start": 42,
+          "line_end": 45,
+          "class_depth": 0
+        },
+        {
+          "name": "UndefinedEnvironmentName",
+          "kind": "class_definition",
+          "line_start": 48,
+          "line_end": 52,
+          "class_depth": 0
+        },
+        {
+          "name": "_normalize_extra_values",
+          "kind": "function_definition",
+          "line_start": 55,
+          "line_end": 68,
+          "class_depth": 0
+        },
+        {
+          "name": "_format_marker",
+          "kind": "function_definition",
+          "line_start": 71,
+          "line_end": 96,
+          "class_depth": 0
+        },
+        {
+          "name": "_operators",
+          "kind": "Store",
+          "line_start": 99,
+          "line_end": 99,
+          "class_depth": 0
+        },
+        {
+          "name": "_eval_op",
+          "kind": "function_definition",
+          "line_start": 111,
+          "line_end": 123,
+          "class_depth": 0
+        },
+        {
+          "name": "_normalize",
+          "kind": "function_definition",
+          "line_start": 126,
+          "line_end": 135,
+          "class_depth": 0
+        },
+        {
+          "name": "_evaluate_markers",
+          "kind": "function_definition",
+          "line_start": 138,
+          "line_end": 165,
+          "class_depth": 0
+        },
+        {
+          "name": "format_full_version",
+          "kind": "function_definition",
+          "line_start": 168,
+          "line_end": 173,
+          "class_depth": 0
+        },
+        {
+          "name": "default_environment",
+          "kind": "function_definition",
+          "line_start": 176,
+          "line_end": 191,
+          "class_depth": 0
+        },
+        {
+          "name": "Marker",
+          "kind": "class_definition",
+          "line_start": 194,
+          "line_end": 253,
+          "class_depth": 0
+        },
+        {
+          "name": "__init__",
+          "kind": "function_definition",
+          "line_start": 195,
+          "line_end": 218,
+          "class_depth": 1
+        },
+        {
+          "name": "__str__",
+          "kind": "function_definition",
+          "line_start": 220,
+          "line_end": 221,
+          "class_depth": 1
+        },
+        {
+          "name": "__repr__",
+          "kind": "function_definition",
+          "line_start": 223,
+          "line_end": 224,
+          "class_depth": 1
+        },
+        {
+          "name": "__hash__",
+          "kind": "function_definition",
+          "line_start": 226,
+          "line_end": 227,
+          "class_depth": 1
+        },
+        {
+          "name": "__eq__",
+          "kind": "function_definition",
+          "line_start": 229,
+          "line_end": 233,
+          "class_depth": 1
+        },
+        {
+          "name": "evaluate",
+          "kind": "function_definition",
+          "line_start": 235,
+          "line_end": 253,
+          "class_depth": 1
+        }
+      ],
+      "class_globals": []
+    }
+  ]
+}

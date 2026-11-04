@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "agent_task": "/root/packaging_v2_p0_a",
+  "packet_path": "reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991",
+  "packet_sha256": "663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123",
+  "packet_identity": "Coordinator-supplied opaque packet digest; its construction was not provided and was not independently reconstructed. Frozen revision was supplied as Git81b680f; no Git access used.",
+  "tools": [
+    "functions.exec / exec_command: find, cat, wc, nl, mkdir, .venv/bin/python",
+    "functions.exec / apply_patch: new run artifacts only",
+    "Python standard library: ast, hashlib, json, pathlib, platform, re"
+  ],
+  "parser": {
+    "implementation": "CPython ast",
+    "version": "3.12.3",
+    "mode": "exec",
+    "include_attributes": false
+  },
+  "whole_module_inspection": {
+    "method": "Read all numbered source text without truncation, plus complete-module AST parsing and target binding audit. Manually checked class bodies, enclosing-scope expressions, and module control-flow bindings. Functions and methods are deferred scopes; their bodies are excluded from module binding judgments.",
+    "source_modules": {
+      "source/a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686.raw": {
+        "sha256": "a641ba810dbc465852d3d573ca65615691ab585e5da075df2b55711bd71d8686",
+        "line_count": 553,
+        "utf8_decode": "success",
+        "ast_parse": "success"
+      },
+      "source/787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9.raw": {
+        "sha256": "787fadc52db3ab51dd3694ddf4b71951c548c1ec0088d53482b9aae708ca9ce9",
+        "line_count": 252,
+        "utf8_decode": "success",
+        "ast_parse": "success"
+      },
+      "source/92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1.raw": {
+        "sha256": "92098118b1726e9cbceb4f7e293bf39addb30a108f598be1a790563f8257edd1",
+        "line_count": 83,
+        "utf8_decode": "success",
+        "ast_parse": "success"
+      },
+      "source/ced0034017529652a772d2bed59c9dace35d99a92cb098ef9bee7cef507ee7ce.raw": {
+        "sha256": "ced0034017529652a772d2bed59c9dace35d99a92cb098ef9bee7cef507ee7ce",
+        "line_count": 91,
+        "utf8_decode": "success",
+        "ast_parse": "success"
+      }
+    },
+    "helper_limitations": "inspect_packet.py is a packet-specific supporting audit, not a general Python binding oracle. Manual full-module inspection covers constructs absent from its specialized visitor, including match and comprehension binding details."
+  },
+  "signature_extraction": "inspect_packet.py derives signatures exclusively from actual FunctionDef/AsyncFunctionDef AST nodes: aligned positional defaults; ordered positional-only, positional-or-keyword, variadic positional, keyword-only and variadic keyword parameters; annotations, return, ordered decorators and async status. Missing fields are null; literal None is its AST dump. Source-derived facts were saved before predicate comparisons. write_review.py then compares the preserved actual_signature with expected_signature and asserts consistency with independently chosen judgments.",
+  "sequence_note": "An initial case-metadata display omitted predicate but retained the human-readable text, which exposed expected-signature text before extraction. No comparison was made then. Actual signature facts were subsequently derived from source AST without consuming predicate or text; the complete predicates were read and compared only after independent_facts.json was saved.",
+  "integrity": {
+    "cases_sha256": "015cc442eb0e00d926e45118fb2a1e97e8e07460ef2cff0314b9dce3659b65c0",
+    "cases_integrity": "Computed raw cases.json SHA256 and checked it remained unchanged during review; no separately supplied raw cases digest was available.",
+    "sources": "All four raw source SHA256 values matched every cases.json reference; UTF-8 decoding and parsing succeeded."
+  },
+  "access_limitations": [
+    "Used only the assigned public packet and newly authored output artifacts; read no other repository material, other packets or reviews, private maps or keys, CAMI/generator/reference implementation, Git or policy results.",
+    "No network calls, source imports, source execution, or subagents.",
+    "No installed tokenizer was used; primary JSON is kept concise but no measured o200k_base token count is claimed."
+  ],
+  "artifacts": [
+    "review.json",
+    "methodology.json",
+    "inspect_packet.py",
+    "independent_facts.json",
+    "integrity.json",
+    "write_review.py",
+    "validate_review.py"
+  ]
+}

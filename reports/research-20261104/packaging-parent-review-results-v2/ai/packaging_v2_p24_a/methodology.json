@@ -1,0 +1,55 @@
+{
+  "reviewer_kind": "ai_reviewer",
+  "human": false,
+  "chronology": [
+    "Read complete rubric, schema and both supplied prompt files.",
+    "Read every complete source module with numbered lines.",
+    "Authored and ran extract.py, saving all source signatures and binding inventories before opening cases.json.",
+    "Read all 12 cases; compared independently saved source signatures against expected predicates.",
+    "Authored assemble_review.py to preserve judgments, verify case/source identities, format the strict review and record methodology.",
+    "Validated review schema and evidence bounds with preserved stdlib validation helper."
+  ],
+  "tools": [
+    "exec_command shell: pwd, rg --files restricted to the packet, cat, wc -l, nl -ba, mkdir",
+    ".venv/bin/python running only authored stdlib helpers"
+  ],
+  "parser": {
+    "implementation": "CPython ast.parse and ast.dump(include_attributes=False)",
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "whole_module_inspection": "Read all 261, 571 and 253 source lines respectively; examined every module statement and class body, import binding, definition, assignment target and enclosing expression. Deferred function/method bodies were read but not treated as evaluated module-binding scopes. AST inventory supplements this reading; it is not a general-purpose Python scope engine.",
+  "signature_extraction": "extract.py derives ordered parameters from posonlyargs/args/defaults/vararg/kwonlyargs/kw_defaults/kwarg, dumping annotation/default/return/decorator expressions and async status directly from AST before reading predicates. Missing expressions are JSON null. During assembly only the independently chosen return_annotation_ast field name is renamed to the packet expected-signature vocabulary returns_ast.",
+  "hash_verification": {
+    "cases_json_sha256": "64667ea63d05b4a82d17b39355a7d7ebea3ad33dd6180013dbde76b931c487f2",
+    "cases": "Computed raw cases.json SHA256 and checked 12 distinct IDs and exact source coverage.",
+    "sources": [
+      {
+        "source_path": "source/3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e.raw",
+        "sha256": "3d68d3501fda8c2bf1517811a2df9546f7dae676f2cc070d0b6919a4a040835e",
+        "line_count": 261,
+        "matches_every_referencing_case": true
+      },
+      {
+        "source_path": "source/7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0.raw",
+        "sha256": "7de7475e2387901c4d6535e8b57bfcb973e630553d69ef93281ba38181e281c0",
+        "line_count": 571,
+        "matches_every_referencing_case": true
+      },
+      {
+        "source_path": "source/fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0.raw",
+        "sha256": "fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0",
+        "line_count": 253,
+        "matches_every_referencing_case": true
+      }
+    ],
+    "packet_sha256": "6e61d95267e1eef93408b2e4ffa24e049f3b1bdc9c714666a76e0ad66c1b0868",
+    "packet_hash_basis": "Coordinator-supplied packet identity; packet digest framing algorithm was not supplied. No claim of independently recomputing that aggregate digest."
+  },
+  "access_limitations": [
+    "Only this public packet and this newly created output directory were read for task evidence.",
+    "No network, Git, other packets/reviewers, private maps/keys, policy outputs, CAMI/generator/reference code, project imports or source execution were used.",
+    "Review assesses bounded syntax; runtime decorator effects, import resolution, behavior and actual binding execution are outside scope.",
+    "Source path identities are those mapped by cases.json; no repository source outside the packet was consulted."
+  ],
+  "independence_disclosure": "Model weights and training independence are unverified."
+}

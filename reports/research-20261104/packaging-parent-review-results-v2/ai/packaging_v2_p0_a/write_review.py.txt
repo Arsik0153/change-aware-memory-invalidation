@@ -1,0 +1,80 @@
+"""Assemble human-reviewed judgments from preserved source-only AST facts."""
+import hashlib
+import json
+import pathlib
+import platform
+
+OUT = pathlib.Path(__file__).resolve().parent
+PACKET = pathlib.Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-b3a5d7d68991')
+PACKET_SHA = '663c768115ce342dbd0dc6d82af9fc910f9fe328b03c6c3876506157dd57b123'
+
+facts = json.loads((OUT / 'independent_facts.json').read_text())
+cases = json.loads((PACKET / 'cases.json').read_text())
+integrity = json.loads((OUT / 'integrity.json').read_text())
+assert hashlib.sha256((PACKET / 'cases.json').read_bytes()).hexdigest() == integrity['cases_sha256']
+assert len(facts) == len(cases) == 12
+
+decisions = {
+    'case-f91bdb996b90ed0675ec': ('supported', 'Exactly one unconditional top-level mac_platforms definition exists; no ambiguity rule applies.'),
+    'case-892cdc291de819219038': ('supported', 'The independently extracted signature matches every expected field: *values: str, required keyword-only key: str, Tuple[str, ...] return, no decorators, synchronous.'),
+    'case-c820f6a5f1b18bab1f45': ('supported', 'Exactly one unconditional top-level _normalize definition exists; no ambiguity rule applies.'),
+    'case-2f6a14499ea750843fa5': ('contradicted', 'The only parameter is named archs, whereas the predicate requires _case_2a1343eff33bb7a0edce4147. All remaining signature fields match.'),
+    'case-9d89bd563bbdd2dc2ef5': ('supported', 'Every signature field matches: required positional-or-keyword archs: Sequence[str], Iterator[str] return, no decorators, synchronous.'),
+    'case-c0096906128b9d07c873': ('supported', 'Names, order, parameter kinds, all defaults and annotations, Iterator[Tag] return, empty decorator list, and synchronous status exactly match.'),
+    'case-616fdb53fdac8138fd3a': ('supported', 'Exactly one unconditional top-level platform_tags definition exists; no ambiguity rule applies.'),
+    'case-880a87b00e42ba28d989': ('uncertain', 'Three unconditional top-level platform_tags definitions occur at lines 54, 86, and 90. The latter two repeat the binding with *args and **kwargs. The rubric requires uncertainty for duplicates; no unique eligible subject can be selected.'),
+    'case-7badc941848ce0695beb': ('contradicted', 'I inspected the whole 83-line module: no function named _case_7e5cde2d6cec743e66423a9a exists, and no binding ambiguity applies.'),
+    'case-0314a856b951571aec37': ('supported', 'Exactly one unconditional top-level generic_tags definition exists; no ambiguity rule applies.'),
+    'case-49848f00888857a697df': ('supported', 'Both positional-or-keyword names, Optional annotations, literal None defaults, Iterator[str] return, empty decorator list, and synchronous status exactly match.'),
+    'case-cdbe9577102a95bfb325': ('contradicted', 'The variadic positional parameter is named values, whereas the predicate requires _case_245b871fa4432abea59d9844. All remaining signature fields match.'),
+}
+items = []
+for case, fact in zip(cases, facts):
+    assert case['id'] == fact['id']
+    assert hashlib.sha256((PACKET / case['source_path']).read_bytes()).hexdigest() == case['source_sha256']
+    definitions = fact['observed_definitions']
+    unique = len(definitions) == 1
+    verdict, reasoning = decisions[case['id']]
+    actual = definitions[0]['signature'] if unique and case['kind'] == 'signature_equals' else None
+    if actual is not None:
+        assert (actual == case['predicate']['expected_signature']) == (verdict == 'supported')
+    extracted = dict(
+        definition_count=len(definitions),
+        unconditional=all(d['unconditional'] for d in definitions) if definitions else None,
+        target_rebinding=fact['target_rebinding'] or len(definitions) > 1,
+        type_parameters_present=any(d['type_parameters_present'] for d in definitions) if definitions else None,
+    )
+    if case['kind'] == 'signature_equals':
+        extracted['actual_signature'] = actual
+    if len(definitions) > 1:
+        extracted['observed_definitions'] = [dict(line_start=d['line_start'], line_end=d['line_end'], unconditional=d['unconditional'], actual_signature=d['signature']) for d in definitions]
+    evidence = [dict(source_path=case['source_path'], available=True, line_start=1, line_end=fact['line_count'])]
+    for definition in definitions:
+        evidence.append(dict(source_path=case['source_path'], available=True, line_start=definition['line_start'], line_end=definition['line_end']))
+    scope = f"Inspected the entire supplied module (lines 1-{fact['line_count']}) for {case['subject']['path']}:{case['subject']['qualname']}. "
+    scope += 'Static syntax only; no execution or runtime-binding claim. '
+    if len(definitions) > 1:
+        scope += 'target_rebinding includes the repeated function bindings; no additional non-function target binding, wildcard import, or evaluated-class global was found.'
+    else:
+        scope += 'No conditional or duplicate target definition, target rebinding, wildcard import, or evaluated-class target global was found; deferred function bodies do not define module subjects.'
+    items.append(dict(id=case['id'], source_sha256=case['source_sha256'], verdict=verdict, extracted_facts=extracted, reasoning=reasoning, evidence=evidence, scope_notes=scope))
+
+review = dict(schema_version=1, reviewer_kind='ai_reviewer', human=False, provider='codex', model='codex:gpt-6.1-sol', reasoning_effort='high', agent_task='/root/packaging_v2_p0_a', packet_sha256=PACKET_SHA, independence_disclosure='Model weights and training independence are unverified.', identity_basis='declared_invocation', items=items)
+(OUT / 'review.json').write_text(json.dumps(review, indent=2) + '\n')
+methodology = dict(
+    schema_version=1,
+    agent_task='/root/packaging_v2_p0_a',
+    packet_path=str(PACKET),
+    packet_sha256=PACKET_SHA,
+    packet_identity='Coordinator-supplied opaque packet digest; its construction was not provided and was not independently reconstructed. Frozen revision was supplied as Git81b680f; no Git access used.',
+    tools=['functions.exec / exec_command: find, cat, wc, nl, mkdir, .venv/bin/python', 'functions.exec / apply_patch: new run artifacts only', 'Python standard library: ast, hashlib, json, pathlib, platform, re'],
+    parser=dict(implementation='CPython ast', version=platform.python_version(), mode='exec', include_attributes=False),
+    whole_module_inspection=dict(method='Read all numbered source text without truncation, plus complete-module AST parsing and target binding audit. Manually checked class bodies, enclosing-scope expressions, and module control-flow bindings. Functions and methods are deferred scopes; their bodies are excluded from module binding judgments.', source_modules=integrity['sources'], helper_limitations='inspect_packet.py is a packet-specific supporting audit, not a general Python binding oracle. Manual full-module inspection covers constructs absent from its specialized visitor, including match and comprehension binding details.'),
+    signature_extraction='inspect_packet.py derives signatures exclusively from actual FunctionDef/AsyncFunctionDef AST nodes: aligned positional defaults; ordered positional-only, positional-or-keyword, variadic positional, keyword-only and variadic keyword parameters; annotations, return, ordered decorators and async status. Missing fields are null; literal None is its AST dump. Source-derived facts were saved before predicate comparisons. write_review.py then compares the preserved actual_signature with expected_signature and asserts consistency with independently chosen judgments.',
+    sequence_note='An initial case-metadata display omitted predicate but retained the human-readable text, which exposed expected-signature text before extraction. No comparison was made then. Actual signature facts were subsequently derived from source AST without consuming predicate or text; the complete predicates were read and compared only after independent_facts.json was saved.',
+    integrity=dict(cases_sha256=integrity['cases_sha256'], cases_integrity='Computed raw cases.json SHA256 and checked it remained unchanged during review; no separately supplied raw cases digest was available.', sources='All four raw source SHA256 values matched every cases.json reference; UTF-8 decoding and parsing succeeded.'),
+    access_limitations=['Used only the assigned public packet and newly authored output artifacts; read no other repository material, other packets or reviews, private maps or keys, CAMI/generator/reference implementation, Git or policy results.', 'No network calls, source imports, source execution, or subagents.', 'No installed tokenizer was used; primary JSON is kept concise but no measured o200k_base token count is claimed.'],
+    artifacts=['review.json', 'methodology.json', 'inspect_packet.py', 'independent_facts.json', 'integrity.json', 'write_review.py', 'validate_review.py'],
+)
+(OUT / 'methodology.json').write_text(json.dumps(methodology, indent=2) + '\n')
+print('Wrote 12 judgments and methodology; all signature comparisons checked.')

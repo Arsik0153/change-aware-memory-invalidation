@@ -1,0 +1,92 @@
+"""Validate the saved review against this packet's schema using stdlib only."""
+import hashlib
+import json
+from pathlib import Path
+import re
+
+PACKET = Path('reports/research-20261104/packaging-parents-v2/packets/packaging-derived-5cbe1e44cc7b')
+OUT = Path('runs/packaging-v2-review-p24-a-20261104')
+schema = json.loads((PACKET/'review.schema.json').read_text())
+review = json.loads((OUT/'review.json').read_text())
+cases = json.loads((PACKET/'cases.json').read_text())
+
+class Invalid(ValueError):
+    pass
+
+def require(ok, path, message):
+    if not ok:
+        raise Invalid(path + ': ' + message)
+
+def validate(value, rule, path='$'):
+    if '$ref' in rule:
+        ref = rule['$ref']
+        require(ref.startswith('#/'), path, 'nonlocal ref unsupported')
+        resolved = schema
+        for key in ref[2:].split('/'):
+            resolved = resolved[key]
+        validate(value, resolved, path)
+    if 'type' in rule:
+        kinds = {'object': lambda v:isinstance(v,dict), 'array':lambda v:isinstance(v,list), 'string':lambda v:isinstance(v,str), 'integer':lambda v:isinstance(v,int) and not isinstance(v,bool)}
+        require(kinds[rule['type']](value), path, 'wrong type')
+    if 'const' in rule:
+        require(type(value) is type(rule['const']) and value == rule['const'], path, 'wrong constant')
+    if 'enum' in rule:
+        require(value in rule['enum'], path, 'not in enum')
+    if 'pattern' in rule:
+        require(re.search(rule['pattern'],value) is not None, path, 'pattern mismatch')
+    if 'minimum' in rule:
+        require(value >= rule['minimum'], path, 'below minimum')
+    if isinstance(value,dict):
+        require(all(k in value for k in rule.get('required',[])),path,'missing required key')
+        require(len(value) >= rule.get('minProperties',0),path,'too few properties')
+        props=rule.get('properties',{})
+        if rule.get('additionalProperties') is False:
+            require(set(value)<=set(props),path,'additional properties')
+        for key, sub in props.items():
+            if key in value:
+                validate(value[key],sub,path+'.'+key)
+    if isinstance(value,list):
+        require(len(value)>=rule.get('minItems',0),path,'too few items')
+        require(len(value)<=rule.get('maxItems',len(value)),path,'too many items')
+        if 'items' in rule:
+            for i,item in enumerate(value):
+                validate(item,rule['items'],f'{path}[{i}]')
+    for sub in rule.get('allOf',[]):
+        validate(value,sub,path)
+    if 'oneOf' in rule:
+        count=0
+        for sub in rule['oneOf']:
+            try:
+                validate(value,sub,path)
+                count+=1
+            except Invalid:
+                pass
+        require(count==1,path,'oneOf match count '+str(count))
+    if 'if' in rule:
+        try:
+            validate(value,rule['if'],path)
+            matched=True
+        except Invalid:
+            matched=False
+        if matched and 'then' in rule:
+            validate(value,rule['then'],path)
+        elif not matched and 'else' in rule:
+            validate(value,rule['else'],path)
+
+validate(review,schema)
+require([x['id'] for x in review['items']]==[c['id'] for c in cases],'$','case order/IDs mismatch')
+for item,case in zip(review['items'],cases):
+    source=(PACKET/case['source_path']).read_bytes()
+    require(hashlib.sha256(source).hexdigest()==item['source_sha256']==case['source_sha256'],item['id'],'source hash mismatch')
+    lines=len(source.decode('utf-8').splitlines())
+    for e in item['evidence']:
+        require(e['source_path']==case['source_path'] and e['available'] is True,item['id'],'wrong evidence source')
+        require(1<=e['line_start']<=e['line_end']<=lines,item['id'],'evidence bounds')
+    required={'definition_count','unconditional','target_rebinding','type_parameters_present'}
+    require(required <= item['extracted_facts'].keys(),item['id'],'rubric facts missing')
+    if case['kind']=='signature_equals':
+        require('actual_signature' in item['extracted_facts'],item['id'],'missing signature')
+size=len((OUT/'review.json').read_text())
+result=dict(valid=True, item_count=len(review['items']), exact_schema_pass=True, evidence_bounds_pass=True, source_hashes_pass=True, estimated_tokens_method='UTF-8 review characters / 3, a conservative heuristic only; o200k_base tokenizer unavailable under stdlib-only access.', estimated_review_tokens=round(size/3), token_target=8000)
+(OUT/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result))

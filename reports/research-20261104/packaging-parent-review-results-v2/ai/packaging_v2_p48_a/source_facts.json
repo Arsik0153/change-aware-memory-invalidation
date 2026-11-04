@@ -1,0 +1,1199 @@
+{
+  "parser": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "modules": {
+    "source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw": {
+      "sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f",
+      "lines": 331,
+      "definitions": [
+        {
+          "name": "_normalize_extra_values",
+          "line_start": 121,
+          "line_end": 134,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "results",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Any', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 137,
+          "line_end": 162,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "BinOp(left=BinOp(left=Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), op=BitOr(), right=Name(id='MarkerAtom', ctx=Load())), op=BitOr(), right=Name(id='str', ctx=Load()))"
+              },
+              {
+                "name": "first",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=True)",
+                "annotation_ast": "BinOp(left=Name(id='bool', ctx=Load()), op=BitOr(), right=Constant(value=None))"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_eval_op",
+          "line_start": 177,
+          "line_end": 189,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "lhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "op",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Op', ctx=Load())"
+              },
+              {
+                "name": "rhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_normalize",
+          "line_start": 192,
+          "line_end": 201,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "values",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "key",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 204,
+          "line_end": 231,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "markers",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "format_full_version",
+          "line_start": 234,
+          "line_end": 239,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "info",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Attribute(value=Name(id='sys', ctx=Load()), attr='_version_info', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "default_environment",
+          "line_start": 242,
+          "line_end": 257,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Name(id='Environment', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_repair_python_full_version",
+          "line_start": 324,
+          "line_end": 331,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "env",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        }
+      ],
+      "module_node_types": [
+        {
+          "type": "ImportFrom",
+          "line_start": 5,
+          "line_end": 5
+        },
+        {
+          "type": "Import",
+          "line_start": 7,
+          "line_end": 7
+        },
+        {
+          "type": "Import",
+          "line_start": 8,
+          "line_end": 8
+        },
+        {
+          "type": "Import",
+          "line_start": 9,
+          "line_end": 9
+        },
+        {
+          "type": "Import",
+          "line_start": 10,
+          "line_end": 10
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 11,
+          "line_end": 11
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 13,
+          "line_end": 13
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 14,
+          "line_end": 14
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 15,
+          "line_end": 15
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 16,
+          "line_end": 16
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 17,
+          "line_end": 17
+        },
+        {
+          "type": "Assign",
+          "line_start": 19,
+          "line_end": 25
+        },
+        {
+          "type": "Assign",
+          "line_start": 27,
+          "line_end": 27
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 30,
+          "line_end": 33
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 36,
+          "line_end": 39
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 42,
+          "line_end": 46
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 49,
+          "line_end": 118
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 121,
+          "line_end": 134
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 137,
+          "line_end": 162
+        },
+        {
+          "type": "AnnAssign",
+          "line_start": 165,
+          "line_end": 174
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 177,
+          "line_end": 189
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 192,
+          "line_end": 201
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 204,
+          "line_end": 231
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 234,
+          "line_end": 239
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 242,
+          "line_end": 257
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 260,
+          "line_end": 321
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 324,
+          "line_end": 331
+        }
+      ]
+    },
+    "source/b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93.raw": {
+      "sha256": "b3f4ef4ef0cd2b436b336401dd529385d58533835cd0fe899e439b925dcc8e93",
+      "lines": 354,
+      "definitions": [
+        {
+          "name": "parse_requirement",
+          "line_start": 61,
+          "line_end": 62,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "source",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='ParsedRequirement', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_requirement",
+          "line_start": 65,
+          "line_end": 83,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='ParsedRequirement', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_requirement_details",
+          "line_start": 86,
+          "line_end": 134,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load()), BinOp(left=Name(id='MarkerList', ctx=Load()), op=BitOr(), right=Constant(value=None))], ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_requirement_marker",
+          "line_start": 137,
+          "line_end": 154,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              },
+              {
+                "name": "span_start",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='int', ctx=Load())"
+              },
+              {
+                "name": "after",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerList', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_extras",
+          "line_start": 157,
+          "line_end": 173,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_extras_list",
+          "line_start": 176,
+          "line_end": 200,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_specifier",
+          "line_start": 203,
+          "line_end": 217,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_version_many",
+          "line_start": 220,
+          "line_end": 246,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "parse_marker",
+          "line_start": 252,
+          "line_end": 253,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "source",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerList', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_full_marker",
+          "line_start": 256,
+          "line_end": 259,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerList', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_marker",
+          "line_start": 262,
+          "line_end": 271,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerList', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_marker_atom",
+          "line_start": 274,
+          "line_end": 293,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerAtom', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_marker_item",
+          "line_start": 296,
+          "line_end": 307,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerItem', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_marker_var",
+          "line_start": 310,
+          "line_end": 321,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='MarkerVar', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "process_env_var",
+          "line_start": 324,
+          "line_end": 328,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "env_var",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Variable', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "process_python_str",
+          "line_start": 331,
+          "line_end": 333,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "python_str",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Value', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_parse_marker_op",
+          "line_start": 336,
+          "line_end": 354,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "tokenizer",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Tokenizer', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Op', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        }
+      ],
+      "module_node_types": [
+        {
+          "type": "Expr",
+          "line_start": 1,
+          "line_end": 5
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 7,
+          "line_end": 7
+        },
+        {
+          "type": "Import",
+          "line_start": 9,
+          "line_end": 9
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 10,
+          "line_end": 10
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 12,
+          "line_end": 12
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 15,
+          "line_end": 26
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 29,
+          "line_end": 31
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 34,
+          "line_end": 36
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 39,
+          "line_end": 41
+        },
+        {
+          "type": "Assign",
+          "line_start": 44,
+          "line_end": 44
+        },
+        {
+          "type": "Assign",
+          "line_start": 45,
+          "line_end": 45
+        },
+        {
+          "type": "Assign",
+          "line_start": 46,
+          "line_end": 46
+        },
+        {
+          "type": "Assign",
+          "line_start": 47,
+          "line_end": 47
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 50,
+          "line_end": 55
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 61,
+          "line_end": 62
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 65,
+          "line_end": 83
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 86,
+          "line_end": 134
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 137,
+          "line_end": 154
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 157,
+          "line_end": 173
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 176,
+          "line_end": 200
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 203,
+          "line_end": 217
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 220,
+          "line_end": 246
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 252,
+          "line_end": 253
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 256,
+          "line_end": 259
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 262,
+          "line_end": 271
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 274,
+          "line_end": 293
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 296,
+          "line_end": 307
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 310,
+          "line_end": 321
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 324,
+          "line_end": 328
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 331,
+          "line_end": 333
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 336,
+          "line_end": 354
+        }
+      ]
+    },
+    "source/c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10.raw": {
+      "sha256": "c3b47f5729fe2d50ced91e9608cf02a26a81498f5cb091108aa87a6908355a10",
+      "lines": 339,
+      "definitions": [
+        {
+          "name": "_normalize_extra_values",
+          "line_start": 121,
+          "line_end": 134,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "results",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Any', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='Any', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_format_marker",
+          "line_start": 137,
+          "line_end": 162,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "marker",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "BinOp(left=BinOp(left=Subscript(value=Name(id='list', ctx=Load()), slice=Name(id='str', ctx=Load()), ctx=Load()), op=BitOr(), right=Name(id='MarkerAtom', ctx=Load())), op=BitOr(), right=Name(id='str', ctx=Load()))"
+              },
+              {
+                "name": "first",
+                "kind": "positional_or_keyword",
+                "default_ast": "Constant(value=True)",
+                "annotation_ast": "BinOp(left=Name(id='bool', ctx=Load()), op=BitOr(), right=Constant(value=None))"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_eval_op",
+          "line_start": 177,
+          "line_end": 189,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "lhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "op",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='Op', ctx=Load())"
+              },
+              {
+                "name": "rhs",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_normalize",
+          "line_start": 192,
+          "line_end": 201,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "values",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              },
+              {
+                "name": "key",
+                "kind": "keyword_only",
+                "default_ast": null,
+                "annotation_ast": "Name(id='str', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='tuple', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Constant(value=Ellipsis)], ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 204,
+          "line_end": 231,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "markers",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Name(id='MarkerList', ctx=Load())"
+              },
+              {
+                "name": "environment",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='bool', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "format_full_version",
+          "line_start": 234,
+          "line_end": 239,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "info",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Attribute(value=Name(id='sys', ctx=Load()), attr='_version_info', ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Name(id='str', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "default_environment",
+          "line_start": 242,
+          "line_end": 257,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [],
+            "return_annotation_ast": "Name(id='Environment', ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_repair_python_full_version",
+          "line_start": 324,
+          "line_end": 331,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "env",
+                "kind": "positional_or_keyword",
+                "default_ast": null,
+                "annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())"
+              }
+            ],
+            "return_annotation_ast": "Subscript(value=Name(id='dict', ctx=Load()), slice=Tuple(elts=[Name(id='str', ctx=Load()), Name(id='str', ctx=Load())], ctx=Load()), ctx=Load())",
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 334,
+          "line_end": 335,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "args",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "kwargs",
+                "kind": "var_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": null,
+            "decorators": [],
+            "is_async": false
+          }
+        },
+        {
+          "name": "_evaluate_markers",
+          "line_start": 338,
+          "line_end": 339,
+          "type_parameters_present": false,
+          "signature": {
+            "parameters": [
+              {
+                "name": "args",
+                "kind": "var_positional",
+                "default_ast": null,
+                "annotation_ast": null
+              },
+              {
+                "name": "kwargs",
+                "kind": "var_keyword",
+                "default_ast": null,
+                "annotation_ast": null
+              }
+            ],
+            "return_annotation_ast": null,
+            "decorators": [],
+            "is_async": false
+          }
+        }
+      ],
+      "module_node_types": [
+        {
+          "type": "ImportFrom",
+          "line_start": 5,
+          "line_end": 5
+        },
+        {
+          "type": "Import",
+          "line_start": 7,
+          "line_end": 7
+        },
+        {
+          "type": "Import",
+          "line_start": 8,
+          "line_end": 8
+        },
+        {
+          "type": "Import",
+          "line_start": 9,
+          "line_end": 9
+        },
+        {
+          "type": "Import",
+          "line_start": 10,
+          "line_end": 10
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 11,
+          "line_end": 11
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 13,
+          "line_end": 13
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 14,
+          "line_end": 14
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 15,
+          "line_end": 15
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 16,
+          "line_end": 16
+        },
+        {
+          "type": "ImportFrom",
+          "line_start": 17,
+          "line_end": 17
+        },
+        {
+          "type": "Assign",
+          "line_start": 19,
+          "line_end": 25
+        },
+        {
+          "type": "Assign",
+          "line_start": 27,
+          "line_end": 27
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 30,
+          "line_end": 33
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 36,
+          "line_end": 39
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 42,
+          "line_end": 46
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 49,
+          "line_end": 118
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 121,
+          "line_end": 134
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 137,
+          "line_end": 162
+        },
+        {
+          "type": "AnnAssign",
+          "line_start": 165,
+          "line_end": 174
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 177,
+          "line_end": 189
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 192,
+          "line_end": 201
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 204,
+          "line_end": 231
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 234,
+          "line_end": 239
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 242,
+          "line_end": 257
+        },
+        {
+          "type": "ClassDef",
+          "line_start": 260,
+          "line_end": 321
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 324,
+          "line_end": 331
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 334,
+          "line_end": 335
+        },
+        {
+          "type": "FunctionDef",
+          "line_start": 338,
+          "line_end": 339
+        }
+      ]
+    }
+  }
+}
