@@ -652,3 +652,9 @@ The real run completed at frozen source `b960218` with identical before/after so
 Raw aggregates report 552 observations per variant, 528 supported and 24 contradicted, with zero unknown. Actual child validation calls are 28/71/552/552 for symbol/file/known-incomplete/all. All variants have zero false availability, unknown availability and withholding of supported claims. The 24 contradicted observations are two signature claims in two episodes: 21 and 3 repeated trajectory positions, not 24 independent failures. Parent initialization adds 96 production validations; replay reference adds 24 parent and 552 child checks, separate from the earlier 36 packet checks; indexes are shared across variants and built 72 times. Observed replay usage was 22.069 CPU seconds and 26.688 wall seconds, a resource observation rather than a speedup benchmark.
 
 These raw findings are retained for a separate implementation/result audit before the synthesis is promoted to the research fact ledger. Production source remains unchanged since `700ebf2`.
+
+### Packaging verification and figure
+
+Full verification at `07cb633` passed: 1361 tests, four skipped, Ruff clean and mypy clean across 53 production files; source snapshots and all three log hashes match. The four skips are the opt-in Docker integration cases because this invocation omitted `CAMI_TEST_IMAGE`. The previously pinned local image remains available, so the four cases will be checked separately with that exact digest; this run is not relabelled as 1365 passed.
+
+Installed the reproducible Packaging figure. PNG/SVG/data remain byte-identical to the independently prepared figure; HTML was adjusted for theme variables and zero outer padding. All five installed output artifacts match a repeat rendering. The PNG was visually inspected and HTML was shown. Browser preview itself failed with the existing Chrome exit1 limitation, which is recorded.

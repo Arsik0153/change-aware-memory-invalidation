@@ -1,0 +1,28 @@
+{
+  "HTML_preview": "Headless Chrome exited unexpectedly with exit code1",
+  "HTML_render": "shown through T3 html_render",
+  "PNG_sha256": "a20acc661f913f65d9726d0eb81e0bd6ff2dcad305b56dcab160b8a37df24835",
+  "PNG_visually_inspected": true,
+  "installed_reproduction_all_five_artifacts_identical": true,
+  "installed_source_sha256": "2e2058668af41e3de3ed604c29c41c2534ae43f147cf52e04e6ed347344f5fbd",
+  "original_agent_PNG_SVG_data_unchanged": true,
+  "original_saved_data_checks": {
+    "byte_identical_reproduction": {
+      "index.html": true,
+      "manifest.json": true,
+      "packaging_replay.png": true,
+      "packaging_replay.svg": true,
+      "plot-data.json": true
+    },
+    "negative_controls_rejected": {
+      "changed_report": "artifact hash mismatch: report.json",
+      "changed_report_rehashed_manifest": "requires exact completed Packaging v2 manifest"
+    },
+    "scope": "Saved result files only; no Git, project source, CAMI or replay imports.",
+    "script_sha256": "dff4ba0108e5ace92b61da040afbc741c3ac977790fa987418386cd3b869ac52",
+    "status": "passed",
+    "verification_script_sha256": "bd636341722185aab2a2358d28169fca19b38f60b65870daa09fcbd8c4adfacc"
+  },
+  "root_change": "HTML uses application theme variables, transparent background, zero outer padding and fixed pixel chart heights; scientific image/data unchanged.",
+  "status": "passed"
+}

@@ -1,0 +1,41 @@
+from pathlib import Path
+from collections import Counter
+import ast, hashlib, json
+ROOT=Path.cwd()
+RUN=ROOT/'reports/research-20261104/packaging-replay-v2'
+PARENTS=ROOT/'reports/research-20261104/packaging-parents-v2'
+OUT=ROOT/'reports/research-20261104/packaging-event-analysis-v1'
+OUT.mkdir(exist_ok=False)
+def read(p): return json.loads(p.read_text())
+def rows(p): return [json.loads(line) for line in p.read_text().splitlines()]
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(p,v):p.write_text(json.dumps(v,indent=2,sort_keys=True)+'\n')
+manifest=read(RUN/'manifest.json')
+assert manifest['status']=='complete' and manifest['source_before']==manifest['source_after']
+for name,expected in manifest['artifact_hashes'].items(): assert sha(RUN/name)==expected
+report=read(RUN/'report.json'); observations=rows(RUN/'observations.jsonl')
+cohort={r['claim']['claim_id']:r for r in read(PARENTS/'cohort.json')}
+def annotation_facts(path,qualname):
+ module=ast.parse(path.read_bytes());defs=[n for n in module.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name==qualname];assert len(defs)==1;n=defs[0]
+ def display(x):return None if x is None else ast.unparse(x)
+ a=n.args;args=[*a.posonlyargs,*a.args]+([a.vararg] if a.vararg else [])+a.kwonlyargs+([a.kwarg] if a.kwarg else [])
+ return {'annotations':{p.arg:display(p.annotation) for p in args},'returns':display(n.returns),'decorators':[display(x) for x in n.decorator_list],'is_async':isinstance(n,ast.AsyncFunctionDef),'line_start':n.lineno,'line_end':n.end_lineno,'source_sha256':sha(path)}
+events=[]
+for event in report['full23']['variants']['symbol_anchor']['incidence']['first_contradictions']:
+ cid=event['claim_id'];c=cohort[cid];gid=c['group_id'];subject=c['claim']['subject']
+ inventory=rows(PARENTS/'parents'/gid/'module_inventory.jsonl');old=next(r for r in inventory if r['path']==subject['path'])
+ oldpath=PARENTS/'parents'/gid/old['source_evidence_path'];newpath=RUN/'packets'/gid/event['commit']/cid/'subject.raw'
+ before=annotation_facts(oldpath,subject['qualname']);after=annotation_facts(newpath,subject['qualname'])
+ changed=[{'parameter':key,'before':before['annotations'].get(key),'after':after['annotations'].get(key)} for key in sorted(set(before['annotations'])|set(after['annotations'])) if before['annotations'].get(key)!=after['annotations'].get(key)]
+ byvariant={r['variant']:{'selected':r['selection']['selected'],'reasons':r['selection']['reasons'],'previous_available':r['previous_state']['available'],'available':r['state']['available'],'verdict':r['validation']['verdict'] if r['validation'] else None} for r in observations if r['commit']==event['commit'] and r['claim_id']==cid}
+ events.append({**event,'group_id':gid,'subject':subject,'old_source':str(oldpath.relative_to(ROOT)),'new_source':str(newpath.relative_to(ROOT)),'before':before,'after':after,'changed_annotations':changed,'variants':byvariant,'scope':'Exact normalized syntax only. No behavioral API break or semantic type-equivalence result is established.'})
+symbol=[r for r in observations if r['variant']=='symbol_anchor'];file=[r for r in observations if r['variant']=='file_anchor']
+index={(r['claim_id'],r['commit']):r for r in symbol}
+extra=[r for r in file if r['selection']['selected'] and not index[(r['claim_id'],r['commit'])]['selection']['selected']]
+def slim(r):return {'group_id':r['group_id'],'claim_id':r['claim_id'],'commit':r['commit'],'step':r['trajectory']['step'],'reference_verdict':r['reference']['verdict'],'selection_reasons':r['selection']['reasons'],'previous_available':r['previous_state']['available']}
+selected=[r for r in symbol if r['selection']['selected']]
+summary={'analysis_kind':'posthoc_descriptive_drilldown_not_new_experiment','run_manifest_sha256':sha(RUN/'manifest.json'),'events':events,'symbol_selected':len(selected),'symbol_selected_supported':sum(r['reference']['verdict']=='supported' for r in selected),'symbol_selected_contradicted':sum(r['reference']['verdict']=='contradicted' for r in selected),'symbol_selected_previously_unavailable':sum('previously_unavailable' in r['selection']['reasons'] for r in selected),'symbol_selected_reason_combinations':{' + '.join(k):v for k,v in Counter(tuple(r['selection']['reasons']) for r in selected).items()},'extra_file_selected':len(extra),'extra_file_reference_verdicts':dict(Counter(r['reference']['verdict'] for r in extra)),'limitations':['Paired claims and repeated trajectory rows are dependent.','Two first contradiction events;24 contradicted observations include22 continuing repeats.','Selection reasons are recorded policy traces, not a causal performance attribution.','No project source executed; annotation display uses stdlib AST only.']}
+write(OUT/'report.json',summary);write(OUT/'extra-file-validations.json',[slim(r) for r in extra]);write(OUT/'selected-supported-symbol.json',[slim(r) for r in selected if r['reference']['verdict']=='supported'])
+(OUT/'analysis.py.txt').write_bytes(Path(__file__).read_bytes())
+write(OUT/'manifest.json',{'status':'complete','source_run':str(RUN.relative_to(ROOT)),'source_run_manifest_sha256':sha(RUN/'manifest.json'),'implementation_sha256':sha(Path(__file__)),'files':{str(p.relative_to(OUT)):sha(p) for p in OUT.iterdir() if p.is_file()}})
+print(json.dumps({'events':[(e['subject']['qualname'],e['changed_annotations']) for e in events],'symbol_selected':len(selected),'previously_unavailable':summary['symbol_selected_previously_unavailable'],'extra_file':len(extra)},indent=2))

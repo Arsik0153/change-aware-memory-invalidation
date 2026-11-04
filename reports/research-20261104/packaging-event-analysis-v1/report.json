@@ -1,0 +1,203 @@
+{
+  "analysis_kind": "posthoc_descriptive_drilldown_not_new_experiment",
+  "events": [
+    {
+      "after": {
+        "annotations": {
+          "first": "bool | None",
+          "marker": "list[str] | MarkerAtom | str"
+        },
+        "decorators": [],
+        "is_async": false,
+        "line_end": 90,
+        "line_start": 65,
+        "returns": "str",
+        "source_sha256": "2436bef9e4eaa46c06046c67dabb2ee2f1dfd40694fcf5a3df036855b45a100a"
+      },
+      "before": {
+        "annotations": {
+          "first": "Optional[bool]",
+          "marker": "Union[List[str], MarkerAtom, str]"
+        },
+        "decorators": [],
+        "is_async": false,
+        "line_end": 96,
+        "line_start": 71,
+        "returns": "str",
+        "source_sha256": "fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0"
+      },
+      "changed_annotations": [
+        {
+          "after": "bool | None",
+          "before": "Optional[bool]",
+          "parameter": "first"
+        },
+        {
+          "after": "list[str] | MarkerAtom | str",
+          "before": "Union[List[str], MarkerAtom, str]",
+          "parameter": "marker"
+        }
+      ],
+      "claim_id": "packaging-derived-5cbe1e44cc7b-f00-signature",
+      "commit": "cc938f984bbbe43c5734b9656c9837ab3a28191f",
+      "group_id": "packaging-derived-5cbe1e44cc7b",
+      "new_source": "reports/research-20261104/packaging-replay-v2/packets/packaging-derived-5cbe1e44cc7b/cc938f984bbbe43c5734b9656c9837ab3a28191f/packaging-derived-5cbe1e44cc7b-f00-signature/subject.raw",
+      "old_source": "reports/research-20261104/packaging-parents-v2/parents/packaging-derived-5cbe1e44cc7b/source/fd348f2350612583bb069f40cd398743122a1c45576938e60e1f46fb0f2accf0.raw",
+      "scope": "Exact normalized syntax only. No behavioral API break or semantic type-equivalence result is established.",
+      "step": 3,
+      "subject": {
+        "node_kind": "function",
+        "path": "src/packaging/markers.py",
+        "qualname": "_format_marker"
+      },
+      "variants": {
+        "all_validate": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "all_claims"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "file_anchor": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "anchor_file_changed",
+            "subject_file_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "known_incomplete": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "known_incomplete",
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "symbol_anchor": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        }
+      }
+    },
+    {
+      "after": {
+        "annotations": {
+          "environment": "dict[str, str | AbstractSet[str]]",
+          "markers": "MarkerList"
+        },
+        "decorators": [],
+        "is_async": false,
+        "line_end": 245,
+        "line_start": 216,
+        "returns": "bool",
+        "source_sha256": "3f4c1edbb8e6d71533806309c418ed50508859e0714ec31e253389e9c8599806"
+      },
+      "before": {
+        "annotations": {
+          "environment": "dict[str, str]",
+          "markers": "MarkerList"
+        },
+        "decorators": [],
+        "is_async": false,
+        "line_end": 231,
+        "line_start": 204,
+        "returns": "bool",
+        "source_sha256": "73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f"
+      },
+      "changed_annotations": [
+        {
+          "after": "dict[str, str | AbstractSet[str]]",
+          "before": "dict[str, str]",
+          "parameter": "environment"
+        }
+      ],
+      "claim_id": "packaging-derived-cf2cbe2aec28-f00-signature",
+      "commit": "3910129009b25dd1aa1fe32e644bc891188c56fe",
+      "group_id": "packaging-derived-cf2cbe2aec28",
+      "new_source": "reports/research-20261104/packaging-replay-v2/packets/packaging-derived-cf2cbe2aec28/3910129009b25dd1aa1fe32e644bc891188c56fe/packaging-derived-cf2cbe2aec28-f00-signature/subject.raw",
+      "old_source": "reports/research-20261104/packaging-parents-v2/parents/packaging-derived-cf2cbe2aec28/source/73cf5337307b65d198864a2f9ba3d89aa1b21f15e561568b5b9f753c750d283f.raw",
+      "scope": "Exact normalized syntax only. No behavioral API break or semantic type-equivalence result is established.",
+      "step": 21,
+      "subject": {
+        "node_kind": "function",
+        "path": "src/packaging/markers.py",
+        "qualname": "_evaluate_markers"
+      },
+      "variants": {
+        "all_validate": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "all_claims"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "file_anchor": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "anchor_file_changed",
+            "subject_file_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "known_incomplete": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "known_incomplete",
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        },
+        "symbol_anchor": {
+          "available": false,
+          "previous_available": true,
+          "reasons": [
+            "subject_changed",
+            "symbol_or_dependency_changed"
+          ],
+          "selected": true,
+          "verdict": "contradicted"
+        }
+      }
+    }
+  ],
+  "extra_file_reference_verdicts": {
+    "supported": 43
+  },
+  "extra_file_selected": 43,
+  "limitations": [
+    "Paired claims and repeated trajectory rows are dependent.",
+    "Two first contradiction events;24 contradicted observations include22 continuing repeats.",
+    "Selection reasons are recorded policy traces, not a causal performance attribution.",
+    "No project source executed; annotation display uses stdlib AST only."
+  ],
+  "run_manifest_sha256": "93f8ba40cc44320e28d82aaaed965a518e291e2fd37d85a25a99006c47baf508",
+  "symbol_selected": 28,
+  "symbol_selected_contradicted": 24,
+  "symbol_selected_previously_unavailable": 22,
+  "symbol_selected_reason_combinations": {
+    "previously_unavailable": 22,
+    "subject_changed + symbol_or_dependency_changed": 6
+  },
+  "symbol_selected_supported": 4
+}
