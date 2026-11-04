@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Packaging derived-parent AI review, one12-case packet",
+  "description": "Format only. Runtime CLI additionally checks packet identity, exact case IDs, source hashes, containment and evidence bounds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "reviewer_kind",
+    "human",
+    "provider",
+    "model",
+    "reasoning_effort",
+    "agent_task",
+    "packet_sha256",
+    "independence_disclosure",
+    "identity_basis",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "reviewer_kind": {
+      "const": "ai_reviewer"
+    },
+    "human": {
+      "const": false
+    },
+    "provider": {
+      "$ref": "#/$defs/nonblank"
+    },
+    "model": {
+      "$ref": "#/$defs/nonblank"
+    },
+    "reasoning_effort": {
+      "$ref": "#/$defs/nonblank"
+    },
+    "agent_task": {
+      "$ref": "#/$defs/nonblank"
+    },
+    "packet_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "identity_basis": {
+      "const": "declared_invocation"
+    },
+    "independence_disclosure": {
+      "const": "Model weights and training independence are unverified."
+    },
+    "items": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "$ref": "#/$defs/item"
+      },
+      "maxItems": 12
+    }
+  },
+  "$defs": {
+    "nonblank": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[^\\u0000]+$"
+    },
+    "availableEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_path",
+        "available",
+        "line_start",
+        "line_end"
+      ],
+      "properties": {
+        "source_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "available": {
+          "const": true
+        },
+        "line_start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "line_end": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "unavailableEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_path",
+        "available",
+        "explanation"
+      ],
+      "properties": {
+        "source_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "available": {
+          "const": false
+        },
+        "explanation": {
+          "$ref": "#/$defs/nonblank"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source_sha256",
+        "verdict",
+        "extracted_facts",
+        "evidence",
+        "reasoning",
+        "scope_notes"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "verdict": {
+          "enum": [
+            "supported",
+            "contradicted",
+            "uncertain"
+          ]
+        },
+        "extracted_facts": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/nonblank"
+            },
+            {
+              "type": "object",
+              "minProperties": 1
+            },
+            {
+              "type": "array",
+              "minItems": 1
+            }
+          ]
+        },
+        "reasoning": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "scope_notes": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/availableEvidence"
+              },
+              {
+                "$ref": "#/$defs/unavailableEvidence"
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "enum": [
+                  "supported",
+                  "contradicted"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence": {
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/availableEvidence"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

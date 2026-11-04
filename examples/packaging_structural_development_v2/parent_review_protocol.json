@@ -1,0 +1,40 @@
+{
+  "child_source_access_authorized": false,
+  "evaluation_eligible": false,
+  "fresh_context_per_group_per_reviewer": true,
+  "human_credit": 0,
+  "minimum_eligible_per_group": 4,
+  "parent_eligibility": "Both fresh AI reviewers and frozen independent reference return supported. Retain every exclusion and candidate; no replacements. All authored controls must match the sealed private key before accepting any parent gate.",
+  "parent_generation_manifest_path": "reports/research-20261104/packaging-parents-v2/manifest.json",
+  "primary_contexts": 6,
+  "protocol_id": "packaging-derived-parent-independent-review-v2",
+  "reasoning_effort": "high",
+  "reference_path": "scripts/structural_checker_v2.py",
+  "reference_sha256": "d8e6fc722e08e36b5576d6469ca6c4c6a932f4f9d085fba3600d21fb6bde0e1a",
+  "response_budget": "Count complete returned primary JSON with the same pinned local o200k_base encoding; <=8000 estimate, posthoc. No native response/billing/tokenizer claim.",
+  "retry_policy": "Preserve primary decisions; do not repeat reviews to obtain desired answers. Any failure stops this attempt and is disclosed.",
+  "review_context_names": {
+    "packaging-derived-5cbe1e44cc7b": [
+      "packaging_v2_p24_a",
+      "packaging_v2_p24_b"
+    ],
+    "packaging-derived-b3a5d7d68991": [
+      "packaging_v2_p0_a",
+      "packaging_v2_p0_b"
+    ],
+    "packaging-derived-cf2cbe2aec28": [
+      "packaging_v2_p48_a",
+      "packaging_v2_p48_b"
+    ]
+  },
+  "review_groups_path": "reports/research-20261104/packaging-parents-v2/review_groups.json",
+  "reviewer_access": "Only own complete public packet and own output, plus standard-library parser. No other packets/reviewers, private maps/keys, CAMI/generator/reference code or policy outcomes.",
+  "reviewer_model": "codex:gpt-6.1-sol",
+  "reviewer_provider": "codex",
+  "root": "../..",
+  "schema_version": 1,
+  "seal_path": "examples/packaging_structural_development_v2/parent_review_seal.json",
+  "source_execution": false,
+  "split": "development",
+  "status": "sealed"
+}
