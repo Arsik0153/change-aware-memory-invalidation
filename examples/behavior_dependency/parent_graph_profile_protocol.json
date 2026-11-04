@@ -6,7 +6,7 @@
   "parent_inventory_sha256": "466fd6340753d5dcf4faaa1ecd3ed3a5238c6b5456ec9c1c3208770cc21bac24",
   "expected_parent_groups": 63,
   "expected_claims": 630,
-  "expected_behavior_claims": 126,
+  "expected_behavior_claims": 63,
   "hypothesis": "Module-level unresolved dependencies may activate global behavior fallback across real parent graphs, independently of already known-incomplete provenance. Measure prevalence without assuming it or changing policy.",
   "method": [
     "Use the 63 frozen parent groups and exact claims/provenance/draft hashes from the referenced inventory.",
@@ -30,5 +30,16 @@
     "All original known_incomplete markers remain intact; no provenance, receipts, labels, closure or admission is created.",
     "No child commits, held-out outcomes, probes, policy execution, or simulated supported MemoryStates are used.",
     "The diagnostic uses the CAMI analyzer and is not an independent extraction-quality evaluation."
-  ]
+  ],
+  "inventory_correction": {
+    "previous_plan_commit": "a04464b",
+    "previous_expected_behavior_claims": 126,
+    "observed_input_kinds": {
+      "symbol_exists": 252,
+      "signature_equals": 252,
+      "behavior_test": 63,
+      "prose": 63
+    },
+    "reason": "Initial preflight on 5c1deca rejected an incorrect assumed kind count before output reservation or graph construction. Candidate inventory is unchanged."
+  }
 }
