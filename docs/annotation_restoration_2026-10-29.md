@@ -187,3 +187,9 @@ parent Git blobs и слоям образов: материальных расх
 независимое авторство frozen test case. После review полный suite на44c77d3:
 1046passed,0skipped за459.98s; Ruff/mypy passed. Source snapshots clean и равны,
 все три log hashes проверены. Evidence: parent-function-full-verification/checks.json.
+
+Дополнение 4 ноября: [package-only диагностика Requests](requests_package_projection_2026-11-04.md)
+успешно исполнила frozen probe на всех 22 parents, включая ранее заблокированный.
+Это другой контекст исполнения; full-tree production ограничение остаётся,
+parent receipts автоматически не создавались. Новая [HTML-навигация](parent_review_instructions_ru.md#автономный-просмотр-свидетельств)
+упрощает чтение parent evidence разметчиком.

@@ -75,3 +75,14 @@ checks и снимки до/после фактических экспериме
 
 Push 7a0cafa получил временный remote Internal Server Error от GitHub;
 повторная отправка выполняется отдельно. Это не потеря локальных коммитов.
+
+## Реальные Requests-parent: отдельная проекция исходников
+
+План57f01f6, выполнениеe0c0c3f. Все22parent-группы успешно выполнили прежний frozen
+probe в package-only проекции:66passed. Включены396file records/144unique Git blobs,
+хеши отдельно сверены с Git. Обе исключённые symlinks находятся вне пакета.
+Проекция и каждый исключённый путь сохранены; full-tree production отказ не менялся.
+Это восстановление отдельного execution context, не admission или human labels.
+[Отчёт с ограничениями](requests_package_projection_2026-11-04.md).
+15профильных tests и статические проверки прошли; свободно17GiB.
+Повторный push после ошибки GitHub завершился успешно до7a0cafa.
