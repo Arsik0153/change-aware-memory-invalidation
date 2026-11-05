@@ -1,0 +1,176 @@
+{
+  "archives": [
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/public-evidence",
+        "files": 8649,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 8649,
+      "manifest_sha256": "f7b35fce98856819c9cdf8ce1a95ce9fd91a0028c82611adb7dc02ffed97ceb9",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/public-evidence.tar.gz",
+      "sha256": "59b143be6546dc26c0cb54c188e9f6d977993a778a10f57decad6ed630921242",
+      "size": 25346941,
+      "source_bytes": 93117220
+    },
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/final-memory-state",
+        "files": 84,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 84,
+      "manifest_sha256": "27e1a99d534634584fc668acfd848f6a118e94b009b5230bc722fda0cefc0c3f",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/final-memory-state.tar.gz",
+      "sha256": "a4cdf3ea12cfebaf0fc1fc22baef1aaf60690c34335eb7ed80183c9722386e1f",
+      "size": 5569797,
+      "source_bytes": 84493060
+    }
+  ],
+  "extracted_trees_not_duplicated_in_manifest": [
+    "public-evidence",
+    "final-memory-state"
+  ],
+  "files": {
+    "HANDOFF.md": {
+      "bytes": 3175,
+      "sha256": "e4a111bd7f91e4aeb6f211617bb7bb88a4078d9f41f4de82f775588306d17b52"
+    },
+    "README.md": {
+      "bytes": 4239,
+      "sha256": "c25681654191fe61867123fb2b384bc0cbb69c74a45d3d341e072d548b9d6a71"
+    },
+    "admission.json": {
+      "bytes": 5870994,
+      "sha256": "f0b0501d42f8e8da62963ed8e81bea0ff468582b4f586ecbbb86eed0924488b7"
+    },
+    "build_publication.py": {
+      "bytes": 25662,
+      "sha256": "593e7f153edd3d3bbc5c49ad74048fc77eff8c57d24ed4c31111d6368b788510"
+    },
+    "final-memory-state.tar.gz": {
+      "bytes": 5569797,
+      "sha256": "a4cdf3ea12cfebaf0fc1fc22baef1aaf60690c34335eb7ed80183c9722386e1f"
+    },
+    "offline-analysis-verification/aggregate/blocks.csv": {
+      "bytes": 968,
+      "sha256": "6bdc8c7972d8f30988dc9bc96194ac677517592893e702caa8a8373f3c3e38ba"
+    },
+    "offline-analysis-verification/aggregate/paired.csv": {
+      "bytes": 1216,
+      "sha256": "6338eea0628c561237027ccc20282ba7f6233b94ada3d96792e3023dc2e5792a"
+    },
+    "offline-analysis-verification/aggregate/report.json": {
+      "bytes": 106825,
+      "sha256": "3d3f19318f05a28a83e80a32c55e4966bf66b614e6487dc99474b81c0cba59d4"
+    },
+    "offline-analysis-verification/aggregate/trials.csv": {
+      "bytes": 9171,
+      "sha256": "f0ed158cda6aa2a4fd3b20793a2857b6102cb824c1e628ef3985f612fe4fd9c4"
+    },
+    "offline-analysis-verification/command.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis-verification/command.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis-verification/staleness.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis-verification/staleness.stdout.txt": {
+      "bytes": 178,
+      "sha256": "ef982a0beb3d30e72abe7cf6ac671fba35e6dd63730b370e784a7ca39616d28a"
+    },
+    "offline-analysis-verification/staleness/report.json": {
+      "bytes": 409620,
+      "sha256": "7d3f7a89e54589e7eb43045e90429bfb42cab7a4f7ee059a505f146619f4a082"
+    },
+    "offline-analysis-verification/verification.json": {
+      "bytes": 3568,
+      "sha256": "710c0fdd17316f304023c4935399a06c79d76aa6005f3800b6debb151ae5a1c9"
+    },
+    "offline-analysis.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis.stdout.txt": {
+      "bytes": 2401,
+      "sha256": "7d68b29f6e7316ea822de375697b43a26d97ba2bf58e7b0d517ace506ff30449"
+    },
+    "packaging-report.json": {
+      "bytes": 4590,
+      "sha256": "d24aa8cd55762e0b6ff2e1c0c0ff3402722131a0098f50be87d27debcfacc054"
+    },
+    "packaging.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packaging.stdout.txt": {
+      "bytes": 528,
+      "sha256": "168713a4b922e59f2050af968de9ac6badbdcbbb0cf1f967dfc01efc9fb6f90d"
+    },
+    "public-evidence.tar.gz": {
+      "bytes": 25346941,
+      "sha256": "59b143be6546dc26c0cb54c188e9f6d977993a778a10f57decad6ed630921242"
+    },
+    "reproduce_analysis.py": {
+      "bytes": 6247,
+      "sha256": "5a83e37a17aa6430288f217c73e48cfcc3d287cfeb0af107c7e3b24c85c967a6"
+    }
+  },
+  "offline_reproduction": {
+    "aggregate_exact_except_relocated_run_path": true,
+    "all_36_terminal_hashes_and_artifact_coverage_exact": true,
+    "cpu_seconds_children": 8.876231,
+    "docker_calls": 0,
+    "model_calls": 0,
+    "network_calls": 0,
+    "original_failed_trial_preserved": "r3-static-s1",
+    "original_operational_pass_count": 35,
+    "original_quality_pass_count": 36,
+    "primary_superiority": "not_established",
+    "returncode": 0,
+    "scope": "Offline publication/evaluation overhead, never trial cost. Only existing analysis code executed.",
+    "staleness_counts_coverage_exact": true,
+    "status": "passed",
+    "target_source_execution": false,
+    "three_csv_files_byte_exact": true,
+    "verified_archive_files": 8649,
+    "wall_seconds": 10.028401473071426
+  },
+  "preservation": {
+    "exact_declared_artifact_hashes_verified": 8094,
+    "failed_outcome_relabelled": false,
+    "frozen_source_pins": 97,
+    "original_failed_trial": "r3-static-s1",
+    "original_operational_passes": 35,
+    "original_quality_passes": 36,
+    "separate_final_memory_namespaces": 3,
+    "six_catalogs": true,
+    "source_inputs_unchanged": true,
+    "terminals": 36,
+    "trial_exclusions": []
+  },
+  "run": "runs/opencode-development-v5-20261104",
+  "schema_version": 1,
+  "scope": {
+    "Docker_calls": 0,
+    "git_commits": false,
+    "heldout_access": false,
+    "model_calls": 0,
+    "network_calls": 0,
+    "primary_superiority": "not_established",
+    "publication_only": true,
+    "tracked_writes": false
+  },
+  "status": "complete_then_stopped"
+}

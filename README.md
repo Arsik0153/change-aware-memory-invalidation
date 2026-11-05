@@ -70,7 +70,7 @@ complete, quality-passing trials. It did not establish superiority under the
 frozen six-pair criterion; a recorded auxiliary workload also disqualifies the
 primary wall-time claim. All failures from earlier versions remain separate.
 
-The next development variant uses authenticated `source_excerpt_equals` records:
+The literal development variant uses authenticated `source_excerpt_equals` records:
 exact Python definition prefixes and truncation flags, including physical decorator
 opening lines. Unrelated edits can preserve literal support without changing
 manual-note review rules. [Capability evidence](reports/opencode-source-excerpt-capability-20261104/report.json)
@@ -81,6 +81,17 @@ have not yet established a model-level benefit. The first literal pilot stopped
 after two paid sessions because its format observer rejected OpenCode's genuine
 `idle` lifecycle message. [The correction and 38-array replay](reports/opencode-lifecycle-format-fix-20261104/report.json)
 preserve the failed pilot separately; a repaired experiment uses a new version.
+
+The [completed literal v5 series](reports/opencode-development-v5-final-20261105/README.md)
+preserves all 36 attempts: all solutions passed fixed tests, but one static-memory
+trial failed controller admission on a genuine `system` message. Original status
+and paid costs are retained. No primary advantage is established: CAMI used less
+non-cached normalized token work than plain OpenCode in all three descriptive
+blocks, but took longer in all three; comparisons against static memory were
+mixed. CAMI withheld 12 obsolete literal observations that static memory returned;
+this measures exposure, not causal reliance or 12 independent cases. The sealed
+final task set still has zero model sessions. Work is paused at the user's request
+after preserving the complete series; the report records the remaining steps.
 
 ## Install and run the offline demo
 

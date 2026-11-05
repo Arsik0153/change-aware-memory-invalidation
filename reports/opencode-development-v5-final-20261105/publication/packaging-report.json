@@ -1,0 +1,101 @@
+{
+  "archives": [
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/public-evidence",
+        "files": 8649,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 8649,
+      "manifest_sha256": "f7b35fce98856819c9cdf8ce1a95ce9fd91a0028c82611adb7dc02ffed97ceb9",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/public-evidence.tar.gz",
+      "sha256": "59b143be6546dc26c0cb54c188e9f6d977993a778a10f57decad6ed630921242",
+      "size": 25346941,
+      "source_bytes": 93117220
+    },
+    {
+      "byte_reproducible_second_build": true,
+      "extraction_verification": {
+        "all_sha256_sizes_modes_verified": true,
+        "destination": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/final-memory-state",
+        "files": 84,
+        "regular_files_only": true,
+        "status": "passed"
+      },
+      "files": 84,
+      "manifest_sha256": "27e1a99d534634584fc668acfd848f6a118e94b009b5230bc722fda0cefc0c3f",
+      "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-publication-20261105/final-memory-state.tar.gz",
+      "sha256": "a4cdf3ea12cfebaf0fc1fc22baef1aaf60690c34335eb7ed80183c9722386e1f",
+      "size": 5569797,
+      "source_bytes": 84493060
+    }
+  ],
+  "catalogs": [
+    {
+      "namespace": "r1-cami",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r1-cami/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    },
+    {
+      "namespace": "r1-static",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    },
+    {
+      "namespace": "r2-cami",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r2-cami/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    },
+    {
+      "namespace": "r2-static",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r2-static/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    },
+    {
+      "namespace": "r3-cami",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r3-cami/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    },
+    {
+      "namespace": "r3-static",
+      "path": "runs/opencode-development-v5-20261104/namespaces/r3-static/memory/prepared/catalog.json",
+      "raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "records": 329,
+      "semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+    }
+  ],
+  "docker_calls": 0,
+  "final_memory_scope": "Three final CAMI namespaces only, including typed literal ProductMemory SQLite/index generations/source CAS. This is not OpenCode session/auth state and not a complete dataset/history backup.",
+  "historical_sources": [],
+  "model_calls": 0,
+  "network_calls": 0,
+  "publication_overhead": {
+    "cpu_seconds_self_and_completed_children": 15.252148,
+    "free_disk_after_bytes": 11199418368,
+    "free_disk_before_bytes": 11445985280,
+    "scope": "Packaging/admission/hash checks/double compression/extraction/source recheck only; evaluation/publication overhead, never trial cost.",
+    "wall_seconds": 16.03325543506071
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "zlib": "1.3"
+  },
+  "source_inputs_unchanged": true,
+  "status": "passed",
+  "terminal_hashes_verified": 8094,
+  "terminal_trials": 36,
+  "tracked_writes": false
+}

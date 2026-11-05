@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "study_id": "opencode-cami-real-maintenance-development-v5-literal-compact",
+  "input_sha256": {
+    "runs/opencode-development-v5-final-analysis-20261105/report.json": "499e8a02cca5b523b8e9f59b07ac22911e23b7b5fcd7fd653a977ce21025f126",
+    "reports/opencode-study-design-v5-20261104/protocol.json": "5cd033940c65418e1dedf29bce93af5b3d73be26c3225ce313fbbf4b3c14a4e6",
+    "reports/opencode-study-design-v5-20261104/study.json": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c"
+  },
+  "blocks": [
+    {
+      "repetition": 1,
+      "arm": "plain",
+      "token_work": 152646,
+      "charged_wall": 526.821036586538,
+      "tokens": {
+        "cache_read": 733952,
+        "cache_write": 0,
+        "input": 133841,
+        "output": 13073,
+        "reasoning": 5732
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r1-plain-s1",
+        "r1-plain-s2",
+        "r1-plain-s3",
+        "r1-plain-s4"
+      ]
+    },
+    {
+      "repetition": 1,
+      "arm": "static",
+      "token_work": 120680,
+      "charged_wall": 538.753682740964,
+      "tokens": {
+        "cache_read": 771584,
+        "cache_write": 0,
+        "input": 101161,
+        "output": 13065,
+        "reasoning": 6454
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r1-static-s1",
+        "r1-static-s2",
+        "r1-static-s3",
+        "r1-static-s4"
+      ]
+    },
+    {
+      "repetition": 1,
+      "arm": "cami",
+      "token_work": 124453,
+      "charged_wall": 570.968858203385,
+      "tokens": {
+        "cache_read": 831616,
+        "cache_write": 0,
+        "input": 104542,
+        "output": 13496,
+        "reasoning": 6415
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r1-cami-s1",
+        "r1-cami-s2",
+        "r1-cami-s3",
+        "r1-cami-s4"
+      ]
+    },
+    {
+      "repetition": 2,
+      "arm": "plain",
+      "token_work": 133380,
+      "charged_wall": 546.7206922029145,
+      "tokens": {
+        "cache_read": 670080,
+        "cache_write": 0,
+        "input": 113539,
+        "output": 13548,
+        "reasoning": 6293
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r2-plain-s1",
+        "r2-plain-s2",
+        "r2-plain-s3",
+        "r2-plain-s4"
+      ]
+    },
+    {
+      "repetition": 2,
+      "arm": "static",
+      "token_work": 149665,
+      "charged_wall": 521.5264405831695,
+      "tokens": {
+        "cache_read": 740224,
+        "cache_write": 0,
+        "input": 131336,
+        "output": 12994,
+        "reasoning": 5335
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r2-static-s1",
+        "r2-static-s2",
+        "r2-static-s3",
+        "r2-static-s4"
+      ]
+    },
+    {
+      "repetition": 2,
+      "arm": "cami",
+      "token_work": 123125,
+      "charged_wall": 561.6905742301606,
+      "tokens": {
+        "cache_read": 701824,
+        "cache_write": 0,
+        "input": 102767,
+        "output": 13292,
+        "reasoning": 7066
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r2-cami-s1",
+        "r2-cami-s2",
+        "r2-cami-s3",
+        "r2-cami-s4"
+      ]
+    },
+    {
+      "repetition": 3,
+      "arm": "plain",
+      "token_work": 120897,
+      "charged_wall": 544.0325473833364,
+      "tokens": {
+        "cache_read": 668928,
+        "cache_write": 0,
+        "input": 102659,
+        "output": 12702,
+        "reasoning": 5536
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r3-plain-s1",
+        "r3-plain-s2",
+        "r3-plain-s3",
+        "r3-plain-s4"
+      ]
+    },
+    {
+      "repetition": 3,
+      "arm": "static",
+      "token_work": 126291,
+      "charged_wall": 569.4918931396678,
+      "tokens": {
+        "cache_read": 853376,
+        "cache_write": 0,
+        "input": 105833,
+        "output": 14426,
+        "reasoning": 6032
+      },
+      "operational_quality_pass": false,
+      "trials": [
+        "r3-static-s1",
+        "r3-static-s2",
+        "r3-static-s3",
+        "r3-static-s4"
+      ]
+    },
+    {
+      "repetition": 3,
+      "arm": "cami",
+      "token_work": 116935,
+      "charged_wall": 568.8030272235628,
+      "tokens": {
+        "cache_read": 809984,
+        "cache_write": 0,
+        "input": 96475,
+        "output": 14137,
+        "reasoning": 6323
+      },
+      "operational_quality_pass": true,
+      "trials": [
+        "r3-cami-s1",
+        "r3-cami-s2",
+        "r3-cami-s3",
+        "r3-cami-s4"
+      ]
+    }
+  ],
+  "verification": {
+    "quality_pass": 36,
+    "operational_pass": 35,
+    "terminal_trials": 36,
+    "terminal_hashes_independently_checked": 36,
+    "full_terminal_payload_inventory_rehashed": false,
+    "aggregate_reported_artifact_hashes_verified": 8094,
+    "independent_checks": [
+      "36 terminal-file hashes",
+      "trial token arithmetic",
+      "charged wall component arithmetic",
+      "nine block sums including failed paid trial",
+      "strict quality/operational eligibility",
+      "paired directional counts"
+    ],
+    "descriptive_lower_cami_blocks_out_of_three": {
+      "token_work": {
+        "plain": 3,
+        "static": 2
+      },
+      "charged_wall": {
+        "plain": 0,
+        "static": 1
+      }
+    }
+  },
+  "primary_efficiency_eligible": false,
+  "primary_superiority": "not_established",
+  "token_definition": "input + cache_write + output + reasoning; cache_read is separate; normalized resource proxy, not billing",
+  "wall_definition": "Each static/CAMI arm independently executes and pays origin-source extraction and memory preparation. Plain has zero memory construction. Charged sequence wall time includes controller guards, construction, startup, private authentication transfer, model/native-tool/MCP work, and session cleanup. Canonical fixture reset, source export and fixed grading are separately timed evaluation infrastructure. Entire controller elapsed time is also retained. Nested component spans are descriptive and never summed twice.",
+  "timing_caveat_trial_ids": [],
+  "failed_paid_trial": {
+    "id": "r3-static-s1",
+    "operational_status": "failed",
+    "quality": "pass",
+    "runtime_manifest_status": "passed",
+    "runtime_passed_controller_admission_failed": true,
+    "charged_wall_seconds": 170.7642577548977,
+    "token_work": 42966,
+    "tokens": {
+      "cache_read": 186368,
+      "cache_write": 0,
+      "input": 36107,
+      "output": 4489,
+      "reasoning": 2370
+    }
+  },
+  "scope": "Development v5, literal compact memory; three dependent four-stage sequences per arm on two fixed Click task instances. No population, causal, billing or final-heldout claim.",
+  "missing_data_policy": "Unavailable measurements remain null and are labeled unavailable; never replaced by zero."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "input_sha256": {
+    "runs/opencode-development-v5-final-analysis-20261105/report.json": "499e8a02cca5b523b8e9f59b07ac22911e23b7b5fcd7fd653a977ce21025f126",
+    "reports/opencode-study-design-v5-20261104/protocol.json": "5cd033940c65418e1dedf29bce93af5b3d73be26c3225ce313fbbf4b3c14a4e6",
+    "reports/opencode-study-design-v5-20261104/study.json": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c"
+  },
+  "build_source_sha256": {
+    "build.py": "d51dd12044c36cf90aff568be38df83d646a376e3db6101b08078dd57fd86234",
+    "template.html": "6e1788c90ae4db8d3f2bb0ab93b82af815eeef749c62e1acbba93c90777222bc"
+  },
+  "artifact_sha256": {
+    "chart-data.json": "6498d85fdfca910bca0e713a5ba5e3ccf95532a762e224afb0e12f57c85f44ce",
+    "comparison.png": "d5a33e4783a1569d9114dcb6084b8514e917f08121331bddb39724e08b8dc188",
+    "comparison.svg": "d5ba3119675a5e8e24eaa991611d3c4322e52af8f529b0237872ecc1ea50aab8",
+    "comparison.html": "29485be6a69d46eef163e7af318ef22ab1e3fa40abba181a1cdba9ef402d000f",
+    "findings.json": "939ee48b26c59b88116e453d4a18de7e0bc1d536216c79f671b0caf74a585f3d"
+  },
+  "matplotlib_version": "3.10.8",
+  "rebuild": ".venv/bin/python runs/opencode-development-v5-figures-20261105/build.py",
+  "measurement_activity": "No model, Docker, experiment, task grading or source changes; publication visualization only."
+}

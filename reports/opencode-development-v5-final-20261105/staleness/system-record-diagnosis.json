@@ -1,0 +1,81 @@
+{
+  "status": "diagnosis_only_original_failure_preserved",
+  "trial_id": "r3-static-s1",
+  "terminal_status": "failed",
+  "operational_status": "failed",
+  "fixed_quality": "pass",
+  "session_runtime_manifest_status": "passed",
+  "original_failure": [
+    {
+      "failure": "ValueError: actual memory response format unsupported or mismatched; inspect memory-response-format.json",
+      "phase": "model_session"
+    }
+  ],
+  "observer": {
+    "path": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/controller/memory_format_evidence.py",
+    "sha256": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+    "mechanism": "inspect_format accepts user/assistant plus validated idle records; system is rejected as unsupported pinned API message schema. The published system entry is a core/date instructions-update notice, with no tool content.",
+    "format_observer_status": "unsupported_or_mismatch",
+    "format_observer_errors": [
+      {
+        "reason": "unsupported pinned API message schema"
+      }
+    ],
+    "completed_memory_observations": 1,
+    "recorded_lifecycle": [
+      {
+        "has_error": false,
+        "id": "msg_1a9039ad0001mJ7fwSiCFCYOZc",
+        "outcome": "succeeded"
+      }
+    ]
+  },
+  "system_records": [
+    {
+      "array_index": 5,
+      "record": {
+        "id": "msg_1a90167960019o8ZFAv9ri1Rby",
+        "metadata": {
+          "notice": "instructions",
+          "instructionSources": [
+            "core/date"
+          ]
+        },
+        "time": {
+          "created": 1793836803990
+        },
+        "type": "system",
+        "text": "Today's date is now: Thu Nov 05 2026",
+        "description": "Instructions updated: core/date"
+      }
+    }
+  ],
+  "published_message_type_counts": {
+    "user": 1,
+    "assistant": 12,
+    "system": 1,
+    "idle": 1
+  },
+  "evidence_sha256": {
+    "terminal.json": "1c2ccc76c5506e43285bc1bd59b7e0e57fcfefd0be62b7963c1dc8fc24799ed4",
+    "canonical-reset.json": "3e4d2c0c236c84e029b1471345c769a6234ab095feabc94249468651f6f110b0",
+    "session/evidence/messages.json": "3be692e8da29a6e96ab3d7b8f80bf6dd346f0d7959829d313a815721e8ca3efd",
+    "session/manifest.json": "6267776da64077415d48ace41b22704b7e30a09404ddd688ac8a0461421eaf6c",
+    "memory-before.json": "947c9e5a380eaa50492bb7e11d306ba48d1188c42b622064e80bda5a9e9a3f21",
+    "memory-response-format.json": "da742c9d4e385c9c37dbeec0fab915c6f86ff20072a2724661bbd9a9b1620453",
+    "session/evidence/memory-backend-trace.jsonl": "8967106f21db947cf593b703c249dc8988cee55ea221bb401e48e8f2f05547b9"
+  },
+  "separate_literal_analysis": {
+    "status": "assessed",
+    "memory_calls": 1,
+    "verified_compact_receipts": 1,
+    "returned_same_literal_tuple_observations": 5,
+    "unsupported_calls": 0,
+    "scope": "Source/trace-authenticated published memory content only; inherited message normalizer skips nonassistant system records. This does not certify the unsupported system lifecycle schema or repair the operational failure."
+  },
+  "disposition": "No implementation changes, observer rerun, trial retry, exclusion, replacement, or pooled success claim. Any future lifecycle support requires a new prospective protocol and authored validation; current task stops after completion.",
+  "causal_reliance": "not_inferred",
+  "model_calls": 0,
+  "Docker_calls": 0,
+  "heldout_reads": false
+}

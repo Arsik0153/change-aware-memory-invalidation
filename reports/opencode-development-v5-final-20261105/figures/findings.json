@@ -1,0 +1,54 @@
+{
+  "verdict": "Primary superiority not established; both plotted metrics are descriptive.",
+  "verification": {
+    "quality_pass": 36,
+    "operational_pass": 35,
+    "terminal_trials": 36,
+    "terminal_hashes_independently_checked": 36,
+    "full_terminal_payload_inventory_rehashed": false,
+    "aggregate_reported_artifact_hashes_verified": 8094,
+    "independent_checks": [
+      "36 terminal-file hashes",
+      "trial token arithmetic",
+      "charged wall component arithmetic",
+      "nine block sums including failed paid trial",
+      "strict quality/operational eligibility",
+      "paired directional counts"
+    ],
+    "descriptive_lower_cami_blocks_out_of_three": {
+      "token_work": {
+        "plain": 3,
+        "static": 2
+      },
+      "charged_wall": {
+        "plain": 0,
+        "static": 1
+      }
+    }
+  },
+  "failed_trial": {
+    "id": "r3-static-s1",
+    "operational_status": "failed",
+    "quality": "pass",
+    "runtime_manifest_status": "passed",
+    "runtime_passed_controller_admission_failed": true,
+    "charged_wall_seconds": 170.7642577548977,
+    "token_work": 42966,
+    "tokens": {
+      "cache_read": 186368,
+      "cache_write": 0,
+      "input": 36107,
+      "output": 4489,
+      "reasoning": 2370
+    }
+  },
+  "interpretation": [
+    "CAMI has lower token work than plain in all three blocks and than static in two of three; no metric wins all six comparisons.",
+    "CAMI charged wall is higher than plain in all three blocks and higher than static in two of three.",
+    "The operational failure independently disqualifies the primary efficiency claim; passing task quality does not override it.",
+    "All cost counters for the failed paid trial are included. No incomplete observations are converted to zero.",
+    "No v3 wall-overlap caveat is transferred to v5; the aggregate records no affected trials. This is not independent proof of an idle host.",
+    "Only two task instances and three dependent sequences per arm; no general causal or heldout conclusion."
+  ],
+  "scope": "Read-only arithmetic/terminal-hash review, not a new full evidence audit or experimental rerun."
+}

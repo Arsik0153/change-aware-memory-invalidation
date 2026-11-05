@@ -1,0 +1,2941 @@
+{
+  "claim_scope": "Development/synthetic application of frozen criterion; not a final heldout success claim.",
+  "externally_expected_study_sha_verified": true,
+  "integrity": {
+    "active_trial_payloads_read": false,
+    "private_state_read": false,
+    "terminal_artifact_hashes_verified": 8094,
+    "terminal_sha256": {
+      "r1-cami-s1": "559464cb1e24c6e6a98b204e64234cbdf2b07333b403a8db7915052c5bc46ece",
+      "r1-cami-s2": "0c0f84d5a8ac71e6c6806fb1697374e730f520ff15b4fa1347814eb3d9ba3677",
+      "r1-cami-s3": "aff7026071879a3852d11c005bc35f0f2c0f544c4f2dceab1391d662f19381d4",
+      "r1-cami-s4": "6835b30039fbecd2c3a1d3ca5bf6c97460dc4939364b631fa4cb145bcc271296",
+      "r1-plain-s1": "85b379cf3b6b0cc744ea2ad27a3d688feacba97368792b4aacecc35db0b93826",
+      "r1-plain-s2": "48ed10afbeafa903287a264892f13fd5637600851fe82486174da7cf8e2e464a",
+      "r1-plain-s3": "a3a6433379ab0795f0a144206fed25af67f6a46386d60a037d7391da5a3aff5d",
+      "r1-plain-s4": "531cf75d2bcb7c9807ed9655b4faa9cc969d9bcf854a0c25865b306268beb60f",
+      "r1-static-s1": "dc395938cc47401bdc8e01479465d9530b64265cb6c3e5fb4b8cbbd5bc65b897",
+      "r1-static-s2": "1582cfcca9a50fee1925b323643aee4d4f8a1ac2129ffc41a5d07aae0c92244d",
+      "r1-static-s3": "425072daa9fe73f59a8b8e34f5b20bdf8ff42711198d2a2a60d2f00c25dd90a3",
+      "r1-static-s4": "12707bb82d3e76211375d00a7e09caac669deeceffbd940f9dd68843e856e6fd",
+      "r2-cami-s1": "c97a4c3d61048d07885bda60a9d9e86afea1cd3a9ce8326c8ef1547bb1882a53",
+      "r2-cami-s2": "0dc2a59071e4981d191695c15217f11025ce05cf5ff6739008f5d0f8e1cd7e77",
+      "r2-cami-s3": "a111b038ee5219af5ad1148193343c02d3d20a13eb147fcdc65fb74325a6337f",
+      "r2-cami-s4": "c4c1eb48d3f9e7ebc220caa915b1c4a737d9644a170da93f1b08b1101218c343",
+      "r2-plain-s1": "87979a5afc80b6d91e50502a977906848e15201f91da4a9f9c395a330ca288ce",
+      "r2-plain-s2": "dfd63e2f8db9554a9ebd47b3a49574616c66e5d28ec31762754ac2d822829adf",
+      "r2-plain-s3": "c6d524499d3b4ba24a53cc6b91a57c119c52d2d59883895f70f110551b7c3d39",
+      "r2-plain-s4": "9f9048d5555fa1cd1975c2af302c9f5c30364012bfe3f0170835d446b8b28835",
+      "r2-static-s1": "13430643c13287486e3814bc659f0350786446f07f5671c1cb09609a5a1283e2",
+      "r2-static-s2": "078d76b90ea7b1379800b9865e0a03edd34a1b9c3433a3f4afcfbb52edd4a732",
+      "r2-static-s3": "dad0f2b46e755885e34604d2adc907e5400db8d2531a24a2d9e7d3938a943edc",
+      "r2-static-s4": "b8111e2dcca2afb6316568c46484d959af28268d32961f5b0a97c318c87801c2",
+      "r3-cami-s1": "ab70a410928ad9287d2060ef2022e8978f33a0892bbd2c54976c6a43b0903052",
+      "r3-cami-s2": "03aafc62368059a8445fe7111625162829325ae2608052d96003c0c437f4265d",
+      "r3-cami-s3": "c7e639ea74886df3e0609f2452e6007b9ba8ee1051fd40d1d40f5e7ce2d932ed",
+      "r3-cami-s4": "03a26209fc7edaadfba7dbd5b96f013be6df5fe52f609ad121ead4d22e3946c5",
+      "r3-plain-s1": "c40851f58864938388ae690dbd69e2455aeadaddca58d7882f5a2b8d1457f9d5",
+      "r3-plain-s2": "f02da85e2bfcfa7699cf038955c54b6c908b7d02aacade02fa25307427e9879d",
+      "r3-plain-s3": "374da98006892c24fb8549799a9ce0a81b5e9e71bb4a9d3d7bbf2651143d098c",
+      "r3-plain-s4": "46a6fd986e7740956352200ba80c8c705744c52f4d2bef1a0d80989c10b660f4",
+      "r3-static-s1": "1c2ccc76c5506e43285bc1bd59b7e0e57fcfefd0be62b7963c1dc8fc24799ed4",
+      "r3-static-s2": "b62df6b34188d4ca6471b8b3f44d9d0e37471a7e011e23d1cc203d60025a4a5c",
+      "r3-static-s3": "b85e23a751635f9647e37d9b2738320df85e431424a161d6b5ade540ea6bd231",
+      "r3-static-s4": "2fb291420dbe25cb296aca3e326caaaee478edc3e54519c437f70efaf3c32b42"
+    }
+  },
+  "limits": [
+    "One frozen version only; no retry or cross-version pooling.",
+    "Normalized counters are resource proxies, not bills. Client-normalized zero cannot prove raw-provider zero; provider missingness may be unrecoverable.",
+    "Input/cache.read/cache.write/output/reasoning are disjoint normalized counters; token work excludes cached reads but retains them separately.",
+    "Session totals and assistant-step sums are never added. Resource component spans remain nested; charged wall is used once, with construction included.",
+    "Final ledger hashing/publication is controller bookkeeping outside its operational timer; fixture/export/fixed grading are separate infrastructure.",
+    "Three dependent four-stage blocks per arm, only two task instances; no population, causal, contamination-free or billing claim."
+  ],
+  "protocol_sha256": "5cd033940c65418e1dedf29bce93af5b3d73be26c3225ce313fbbf4b3c14a4e6",
+  "reported_token_budget": 1000000,
+  "run": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v5-20261104",
+  "runtime_image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "schema_version": 1,
+  "study_kind": "development",
+  "study_sha256": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c",
+  "summary": {
+    "all_primary_metrics_complete": true,
+    "all_trials_operational_quality_pass": false,
+    "all_trials_terminal": true,
+    "blocks": [
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 526.821036586538,
+          "total": 526.821036586538,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 152646,
+          "total": 152646,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 733952,
+            "total": 733952
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 133841,
+            "total": 133841
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13073,
+            "total": 13073
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 5732,
+            "total": 5732
+          }
+        },
+        "trials": [
+          "r1-plain-s1",
+          "r1-plain-s2",
+          "r1-plain-s3",
+          "r1-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "static",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 538.753682740964,
+          "total": 538.753682740964,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 120680,
+          "total": 120680,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 771584,
+            "total": 771584
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 101161,
+            "total": 101161
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13065,
+            "total": 13065
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6454,
+            "total": 6454
+          }
+        },
+        "trials": [
+          "r1-static-s1",
+          "r1-static-s2",
+          "r1-static-s3",
+          "r1-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 570.968858203385,
+          "total": 570.968858203385,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 1,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 124453,
+          "total": 124453,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 831616,
+            "total": 831616
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 104542,
+            "total": 104542
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13496,
+            "total": 13496
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6415,
+            "total": 6415
+          }
+        },
+        "trials": [
+          "r1-cami-s1",
+          "r1-cami-s2",
+          "r1-cami-s3",
+          "r1-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 546.7206922029145,
+          "total": 546.7206922029145,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 133380,
+          "total": 133380,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 670080,
+            "total": 670080
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 113539,
+            "total": 113539
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13548,
+            "total": 13548
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6293,
+            "total": 6293
+          }
+        },
+        "trials": [
+          "r2-plain-s1",
+          "r2-plain-s2",
+          "r2-plain-s3",
+          "r2-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "static",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 521.5264405831695,
+          "total": 521.5264405831695,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 149665,
+          "total": 149665,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 740224,
+            "total": 740224
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 131336,
+            "total": 131336
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 12994,
+            "total": 12994
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 5335,
+            "total": 5335
+          }
+        },
+        "trials": [
+          "r2-static-s1",
+          "r2-static-s2",
+          "r2-static-s3",
+          "r2-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 561.6905742301606,
+          "total": 561.6905742301606,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 2,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 123125,
+          "total": 123125,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 701824,
+            "total": 701824
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 102767,
+            "total": 102767
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 13292,
+            "total": 13292
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 7066,
+            "total": 7066
+          }
+        },
+        "trials": [
+          "r2-cami-s1",
+          "r2-cami-s2",
+          "r2-cami-s3",
+          "r2-cami-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "plain",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 544.0325473833364,
+          "total": 544.0325473833364,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 120897,
+          "total": 120897,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 668928,
+            "total": 668928
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 102659,
+            "total": 102659
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 12702,
+            "total": 12702
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 5536,
+            "total": 5536
+          }
+        },
+        "trials": [
+          "r3-plain-s1",
+          "r3-plain-s2",
+          "r3-plain-s3",
+          "r3-plain-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": false,
+        "arm": "static",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 569.4918931396678,
+          "total": 569.4918931396678,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 126291,
+          "total": 126291,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 853376,
+            "total": 853376
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 105833,
+            "total": 105833
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 14426,
+            "total": 14426
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6032,
+            "total": 6032
+          }
+        },
+        "trials": [
+          "r3-static-s1",
+          "r3-static-s2",
+          "r3-static-s3",
+          "r3-static-s4"
+        ]
+      },
+      {
+        "all_four_operational_quality_pass": true,
+        "arm": "cami",
+        "charged_wall": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 568.8030272235628,
+          "total": 568.8030272235628,
+          "unknown_or_incomplete_trials": []
+        },
+        "repetition": 3,
+        "timing_caveat_trial_ids": [],
+        "token_work": {
+          "complete": true,
+          "known_stages": 4,
+          "observed_subtotal": 116935,
+          "total": 116935,
+          "unknown_or_incomplete_trials": []
+        },
+        "tokens": {
+          "cache_read": {
+            "known_stages": 4,
+            "observed_subtotal": 809984,
+            "total": 809984
+          },
+          "cache_write": {
+            "known_stages": 4,
+            "observed_subtotal": 0,
+            "total": 0
+          },
+          "input": {
+            "known_stages": 4,
+            "observed_subtotal": 96475,
+            "total": 96475
+          },
+          "output": {
+            "known_stages": 4,
+            "observed_subtotal": 14137,
+            "total": 14137
+          },
+          "reasoning": {
+            "known_stages": 4,
+            "observed_subtotal": 6323,
+            "total": 6323
+          }
+        },
+        "trials": [
+          "r3-cami-s1",
+          "r3-cami-s2",
+          "r3-cami-s3",
+          "r3-cami-s4"
+        ]
+      }
+    ],
+    "cami_quality_rule_met": true,
+    "charged_wall_disqualified_by_timing_caveats": false,
+    "descriptive_block_statistics": {
+      "cami": {
+        "charged_wall": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 570.968858203385,
+          "median": 568.8030272235628,
+          "min": 561.6905742301606
+        },
+        "token_work": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 124453,
+          "median": 123125,
+          "min": 116935
+        }
+      },
+      "plain": {
+        "charged_wall": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 546.7206922029145,
+          "median": 544.0325473833364,
+          "min": 526.821036586538
+        },
+        "token_work": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 152646,
+          "median": 133380,
+          "min": 120897
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 569.4918931396678,
+          "median": 538.753682740964,
+          "min": 521.5264405831695
+        },
+        "token_work": {
+          "all_three_blocks": true,
+          "complete_blocks": 3,
+          "max": 149665,
+          "median": 126291,
+          "min": 120680
+        }
+      }
+    },
+    "descriptive_paired_statistics": {
+      "plain": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 44.14782161684707,
+            "median": 24.77047984022647,
+            "min": 14.969882027246058
+          },
+          "ratio": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 1.0838004152280944,
+            "median": 1.0455312461715138,
+            "min": 1.0273812245278802
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": -3962,
+            "median": -10255,
+            "min": -28193
+          },
+          "ratio": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 0.9672283017775462,
+            "median": 0.9231144099565152,
+            "min": 0.8153046919015238
+          }
+        }
+      },
+      "static": {
+        "charged_wall": {
+          "delta": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 40.164133646991104,
+            "median": 32.21517546242103,
+            "min": -0.6888659161049873
+          },
+          "ratio": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 1.0770126507911655,
+            "median": 1.0597957406036151,
+            "min": 0.9987903850354968
+          }
+        },
+        "token_work": {
+          "delta": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 3773,
+            "median": -9356,
+            "min": -26540
+          },
+          "ratio": {
+            "all_three_blocks": true,
+            "complete_blocks": 3,
+            "max": 1.0312645011600927,
+            "median": 0.9259171279030176,
+            "min": 0.8226706310760699
+          }
+        }
+      }
+    },
+    "excluded_trial_ids": [],
+    "expected_trials": 36,
+    "failure_or_missing_trials": [
+      "r3-static-s1"
+    ],
+    "incomplete_study": false,
+    "paired_comparisons": [
+      {
+        "charged_wall": {
+          "cami": 570.968858203385,
+          "comparator": 526.821036586538,
+          "delta_cami_minus_comparator": 44.14782161684707,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0838004152280944,
+          "strictly_lower": false
+        },
+        "comparator": "plain",
+        "repetition": 1,
+        "token_work": {
+          "cami": 124453,
+          "comparator": 152646,
+          "delta_cami_minus_comparator": -28193,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.8153046919015238,
+          "strictly_lower": true
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 570.968858203385,
+          "comparator": 538.753682740964,
+          "delta_cami_minus_comparator": 32.21517546242103,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0597957406036151,
+          "strictly_lower": false
+        },
+        "comparator": "static",
+        "repetition": 1,
+        "token_work": {
+          "cami": 124453,
+          "comparator": 120680,
+          "delta_cami_minus_comparator": 3773,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0312645011600927,
+          "strictly_lower": false
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 561.6905742301606,
+          "comparator": 546.7206922029145,
+          "delta_cami_minus_comparator": 14.969882027246058,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0273812245278802,
+          "strictly_lower": false
+        },
+        "comparator": "plain",
+        "repetition": 2,
+        "token_work": {
+          "cami": 123125,
+          "comparator": 133380,
+          "delta_cami_minus_comparator": -10255,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9231144099565152,
+          "strictly_lower": true
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 561.6905742301606,
+          "comparator": 521.5264405831695,
+          "delta_cami_minus_comparator": 40.164133646991104,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0770126507911655,
+          "strictly_lower": false
+        },
+        "comparator": "static",
+        "repetition": 2,
+        "token_work": {
+          "cami": 123125,
+          "comparator": 149665,
+          "delta_cami_minus_comparator": -26540,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.8226706310760699,
+          "strictly_lower": true
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 568.8030272235628,
+          "comparator": 544.0325473833364,
+          "delta_cami_minus_comparator": 24.77047984022647,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 1.0455312461715138,
+          "strictly_lower": false
+        },
+        "comparator": "plain",
+        "repetition": 3,
+        "token_work": {
+          "cami": 116935,
+          "comparator": 120897,
+          "delta_cami_minus_comparator": -3962,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9672283017775462,
+          "strictly_lower": true
+        }
+      },
+      {
+        "charged_wall": {
+          "cami": 568.8030272235628,
+          "comparator": 569.4918931396678,
+          "delta_cami_minus_comparator": -0.6888659161049873,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9987903850354968,
+          "strictly_lower": true
+        },
+        "comparator": "static",
+        "repetition": 3,
+        "token_work": {
+          "cami": 116935,
+          "comparator": 126291,
+          "delta_cami_minus_comparator": -9356,
+          "primary_metric_eligible": false,
+          "ratio_cami_over_comparator": 0.9259171279030176,
+          "strictly_lower": true
+        }
+      }
+    ],
+    "primary_efficiency_eligible": false,
+    "primary_metric_eligibility": {
+      "charged_wall": false,
+      "token_work": false
+    },
+    "primary_superiority": "not_established",
+    "study_status": "complete_with_failures_or_incomplete_metrics",
+    "terminal_trials": 36,
+    "timing_caveat_trial_ids": [],
+    "unknown_measurement_trials": [],
+    "winning_metrics_satisfying_all_six_pairs": []
+  },
+  "supported_rules_sha256": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4",
+  "timing_caveats": {
+    "affected_trial_ids": [],
+    "entries": [],
+    "provided": false,
+    "source_path": null,
+    "source_sha256": null,
+    "trials_excluded": []
+  },
+  "trials": [
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 172.96286136400886,
+      "failures": [],
+      "id": "r1-plain-s1",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 172.96286136400886,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.89338243,
+        "controller_total_host_wall_seconds": 178.7869558869861,
+        "guard_and_orchestration_host_wall_seconds": 0.45566939609125257,
+        "host_child_cpu_seconds": 2.5286679999999997,
+        "infrastructure_host_wall_seconds": 5.824094522977248,
+        "session_cgroup": {
+          "cpu_seconds": 17.252656,
+          "peak_memory_bytes": 308748288,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 17347023\nuser_usec 15046580\nsystem_usec 2300443\ncore_sched.force_idle_usec 0\nnr_periods 1560\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "69222400\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "308748288\n"
+          }
+        },
+        "session_host_wall_seconds": 172.5071919679176
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "85b379cf3b6b0cc744ea2ad27a3d688feacba97368792b4aacecc35db0b93826",
+      "timing_caveat": false,
+      "token_work": 34332,
+      "tokens": {
+        "cache_read": 292224,
+        "cache_write": 0,
+        "input": 27646,
+        "output": 4595,
+        "reasoning": 2091
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 196.6066841641441,
+      "failures": [],
+      "id": "r1-static-s1",
+      "memory_bytes_after": 840890,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 196.6066841641441,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 0.515396,
+          "peak_memory_bytes": 31019008,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 601756\nuser_usec 493697\nsystem_usec 108058\ncore_sched.force_idle_usec 0\nnr_periods 9\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "9850880",
+            "memory.max": "2147483648",
+            "memory.peak": "31019008"
+          }
+        },
+        "construction_host_wall_seconds": 1.1131191928870976,
+        "controller_self_cpu_seconds": 0.81900743,
+        "controller_total_host_wall_seconds": 199.6890133030247,
+        "guard_and_orchestration_host_wall_seconds": 0.5069853663444519,
+        "host_child_cpu_seconds": 2.324325,
+        "infrastructure_host_wall_seconds": 3.0823291388805956,
+        "session_cgroup": {
+          "cpu_seconds": 15.55821,
+          "peak_memory_bytes": 296534016,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15645359\nuser_usec 13331274\nsystem_usec 2314085\ncore_sched.force_idle_usec 0\nnr_periods 1749\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "41545728\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "296534016\n"
+          }
+        },
+        "session_host_wall_seconds": 194.98657960491255
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "dc395938cc47401bdc8e01479465d9530b64265cb6c3e5fb4b8cbbd5bc65b897",
+      "timing_caveat": false,
+      "token_work": 32204,
+      "tokens": {
+        "cache_read": 246656,
+        "cache_write": 0,
+        "input": 24955,
+        "output": 4353,
+        "reasoning": 2896
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 167.10278885206208,
+      "failures": [],
+      "id": "r1-cami-s1",
+      "memory_bytes_after": 15811632,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 167.10278885206208,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 3.845841,
+          "peak_memory_bytes": 172408832,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 3939094\nuser_usec 3428729\nsystem_usec 510364\ncore_sched.force_idle_usec 0\nnr_periods 43\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "32129024",
+            "memory.max": "2147483648",
+            "memory.peak": "172408832"
+          }
+        },
+        "construction_host_wall_seconds": 4.583184849936515,
+        "controller_self_cpu_seconds": 0.8194219199999999,
+        "controller_total_host_wall_seconds": 170.13204750791192,
+        "guard_and_orchestration_host_wall_seconds": 0.5142051179427654,
+        "host_child_cpu_seconds": 2.297492,
+        "infrastructure_host_wall_seconds": 3.029258655849844,
+        "session_cgroup": {
+          "cpu_seconds": 16.063166,
+          "peak_memory_bytes": 395051008,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16146761\nuser_usec 13730698\nsystem_usec 2416062\ncore_sched.force_idle_usec 0\nnr_periods 1477\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "59424768\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "395051008\n"
+          }
+        },
+        "session_host_wall_seconds": 162.0053988841828
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "559464cb1e24c6e6a98b204e64234cbdf2b07333b403a8db7915052c5bc46ece",
+      "timing_caveat": false,
+      "token_work": 32898,
+      "tokens": {
+        "cache_read": 224128,
+        "cache_write": 0,
+        "input": 26635,
+        "output": 4494,
+        "reasoning": 1769
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 170.89542633807287,
+      "failures": [],
+      "id": "r1-static-s2",
+      "memory_bytes_after": 840890,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 170.89542633807287,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7972786690000001,
+        "controller_total_host_wall_seconds": 173.94467053888366,
+        "guard_and_orchestration_host_wall_seconds": 0.5120564801618457,
+        "host_child_cpu_seconds": 2.141114,
+        "infrastructure_host_wall_seconds": 3.04924420081079,
+        "session_cgroup": {
+          "cpu_seconds": 15.399701,
+          "peak_memory_bytes": 289603584,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15485486\nuser_usec 13371894\nsystem_usec 2113592\ncore_sched.force_idle_usec 0\nnr_periods 1550\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "31232000\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289603584\n"
+          }
+        },
+        "session_host_wall_seconds": 170.38336985791102
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "1582cfcca9a50fee1925b323643aee4d4f8a1ac2129ffc41a5d07aae0c92244d",
+      "timing_caveat": false,
+      "token_work": 33264,
+      "tokens": {
+        "cache_read": 222208,
+        "cache_write": 0,
+        "input": 26783,
+        "output": 4572,
+        "reasoning": 1909
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 179.16099348524585,
+      "failures": [],
+      "id": "r1-cami-s2",
+      "memory_bytes_after": 15811632,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 179.16099348524585,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8196551399999998,
+        "controller_total_host_wall_seconds": 182.37107105506584,
+        "guard_and_orchestration_host_wall_seconds": 0.5656150383874774,
+        "host_child_cpu_seconds": 2.171995,
+        "infrastructure_host_wall_seconds": 3.210077569819987,
+        "session_cgroup": {
+          "cpu_seconds": 16.442947,
+          "peak_memory_bytes": 375934976,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16533473\nuser_usec 14157654\nsystem_usec 2375819\ncore_sched.force_idle_usec 0\nnr_periods 1613\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "38846464\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "375934976\n"
+          }
+        },
+        "session_host_wall_seconds": 178.59537844685838
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "0c0f84d5a8ac71e6c6806fb1697374e730f520ff15b4fa1347814eb3d9ba3677",
+      "timing_caveat": false,
+      "token_work": 31566,
+      "tokens": {
+        "cache_read": 193280,
+        "cache_write": 0,
+        "input": 24658,
+        "output": 4513,
+        "reasoning": 2395
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 164.3995189566631,
+      "failures": [],
+      "id": "r1-plain-s2",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 164.3995189566631,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7291238500000001,
+        "controller_total_host_wall_seconds": 167.53685041097924,
+        "guard_and_orchestration_host_wall_seconds": 0.5853904946707189,
+        "host_child_cpu_seconds": 2.2428230000000005,
+        "infrastructure_host_wall_seconds": 3.137331454316154,
+        "session_cgroup": {
+          "cpu_seconds": 16.290275,
+          "peak_memory_bytes": 289296384,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16378377\nuser_usec 14137561\nsystem_usec 2240815\ncore_sched.force_idle_usec 0\nnr_periods 1484\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "32280576\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289296384\n"
+          }
+        },
+        "session_host_wall_seconds": 163.81412846199237
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "48ed10afbeafa903287a264892f13fd5637600851fe82486174da7cf8e2e464a",
+      "timing_caveat": false,
+      "token_work": 56629,
+      "tokens": {
+        "cache_read": 204416,
+        "cache_write": 0,
+        "input": 50629,
+        "output": 4213,
+        "reasoning": 1787
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 122.85399281210266,
+      "failures": [],
+      "id": "r1-cami-s3",
+      "memory_bytes_after": 29050823,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 122.85399281210266,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.9934195089999998,
+        "controller_total_host_wall_seconds": 128.12427523499355,
+        "guard_and_orchestration_host_wall_seconds": 0.6031687890645117,
+        "host_child_cpu_seconds": 2.417764,
+        "infrastructure_host_wall_seconds": 5.270282422890887,
+        "session_cgroup": {
+          "cpu_seconds": 17.526718,
+          "peak_memory_bytes": 472973312,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 17615720\nuser_usec 15150022\nsystem_usec 2465698\ncore_sched.force_idle_usec 0\nnr_periods 1105\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "63590400\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "472973312\n"
+          }
+        },
+        "session_host_wall_seconds": 122.25082402303815
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "aff7026071879a3852d11c005bc35f0f2c0f544c4f2dceab1391d662f19381d4",
+      "timing_caveat": false,
+      "token_work": 34804,
+      "tokens": {
+        "cache_read": 258176,
+        "cache_write": 0,
+        "input": 31127,
+        "output": 2504,
+        "reasoning": 1173
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 101.12211357802153,
+      "failures": [],
+      "id": "r1-plain-s3",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 101.12211357802153,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7594994599999998,
+        "controller_total_host_wall_seconds": 104.30348563496955,
+        "guard_and_orchestration_host_wall_seconds": 0.45973292412236333,
+        "host_child_cpu_seconds": 2.120906999999999,
+        "infrastructure_host_wall_seconds": 3.181372056948021,
+        "session_cgroup": {
+          "cpu_seconds": 12.47588,
+          "peak_memory_bytes": 289411072,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12562891\nuser_usec 10715615\nsystem_usec 1847276\ncore_sched.force_idle_usec 0\nnr_periods 899\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "32239616\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289411072\n"
+          }
+        },
+        "session_host_wall_seconds": 100.66238065389916
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "a3a6433379ab0795f0a144206fed25af67f6a46386d60a037d7391da5a3aff5d",
+      "timing_caveat": false,
+      "token_work": 42622,
+      "tokens": {
+        "cache_read": 124032,
+        "cache_write": 0,
+        "input": 39427,
+        "output": 2058,
+        "reasoning": 1137
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 86.23841703147627,
+      "failures": [],
+      "id": "r1-static-s3",
+      "memory_bytes_after": 840890,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 86.23841703147627,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7708059799999996,
+        "controller_total_host_wall_seconds": 89.3004933767952,
+        "guard_and_orchestration_host_wall_seconds": 0.4901113514788449,
+        "host_child_cpu_seconds": 2.0888389999999992,
+        "infrastructure_host_wall_seconds": 3.0620763453189284,
+        "session_cgroup": {
+          "cpu_seconds": 12.595343,
+          "peak_memory_bytes": 289034240,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12685017\nuser_usec 10968649\nsystem_usec 1716368\ncore_sched.force_idle_usec 0\nnr_periods 767\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "30261248\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289034240\n"
+          }
+        },
+        "session_host_wall_seconds": 85.74830567999743
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "425072daa9fe73f59a8b8e34f5b20bdf8ff42711198d2a2a60d2f00c25dd90a3",
+      "timing_caveat": false,
+      "token_work": 24594,
+      "tokens": {
+        "cache_read": 180096,
+        "cache_write": 0,
+        "input": 21698,
+        "output": 2092,
+        "reasoning": 804
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 88.33654268784449,
+      "failures": [],
+      "id": "r1-plain-s4",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r1-plain-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 88.33654268784449,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7600683699999999,
+        "controller_total_host_wall_seconds": 91.48214452597313,
+        "guard_and_orchestration_host_wall_seconds": 0.4786435407586396,
+        "host_child_cpu_seconds": 2.1308870000000013,
+        "infrastructure_host_wall_seconds": 3.1456018381286412,
+        "session_cgroup": {
+          "cpu_seconds": 11.830108,
+          "peak_memory_bytes": 288997376,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 11919672\nuser_usec 10247864\nsystem_usec 1671808\ncore_sched.force_idle_usec 0\nnr_periods 786\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "29949952\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "288997376\n"
+          }
+        },
+        "session_host_wall_seconds": 87.85789914708585
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "531cf75d2bcb7c9807ed9655b4faa9cc969d9bcf854a0c25865b306268beb60f",
+      "timing_caveat": false,
+      "token_work": 19063,
+      "tokens": {
+        "cache_read": 113280,
+        "cache_write": 0,
+        "input": 16139,
+        "output": 2207,
+        "reasoning": 717
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 85.01315520727076,
+      "failures": [],
+      "id": "r1-static-s4",
+      "memory_bytes_after": 840890,
+      "operational_status": "passed",
+      "predecessor": "r1-static-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 85.01315520727076,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7865372800000001,
+        "controller_total_host_wall_seconds": 88.16688641696237,
+        "guard_and_orchestration_host_wall_seconds": 0.5322948032990098,
+        "host_child_cpu_seconds": 2.189031,
+        "infrastructure_host_wall_seconds": 3.153731209691614,
+        "session_cgroup": {
+          "cpu_seconds": 11.952436,
+          "peak_memory_bytes": 289107968,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12045193\nuser_usec 10363929\nsystem_usec 1681264\ncore_sched.force_idle_usec 0\nnr_periods 753\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "30052352\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289107968\n"
+          }
+        },
+        "session_host_wall_seconds": 84.48086040397175
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "12707bb82d3e76211375d00a7e09caac669deeceffbd940f9dd68843e856e6fd",
+      "timing_caveat": false,
+      "token_work": 30618,
+      "tokens": {
+        "cache_read": 122624,
+        "cache_write": 0,
+        "input": 27725,
+        "output": 2048,
+        "reasoning": 845
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 101.85108305397443,
+      "failures": [],
+      "id": "r1-cami-s4",
+      "memory_bytes_after": 29050823,
+      "operational_status": "passed",
+      "predecessor": "r1-cami-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 1,
+      "resource_components": {
+        "charged_host_wall_seconds": 101.85108305397443,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8888935700000005,
+        "controller_total_host_wall_seconds": 104.94998110295273,
+        "guard_and_orchestration_host_wall_seconds": 0.6189005828928202,
+        "host_child_cpu_seconds": 2.142494,
+        "infrastructure_host_wall_seconds": 3.098898048978299,
+        "session_cgroup": {
+          "cpu_seconds": 13.960886,
+          "peak_memory_bytes": 420601856,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14045682\nuser_usec 11970866\nsystem_usec 2074816\ncore_sched.force_idle_usec 0\nnr_periods 913\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "35872768\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "420601856\n"
+          }
+        },
+        "session_host_wall_seconds": 101.23218247108161
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "6835b30039fbecd2c3a1d3ca5bf6c97460dc4939364b631fa4cb145bcc271296",
+      "timing_caveat": false,
+      "token_work": 25185,
+      "tokens": {
+        "cache_read": 156032,
+        "cache_write": 0,
+        "input": 22122,
+        "output": 1985,
+        "reasoning": 1078
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 165.98300335882232,
+      "failures": [],
+      "id": "r2-static-s1",
+      "memory_bytes_after": 840884,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 165.98300335882232,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 0.50026,
+          "peak_memory_bytes": 31035392,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 588115\nuser_usec 484920\nsystem_usec 103195\ncore_sched.force_idle_usec 0\nnr_periods 7\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "10080256",
+            "memory.max": "2147483648",
+            "memory.peak": "31035392"
+          }
+        },
+        "construction_host_wall_seconds": 1.0070892870426178,
+        "controller_self_cpu_seconds": 0.8374379899999997,
+        "controller_total_host_wall_seconds": 169.1416398100555,
+        "guard_and_orchestration_host_wall_seconds": 0.5088106519542634,
+        "host_child_cpu_seconds": 2.3663209999999992,
+        "infrastructure_host_wall_seconds": 3.1586364512331784,
+        "session_cgroup": {
+          "cpu_seconds": 15.248296,
+          "peak_memory_bytes": 292196352,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15334349\nuser_usec 13219058\nsystem_usec 2115291\ncore_sched.force_idle_usec 0\nnr_periods 1492\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "37134336\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "292196352\n"
+          }
+        },
+        "session_host_wall_seconds": 164.46710341982543
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "13430643c13287486e3814bc659f0350786446f07f5671c1cb09609a5a1283e2",
+      "timing_caveat": false,
+      "token_work": 57102,
+      "tokens": {
+        "cache_read": 196992,
+        "cache_write": 0,
+        "input": 50821,
+        "output": 4307,
+        "reasoning": 1974
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 153.72133111581206,
+      "failures": [],
+      "id": "r2-cami-s1",
+      "memory_bytes_after": 15811649,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 153.72133111581206,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 3.939881,
+          "peak_memory_bytes": 166805504,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 4025472\nuser_usec 3479358\nsystem_usec 546114\ncore_sched.force_idle_usec 0\nnr_periods 43\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "27623424",
+            "memory.max": "2147483648",
+            "memory.peak": "166805504"
+          }
+        },
+        "construction_host_wall_seconds": 4.6037912289611995,
+        "controller_self_cpu_seconds": 0.9443343290000001,
+        "controller_total_host_wall_seconds": 157.15017110691406,
+        "guard_and_orchestration_host_wall_seconds": 0.6814553579315543,
+        "host_child_cpu_seconds": 2.314506999999999,
+        "infrastructure_host_wall_seconds": 3.428839991101995,
+        "session_cgroup": {
+          "cpu_seconds": 15.198677,
+          "peak_memory_bytes": 359858176,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15284388\nuser_usec 13087000\nsystem_usec 2197388\ncore_sched.force_idle_usec 0\nnr_periods 1332\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "39530496\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "359858176\n"
+          }
+        },
+        "session_host_wall_seconds": 148.4360845289193
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "c97a4c3d61048d07885bda60a9d9e86afea1cd3a9ce8326c8ef1547bb1882a53",
+      "timing_caveat": false,
+      "token_work": 29656,
+      "tokens": {
+        "cache_read": 162048,
+        "cache_write": 0,
+        "input": 24017,
+        "output": 4202,
+        "reasoning": 1437
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 176.5521952107083,
+      "failures": [],
+      "id": "r2-plain-s1",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 176.5521952107083,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8320410899999988,
+        "controller_total_host_wall_seconds": 179.9687957270071,
+        "guard_and_orchestration_host_wall_seconds": 0.490558433579281,
+        "host_child_cpu_seconds": 2.5339399999999994,
+        "infrastructure_host_wall_seconds": 3.416600516298786,
+        "session_cgroup": {
+          "cpu_seconds": 16.018092,
+          "peak_memory_bytes": 293879808,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16105617\nuser_usec 13757135\nsystem_usec 2348482\ncore_sched.force_idle_usec 0\nnr_periods 1589\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "56795136\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "293879808\n"
+          }
+        },
+        "session_host_wall_seconds": 176.06163677712902
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "87979a5afc80b6d91e50502a977906848e15201f91da4a9f9c395a330ca288ce",
+      "timing_caveat": false,
+      "token_work": 30665,
+      "tokens": {
+        "cache_read": 254720,
+        "cache_write": 0,
+        "input": 23863,
+        "output": 4657,
+        "reasoning": 2145
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 183.1681851160247,
+      "failures": [],
+      "id": "r2-cami-s2",
+      "memory_bytes_after": 15811649,
+      "operational_status": "passed",
+      "predecessor": "r2-cami-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 183.1681851160247,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.9232320400000003,
+        "controller_total_host_wall_seconds": 186.50478722993284,
+        "guard_and_orchestration_host_wall_seconds": 0.6389324381016195,
+        "host_child_cpu_seconds": 2.2358650000000004,
+        "infrastructure_host_wall_seconds": 3.3366021139081568,
+        "session_cgroup": {
+          "cpu_seconds": 18.207486,
+          "peak_memory_bytes": 431955968,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 18298144\nuser_usec 15754824\nsystem_usec 2543320\ncore_sched.force_idle_usec 0\nnr_periods 1647\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "83087360\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "431955968\n"
+          }
+        },
+        "session_host_wall_seconds": 182.52925267792307
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "0dc2a59071e4981d191695c15217f11025ce05cf5ff6739008f5d0f8e1cd7e77",
+      "timing_caveat": false,
+      "token_work": 37306,
+      "tokens": {
+        "cache_read": 179584,
+        "cache_write": 0,
+        "input": 30155,
+        "output": 4430,
+        "reasoning": 2721
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 167.44502992369235,
+      "failures": [],
+      "id": "r2-plain-s2",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r2-plain-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 167.44502992369235,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7899137300000003,
+        "controller_total_host_wall_seconds": 170.75284865801223,
+        "guard_and_orchestration_host_wall_seconds": 0.4597147104796022,
+        "host_child_cpu_seconds": 2.240794000000001,
+        "infrastructure_host_wall_seconds": 3.3078187343198806,
+        "session_cgroup": {
+          "cpu_seconds": 14.818322,
+          "peak_memory_bytes": 295145472,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14910428\nuser_usec 12769015\nsystem_usec 2141412\ncore_sched.force_idle_usec 0\nnr_periods 1501\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "46927872\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "295145472\n"
+          }
+        },
+        "session_host_wall_seconds": 166.98531521321274
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "dfd63e2f8db9554a9ebd47b3a49574616c66e5d28ec31762754ac2d822829adf",
+      "timing_caveat": false,
+      "token_work": 34530,
+      "tokens": {
+        "cache_read": 152832,
+        "cache_write": 0,
+        "input": 28068,
+        "output": 4429,
+        "reasoning": 2033
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 147.9352643713355,
+      "failures": [],
+      "id": "r2-static-s2",
+      "memory_bytes_after": 840884,
+      "operational_status": "passed",
+      "predecessor": "r2-static-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 147.9352643713355,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.819311149999999,
+        "controller_total_host_wall_seconds": 151.053677149117,
+        "guard_and_orchestration_host_wall_seconds": 0.5046216454356909,
+        "host_child_cpu_seconds": 2.145424000000002,
+        "infrastructure_host_wall_seconds": 3.1184127777814865,
+        "session_cgroup": {
+          "cpu_seconds": 16.036195,
+          "peak_memory_bytes": 307822592,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16122312\nuser_usec 13914399\nsystem_usec 2207913\ncore_sched.force_idle_usec 0\nnr_periods 1332\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "41287680\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "307822592\n"
+          }
+        },
+        "session_host_wall_seconds": 147.43064272589982
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "078d76b90ea7b1379800b9865e0a03edd34a1b9c3433a3f4afcfbb52edd4a732",
+      "timing_caveat": false,
+      "token_work": 26962,
+      "tokens": {
+        "cache_read": 183552,
+        "cache_write": 0,
+        "input": 21203,
+        "output": 4072,
+        "reasoning": 1687
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 91.9384833201766,
+      "failures": [],
+      "id": "r2-plain-s3",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r2-plain-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 91.9384833201766,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7394529900000002,
+        "controller_total_host_wall_seconds": 95.04086906882003,
+        "guard_and_orchestration_host_wall_seconds": 0.5026610372588038,
+        "host_child_cpu_seconds": 2.128167999999997,
+        "infrastructure_host_wall_seconds": 3.102385748643428,
+        "session_cgroup": {
+          "cpu_seconds": 12.27939,
+          "peak_memory_bytes": 289411072,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12368913\nuser_usec 10564275\nsystem_usec 1804638\ncore_sched.force_idle_usec 0\nnr_periods 822\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "43212800\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289411072\n"
+          }
+        },
+        "session_host_wall_seconds": 91.4358222829178
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "c6d524499d3b4ba24a53cc6b91a57c119c52d2d59883895f70f110551b7c3d39",
+      "timing_caveat": false,
+      "token_work": 43122,
+      "tokens": {
+        "cache_read": 124288,
+        "cache_write": 0,
+        "input": 40273,
+        "output": 2057,
+        "reasoning": 792
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 100.59138838993385,
+      "failures": [],
+      "id": "r2-static-s3",
+      "memory_bytes_after": 840884,
+      "operational_status": "passed",
+      "predecessor": "r2-static-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 100.59138838993385,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7522687099999992,
+        "controller_total_host_wall_seconds": 103.69359800498933,
+        "guard_and_orchestration_host_wall_seconds": 0.4880691629368812,
+        "host_child_cpu_seconds": 2.2110720000000015,
+        "infrastructure_host_wall_seconds": 3.1022096150554717,
+        "session_cgroup": {
+          "cpu_seconds": 13.856646,
+          "peak_memory_bytes": 300965888,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 13944411\nuser_usec 11955229\nsystem_usec 1989182\ncore_sched.force_idle_usec 0\nnr_periods 917\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "38293504\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "300965888\n"
+          }
+        },
+        "session_host_wall_seconds": 100.10331922699697
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "dad0f2b46e755885e34604d2adc907e5400db8d2531a24a2d9e7d3938a943edc",
+      "timing_caveat": false,
+      "token_work": 37757,
+      "tokens": {
+        "cache_read": 187520,
+        "cache_write": 0,
+        "input": 34708,
+        "output": 2188,
+        "reasoning": 861
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 87.10808120528236,
+      "failures": [],
+      "id": "r2-cami-s3",
+      "memory_bytes_after": 29046744,
+      "operational_status": "passed",
+      "predecessor": "r2-cami-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 87.10808120528236,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8593343200000003,
+        "controller_total_host_wall_seconds": 90.19767124694772,
+        "guard_and_orchestration_host_wall_seconds": 0.6870342823676765,
+        "host_child_cpu_seconds": 2.059539000000001,
+        "infrastructure_host_wall_seconds": 3.0895900416653603,
+        "session_cgroup": {
+          "cpu_seconds": 14.458319,
+          "peak_memory_bytes": 478273536,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14544985\nuser_usec 12497356\nsystem_usec 2047629\ncore_sched.force_idle_usec 0\nnr_periods 769\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "80576512\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "478273536\n"
+          }
+        },
+        "session_host_wall_seconds": 86.42104692291468
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "a111b038ee5219af5ad1148193343c02d3d20a13eb147fcdc65fb74325a6337f",
+      "timing_caveat": false,
+      "token_work": 29888,
+      "tokens": {
+        "cache_read": 119936,
+        "cache_write": 0,
+        "input": 27038,
+        "output": 1973,
+        "reasoning": 877
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 107.01678446307778,
+      "failures": [],
+      "id": "r2-static-s4",
+      "memory_bytes_after": 840884,
+      "operational_status": "passed",
+      "predecessor": "r2-static-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 107.01678446307778,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7972297899999976,
+        "controller_total_host_wall_seconds": 110.1628468381241,
+        "guard_and_orchestration_host_wall_seconds": 0.5095903379842639,
+        "host_child_cpu_seconds": 2.1875479999999996,
+        "infrastructure_host_wall_seconds": 3.146062375046313,
+        "session_cgroup": {
+          "cpu_seconds": 13.07508,
+          "peak_memory_bytes": 291205120,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 13163731\nuser_usec 11285206\nsystem_usec 1878524\ncore_sched.force_idle_usec 0\nnr_periods 952\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "35852288\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "291205120\n"
+          }
+        },
+        "session_host_wall_seconds": 106.50719412509352
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "b8111e2dcca2afb6316568c46484d959af28268d32961f5b0a97c318c87801c2",
+      "timing_caveat": false,
+      "token_work": 27844,
+      "tokens": {
+        "cache_read": 172160,
+        "cache_write": 0,
+        "input": 24604,
+        "output": 2427,
+        "reasoning": 813
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 137.69297679304145,
+      "failures": [],
+      "id": "r2-cami-s4",
+      "memory_bytes_after": 29046744,
+      "operational_status": "passed",
+      "predecessor": "r2-cami-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 137.69297679304145,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.9456320900000001,
+        "controller_total_host_wall_seconds": 140.95965577312745,
+        "guard_and_orchestration_host_wall_seconds": 0.6617572391405702,
+        "host_child_cpu_seconds": 2.2817429999999987,
+        "infrastructure_host_wall_seconds": 3.2666789800859988,
+        "session_cgroup": {
+          "cpu_seconds": 15.335788,
+          "peak_memory_bytes": 418295808,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15425054\nuser_usec 13084632\nsystem_usec 2340422\ncore_sched.force_idle_usec 0\nnr_periods 1217\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "54820864\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "418295808\n"
+          }
+        },
+        "session_host_wall_seconds": 137.03121955390088
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "c4c1eb48d3f9e7ebc220caa915b1c4a737d9644a170da93f1b08b1101218c343",
+      "timing_caveat": false,
+      "token_work": 26275,
+      "tokens": {
+        "cache_read": 240256,
+        "cache_write": 0,
+        "input": 21557,
+        "output": 2687,
+        "reasoning": 2031
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 110.78498374833725,
+      "failures": [],
+      "id": "r2-plain-s4",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r2-plain-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 2,
+      "resource_components": {
+        "charged_host_wall_seconds": 110.78498374833725,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7427616899999983,
+        "controller_total_host_wall_seconds": 114.01533986604773,
+        "guard_and_orchestration_host_wall_seconds": 0.45696836221031845,
+        "host_child_cpu_seconds": 2.1145529999999972,
+        "infrastructure_host_wall_seconds": 3.230356117710471,
+        "session_cgroup": {
+          "cpu_seconds": 12.574801,
+          "peak_memory_bytes": 289415168,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12663244\nuser_usec 10917531\nsystem_usec 1745712\ncore_sched.force_idle_usec 0\nnr_periods 989\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "35135488\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289415168\n"
+          }
+        },
+        "session_host_wall_seconds": 110.32801538612694
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "9f9048d5555fa1cd1975c2af302c9f5c30364012bfe3f0170835d446b8b28835",
+      "timing_caveat": false,
+      "token_work": 25063,
+      "tokens": {
+        "cache_read": 138240,
+        "cache_write": 0,
+        "input": 21335,
+        "output": 2405,
+        "reasoning": 1323
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 199.7410538068507,
+      "failures": [],
+      "id": "r3-cami-s1",
+      "memory_bytes_after": 15811649,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 199.7410538068507,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 4.049613,
+          "peak_memory_bytes": 165838848,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 4133103\nuser_usec 3497318\nsystem_usec 635785\ncore_sched.force_idle_usec 0\nnr_periods 45\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "26509312",
+            "memory.max": "2147483648",
+            "memory.peak": "165838848"
+          }
+        },
+        "construction_host_wall_seconds": 4.750375482952222,
+        "controller_self_cpu_seconds": 0.9010716400000014,
+        "controller_total_host_wall_seconds": 203.0008899429813,
+        "guard_and_orchestration_host_wall_seconds": 0.571347899036482,
+        "host_child_cpu_seconds": 2.4466269999999994,
+        "infrastructure_host_wall_seconds": 3.259836136130616,
+        "session_cgroup": {
+          "cpu_seconds": 20.24774,
+          "peak_memory_bytes": 424468480,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 20337681\nuser_usec 17389606\nsystem_usec 2948075\ncore_sched.force_idle_usec 0\nnr_periods 1797\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "35647488\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "424468480\n"
+          }
+        },
+        "session_host_wall_seconds": 194.41933042486198
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "ab70a410928ad9287d2060ef2022e8978f33a0892bbd2c54976c6a43b0903052",
+      "timing_caveat": false,
+      "token_work": 31373,
+      "tokens": {
+        "cache_read": 300800,
+        "cache_write": 0,
+        "input": 23618,
+        "output": 5058,
+        "reasoning": 2697
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 161.0092379048001,
+      "failures": [],
+      "id": "r3-plain-s1",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 161.0092379048001,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7956043600000022,
+        "controller_total_host_wall_seconds": 164.13035382097587,
+        "guard_and_orchestration_host_wall_seconds": 0.49198441579937935,
+        "host_child_cpu_seconds": 2.208097000000002,
+        "infrastructure_host_wall_seconds": 3.121115916175768,
+        "session_cgroup": {
+          "cpu_seconds": 14.248897,
+          "peak_memory_bytes": 290086912,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14335020\nuser_usec 12252636\nsystem_usec 2082384\ncore_sched.force_idle_usec 0\nnr_periods 1436\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "43048960\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "290086912\n"
+          }
+        },
+        "session_host_wall_seconds": 160.51725348900072
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 1,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "c40851f58864938388ae690dbd69e2455aeadaddca58d7882f5a2b8d1457f9d5",
+      "timing_caveat": false,
+      "token_work": 28190,
+      "tokens": {
+        "cache_read": 183552,
+        "cache_write": 0,
+        "input": 22603,
+        "output": 4019,
+        "reasoning": 1568
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 231,
+      "charged_wall_seconds": 170.7642577548977,
+      "failures": [
+        {
+          "failure": "ValueError: actual memory response format unsupported or mismatched; inspect memory-response-format.json",
+          "phase": "model_session"
+        }
+      ],
+      "id": "r3-static-s1",
+      "memory_bytes_after": 840874,
+      "operational_status": "failed",
+      "predecessor": null,
+      "quality": "pass",
+      "quality_eligible": false,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 170.7642577548977,
+        "complete": true,
+        "construction_cgroup": {
+          "cpu_seconds": 0.481809,
+          "peak_memory_bytes": 30912512,
+          "raw_after": {
+            "cpu.max": "200000 100000",
+            "cpu.stat": "usage_usec 570297\nuser_usec 472810\nsystem_usec 97486\ncore_sched.force_idle_usec 0\nnr_periods 7\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+            "memory.current": "9900032",
+            "memory.max": "2147483648",
+            "memory.peak": "30912512"
+          }
+        },
+        "construction_host_wall_seconds": 1.086862632073462,
+        "controller_self_cpu_seconds": 0.8052192300000023,
+        "controller_total_host_wall_seconds": 173.80289843003266,
+        "guard_and_orchestration_host_wall_seconds": 0.5027839897666126,
+        "host_child_cpu_seconds": 2.3788210000000056,
+        "infrastructure_host_wall_seconds": 3.038640675134957,
+        "session_cgroup": {
+          "cpu_seconds": 14.804513,
+          "peak_memory_bytes": 315867136,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14890156\nuser_usec 12692518\nsystem_usec 2197637\ncore_sched.force_idle_usec 0\nnr_periods 1518\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "54943744\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "315867136\n"
+          }
+        },
+        "session_host_wall_seconds": 169.17461113305762
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": true,
+      "session_status": "failed",
+      "stage": 1,
+      "status": "failed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "1c2ccc76c5506e43285bc1bd59b7e0e57fcfefd0be62b7963c1dc8fc24799ed4",
+      "timing_caveat": false,
+      "token_work": 42966,
+      "tokens": {
+        "cache_read": 186368,
+        "cache_write": 0,
+        "input": 36107,
+        "output": 4489,
+        "reasoning": 2370
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 151.2287069882732,
+      "failures": [],
+      "id": "r3-plain-s2",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r3-plain-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 151.2287069882732,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7878636199999995,
+        "controller_total_host_wall_seconds": 154.49614616809413,
+        "guard_and_orchestration_host_wall_seconds": 0.45863641728647053,
+        "host_child_cpu_seconds": 2.174347000000001,
+        "infrastructure_host_wall_seconds": 3.26743917982094,
+        "session_cgroup": {
+          "cpu_seconds": 15.900547,
+          "peak_memory_bytes": 289157120,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15990615\nuser_usec 13884430\nsystem_usec 2106184\ncore_sched.force_idle_usec 0\nnr_periods 1369\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "39305216\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289157120\n"
+          }
+        },
+        "session_host_wall_seconds": 150.77007057098672
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "f02da85e2bfcfa7699cf038955c54b6c908b7d02aacade02fa25307427e9879d",
+      "timing_caveat": false,
+      "token_work": 43888,
+      "tokens": {
+        "cache_read": 146944,
+        "cache_write": 0,
+        "input": 38093,
+        "output": 4331,
+        "reasoning": 1464
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 173.0716617871076,
+      "failures": [],
+      "id": "r3-static-s2",
+      "memory_bytes_after": 840874,
+      "operational_status": "passed",
+      "predecessor": "r3-static-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 173.0716617871076,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7933500299999992,
+        "controller_total_host_wall_seconds": 176.29039741610177,
+        "guard_and_orchestration_host_wall_seconds": 0.5081020360812545,
+        "host_child_cpu_seconds": 2.283237999999997,
+        "infrastructure_host_wall_seconds": 3.2187356289941818,
+        "session_cgroup": {
+          "cpu_seconds": 16.854884,
+          "peak_memory_bytes": 307277824,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 16941824\nuser_usec 14493818\nsystem_usec 2448006\ncore_sched.force_idle_usec 0\nnr_periods 1547\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "37863424\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "307277824\n"
+          }
+        },
+        "session_host_wall_seconds": 172.56355975102633
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "b62df6b34188d4ca6471b8b3f44d9d0e37471a7e011e23d1cc203d60025a4a5c",
+      "timing_caveat": false,
+      "token_work": 28698,
+      "tokens": {
+        "cache_read": 298624,
+        "cache_write": 0,
+        "input": 22421,
+        "output": 5119,
+        "reasoning": 1158
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 160.3833345430903,
+      "failures": [],
+      "id": "r3-cami-s2",
+      "memory_bytes_after": 15811649,
+      "operational_status": "passed",
+      "predecessor": "r3-cami-s1",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 160.3833345430903,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8857556500000001,
+        "controller_total_host_wall_seconds": 163.4249413141515,
+        "guard_and_orchestration_host_wall_seconds": 0.5981055090669543,
+        "host_child_cpu_seconds": 2.12722500000001,
+        "infrastructure_host_wall_seconds": 3.041606771061197,
+        "session_cgroup": {
+          "cpu_seconds": 15.73788,
+          "peak_memory_bytes": 361771008,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15827273\nuser_usec 13556145\nsystem_usec 2271128\ncore_sched.force_idle_usec 0\nnr_periods 1460\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "41078784\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "361771008\n"
+          }
+        },
+        "session_host_wall_seconds": 159.78522903402336
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 2,
+      "status": "passed",
+      "task": "click-help-option-api",
+      "terminal_present": true,
+      "terminal_sha256": "03aafc62368059a8445fe7111625162829325ae2608052d96003c0c437f4265d",
+      "timing_caveat": false,
+      "token_work": 28798,
+      "tokens": {
+        "cache_read": 165248,
+        "cache_write": 0,
+        "input": 22496,
+        "output": 4667,
+        "reasoning": 1635
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 120.11892182403244,
+      "failures": [],
+      "id": "r3-static-s3",
+      "memory_bytes_after": 840874,
+      "operational_status": "passed",
+      "predecessor": "r3-static-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 120.11892182403244,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8125417999999982,
+        "controller_total_host_wall_seconds": 123.30959468218498,
+        "guard_and_orchestration_host_wall_seconds": 0.5054640900343657,
+        "host_child_cpu_seconds": 2.16696099999999,
+        "infrastructure_host_wall_seconds": 3.1906728581525385,
+        "session_cgroup": {
+          "cpu_seconds": 13.624934,
+          "peak_memory_bytes": 292929536,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 13713848\nuser_usec 11729439\nsystem_usec 1984409\ncore_sched.force_idle_usec 0\nnr_periods 1063\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "30461952\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "292929536\n"
+          }
+        },
+        "session_host_wall_seconds": 119.61345773399808
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "b85e23a751635f9647e37d9b2738320df85e431424a161d6b5ade540ea6bd231",
+      "timing_caveat": false,
+      "token_work": 30027,
+      "tokens": {
+        "cache_read": 216448,
+        "cache_write": 0,
+        "input": 26235,
+        "output": 2722,
+        "reasoning": 1070
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 106.99920556182042,
+      "failures": [],
+      "id": "r3-cami-s3",
+      "memory_bytes_after": 29046744,
+      "operational_status": "passed",
+      "predecessor": "r3-cami-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 106.99920556182042,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8483554099999999,
+        "controller_total_host_wall_seconds": 110.11770847300068,
+        "guard_and_orchestration_host_wall_seconds": 0.5832465458661318,
+        "host_child_cpu_seconds": 2.246734,
+        "infrastructure_host_wall_seconds": 3.118502911180258,
+        "session_cgroup": {
+          "cpu_seconds": 15.041483,
+          "peak_memory_bytes": 478191616,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15128329\nuser_usec 12939536\nsystem_usec 2188792\ncore_sched.force_idle_usec 0\nnr_periods 942\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "82075648\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "478191616\n"
+          }
+        },
+        "session_host_wall_seconds": 106.41595901595429
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "c7e639ea74886df3e0609f2452e6007b9ba8ee1051fd40d1d40f5e7ce2d932ed",
+      "timing_caveat": false,
+      "token_work": 33350,
+      "tokens": {
+        "cache_read": 154624,
+        "cache_write": 0,
+        "input": 30253,
+        "output": 2167,
+        "reasoning": 930
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 96.09776858100668,
+      "failures": [],
+      "id": "r3-plain-s3",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r3-plain-s2",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 96.09776858100668,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7988409099999991,
+        "controller_total_host_wall_seconds": 99.29950974695385,
+        "guard_and_orchestration_host_wall_seconds": 0.46567019494250417,
+        "host_child_cpu_seconds": 2.0215759999999925,
+        "infrastructure_host_wall_seconds": 3.201741165947169,
+        "session_cgroup": {
+          "cpu_seconds": 12.010935,
+          "peak_memory_bytes": 289730560,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 12099831\nuser_usec 10326319\nsystem_usec 1773512\ncore_sched.force_idle_usec 0\nnr_periods 855\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "32772096\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289730560\n"
+          }
+        },
+        "session_host_wall_seconds": 95.63209838606417
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 3,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "374da98006892c24fb8549799a9ce0a81b5e9e71bb4a9d3d7bbf2651143d098c",
+      "timing_caveat": false,
+      "token_work": 22405,
+      "tokens": {
+        "cache_read": 114688,
+        "cache_write": 0,
+        "input": 19415,
+        "output": 1967,
+        "reasoning": 1023
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "cami",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 101.6794333118014,
+      "failures": [],
+      "id": "r3-cami-s4",
+      "memory_bytes_after": 29046744,
+      "operational_status": "passed",
+      "predecessor": "r3-cami-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 101.6794333118014,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8673789899999989,
+        "controller_total_host_wall_seconds": 104.78382710600272,
+        "guard_and_orchestration_host_wall_seconds": 0.606402481906116,
+        "host_child_cpu_seconds": 2.130737000000007,
+        "infrastructure_host_wall_seconds": 3.1043937942013144,
+        "session_cgroup": {
+          "cpu_seconds": 14.324055,
+          "peak_memory_bytes": 419717120,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 14410905\nuser_usec 12205226\nsystem_usec 2205678\ncore_sched.force_idle_usec 0\nnr_periods 907\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "39174144\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "419717120\n"
+          }
+        },
+        "session_host_wall_seconds": 101.07303082989529
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "03a26209fc7edaadfba7dbd5b96f013be6df5fe52f609ad121ead4d22e3946c5",
+      "timing_caveat": false,
+      "token_work": 23414,
+      "tokens": {
+        "cache_read": 189312,
+        "cache_write": 0,
+        "input": 20108,
+        "output": 2245,
+        "reasoning": 1061
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "plain",
+      "artifact_hashes_verified": 223,
+      "charged_wall_seconds": 135.69683390925638,
+      "failures": [],
+      "id": "r3-plain-s4",
+      "memory_bytes_after": 0,
+      "operational_status": "passed",
+      "predecessor": "r3-plain-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 135.69683390925638,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.7703872000000018,
+        "controller_total_host_wall_seconds": 138.86465112306178,
+        "guard_and_orchestration_host_wall_seconds": 0.4575995022896677,
+        "host_child_cpu_seconds": 2.1740789999999954,
+        "infrastructure_host_wall_seconds": 3.1678172138053924,
+        "session_cgroup": {
+          "cpu_seconds": 15.162813,
+          "peak_memory_bytes": 289447936,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 15256172\nuser_usec 13025749\nsystem_usec 2230422\ncore_sched.force_idle_usec 0\nnr_periods 1191\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "31952896\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289447936\n"
+          }
+        },
+        "session_host_wall_seconds": 135.23923440696672
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "46a6fd986e7740956352200ba80c8c705744c52f4d2bef1a0d80989c10b660f4",
+      "timing_caveat": false,
+      "token_work": 26414,
+      "tokens": {
+        "cache_read": 223744,
+        "cache_write": 0,
+        "input": 22548,
+        "output": 2385,
+        "reasoning": 1481
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    },
+    {
+      "arm": "static",
+      "artifact_hashes_verified": 224,
+      "charged_wall_seconds": 105.53705177363008,
+      "failures": [],
+      "id": "r3-static-s4",
+      "memory_bytes_after": 840874,
+      "operational_status": "passed",
+      "predecessor": "r3-static-s3",
+      "quality": "pass",
+      "quality_eligible": true,
+      "repetition": 3,
+      "resource_components": {
+        "charged_host_wall_seconds": 105.53705177363008,
+        "complete": true,
+        "construction_host_wall_seconds": 0,
+        "controller_self_cpu_seconds": 0.8330680800000003,
+        "controller_total_host_wall_seconds": 108.74336246191524,
+        "guard_and_orchestration_host_wall_seconds": 0.5253970297053456,
+        "host_child_cpu_seconds": 2.195063999999995,
+        "infrastructure_host_wall_seconds": 3.206310688285157,
+        "session_cgroup": {
+          "cpu_seconds": 13.115519,
+          "peak_memory_bytes": 289148928,
+          "raw_after": {
+            "cpu.max": "200000 100000\n",
+            "cpu.stat": "usage_usec 13203396\nuser_usec 11322218\nsystem_usec 1881177\ncore_sched.force_idle_usec 0\nnr_periods 948\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "memory.current": "30216192\n",
+            "memory.max": "2147483648\n",
+            "memory.peak": "289148928\n"
+          }
+        },
+        "session_host_wall_seconds": 105.01165474392474
+      },
+      "runtime_manifest_status": "passed",
+      "runtime_passed_controller_admission_failed": false,
+      "session_status": "passed",
+      "stage": 4,
+      "status": "passed",
+      "task": "click-help-eagerness",
+      "terminal_present": true,
+      "terminal_sha256": "2fb291420dbe25cb296aca3e326caaaee478edc3e54519c437f70efaf3c32b42",
+      "timing_caveat": false,
+      "token_work": 24600,
+      "tokens": {
+        "cache_read": 151936,
+        "cache_write": 0,
+        "input": 21070,
+        "output": 2096,
+        "reasoning": 1434
+      },
+      "tokens_complete": true,
+      "unknown_reasons": [],
+      "usage_source": "hashed_session_evidence",
+      "usage_status": "client_normalized",
+      "wall_complete": true
+    }
+  ]
+}

@@ -1,0 +1,690 @@
+{
+  "frozen_study": {
+    "path": "/root/apps/change-aware-memory-invalidation/runs/opencode-development-study-v5-20261104/study.json",
+    "sha256": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c"
+  },
+  "run_frozen_study_sha256": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c",
+  "plan_sha256": "5b8c1bc18ae5ac779b08dcb06743860d45ae6b065f4045fe443e47280e6b2e70",
+  "literal_report_sha256": "fd192e439fb1913bf595ca853d838a550232fac5709ee7245057928ad7e37e49",
+  "canonical_source_inventory_sha256": {
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/origin-and-stage1": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/stage3": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99"
+  },
+  "analysis_implementation_sha256": {
+    "/root/apps/change-aware-memory-invalidation/scripts/analyze_opencode_staleness.py": "9c675edb2e65c4d499ca5ac4653b1b5f4c9450f81b5d35c39f9e1c81392f3296",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/analysis/classify_literal_calls.py": "a588f78d28f31ea1b938ddde950f903bfcd8c1ba62991093c28e3dc852cd6aa2",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/analysis/classify_memory_calls.py": "2af162c62de6078e5502e31b4421270cd2c7815bc5c0909d374bdc7402ba7c1c",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/analysis/literal_reference.py": "3431703805f84a695a5e05be9f1a9284b42218cadc2a871cb3d2b7e05b5bb6a9",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/analysis/summarize_literal_staleness.py": "ca82cd958f3e52d59adb3df3d729c8c9f4e0a6fe7c1648cd31d21a041c3a3ea1",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/analysis/summarize_terminal_staleness.py": "084677acdb75c9e53c8e7d510cd52dd7ee57d870aff49f5b208f50dfe9b1fa87"
+  },
+  "frozen_runtime_source_pins": {
+    "adapter": {
+      "root": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v5-20261104/extracted/integrations/opencode",
+      "files": {
+        "README.md": "74cd8e5ec1acc817304303e860b76f85f924839b95612476c855e43f30681c55",
+        "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+        "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+        "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+        "memory_adapter.py": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+        "memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+        "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+        "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+        "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+      },
+      "all_pinned_files_match": true,
+      "mismatches": []
+    },
+    "controller": {
+      "root": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/controller",
+      "files": {
+        "authored_integration.py": "3a2260c56a6c3ef490c4f1818bf6d94a8af83f6b425b720eb7e6c9dcbdaf57ea",
+        "fixed_grader.py": "4d369f797dc067bdf57b154036b1220c0a785ba17b457b79c78a4f315cb07f6a",
+        "literal_stdio_worker.py": "3d492d3cfa0d1c98957433e201520e2f44c5dc1c37b65f347c10c40bd830288d",
+        "memory_format_evidence.py": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+        "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+        "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+        "study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+        "study_controller.py": "742d319ba26e568731efbd6679cf585b599c12940b45df4cc6a17d77508b295a",
+        "study_ledger.py": "e82c76a9aa20028a150abde6244f6854a346cfc0aa115a3dca737549d4141a3e",
+        "study_runtime.py": "ad75c1c848cd25f9507df0a249ae9901fa24ef7b5c162d8f87eb6de02c4d17a0",
+        "study_schema.py": "c0aec1181aa38bff1d0e6de1e047b6ec989fe4abd348ed282b63925eec4633b3",
+        "study_workspace.py": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89",
+        "test_controller.py": "ab497678ff421f848ac6683f6914d72b387447b93be9e7eb74cfc914c322d810",
+        "test_format_observation.py": "c9010037e0958e22480aee7885faf9cacb3e0313e2ec7678c9fe0cf2ed6ceb77",
+        "test_format_selection.py": "60f516615e40463e4938957699f15d882babac24e3d4eee67df17b461fbaf786",
+        "test_idle_lifecycle.py": "6276bb6e0cd89ebf1d655a346ba5e2458d493f080d99e8497516a311682ed9bd",
+        "test_literal_controller.py": "0d38c84880418a280bcaec82ba203656a2974d1a997e1ea9ec0c65f003ebd563",
+        "test_literal_stdio.py": "3829ef2b7d67193121a065dddeab0c8ed1dedf6005fb302642bf09ff1b9fa56c",
+        "verify_literal_containers.py": "2fb226061101352a3c5d7fce042880b19e11949f31f12192604f1305f9b7ed34"
+      },
+      "all_pinned_files_match": true,
+      "mismatches": []
+    },
+    "harness": {
+      "root": "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/harness",
+      "files": {
+        "boundary-sentinel.txt": "2c254255be5ae1d1741ee5ec813738d044f47f086c5ba13c0f6dfd964bd61212",
+        "container_common.py": "0b6b17f08a38beabbcb76a96f6021b92bc9e29139c580419045652638573f03e",
+        "container_session.py": "824efc380833d2f02c5a702f09221057964176e9f9a79ad9d3b6b0846b4e882d",
+        "container_worker.py": "cd42b259e47eb7b9bf52d97a61199d2ab619ace830349f88e3af252a1a503758",
+        "evidence_safety.py": "3ff3d798413f7ced9202a9d7ac0ecd16d8643390c3f7790df5fea270936ce430",
+        "test_failure_contracts.py": "4c594e0aeae4502a19bbc9edd87b6bfea8be5e5a539af651a2590e7706edbd8a",
+        "test_publication_guards.py": "dabdfe747148f6af771a0d28f2f801e55f24c3ea7ed5d54a8a30d163c0dbf0a4",
+        "test_structured_redaction.py": "c5959253d25f4d2e4e6721a30292e38bc57fb702120f7f666e4d89e352ddf7b6",
+        "trial_guards.py": "03fc81278ae7f0f411a0132c02aec26d8a59405bd6b49d11eca535ebb03f24f1"
+      },
+      "all_pinned_files_match": true,
+      "mismatches": []
+    },
+    "production": {
+      "root": "/root/apps/change-aware-memory-invalidation/runs/opencode-runtime-literal-v5-20261104/extracted/src",
+      "files": {
+        "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+        "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+        "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+        "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+        "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+        "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+        "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+        "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+        "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+        "cami/cli.py": "cd94b4b14ef18696dd41f01be46c13be1ade69808a82cdd4f0e2cebf7a8a5560",
+        "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+        "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+        "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+        "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+        "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+        "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+        "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+        "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+        "cami/index.py": "a2c6c0f8c2899339ea58c9f298b5b3309ebc353b7e7791cb018e8c004595ec32",
+        "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+        "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+        "cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+        "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+        "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+        "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+        "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+        "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+        "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+        "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+        "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+        "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+        "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+        "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+        "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+        "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+        "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+        "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+        "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+        "cami/product/memory/store.py": "b5c8ac3d1917afa443b0af6dfdedd8b9e9ebed3c90d5b7db17af4f93f4e19b8f",
+        "cami/product/memory/validation.py": "16a44a5c32a91a3e57c1435441782896df2f9005c28c501f277493750e8dbdfb",
+        "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+        "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+        "cami/product/service.py": "bde12a975d429821fbb9dff9461ea71852e93afc4d7cf435a5d4c39f8b7cf24f",
+        "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+        "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+        "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+        "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+        "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+        "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+        "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+        "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+        "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+        "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+        "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+        "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+        "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+        "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+        "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+        "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+        "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+      },
+      "all_pinned_files_match": true,
+      "mismatches": []
+    }
+  },
+  "trials": {
+    "r1-plain-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "85b379cf3b6b0cc744ea2ad27a3d688feacba97368792b4aacecc35db0b93826",
+        "canonical-reset.json": "66f97a2aaa4f0108d6cda0f0f952ffbcb9aa33c934c050f84ea14ba29af676eb",
+        "session/evidence/messages.json": "52cec4f5e54ef96ea98bdbc9d1dfc05662a17ea9d78632ef4882a6c410751123",
+        "session/manifest.json": "dacf07d235081cd3e047f7adf907ef39c14683ac85349bf0810e2bf133b42392"
+      }
+    },
+    "r1-static-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "dc395938cc47401bdc8e01479465d9530b64265cb6c3e5fb4b8cbbd5bc65b897",
+        "canonical-reset.json": "27fa70cd94a5d1154ea4c2ad54a246027d0672c74d624834aa5a73a846898f35",
+        "session/evidence/messages.json": "6eadf11dbdf340c3707104a8b0ac3eab8f1b13f56b4e09674f14784b489c0910",
+        "session/manifest.json": "1b34acb2e88e8e4dfd3a00adcd564125c8e38bab43b1fdea795e1252eb6a9415",
+        "memory-before.json": "d3eeb9fadf36ba130a4a96389016fefdfe46f965b89be3b578e9d0fdae082ab4",
+        "memory-response-format.json": "112f73e4e941851aba3affa2d8c83f60565f6bc48dad24511e2cc9aa1fb53e3b",
+        "session/evidence/memory-backend-trace.jsonl": "e48a2461c306579bc26290005abdb88cb5760a31cef07c91586e0a58059a7d11"
+      }
+    },
+    "r1-cami-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "559464cb1e24c6e6a98b204e64234cbdf2b07333b403a8db7915052c5bc46ece",
+        "canonical-reset.json": "d90db1f85a6a2a9e73ed8f3b83850fea1f339a7ea0f6b8427cf0718e6c9c8ead",
+        "session/evidence/messages.json": "a90a6c6d202e175a835cd48bf042ce6c8e22790b4de5dd55ad943e38cfb2ca1c",
+        "session/manifest.json": "d5cecbd0fae86ae966b4940ce11bb1223ab873f3cdc9d678d6715be67894538a",
+        "memory-before.json": "813997c4cfbbba0c51a62469208bc153470809ace78e989c8616c8f301bd0547",
+        "memory-response-format.json": "cc01597e27a3aa5c50c86101aa1b70cd028b8bf63fb5b4df98a8adfaaed7a2d0",
+        "session/evidence/memory-backend-trace.jsonl": "c4c210a3ab4b68a78d54e289e854d7dea177b7027cff69bc53170a8503725ef0"
+      }
+    },
+    "r1-static-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "1582cfcca9a50fee1925b323643aee4d4f8a1ac2129ffc41a5d07aae0c92244d",
+        "canonical-reset.json": "8b9b18b13f0020792c910f09899fe30acdbc1d9c80e02ebc1ea32a9cf7977bcb",
+        "session/evidence/messages.json": "63b3cf684bbb1c1d928a375353b2ceb8788ee4f15c5a81fd39d27a627d06fc39",
+        "session/manifest.json": "aaf8ac14b9e4efed08a99bc3e939c2c7dda973f6341e9b600ef9863099d64b7b",
+        "memory-before.json": "d3eeb9fadf36ba130a4a96389016fefdfe46f965b89be3b578e9d0fdae082ab4",
+        "memory-response-format.json": "845be43f9187b6a7ffc597b1780362179acb4d669b363819df9cb7d9bc280220",
+        "session/evidence/memory-backend-trace.jsonl": "89020ae87ca16cbe37f696d86d804ab3582e1a6d4fc3eb1e91ba3b1c0b6c7e12"
+      }
+    },
+    "r1-cami-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "0c0f84d5a8ac71e6c6806fb1697374e730f520ff15b4fa1347814eb3d9ba3677",
+        "canonical-reset.json": "2479dabe536494fc22f89d02ceedb916fb075ee8fa33362c9b4538a1c44920ee",
+        "session/evidence/messages.json": "d6416ebac5d524eacf6e3de067fc8460fbded156c5211433bc2b092697e68389",
+        "session/manifest.json": "ab3c6e458818a8cd8b44aba67c0cdacdbc4a7782bf0cc790ed2eecfd82616709",
+        "memory-before.json": "813997c4cfbbba0c51a62469208bc153470809ace78e989c8616c8f301bd0547",
+        "memory-response-format.json": "f25e051b72ad34959cbb751492227da6087e37c44862a65370144b143a910a2c",
+        "session/evidence/memory-backend-trace.jsonl": "dbbc1bc5d2b356ac1668abb7c3136caf1896e5bb851e5d7f3d119c9283057354"
+      }
+    },
+    "r1-plain-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "48ed10afbeafa903287a264892f13fd5637600851fe82486174da7cf8e2e464a",
+        "canonical-reset.json": "94ac396d68a15599da9104e855171ea47e0363a3818658f25080cb66171d70d6",
+        "session/evidence/messages.json": "eec632e52df2b65cd150b1d09e0bd6ec4862bd8ba81af664f3f14bed3bd77267",
+        "session/manifest.json": "dbebcd500cd12e946b275d3fbe1172ed21d684dc5a9943355c34d0479081d295"
+      }
+    },
+    "r1-cami-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "aff7026071879a3852d11c005bc35f0f2c0f544c4f2dceab1391d662f19381d4",
+        "canonical-reset.json": "d12bedb7b9556f79a366bcd68d955a5c1ddf26190956980393ce64ab0a07c7c8",
+        "session/evidence/messages.json": "7a12903f732c6a88ad55d3c0e630fbb419b61df66c4c68f8783b628c2776128b",
+        "session/manifest.json": "027545d6a4075e24277a6d8fd052b60546976394bc4f45c1003be46d8d6ab805",
+        "memory-before.json": "813997c4cfbbba0c51a62469208bc153470809ace78e989c8616c8f301bd0547",
+        "memory-response-format.json": "acba6f8065c73eecff9d33f63a9fb629d10172eecd85dbe73a4cd086467a8d0c",
+        "session/evidence/memory-backend-trace.jsonl": "e5655efaff56d39040b89b4cf72db5ac42428547b9d48863fe3d293ba2775e84"
+      }
+    },
+    "r1-plain-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "a3a6433379ab0795f0a144206fed25af67f6a46386d60a037d7391da5a3aff5d",
+        "canonical-reset.json": "5d3d62435d78c562d41dc11e0d0b1a21813b6de59563554fdb5b4a71c7a6964a",
+        "session/evidence/messages.json": "9b36047702f77d20bb92fdff15717c53c24c98a909570e119af4a3e6725f7200",
+        "session/manifest.json": "a6ed8201d224559b99647ad75d1a1b980913fd1b0a332f1bde2595bab74eeb06"
+      }
+    },
+    "r1-static-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "425072daa9fe73f59a8b8e34f5b20bdf8ff42711198d2a2a60d2f00c25dd90a3",
+        "canonical-reset.json": "42ad2cdce2935d36c604ad07e6edb00d04fd57d747652ac17b95d9038ab85d51",
+        "session/evidence/messages.json": "e797f8f58870d8fbaf778714671c6213fd8c17a44f964c5a9c6c70054ac22473",
+        "session/manifest.json": "068b303d5dd44c3060214ada3df8612790d7187aff665e6bcbf37ded14ed6978",
+        "memory-before.json": "d3eeb9fadf36ba130a4a96389016fefdfe46f965b89be3b578e9d0fdae082ab4",
+        "memory-response-format.json": "d3df708576221619b496358b4e6a916012eb8f0c8e1a621abdf25ada3cb008d0",
+        "session/evidence/memory-backend-trace.jsonl": "f60dd45093e3ec43247ebf1aa6ecf4776cbe9a104aad947db3d950714bf221b8"
+      }
+    },
+    "r1-plain-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "531cf75d2bcb7c9807ed9655b4faa9cc969d9bcf854a0c25865b306268beb60f",
+        "canonical-reset.json": "2039a398f8e563e61387bac8392d4b13b3991ad8f8e13df21425c96609fcf95f",
+        "session/evidence/messages.json": "a02a411a1e13a1005c4a83162d977e4279a0d239428cea9fe8dc12b9b834cbfd",
+        "session/manifest.json": "49411995e242fecbe50cb800e9b9c4fbea83490ba28297ca17ca68c227b76e95"
+      }
+    },
+    "r1-static-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "12707bb82d3e76211375d00a7e09caac669deeceffbd940f9dd68843e856e6fd",
+        "canonical-reset.json": "8b68756022886f2c8df7b5b728b5eae4ea513474cc2d4970e2fa75fcc0fc1d8d",
+        "session/evidence/messages.json": "3338fb0c0eb5c45acfcc18a1dcf85388cf856a67e70a5917a425605bf7736fe6",
+        "session/manifest.json": "9edae4a7936f4f485f564f0dafc138649da23690d8614339bcfa3ac078f71c77",
+        "memory-before.json": "d3eeb9fadf36ba130a4a96389016fefdfe46f965b89be3b578e9d0fdae082ab4",
+        "memory-response-format.json": "2ceb03d52026e13ebbc17f9abf4c34f28b3e2d9f5307f231f60435fdf71b42d5",
+        "session/evidence/memory-backend-trace.jsonl": "18ba7a353e389a0cbcf1bf8fac7b54822237bb25e2a62babc8482599c5eff416"
+      }
+    },
+    "r1-cami-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "6835b30039fbecd2c3a1d3ca5bf6c97460dc4939364b631fa4cb145bcc271296",
+        "canonical-reset.json": "d5b5d6a92b111abd205548a392d7e9333b4509b51cc51555fe251d5ade23332f",
+        "session/evidence/messages.json": "8b9b0444938f226d88c75aa321fa678cd3494b80553dc67c8fd007632efb1268",
+        "session/manifest.json": "a9dd288f0162dc5a06c457de6e4616230f2e02e00db8934c508bf2be94c736a5",
+        "memory-before.json": "788f5cc12714d1c158676f1d096351a93f48cf81a729947cbe09af6268e22461",
+        "memory-response-format.json": "09cd0cef43db9ac7542c706c9de68431289857972e5b6a75dbe70cde7f74f966",
+        "session/evidence/memory-backend-trace.jsonl": "fde60c2bb9cb18258794b865e9f61dcd74e1aaa433f2cd3efdfea52c586a8886"
+      }
+    },
+    "r2-static-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "13430643c13287486e3814bc659f0350786446f07f5671c1cb09609a5a1283e2",
+        "canonical-reset.json": "69e42ff29cf79d3e8bb88ffc8aecbcb55649a06ba2c168496124f738336cfc15",
+        "session/evidence/messages.json": "8ad5ee54ca2b9deec2e054e736139d5d746d3396d92d45bfc08a198f41a8c0e7",
+        "session/manifest.json": "4c447532634e17ab11c5a2307ea62198f4b289456192b213f92ee8d6652c0dae",
+        "memory-before.json": "5f88b33560c3177fe5b8f20573329c4969c5f29a81e82ef3a8d49594e737f71d",
+        "memory-response-format.json": "da6e5a32daab7317702828709eb06acc4163962b9d0f07d4473ddf0f152730a1",
+        "session/evidence/memory-backend-trace.jsonl": "d6b3cb13935d01c57a178e309df6ba0b516f6df405c686abdc876dfe82641d6d"
+      }
+    },
+    "r2-cami-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "c97a4c3d61048d07885bda60a9d9e86afea1cd3a9ce8326c8ef1547bb1882a53",
+        "canonical-reset.json": "39411b42476824ed1846088f64f5e6d834a9d0991ca9a7bba2eda2cbc7a1b371",
+        "session/evidence/messages.json": "80fbb6477c183f2c534a96d3c700df42d0fd32fbabc1e6f19d8874a7496769f3",
+        "session/manifest.json": "42a779d93e678da27838c169b54acf77fb2dfed92ab7c9478c96cc492507e1d6",
+        "memory-before.json": "286aff742980c363db8e7dd32fab6236ef9c100c98d95371693b899ae705e047",
+        "memory-response-format.json": "7911096df39c878247d85020983e1ed07af561617acc35dc72b6fe26a7b935ce",
+        "session/evidence/memory-backend-trace.jsonl": "8029f8b7c4d970168f45a626988f2439bba302616372cad69efb890730f1e01c"
+      }
+    },
+    "r2-plain-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "87979a5afc80b6d91e50502a977906848e15201f91da4a9f9c395a330ca288ce",
+        "canonical-reset.json": "3daf9dfce22cfb0159d42fc4bdd77d970817fd7ce664b489b0d46581b402307b",
+        "session/evidence/messages.json": "91a3c9096713d7e450ee7fbb1aaeff3ed71e8f501c3842944a6556d6dfb93637",
+        "session/manifest.json": "dfca65fa90607e53d981bca5a2794860635a12e77a1f78babb40e2b052d837d9"
+      }
+    },
+    "r2-cami-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "0dc2a59071e4981d191695c15217f11025ce05cf5ff6739008f5d0f8e1cd7e77",
+        "canonical-reset.json": "0e9fb140a6c36ae8ac6afb3f1b7ce75f9e342d2e57270d0585737934346c2f91",
+        "session/evidence/messages.json": "0ccd610594a54b1b7e5f92a84a3796ffe31722c440f6d0d4a92e0479d3cf8332",
+        "session/manifest.json": "0051a8aa9a9b0c3e9a1c6ea340c4e8b0088f124ef067aa1b41de7c11756a5e46",
+        "memory-before.json": "286aff742980c363db8e7dd32fab6236ef9c100c98d95371693b899ae705e047",
+        "memory-response-format.json": "e29ba8dcee0ca1a1977789acb1ac93504d96dd88f2550206223a7c4e13ae4e0f",
+        "session/evidence/memory-backend-trace.jsonl": "946aecdc7fe35a9e5b385a83763e7a77982c7b9c6437a3828d186266e3ab87aa"
+      }
+    },
+    "r2-plain-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "dfd63e2f8db9554a9ebd47b3a49574616c66e5d28ec31762754ac2d822829adf",
+        "canonical-reset.json": "ee48c1254fddd308356d5050144cb0e92f56a6429369b4c34b8ae6bad338c5a0",
+        "session/evidence/messages.json": "1d33401e274dcf0660ddd4f84e762837534afdc43410861b6ad0be7478484604",
+        "session/manifest.json": "b8e653798a742287e27413d164c90d038c90c927a9dada3cbe7251628e208403"
+      }
+    },
+    "r2-static-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "078d76b90ea7b1379800b9865e0a03edd34a1b9c3433a3f4afcfbb52edd4a732",
+        "canonical-reset.json": "88a521173f1c2f53e445c7d0a41759f70e31a9be6fdd4517d311a84ec842caaa",
+        "session/evidence/messages.json": "5528dc89de4173a12ec774e5b03032bc9facd5f128a1f3c82aa0b606f194e380",
+        "session/manifest.json": "120edbdfc8f078cdfb9577763dc3287d655e8f41690045584c477a2e6e531ecc",
+        "memory-before.json": "5f88b33560c3177fe5b8f20573329c4969c5f29a81e82ef3a8d49594e737f71d",
+        "memory-response-format.json": "b6a6f213ee3d3c318ff990e9121caa8e7860ea080749e76a967f6b19e135456e",
+        "session/evidence/memory-backend-trace.jsonl": "2e6908ec6e1edd10cdf09d410f56b59d4e9c5d38082a7722125fe613135c48a6"
+      }
+    },
+    "r2-plain-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "c6d524499d3b4ba24a53cc6b91a57c119c52d2d59883895f70f110551b7c3d39",
+        "canonical-reset.json": "c6be516cc1876395b2867cf08d1b70c1250a6472a3b3afdf5cb890325d812542",
+        "session/evidence/messages.json": "1fe7fda05a39a92f80189b69b585927ed2ddd73cc2fc5c116fd167270d00fd86",
+        "session/manifest.json": "1092fc2c5ee15a3e7d01891e492a509f27a792c33aae0ff5340729f90dc43134"
+      }
+    },
+    "r2-static-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "dad0f2b46e755885e34604d2adc907e5400db8d2531a24a2d9e7d3938a943edc",
+        "canonical-reset.json": "9501ce400fe868d31bbe99924716f19a07402ea28ace8d48b1888074239d5a53",
+        "session/evidence/messages.json": "295fcf0cf46d0c6745fe1204f50d57cd457a07808c3563515f2c97aabc0d8462",
+        "session/manifest.json": "7288e317bb225928338dedabecd5129188d788da13b727a13ae45cbe67f89078",
+        "memory-before.json": "5f88b33560c3177fe5b8f20573329c4969c5f29a81e82ef3a8d49594e737f71d",
+        "memory-response-format.json": "269cd63a167b1c581a9f61d1678323c93176755ccd21f09311432300c3715761",
+        "session/evidence/memory-backend-trace.jsonl": "d533c1248fbcff11361d7022e2592daec9253cfe2e2c482db03e9650bc9939f2"
+      }
+    },
+    "r2-cami-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "a111b038ee5219af5ad1148193343c02d3d20a13eb147fcdc65fb74325a6337f",
+        "canonical-reset.json": "a17bfd58e62c718bf88a58b1a351f55fb6803544f03ddea15bb9af266c9ab167",
+        "session/evidence/messages.json": "270f0246387b970bc404108896ceda1c54d854d954d8afe6aba2724ce06af517",
+        "session/manifest.json": "4c36b688441a7b82b3d22d9c7ba68375b049a4a68400fff253323fd7a20aec40",
+        "memory-before.json": "286aff742980c363db8e7dd32fab6236ef9c100c98d95371693b899ae705e047",
+        "memory-response-format.json": "91d196f5b2bc495a4fbac6e998e87ba13ee48854e1fd78a8b2ce273f955c0835",
+        "session/evidence/memory-backend-trace.jsonl": "008d0b6a126d4ac16acf90ad723b54f113260765e0084746fbb68174f456c40a"
+      }
+    },
+    "r2-static-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "b8111e2dcca2afb6316568c46484d959af28268d32961f5b0a97c318c87801c2",
+        "canonical-reset.json": "548205ecf5ceea1a2e4810ad32cada174ca5eb2d0f1f1f69efaab7313919cc11",
+        "session/evidence/messages.json": "250a164973b5f33bc93dfb7b8a45f38a0539d5d09062336d7f4bf7c21216d050",
+        "session/manifest.json": "32c63abfef60ec9de1d60a80bc3af5313cef32486a694f082a0daf52040e95dd",
+        "memory-before.json": "5f88b33560c3177fe5b8f20573329c4969c5f29a81e82ef3a8d49594e737f71d",
+        "memory-response-format.json": "78de3fe485639f605e06aa592cdc2a6041031286d75be94c8a1d69f21fb1f8fe",
+        "session/evidence/memory-backend-trace.jsonl": "92a8d19601c7caa3431326b7ba32843b7a4afae52fd4f277fb73638bead5e140"
+      }
+    },
+    "r2-cami-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "c4c1eb48d3f9e7ebc220caa915b1c4a737d9644a170da93f1b08b1101218c343",
+        "canonical-reset.json": "04d854be3576faa257db61c6d01d912bb03fe90e3d790759a683f7257b432246",
+        "session/evidence/messages.json": "3505f0cca474c264c9fb7470fdb78b3ef581435ac1423b5d4988bd1502a50902",
+        "session/manifest.json": "e1ab08713a45fd4771e6ed673bc8402d0a28b9e816357f36ba8d6ac376696941",
+        "memory-before.json": "89394e507b7650e8ba07c77c77fcddc1360f04e727588a8c0edb7321598d2842",
+        "memory-response-format.json": "f96bbf30bec9897b8ad4dc0e7e2015baf58bee889e53ef8e93da1a4bcbc219b6",
+        "session/evidence/memory-backend-trace.jsonl": "0d3c9d0b10942bcb9f1a7bfea9cc57f925c56c2ad00f86d8466d39da5b27b205"
+      }
+    },
+    "r2-plain-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "9f9048d5555fa1cd1975c2af302c9f5c30364012bfe3f0170835d446b8b28835",
+        "canonical-reset.json": "324c72f546761b5f0f31e921fcb22322e40503afe3ae99cf7fd2cb685320ba53",
+        "session/evidence/messages.json": "0a3757eb82fd7f0689a7e90e803b053396ec80d4027ce6a568216208d712f117",
+        "session/manifest.json": "c9c546a8c104b575b0399418b76885fad7f4a750c024f25db1436d61676d9c87"
+      }
+    },
+    "r3-cami-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "ab70a410928ad9287d2060ef2022e8978f33a0892bbd2c54976c6a43b0903052",
+        "canonical-reset.json": "a71eb679823de6eb8f8271f0012f8861e58cfea39174bfaaf0dcdf5f2d7a5fa4",
+        "session/evidence/messages.json": "85b32e36477d4a8aa07887ef2205ace3b8bd95bcacc5abc3b667b8e518ee0f0a",
+        "session/manifest.json": "6320fa757569dba43e18a2a31dba215603368b19462c504568c6769509c66dca",
+        "memory-before.json": "d26a458e4732fe2afb273719428d6d0f82cc64d49c59699c9cc023350b773ff6",
+        "memory-response-format.json": "5eed4abc1c9ae96349f2a4e782b32b1d504d0952e8e24060b0c79d6063ceaf45",
+        "session/evidence/memory-backend-trace.jsonl": "d025985c3e14c0d19459f734a3dc099d715dc63c1629c3d9e288fe7ca91e19c2"
+      }
+    },
+    "r3-plain-s1": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "c40851f58864938388ae690dbd69e2455aeadaddca58d7882f5a2b8d1457f9d5",
+        "canonical-reset.json": "e5d30aefea8d5fa55d110d7c0355d07bae4f2c2aeeb5f421f30934681a4c1c16",
+        "session/evidence/messages.json": "d9e416ea899a91d7b4bb44b329b6f051ad8ba9434e6594a55375d27e2bbd0bf0",
+        "session/manifest.json": "c8dd925d522a31950a5dc673689844f5dd6505de9a8d18bd7467504ac44ea532"
+      }
+    },
+    "r3-static-s1": {
+      "terminal_status": "failed",
+      "operational_status": "failed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 231,
+      "public_files": {
+        "terminal.json": "1c2ccc76c5506e43285bc1bd59b7e0e57fcfefd0be62b7963c1dc8fc24799ed4",
+        "canonical-reset.json": "3e4d2c0c236c84e029b1471345c769a6234ab095feabc94249468651f6f110b0",
+        "session/evidence/messages.json": "3be692e8da29a6e96ab3d7b8f80bf6dd346f0d7959829d313a815721e8ca3efd",
+        "session/manifest.json": "6267776da64077415d48ace41b22704b7e30a09404ddd688ac8a0461421eaf6c",
+        "memory-before.json": "947c9e5a380eaa50492bb7e11d306ba48d1188c42b622064e80bda5a9e9a3f21",
+        "memory-response-format.json": "da742c9d4e385c9c37dbeec0fab915c6f86ff20072a2724661bbd9a9b1620453",
+        "session/evidence/memory-backend-trace.jsonl": "8967106f21db947cf593b703c249dc8988cee55ea221bb401e48e8f2f05547b9"
+      }
+    },
+    "r3-plain-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "f02da85e2bfcfa7699cf038955c54b6c908b7d02aacade02fa25307427e9879d",
+        "canonical-reset.json": "9b7a64c8fc730d562e0100466ca1ef68870c67908439afa51336f9bfc3e10b6a",
+        "session/evidence/messages.json": "d8ad8a692e862b1df2eeaf142d6faa72ed5fb5cdd60a5184afdffc1808345020",
+        "session/manifest.json": "edd45494950f0df727ef2882059945c070e8b26d979fc2139059f476eb7707e1"
+      }
+    },
+    "r3-static-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "b62df6b34188d4ca6471b8b3f44d9d0e37471a7e011e23d1cc203d60025a4a5c",
+        "canonical-reset.json": "1a3cfab65afb2e3d485a6259f16387087d31ee61922ec58a262921e889e1498c",
+        "session/evidence/messages.json": "8b346afffe4549f5b579125e11d42bd66711ce4de06095653cc2468218bae3fa",
+        "session/manifest.json": "c7357d73effb5e329d32069ac1a478fc0ee174ab42fa9b9c5642abe5127ae193",
+        "memory-before.json": "947c9e5a380eaa50492bb7e11d306ba48d1188c42b622064e80bda5a9e9a3f21",
+        "memory-response-format.json": "4b28db7c12769310c584ef4446f935353e570fc051199407f046303e7a2f18ff",
+        "session/evidence/memory-backend-trace.jsonl": "4e1c6002ecb9c6ce6f5675aa08ba23d1135b4c0262518f6a83d6595b452be5c7"
+      }
+    },
+    "r3-cami-s2": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "03aafc62368059a8445fe7111625162829325ae2608052d96003c0c437f4265d",
+        "canonical-reset.json": "50b968953f71a50acacaa4f9d88f0bbbe9bf1f3930c224077cd49fac7589953d",
+        "session/evidence/messages.json": "3e9a95c9924759aad7968a09b90cc5f774eb5badd758fbd9f728aca9b57e5ea7",
+        "session/manifest.json": "9f825fc8109ddc7f4a5979d04f141d41304c3598182d78feffc2fc18937631c1",
+        "memory-before.json": "d26a458e4732fe2afb273719428d6d0f82cc64d49c59699c9cc023350b773ff6",
+        "memory-response-format.json": "4b80783d79732fccb1ba6f4fd1bd2beea46af1daa0c51305725fd10700ab815b",
+        "session/evidence/memory-backend-trace.jsonl": "0259b49a00bd069c830cfb35214d294573f2d41ad7dcc6e5eed43f3ba549cb45"
+      }
+    },
+    "r3-static-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "b85e23a751635f9647e37d9b2738320df85e431424a161d6b5ade540ea6bd231",
+        "canonical-reset.json": "245986f64c12d12d8f43e825926e8103b854c2ad89e1cbd3f5e2a33fa39983c9",
+        "session/evidence/messages.json": "3976ccb9e0d56014f83a47cce628da63b09c25ee22c11f00874fed9d310bc621",
+        "session/manifest.json": "df115cb7963658b0b39e63b32206446160eff16522d5e335d4939e0c083074e0",
+        "memory-before.json": "947c9e5a380eaa50492bb7e11d306ba48d1188c42b622064e80bda5a9e9a3f21",
+        "memory-response-format.json": "31678c29631db55e3a74acede8757a1ea88532750568e02960b109252b39ac10",
+        "session/evidence/memory-backend-trace.jsonl": "f7fac0a86ef315b0f2b7194d06cc9819291b08db5f9fee3c166f00045cc8f783"
+      }
+    },
+    "r3-cami-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "c7e639ea74886df3e0609f2452e6007b9ba8ee1051fd40d1d40f5e7ce2d932ed",
+        "canonical-reset.json": "133178e53bb24005c0f4634ae7ac6597a5572869f38c1dab7681b186e3d2f372",
+        "session/evidence/messages.json": "4e953e942b454bada2d9780f71d14c4002539555c1ffa3930a6a19d69871c751",
+        "session/manifest.json": "fe7225140559e63f336e4b9992a36995024b2cb880e8158e9eb4543d1cba1a94",
+        "memory-before.json": "d26a458e4732fe2afb273719428d6d0f82cc64d49c59699c9cc023350b773ff6",
+        "memory-response-format.json": "fe6cdf0f045461d6cfcbe8f4e66fcc65379d694d5fe8dd960df5431c0fb51a06",
+        "session/evidence/memory-backend-trace.jsonl": "da7300a66c964605aa6a64df679d89d216ea9c20573cf8350ec9c079a672a829"
+      }
+    },
+    "r3-plain-s3": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "374da98006892c24fb8549799a9ce0a81b5e9e71bb4a9d3d7bbf2651143d098c",
+        "canonical-reset.json": "06bee91c6fbcbca470a739a10a97c725e17aac3c09c8c35dc73cc4756651d8a0",
+        "session/evidence/messages.json": "51ac08435d1f37c3f87d68b903b5e7ed8aeb61a1a913f3b7381437b759e4ac92",
+        "session/manifest.json": "4ccbe8d2b1202d2ec424980efc8e8f2415f885ed29fa6ddf90dd26fd47e61f8f"
+      }
+    },
+    "r3-cami-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "03a26209fc7edaadfba7dbd5b96f013be6df5fe52f609ad121ead4d22e3946c5",
+        "canonical-reset.json": "80622b865dabb193f57b60298c79d5fb091b04f6cbaf504dbc8e00c51d392d1a",
+        "session/evidence/messages.json": "e73f643c74445ae9b6d56317f2f78dea4f085b0e5d0a988b6baf244135504f96",
+        "session/manifest.json": "f618a2aec38e28cf8b1fef7b27f873da2861eae6d7248b4c963d010262a90c24",
+        "memory-before.json": "3c4e076736de979d168f75600a2a56ec09de527809888c4e0d01de98113fed57",
+        "memory-response-format.json": "ffe8a4787b1403c8137bc95ad20f0022238536993603805d2a3ddfe3b98ff19d",
+        "session/evidence/memory-backend-trace.jsonl": "952a30177d32e509068e6f25c17d12535c0523ef0670be30771fa2e0b1282cfd"
+      }
+    },
+    "r3-plain-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 223,
+      "public_files": {
+        "terminal.json": "46a6fd986e7740956352200ba80c8c705744c52f4d2bef1a0d80989c10b660f4",
+        "canonical-reset.json": "9b3a279376a1b39260593206782f046003f6c39316482f48a1cae27c093fc2bf",
+        "session/evidence/messages.json": "8d32b350ec05f4433579190403851fa88b410d52e4a5e31ccb107464bb379aac",
+        "session/manifest.json": "e73fb17f9a1ddabe88849407d01ccde537f7ed8ce0ed4cfc1fc1b8a51830e2d8"
+      }
+    },
+    "r3-static-s4": {
+      "terminal_status": "passed",
+      "operational_status": "passed",
+      "quality": "pass",
+      "literal_analysis_status": "assessed",
+      "verified_terminal_artifact_count": 224,
+      "public_files": {
+        "terminal.json": "2fb291420dbe25cb296aca3e326caaaee478edc3e54519c437f70efaf3c32b42",
+        "canonical-reset.json": "fea3903b325ceb89620ed77b7f1bf823bbeaf118602dfbaf1b79149ee642ce9a",
+        "session/evidence/messages.json": "d58ddc219c63ec941503c63299fee56c99266eb0a37d5f4f5878c71114a2f9f1",
+        "session/manifest.json": "a7555f11efc14150d3086c9c582c6ccada7766e6326fd7b5ee68e98f589aad96",
+        "memory-before.json": "947c9e5a380eaa50492bb7e11d306ba48d1188c42b622064e80bda5a9e9a3f21",
+        "memory-response-format.json": "946ec7a69bbddc45d929b53d9d10bd9742f494532393dd7b33832f39e286b0b4",
+        "session/evidence/memory-backend-trace.jsonl": "3fd733b4513eab1f8fea1d15fe2a986d31e936cfde1e265ecc4f768de33cf3be"
+      }
+    }
+  }
+}

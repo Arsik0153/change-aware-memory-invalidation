@@ -1,0 +1,36 @@
+{
+  "argv": [
+    ".venv/bin/python",
+    "scripts/opencode_benchmark/analysis/summarize_literal_staleness.py",
+    "--run",
+    "runs/opencode-development-v5-20261104",
+    "--catalog",
+    "runs/opencode-development-v5-20261104/namespaces/r1-static/memory/prepared/catalog.json",
+    "--origin",
+    "runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+    "--stage1",
+    "runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+    "--stage3",
+    "runs/opencode-development-v3-staleness-20261104/stage3",
+    "--controls",
+    "scripts/opencode_benchmark/analysis/summarize_terminal_staleness.py",
+    "--analyzer",
+    "scripts/analyze_opencode_staleness.py",
+    "--out",
+    "runs/opencode-development-v5-final-staleness-20261105"
+  ],
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "stdout": {
+    "analysis_version": "source-excerpt-tuple-staleness/2",
+    "completed_trials": 36,
+    "unsupported_call_count": 0,
+    "labels_generated": "literal tuples only; no reliance annotations"
+  },
+  "report_sha256": "fd192e439fb1913bf595ca853d838a550232fac5709ee7245057928ad7e37e49",
+  "timing": "Only installed internal offline-evaluation timer was measured; no complete outer-process performance claim.",
+  "model_calls": 0,
+  "Docker_calls": 0
+}

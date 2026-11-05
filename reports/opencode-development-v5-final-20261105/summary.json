@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "study_id": "opencode-cami-real-maintenance-development-v5-literal-compact",
+  "study_sha256": "48d5f917fbf6e96665a154bc27404a9c4cf05aefb7d3952eb8b67bbdf6efa83c",
+  "analysis_sha256": "499e8a02cca5b523b8e9f59b07ac22911e23b7b5fcd7fd653a977ce21025f126",
+  "terminal_trials": 36,
+  "fixed_quality_pass": 36,
+  "operational_pass": 35,
+  "original_failed_trial_ids": [
+    "r3-static-s1"
+  ],
+  "all_primary_metrics_complete": true,
+  "primary_efficiency_eligible": false,
+  "primary_superiority": "not_established",
+  "winning_metrics_satisfying_all_six_pairs": [],
+  "excluded_trial_ids": [],
+  "descriptive_blocks": [
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "plain",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 526.821036586538,
+        "total": 526.821036586538,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 1,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 152646,
+        "total": 152646,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 733952,
+          "total": 733952
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 133841,
+          "total": 133841
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 13073,
+          "total": 13073
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 5732,
+          "total": 5732
+        }
+      },
+      "trials": [
+        "r1-plain-s1",
+        "r1-plain-s2",
+        "r1-plain-s3",
+        "r1-plain-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "static",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 538.753682740964,
+        "total": 538.753682740964,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 1,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 120680,
+        "total": 120680,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 771584,
+          "total": 771584
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 101161,
+          "total": 101161
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 13065,
+          "total": 13065
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 6454,
+          "total": 6454
+        }
+      },
+      "trials": [
+        "r1-static-s1",
+        "r1-static-s2",
+        "r1-static-s3",
+        "r1-static-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "cami",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 570.968858203385,
+        "total": 570.968858203385,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 1,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 124453,
+        "total": 124453,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 831616,
+          "total": 831616
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 104542,
+          "total": 104542
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 13496,
+          "total": 13496
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 6415,
+          "total": 6415
+        }
+      },
+      "trials": [
+        "r1-cami-s1",
+        "r1-cami-s2",
+        "r1-cami-s3",
+        "r1-cami-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "plain",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 546.7206922029145,
+        "total": 546.7206922029145,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 2,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 133380,
+        "total": 133380,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 670080,
+          "total": 670080
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 113539,
+          "total": 113539
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 13548,
+          "total": 13548
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 6293,
+          "total": 6293
+        }
+      },
+      "trials": [
+        "r2-plain-s1",
+        "r2-plain-s2",
+        "r2-plain-s3",
+        "r2-plain-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "static",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 521.5264405831695,
+        "total": 521.5264405831695,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 2,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 149665,
+        "total": 149665,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 740224,
+          "total": 740224
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 131336,
+          "total": 131336
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 12994,
+          "total": 12994
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 5335,
+          "total": 5335
+        }
+      },
+      "trials": [
+        "r2-static-s1",
+        "r2-static-s2",
+        "r2-static-s3",
+        "r2-static-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "cami",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 561.6905742301606,
+        "total": 561.6905742301606,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 2,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 123125,
+        "total": 123125,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 701824,
+          "total": 701824
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 102767,
+          "total": 102767
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 13292,
+          "total": 13292
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 7066,
+          "total": 7066
+        }
+      },
+      "trials": [
+        "r2-cami-s1",
+        "r2-cami-s2",
+        "r2-cami-s3",
+        "r2-cami-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "plain",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 544.0325473833364,
+        "total": 544.0325473833364,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 3,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 120897,
+        "total": 120897,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 668928,
+          "total": 668928
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 102659,
+          "total": 102659
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 12702,
+          "total": 12702
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 5536,
+          "total": 5536
+        }
+      },
+      "trials": [
+        "r3-plain-s1",
+        "r3-plain-s2",
+        "r3-plain-s3",
+        "r3-plain-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": false,
+      "arm": "static",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 569.4918931396678,
+        "total": 569.4918931396678,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 3,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 126291,
+        "total": 126291,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 853376,
+          "total": 853376
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 105833,
+          "total": 105833
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 14426,
+          "total": 14426
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 6032,
+          "total": 6032
+        }
+      },
+      "trials": [
+        "r3-static-s1",
+        "r3-static-s2",
+        "r3-static-s3",
+        "r3-static-s4"
+      ]
+    },
+    {
+      "all_four_operational_quality_pass": true,
+      "arm": "cami",
+      "charged_wall": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 568.8030272235628,
+        "total": 568.8030272235628,
+        "unknown_or_incomplete_trials": []
+      },
+      "repetition": 3,
+      "timing_caveat_trial_ids": [],
+      "token_work": {
+        "complete": true,
+        "known_stages": 4,
+        "observed_subtotal": 116935,
+        "total": 116935,
+        "unknown_or_incomplete_trials": []
+      },
+      "tokens": {
+        "cache_read": {
+          "known_stages": 4,
+          "observed_subtotal": 809984,
+          "total": 809984
+        },
+        "cache_write": {
+          "known_stages": 4,
+          "observed_subtotal": 0,
+          "total": 0
+        },
+        "input": {
+          "known_stages": 4,
+          "observed_subtotal": 96475,
+          "total": 96475
+        },
+        "output": {
+          "known_stages": 4,
+          "observed_subtotal": 14137,
+          "total": 14137
+        },
+        "reasoning": {
+          "known_stages": 4,
+          "observed_subtotal": 6323,
+          "total": 6323
+        }
+      },
+      "trials": [
+        "r3-cami-s1",
+        "r3-cami-s2",
+        "r3-cami-s3",
+        "r3-cami-s4"
+      ]
+    }
+  ],
+  "heldout_task_model_sessions": 0,
+  "user_requested_stop_after_completion": true,
+  "status": "complete_paused_by_user",
+  "literal_staleness_report_sha256": "fd192e439fb1913bf595ca853d838a550232fac5709ee7245057928ad7e37e49",
+  "literal_staleness": {
+    "static_returned_obsolete_observations": 12,
+    "cami_withheld_obsolete_observations": 12,
+    "unique_obsolete_records": 2,
+    "same_tuple_returned_observations_per_memory_arm": 48,
+    "verified_memory_calls": 24,
+    "unassessed_trials": 0,
+    "unsupported_calls": 0,
+    "causal_reliance": "not_inferred"
+  },
+  "failure_diagnosis": "Pinned observer rejects OpenCode system date-rollover message; runtime and fixed tests passed, original failed status retained.",
+  "closed_at_utc": "2026-11-05T00:30:25.648294+00:00",
+  "public_archive_sha256": "59b143be6546dc26c0cb54c188e9f6d977993a778a10f57decad6ed630921242",
+  "final_memory_archive_sha256": "a4cdf3ea12cfebaf0fc1fc22baef1aaf60690c34335eb7ed80183c9722386e1f",
+  "offline_analysis_reproduced": true
+}

@@ -1,0 +1,154 @@
+{
+  "status": "completed_read_only_final_analysis_then_stop",
+  "planned_trials": 36,
+  "completed_terminal_trials": 36,
+  "terminal_status_counts": {
+    "passed": 35,
+    "failed": 1
+  },
+  "operational_status_counts": {
+    "passed": 35,
+    "failed": 1
+  },
+  "quality_counts": {
+    "pass": 36
+  },
+  "literal_evidence": {
+    "all36_trial_rows_retained": true,
+    "assessed_trials": 36,
+    "memory_calls_by_arm": {
+      "plain": 0,
+      "static": 12,
+      "cami": 12
+    },
+    "unsupported_call_count": 0,
+    "unsupported_call_count_complete": true,
+    "unsupported_count_scope": "literal source/response/trace evidence; separate original operational format failure remains1",
+    "counts": [
+      {
+        "arm": "cami",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "observations": 48,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "cami",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "withheld",
+        "observations": 12,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "static",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "returned",
+        "observations": 12,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "static",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "observations": 48,
+        "record_kind": "source_excerpt_equals"
+      }
+    ],
+    "unique_records_by_assessment": [
+      {
+        "arm": "cami",
+        "channel": "returned",
+        "assessment": "same_literal_tuple",
+        "unique_record_ids": [
+          "literal-15251bab7cf7d5130f4cb2bd",
+          "literal-31f47e29babfa9642fa2e6ca",
+          "literal-32bcf24ccfd38aeacdee34f6",
+          "literal-335ddd93e2778431b2b10c35",
+          "literal-57c9836ad708b7dca5bbd9a8",
+          "literal-b554841902ccb1dffd238050",
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-cce673a84e2664e111ed6f89",
+          "literal-d75d9cab5567c0fe04d947fc",
+          "literal-d8719d75bd3f22319a8b90e0",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 11
+      },
+      {
+        "arm": "cami",
+        "channel": "withheld",
+        "assessment": "obsolete_literal_tuple",
+        "unique_record_ids": [
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 2
+      },
+      {
+        "arm": "static",
+        "channel": "returned",
+        "assessment": "obsolete_literal_tuple",
+        "unique_record_ids": [
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 2
+      },
+      {
+        "arm": "static",
+        "channel": "returned",
+        "assessment": "same_literal_tuple",
+        "unique_record_ids": [
+          "literal-32bcf24ccfd38aeacdee34f6",
+          "literal-57c9836ad708b7dca5bbd9a8",
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-cce673a84e2664e111ed6f89",
+          "literal-d75d9cab5567c0fe04d947fc",
+          "literal-d8719d75bd3f22319a8b90e0",
+          "literal-df9d3e32ee61af23abd5ed04",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 8
+      }
+    ]
+  },
+  "integrity": {
+    "verified_terminal_artifact_hashes": 8094,
+    "trial_terminal_hashes": 36,
+    "messages_hashes": 36,
+    "memory_trace_hashes": 24,
+    "source_pin_counts": {
+      "adapter": 9,
+      "controller": 19,
+      "harness": 9,
+      "production": 60
+    },
+    "all_frozen_source_pins_match": true,
+    "canonical_source_inventory_sha256": {
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/origin-and-stage1": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/stage3": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99"
+    },
+    "catalog_raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+    "catalog_semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468"
+  },
+  "original_failed_trial": "r3-static-s1",
+  "system_record_diagnosis": "system-record-diagnosis.json",
+  "analysis_report": "report.json",
+  "offline_evaluation_cost": {
+    "cpu_seconds": 6.357199609,
+    "timing_scope": "summarize entry through final input hashing; excludes Python/startup imports, final report serialization/write and outer storage observation",
+    "wall_seconds": 7.700655558146536
+  },
+  "limitations": [
+    "Literal tuple comparison covers displayed2400-character prefix and truncated flag, not behavior or complete body.",
+    "Returned exposure does not prove model causal reliance; withheld reviewer tuples were not shown to the model.",
+    "Counts include repeated dependent observations, not independent successes.",
+    "Plain has no external-memory observations, not proof that model knowledge is current.",
+    "35 operational pass and1 original failure means the all36 operational prerequisite remains unmet; source analysis does not repair that failure."
+  ],
+  "model_calls": 0,
+  "Docker_calls": 0,
+  "heldout_reads": false,
+  "implementation_changes": false,
+  "trial_retries": 0
+}
