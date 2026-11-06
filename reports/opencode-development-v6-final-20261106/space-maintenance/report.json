@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "trigger": "User requested intervention because memory/storage was decreasing.",
+  "diagnostic_start_observed_utc": "2026-11-06T17:23:41.496363+00:00",
+  "diagnostic_start_bound_utc": "2026-11-06T17:23:30+00:00",
+  "heavy_cleanup_completed_utc": "2026-11-06T17:26:15.468148+00:00",
+  "post_cleanup_status_utc": "2026-11-06T17:26:48.316125+00:00",
+  "before_free_GiB_rounded": 7.74,
+  "after_free_bytes": 11563577344,
+  "physical_space_recovered_GiB_approx": 3.0,
+  "uv_report": "Removed206942cache files,5.9GiB logical; hardlinks mean this is not physical space recovered.",
+  "actions": [
+    "uv cache clean --offline (normal in-use checks retained)",
+    "Remove /root/.cache/pip downloaded package cache",
+    "Remove /root/.npm/_cacache downloaded package cache"
+  ],
+  "failed_attempt": "python3 -m pip cache purge unavailable because host Python has no pip module; log retained. Cache removed directly after exact path/symlink checks.",
+  "preserved": [
+    "Installed environments/dependencies",
+    "All experimental results and source inputs",
+    "Docker images/containers/volumes",
+    "System journal and other services",
+    "OpenCode account/configuration"
+  ],
+  "RAM_after": {
+    "total_GiB": 3.7,
+    "available_GiB": 1.4,
+    "swap_used_GiB": 2.0
+  },
+  "resource_limitations": [
+    "RAM availability is an instantaneous OS reading, not a peak or a leak diagnosis.",
+    "Physical disk recovery is approximate relative to rounded pre-cleanup free space."
+  ],
+  "affected_trial_ids": [
+    "r2-plain-s3",
+    "r2-static-s3",
+    "r2-cami-s3"
+  ],
+  "affected_selection": "At initial diagnostic observation18trials were closed; at completion20were closed andr2-cami-s3was active. Conservatively includes every intervening/active trial; no claim that each individual timed interval was proven affected.",
+  "measurement_consequence": "All outcomes/costs retained; primary charged-wall superiority disqualified for v6. Token/quality evidence retained under frozen rules. No retries/replacement."
+}

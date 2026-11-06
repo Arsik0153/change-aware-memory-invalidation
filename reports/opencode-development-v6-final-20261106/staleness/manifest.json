@@ -1,0 +1,59 @@
+{
+  "status": "complete_read_only_analysis",
+  "files": {
+    "README.txt": "1c91894a6bdfacd45b5d1d4c5750efe11d2cd9d5ba78b96fbe642ad1afe3ac0e",
+    "analysis-invocation.json": "50b32c798cf63d1c992747db5cc3b2c866595c28671c8cccf2e7545cbc1d11d9",
+    "build_summary.py": "dcc1197b18c57f629bf4d003d97d7806a4c61880be48aa12b70174d2db218a73",
+    "evidence-hashes.json": "c8c3c1bc484af8337214e4dbea9165e5a5794770af4daea1ad34dfd489ad8e6a",
+    "report.json": "2eb07da1d50cebfc599ac21a841a603f9730ac2276f0ed4236c48ae0c5a17c0c",
+    "summary.json": "13475febe01934c65f365b153b15acba4c6b82eb1e8c6ab87c302eebe92f99f2",
+    "publication-allowlist.json": "e9797ab366375cd2e30308ab7b87d946770f33b7723226ec08ee7a3d250660f8"
+  },
+  "frozen_study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+  "primary_report_sha256": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+  "completed_trials": 36,
+  "verified_terminal_artifact_hashes": 8130,
+  "literal_counts": [
+    {
+      "arm": "cami",
+      "assessment": "same_literal_tuple",
+      "channel": "returned",
+      "observations": 48,
+      "record_kind": "source_excerpt_equals"
+    },
+    {
+      "arm": "cami",
+      "assessment": "obsolete_literal_tuple",
+      "channel": "withheld",
+      "observations": 12,
+      "record_kind": "source_excerpt_equals"
+    },
+    {
+      "arm": "static",
+      "assessment": "obsolete_literal_tuple",
+      "channel": "returned",
+      "observations": 11,
+      "record_kind": "source_excerpt_equals"
+    },
+    {
+      "arm": "static",
+      "assessment": "same_literal_tuple",
+      "channel": "returned",
+      "observations": 49,
+      "record_kind": "source_excerpt_equals"
+    }
+  ],
+  "unique_obsolete_records_across_arms": 2,
+  "exact_public_compact_receipts_verified": 24,
+  "source_pin_counts": {
+    "adapter": 9,
+    "controller": 22,
+    "harness": 9,
+    "production": 60
+  },
+  "tracked_writes": false,
+  "model_calls": 0,
+  "Docker_calls": 0,
+  "heldout_reads": false,
+  "trial_retries": 0
+}

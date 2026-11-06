@@ -1,0 +1,664 @@
+{
+  "Docker_calls": 0,
+  "completed_terminal_trials": 36,
+  "heldout_reads": false,
+  "implementation_changes": false,
+  "integrity": {
+    "all_frozen_source_pins_match": true,
+    "canonical_source_inventory_sha256": {
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/origin-and-stage1": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "/root/apps/change-aware-memory-invalidation/runs/opencode-development-v3-staleness-20261104/stage3": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99"
+    },
+    "catalog_raw_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+    "catalog_semantic_sha256": "da8ceda2d9899d7b3f38eb9e1d5a7d67afc0bbd8b9acf3848b14cc8f28fc4468",
+    "memory_trace_hashes": 24,
+    "messages_hashes": 36,
+    "source_pin_counts": {
+      "adapter": 9,
+      "controller": 22,
+      "harness": 9,
+      "production": 60
+    },
+    "terminal_hashes_bound_to_primary": 36,
+    "verified_terminal_artifact_hashes": 8130
+  },
+  "limitations": [
+    "Explicit schema2 only; catalog1/manual-note/v3 recipe is untouched.",
+    "Canonical current source is used only before prior/overlapping possible writes; no post-write substitution.",
+    "Full and compact require public trace joins; compact also requires intact original audit receipts. Publication redaction can invalidate receipts; unsupported never repaired using private state.",
+    "Hashes bind evidence, not authorship, semantic behavior or model causal reliance.",
+    "Withheld current tuples are reviewer context, not content exposed to the trial agent.",
+    "Plain has no external-memory observations, not proof of current internal knowledge.",
+    "Counts are dependent repeated observations; offline analysis is not trial model/tool cost.",
+    "Distinct record sets overlap across channels/stages; do not sum them as independent cases.",
+    "Static49same/11obsolete and CAMI48returned_same/12withheld_obsolete are observed retrieval outputs, not a matched counterfactual ranking comparison.",
+    "No causal reliance, human annotation, whole-body/behavioral equivalence or efficiency benefit inferred."
+  ],
+  "literal_evidence": {
+    "all36_trials_retained": true,
+    "assessed_trials": 36,
+    "call_source_boundaries": {
+      "no_prior_or_overlapping_potential_write": 24
+    },
+    "counts": [
+      {
+        "arm": "cami",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "observations": 48,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "cami",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "withheld",
+        "observations": 12,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "static",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "returned",
+        "observations": 11,
+        "record_kind": "source_excerpt_equals"
+      },
+      {
+        "arm": "static",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "observations": 49,
+        "record_kind": "source_excerpt_equals"
+      }
+    ],
+    "memory_calls_by_arm": {
+      "cami": 12,
+      "plain": 0,
+      "static": 12
+    },
+    "per_trial": [
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 1,
+        "trial_id": "r1-plain-s1"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r1-static-s1"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r1-cami-s1"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r1-static-s2"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r1-cami-s2"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 2,
+        "trial_id": "r1-plain-s2"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r1-cami-s3"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 3,
+        "trial_id": "r1-plain-s3"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 2
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r1-static-s3"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 4,
+        "trial_id": "r1-plain-s4"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 1
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 4
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r1-static-s4"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r1-cami-s4"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r2-static-s1"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r2-cami-s1"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 1,
+        "trial_id": "r2-plain-s1"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r2-cami-s2"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 2,
+        "trial_id": "r2-plain-s2"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r2-static-s2"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 3,
+        "trial_id": "r2-plain-s3"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 2
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r2-static-s3"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r2-cami-s3"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 2
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r2-static-s4"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r2-cami-s4"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 4,
+        "trial_id": "r2-plain-s4"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r3-cami-s1"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 1,
+        "trial_id": "r3-plain-s1"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 1,
+        "trial_id": "r3-static-s1"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 2,
+        "trial_id": "r3-plain-s2"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r3-static-s2"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 5
+          }
+        ],
+        "stage": 2,
+        "trial_id": "r3-cami-s2"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 2
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r3-static-s3"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 3,
+        "trial_id": "r3-cami-s3"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 3,
+        "trial_id": "r3-plain-s3"
+      },
+      {
+        "arm": "cami",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          },
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "withheld",
+            "count": 2
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r3-cami-s4"
+      },
+      {
+        "arm": "plain",
+        "memory_calls": 0,
+        "observations": [],
+        "stage": 4,
+        "trial_id": "r3-plain-s4"
+      },
+      {
+        "arm": "static",
+        "memory_calls": 1,
+        "observations": [
+          {
+            "assessment": "obsolete_literal_tuple",
+            "channel": "returned",
+            "count": 2
+          },
+          {
+            "assessment": "same_literal_tuple",
+            "channel": "returned",
+            "count": 3
+          }
+        ],
+        "stage": 4,
+        "trial_id": "r3-static-s4"
+      }
+    ],
+    "response_formats": {
+      "compact_verified": 24
+    },
+    "same_literal_despite_changed_source_file": [
+      {
+        "arm": "cami",
+        "channel": "returned",
+        "observations": 17
+      },
+      {
+        "arm": "static",
+        "channel": "returned",
+        "observations": 19
+      }
+    ],
+    "unique_obsolete_records_across_both_arms": [
+      {
+        "record_id": "literal-b72f27654121d1cca0325ebc",
+        "subject": {
+          "language": "python",
+          "node_kind": "function",
+          "path": "src/click/decorators.py",
+          "qualname": "help_option"
+        }
+      },
+      {
+        "record_id": "literal-f1e763299ebc7560da7b62d7",
+        "subject": {
+          "language": "python",
+          "node_kind": "method",
+          "path": "src/click/core.py",
+          "qualname": "Command.get_help_option"
+        }
+      }
+    ],
+    "unique_records_by_assessment": [
+      {
+        "arm": "cami",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "unique_record_ids": [
+          "literal-15251bab7cf7d5130f4cb2bd",
+          "literal-31f47e29babfa9642fa2e6ca",
+          "literal-32bcf24ccfd38aeacdee34f6",
+          "literal-335ddd93e2778431b2b10c35",
+          "literal-488f43e660682a257294c9e7",
+          "literal-57c9836ad708b7dca5bbd9a8",
+          "literal-b554841902ccb1dffd238050",
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-d75d9cab5567c0fe04d947fc",
+          "literal-d8719d75bd3f22319a8b90e0",
+          "literal-df9d3e32ee61af23abd5ed04",
+          "literal-effbea113565491ba854740f",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 13
+      },
+      {
+        "arm": "cami",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "withheld",
+        "unique_record_ids": [
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 2
+      },
+      {
+        "arm": "static",
+        "assessment": "obsolete_literal_tuple",
+        "channel": "returned",
+        "unique_record_ids": [
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 2
+      },
+      {
+        "arm": "static",
+        "assessment": "same_literal_tuple",
+        "channel": "returned",
+        "unique_record_ids": [
+          "literal-15251bab7cf7d5130f4cb2bd",
+          "literal-31f47e29babfa9642fa2e6ca",
+          "literal-32bcf24ccfd38aeacdee34f6",
+          "literal-335ddd93e2778431b2b10c35",
+          "literal-496561e78ffd5dd795247e01",
+          "literal-57c9836ad708b7dca5bbd9a8",
+          "literal-b554841902ccb1dffd238050",
+          "literal-b72f27654121d1cca0325ebc",
+          "literal-cce673a84e2664e111ed6f89",
+          "literal-d75d9cab5567c0fe04d947fc",
+          "literal-d8719d75bd3f22319a8b90e0",
+          "literal-f1e763299ebc7560da7b62d7"
+        ],
+        "unique_records": 12
+      }
+    ],
+    "unknown_after_possible_write_observations": 0,
+    "unknown_record_observations": 0,
+    "unsupported_calls": 0,
+    "unsupported_or_redacted_receipts": 0
+  },
+  "model_calls": 0,
+  "offline_evaluation_cost": {
+    "cpu_seconds": 5.832668649,
+    "timing_scope": "summarize entry through final input hashing; excludes Python/startup imports, final report serialization/write and outer storage observation",
+    "wall_seconds": 6.000476605026051
+  },
+  "operational_status_counts": {
+    "passed": 36
+  },
+  "planned_trials": 36,
+  "primary_report_sha256": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+  "primary_wall_timing_caveat_trial_ids": [
+    "r2-cami-s3",
+    "r2-plain-s3",
+    "r2-static-s3"
+  ],
+  "quality_counts": {
+    "pass": 36
+  },
+  "status": "complete_read_only_literal_analysis",
+  "terminal_status_counts": {
+    "passed": 36
+  },
+  "timing_caveat_scope": "User cache-cleanup wall caveat retained in primary analysis; no trial excluded or source/staleness classification changed by this analysis.",
+  "trial_retries": 0
+}

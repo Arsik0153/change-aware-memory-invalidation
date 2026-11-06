@@ -1,0 +1,161 @@
+{
+  "all_admitted_originals_unchanged": true,
+  "all_six_catalogs_match": true,
+  "archives": [
+    {
+      "byte_reproducible_second_build": true,
+      "files": 8491,
+      "manifest_sha256": "69c4fd8fe52b09f140781905cd92da894c4d47b254f9f803cbf65e695ca4027c",
+      "sha256": "8d0884f2d79fdb413b268ff7ace3fd80d198b137c8937d9359176ff061f7c87c",
+      "size": 24957384,
+      "source_bytes": 91334173
+    },
+    {
+      "byte_reproducible_second_build": true,
+      "files": 84,
+      "manifest_sha256": "ec8b84104661f4793a2ebbe1c5556a791f2f1994811ea8dd69e9aad442133030",
+      "sha256": "339ec903288b6aa471de163dd0c370e332ccaddc3046f20c48a74451daf9a8b4",
+      "size": 5570267,
+      "source_bytes": 84493060
+    }
+  ],
+  "canonical_frozen_source_files": 140,
+  "caveat_sha256": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
+  "cohort_primary_wall_claim_disqualified": true,
+  "derived_output_policy": "Still-active resources/staleness/figures excluded; later separate supplements, never rewrite frozen raw archive.",
+  "exclude_duplicate_trees": [
+    "public-evidence/",
+    "final-memory-state/"
+  ],
+  "excluded_trials": [],
+  "files": {
+    "HANDOFF.md": {
+      "bytes": 4042,
+      "sha256": "5647049f559b55d2783ae515fd58ece7073b0b8842bea8fef9b862bf2b7df757"
+    },
+    "README.md": {
+      "bytes": 4608,
+      "sha256": "f9702e85b7ce38676819e1658e1a0660a2365f8d003b77556c31d35b82ebe034"
+    },
+    "admission.json": {
+      "bytes": 5759445,
+      "sha256": "240f66bbcc3a7036f9562275a40b903da818d26c9863f0a406b654997a33546d"
+    },
+    "build_publication.py": {
+      "bytes": 31534,
+      "sha256": "13537ebdd97801d47a4521db53b7df572dc37bc27f0b52575f593a428a1000d9"
+    },
+    "final-memory-state.tar.gz": {
+      "bytes": 5570267,
+      "sha256": "339ec903288b6aa471de163dd0c370e332ccaddc3046f20c48a74451daf9a8b4"
+    },
+    "offline-analysis-verification/aggregate/blocks.csv": {
+      "bytes": 979,
+      "sha256": "43057faec8d8753ecd12487593beb0b77696e0d06e8d8d504bc3b3f22db86a3e"
+    },
+    "offline-analysis-verification/aggregate/paired.csv": {
+      "bytes": 1216,
+      "sha256": "c0963dc3efad62f6c910d868e4da880a11fb7292bf67c111dcba75c5e4c0b112"
+    },
+    "offline-analysis-verification/aggregate/report.json": {
+      "bytes": 127579,
+      "sha256": "b0c98ab47c1f36603a075f7f91c4c68618c3921db16cd44bcd37bd73710b9cb4"
+    },
+    "offline-analysis-verification/aggregate/trials.csv": {
+      "bytes": 9157,
+      "sha256": "6a9206213b94543e732a3e47eb017bb83456f83b5be1eb5d45eaf3b0ef692e84"
+    },
+    "offline-analysis-verification/command.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis-verification/command.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis-verification/verification.json": {
+      "bytes": 2359,
+      "sha256": "93aa58d90a612f8c15aad7723080cdf3ffd337ddb3c496a1cea2c4f54803c31f"
+    },
+    "offline-analysis.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline-analysis.stdout.txt": {
+      "bytes": 1049,
+      "sha256": "aa57aed5ef9904b009173d008a3726922bf8acebde93d84f7fb7abffa801c227"
+    },
+    "packaging-report.json": {
+      "bytes": 4634,
+      "sha256": "cbd8b51d42de7bb0d09e6813461b51f00f0b9fc73f2e35ba2dae21bfc365efb0"
+    },
+    "packaging.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packaging.stdout.txt": {
+      "bytes": 528,
+      "sha256": "059af14cfa73061ab19db617b70d2ee8915b54accdeb493c7b886c195ae7dcf5"
+    },
+    "public-evidence.tar.gz": {
+      "bytes": 24957384,
+      "sha256": "8d0884f2d79fdb413b268ff7ace3fd80d198b137c8937d9359176ff061f7c87c"
+    },
+    "reproduce_analysis.py": {
+      "bytes": 6228,
+      "sha256": "3f67581db5b2a81cb78a8b31b0c496b53af243c934c168cfda5bdadee0182f4a"
+    },
+    "ruff.txt": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  },
+  "maintenance_report_sha256": "c70a19e573c6a2bdee8c45e003876e1cb6b4ac97e17f8024117eea1a80db4091",
+  "offline_reproduction": {
+    "Docker_calls": 0,
+    "all36_original_terminals_retained": true,
+    "all8130_terminal_artifact_hashes_exact": true,
+    "caveat_sha256": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
+    "cohort_primary_wall_claim_disqualified": true,
+    "cpu_seconds_completed_children": 3.1055189999999997,
+    "full_aggregate_equal_after_explicit_path_normalization": true,
+    "maintenance_report_sha256": "c70a19e573c6a2bdee8c45e003876e1cb6b4ac97e17f8024117eea1a80db4091",
+    "model_calls": 0,
+    "network_calls": 0,
+    "portable_difference_allowlist": [
+      "run",
+      "timing_caveats.source_path",
+      "timing_caveats.entries[*].evidence_path"
+    ],
+    "primary_superiority": "not_established",
+    "raw_caveat_and_maintenance_bytes_unchanged": true,
+    "returncode": 0,
+    "scope": "Publication/offline evaluation overhead only, never trial cost. Frozen analysis code only; no source/model/fixture execution.",
+    "status": "passed",
+    "target_source_execution": false,
+    "three_csv_files_byte_exact": true,
+    "trial_exclusions": [],
+    "verified_public_payload_files": 8491,
+    "wall_seconds": 4.370904236100614
+  },
+  "original_declared_terminal_artifacts": 8130,
+  "original_operational_pass": 36,
+  "original_quality_pass": 36,
+  "original_terminals": 36,
+  "primary_superiority": "not_established",
+  "privacy": "Exact already-sanitized public bytes; no account/private OpenCode state included or read.",
+  "runtime_helper_pins_verified": 100,
+  "schema_version": 1,
+  "scope": {
+    "Docker_calls": 0,
+    "commits": false,
+    "heldout_access": false,
+    "model_calls": 0,
+    "network_calls": 0,
+    "new_timing_claim": false,
+    "target_source_execution": false,
+    "tracked_edits": false
+  },
+  "separate_final_cami_states": 3,
+  "status": "complete_v6_public_raw_evidence_with_mandatory_timing_caveat"
+}

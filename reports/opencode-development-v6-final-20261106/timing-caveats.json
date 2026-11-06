@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+  "caveats": [
+    {
+      "trial_ids": [
+        "r2-plain-s3",
+        "r2-static-s3",
+        "r2-cami-s3"
+      ],
+      "reason": "User-requested shared-host disk/RAM diagnosis and safe downloaded-package-cache cleanup overlapped these trials. Preserve all outcomes; disqualify primary wall claims for the whole cohort.",
+      "evidence_path": "space-maintenance/report.json",
+      "evidence_sha256": "c70a19e573c6a2bdee8c45e003876e1cb6b4ac97e17f8024117eea1a80db4091"
+    }
+  ]
+}

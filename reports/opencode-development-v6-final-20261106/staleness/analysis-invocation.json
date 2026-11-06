@@ -1,0 +1,37 @@
+{
+  "argv": [
+    ".venv/bin/python",
+    "scripts/opencode_benchmark/analysis/summarize_literal_staleness.py",
+    "--run",
+    "runs/opencode-development-v6-20261106",
+    "--catalog",
+    "runs/opencode-development-v6-20261106/namespaces/r1-static/memory/prepared/catalog.json",
+    "--origin",
+    "runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+    "--stage1",
+    "runs/opencode-development-v3-staleness-20261104/origin-and-stage1",
+    "--stage3",
+    "runs/opencode-development-v3-staleness-20261104/stage3",
+    "--controls",
+    "scripts/opencode_benchmark/analysis/summarize_terminal_staleness.py",
+    "--analyzer",
+    "scripts/analyze_opencode_staleness.py",
+    "--out",
+    "runs/opencode-development-v6-final-staleness-20261106"
+  ],
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "stdout": {
+    "analysis_version": "source-excerpt-tuple-staleness/2",
+    "completed_trials": 36,
+    "unsupported_call_count": 0,
+    "labels_generated": "literal tuples only; no reliance annotations"
+  },
+  "report_sha256": "2eb07da1d50cebfc599ac21a841a603f9730ac2276f0ed4236c48ae0c5a17c0c",
+  "timing": "Only the installed internal offline-evaluation timer was measured. It excludes startup, final serialization, this summary derivation and publication; no full outer-process cost claimed.",
+  "reproduction": "Frozen CLI requires a new separate --out directory. Reuse the exact source-pinned development inputs; original outcomes remain untouched.",
+  "model_calls": 0,
+  "Docker_calls": 0
+}
