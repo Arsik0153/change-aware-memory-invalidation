@@ -121,6 +121,15 @@ on an authored long-tail file. That candidate is stopped before real-tool timing
 a bounded prefix buffer is being checked separately. Correctness checks do not
 establish an end-to-end speedup.
 
+The [bounded prefix fix](reports/opencode-source-prefix-implementation-20261106/verification.json)
+passes 137 targeted tests and exact Click index comparisons. Its [separate repeated resource screen](reports/opencode-source-prefix-candidate4-review-20261106/README.md)
+passes all 20 attempts without the material memory regression; CPU and wall-time
+differences from the prior baseline are within measured variation. Temporary
+line buffers are explicitly released after successful traversal. Real-tool
+timing remains separate. A [standalone readable projection](reports/opencode-readable-response-implementation-20261106/IMPLEMENTATION.md)
+also passes authored tests and all 24 packet checks, with fresh embedded receipts
+and exact compact fallback; it is not yet connected to the adapter or benchmark.
+
 ## Install and run the offline demo
 
 Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:

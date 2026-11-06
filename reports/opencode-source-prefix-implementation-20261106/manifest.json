@@ -1,0 +1,28 @@
+{
+  "status": "stable_handoff_parent_committed",
+  "source_sha256": {
+    "src/cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+    "tests/test_index_source_segments.py": "7a4b5bac9e138882473b9b76783b3c842f9f3e0a2ba2a48c8d711ed61d198650",
+    "tests/fixtures/python312_ast_source_segment.py.txt": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93"
+  },
+  "artifact_sha256": {
+    "baseline-candidate3-index.py.txt": "fccb66bfdf251b0bcdb092d010abf33b1db9a90069f943cc4a2daf507c500fea",
+    "candidate-prefix-index.py.txt": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+    "click-equivalence-before-cycle-release.json": "072ca923a8befbfb1fc228138092274a8521475a32ab1407e28a29dadefc10b3",
+    "click-equivalence-del-visit-intermediate.json": "7158e5a04ae92f8a8b588345bce6d9e95e20128fc963cf02100d4a144baac5f4",
+    "click-equivalence.json": "0d751ae39719c2f3e51580b99d489041e2f305106e5254537bab923d6d2db9b2",
+    "container-source-segment-reference.py.txt": "dd0c188c1eca1042a30e85d85cbc1749b1d541b93caee8e3c5cdd109f2222e6a",
+    "cycle-release-before-fix.txt": "28e2dc9e4e3ee49583abb3a2b7da444f143bd7ea55a89dd40cc508a896395b55",
+    "del-visit-intermediate-diagnostic.json": "9ec195b4b28f8db16644e286379c3c17c848c47868a0488ce338f290a635eade",
+    "del-visit-intermediate-index.py.txt": "889192f9afabd5cf6069f4f1a6feceda7f3e8defb29699725aa56fe6a363bea6",
+    "implementation.patch": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prefix-before-cache-release.py.txt": "6a95ca526f1f2e2fd49b1ea64a688e29d372b868b163a96102b745bad8ec7e42",
+    "stdlib-provenance.json": "0c423954e9269409d254590b5162e682bc76664515a45a441983c19664e295d3",
+    "targeted-tests-del-visit-intermediate.txt": "2726cfa617b9c53a8ff0898bf1a55b713f7271ce3a8258fba984f3296675d18f",
+    "targeted-tests.txt": "7cc3d33f40456290175e3fc0d33b5b26375b89c17914062645f26523f6616009",
+    "verification.json": "a2c7b436f2d499c4717bf0d0662bd59733eb851fc8152fd2fc18e28ce9903a24",
+    "verify_click_equivalence.py": "d4da2cc8fcafe7e1286c40deacd199d3bf73fadea13f02525b9fa4581a3d217d",
+    "handoff.json": "8e0fdd7dbc7efcce510eb7e6f18004f4d7d37b277448b9a012922f5fb30a054a"
+  },
+  "parent_reported_commit": "51172a3b2e9ad4933cb77c645ca550bb9f671e1a"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "parent_reviewed_and_committed",
+  "parent_reported_commit": "51172a3b2e9ad4933cb77c645ca550bb9f671e1a",
+  "source_sha256": {
+    "src/cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+    "tests/test_index_source_segments.py": "7a4b5bac9e138882473b9b76783b3c842f9f3e0a2ba2a48c8d711ed61d198650",
+    "tests/fixtures/python312_ast_source_segment.py.txt": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93"
+  },
+  "tracked_edits_after_final_validation": false,
+  "checks": "137targeted passed;4fullClick comparisons exact;Ruff+mypy passed; exactfixture unchanged",
+  "next_phase": "Independent C2/C4 same-case confirmation only after root release; no retests or packaging in this handoff step."
+}

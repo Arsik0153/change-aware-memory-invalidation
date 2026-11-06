@@ -1,0 +1,46 @@
+{
+  "additional_boundary_control": "Backend object rather than string falls back safely; tuple membership avoids hashing an unknown JSON type. No observed original packet behavior changed.",
+  "all24_initial_final_model_and_audit_artifacts_identical": true,
+  "arm_totals": {
+    "cami": {
+      "original_compact_text_bytes": 83383,
+      "readable_text_bytes": 74534,
+      "returned_records": 48,
+      "withheld_records": 12
+    },
+    "static": {
+      "original_compact_text_bytes": 100091,
+      "readable_text_bytes": 88547,
+      "returned_records": 60,
+      "withheld_records": 0
+    }
+  },
+  "compact_regression_tests": 20,
+  "effective_formats": {
+    "research-memory-readable/1": 24
+  },
+  "fallback_count": 0,
+  "fallback_reasons": {},
+  "final_report": "packets-final/report.json",
+  "final_report_sha256": "486607ef9259afa05954f9504f7e9f7bc6f2227ca67de68aa30891bc633c4be1",
+  "model_calls": 0,
+  "new_tests": 42,
+  "origin_source_shapes": {
+    "entry:path,sha256,size": 108,
+    "payload:path,sha256,size": 108
+  },
+  "packets": 24,
+  "scope": "Exact essential fields and physical source bytes checked independently on all24 old packets. New embedded projection receipt and complete model-result SHA independently reconstructed/checked. Byte figures only, no token/quality/latency claim.",
+  "source_inputs_unchanged": true,
+  "source_pins": {
+    "integrations/opencode/compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+    "integrations/opencode/literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+    "integrations/opencode/memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+    "integrations/opencode/readable_response.py": "85bd8be9dbf20deffd0dea2c15b09ecbe6341aa6d4956c907cb1f3efe1db19fa",
+    "tests/test_opencode_readable_response.py": "728197371bcf097ae2134f594af3a47dc5bfa7f9b0a4901853ddad218e342adc"
+  },
+  "status": "passed",
+  "tests_seconds_reported": 0.11,
+  "total_tests": 62,
+  "wire_integration": false
+}

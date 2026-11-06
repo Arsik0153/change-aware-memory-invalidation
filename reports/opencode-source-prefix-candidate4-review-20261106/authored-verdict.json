@@ -1,0 +1,376 @@
+{
+  "attempts": 20,
+  "candidate4_index_sha256": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+  "complete_module_equality_all_fields": true,
+  "cost_scopes_nonadditive": {
+    "all_container_lifecycle_host_wall_seconds_sum": 16.80576774617657,
+    "free_disk_bytes_after": 11587710976,
+    "owned_output_bytes": 171925,
+    "parse_cpu_seconds_sum": 0.42324532000000015,
+    "parse_wall_seconds_sum": 0.42867049598135054
+  },
+  "decision": "eligible_for_separate_root_authorized_MCP_comparison",
+  "failures": 0,
+  "limits": [
+    "Two authored near-cap inputs, not a project population estimate.",
+    "Memory peaks are lifetime observations at the parse boundary; process RSS and cgroup values are nonadditive.",
+    "Same2CPU/2GiB runtime; sharedhost light editing/systemservices, not CPU exclusivity.",
+    "Imports/input/digest outside parse timer; whole-container costs retained separately.",
+    "No universal RAM benefit, OS page release or end-to-end MCP/model benefit established.",
+    "Historical C3 negative screen and original serializer failures are preserved, not pooled."
+  ],
+  "models": 0,
+  "outcomes": {
+    "early_function_blank_tail": {
+      "all_complete_module_fields_equal": true,
+      "complete_module_sha256": "5bc905659fb0a29e0a221ba465d00251dbd160d0e7e845dabde1a55a2ea1825a",
+      "input_sha256": "7b83f1c035fa18b4e72bc20ee5accc0b6428e5fe508ccd9849b838f83927835f",
+      "metrics": {
+        "parse_cpu_seconds": {
+          "candidate2": {
+            "max": 0.039827800000000024,
+            "median": 0.029959159999999985,
+            "min": 0.029543380000000008,
+            "n": 5,
+            "range": 0.010284420000000016,
+            "samples": [
+              0.029959159999999985,
+              0.029828860000000013,
+              0.030068060000000008,
+              0.039827800000000024,
+              0.029543380000000008
+            ]
+          },
+          "candidate4": {
+            "max": 0.03197190999999999,
+            "median": 0.029866300000000012,
+            "min": 0.029611440000000044,
+            "n": 5,
+            "range": 0.002360469999999948,
+            "samples": [
+              0.031379909999999955,
+              0.029866300000000012,
+              0.03197190999999999,
+              0.029611440000000044,
+              0.029828560000000004
+            ]
+          },
+          "classification": "no_measurable_difference",
+          "median_increase": -9.285999999997241e-05,
+          "noise_threshold": 0.010284420000000016,
+          "paired_candidate4_minus_candidate2": [
+            0.0014207499999999706,
+            3.7439999999999696e-05,
+            0.0019038499999999847,
+            -0.01021635999999998,
+            0.000285179999999996
+          ],
+          "relative_median_increase": -0.0030995528579563798
+        },
+        "parse_return_cgroup_peak_bytes": {
+          "candidate2": {
+            "max": 34693120,
+            "median": 31035392,
+            "min": 30875648,
+            "n": 5,
+            "range": 3817472,
+            "samples": [
+              34693120,
+              30875648,
+              31035392,
+              31051776,
+              31006720
+            ]
+          },
+          "candidate4": {
+            "max": 30937088,
+            "median": 30789632,
+            "min": 30720000,
+            "n": 5,
+            "range": 217088,
+            "samples": [
+              30736384,
+              30937088,
+              30867456,
+              30720000,
+              30789632
+            ]
+          },
+          "material_memory_regression": false,
+          "material_threshold_bytes": 3817472,
+          "median_increase": -245760,
+          "noise_threshold": 3817472,
+          "paired_candidate4_minus_candidate2": [
+            -3956736,
+            61440,
+            -167936,
+            -331776,
+            -217088
+          ],
+          "relative_median_increase": -0.007918701332981391
+        },
+        "parse_return_process_rss_peak_bytes": {
+          "candidate2": {
+            "max": 41529344,
+            "median": 41488384,
+            "min": 41398272,
+            "n": 5,
+            "range": 131072,
+            "samples": [
+              41398272,
+              41488384,
+              41488384,
+              41529344,
+              41476096
+            ]
+          },
+          "candidate4": {
+            "max": 41619456,
+            "median": 41492480,
+            "min": 41218048,
+            "n": 5,
+            "range": 401408,
+            "samples": [
+              41619456,
+              41218048,
+              41492480,
+              41615360,
+              41484288
+            ]
+          },
+          "material_memory_regression": false,
+          "material_threshold_bytes": 1048576,
+          "median_increase": 4096,
+          "noise_threshold": 401408,
+          "paired_candidate4_minus_candidate2": [
+            221184,
+            -270336,
+            4096,
+            86016,
+            8192
+          ],
+          "relative_median_increase": 9.872642906506072e-05
+        },
+        "parse_wall_seconds": {
+          "candidate2": {
+            "max": 0.03983568586409092,
+            "median": 0.030066982842981815,
+            "min": 0.029543362092226744,
+            "n": 5,
+            "range": 0.010292323771864176,
+            "samples": [
+              0.03088914300315082,
+              0.029837721958756447,
+              0.030066982842981815,
+              0.03983568586409092,
+              0.029543362092226744
+            ]
+          },
+          "candidate4": {
+            "max": 0.03198147611692548,
+            "median": 0.03137861494906247,
+            "min": 0.029609321849420667,
+            "n": 5,
+            "range": 0.0023721542675048113,
+            "samples": [
+              0.03137861494906247,
+              0.031867584912106395,
+              0.03198147611692548,
+              0.029609321849420667,
+              0.029827101854607463
+            ]
+          },
+          "classification": "no_measurable_difference",
+          "median_increase": 0.0013116321060806513,
+          "noise_threshold": 0.010292323771864176,
+          "paired_candidate4_minus_candidate2": [
+            0.0004894719459116459,
+            0.002029862953349948,
+            0.0019144932739436626,
+            -0.010226364014670253,
+            0.0002837397623807192
+          ],
+          "relative_median_increase": 0.043623668957086935
+        }
+      }
+    },
+    "early_function_large_multiline_literal": {
+      "all_complete_module_fields_equal": true,
+      "complete_module_sha256": "f46a6d1235b329a9fbd0d9b997ff690dd156fa2ce83d04bcb126f7ae24fcc858",
+      "input_sha256": "a173dd81583605a73ae57d3048c03390b4bc223e2bccea08bd71b4cf18881101",
+      "metrics": {
+        "parse_cpu_seconds": {
+          "candidate2": {
+            "max": 0.012934429999999997,
+            "median": 0.010918819999999996,
+            "min": 0.010808170000000006,
+            "n": 5,
+            "range": 0.002126259999999991,
+            "samples": [
+              0.011058430000000008,
+              0.010808170000000006,
+              0.010891150000000016,
+              0.012934429999999997,
+              0.010918819999999996
+            ]
+          },
+          "candidate4": {
+            "max": 0.011631720000000012,
+            "median": 0.010895990000000022,
+            "min": 0.010537810000000036,
+            "n": 5,
+            "range": 0.0010939099999999757,
+            "samples": [
+              0.011631720000000012,
+              0.010537810000000036,
+              0.010773010000000027,
+              0.010895990000000022,
+              0.010910409999999982
+            ]
+          },
+          "classification": "no_measurable_difference",
+          "median_increase": -2.2829999999973705e-05,
+          "noise_threshold": 0.002126259999999991,
+          "paired_candidate4_minus_candidate2": [
+            0.0005732900000000041,
+            -0.0002703599999999695,
+            -0.00011813999999998881,
+            -0.0020384399999999747,
+            -8.41000000001424e-06
+          ],
+          "relative_median_increase": -0.002090885278809772
+        },
+        "parse_return_cgroup_peak_bytes": {
+          "candidate2": {
+            "max": 60252160,
+            "median": 34705408,
+            "min": 34463744,
+            "n": 5,
+            "range": 25788416,
+            "samples": [
+              60252160,
+              34463744,
+              34586624,
+              34709504,
+              34705408
+            ]
+          },
+          "candidate4": {
+            "max": 34439168,
+            "median": 34385920,
+            "min": 34234368,
+            "n": 5,
+            "range": 204800,
+            "samples": [
+              34439168,
+              34385920,
+              34426880,
+              34357248,
+              34234368
+            ]
+          },
+          "material_memory_regression": false,
+          "material_threshold_bytes": 25788416,
+          "median_increase": -319488,
+          "noise_threshold": 25788416,
+          "paired_candidate4_minus_candidate2": [
+            -25812992,
+            -77824,
+            -159744,
+            -352256,
+            -471040
+          ],
+          "relative_median_increase": -0.009205712262480821
+        },
+        "parse_return_process_rss_peak_bytes": {
+          "candidate2": {
+            "max": 45416448,
+            "median": 45158400,
+            "min": 45006848,
+            "n": 5,
+            "range": 409600,
+            "samples": [
+              45006848,
+              45416448,
+              45158400,
+              45416448,
+              45158400
+            ]
+          },
+          "candidate4": {
+            "max": 45297664,
+            "median": 45035520,
+            "min": 44769280,
+            "n": 5,
+            "range": 528384,
+            "samples": [
+              44904448,
+              45158400,
+              45297664,
+              44769280,
+              45035520
+            ]
+          },
+          "material_memory_regression": false,
+          "material_threshold_bytes": 1048576,
+          "median_increase": -122880,
+          "noise_threshold": 528384,
+          "paired_candidate4_minus_candidate2": [
+            -102400,
+            -258048,
+            139264,
+            -647168,
+            -122880
+          ],
+          "relative_median_increase": -0.0027210884353741495
+        },
+        "parse_wall_seconds": {
+          "candidate2": {
+            "max": 0.013738979119807482,
+            "median": 0.011452716076746583,
+            "min": 0.010890944860875607,
+            "n": 5,
+            "range": 0.0028480342589318752,
+            "samples": [
+              0.011452716076746583,
+              0.011744086863473058,
+              0.010890944860875607,
+              0.013738979119807482,
+              0.010917875915765762
+            ]
+          },
+          "candidate4": {
+            "max": 0.011642966885119677,
+            "median": 0.010910404846072197,
+            "min": 0.010537874884903431,
+            "n": 5,
+            "range": 0.0011050920002162457,
+            "samples": [
+              0.011642966885119677,
+              0.010537874884903431,
+              0.010823465185239911,
+              0.01117418590001762,
+              0.010910404846072197
+            ]
+          },
+          "classification": "no_measurable_difference",
+          "median_increase": -0.000542311230674386,
+          "noise_threshold": 0.0028480342589318752,
+          "paired_candidate4_minus_candidate2": [
+            0.0001902508083730936,
+            -0.0012062119785696268,
+            -6.747967563569546e-05,
+            -0.0025647932197898626,
+            -7.471069693565369e-06
+          ],
+          "relative_median_increase": -0.0473521937538892
+        }
+      }
+    }
+  },
+  "passed": 20,
+  "plan_sha256": "7f659cc285b276042f10041c841973b379aa3dcaa18f4d11bbb3ef7700dba4d7",
+  "raw_report_sha256": "e3bf8650256b9fc933cf9509787231dca93d91f2a988fe5deb9e66578fd99e97",
+  "source_freeze_sha256": "39ad8ae9a002e2c69f30a9b00d31ffccc8527173806332f74e69602e6f4cb4e5",
+  "status": "authored_screen_admission_pass"
+}

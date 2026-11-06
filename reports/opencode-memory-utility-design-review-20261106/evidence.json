@@ -1,0 +1,685 @@
+{
+  "actual_lookup_metadata": {
+    "cami": {
+      "calls": 12,
+      "cpu_seconds": 15.097259297999999,
+      "explicit_limit_calls": 12,
+      "requested_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "wall_seconds": 16.22634945809841
+    },
+    "static": {
+      "calls": 12,
+      "cpu_seconds": 0.22781987,
+      "explicit_limit_calls": 12,
+      "requested_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "wall_seconds": 0.26575467200018466
+    }
+  },
+  "archive_sha256": "a2d3cd369ba330b9db089bb390f624de8732d5196aeb272535d85a751b72fa3a",
+  "catalog_metadata": [
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r1-cami/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    },
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r1-static/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    },
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r2-cami/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    },
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r2-static/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    },
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r3-cami/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    },
+    {
+      "kinds": {
+        "source_excerpt_equals": 329
+      },
+      "path": "runs/opencode-development-v6-20261106/namespaces/r3-static/memory/prepared/catalog.json",
+      "records": 329,
+      "sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "truncated_prefixes": 14
+    }
+  ],
+  "descriptive_costs": {
+    "cami": {
+      "assistant_responses": 152,
+      "charged_wall_seconds_total_descriptive_only": 1411.8263062676415,
+      "construction_wall_seconds_total": 12.469975914340466,
+      "container_cpu_seconds_total": 193.95353,
+      "max_container_peak_bytes_nonadditive": 487002112,
+      "token_work_blocks": [
+        133132,
+        121785,
+        112402
+      ],
+      "token_work_median": 121785,
+      "token_work_range": [
+        112402,
+        133132
+      ],
+      "tokens_total": {
+        "cache_read": 2380800,
+        "cache_write": 0,
+        "input": 307058,
+        "output": 41361,
+        "reasoning": 18900
+      }
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "charged_wall_seconds_total_descriptive_only": 1360.4554274461698,
+      "construction_wall_seconds_total": 0,
+      "container_cpu_seconds_total": 168.49077,
+      "max_container_peak_bytes_nonadditive": 301051904,
+      "token_work_blocks": [
+        108089,
+        147233,
+        98081
+      ],
+      "token_work_median": 108089,
+      "token_work_range": [
+        98081,
+        147233
+      ],
+      "tokens_total": {
+        "cache_read": 2278272,
+        "cache_write": 0,
+        "input": 294780,
+        "output": 41051,
+        "reasoning": 17572
+      }
+    },
+    "static": {
+      "assistant_responses": 159,
+      "charged_wall_seconds_total_descriptive_only": 1344.935550837312,
+      "construction_wall_seconds_total": 2.958831527037546,
+      "container_cpu_seconds_total": 167.64976000000001,
+      "max_container_peak_bytes_nonadditive": 322613248,
+      "token_work_blocks": [
+        134812,
+        108609,
+        112594
+      ],
+      "token_work_median": 112594,
+      "token_work_range": [
+        108609,
+        134812
+      ],
+      "tokens_total": {
+        "cache_read": 2472576,
+        "cache_write": 0,
+        "input": 298537,
+        "output": 40181,
+        "reasoning": 17297
+      }
+    }
+  },
+  "frozen_source_evidence": {
+    "integrations/opencode/memory_adapter.py": {
+      "archive": "reports/opencode-study-design-v6-20261106/implementation-source.tar.gz",
+      "sha256": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+      "spans": [
+        {
+          "first_line": 18,
+          "last_line": 34,
+          "text": "TOOL = {\n    \"name\": \"memory_lookup\",\n    \"description\": (\n        \"Retrieve origin memory. Statuses distinguish unchecked origin, manual assertions and literal records. \"\n        \"A supported source excerpt certifies only the displayed prefix and truncation flag under the current verified readset, not behavior. \"\n        \"Withheld summaries are unusable. Query again after edits. Use native tools for missing code or context.\"\n    ),\n    \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"query\": {\"type\": \"string\", \"minLength\": 1, \"maxLength\": 1000},\n            \"limit\": {\"type\": \"integer\", \"minimum\": 1, \"maximum\": 20, \"default\": 5},\n        },\n        \"required\": [\"query\"],\n        \"additionalProperties\": False,\n    },\n}"
+        },
+        {
+          "first_line": 108,
+          "last_line": 122,
+          "text": "        if self.phase != \"ready\":\n            raise RpcError(-32600, \"Initialize and send notifications/initialized first\")\n        if method == \"tools/list\":\n            if params:\n                raise RpcError(-32602, \"No pagination cursor\")\n            return {\"tools\": [TOOL]}\n        if method == \"tools/call\":\n            if params.get(\"name\") != \"memory_lookup\":\n                raise RpcError(-32602, \"Unknown tool\")\n            arguments = params.get(\"arguments\", {})\n            if not isinstance(arguments, dict) or not {\"query\"} <= set(arguments) <= {\n                \"query\",\n                \"limit\",\n            }:\n                raise RpcError(-32602, \"memory_lookup requires query and optional limit\")"
+        }
+      ]
+    },
+    "integrations/opencode/memory_backend.py": {
+      "archive": "reports/opencode-study-design-v6-20261106/implementation-source.tar.gz",
+      "sha256": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+      "spans": [
+        {
+          "first_line": 267,
+          "last_line": 306,
+          "text": "def rank(catalog, query, limit):\n    check(\n        isinstance(query, str) and 0 < len(query.strip()) <= 1000 and \"\\x00\" not in query,\n        \"query must be 1..1000 non-NUL characters\",\n    )\n    check(type(limit) is int and 1 <= limit <= 20, \"limit must be integer 1..20\")\n    query = query.strip().casefold()\n    tokens = set(re.findall(r\"[^\\W_]+\", query))\n    check(bool(tokens), \"query requires a name, path or text token\")\n    results = []\n    for record in catalog[\"records\"]:\n        payload, subject = record[\"payload\"], record[\"payload\"][\"subject\"]\n        exact = [\n            record[\"id\"],\n            subject[\"qualname\"],\n            subject[\"qualname\"].rsplit(\".\", 1)[-1],\n            subject[\"path\"] + \":\" + subject[\"qualname\"],\n        ]\n        identity_tokens = set(re.findall(r\"[^\\W_]+\", \" \".join(exact).casefold()))\n        literal_text = (\n            payload[\"expected\"][\"text\"]\n            if payload[\"type\"] == \"source_excerpt_equals\"\n            else payload.get(\"text\", \"\")\n        )\n        text_tokens = set(\n            re.findall(r\"[^\\W_]+\", (literal_text + \" \" + payload.get(\"note_key\", \"\")).casefold())\n        )\n        overlap = len(tokens & identity_tokens) * 4 + len(tokens & text_tokens)\n        is_exact = query in [item.casefold() for item in exact]\n        if is_exact or overlap:\n            results.append((0 if is_exact else 1, -overlap, record[\"id\"], record))\n    results.sort(key=lambda item: item[:3])\n    selected, used = [], 0\n    for _, _, _, record in results[:limit]:\n        cost = len(canonical(record))\n        if used + cost > 16384:\n            break\n        used += cost\n        selected.append(record)\n    return selected, len(results)"
+        },
+        {
+          "first_line": 642,
+          "last_line": 673,
+          "text": "    def lookup(self, query, limit=5):\n        selected, total = rank(self.catalog, query, limit)\n        states, generation = {}, None\n        if self.binding[\"backend\"] == \"cami\":\n            with isolated_state(Path(self.binding[\"state_home\"])):\n                if self.service is None:\n                    from cami.product.service import ProductMemory\n\n                    self.service = ProductMemory(\n                        Path(self.binding[\"repo\"]),\n                        tuple(self.catalog[\"source_roots\"]),\n                        tuple(self.catalog[\"excluded_paths\"]),\n                    )\n                from cami.product.memory.validation import availability\n\n                generation = self.service.refresh()\n                by_id = {item.record.memory_id: item for item in generation.states}\n                check(\n                    len(by_id) == len(self.binding[\"mapping\"]),\n                    \"current memory catalog membership changed\",\n                )\n                for record in self.catalog[\"records\"]:\n                    bound = self.binding[\"mapping\"][record[\"id\"]]\n                    item = by_id.get(bound[\"memory_id\"])\n                    check(\n                        item is not None\n                        and item.record.revision == bound[\"revision\"]\n                        and plain_payload(item.record.payload) == record[\"payload\"],\n                        \"current memory differs from frozen catalog\",\n                    )\n                    status = availability(item)\n                    states[record[\"id\"]] = (item, status)"
+        },
+        {
+          "first_line": 675,
+          "last_line": 734,
+          "text": "        for record in selected:\n            entry = {\n                \"id\": record[\"id\"],\n                \"payload\": record[\"payload\"],\n                \"origin_source\": record[\"source\"],\n            }\n            if generation is None:\n                entry.update(\n                    availability=\"unchecked_current\",\n                    label=\"origin_literal_source_assertion\"\n                    if record[\"payload\"][\"type\"] == \"source_excerpt_equals\"\n                    else \"manual_assertion\"\n                    if record[\"payload\"][\"type\"] == \"note\"\n                    else \"origin_structural_assertion\",\n                )\n                entries.append(entry)\n            else:\n                item, status = states[record[\"id\"]]\n                if hasattr(status, \"reason\"):\n                    withheld.append(\n                        {\n                            \"id\": record[\"id\"],\n                            \"subject\": record[\"payload\"][\"subject\"],\n                            \"kind\": record[\"payload\"][\"type\"],\n                            \"reason\": status.reason,\n                            \"required_action\": status.required_action,\n                        }\n                    )\n                else:\n                    entry.update(\n                        availability=\"manual_assertion_source_unchanged\"\n                        if item.state.type == \"manual_note\"\n                        else \"supported\",\n                        label=\"manual_assertion\"\n                        if item.state.type == \"manual_note\"\n                        else \"validated_literal_source\"\n                        if record[\"payload\"][\"type\"] == \"source_excerpt_equals\"\n                        else \"validated_structural_fact\",\n                        state_type=item.state.type,\n                    )\n                    entries.append(entry)\n        result = {\n            \"schema_version\": 1,\n            \"backend\": self.binding[\"backend\"],\n            \"query\": query,\n            \"catalog_sha256\": self.binding[\"catalog_sha256\"],\n            \"matched_records\": total,\n            \"selected_records\": len(selected),\n            \"truncated\": total > len(selected),\n            \"selection_budget\": {\n                \"origin_record_bytes\": 16384,\n                \"used_bytes\": sum(len(canonical(r)) for r in selected),\n                \"ranking_before_availability\": True,\n            },\n            \"entries\": entries,\n            \"withheld\": withheld,\n            \"freshness\": \"origin only; current validity unchecked\"\n            if generation is None\n            else \"verified_readset; may change after verification; refresh after edits\",\n        }"
+        }
+      ]
+    },
+    "scripts/opencode_benchmark/controller/study_controller.py": {
+      "archive": "reports/opencode-study-design-v6-20261106/implementation-source.tar.gz",
+      "sha256": "a87c24f0e6d8b638f8cbcbc67f1570c3dec974597147d1dd3cf89eaf3e5f7110",
+      "spans": [
+        {
+          "first_line": 85,
+          "last_line": 114,
+          "text": "            create_namespace(namespace, study_sha)\n        workspace, memory = verify_namespace(namespace, study_sha)\n        if previous:\n            if file_hashes(memory) != previous[\"memory_files_after\"]:\n                raise ValueError(\"persistent memory differs from prior terminal state\")\n        phase = \"canonical_reset\"\n        fixture_start = time.monotonic()\n        canonical = reset(\n            namespace,\n            Path(study[\"bundle_path\"]) / task[\"archive\"],\n            task[\"archive_sha256\"],\n            study_sha,\n        )\n        write(directory / \"canonical-reset.json\", canonical)\n        record[\"costs\"][\"infrastructure_host_wall_seconds\"] += time.monotonic() - fixture_start\n        if trial[\"stage\"] == 1 and trial[\"arm\"] != \"plain\":\n            phase = \"origin_construction\"\n            tick = time.monotonic()\n            try:\n                immutable = origin_memory(\n                    study, workspace, memory, directory / \"construction\", trial[\"arm\"]\n                )\n            finally:\n                record[\"costs\"][\"construction_host_wall_seconds\"] = time.monotonic() - tick\n        else:\n            immutable = verify_memory(\n                study, memory, trial[\"arm\"], previous.get(\"immutable_memory\") if previous else None\n            )\n        if inventory(workspace, omit_git=True) != canonical[\"canonical_files\"]:\n            raise ValueError(\"canonical working source changed during preparation\")"
+        },
+        {
+          "first_line": 152,
+          "last_line": 165,
+          "text": "        phase = \"memory_integrity\"\n        verify_memory(study, memory, trial[\"arm\"], immutable)\n        phase = \"source_export_and_fixed_grading\"\n        infra_start = time.monotonic()\n        try:\n            record[\"patch\"] = capture(\n                workspace, canonical[\"canonical_files\"], directory / \"candidate\"\n            )\n            quality = grade(\n                study, task, directory / \"candidate\", directory / \"evaluation\", allowance=allowance\n            )\n            record[\"quality\"] = quality[\"status\"]\n        finally:\n            record[\"costs\"][\"infrastructure_host_wall_seconds\"] += time.monotonic() - infra_start"
+        }
+      ]
+    },
+    "scripts/opencode_benchmark/controller/study_runtime.py": {
+      "archive": "reports/opencode-study-design-v6-20261106/implementation-source.tar.gz",
+      "sha256": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21",
+      "spans": [
+        {
+          "first_line": 131,
+          "last_line": 160,
+          "text": "def origin_memory(study, workspace, memory, out, backend):\n    if any(memory.iterdir()):\n        raise ValueError(\"origin memory must be new and empty\")\n    bundle = Path(study[\"bundle_path\"])\n    chown(workspace)\n    chown(memory)\n    seed = study[\"normalized\"][\"seed\"]\n    source_policy = policy_for(study[\"normalized\"])\n    mounts = [\n        (workspace, \"/workspace\", False),\n        (memory, \"/memory\", False),\n        (Path(study[\"cami_source\"]), \"/opt/cami-src\", True),\n        (Path(study[\"adapter\"]), \"/opt/memory-adapter\", True),\n        (Path(__file__).parent / \"preparation_worker.py\", \"/opt/preparation_worker.py\", True),\n    ]\n    if source_policy[\"schema_version\"] == 1:\n        mounts.append((bundle / source_policy[\"generator\"], \"/opt/seed_source_notes.py\", True))\n    else:\n        mounts.append(\n            (\n                bundle / source_policy[\"generator\"],\n                \"/opt/literal-generator/seed_source_literals_v2.py\",\n                True,\n            )\n        )\n        mounts += [\n            (bundle / path, \"/opt/literal-generator/\" + Path(path).name, True)\n            for path in source_policy[\"helpers\"]\n        ]\n    # Backend supplied by caller; every memory arm pays its own identical source generation."
+        },
+        {
+          "first_line": 188,
+          "last_line": 224,
+          "text": "def verify_memory(study, memory, backend, expected=None):\n    if backend == \"plain\":\n        if any(memory.iterdir()):\n            raise ValueError(\"plain dummy memory must remain empty\")\n        return {}\n    bundle = Path(study[\"bundle_path\"])\n    spec = read(bundle / study[\"normalized\"][\"seed\"])\n    if digest(memory / \"seed/seed-spec.json\") != digest(bundle / study[\"normalized\"][\"seed\"]):\n        raise ValueError(\"memory origin seed changed\")\n    catalog = read(memory / \"prepared/catalog.json\")\n    binding = read(memory / \"prepared/binding.json\")\n    if (\n        binding[\"backend\"] != backend\n        or binding[\"repo\"] != \"/workspace\"\n        or binding[\"catalog_path\"] != \"/memory/prepared/catalog.json\"\n    ):\n        raise ValueError(\"binding backend/workspace/catalog identity changed\")\n    if binding[\"state_home\"] != (\"/memory/cami-state\" if backend == \"cami\" else None):\n        raise ValueError(\"binding state identity changed\")\n    semantic_sha = hashlib.sha256(\n        json.dumps(\n            catalog, sort_keys=True, ensure_ascii=True, separators=(\",\", \":\"), allow_nan=False\n        ).encode()\n    ).hexdigest()\n    if binding[\"catalog_sha256\"] != semantic_sha:\n        raise ValueError(\"canonical catalog binding changed\")\n    originals = {r[\"id\"]: r for r in spec[\"records\"]}\n    if len(catalog[\"records\"]) != len(originals) or {r[\"id\"] for r in catalog[\"records\"]} != set(\n        originals\n    ):\n        raise ValueError(\"catalog coverage differs from frozen origin seed\")\n    source_policy = policy_for(study[\"normalized\"])\n    if source_policy[\"schema_version\"] == 2:\n        if catalog != literal_catalog(spec):\n            raise ValueError(\n                \"schema2 catalog differs from frozen expected tuple/source/span/subject/policy\"\n            )"
+        },
+        {
+          "first_line": 237,
+          "last_line": 244,
+          "text": "    if backend == \"cami\" and set(binding[\"mapping\"]) != set(originals):\n        raise ValueError(\"CAMI mapping does not cover exact catalog\")\n    hashes = {\n        name: digest(memory / name)\n        for name in [\"seed/seed-spec.json\", \"prepared/catalog.json\", \"prepared/binding.json\"]\n    }\n    if expected is not None and expected != hashes:\n        raise ValueError(\"immutable memory payload/binding changed during trial\")"
+        }
+      ]
+    },
+    "scripts/opencode_benchmark/controller/study_workspace.py": {
+      "archive": "reports/opencode-study-design-v6-20261106/implementation-source.tar.gz",
+      "sha256": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89",
+      "spans": [
+        {
+          "first_line": 70,
+          "last_line": 80,
+          "text": "def reset(namespace, archive, expected_sha, study_sha):\n    start = time.monotonic()\n    workspace, _ = verify_namespace(namespace, study_sha)\n    if digest(archive) != expected_sha:\n        raise ValueError(\"canonical archive changed\")\n    for entry in workspace.iterdir():\n        if entry.is_dir() and not entry.is_symlink():\n            shutil.rmtree(entry)\n        else:\n            entry.unlink()\n    extract(archive, workspace)"
+        }
+      ]
+    }
+  },
+  "narrow_nonclaims": [
+    "Only public catalog metadata and generic runtime code inspected; literal payload text not analyzed. No task prompt, gold, heldout, auth or private-state body read.",
+    "No memory-write MCP API; not a claim that OS-level mutation is impossible. Backend refresh persists maintenance state, not model-authored experience.",
+    "No causal attribution of provider tokens or necessary reads from byte overlap.",
+    "Whole v6 wall is primary-ineligible due preserved cleanup overlap; all times descriptive."
+  ],
+  "source_pins": {
+    "reports/opencode-study-design-v6-20261106/protocol.json": "fdc5bcc642c1dc435d866b144c2654e89d91936a782485373b8b425951ff01f2",
+    "reports/opencode-study-design-v6-20261106/source-freeze.json": "3c39a8c0454aa8503f5206d7a44d40e4e4f10ff508f47da3b64db0f9c9abb330",
+    "reports/opencode-study-design-v6-20261106/study.json": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+    "runs/opencode-development-v6-final-analysis-20261106/report.json": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+    "runs/opencode-v6-independent-audit-20261106/memory-packet-roster.json": "c7bcc97e81f8ff1a02a6f8fbab0206242f3a7110f543e1381403d3fedc61d7f5",
+    "runs/opencode-v6-independent-audit-20261106/summary.json": "01de6a4011674e9678ed9790cd93be2cec0b8b40cb2d13a56488a827aead351b"
+  },
+  "status": "completed_readonly_design_review",
+  "terminal_catalog_bindings": [
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-cami-s1",
+      "sha256": "cbc0d27823d938c95b5cda8e8ac6e70627b462af9e25bbc06b57abaf344fbf5b",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-cami-s2",
+      "sha256": "cb605bee05084d6e96cbcb7e35ddfb708235a3c350998cfeafe3b9e77d5a93b1",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-cami-s3",
+      "sha256": "803ad436ce70a280ee857be8fa7c5662b2ad22843ca08b82e68de44c57d9b9a9",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-cami-s4",
+      "sha256": "441785e284aec3b26248322d9f6c0b2fe75f5d74438d093f17b3743f0fffbe30",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r1-plain-s1",
+      "sha256": "bc7dff6ca2dec8cef5bf5f1d0381ebefd6eb0b22197bc9dedcd9e49d53068069",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r1-plain-s2",
+      "sha256": "e50e1d3228c755e3e2f6cbad41f82f317c5b2e56555c0fc78d7a9122b85502e9",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r1-plain-s3",
+      "sha256": "be1083e35b40dfe1affce9bbe8da1f83dc87e8963875740825388c2e163702d6",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r1-plain-s4",
+      "sha256": "57f20e7c85f036434e079cd22d79dd72016b87e78c2cf78e81c1505a479aac9c",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-static-s1",
+      "sha256": "58659d4a3884206ab17335049db570267451b63e91c9e7d2e56c0b544e970db0",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-static-s2",
+      "sha256": "49b8a8680ef2eed764646843d81baf337c8ab6813c31615f4a30d7f771313891",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-static-s3",
+      "sha256": "be751ab87c217ae7991a8544865e27ac873c0809da0ab3df5e50acc976f3ff28",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r1-static-s4",
+      "sha256": "8389a32c0f2ac2ab65e84ffe72c8f63cf9f63344be1e1c4b0d7c8c05ffeaa950",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-cami-s1",
+      "sha256": "ab25b064ff2f4e6eb4b0e0db2559d83551f6c14665f3b14fe177d0479e253ffc",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-cami-s2",
+      "sha256": "0ccc9fe3d130f0aacf6c25ef47087e95faaa450ec10531f9ddbf24b8005a4010",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-cami-s3",
+      "sha256": "aca58da8aa9c2a1e964e810c247237272544fbda349068611dc26b740b44302a",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-cami-s4",
+      "sha256": "b45ab9769210bd4636857fd59b4bc2d272c3c62df055882b830759eb67b0265a",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r2-plain-s1",
+      "sha256": "4cddc9b299db86ea46308be2a928a6b08de98f61135eda329409bb5eca7054c5",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r2-plain-s2",
+      "sha256": "ef5ccb21e44d341eb1ccc8686fe02d17360a6c628c1f7d126f4dd31e3b57faf7",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r2-plain-s3",
+      "sha256": "b514a65a92b1c8bf7bf0f4e8a18f624c05fc95537a8479eeff3b8078b1139fdd",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r2-plain-s4",
+      "sha256": "49c4ea129fb5aaf42bcff8edcde449443f95fecbbf026247019e38cce29e528f",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-static-s1",
+      "sha256": "cdd121870923f2344aa641f9d64f1b9c24f4b0c5919e25a0162a81ca198ece6d",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-static-s2",
+      "sha256": "d9b4144b0afc40e6ac4ca27b5b47df0147baa18d7f4d78b0812451889e426d6c",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-static-s3",
+      "sha256": "f3299a4dc15ce51603e27b5e93ed3437026af1255710b289142fdbe2d1867184",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r2-static-s4",
+      "sha256": "f983bf5f1712ae6248bf5dd808a9707fbc90b54971779c492188b37254bb1f91",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-cami-s1",
+      "sha256": "ec9ab47c03bc4887ec82a44b5707ecb1d320bf23625cae9a30a5ba2bd08e50c1",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-cami-s2",
+      "sha256": "871350f55deeeea4550fe51e48978877abff4973a6dbf7f10c5eb4285df402a9",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-cami-s3",
+      "sha256": "4b9c6594930adf9ad3f94740cb30bb4addf9aecc9084aa7ba46822871f22a6b6",
+      "status": "passed"
+    },
+    {
+      "arm": "cami",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-cami-s4",
+      "sha256": "c61a1bb17497064f07f0755d0146cbcfae70619cac3568cd0146b336a5dadf3c",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r3-plain-s1",
+      "sha256": "abe266cea14c4dc57788fb6e8153a0d5c08ed1b3a4340051412da5189db41c09",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r3-plain-s2",
+      "sha256": "c0eeedb0e99128909345152198ad2b79442374d086db54e1818d4e1388202c67",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r3-plain-s3",
+      "sha256": "5753942c208af8fa0808ac1b510bd454866fd0c23caac0022c611e25fa435c32",
+      "status": "passed"
+    },
+    {
+      "arm": "plain",
+      "catalog_binding": null,
+      "id": "r3-plain-s4",
+      "sha256": "ca6b0c8e527268b3e2753784dca5363dccda1f4b3604c9ddc0a0fe5aa7a94dcc",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-static-s1",
+      "sha256": "c74a45b6f1ad95e037aac5c01a252c71ac0e481271b05612a11b94ce6c1a6d50",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-static-s2",
+      "sha256": "c8c7f6ab5211ec2f0a67243d022c5a7ab42b51414e3dc5edf882d75ac93d9516",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-static-s3",
+      "sha256": "3304096d746b4755c248ef64b79fee0d9c433c1c511e4ce6e9b7e7ce9df25f40",
+      "status": "passed"
+    },
+    {
+      "arm": "static",
+      "catalog_binding": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+      "id": "r3-static-s4",
+      "sha256": "470ee6a4e26e29b368fe6dcde0d5a7cad80139e3fdfcc3ae224887a8abb28d33",
+      "status": "passed"
+    }
+  ],
+  "terminal_pinned_trace_inputs": {
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s1/session/evidence/memory-backend-trace.jsonl": "0d27d5c1bcc2b70f44952404cf9dfedc715985ce784e8334ac51df3e0b741e83",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s1/session/evidence/messages.json": "a7fc42b3724bc48df53c17ff3f968854499e96ddbbb27b44c281c90b10773683",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s2/session/evidence/memory-backend-trace.jsonl": "ad09661b59f6ffc62ac79c64f472c73bda6e908ac5fdbfe96fb1b58b03c6ed4e",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s2/session/evidence/messages.json": "b336a2ad01d0cefc605f17c99e76dfb417790973e2d3dc2164b7f11e4f6fac5e",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s3/session/evidence/memory-backend-trace.jsonl": "00c438cfc7b85be9d188e4d9c96023a0e1a5339daf68a2b7307060f50380daf9",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s3/session/evidence/messages.json": "fd67c06fe565d735ffc6371faf22a0ed9c44577bed6905507e701dbda38bdc9e",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s4/session/evidence/memory-backend-trace.jsonl": "07ae303a008c0e73706a3a59d6874fda313b51e3bba0567c5a2e70f9cc5eed3a",
+    "runs/opencode-development-v6-20261106/trials/r1-cami-s4/session/evidence/messages.json": "788f32906b48cd5cd6153a5fb1d3fe253ba047e73efd767037b56ca1b59e48b5",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s1/session/evidence/memory-backend-trace.jsonl": "0d98cad032e2d7b099d8a7e21339849fad7b15319475960726ba39efa054803c",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s1/session/evidence/messages.json": "53435f28106764743414fe5d8eb7acb22c7a7ddc029c984e8dbee121928071e8",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s2/session/evidence/memory-backend-trace.jsonl": "91ea15be5d839ed0875ee977810b6a019fcab4627577f1afe28562efaea6a569",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s2/session/evidence/messages.json": "f6d8645d1cc51dcc5b1b88581a403d88e2e37dcd082a6652ad95cb09d0de044b",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s3/session/evidence/memory-backend-trace.jsonl": "630d0c3784170b12e2ba630b1a71ae2b43f0e507417d9728a164bef5e3851556",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s3/session/evidence/messages.json": "e5a1c6ff1fc88ad1757e5a138dff5ec5aa076c3dc042ebbc6a2aaba1230b0d85",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s4/session/evidence/memory-backend-trace.jsonl": "5ea32c9762152629f6b273a36fd01259772c9637e918a73d91d6c431f16cfdac",
+    "runs/opencode-development-v6-20261106/trials/r1-static-s4/session/evidence/messages.json": "0cad215e09d1958f3cf89983664122bd695ed8e96c70161d07ed32d0d09212d4",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s1/session/evidence/memory-backend-trace.jsonl": "e6acf994b29a4eb1aca693e0b80c67adfec14658fc32cd649df6ee37ce550c14",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s1/session/evidence/messages.json": "f9e57c0610af54155299d53410318d75331cebabd484ab6656e338ff3db1b44e",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s2/session/evidence/memory-backend-trace.jsonl": "9878f617e52b0dbfde77535e8ee58f89aac77e4c5e827cd85a03aed12c629cab",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s2/session/evidence/messages.json": "9a069a4cda0ac7173bfdc1b640efcf274ec64eb63849a4e93e5057065997842d",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s3/session/evidence/memory-backend-trace.jsonl": "342a12fdeb09ab495ba2b0b958f0d1b3e4c1567961dba5263cdedfe3b2a059e9",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s3/session/evidence/messages.json": "bc0c5f2da8788a362d4ca4f20dcf78a6b1ef097bbe192aecfceae9d54e23cadf",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s4/session/evidence/memory-backend-trace.jsonl": "9e1da1897fdd41b69c69a08ff11f664d79aadf876baf6417684ec5e342aa8e12",
+    "runs/opencode-development-v6-20261106/trials/r2-cami-s4/session/evidence/messages.json": "dacd6b943535a595b6fc6230a093ed6357bed4adbabde444f8412081f06cb6b4",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s1/session/evidence/memory-backend-trace.jsonl": "42ea0e9135a25393f7566bafbabce3bd3d88e07ff8d338a03ab1a7bd97c7406b",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s1/session/evidence/messages.json": "787af043bf8a2dd5b7d130349c3975208f97b9dd707c8f598d40372723ca5c61",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s2/session/evidence/memory-backend-trace.jsonl": "8ac2e112d42b8cb959538deac595bbcbffbbc9a3388c4fd8b3545666fc04f80e",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s2/session/evidence/messages.json": "13021ac1e6c41b3d39574f5a31e36b1935a2d350f612b56aea892449c47b485c",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s3/session/evidence/memory-backend-trace.jsonl": "89ce70d3a3b0fd10a9c9124b34f8bfdb26c09da211354240f01676b95f508bf9",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s3/session/evidence/messages.json": "5aac5999abc4c4428c5de44a80ae8e7912825f31cf64abf2fcfbe7be17e569c7",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s4/session/evidence/memory-backend-trace.jsonl": "4c9354f2d2a256aa249f08a0939507a0243489a07a1715ea5777510c78ced62c",
+    "runs/opencode-development-v6-20261106/trials/r2-static-s4/session/evidence/messages.json": "d2fde84140e82075cc6030d1f32aeb0368a9ce91751bd1ab2e0f85b005cb29a0",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s1/session/evidence/memory-backend-trace.jsonl": "aace7f1c81994295252abac5b46dc9ab6a502d5de383731407a5f4266748ebb4",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s1/session/evidence/messages.json": "1b49be856382e3e287c9e407e28f1f4760b725ad0dc2a6080e042d409e7ea707",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s2/session/evidence/memory-backend-trace.jsonl": "4eaefd0ad67c4b8db34da9d6bc1a5cfc6d9fb7ddea6d0f2b02f0668393098832",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s2/session/evidence/messages.json": "8a922ba0f3fbcf12ae641198f8c7a8fb527943fd5907e1f2189d32683668d432",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s3/session/evidence/memory-backend-trace.jsonl": "ca7ce80c4a78c5226bf4a195820bd2d3befc4cf854b143d23721f35185ca2586",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s3/session/evidence/messages.json": "0c0a37ad0de2f006eec512aa6261e23e629a1cda35c74cfd1957333d6402d0e4",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s4/session/evidence/memory-backend-trace.jsonl": "1dfaf5369f2dddde4e08b57a0915e3b4f13fcd0b30894ccdf19f828606c0cb56",
+    "runs/opencode-development-v6-20261106/trials/r3-cami-s4/session/evidence/messages.json": "fac9595752faa4d595ebfad3afb4661debb1fbb0c51d4589f0c8cecead68074d",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s1/session/evidence/memory-backend-trace.jsonl": "aec501b8a0bb42dad41e908ac842da9f73fa8aa3a0d829e8e3736f77a3b4dfc4",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s1/session/evidence/messages.json": "c69a6684b784e49e9a18fb803ab33b66b8ffe526a4efab60385230f8ff8a7381",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s2/session/evidence/memory-backend-trace.jsonl": "f53ba3534e100ee9bbb937bb0df5b0d7ee7737dc8db5c98c4f517caed592c9bf",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s2/session/evidence/messages.json": "2f41db95da87bc3cac0cdd1b8e7a0c243b77860d46eb367ac6c806a3c593c4f1",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s3/session/evidence/memory-backend-trace.jsonl": "da0817f6c58b3f2f0c7f432ead75f0bbddc16d46ee06a3602e70898095e23db2",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s3/session/evidence/messages.json": "2371f991232422c8d0ddadcf482bc984ef897c27266768d25d6d040b75bcbac4",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s4/session/evidence/memory-backend-trace.jsonl": "da5aee2bbe39b77f787bc7a7760657b59116c38047706d74f244ab8c4702b121",
+    "runs/opencode-development-v6-20261106/trials/r3-static-s4/session/evidence/messages.json": "acfd5a0af809b8f16a26abf8725338cd0cd04cd37f43a9c85af3af4ec9b6e3fc"
+  },
+  "visible_cost_totals": {
+    "cami": {
+      "assistant_responses": 152,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 965992,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 83383,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3301,
+        "patch": 100754,
+        "read": 7996,
+        "shell": 11108
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 40979,
+        "patch": 2582,
+        "read": 507712,
+        "shell": 198673
+      },
+      "native_tool_count": 286,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 146,
+        "shell": 74
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 17,
+      "returned_literal_text_utf8_bytes": 45333,
+      "returned_prefix_truncated_observations": 10,
+      "returned_record_observations": 48,
+      "same_file_native_read_observations_after_memory": 46,
+      "same_file_reads_without_recorded_possible_intervening_write": 25,
+      "token_work": 367319,
+      "withheld_record_observations": 12
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "glob": 98,
+        "grep": 4207,
+        "patch": 101248,
+        "read": 7919,
+        "shell": 10374
+      },
+      "native_result_text_utf8_bytes": {
+        "glob": 90,
+        "grep": 42487,
+        "patch": 3101,
+        "read": 494888,
+        "shell": 174195
+      },
+      "native_tool_count": 302,
+      "native_tool_counts": {
+        "glob": 2,
+        "grep": 44,
+        "patch": 41,
+        "read": 142,
+        "shell": 73
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "token_work": 353403,
+      "withheld_record_observations": 0
+    },
+    "static": {
+      "assistant_responses": 159,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 1225710,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 100091,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3455,
+        "patch": 94166,
+        "read": 8360,
+        "shell": 12341
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 30804,
+        "patch": 2536,
+        "read": 497077,
+        "shell": 180219
+      },
+      "native_tool_count": 294,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 151,
+        "shell": 77
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 18,
+      "returned_literal_text_utf8_bytes": 58884,
+      "returned_prefix_truncated_observations": 12,
+      "returned_record_observations": 60,
+      "same_file_native_read_observations_after_memory": 52,
+      "same_file_reads_without_recorded_possible_intervening_write": 22,
+      "token_work": 356015,
+      "withheld_record_observations": 0
+    }
+  }
+}

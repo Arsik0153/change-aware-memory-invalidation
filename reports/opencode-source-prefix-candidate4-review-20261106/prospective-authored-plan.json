@@ -1,0 +1,127 @@
+{
+  "Docker_calls_at_plan": 0,
+  "adapter_frozen_for_later_MCP": {
+    "README.md": "74cd8e5ec1acc817304303e860b76f85f924839b95612476c855e43f30681c55",
+    "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+    "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+    "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+    "memory_adapter.py": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+    "memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+    "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+    "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+    "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+  },
+  "background": "Rootsmallmetadatareads; peerlightcodewriting; Codex inference/systemservices present; no otherbenchmark/model/test/compression. Sharedhost not exclusiveCPU; nozerooverhead claim.",
+  "candidate": "candidate4_bounded_prefix",
+  "candidate2_index_sha256": "08c2a18e5a5f7b386cf1ef6aa854e985ca71ab7146777ce5ba228e2a1f68c61f",
+  "candidate4_index_sha256": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+  "cases": {
+    "early_function_blank_tail": {
+      "bytes": 1835008,
+      "expected_function_definitions": 1,
+      "expected_module_definitions": 1,
+      "expected_total_ast_nodes": 5,
+      "physical_lf_count": 1834984,
+      "scope": "authored diagnostic only; not Click/heldout population",
+      "sha256": "7b83f1c035fa18b4e72bc20ee5accc0b6428e5fe508ccd9849b838f83927835f"
+    },
+    "early_function_large_multiline_literal": {
+      "bytes": 1835008,
+      "expected_function_definitions": 1,
+      "expected_module_definitions": 1,
+      "expected_total_ast_nodes": 9,
+      "physical_lf_count": 30085,
+      "scope": "authored diagnostic only; not Click/heldout population",
+      "sha256": "a173dd81583605a73ae57d3048c03390b4bc223e2bccea08bd71b4cf18881101"
+    }
+  },
+  "claim": "Bounded incremental prefix candidate4 avoids candidate3 authored early-function tail regression under fixed2cases/5blocks; this is admission screening, no universal resource or MCP/model speed claim.",
+  "containers": 20,
+  "equality": "ExactcompleteModule canonical dataclass-field digest, no exclusions; generatedbody storedoncepercase, notcopiedperattempt.",
+  "fixture_builder_sha256": "a6620dfd038747f5417fd4a504e756a0959b99c51106aaa52b2415016b66a41a",
+  "frozen_helpers": {
+    "memory_format_evidence.py": "8b4fe665d727fc1f739c803e15fbfbe80b26bf111e140d829daf69bb0e047a6d",
+    "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+    "opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+    "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+    "study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+    "study_runtime.py": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21",
+    "study_schema.py": "e0818e8571ebda6fd82b5cbd8edf646a34a45457d78620c1b61ad3378e51511f",
+    "study_workspace.py": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89"
+  },
+  "gate": "Any candidate4 materialregression =>stop larger MCP measurement for rootreview. Passing authoredscreen alone doesnotestablish realMCPbenefit.",
+  "inputs": "Reuse originalC3v1 fixturebytes read-only at exactSHA; no duplicated1.75MiBbody perattempt.",
+  "limits": {
+    "cpus": 2,
+    "free_disk_before_after_min_bytes": 5368709120,
+    "memory_bytes": 2147483648,
+    "network": "none",
+    "observed_stage_storage_target_bytes": 2147483648,
+    "read_only_root": true,
+    "tmpfs_bytes": 536870912,
+    "uid": "65534:65534",
+    "worker_timeout_seconds": 180
+  },
+  "max_concurrent_containers": 1,
+  "memory_material_flag": "C4medianrise >max(1MiB,within-side ranges) AND >=5% C2baseline for parse-return cgrouppeak or processRSS; flag either selectedcase.",
+  "memory_scopes": "Immediatebefore/afterparse cgroupcurrent+lifetimepeak and processru_maxrss; post-GC memory separately; fullcontainerlifetimepeak includeslaterdigest+write and is retained, not substituted. RSSpeaks are lifetimeKiB, not additive/descendant-summed.",
+  "model_calls": 0,
+  "orders": [
+    [
+      "candidate2",
+      "candidate4"
+    ],
+    [
+      "candidate4",
+      "candidate2"
+    ],
+    [
+      "candidate2",
+      "candidate4"
+    ],
+    [
+      "candidate4",
+      "candidate2"
+    ],
+    [
+      "candidate2",
+      "candidate4"
+    ]
+  ],
+  "original_v1_plan_sha256": "75d7f9dc565ee0f0c9e39cbeea5b62b696f6ef957ed4428031dce736377ba893",
+  "original_v1_report_sha256": "ca26b8c4e927c9afb3600e49932e528cf38604cd6c2e4c5309fa70ead53f727e",
+  "prior_C3_seal_path": "runs/opencode-source-segment-candidate3-review-20261106/manifest.json",
+  "prior_C3_seal_sha256": "f2da673df1d30045c2ecbedc137e88efd213268f1a3fd49266d5bc1e93dcd0e1",
+  "published_candidate2_archive": {
+    "admission": "Verifycomplete60file source prefix afterrelease andbeforeanycontainer; retainadmissionevidence.",
+    "path": "reports/opencode-lookup-candidate2-quiet-publication-20261106/candidate2-quiet-public-evidence.tar.gz",
+    "sha256": "f763ec2a2cedc06ff00db45ec4a646344553b1c261595ddeedd8cd7d47fd4972"
+  },
+  "repair_only": "Post-timer canonical serializer tags/sorts frozenset/set; no core,input,order,limits,threshold or timedparse-code changes; v2failure exitsnonzero",
+  "review_sha256": "48c5203595143704fd52002d33d867a3ce01236efa743c9c72e6e0400b722566",
+  "root_release": "51172a3 commit+pushdone root explicit20-authored-screen release",
+  "root_repair_authorization": "Root explicitly authorized one fullunchanged20attempt rerun, firstuntimed sameimage serializer/equality check; no extrauserpermission needed",
+  "runner_sha256": "b62e3cd40203a2d9562cf1b7e8528699600ca39a36ad5713ee49c9eec79dff46",
+  "runtime_image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "same_image_untimed_check": {
+    "complete_module_cases": 2,
+    "nonempty_frozenset_control": "passed",
+    "report_sha256": "ff1a221b3484f9067e9ad181e647e9cb58e5c090ce50463b4ea98ca1640d5a39",
+    "result_sha256": "5098b5ce474213d8abfc2eced8119888fc84d93a4a56f1d8fcb59bb19e55d341",
+    "status": "passed"
+  },
+  "selection_rule": "Fixed before observations: firstscreen only the early-function near-cap literalbody and max-line-count blank-tail; retain every outcome, no substitution.",
+  "source_freeze_sha256": "39ad8ae9a002e2c69f30a9b00d31ffccc8527173806332f74e69602e6f4cb4e5",
+  "source_head": "51172a3b2e9ad4933cb77c645ca550bb9f671e1a",
+  "status": "prospective_before_any_candidate4_container",
+  "time_noise_rule": "Median/range+pairedsameblockdeltas; gap<=maxwithin-side range =>no_measurable_difference; mixedsigns inconclusive.",
+  "timed_call": "cami.index.parse_module on same Blob/physical input/name; wall/ownCPU excludes firsttrustedimports/inputread+hash/gcsetup/completeModuledigest/JSONwrite",
+  "tracked_writes": false,
+  "unselected_staged_controls": [
+    "early_function_many_short_comments",
+    "late_function_comment_prefix_control"
+  ],
+  "worker": "Exact previously validated v2 complete-Module serializer, no changes. Nonempty frozenset + both-input equality passed in sealed untimed repair control.",
+  "worker_path": "runs/opencode-source-segment-candidate3-review-20261106/authored_worker_v2.py",
+  "worker_sha256": "c637e520dd6944421eda699d01e0090b04cc663115b73dd62a8887854c02a16e"
+}

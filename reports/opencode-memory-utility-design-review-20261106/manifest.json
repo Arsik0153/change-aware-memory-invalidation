@@ -1,0 +1,76 @@
+{
+  "Docker": 0,
+  "evidence": "evidence.json",
+  "evidence_sha256": "e5fa347156bdd7d9020a57725d035cd338cba3ccb8344351c839f9d2c84b269c",
+  "files": {
+    "evidence-initial-scope-wording.json": {
+      "bytes": 42773,
+      "sha256": "43ed23c16c67a2660715d3a7f963e34d3255eaac159f2831b7a12837862e13ff"
+    },
+    "evidence.json": {
+      "bytes": 42865,
+      "sha256": "e5fa347156bdd7d9020a57725d035cd338cba3ccb8344351c839f9d2c84b269c"
+    },
+    "findings.json": {
+      "bytes": 3603,
+      "sha256": "e91ccdf70ea8bbbb6dd357b7bc70afcd70cbb3d8207931ee480d43276a9a2951"
+    },
+    "memo.ru.md": {
+      "bytes": 9189,
+      "sha256": "9e591afa6f7291c9a0d4e15182d4bc97341538fb3b24fa4385b5812274f91f8a"
+    },
+    "process-attempt1.stderr.txt": {
+      "bytes": 403,
+      "sha256": "93e5b93421eaa5806d574cc887b8ee20565e1d32b3f5fdcd4f87de374ca8cd70"
+    },
+    "process-attempt1.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "process.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "process.stdout.txt": {
+      "bytes": 179,
+      "sha256": "6ebe78da2ce1197c10907ad5bcbecfb4a42745dc3d872a56e418932213ea5caf"
+    },
+    "proposal.json": {
+      "bytes": 6389,
+      "sha256": "a625f1e10dafb66aae73400d5bcf452c86dbed49aecbe649051c165f1477ad85"
+    },
+    "review_evidence.py": {
+      "bytes": 7430,
+      "sha256": "e5bcfaa581cfa0ea2928f3135b1df1dca14cbc38e5e9832cab4f7acfe07a8a4e"
+    },
+    "ruff.txt": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "session-bindings.json": {
+      "bytes": 12260,
+      "sha256": "f000e81590fe24508b8deb6b486dc70062c77f2f7f0a9f551cea8614ded5b0be"
+    },
+    "sessions.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sessions.stdout.txt": {
+      "bytes": 141,
+      "sha256": "34fb0010c27d6c96e97e1e125de9377a35ac02bf47626936b80457badd4ab3fa"
+    },
+    "verify_sessions.py": {
+      "bytes": 2192,
+      "sha256": "9e3f1320ba33199c32ed249e77417b01f28a5e26248e9792051397f005c8ba02"
+    }
+  },
+  "heldout_reads": 0,
+  "limits": "No implementation or experiment execution; exact v6 public code/metadata verified. No broad causal limiter or task-experience efficacy claim.",
+  "memo": "memo.ru.md",
+  "models": 0,
+  "production_edits": false,
+  "proposal": "proposal.json",
+  "session_evidence": "session-bindings.json",
+  "status": "completed_design_only",
+  "tests": 0
+}

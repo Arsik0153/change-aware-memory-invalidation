@@ -1,0 +1,151 @@
+{
+  "status": "stable_ready_for_parent_review_and_independent_confirmation",
+  "source_sha256": {
+    "src/cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+    "tests/test_index_source_segments.py": "7a4b5bac9e138882473b9b76783b3c842f9f3e0a2ba2a48c8d711ed61d198650",
+    "tests/fixtures/python312_ast_source_segment.py.txt": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93"
+  },
+  "candidate3_negative_evidence": {
+    "manifest_path": "reports/opencode-source-segment-candidate3-review-20261106/manifest.json",
+    "manifest_sha256": "f2da673df1d30045c2ecbedc137e88efd213268f1a3fd49266d5bc1e93dcd0e1",
+    "rerun_or_modified_by_this_agent": false
+  },
+  "scope": "Only index.py and its focused source-segment test file changed; exactstdlibfixture unchanged.",
+  "implementation": [
+    "Per-parse lazy regex iterator, append-only prefix buffer extended only to actual requested definition end line",
+    "Nested/equal/backward end spans reuse the buffered high-water mark; no tail materialization",
+    "Same UTF8 byte-column slicing and CRLF/CR/LF line semantics; decorator exclusion preserved; separate source_excerpt unchanged",
+    "After successful traversal explicitly clear buffer contents and drop iterator reference",
+    "No persistent/global source cache, public/wire/storage models or dependencies"
+  ],
+  "verification": {
+    "targeted_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/pytest -q tests/test_index_source_segments.py tests/test_index.py tests/test_symbol_search.py tests/test_class_global_binding.py tests/test_structural.py tests/memory/test_source_excerpt_decorator_boundary.py",
+    "passed": 137,
+    "seconds": 31.05,
+    "source_segment_tests": 55,
+    "ruff": "index.py and focusedtests clean; unchanged Clickchecker clean",
+    "mypy": "index.py clean",
+    "guarded_near_MAX_FILE_BYTES_cases": 6,
+    "tail_cases": [
+      "blank lines",
+      "short comments"
+    ],
+    "line_endings": [
+      "LF",
+      "CRLF",
+      "CR"
+    ],
+    "guard": "Attempting a third regex match for an early two-line function raises; final candidate consumes exactly2",
+    "nested_prefix_high_water_marks": [
+      5,
+      5,
+      5,
+      7
+    ],
+    "equal_end_and_repeated_source_isolation": "passed",
+    "successful_traversal_cleanup": "With cyclicGC disabled, generator weakref expires and captured buffer lists are empty; original GC state restored. No gc.collect is used.",
+    "complete_Click_equivalence": {
+      "status": "passed",
+      "cases": [
+        {
+          "canonical_tree": "origin-and-stage1",
+          "canonical_inventory_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+          "source_roots": [
+            "src"
+          ],
+          "build_graph": false,
+          "all_fields_equal": true,
+          "input_python_files": 16,
+          "modules": 16,
+          "definitions": 512,
+          "baseline_source_segment_calls": 512,
+          "candidate_source_line_preparations": 15,
+          "edges": 0,
+          "unresolved": 1335,
+          "excluded_fields": [],
+          "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+        },
+        {
+          "canonical_tree": "origin-and-stage1",
+          "canonical_inventory_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+          "source_roots": [
+            "src"
+          ],
+          "build_graph": true,
+          "all_fields_equal": true,
+          "input_python_files": 16,
+          "modules": 16,
+          "definitions": 512,
+          "baseline_source_segment_calls": 512,
+          "candidate_source_line_preparations": 15,
+          "edges": 182,
+          "unresolved": 1335,
+          "excluded_fields": [],
+          "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+        },
+        {
+          "canonical_tree": "stage3",
+          "canonical_inventory_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+          "source_roots": [
+            "src"
+          ],
+          "build_graph": false,
+          "all_fields_equal": true,
+          "input_python_files": 16,
+          "modules": 16,
+          "definitions": 512,
+          "baseline_source_segment_calls": 512,
+          "candidate_source_line_preparations": 15,
+          "edges": 0,
+          "unresolved": 1335,
+          "excluded_fields": [],
+          "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+        },
+        {
+          "canonical_tree": "stage3",
+          "canonical_inventory_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+          "source_roots": [
+            "src"
+          ],
+          "build_graph": true,
+          "all_fields_equal": true,
+          "input_python_files": 16,
+          "modules": 16,
+          "definitions": 512,
+          "baseline_source_segment_calls": 512,
+          "candidate_source_line_preparations": 15,
+          "edges": 179,
+          "unresolved": 1335,
+          "excluded_fields": [],
+          "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+        }
+      ],
+      "baseline_source_sha256": "08c2a18e5a5f7b386cf1ef6aa854e985ca71ab7146777ce5ba228e2a1f68c61f",
+      "candidate_index_sha256": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+      "reference_fixture_sha256": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93",
+      "same_provenance_inputs_to_both_implementations": true,
+      "frozen_baseline_uses_exact_container31212_stdlib_source_reference": true,
+      "canonical_sources_unchanged": true,
+      "target_code_execution_or_imports": false,
+      "model_calls": 0,
+      "Docker_calls": 0,
+      "network_calls": 0,
+      "timing_or_speedup_claim": false
+    },
+    "intermediate_failure_preserved": [
+      "cycle-release-before-fix.txt",
+      "click-equivalence-before-cycle-release.json",
+      "targeted-tests-del-visit-intermediate.txt",
+      "click-equivalence-del-visit-intermediate.json",
+      "del-visit-intermediate-index.py.txt",
+      "del-visit-intermediate-diagnostic.json"
+    ]
+  },
+  "limits": [
+    "Cleanup claim concerns iterator and temporary line-buffer contents after successful traversal. It does not eliminate all pre-existing visitor closure cycles or imply an OSRSS decrease.",
+    "Entire source and AST still exist; a late definition needs its preceding lines and a very long requested physical line is materialized whole. No universal RAM or latency improvement is claimed.",
+    "Click checker field candidate_source_line_preparations now counts iterator-factory constructions (15), not full-file splits; guarded tests prove bounded materialization.",
+    "No full suite, profile, quiet benchmark, model/auth/network/Docker call, historical-state mutation or commit by this agent."
+  ],
+  "next_step": "Root-authorized same-case independent confirmation; full verification remains parent-owned."
+}
