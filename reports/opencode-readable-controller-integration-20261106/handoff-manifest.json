@@ -1,0 +1,180 @@
+{
+  "status": "passed",
+  "baseline_commit": "f355b65613c7a220986cfc05c05a4c719c7b0c74",
+  "source_sha256": {
+    "scripts/opencode_benchmark/controller/study_schema.py": "b8d18722f98cbdc89c6cc2d6cdf99fa2b97af5ea807db5d3db9a84992b60fb1c",
+    "scripts/opencode_benchmark/controller/study_controller.py": "9e2ced40e8791ce2ca352e417f5b7e23dbdb7611207a761222b0415d9e5434c3",
+    "scripts/opencode_benchmark/controller/study_runtime.py": "ede67cc857b36cc379473a471b3134b642732697c1e080c20742ead983fb251c",
+    "scripts/opencode_benchmark/controller/memory_format_evidence.py": "e38234d386bfa86a203719dae8ae19ec9247f38f03a728413b3332a0cc9ca05f",
+    "scripts/opencode_benchmark/controller/literal_stdio_worker.py": "c51023306a138ef861d88212f1cd182865329757d28fd6e6f1d41d707d61059b",
+    "scripts/opencode_benchmark/controller/verify_literal_containers.py": "46d777d7c26bf2f4d2911e12910ea384c828a170d9c45165a748c581773967f5",
+    "scripts/opencode_benchmark/controller/test_format_selection.py": "edfa47fd169feded87c87ef7b1793bba99d563d2f2c6ee23a5861f752806dfa0",
+    "scripts/opencode_benchmark/controller/test_readable_integration.py": "d818861ff1450ebb0f98244d52e9fae1f39013b40b0dce815afc39698dfeefd2"
+  },
+  "unchanged_verifier_sha256": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324",
+  "focused_tests": 485,
+  "all_attempts_retained": true,
+  "attempts": {
+    "legacy-equivalence-attempt-1.json": {
+      "argv": [
+        ".venv/bin/python",
+        "runs/opencode-readable-controller-integration-20261106/prove_legacy_equivalence.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.16167712211608887
+    },
+    "ruff-attempt-1.json": {
+      "argv": [
+        ".venv/bin/ruff",
+        "check",
+        "scripts/opencode_benchmark/controller/study_schema.py",
+        "scripts/opencode_benchmark/controller/study_controller.py",
+        "scripts/opencode_benchmark/controller/study_runtime.py",
+        "scripts/opencode_benchmark/controller/memory_format_evidence.py",
+        "scripts/opencode_benchmark/controller/literal_stdio_worker.py",
+        "scripts/opencode_benchmark/controller/verify_literal_containers.py",
+        "scripts/opencode_benchmark/controller/test_readable_integration.py",
+        "scripts/opencode_benchmark/controller/test_format_selection.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.01133871078491211
+    },
+    "ruff-attempt-2.json": {
+      "argv": [
+        ".venv/bin/ruff",
+        "check",
+        "scripts/opencode_benchmark/controller/study_schema.py",
+        "scripts/opencode_benchmark/controller/study_controller.py",
+        "scripts/opencode_benchmark/controller/study_runtime.py",
+        "scripts/opencode_benchmark/controller/memory_format_evidence.py",
+        "scripts/opencode_benchmark/controller/literal_stdio_worker.py",
+        "scripts/opencode_benchmark/controller/verify_literal_containers.py",
+        "scripts/opencode_benchmark/controller/test_readable_integration.py",
+        "scripts/opencode_benchmark/controller/test_format_selection.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.011476516723632812
+    },
+    "tests-attempt-1.json": {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "scripts/opencode_benchmark/controller/test_readable_integration.py",
+        "scripts/opencode_benchmark/controller/test_format_selection.py",
+        "scripts/opencode_benchmark/controller/test_format_observation.py",
+        "scripts/opencode_benchmark/controller/test_literal_stdio.py",
+        "scripts/opencode_benchmark/controller/test_readable_receipts.py"
+      ],
+      "returncode": 1,
+      "wall_seconds": 0.6529140472412109
+    },
+    "tests-attempt-2.json": {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "scripts/opencode_benchmark/controller/test_readable_integration.py",
+        "scripts/opencode_benchmark/controller/test_format_selection.py",
+        "scripts/opencode_benchmark/controller/test_format_observation.py",
+        "scripts/opencode_benchmark/controller/test_literal_stdio.py",
+        "scripts/opencode_benchmark/controller/test_readable_receipts.py",
+        "scripts/opencode_benchmark/controller/test_idle_lifecycle.py",
+        "scripts/opencode_benchmark/controller/test_non_tool_messages.py",
+        "scripts/opencode_benchmark/controller/test_service_tier.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.709087610244751
+    }
+  },
+  "failed_attempts": [
+    {
+      "name": "tests-attempt-1",
+      "cause": "New resume test used the wrong ledger filenames; corrected fixture only."
+    }
+  ],
+  "legacy_equivalence": {
+    "status": "passed",
+    "baseline_commit": "f355b65613c7a220986cfc05c05a4c719c7b0c74",
+    "observer_reports": 22,
+    "stdio_reports": 4,
+    "model_calls": 0,
+    "docker_calls": 0,
+    "network_calls": 0
+  },
+  "authored_metadata_packets": [
+    {
+      "arm": "static",
+      "case": "literal",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/static-literal",
+      "status": "matched"
+    },
+    {
+      "arm": "static",
+      "case": "note",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/static-note",
+      "status": "matched"
+    },
+    {
+      "arm": "static",
+      "case": "empty",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/static-empty",
+      "status": "matched"
+    },
+    {
+      "arm": "static",
+      "case": "withheld",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/static-withheld",
+      "status": "matched"
+    },
+    {
+      "arm": "static",
+      "case": "error",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/static-error",
+      "status": "matched"
+    },
+    {
+      "arm": "cami",
+      "case": "literal",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/cami-literal",
+      "status": "matched"
+    },
+    {
+      "arm": "cami",
+      "case": "note",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/cami-note",
+      "status": "matched"
+    },
+    {
+      "arm": "cami",
+      "case": "empty",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/cami-empty",
+      "status": "matched"
+    },
+    {
+      "arm": "cami",
+      "case": "withheld",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/cami-withheld",
+      "status": "matched"
+    },
+    {
+      "arm": "cami",
+      "case": "error",
+      "path": "runs/opencode-readable-controller-integration-20261106/packets/cami-error",
+      "status": "matched"
+    }
+  ],
+  "exact_unscrubbed_stdio_packets": 4,
+  "model_calls": 0,
+  "docker_calls": 0,
+  "network_calls": 0,
+  "auth_accesses": 0,
+  "scope": [
+    "Observer checks publication-safe format/receipt metadata, not exact source bytes.",
+    "Configured stdio readable path verifies exact original/projected/model bytes and backend trace binding.",
+    "Six-case mount generation is tested with authored stubs; no container was executed.",
+    "Trusted sibling import is tested with an actual local Python -I subprocess."
+  ]
+}

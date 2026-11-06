@@ -8,6 +8,11 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
+
+# Isolated Python omits the script directory; only the read-only sibling is trusted.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from readable_receipts import verify_readable_result  # noqa: E402
 
 
 def canonical(value):
@@ -26,7 +31,20 @@ def validate_response(result, expected, backend, response_format, trace, argumen
     content = result["content"][0]
     if content.get("type") != "text":
         raise ValueError("MCP result is not text")
-    value = json.loads(content["text"])
+    if response_format == "readable":
+        events = [row for row in trace if row.get("event") == "memory_lookup"]
+        if (len(events) != 1 or events[0].get("query_sha256") != digest(arguments)
+                or events[0].get("backend") != backend or events[0].get("error") is not None
+                or events[0].get("response_format") != "readable"
+                or events[0].get("response_bytes") != len(canonical(result))
+                or events[0].get("requested_limit") != arguments.get("limit", 5)):
+            raise ValueError("readable response/backend trace mismatch")
+        value = verify_readable_result(result, events[0].get("response_audit"))
+        if (value.get("query") != arguments.get("query")
+                or events[0].get("catalog_sha256") != value.get("catalog_sha256")):
+            raise ValueError("readable full result/query/catalog trace mismatch")
+    else:
+        value = json.loads(content["text"])
     if value.get("schema_version") != 1 or value.get("backend") != backend:
         raise ValueError("wire envelope/backend differs")
     marker = value.get("response_format")
@@ -44,7 +62,7 @@ def validate_response(result, expected, backend, response_format, trace, argumen
     availability = "unchecked_current" if backend == "static" else "supported"
     if entry.get("label") != label or entry.get("availability") != availability:
         raise ValueError("literal trust/status label differs")
-    if response_format == "full" and entry.get("origin_source") != expected["source"]:
+    if response_format in ("full", "readable") and entry.get("origin_source") != expected["source"]:
         raise ValueError("full origin source differs")
     budget = value.get("selection_budget", {})
     if (
@@ -82,7 +100,7 @@ def validate_response(result, expected, backend, response_format, trace, argumen
         }
         if payload.get("projection_result_sha256") != digest(projected):
             raise ValueError("compact projection receipt differs")
-    elif event.get("response_format") is not None:
+    elif response_format == "full" and event.get("response_format") is not None:
         raise ValueError("full response has unexpected compact trace")
     return {
         "backend": backend,
@@ -93,7 +111,7 @@ def validate_response(result, expected, backend, response_format, trace, argumen
         "result_sha256": digest(result),
         "query_sha256": digest(arguments),
         "receipt_verification": "exact_unscrubbed_bytes"
-        if response_format == "compact"
+        if response_format in ("compact", "readable")
         else "not_applicable",
         "model_calls": 0,
     }

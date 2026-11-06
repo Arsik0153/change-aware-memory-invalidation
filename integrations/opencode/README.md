@@ -94,6 +94,14 @@ Before returning a compact response, the trace stores the full original MCP resu
 
 The study controller freezes one format for both memory arms and checks actual completed model-visible responses against backend trace receipts. No lookup is recorded as `not_observed`; plain OpenCode is `not_applicable`. Format mismatches and unverifiable completed responses fail operational admission. Response-byte savings alone do not establish token, latency or billing savings.
 
+## Optional readable response
+
+`serve --response-format readable` is an opt-in experimental display for literal source records. It renders exact source prefixes in Markdown fences with identity, physical origin span, truncation, trust labels, freshness, selection metadata and withheld reasons. The original query and full provenance remain in the trace's unchanged full response. The embedded receipt binds that response and the display before receipt insertion; the trace additionally hashes the complete displayed result. These hashes establish byte integrity, not source semantics or identity authentication.
+
+Unsupported responses, including notes, mixed record types, empty or withheld-only results and backend failures, use the existing compact response and receipt exactly. The trace keeps `response_format: "readable"` as the requested mode; its audit records `requested_format`, `effective_format` and `fallback_reason`. Backend failures still return unavailable freshness and no historical data. The default remains `full`, and existing full and compact responses are unchanged.
+
+The container harness accepts `--memory-response-format readable` and forwards the option for both memory arms. Plain OpenCode has no memory MCP server even when this study option is selected. Use an updated study controller that verifies readable receipts and compact fallbacks before admitting this format; older controllers do not support it. Readable mode has not yet been benchmarked. Its full-response audit storage and serialization remain chargeable, and no token, latency or cost advantage is claimed.
+
 ## OpenCode 2.2.5 local configuration
 
 `opencode.config.template.json` uses the installed v2 local MCP shape verified by the peer agent. Replace absolute placeholders and choose one prepared binding. Both memory arms use the same MCP server name and tool schema. Plain OpenCode has no memory MCP server. Preserve native grep/glob/read/edit tools. No v1 plugin hook assumptions or direct grep override are used.

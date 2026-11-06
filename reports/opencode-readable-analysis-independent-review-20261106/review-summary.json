@@ -1,0 +1,60 @@
+{
+  "admission_review": "admission-review.json",
+  "counts": [
+    {
+      "arm": "cami",
+      "assessment": "same_literal_tuple",
+      "channel": "returned",
+      "observations": 48
+    },
+    {
+      "arm": "cami",
+      "assessment": "obsolete_literal_tuple",
+      "channel": "withheld",
+      "observations": 12
+    },
+    {
+      "arm": "static",
+      "assessment": "obsolete_literal_tuple",
+      "channel": "returned",
+      "observations": 11
+    },
+    {
+      "arm": "static",
+      "assessment": "same_literal_tuple",
+      "channel": "returned",
+      "observations": 49
+    }
+  ],
+  "docker_runs": 0,
+  "effect_claims": "No token/time/quality/model-behavior effect inferred.",
+  "failure_artifacts": "The successful pre-fix acceptance reproducer is intentionally preserved. No replay execution failed.",
+  "finding": {
+    "after_proof": "mode-admission-after-fix.log",
+    "before_proof": "mode-admission-proof.json",
+    "fix_owner": "root",
+    "fix_verified": "Mismatch rejected before classifier invocation while retaining original passed terminal outcome; separate matched readable study authenticated and pinned helper.",
+    "problem": "Compact-declared frozen study previously admitted observed readable tool bytes without including helper source pin."
+  },
+  "heldout_reads": 0,
+  "model_calls": 0,
+  "network_calls": 0,
+  "no_additional_proven_findings": true,
+  "original_and_derived_and_frozen_staleness_records_equal": true,
+  "original_argument_timestamps_and_nondisplay_fields_unchanged": true,
+  "packets": 24,
+  "replay_report": "replay-report.json",
+  "root_focused_test_log_reviewed": "runs/opencode-readable-analysis-integration-20261106/targeted-tests-attempt1.log (91 passed); no full suite was run by this worker.",
+  "scope": "Independent read-only source review and derived-format-only offline verification on the complete sealed24public packet roster; not actual modified model output.",
+  "source_sha256": {
+    "scripts/opencode_benchmark/analysis/aggregate_metrics.py": "fd63cf802e70b946b18002002bbdcab5b357fcba58aee5d3d989902ec56d8dee",
+    "scripts/opencode_benchmark/analysis/aggregate_study.py": "05845521d2a2a477207d2d45cc283b88b2c4f662645b6378daef0deda7f4a996",
+    "scripts/opencode_benchmark/analysis/classify_literal_calls.py": "098f0e29fc76e07b12eeb41c2fa5e41023d38fa3fdcde8b461269ff08de4c5bf",
+    "scripts/opencode_benchmark/analysis/service_tier_evidence.py": "706c2bdb918782389b77afabcb245c93756e678571a876791c814428a90a78c6",
+    "scripts/opencode_benchmark/analysis/summarize_literal_staleness.py": "063da330decbd340fd2bb524b82a1e43f71c273cc9029c6ced939c05b2e99e9d",
+    "scripts/opencode_benchmark/analysis/test_literal_staleness.py": "bdc013b012eaccc7f85b3c2d3a7c9e339b852b3b589130d53af65306569c6033",
+    "scripts/opencode_benchmark/analysis/test_service_tier_admission.py": "a68c65799d5ada7939c7003c7e324d189bb7e4efebd086b76b9b0133b6c0ad74",
+    "scripts/opencode_benchmark/controller/readable_receipts.py": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324"
+  },
+  "status": "passed_after_one_proven_admission_fix"
+}

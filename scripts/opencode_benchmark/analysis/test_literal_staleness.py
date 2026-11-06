@@ -244,7 +244,10 @@ def test_legacy_ast_line_recipe_remains_distinct(case):
     assert current.text.startswith("@(\n") and old != current.text
 
 
-def test_terminal_wrapper_preserves_plain_failed_and_missing_telemetry(case, tmp_path):
+@pytest.mark.parametrize("selected,observed", [(None, "full"), ("full", "full"),
+    ("compact", "compact"), ("readable", "readable"), ("compact", "readable"),
+    ("readable", "compact"), ("full", "readable")])
+def test_terminal_wrapper_preserves_outcomes_and_binds_frozen_format(case, tmp_path, monkeypatch, selected, observed):
     origin, current, catalog, _ = case
     controls = load_controls(CONTROLS)
     run = tmp_path / "run"
@@ -252,7 +255,10 @@ def test_terminal_wrapper_preserves_plain_failed_and_missing_telemetry(case, tmp
     sequence = ["task-a", "task-a", "task-b", "task-b"]
     def save(path, value):
         path.write_bytes(canonical(value) + b"\n")
-    save(run / "frozen-study.json", {"bundle_kind": "development", "arms": ["plain", "static", "cami"], "normalized": {"sequence": sequence}})
+    study = {"bundle_kind": "development", "arms": ["plain", "static", "cami"], "normalized": {"sequence": sequence}}
+    if selected is not None:
+        study["memory_response_format"] = selected
+    save(run / "frozen-study.json", study)
     plan = [{"id": f"r{rep}-{arm}-s{stage}", "repetition": rep, "arm": arm, "stage": stage, "task": sequence[stage - 1]} for rep in range(1, 4) for arm in ("plain", "static", "cami") for stage in range(1, 5)]
     save(run / "plan.json", {"trials": plan})
     catalog_path = tmp_path / "catalog.json"
@@ -266,7 +272,8 @@ def test_terminal_wrapper_preserves_plain_failed_and_missing_telemetry(case, tmp
         if trial["arm"] == "plain":
             messages = []
         elif trial["arm"] == "static":
-            rows, events = wire(catalog, backend="static")
+            rows, events = (readable_wire(catalog) if observed == "readable"
+                            else wire(catalog, compact=observed == "compact"))
             state = rows[0]["part"]["state"]
             messages = [{"id": "m1", "type": "assistant", "content": [{"id": "lookup", "type": "tool", "name": "memory_lookup", "time": {"created": 2, "completed": 3}, "state": {"status": "completed", "input": state["input"], "content": [{"type": "text", "text": state["output"]}]}}]}]
             (directory / "session/evidence/memory-backend-trace.jsonl").write_bytes(b"".join(canonical(e) + b"\n" for e in events))
@@ -276,13 +283,24 @@ def test_terminal_wrapper_preserves_plain_failed_and_missing_telemetry(case, tmp
             save(directory / "session/evidence/messages.json", messages)
         artifacts = {name: value["sha256"] for name, value in controls.inventory(directory).items()}
         save(directory / "terminal.json", {"trial": trial, "status": "failed" if trial["arm"] == "cami" else "passed", "artifact_hashes": artifacts, "immutable_memory": {"prepared/catalog.json": catalog_hash}})
+    mismatch = (selected or "full") != observed
+    if mismatch:
+        monkeypatch.setattr(sys.modules[summarize.__module__], "classify",
+                            lambda *args: pytest.fail("classifier reached before frozen-format admission"))
     result = summarize(run, catalog_path, origin, current, current, CONTROLS, ANALYZER)
     assert result["completed_trials"] == 3 and result["planned_trials"] == 36
-    assert len(result["trials"]) == 3 and result["unassessed_trial_ids"] == ["r1-cami-s1"]
+    assert len(result["trials"]) == 3
+    assert result["unassessed_trial_ids"] == (["r1-static-s1", "r1-cami-s1"] if mismatch else ["r1-cami-s1"])
     assert result["trials"][0]["backend_crosscheck"]["status"] == "plain_no_external_memory_expected"
-    assert result["trials"][1]["records"][0]["assessment"] == "same_literal_tuple"
+    if mismatch:
+        assert result["trials"][1]["records"] is None
+        assert "differs from frozen study" in result["trials"][1]["reason"]
+    else:
+        assert result["trials"][1]["records"][0]["assessment"] == "same_literal_tuple"
     assert result["trials"][2]["terminal_status"] == "failed"
     assert result["unsupported_call_count_complete"] is False
+    helper = str(ROOT / "scripts/opencode_benchmark/controller/readable_receipts.py")
+    assert (helper in result["inputs"]["implementation_sha256"]) is (selected == "readable")
 
 
 @pytest.mark.parametrize("extra", [{"response_format": "future-format/2"}, {"response_audit": {}}, {"response_audit": None}])
@@ -292,3 +310,58 @@ def test_full_unknown_trace_format_or_audit_is_unsupported(case, extra):
     result = assess(case, rows=rows, events=events)
     assert result["unsupported_calls"] == 1
     assert not result["records"]
+
+
+def readable_wire(catalog, backend="static", withheld=False):
+    rows, events = wire(catalog, backend=backend, withheld=withheld)
+    value = json.loads(rows[0]["part"]["state"]["output"])
+    value.update(freshness="authored exact source only", matched_records=1, truncated=False,
+                 selection_budget={"origin_record_bytes": 16384, "used_bytes": len(canonical(catalog["records"][0])),
+                                   "ranking_before_availability": True})
+    for entry in value["entries"]:
+        entry.update(label="validated_literal_source" if backend == "cami" else "origin_literal_source_assertion",
+                     availability="supported" if backend == "cami" else "unchecked_current")
+        if backend == "cami":
+            entry["state_type"] = "carried"
+    sys.path.insert(0, str(ROOT / "integrations/opencode"))
+    producer = runpy.run_path(str(ROOT / "integrations/opencode/readable_response.py"))["readable_result"]
+    result, audit = producer(mcp(canonical(value).decode()))
+    rows[0]["part"]["state"]["output"] = result["content"][0]["text"]
+    events[0].update(response_format="readable", response_audit=audit, response_bytes=len(canonical(result)))
+    return rows, events
+
+
+@pytest.mark.parametrize("backend", ["static", "cami"])
+@pytest.mark.parametrize("withheld", [False, True])
+def test_readable_and_compact_fallback_have_exact_staleness_observations(case, backend, withheld):
+    origin, current, catalog, _ = case
+    (current / "m.py").write_bytes((origin / "m.py").read_bytes().replace(b"@(\n", b"@( # changed\n"))
+    rows, events = readable_wire(catalog, backend, withheld)
+    result = assess(case, rows=rows, events=events, backend=backend)
+    assert result["unsupported_calls"] == 0 and result["backend_crosscheck"]["status"] == "matched"
+    assert result["records"][0]["assessment"] == "obsolete_literal_tuple"
+    assert result["records"][0]["exposed_to_agent"] is (not withheld)
+    assert result["memory_calls"][0]["response_format"] == (
+        "readable_compact_fallback_verified" if withheld else "readable_verified")
+
+
+@pytest.mark.parametrize("fault", ["source", "suffix", "receipt", "full", "missing_audit", "bytes", "wrong_mode"])
+def test_readable_tamper_is_unsupported_without_private_repair(case, fault):
+    rows, events = readable_wire(case[2])
+    state, event = rows[0]["part"]["state"], events[0]
+    if fault == "source":
+        state["output"] = state["output"].replace("return 1", "return 2")
+    elif fault == "suffix":
+        state["output"] += "unverified suffix"
+    elif fault == "receipt":
+        event["response_audit"]["receipt_sha256"] = "0" * 64
+    elif fault == "full":
+        event["response_audit"]["full_result"]["content"][0]["text"] += " "
+    elif fault == "missing_audit":
+        del event["response_audit"]
+    elif fault == "bytes":
+        event["response_bytes"] += 1
+    else:
+        event["response_format"] = "compact"
+    result = assess(case, rows=rows, events=events)
+    assert result["unsupported_calls"] == 1 and not result["records"]

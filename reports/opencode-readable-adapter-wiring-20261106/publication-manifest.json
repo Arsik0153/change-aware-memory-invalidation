@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "source_directory": "runs/opencode-readable-adapter-wiring-20261106",
+  "all_non_cache_files_retained": true,
+  "archive": {
+    "path": "evidence.tar.gz",
+    "bytes": 30396,
+    "sha256": "2bf65da2f9b17547048583c50130e7d349f2edfbe3cc6c3f2cfa9ac08ed26938"
+  },
+  "files": {
+    "backend-regressions-attempt-1.json": {
+      "sha256": "81ef2f6d2adb5794e6be5795d6d411743fc7224c91d7ed2b1f3b4cab3bd2fd8b",
+      "bytes": 224
+    },
+    "backend-regressions-attempt-1.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "backend-regressions-attempt-1.stdout.txt": {
+      "sha256": "dbbf8c6b97434ae2174af1ce01a1444c22292a104f86ce54271bab88c4935795",
+      "bytes": 99
+    },
+    "handoff-manifest.json": {
+      "sha256": "05de0c650977ccb3825371875263b2703fa51475886f0c8d8d66c48c132d0264",
+      "bytes": 4293
+    },
+    "legacy-equivalence-attempt-1.json": {
+      "sha256": "a28ad8ffa8c44bce4a0b875446cc1a317e28a8f8bfce02b12d50eac3b324e56d",
+      "bytes": 183
+    },
+    "legacy-equivalence-attempt-1.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "legacy-equivalence-attempt-1.stdout.txt": {
+      "sha256": "a06e23b89f0dfee66b2280cc973bc7bdefcfd9e039966270f81ec0bbe088155d",
+      "bytes": 327
+    },
+    "legacy-equivalence.json": {
+      "sha256": "a06e23b89f0dfee66b2280cc973bc7bdefcfd9e039966270f81ec0bbe088155d",
+      "bytes": 327
+    },
+    "packets/cami-empty/model-result.json": {
+      "sha256": "1c884a073cf397a463abf2dc331fb3c600353df1caf2706e2332e9e4dad29216",
+      "bytes": 526
+    },
+    "packets/cami-empty/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/cami-empty/trace.jsonl": {
+      "sha256": "6e10f92499347e1e6d1f36fccf67f3430c125851f27ed82a704fa54e385d44cf",
+      "bytes": 2212
+    },
+    "packets/cami-error/model-result.json": {
+      "sha256": "75521658fd87edc592e053d7be2328ad574e1716db6881b468812d80cbe5d8a2",
+      "bytes": 477
+    },
+    "packets/cami-error/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/cami-error/trace.jsonl": {
+      "sha256": "38ac4541c73187913e8bc87728062d6685db50b7f591e57db0bddf3f6ac73843",
+      "bytes": 1910
+    },
+    "packets/cami-literal/model-result.json": {
+      "sha256": "c61d687446da453c35e32f57b042cdae65b1bc68ce9885f9a501e0848bd8c435",
+      "bytes": 1154
+    },
+    "packets/cami-literal/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/cami-literal/trace.jsonl": {
+      "sha256": "c147364146b3ee3fb628f04db25d44dfbed5464b6b7c68e0ab6f3edb9e4b5ca2",
+      "bytes": 2981
+    },
+    "packets/cami-note/model-result.json": {
+      "sha256": "cb66bedcf7dad2411bab5f03073b2761b080e340fed06dcc0114e1dd3ce89f9b",
+      "bytes": 872
+    },
+    "packets/cami-note/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/cami-note/trace.jsonl": {
+      "sha256": "e4eed5d07c305a5ff0c83166cea9800a9b4928699fd6967b71277be947962fec",
+      "bytes": 2731
+    },
+    "packets/cami-withheld/model-result.json": {
+      "sha256": "7688e56bb9b73b9d3f2316d1e1bdd7e27795c5bac2afae98f417890a643d30f3",
+      "bytes": 772
+    },
+    "packets/cami-withheld/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/cami-withheld/trace.jsonl": {
+      "sha256": "263fb2c23c61f9cfb8c30d9ec86528a651f5a382b115a2bc99135b75627b5e6c",
+      "bytes": 2459
+    },
+    "packets/static-empty/model-result.json": {
+      "sha256": "a8ebb27de5c83153c8d693f2831cdaaec670805eea5498572234f5c592a8c9e3",
+      "bytes": 507
+    },
+    "packets/static-empty/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/static-empty/trace.jsonl": {
+      "sha256": "775172d33a8147d709a1af872355696ed7c74aa7dbfdb75efefdab6c5d58e0cc",
+      "bytes": 2018
+    },
+    "packets/static-error/model-result.json": {
+      "sha256": "75521658fd87edc592e053d7be2328ad574e1716db6881b468812d80cbe5d8a2",
+      "bytes": 477
+    },
+    "packets/static-error/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/static-error/trace.jsonl": {
+      "sha256": "7e43c067a6e5a1dc865cc798ea4cd16a4ec662005afee144c8cdb27f9f10ec85",
+      "bytes": 1914
+    },
+    "packets/static-literal/model-result.json": {
+      "sha256": "c42ff88097f261eacc690862f9d211976c3556e57dc8fb13c817bc130d775af7",
+      "bytes": 1123
+    },
+    "packets/static-literal/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/static-literal/trace.jsonl": {
+      "sha256": "fb9868e8abd677688edc9dfa6a533d784cfc679416b2cf080012b4baf05d6686",
+      "bytes": 2773
+    },
+    "packets/static-note/model-result.json": {
+      "sha256": "fac0cf73b1ab7ce26ee3cd294eed4302e20e25724e4f84d2fb5ef57fb28fa723",
+      "bytes": 841
+    },
+    "packets/static-note/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/static-note/trace.jsonl": {
+      "sha256": "2360054b8b923b8729ff3e3c92b68b44ccf095e12daa80f78ba0633bcc466d04",
+      "bytes": 2525
+    },
+    "packets/static-withheld/model-result.json": {
+      "sha256": "0470072b0345f9a019baa090b7d3ba864d734d8bc66818cc14fe4d19db0c8950",
+      "bytes": 753
+    },
+    "packets/static-withheld/request.json": {
+      "sha256": "6c18c5a2663324668b75f333616bd73dc66838296ca285903e320d78d854b8ba",
+      "bytes": 130
+    },
+    "packets/static-withheld/trace.jsonl": {
+      "sha256": "d699632c397e9669abcd9906aefbf0f1018bea930548e8aa2412e426dd21c876",
+      "bytes": 2265
+    },
+    "prove_legacy_equivalence.py": {
+      "sha256": "5bfde37f9306f70b1583054bc8ab86e8e2231c2e231cf8064b6dc82168aa8dd7",
+      "bytes": 5037
+    },
+    "ruff-attempt-1.json": {
+      "sha256": "9acd2ac358b6e8b4e66bc3c9807e21a6b195cef2d65aaaf98fbd224d3f63ae34",
+      "bytes": 276
+    },
+    "ruff-attempt-1.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "ruff-attempt-1.stdout.txt": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "source/integrations/opencode/README.md": {
+      "sha256": "a22ffc8f21e4faba804d82cf395cfd8651acf55527790f28e933763847c4f615",
+      "bytes": 17694
+    },
+    "source/integrations/opencode/memory_adapter.py": {
+      "sha256": "902957f7d054254993f9d1610b2c789e7df5282796f3ab68ba17d0b462633be3",
+      "bytes": 11632
+    },
+    "source/scripts/opencode_benchmark/harness/container_session.py": {
+      "sha256": "a9348935974404cc5fbd1ffb390cb638842254d98f2b5b52be20b5e79063d285",
+      "bytes": 23031
+    },
+    "source/tests/test_opencode_readable_adapter_wiring.py": {
+      "sha256": "e2762d2c42c8b1bca6a6e4c9a17543c6bb6d1bacc9176a78b36f71505eab61fe",
+      "bytes": 14353
+    },
+    "tests-attempt-1.json": {
+      "sha256": "71be772e8a179fca0e0bfc62127876505f54aca6b00ceeba3e034d70092c8536",
+      "bytes": 283
+    },
+    "tests-attempt-1.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests-attempt-1.stdout.txt": {
+      "sha256": "3d9e4d0ef7bcbf3a164b2755a02a9831d58042ac4836062a00b61f0fd4bef8de",
+      "bytes": 180
+    }
+  },
+  "verification": "Every archived member read back and hashed; originals rechecked unchanged. No experiments rerun."
+}

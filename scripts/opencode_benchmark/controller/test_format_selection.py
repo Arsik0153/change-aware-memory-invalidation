@@ -43,7 +43,7 @@ def test_old_study_defaults_to_full():
     assert schema.memory_response_format({}) == 'full'
 
 
-@pytest.mark.parametrize('selected', ['full', 'compact'])
+@pytest.mark.parametrize('selected', ['full', 'compact', 'readable'])
 def test_cli_cannot_override_loaded_study(monkeypatch, tmp_path, capsys, selected):
     monkeypatch.setattr(sys, 'argv', ['study_controller.py', '--study', 'not-read.json',
                                     '--out', str(tmp_path / 'unused'),
@@ -55,7 +55,7 @@ def test_cli_cannot_override_loaded_study(monkeypatch, tmp_path, capsys, selecte
     assert not (tmp_path / 'unused').exists()
 
 
-@pytest.mark.parametrize('selected', ['full', 'compact'])
+@pytest.mark.parametrize('selected', ['full', 'compact', 'readable'])
 def test_mismatched_effective_command_rejected(selected):
     other = 'compact' if selected == 'full' else 'full'
     config = harness.configuration('static', 'prepared/binding.json', other)
@@ -67,7 +67,7 @@ def test_mismatched_effective_command_rejected(selected):
         runtime.validate_memory_command({}, 'cami', selected)
 
 
-@pytest.mark.parametrize('selected', ['full', 'compact'])
+@pytest.mark.parametrize('selected', ['full', 'compact', 'readable'])
 def test_make_study_records_one_common_frozen_format(monkeypatch, tmp_path, selected):
     monkeypatch.setattr(schema, 'normalize', lambda *args: {})
     monkeypatch.setattr(schema, 'digest', lambda *args: 'a' * 64)
@@ -81,7 +81,7 @@ def test_make_study_records_one_common_frozen_format(monkeypatch, tmp_path, sele
 
 
 @pytest.mark.parametrize('arm', ['plain', 'static', 'cami'])
-@pytest.mark.parametrize('selected', ['full', 'compact'])
+@pytest.mark.parametrize('selected', ['full', 'compact', 'readable'])
 def test_session_passes_frozen_format_and_verifies_effective_command(monkeypatch, tmp_path, arm, selected):
     out = tmp_path / 'session'
     out.mkdir()
@@ -121,7 +121,7 @@ def test_session_passes_frozen_format_and_verifies_effective_command(monkeypatch
 
 
 @pytest.mark.parametrize('arm', ['static', 'cami'])
-@pytest.mark.parametrize('selected', ['full', 'compact'])
+@pytest.mark.parametrize('selected', ['full', 'compact', 'readable'])
 def test_controller_rejects_valid_hash_opposite_wire_format(monkeypatch, tmp_path, arm, selected):
     from test_format_observation import fixture
 

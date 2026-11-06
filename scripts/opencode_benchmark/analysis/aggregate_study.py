@@ -26,16 +26,18 @@ LITERAL_COMPACT_DEVELOPMENT_IDS = (
     LITERAL_COMPACT_DEVELOPMENT_ID,
     "opencode-cami-real-maintenance-development-v5-literal-compact",
 )
+V7_STUDY_ID = "opencode-cami-real-maintenance-development-v7-readable-prefix"
+PRIORITY_STUDY_IDS = (V6_STUDY_ID, V7_STUDY_ID)
 
 
 def admit_protocol(protocol, supported):
     """Explicit version IDs share the unchanged frozen success/cost/token rules."""
     expected = supported
-    if protocol.get("study_id") in (*LITERAL_COMPACT_DEVELOPMENT_IDS, V6_STUDY_ID):
+    if protocol.get("study_id") in (*LITERAL_COMPACT_DEVELOPMENT_IDS, *PRIORITY_STUDY_IDS):
         expected = {**supported, "study_id": protocol['study_id']}
     if {key: protocol.get(key) for key in supported} != expected:
         raise ValueError("protocol success rules differ from independently supported frozen rules")
-    if protocol["study_id"] == V6_STUDY_ID:
+    if protocol["study_id"] in PRIORITY_STUDY_IDS:
         admit_tier_policy(protocol)
     return protocol["study_id"]
 
@@ -49,17 +51,18 @@ def _cohort_path(value, basename=None):
 
 
 def admit_study_cohort(protocol_id, study):
-    if protocol_id == V6_STUDY_ID:
+    if protocol_id in PRIORITY_STUDY_IDS:
         if study.get("service_tier") != "priority":
-            raise ValueError("v6 requires frozen study service_tier priority")
+            raise ValueError("priority protocol requires frozen study service_tier priority")
     elif study.get("service_tier") is not None:
         raise ValueError("historical protocol IDs did not freeze an explicit service tier; use a separately supported protocol")
-    if protocol_id not in (*LITERAL_COMPACT_DEVELOPMENT_IDS, V6_STUDY_ID):
+    if protocol_id not in (*LITERAL_COMPACT_DEVELOPMENT_IDS, *PRIORITY_STUDY_IDS):
         return
+    response_format = "readable" if protocol_id == V7_STUDY_ID else "compact"
     normalized = study.get("normalized")
     source = normalized.get("memory_source") if isinstance(normalized, dict) else None
     if (study.get("bundle_kind") != "development"
-            or study.get("memory_response_format") != "compact"
+            or study.get("memory_response_format") != response_format
             or not isinstance(source, dict)
             or set(source) != {"schema_version", "seed", "generator", "helpers",
                                "payload_kind", "extractor_format"}
@@ -71,7 +74,7 @@ def admit_study_cohort(protocol_id, study):
             or not _cohort_path(source["generator"], "seed_source_literals_v2.py")
             or not isinstance(source["helpers"], list) or len(source["helpers"]) != 1
             or not _cohort_path(source["helpers"][0], "literal_source.py")):
-        raise ValueError("literal/compact ID requires its explicit development schema2 study cohort")
+        raise ValueError("literal protocol ID requires its explicit response format and development schema2 study cohort")
     hashes = normalized.get("asset_hashes")
     required = ["memory-source.json", source["seed"], source["generator"], source["helpers"][0]]
     if not isinstance(hashes, dict) or any(
@@ -507,7 +510,7 @@ def aggregate(
     for row in rows:
         row["timing_caveat"] = row["id"] in caveats["affected_trial_ids"]
     tier = None
-    if protocol_id == V6_STUDY_ID:
+    if protocol_id in PRIORITY_STUDY_IDS:
         for row in rows:
             row["service_tier"] = trial_tier(trial_root / row["id"], row)
         tier = study_tier_summary(rows)
@@ -519,7 +522,7 @@ def aggregate(
             winning_metrics_satisfying_all_six_pairs=[],
             incomplete_study=True,
         )
-        if protocol_id == V6_STUDY_ID:
+        if protocol_id in PRIORITY_STUDY_IDS:
             summary["primary_metric_eligibility"] = {"charged_wall": False, "token_work": False}
             for pair in summary["paired_comparisons"]:
                 for metric in ("charged_wall", "token_work"):

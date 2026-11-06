@@ -181,7 +181,8 @@ def test_exact_v6_policy_and_study_are_admitted_without_relaxing_shared_rules(v6
     with pytest.raises(ValueError, match="exact frozen"):
         evaluator.admit_protocol(protocol, supported)
     for field, value in [("service_tier", "auto"), ("service_tier", None),
-                         ("memory_response_format", "full"), ("bundle_kind", "heldout")]:
+                         ("memory_response_format", "full"), ("memory_response_format", "readable"),
+                         ("bundle_kind", "heldout")]:
         original = copy.deepcopy(v6.study)
         v6.study[field] = value
         freeze(v6)
@@ -301,3 +302,61 @@ def test_legacy_aggregation_never_requests_tier_evidence(monkeypatch):
         assert set(report["summary"]["winning_metrics_satisfying_all_six_pairs"]) == {"charged_wall", "token_work"}
     finally:
         f.tearDown()
+
+
+@pytest.fixture
+def v7(v6):
+    protocol = evaluator.read(v6.protocol)
+    protocol["study_id"] = evaluator.V7_STUDY_ID
+    v6.protocol.write_text(json.dumps(protocol))
+    v6.study["memory_response_format"] = "readable"
+    freeze(v6)
+    return v6
+
+
+def test_v7_admits_only_its_format_and_unchanged_priority_rules(v7, monkeypatch):
+    supported = evaluator.read(evaluator.HERE / "supported_rules.json")
+    protocol = evaluator.read(v7.protocol)
+    assert evaluator.admit_protocol(protocol, supported) == evaluator.V7_STUDY_ID
+    evaluator.admit_study_cohort(evaluator.V7_STUDY_ID, v7.study)
+    for key in TIER_POLICY:
+        broken = copy.deepcopy(protocol)
+        del broken["service_tier"][key]
+        with pytest.raises(ValueError, match="exact frozen"):
+            evaluator.admit_protocol(broken, supported)
+    monkeypatch.setattr(evaluator, "trial_row", lambda *args: pytest.fail("outcomes read before admission"))
+    for field, value in [("memory_response_format", "compact"), ("memory_response_format", "full"),
+                         ("service_tier", None), ("service_tier", "auto"), ("bundle_kind", "heldout")]:
+        original = copy.deepcopy(v7.study)
+        v7.study[field] = value
+        freeze(v7)
+        with pytest.raises(ValueError):
+            evaluator.aggregate(v7.run, v7.protocol)
+        v7.study = original
+
+
+@pytest.mark.parametrize("fault", [None, "mixed_tier", "configuration", "no_model"])
+def test_v7_full_cohort_keeps_the_same_quality_cost_and_tier_gates(v7, fault):
+    for index, item in enumerate(v7.plan):
+        data = assets()
+        if index == 0 and fault == "mixed_tier":
+            data = assets(("priority", "default"))
+        if index == 0 and fault == "configuration":
+            data["effective-input-config.json"]["providers"] = {}
+        put_tier(v7, item, data)
+    if fault == "no_model":
+        binding = evaluator.read(v7.run / "run.json")
+        binding["mode"] = "no_model"
+        (v7.run / "run.json").write_text(json.dumps(binding))
+    report = evaluator.aggregate(v7.run, v7.protocol)
+    summary = report["summary"]
+    assert summary["terminal_trials"] == 36 and summary["all_trials_operational_quality_pass"]
+    assert all(row["token_work"] is not None and row["charged_wall_seconds"] is not None for row in report["trials"])
+    assert summary["service_tier"]["assistant_responses"] == 72
+    assert summary["primary_metric_eligibility"] == {
+        "charged_wall": fault is None, "token_work": fault not in ("configuration", "no_model")}
+    if fault == "no_model":
+        assert summary["primary_superiority"] == "not_established"
+        assert summary["winning_metrics_satisfying_all_six_pairs"] == []
+    if fault is None:
+        assert summary["service_tier"]["uniform_provider_reported_tier"] == "default"

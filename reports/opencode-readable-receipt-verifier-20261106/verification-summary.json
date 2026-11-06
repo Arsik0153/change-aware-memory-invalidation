@@ -1,0 +1,30 @@
+{
+  "baseline_commit": "f355b65613c7a220986cfc05c05a4c719c7b0c74",
+  "docker_runs": 0,
+  "full_suite_run": false,
+  "head_at_verification": "f355b65613c7a220986cfc05c05a4c719c7b0c74",
+  "heldout_reads": 0,
+  "model_calls": 0,
+  "network_calls": 0,
+  "prior_attempt_logs_preserved": [
+    "pytest-001.log",
+    "ruff-001.log"
+  ],
+  "ruff_command": ".venv/bin/ruff check scripts/opencode_benchmark/controller/readable_receipts.py scripts/opencode_benchmark/controller/test_readable_receipts.py",
+  "ruff_output": "All checks passed!\n",
+  "scope": "Separate stdlib readable/1 and exact compact fallback byte-integrity verification; authored public fixtures only. Marker helpers provide metadata binding only. SHA integrity does not establish signatures or source semantics.",
+  "source_sha256": {
+    "integrations/opencode/compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+    "integrations/opencode/literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+    "integrations/opencode/literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+    "integrations/opencode/memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+    "integrations/opencode/readable_response.py": "85bd8be9dbf20deffd0dea2c15b09ecbe6341aa6d4956c907cb1f3efe1db19fa",
+    "reports/opencode-readable-response-implementation-20261106/IMPLEMENTATION.md": "200432d25c3983055dba6cb19b94f87516623dbe77e6e7a25f1ee9e6ca3db95a",
+    "reports/opencode-readable-response-implementation-20261106/verification-summary.json": "a90b6b4d1674e52f182387176fb891d8b0cb17190aff717e26e805415b754471",
+    "scripts/opencode_benchmark/controller/readable_receipts.py": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324",
+    "scripts/opencode_benchmark/controller/test_readable_receipts.py": "485c15ba97ac8282a296f44dc2465368a41786900cf9e58a8bba0ba7bd10c191"
+  },
+  "status": "passed",
+  "test_command": ".venv/bin/python -m pytest -q scripts/opencode_benchmark/controller/test_readable_receipts.py",
+  "test_output": "........................................................................ [ 90%]\n........                                                                 [100%]\n80 passed in 0.11s\n"
+}

@@ -5,6 +5,7 @@ import json
 import re
 
 from opencode_message_schema import non_tool_record
+from readable_receipts import COMPACT as READABLE_FALLBACK, readable_audit_marker, readable_text_marker
 
 COMPACT = 'research-memory-compact/1'
 
@@ -32,6 +33,19 @@ def visible_marker(part, arm, selected):
     content = state['content']
     if len(content) != 1 or content[0].get('type') != 'text':
         raise ValueError('expected one complete text result')
+    if selected == 'readable':
+        effective, backend, receipt = readable_text_marker(content[0]['text'])
+        if backend != arm:
+            value = json.loads(content[0]['text']) if effective == READABLE_FALLBACK else {}
+            if (backend is not None or value.get('schema_version') != 1
+                    or not isinstance(value.get('error'), dict)
+                    or value['error'].get('code') != 'memory_lookup_failed'
+                    or value.get('entries') != [] or value.get('withheld') != []
+                    or value.get('freshness') != 'unavailable; no historical result substituted'):
+                raise ValueError('memory backend mismatch or unrecognized backend-free error')
+        if not isinstance(state.get('input'), dict):
+            raise ValueError('tool arguments unavailable')
+        return digest(state['input']), receipt
     value = json.loads(content[0]['text'])
     if (value.get('schema_version') != 1 or not isinstance(value.get('entries'), list)
             or not isinstance(value.get('withheld'), list)):
@@ -57,6 +71,11 @@ def visible_marker(part, arm, selected):
 def backend_marker(event, arm, selected):
     if event.get('backend') != arm or not sha_value(event.get('query_sha256')):
         raise ValueError('backend identity or argument digest missing')
+    if selected == 'readable':
+        if event.get('response_format') != 'readable':
+            raise ValueError('readable requested backend format missing')
+        _, receipt = readable_audit_marker(event.get('response_audit'))
+        return event['query_sha256'], receipt
     if selected == 'full':
         if 'response_format' in event or 'response_audit' in event:
             raise ValueError('compact backend event in selected full mode')
@@ -73,9 +92,10 @@ def backend_marker(event, arm, selected):
 
 
 def inspect_format(messages, events, arm, selected):
-    if selected not in ('full', 'compact') or arm not in ('plain', 'static', 'cami'):
+    if selected not in ('full', 'compact', 'readable') or arm not in ('plain', 'static', 'cami'):
         raise ValueError('unsupported frozen memory configuration')
     visible, backend, observations, errors, incomplete = [], [], [], [], []
+    visible_effective, backend_effective = [], []
     seen, lifecycle = set(), []
     if not isinstance(messages, list) or not isinstance(events, list):
         raise ValueError('complete message and backend event arrays required')
@@ -118,6 +138,10 @@ def inspect_format(messages, events, arm, selected):
                 key = visible_marker(part, arm, selected)
                 visible.append(key)
                 observations.append({'call_id': call_id, 'query_sha256': key[0], 'audit_receipt': key[1], 'format': selected})
+                if selected == 'readable':
+                    effective, _, _ = readable_text_marker(state['content'][0]['text'])
+                    observations[-1]['effective_format'] = effective
+                    visible_effective.append((key, effective))
             except (ValueError, KeyError, TypeError, AttributeError) as error:
                 errors.append({'call_id': call_id, 'reason': str(error)})
     for index, event in enumerate(events):
@@ -129,11 +153,17 @@ def inspect_format(messages, events, arm, selected):
         try:
             if arm == 'plain':
                 raise ValueError('plain observed memory backend event')
-            backend.append(backend_marker(event, arm, selected))
+            key = backend_marker(event, arm, selected)
+            backend.append(key)
+            if selected == 'readable':
+                effective, _ = readable_audit_marker(event['response_audit'])
+                backend_effective.append((key, effective))
         except (ValueError, KeyError, TypeError, AttributeError) as error:
             errors.append({'backend_event': index, 'reason': str(error)})
     if Counter(visible) != Counter(backend):
         errors.append({'reason': 'visible/backend argument and receipt multisets differ'})
+    if selected == 'readable' and Counter(visible_effective) != Counter(backend_effective):
+        errors.append({'reason': 'visible/backend effective formats differ'})
     status = 'unsupported_or_mismatch' if errors else (
         'not_applicable' if arm == 'plain' else 'matched' if visible else 'not_observed')
     return {'requested_format': selected, 'arm': arm, 'status': status,

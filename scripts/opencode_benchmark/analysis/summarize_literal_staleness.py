@@ -10,10 +10,10 @@ from pathlib import Path
 import sys
 import time
 
-from classify_literal_calls import canonical, classify, validate_catalog
+from classify_literal_calls import READABLE_VERIFIER_PATH, canonical, classify, validate_catalog
 from literal_reference import FORMAT, LIMIT, body
 
-VERSION = "source-excerpt-tuple-staleness/2"
+VERSION = "source-excerpt-tuple-staleness/3"
 
 
 def load_module(name, path):
@@ -55,6 +55,9 @@ def summarize(run, catalog_path, origin, stage1, stage3, controls_path, analyzer
     study = controls.read(run / "frozen-study.json")
     if study.get("bundle_kind") != "development" or study.get("arms") != ["plain", "static", "cami"]:
         raise ValueError("registered three-arm development study required")
+    selected_format = study.get("memory_response_format", "full")
+    if selected_format not in ("full", "compact", "readable"):
+        raise ValueError("unsupported frozen memory response format")
     plan = controls.read(run / "plan.json")["trials"]
     legal = {f"r{rep}-{arm}-s{stage}" for rep in range(1, 4) for arm in ("plain", "static", "cami") for stage in range(1, 5)}
     if len(plan) != 36 or {p["id"] for p in plan} != legal:
@@ -97,6 +100,11 @@ def summarize(run, catalog_path, origin, stage1, stage3, controls_path, analyzer
                     raise ValueError("catalog immutable/before raw hash differs")
                 trace_path = directory / "session/evidence/memory-backend-trace.jsonl"
                 events = [json.loads(line) for line in trace_path.read_text().splitlines() if line.strip()] if trace_path.is_file() else None
+                expected_marker = None if selected_format == "full" else selected_format
+                if events is not None and any(
+                        isinstance(event, dict) and event.get("event") == "memory_lookup"
+                        and event.get("response_format") != expected_marker for event in events):
+                    raise ValueError("observed memory response format differs from frozen study")
                 result = classify(analyzer, rows, catalog, origin, current, expected["arm"], events)
                 result["backend_crosscheck"]["sha256"] = controls.sha(trace_path) if trace_path.is_file() else None
             row.update(status="assessed", messages_sha256=controls.sha(messages_path), canonical_reset_sha256=controls.sha(reset),
@@ -111,6 +119,8 @@ def summarize(run, catalog_path, origin, stage1, stage3, controls_path, analyzer
     body.cache_clear()
     totals = Counter((t["trial"]["arm"], r["channel"], r["record_kind"], r["assessment"]) for t in trials for r in t.get("records") or [])
     paths = [controls_path, controls_path.parent / "classify_memory_calls.py", analyzer_path, Path(__file__), Path(__file__).with_name("classify_literal_calls.py"), Path(__file__).with_name("literal_reference.py")]
+    if selected_format == "readable":
+        paths.append(READABLE_VERIFIER_PATH)
     return {"schema_version": 2, "analysis_version": VERSION, "catalog_schema_version": 2,
             "planned_trials": 36, "completed_trials": len(completed), "complete_36": len(completed) == 36,
             "coverage_status": "all_registered_trials_terminal" if len(completed) == 36 else "partial_terminal_snapshot",

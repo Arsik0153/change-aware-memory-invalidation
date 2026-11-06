@@ -1,15 +1,27 @@
-"""Catalog2 full/compact response authentication and literal tuple observations."""
+"""Catalog2 full/compact/readable authentication and literal tuple observations."""
 from __future__ import annotations
 
 from collections import Counter
+from functools import cache
+import importlib.util
 import json
 import math
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 import re
 
 from literal_reference import FORMAT, LIMIT, body, sha
 
 COMPACT = "research-memory-compact/1"
+READABLE_VERIFIER_PATH = Path(__file__).resolve().parents[1] / "controller/readable_receipts.py"
+
+
+@cache
+def _readable_verifier():
+    """Load one pinned sibling code module; no packet or source-data cache."""
+    spec = importlib.util.spec_from_file_location("literal_readable_receipts", READABLE_VERIFIER_PATH)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.verify_readable_result
 
 
 def canonical(value):
@@ -73,6 +85,15 @@ def mcp(text):
 
 
 def authenticate_response(text, event):
+    if event.get("response_format") == "readable":
+        require(event.get("error") is None, "memory lookup error")
+        result = mcp(text)
+        original = _readable_verifier()(result, event.get("response_audit"))
+        require(not original.get("error"), "memory lookup error")
+        require(event.get("response_bytes") == len(canonical(result)), "readable response byte count differs")
+        effective = event["response_audit"]["effective_format"]
+        return original, ("readable_verified" if effective == "research-memory-readable/1"
+                          else "readable_compact_fallback_verified")
     value = json.loads(text)
     require(isinstance(value, dict) and not value.get("error") and event.get("error") is None, "memory lookup error")
     if "response_format" not in value and "audit_receipt" not in value:
@@ -161,7 +182,8 @@ def classify(analyzer, rows, catalog, origin, current, backend, backend_events):
         try:
             require(call["state"].get("status") == "completed", "memory_tool_not_completed")
             text = call["state"]["output"]
-            model = json.loads(text)
+            if not isinstance(text, str) or not text.startswith("# Memory source prefixes\n\n"):
+                model = json.loads(text)
             require(join_error is None, join_error)
             event = events[index]
             arguments = call["state"].get("input")
@@ -198,7 +220,7 @@ def classify(analyzer, rows, catalog, origin, current, backend, backend_events):
                           reported_returned_ids=reported("entries"), reported_withheld_ids=reported("withheld"))
         reports.append(report)
     counts = Counter((r["channel"], r["record_kind"], r["assessment"]) for r in observations)
-    return {"analysis_version": "source-excerpt-tuple-staleness/2", "memory_calls": reports, "records": observations,
+    return {"analysis_version": "source-excerpt-tuple-staleness/3", "memory_calls": reports, "records": observations,
             "unsupported_calls": sum(r["status"] == "unsupported" for r in reports),
             "counts": [{"channel": c, "record_kind": k, "assessment": a, "observations": n} for (c, k, a), n in sorted(counts.items())],
             "returned_record_observations": sum(r["channel"] == "returned" for r in observations),

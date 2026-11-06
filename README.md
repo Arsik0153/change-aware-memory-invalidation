@@ -125,10 +125,20 @@ The [bounded prefix fix](reports/opencode-source-prefix-implementation-20261106/
 passes 137 targeted tests and exact Click index comparisons. Its [separate repeated resource screen](reports/opencode-source-prefix-candidate4-review-20261106/README.md)
 passes all 20 attempts without the material memory regression; CPU and wall-time
 differences from the prior baseline are within measured variation. Temporary
-line buffers are explicitly released after successful traversal. Real-tool
-timing remains separate. A [standalone readable projection](reports/opencode-readable-response-implementation-20261106/IMPLEMENTATION.md)
+line buffers are explicitly released after successful traversal. A [standalone readable projection](reports/opencode-readable-response-implementation-20261106/IMPLEMENTATION.md)
 also passes authored tests and all 24 packet checks, with fresh embedded receipts
-and exact compact fallback; it is not yet connected to the adapter or benchmark.
+and exact compact fallback. Opt-in adapter/controller wiring and a separate
+receipt verifier now support this mode; full verification and pinned runtime
+checks precede the next model study.
+
+The [repeated actual-tool comparison](reports/opencode-source-prefix-mcp-confirmation-20261106/README.md)
+finds 14.60% lower median wall time and 16.26% lower CPU time for a lookup after a
+source change, with matching outputs and work in all five pairs. The other four
+lookup cases, preparation wall time and whole local workflow wall time show no
+measurable difference. Process RSS peak increased by 4.65 MiB; cgroup peaks were
+similar. This is a bounded local timing result, not an OpenCode task advantage
+or a reduction in RAM usage. All 65 profile/quiet calls and failed buffer
+candidates are retained, with raw states, exact dependencies and standalone plots.
 
 ## Install and run the offline demo
 

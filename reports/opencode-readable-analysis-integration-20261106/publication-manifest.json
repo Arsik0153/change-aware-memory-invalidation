@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "source_directory": "runs/opencode-readable-analysis-integration-20261106",
+  "all_non_cache_files_retained": true,
+  "archive": {
+    "path": "evidence.tar.gz",
+    "bytes": 26073,
+    "sha256": "f1e1bc86cfcc7df3e975e3dd660f2a8c36ef2c5c780f6639723c4f0d57152e34"
+  },
+  "files": {
+    "aggregate_study.py.txt": {
+      "sha256": "05845521d2a2a477207d2d45cc283b88b2c4f662645b6378daef0deda7f4a996",
+      "bytes": 30018
+    },
+    "classify_literal_calls.py.txt": {
+      "sha256": "098f0e29fc76e07b12eeb41c2fa5e41023d38fa3fdcde8b461269ff08de4c5bf",
+      "bytes": 16902
+    },
+    "ruff-all.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "ruff-attempt1.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "summarize_literal_staleness.py.txt": {
+      "sha256": "063da330decbd340fd2bb524b82a1e43f71c273cc9029c6ced939c05b2e99e9d",
+      "bytes": 11769
+    },
+    "summary-before-mode-gate.py.txt": {
+      "sha256": "d3abca85c19e4ff4ae65185bb13e32f061960c39585c1e0eb1e44950faa2ec61",
+      "bytes": 11168
+    },
+    "targeted-tests-attempt1.log": {
+      "sha256": "9bbc38d01bb87bb5955b1cf9c1f32a40cfa800b2d0d24c778dc60a657d6650b7",
+      "bytes": 179
+    },
+    "targeted-tests-attempt2.log": {
+      "sha256": "0ccfb17318daea184c1d181e9867454b93e7c7e7c00b2575fae130e09f61946f",
+      "bytes": 179
+    },
+    "test_literal_staleness.py.txt": {
+      "sha256": "bdc013b012eaccc7f85b3c2d3a7c9e339b852b3b589130d53af65306569c6033",
+      "bytes": 19882
+    },
+    "test_service_tier_admission.py.txt": {
+      "sha256": "a68c65799d5ada7939c7003c7e324d189bb7e4efebd086b76b9b0133b6c0ad74",
+      "bytes": 18222
+    },
+    "verification-summary.json": {
+      "sha256": "7e789d0700df39df2e920ba2e48218b76c32d37d94f8d95008ea189aab60d2f4",
+      "bytes": 1639
+    }
+  },
+  "verification": "Every archived member read back and hashed; originals rechecked unchanged. No experiments rerun."
+}

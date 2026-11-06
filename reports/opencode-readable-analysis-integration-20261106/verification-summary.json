@@ -1,0 +1,26 @@
+{
+  "status": "targeted_checks_pass_after_independent_mode_admission_fix",
+  "source_sha256": {
+    "scripts/opencode_benchmark/analysis/aggregate_study.py": "05845521d2a2a477207d2d45cc283b88b2c4f662645b6378daef0deda7f4a996",
+    "scripts/opencode_benchmark/analysis/classify_literal_calls.py": "098f0e29fc76e07b12eeb41c2fa5e41023d38fa3fdcde8b461269ff08de4c5bf",
+    "scripts/opencode_benchmark/analysis/summarize_literal_staleness.py": "063da330decbd340fd2bb524b82a1e43f71c273cc9029c6ced939c05b2e99e9d",
+    "scripts/opencode_benchmark/analysis/test_literal_staleness.py": "bdc013b012eaccc7f85b3c2d3a7c9e339b852b3b589130d53af65306569c6033",
+    "scripts/opencode_benchmark/analysis/test_service_tier_admission.py": "a68c65799d5ada7939c7003c7e324d189bb7e4efebd086b76b9b0133b6c0ad74"
+  },
+  "tests": {
+    "initial": 91,
+    "final": 97,
+    "final_log": "targeted-tests-attempt2.log"
+  },
+  "ruff": "ruff-all.log",
+  "independent_review": "runs/opencode-readable-analysis-independent-review-20261106/review-summary.json",
+  "before_fix_reconstruction": {
+    "file": "summary-before-mode-gate.py.txt",
+    "sha256": "d3abca85c19e4ff4ae65185bb13e32f061960c39585c1e0eb1e44950faa2ec61",
+    "method": "Inverse of root-owned gate patch, checked against SHA recorded by independent pre-fix reproduction; not an execution-time file capture"
+  },
+  "scope": "Explicit v7 readable/priority schema2 development admission, unchanged six-pair criterion; version3 literal analysis authenticates readable/fallback and binds observed mode to frozen study before classification",
+  "model_calls": 0,
+  "heldout_reads": false,
+  "full_suite": "pending"
+}

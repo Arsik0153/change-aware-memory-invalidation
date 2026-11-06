@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "source_directory": "runs/opencode-readable-receipt-verifier-20261106",
+  "all_non_cache_files_retained": true,
+  "archive": {
+    "path": "evidence.tar.gz",
+    "bytes": 2680,
+    "sha256": "48e66732ef3ea1b68b420a92f72338b39e5d26506f5c4f8ba8f2227afdc2982e"
+  },
+  "files": {
+    "VERIFICATION.md": {
+      "sha256": "876b27b068033113b021bae3959312ddda4d28c32a8bf42c1a0099defbb9b992",
+      "bytes": 2348
+    },
+    "pytest-001.log": {
+      "sha256": "2691176b863a64ab190f6354775af99560039ba010ff3e93b264462c419780e1",
+      "bytes": 99
+    },
+    "pytest-002.log": {
+      "sha256": "1edf4405ccc087abcbff4c449dbdf32d98c29a2ba58c0af180ca5f45798a478c",
+      "bytes": 179
+    },
+    "ruff-001.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "ruff-002.log": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "verification-summary.json": {
+      "sha256": "6d87ec8e82ff11b1f3fc00d2e9196d9d58370710dcd140cb7ce780e94a204091",
+      "bytes": 2307
+    }
+  },
+  "verification": "Every archived member read back and hashed; originals rechecked unchanged. No experiments rerun."
+}

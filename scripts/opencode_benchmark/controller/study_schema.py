@@ -149,7 +149,7 @@ def make_study(
     service_tier=None,
 ):
     service_tier_value({"service_tier": service_tier})
-    if memory_response_format not in ("full", "compact"):
+    if memory_response_format not in ("full", "compact", "readable"):
         raise ValueError("unsupported memory response format")
     data = normalize(bundle, kind)
     result = {
@@ -203,6 +203,7 @@ def controller_files(root):
         "fixed_grader.py",
         "memory_seed_schema.py",
         "memory_format_evidence.py",
+        "readable_receipts.py",
         "opencode_message_schema.py",
     }
     if not required <= {p.name for p in root.glob("*.py")}:
@@ -237,7 +238,7 @@ def runtime_files(root):
 
 def memory_response_format(study):
     value = study.get("memory_response_format", "full")
-    if value not in ("full", "compact"):
+    if value not in ("full", "compact", "readable"):
         raise ValueError("unsupported frozen memory response format")
     return value
 

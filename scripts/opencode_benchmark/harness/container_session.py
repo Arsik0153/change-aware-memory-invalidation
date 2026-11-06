@@ -136,7 +136,7 @@ def credential_pipe(container, state, shared_url):
 def configuration(arm, binding, response_format="full", service_tier=None):
     from container_common import validate_service_tier
     validate_service_tier(service_tier)
-    if response_format not in ("full", "compact"):
+    if response_format not in ("full", "compact", "readable"):
         raise ValueError("unsupported memory response format")
     result = {"model": "openai/gpt-6.1-sol#high", "update": "disable", "share": "disabled", "warming": False,
         "snapshots": False, "compaction": {"auto": False}, "websearch": False,
@@ -151,8 +151,8 @@ def configuration(arm, binding, response_format="full", service_tier=None):
             "--binding", "/memory/" + binding, "--trace", "/state/evidence/memory-backend-trace.jsonl"], "cwd": "/workspace", "codemode": False,
             "environment": {"PYTHONPATH": "/opt/memory-adapter:/opt/cami-src:/opt/cami-deps", "PYTHONSAFEPATH": "1"},
             "timeout": {"startup": 10000, "catalog": 10000, "execution": 30000}}}}
-        if response_format == "compact":
-            result["mcp"]["servers"]["research_memory"]["command"] += ["--response-format", "compact"]
+        if response_format in ("compact", "readable"):
+            result["mcp"]["servers"]["research_memory"]["command"] += ["--response-format", response_format]
     return result
 
 
@@ -165,7 +165,7 @@ def main():
     parser.add_argument("--prompt-file", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--binding-relative")
-    parser.add_argument("--memory-response-format", choices=["full", "compact"], default="full")
+    parser.add_argument("--memory-response-format", choices=["full", "compact", "readable"], default="full")
     parser.add_argument("--service-tier", choices=["auto", "priority"], help="Explicit provider request tier; omission preserves legacy behavior")
     parser.add_argument("--no-model", action="store_true", help="Explicit default; no auth import/prompt admission")
     parser.add_argument("--run-model", action="store_true")

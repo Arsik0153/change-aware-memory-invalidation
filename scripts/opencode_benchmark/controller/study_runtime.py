@@ -260,8 +260,8 @@ def validate_memory_command(config, arm, response_format):
         "--trace",
         "/state/evidence/memory-backend-trace.jsonl",
     ]
-    if response_format == "compact":
-        expected += ["--response-format", "compact"]
+    if response_format in ("compact", "readable"):
+        expected += ["--response-format", response_format]
     if not isinstance(server, dict) or server.get("command") != expected:
         raise ValueError("effective memory command differs from frozen response format")
 

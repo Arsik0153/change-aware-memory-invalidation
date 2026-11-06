@@ -71,7 +71,7 @@ def execute(study_path, controller, output):
                 study, workspace, memory, arm / "preparation", backend
             )
             catalogs[backend] = (memory / "prepared/catalog.json").read_bytes()
-            for response_format in ("full", "compact"):
+            for response_format in ("full", "compact", "readable"):
                 case = arm / response_format
                 case.mkdir()
                 evidence = case / "evidence"
@@ -96,7 +96,8 @@ def execute(study_path, controller, output):
                         (memory, "/memory", False),
                         (Path(study["cami_source"]), "/opt/cami-src", True),
                         (Path(study["adapter"]), "/opt/memory-adapter", True),
-                        (HERE / "literal_stdio_worker.py", "/opt/literal_stdio_worker.py", True),
+                        (controller / "literal_stdio_worker.py", "/opt/literal_stdio_worker.py", True),
+                        (controller / "readable_receipts.py", "/opt/readable_receipts.py", True),
                         (case, "/check", False),
                         (evidence, "/state/evidence", False),
                     ],
@@ -154,7 +155,8 @@ def main():
                 {
                     "status": "plan_only",
                     "model_calls": 0,
-                    "cases": ["static/full", "static/compact", "cami/full", "cami/compact"],
+                    "cases": [backend + "/" + mode for backend in ("static", "cami")
+                              for mode in ("full", "compact", "readable")],
                     "requires": "installed schema2 controller and pinned schema2 study",
                     "writes": False,
                 }

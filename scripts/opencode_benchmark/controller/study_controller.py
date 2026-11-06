@@ -236,7 +236,7 @@ def main():
     parser.add_argument("--runtime-manifest", type=Path)
     parser.add_argument("--cami-source", type=Path, default=ROOT / "src")
     parser.add_argument("--adapter", type=Path, default=ROOT / "integrations/opencode")
-    parser.add_argument("--memory-response-format", choices=["full", "compact"])
+    parser.add_argument("--memory-response-format", choices=["full", "compact", "readable"])
     parser.add_argument("--service-tier", choices=["auto", "priority"])
     args = parser.parse_args()
     if args.make_study:

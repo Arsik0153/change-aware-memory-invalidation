@@ -12,6 +12,7 @@ import time
 
 from memory_backend import Backend, canonical, cpu, digest, prepare, storage
 from compact_response import compact_result
+from readable_response import readable_result
 
 PROTOCOLS = ("2024-11-05", "2025-03-26", "2025-06-18")
 MAX_MESSAGE = 1024 * 1024
@@ -47,8 +48,8 @@ def trace(path, value):
 
 class Server:
     def __init__(self, binding_path, trace_path, response_format="full"):
-        if response_format not in {"full", "compact"}:
-            raise ValueError("response format must be full or compact")
+        if response_format not in {"full", "compact", "readable"}:
+            raise ValueError("response format must be full, compact or readable")
         self.response_format = response_format
         started, started_cpu = time.perf_counter(), cpu()
         self.backend = Backend(binding_path)
@@ -152,6 +153,9 @@ class Server:
             if self.response_format == "compact":
                 result, audit = compact_result(result)
                 response_audit = {"response_format": "compact", "response_audit": audit}
+            elif self.response_format == "readable":
+                result, audit = readable_result(result)
+                response_audit = {"response_format": "readable", "response_audit": audit}
             state_home = self.backend.binding["state_home"]
             # Storage scan and response serialization are included in the observed tool span.
             state_bytes = storage(Path(state_home)) if state_home else 0
@@ -230,9 +234,9 @@ def main():
     server.add_argument("--trace", type=Path, required=True)
     server.add_argument(
         "--response-format",
-        choices=("full", "compact"),
+        choices=("full", "compact", "readable"),
         default="full",
-        help="Model-facing format; compact preserves full note text and writes full response receipts to --trace",
+        help="Model-facing format; compact/readable write full response receipts to --trace; readable projects literal prefixes and otherwise falls back to compact",
     )
     args = parser.parse_args()
     try:
