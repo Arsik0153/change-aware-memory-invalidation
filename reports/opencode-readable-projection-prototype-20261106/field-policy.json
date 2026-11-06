@@ -1,0 +1,36 @@
+{
+  "format": "research-memory-readable-fenced/prototype-0",
+  "contract": "Essential visible claims are lossless against the authenticated original; complete original provenance remains unchanged in the external sidecar. Display alone is not a full original-result encoding.",
+  "visible_per_record": {
+    "entries[].id": "Exact record identity, original order preserved",
+    "entries[].payload.subject": "Entire original subject object, including exact path/qualname/node_kind",
+    "entries[].payload.origin_span": "Entire original span object",
+    "entries[].payload.expected.text": "Exact UTF-8 source prefix in ordinary fenced Python block; synthetic fence newline explicitly flagged and removed for verification",
+    "entries[].payload.expected.truncated": "Exact boolean; no full-definition or behavior inference",
+    "entries[].label": "Exact original trust label",
+    "entries[].availability": "Exact original availability",
+    "entries[].state_type": "Exact optional state type; absent stays absent"
+  },
+  "visible_shared": {
+    "backend": "Exact original backend label, not blinded",
+    "freshness": "Exact original origin/current freshness wording",
+    "matched_records": "Exact original count",
+    "selected_records": "Exact original count",
+    "truncated": "Exact original selection truncation under selection_truncated",
+    "selection_budget": "Entire original budget object",
+    "withheld": "Entire original withheld array, order and all fields retained",
+    "audit_receipt": "Exact original receipt under original_audit_receipt; does not authenticate new display",
+    "entries[].payload.type": "Shared kind, only if every record is source_excerpt_equals",
+    "entries[].payload.expected.format": "Shared literal_format, only if identical in every record"
+  },
+  "audit_only": {
+    "query": "Redundant query echo; original tool arguments and old result retained. Selection query is not modified.",
+    "response_format": "Old compact format remains in original result; new display has explicit distinct format",
+    "schema_version": "Old schema version retained in original result; strict input-version gate before projection",
+    "entries[].payload.origin_source": "Full source hash/size/index provenance retained in original full/compact packet; duplicate origin path must equal visible subject path. No current-source or behavioral validation claim is added."
+  },
+  "already_audit_only_in_original_compact": ["catalog_sha256", "snapshot_id", "memory_generation_id", "entry-level origin_source", "payload.sources"],
+  "added_display_metadata": ["display_format", "returned_records", "requested_limit from original trace", "fence_newline_added"],
+  "unknown_semantics": "Unknown top-level/record/payload/expected fields refused; nonempty homogeneous literal packets only. Empty, mixed-kind and error cases require separately designed explicit fallback before any production use.",
+  "binding": "Sidecar SHA binds original full result, original compact/model result, old receipt, exact new display and this field policy. Unsigned local integrity only; production requires a distinct new projection receipt and verifier."
+}

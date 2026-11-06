@@ -96,6 +96,27 @@ arrays without rewriting historical outcomes. The [v5 cost diagnosis](reports/op
 separates local memory work from overlapping tool intervals and the unassigned
 model/session time; it motivates bounded lookup profiling, not a speculative Rust rewrite.
 
+The [completed v6 comparison](reports/opencode-development-v6-final-20261106/README.md)
+passes operational admission and fixed quality checks in all 36 trials, but does
+not establish superiority. CAMI uses less normalized token work in one of three
+blocks against plain OpenCode and two of three against static memory. Cache
+cleanup requested during the study disqualifies its primary wall-time comparison;
+all trials and timings remain available. Static memory returned 11 obsolete
+literal observations; CAMI withheld 12, across two distinct obsolete records.
+Different queries selected different observations, so these counts do not prove
+causal reliance or a quality advantage. Every arm requested priority service,
+but all 469 exported assistant observations reported `default`; delivered fast
+service is not established. The final task set still has zero model sessions.
+
+The [independent v6 audit](reports/opencode-v6-independent-audit-20261106/README.md)
+reproduces the analysis and accounts for memory construction, storage, tool output
+and resource use. A common [readable-memory projection](reports/opencode-readable-projection-prototype-20261106/README.md)
+preserves essential visible claims across all 24 recorded packets while reducing
+display bytes; it remains an offline prototype with no token or model benefit
+established. Separately, [source-line reuse](reports/opencode-source-segment-reuse-implementation-20261106/README.md)
+preserves complete Click indexes while avoiding repeated line preparation within
+each module. Its functional checks do not establish an end-to-end speedup.
+
 ## Install and run the offline demo
 
 Use Python 3.12 and uv. If uv is missing, install it into a local tool directory:
@@ -306,4 +327,4 @@ production-кода независимым proof kernel не заявляетс�
 - [Новая development-когорта Packaging](docs/packaging_development_replay_2026-11-04_ru.md): 24 новых утверждения, 69 переходов, два эпизода изменения аннотационных сигнатур. Проверок 28/71/552/552 при одинаковой доступности; 24 отрицательные строки включают два первых случая и 22 повтора. Сохранён [проверенный офлайн-корпус 72 снимков](reports/research-20261104/packaging-offline-corpus-v1/README.md).
 - [Цена переноса отрицательного ответа](docs/negative_structural_carry_cost_2026-11-04_ru.md): три реализации сокращают число проверок, но увеличивают CPU-время на закреплённых авторских историях. Отдельная регистрация неизменных входов также не окупилась; все результаты и независимые аудиты сохранены.
 
-Последняя полная проверка: [1532 passed, без skips, Ruff и mypy на 4315aac](reports/opencode-literal-full-verification-20261104/checks.json). Все Docker-тесты включены; 54 production-файла прошли проверку типов. Снимки исходников до и после совпали. Дополнительные проверки контроллера, форматов и реальных MCP-вызовов сохранены [отдельно](reports/opencode-literal-integration-20261104/report.json). Более поздние изменения анализа результатов проверяются своим набором тестов. Исторический PDF v10 сохраняет результаты своего прежнего среза.
+Последняя полная проверка: [1601 passed, без skips, Ruff и mypy на a91ae44](reports/opencode-source-line-full-verification-20261106/checks.json). Все Docker-тесты включены; 54 production-файла прошли проверку типов. Снимки исходников до и после совпали. Проверка корректности не заменяет отдельные замеры скорости и памяти. Исторический PDF v10 сохраняет результаты своего прежнего среза.

@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "all_packet_count": 24,
+    "authored_tests": 63,
+    "final_source_readback": "readback.json",
+    "ruff": "fenced-ruff.txt",
+    "test_log": "fenced-tests.txt"
+  },
+  "commands": [
+    ".venv/bin/pytest -q runs/opencode-readable-projection-prototype-20261106/test_fenced_projection.py runs/opencode-readable-projection-prototype-20261106/test_readable_projection.py",
+    ".venv/bin/ruff check runs/opencode-readable-projection-prototype-20261106/*.py",
+    ".venv/bin/python runs/opencode-readable-projection-prototype-20261106/run_fenced_prototype.py",
+    ".venv/bin/python runs/opencode-readable-projection-prototype-20261106/run_fenced_prototype.py --out fenced-readback"
+  ],
+  "model_calls": 0,
+  "no_wire_integration": true,
+  "preserved_development_error": {
+    "command": "python - <<PY (preparatory CLI source edit)",
+    "effect": "No edit executed by that command; subsequent explicit .venv/bin/python applied edit. Original results unchanged.",
+    "error": "/bin/bash: python: command not found"
+  },
+  "primary_result": {
+    "cami": {
+      "delta_mcp_json_bytes_candidate_minus_original": -9574,
+      "delta_visible_bytes_candidate_minus_original": -8309,
+      "fenced_hypothetical_mcp_json_bytes": 81086,
+      "fenced_model_visible_utf8_bytes": 75074,
+      "original_mcp_json_bytes": 90660,
+      "original_model_visible_utf8_bytes": 83383,
+      "packets": 12,
+      "returned_records": 48,
+      "withheld_records": 12
+    },
+    "static": {
+      "delta_mcp_json_bytes_candidate_minus_original": -12700,
+      "delta_visible_bytes_candidate_minus_original": -11004,
+      "fenced_hypothetical_mcp_json_bytes": 95662,
+      "fenced_model_visible_utf8_bytes": 89087,
+      "original_mcp_json_bytes": 108362,
+      "original_model_visible_utf8_bytes": 100091,
+      "packets": 12,
+      "returned_records": 60,
+      "withheld_records": 0
+    }
+  },
+  "production_edits": false
+}
