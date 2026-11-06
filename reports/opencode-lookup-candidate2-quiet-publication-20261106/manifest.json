@@ -1,0 +1,130 @@
+{
+  "all_admitted_originals_unchanged": true,
+  "archive": {
+    "bytes": 22280319,
+    "regular_members_including_manifest": 1326,
+    "sha256": "f763ec2a2cedc06ff00db45ec4a646344553b1c261595ddeedd8cd7d47fd4972"
+  },
+  "coverage": [
+    {
+      "included_declared_artifacts": 202,
+      "omitted_declared_artifacts": 1056,
+      "original_declared_artifacts": 1258,
+      "role": "candidate2-instrumented"
+    },
+    {
+      "included_declared_artifacts": 855,
+      "omitted_declared_artifacts": 5280,
+      "original_declared_artifacts": 6135,
+      "role": "quiet-unprofiled"
+    }
+  ],
+  "excluded_duplicates": [
+    "extracted/",
+    "offline-verification/prerequisite/"
+  ],
+  "files": {
+    "HANDOFF.md": {
+      "bytes": 3003,
+      "sha256": "077074a9e14d98f847dcec4288f61f1381e8102c356638777a15340797775d52"
+    },
+    "README.md": {
+      "bytes": 4221,
+      "sha256": "0b5e4556fe8008c417891de6e5b8d6bcaaa678a8d9ad5d541f4c5283b2284dd3"
+    },
+    "build_publication.py": {
+      "bytes": 14822,
+      "sha256": "02498fa20739e297bb22e4b31b47b321eaf1ba640aaf0581b79c89093d763ce8"
+    },
+    "candidate2-quiet-public-evidence.tar.gz": {
+      "bytes": 22280319,
+      "sha256": "f763ec2a2cedc06ff00db45ec4a646344553b1c261595ddeedd8cd7d47fd4972"
+    },
+    "offline-verification/lookup-samples.csv": {
+      "bytes": 9188,
+      "sha256": "f0933b79c3101e047e37ef7c2a010da7aec99d169ebbb3766f652b6d837d2a08"
+    },
+    "offline-verification/resources.csv": {
+      "bytes": 6418,
+      "sha256": "2f3d9cf3f50f28969d0ce6aee4d4401a778111646ffa9b84a2e6aaa1a6f2f02d"
+    },
+    "offline-verification/variant-costs.csv": {
+      "bytes": 4568,
+      "sha256": "75655b1f20d47b885f8ec5afbf734770e47a7ec35f5415a8f0632eff78e332c2"
+    },
+    "offline-verification/verification.json": {
+      "bytes": 952,
+      "sha256": "343bb363e887a46580aac84e87b928c830a49e266e7478e882bc78ba6c56240d"
+    },
+    "offline.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline.stdout.txt": {
+      "bytes": 910,
+      "sha256": "14eea84ff6560d9261072ad1197ec034e9a388bbf1a49e361bbb9fc55d522bca"
+    },
+    "packaging-report.json": {
+      "bytes": 947,
+      "sha256": "08325700a22c4e3920099484e9d7a3dc87781a45280c9f85cbdb4979b7fb7913"
+    },
+    "packaging.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packaging.stdout.txt": {
+      "bytes": 1001,
+      "sha256": "d3bd53401ce5972514e3043d64101ba1b4a8d0d1ac559ec22e0aba21ef85da74"
+    },
+    "reproduce_supplement.py": {
+      "bytes": 19423,
+      "sha256": "97041c4bb6cf2a6905e34458d17b57e96c44830b5e17cb94b648dc6f12a92c5b"
+    },
+    "ruff.txt": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  },
+  "interpretation": {
+    "model_or_end_to_end_gain_claimed": false,
+    "preparation": "separately charged comparisons retained",
+    "primary_baseline": "no_measurable_difference",
+    "secondary_candidate1_to_candidate2": "retain original microbenchmark-only decision"
+  },
+  "offline_verification": {
+    "Docker_calls": 0,
+    "SQLite_bodies_read": false,
+    "candidate2_profile_comparisons_exact": 15,
+    "model_calls": 0,
+    "network_calls": 0,
+    "prerequisite_archive_exact": true,
+    "primary_baseline_comparisons": "no_measurable_difference",
+    "profile_or_timing_reruns": 0,
+    "profile_semantic_namespaces_equal": 9,
+    "quiet_all_case_comparisons_exact": true,
+    "quiet_compact_receipts_exact": 75,
+    "quiet_lookup_rows_exact": 75,
+    "quiet_resource_rows_exact": 75,
+    "quiet_semantic_namespaces_equal": 15,
+    "quiet_separate_phase_comparisons_exact": true,
+    "quiet_three_csv_files_byte_exact": true,
+    "scope": "Retained hash-bound profiles/results/semantic exports/statistics only. Omitted workspace and DB bodies are not reconstructed or claimed verified. No model/end-to-end inference.",
+    "secondary_candidate1_to_candidate2_primary": "lower_time_for_candidate_in_this_microbenchmark",
+    "status": "passed",
+    "verified_supplement_files": 1325
+  },
+  "original_full_raw_body_coverage_claimed": false,
+  "prerequisite_baseline_candidate1_archive_sha256": "dad2a64d060cbd8144f78487711e88862b442670d34465d6a2e52731bf2ef435",
+  "quiet_coordination": "All heavy work ended and root+auditagent notified before next paid quiet window.",
+  "schema_version": 1,
+  "scope": {
+    "Docker_calls": 0,
+    "SQLite_bodies_read": false,
+    "commits": false,
+    "lookup_or_timing_reruns": 0,
+    "model_calls": 0,
+    "tracked_source_edits": false
+  },
+  "semantic_vector_exports_preserved": 24,
+  "status": "complete_heavy_work_finished"
+}
