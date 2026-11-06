@@ -1,0 +1,107 @@
+{
+  "Docker_calls_at_plan": 0,
+  "adapter_frozen_for_later_MCP": {
+    "README.md": "74cd8e5ec1acc817304303e860b76f85f924839b95612476c855e43f30681c55",
+    "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+    "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+    "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+    "memory_adapter.py": "93bc8acc7eeae6d4e67842a8612fb034ff492a81b5f7f33f713fc0240a2831d2",
+    "memory_backend.py": "13a4c2e9c35de00e63def30bfd6429fc7d88221b3dd5be3c92bac0ed9f60daf0",
+    "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+    "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+    "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+  },
+  "background": "Rootlightmetadata/reportreads only; no otherbenchmark/models/sourceedits. No machineexclusivity claim.",
+  "cases": {
+    "early_function_blank_tail": {
+      "bytes": 1835008,
+      "expected_function_definitions": 1,
+      "expected_module_definitions": 1,
+      "expected_total_ast_nodes": 5,
+      "physical_lf_count": 1834984,
+      "scope": "authored diagnostic only; not Click/heldout population",
+      "sha256": "7b83f1c035fa18b4e72bc20ee5accc0b6428e5fe508ccd9849b838f83927835f"
+    },
+    "early_function_large_multiline_literal": {
+      "bytes": 1835008,
+      "expected_function_definitions": 1,
+      "expected_module_definitions": 1,
+      "expected_total_ast_nodes": 9,
+      "physical_lf_count": 30085,
+      "scope": "authored diagnostic only; not Click/heldout population",
+      "sha256": "a173dd81583605a73ae57d3048c03390b4bc223e2bccea08bd71b4cf18881101"
+    }
+  },
+  "containers": 20,
+  "equality": "ExactcompleteModule canonical dataclass-field digest, no exclusions; generatedbody storedoncepercase, notcopiedperattempt.",
+  "fixture_builder_sha256": "a6620dfd038747f5417fd4a504e756a0959b99c51106aaa52b2415016b66a41a",
+  "frozen_helpers": {
+    "memory_format_evidence.py": "8b4fe665d727fc1f739c803e15fbfbe80b26bf111e140d829daf69bb0e047a6d",
+    "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+    "opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+    "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+    "study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+    "study_runtime.py": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21",
+    "study_schema.py": "e0818e8571ebda6fd82b5cbd8edf646a34a45457d78620c1b61ad3378e51511f",
+    "study_workspace.py": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89"
+  },
+  "gate": "Any materialregression =>stopcandidate3 MCPmeasurement; rootreviewincrementalalternative separately; preserveC3functionalevidence.",
+  "limits": {
+    "cpus": 2,
+    "free_disk_before_after_min_bytes": 5368709120,
+    "memory_bytes": 2147483648,
+    "network": "none",
+    "observed_stage_storage_target_bytes": 2147483648,
+    "read_only_root": true,
+    "tmpfs_bytes": 536870912,
+    "uid": "65534:65534",
+    "worker_timeout_seconds": 180
+  },
+  "max_concurrent_containers": 1,
+  "memory_material_flag": "C3medianrise >max(1MiB,within-side ranges) AND >=5% C2baseline for parse-return cgrouppeak or processRSS; flag either selectedcase.",
+  "memory_scopes": "Immediatebefore/afterparse cgroupcurrent+lifetimepeak and processru_maxrss; post-GC memory separately; fullcontainerlifetimepeak includeslaterdigest+write and is retained, not substituted. RSSpeaks are lifetimeKiB, not additive/descendant-summed.",
+  "model_calls": 0,
+  "orders": [
+    [
+      "candidate2",
+      "candidate3"
+    ],
+    [
+      "candidate3",
+      "candidate2"
+    ],
+    [
+      "candidate2",
+      "candidate3"
+    ],
+    [
+      "candidate3",
+      "candidate2"
+    ],
+    [
+      "candidate2",
+      "candidate3"
+    ]
+  ],
+  "published_candidate2_archive": {
+    "admission": "Verifycomplete60file source prefix afterrelease andbeforeanycontainer; retainadmissionevidence.",
+    "path": "reports/opencode-lookup-candidate2-quiet-publication-20261106/candidate2-quiet-public-evidence.tar.gz",
+    "sha256": "f763ec2a2cedc06ff00db45ec4a646344553b1c261595ddeedd8cd7d47fd4972"
+  },
+  "root_release": "Fullsuite1601passed/Ruff/mypy54passed18:30:18UTC; rootpushdone18:31:05; authoredscreenonlyexplicitrelease",
+  "root_release_head": "6df1b9adebe3119947b19f0f523aaa1d677290f6",
+  "runner_sha256": "131ec02d61a776a55214a65b81a721461fbea230d16ec67f5fe85cc8fcaa0ea4",
+  "runtime_image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "selection_rule": "Fixed before observations: firstscreen only the early-function near-cap literalbody and max-line-count blank-tail; retain every outcome, no substitution.",
+  "source_freeze_sha256": "6c5f971142aa4f65c948be79ee56941badcab799b444673dc26aea4f1ece24f8",
+  "source_head_at_snapshot": "a91ae44f5c87b4b3fbc11e7a92214542952c009b",
+  "status": "prospective_before_any_authored_container",
+  "time_noise_rule": "Median/range+pairedsameblockdeltas; gap<=maxwithin-side range =>no_measurable_difference; mixedsigns inconclusive.",
+  "timed_call": "cami.index.parse_module on same Blob/physical input/name; wall/ownCPU excludes firsttrustedimports/inputread+hash/gcsetup/completeModuledigest/JSONwrite",
+  "tracked_writes": false,
+  "unselected_staged_controls": [
+    "early_function_many_short_comments",
+    "late_function_comment_prefix_control"
+  ],
+  "worker_sha256": "fbd7866d65eff5afae883fff6aaf9188685e345a706002148677bd6564a57fbf"
+}

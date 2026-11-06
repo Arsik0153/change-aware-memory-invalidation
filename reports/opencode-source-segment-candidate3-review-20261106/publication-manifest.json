@@ -1,0 +1,21 @@
+{
+  "source_stage": "runs/opencode-source-segment-candidate3-review-20261106",
+  "source_manifest_sha256": "f2da673df1d30045c2ecbedc137e88efd213268f1a3fd49266d5bc1e93dcd0e1",
+  "payload_files": 449,
+  "archive_bytes": 410212,
+  "archive_sha256": "fa182b4eedfa51228926e87bea40bab58d1c48886315fc99b53ca914e152e614",
+  "readback": "All members match original hash-verified bytes",
+  "decision": "STOP_candidate3_real_MCP_due_to_predeclared_material_authored_memory_regression",
+  "failed_attempts_retained": 20,
+  "passed_attempts": 20,
+  "untimed_repair_containers": 1,
+  "model_calls": 0,
+  "files": {
+    "authored-verdict.json": "773e436bbf7c2e4e4a09b48a402bd0fa7ed2e52c627960b64aafc96174eed514",
+    "manifest.json": "f2da673df1d30045c2ecbedc137e88efd213268f1a3fd49266d5bc1e93dcd0e1",
+    "prospective-authored-plan-v2.json": "de4d7653d7fd5fb6445c88e855d1a5321f67ac46bf089076e2b7788752d10c76",
+    "README.md": "d9360a3e9e9675269b82541d397ee4529af4e4c184c6ca183d094663dacf1abc",
+    "authored-screen-evidence.tar.gz": "fa182b4eedfa51228926e87bea40bab58d1c48886315fc99b53ca914e152e614",
+    "prospective-authored-plan.json": "75d7f9dc565ee0f0c9e39cbeea5b62b696f6ef957ed4428031dce736377ba893"
+  }
+}

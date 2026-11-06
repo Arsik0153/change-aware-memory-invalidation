@@ -1,0 +1,17 @@
+Candidate 3: independent review and authored resource screen
+
+The whole-module line tuple is functionally consistent on the bounded reviewed parser-generated spans. The producer's 127 tests, four complete Click CodeIndex comparisons and the subsequent 1601-test full suite remain positive correctness evidence. This screen does not overturn those results.
+
+The resource tradeoff is material. CPython 3.12 bounds source-line collection to a definition's end; candidate 3 collects the entire module when its first definition is indexed. A valid 1.75 MiB module containing one early function and blank trailing lines therefore allocates and scans content unrelated to that function. Five interleaved fresh attempts per implementation give median parse-return cgroup peaks of 29.5 MiB for candidate 2 and 45.76953125 MiB for candidate 3 (+55.15%). Parse wall medians are 0.030230 and 0.333637 seconds. The predeclared memory threshold is exceeded in both cgroup and process RSS measurements. The second, multiline-literal input shows no material memory increase but a slower parse (0.011088 versus 0.044280 seconds). These are authored diagnostics, not estimates for a project population or model sessions.
+
+All 20 admitted v2 attempts passed with identical complete Module digests, including every dataclass field. The original 20 v1 attempts failed after the parse timer because the verification encoder omitted frozenset. Their errors, timings and resource observations are preserved and excluded from passed measurements. One untimed same-image repair check verified both complete Modules and nonempty frozenset handling; the explicitly authorized repaired version then repeated the entire fixed 20-attempt order once. No selective retries occurred. The original v1 CLI returned zero despite its failed report; v2 makes failed attempts a nonzero exit. Report status and failures, rather than that original exit code, determine admission.
+
+The plan fixed inputs, order, 2 CPU / 2 GiB limits, network-none containers, one active container, timeout, disk checks and material-memory rule before launch. Imports, input reads and complete-Module serialization are outside the parse timer and separately recorded. Parse-return cgroup and process RSS peaks are lifetime peaks at that boundary, not isolated allocation deltas; neither is added to the other. Later whole-container peaks and post-GC observations are separate. Allocator retention and closure lifetime prevent an immediate-memory-release claim.
+
+Decision: stop candidate 3 real-MCP profiling and quiet comparison as preregistered. Preserve its correctness evidence and this negative resource result. A bounded incremental prefix buffer is a separate candidate requiring a new source freeze and the same authored screen before any larger study. No target source was executed; no models, credentials or heldout inputs were used. Total diagnostic activity: 20 failed containers, one untimed repair container and 20 passing containers. Candidate 3 real-MCP containers: zero.
+
+Recompute the sealed verdict with:
+
+    PYTHONDONTWRITEBYTECODE=1 .venv/bin/python runs/opencode-source-segment-candidate3-review-20261106/summarize_authored.py
+
+Raw reports, plan versions, complete source inventories and all retained artifacts are bound by manifest.json. The repaired run's published-baseline admission checks the exact complete candidate-2 source inventory against its earlier published archive. Old plans, workers, raw runs and failure evidence remain unchanged.

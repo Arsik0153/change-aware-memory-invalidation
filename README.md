@@ -115,7 +115,11 @@ preserves essential visible claims across all 24 recorded packets while reducing
 display bytes; it remains an offline prototype with no token or model benefit
 established. Separately, [source-line reuse](reports/opencode-source-segment-reuse-implementation-20261106/README.md)
 preserves complete Click indexes while avoiding repeated line preparation within
-each module. Its functional checks do not establish an end-to-end speedup.
+each module. Its initial whole-module buffer passed correctness checks but
+[failed a predeclared memory screen](reports/opencode-source-segment-candidate3-review-20261106/README.md)
+on an authored long-tail file. That candidate is stopped before real-tool timing;
+a bounded prefix buffer is being checked separately. Correctness checks do not
+establish an end-to-end speedup.
 
 ## Install and run the offline demo
 
