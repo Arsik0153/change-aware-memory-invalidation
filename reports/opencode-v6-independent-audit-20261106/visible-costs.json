@@ -1,0 +1,3775 @@
+{
+  "arm_totals": {
+    "cami": {
+      "assistant_responses": 152,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 965992,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 83383,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3301,
+        "patch": 100754,
+        "read": 7996,
+        "shell": 11108
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 40979,
+        "patch": 2582,
+        "read": 507712,
+        "shell": 198673
+      },
+      "native_tool_count": 286,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 146,
+        "shell": 74
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 17,
+      "returned_literal_text_utf8_bytes": 45333,
+      "returned_prefix_truncated_observations": 10,
+      "returned_record_observations": 48,
+      "same_file_native_read_observations_after_memory": 46,
+      "same_file_reads_without_recorded_possible_intervening_write": 25,
+      "token_work": 367319,
+      "withheld_record_observations": 12
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "glob": 98,
+        "grep": 4207,
+        "patch": 101248,
+        "read": 7919,
+        "shell": 10374
+      },
+      "native_result_text_utf8_bytes": {
+        "glob": 90,
+        "grep": 42487,
+        "patch": 3101,
+        "read": 494888,
+        "shell": 174195
+      },
+      "native_tool_count": 302,
+      "native_tool_counts": {
+        "glob": 2,
+        "grep": 44,
+        "patch": 41,
+        "read": 142,
+        "shell": 73
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "token_work": 353403,
+      "withheld_record_observations": 0
+    },
+    "static": {
+      "assistant_responses": 159,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 1225710,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 100091,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3455,
+        "patch": 94166,
+        "read": 8360,
+        "shell": 12341
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 30804,
+        "patch": 2536,
+        "read": 497077,
+        "shell": 180219
+      },
+      "native_tool_count": 294,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 151,
+        "shell": 77
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 18,
+      "returned_literal_text_utf8_bytes": 58884,
+      "returned_prefix_truncated_observations": 12,
+      "returned_record_observations": 60,
+      "same_file_native_read_observations_after_memory": 52,
+      "same_file_reads_without_recorded_possible_intervening_write": 22,
+      "token_work": 356015,
+      "withheld_record_observations": 0
+    }
+  },
+  "heldout_reads": false,
+  "largest_created_to_ran_intervals_nonadditive": [
+    {
+      "arguments_json_utf8_bytes": 8213,
+      "call_id": "call_dc13f7de01744a0380c7e2f8ec09dc58",
+      "created_to_ran_seconds_nonadditive": 25.73799991607666,
+      "ran_to_completed_seconds": 0.009000062942504883,
+      "tool": "patch",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 7370,
+      "call_id": "call_94bc011c529b47fb9995f85a445a31b8",
+      "created_to_ran_seconds_nonadditive": 24.55900001525879,
+      "ran_to_completed_seconds": 0.011999845504760742,
+      "tool": "patch",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 7346,
+      "call_id": "call_fb94d9080a5747839843f452b49ade74",
+      "created_to_ran_seconds_nonadditive": 24.5,
+      "ran_to_completed_seconds": 0.03900003433227539,
+      "tool": "patch",
+      "trial_id": "r1-plain-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 7916,
+      "call_id": "call_c92bef92c0b649128dc0a0d7d6d0debe",
+      "created_to_ran_seconds_nonadditive": 23.841000080108643,
+      "ran_to_completed_seconds": 0.01699995994567871,
+      "tool": "patch",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 7287,
+      "call_id": "call_647a2e3c78ab45b88e1ad85c36196a41",
+      "created_to_ran_seconds_nonadditive": 23.04099988937378,
+      "ran_to_completed_seconds": 0.01699995994567871,
+      "tool": "patch",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 6495,
+      "call_id": "call_1bed415d942e499d80afe7f794464ae7",
+      "created_to_ran_seconds_nonadditive": 22.67900013923645,
+      "ran_to_completed_seconds": 0.01399993896484375,
+      "tool": "patch",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 7235,
+      "call_id": "call_f1fff94236dd48fc98e0f060326207e8",
+      "created_to_ran_seconds_nonadditive": 22.453999996185303,
+      "ran_to_completed_seconds": 0.0280001163482666,
+      "tool": "patch",
+      "trial_id": "r1-cami-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 7573,
+      "call_id": "call_0938cb9cf1df40d0951493b0d22f3f79",
+      "created_to_ran_seconds_nonadditive": 21.759000062942505,
+      "ran_to_completed_seconds": 0.026000022888183594,
+      "tool": "patch",
+      "trial_id": "r1-static-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 6820,
+      "call_id": "call_b36d5f81a3e9493a84272907803f1777",
+      "created_to_ran_seconds_nonadditive": 21.744999885559082,
+      "ran_to_completed_seconds": 0.026999950408935547,
+      "tool": "patch",
+      "trial_id": "r3-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 7304,
+      "call_id": "call_916f85b77aef4ce9bca869f65c043af2",
+      "created_to_ran_seconds_nonadditive": 21.536999940872192,
+      "ran_to_completed_seconds": 0.009999990463256836,
+      "tool": "patch",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 6802,
+      "call_id": "call_bdb4febe0e34483891b26e6f9f68eb98",
+      "created_to_ran_seconds_nonadditive": 21.503000020980835,
+      "ran_to_completed_seconds": 0.008999824523925781,
+      "tool": "patch",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 6942,
+      "call_id": "call_2d33caaf5ea24624964f73a1446665b6",
+      "created_to_ran_seconds_nonadditive": 21.10199999809265,
+      "ran_to_completed_seconds": 0.01399993896484375,
+      "tool": "patch",
+      "trial_id": "r1-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 6642,
+      "call_id": "call_4db7dff0beb947dd919d516845a4fcd9",
+      "created_to_ran_seconds_nonadditive": 20.5310001373291,
+      "ran_to_completed_seconds": 0.013000011444091797,
+      "tool": "patch",
+      "trial_id": "r3-plain-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 7508,
+      "call_id": "call_97704e0393c849c09752cbc43c1286a7",
+      "created_to_ran_seconds_nonadditive": 20.072999954223633,
+      "ran_to_completed_seconds": 0.019999980926513672,
+      "tool": "patch",
+      "trial_id": "r2-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 6906,
+      "call_id": "call_104852980dfd4ace9e82d40956fa2204",
+      "created_to_ran_seconds_nonadditive": 19.174000024795532,
+      "ran_to_completed_seconds": 0.02499985694885254,
+      "tool": "patch",
+      "trial_id": "r3-cami-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 6060,
+      "call_id": "call_cb8d6fa9a18c45d493787895a42033a5",
+      "created_to_ran_seconds_nonadditive": 18.689000129699707,
+      "ran_to_completed_seconds": 0.006999969482421875,
+      "tool": "patch",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 5157,
+      "call_id": "call_7e2220dea6054154901d50c19941bea3",
+      "created_to_ran_seconds_nonadditive": 16.479000091552734,
+      "ran_to_completed_seconds": 0.011999845504760742,
+      "tool": "patch",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 6203,
+      "call_id": "call_596d6452f4bb4037a10b4b93324ccae2",
+      "created_to_ran_seconds_nonadditive": 16.25,
+      "ran_to_completed_seconds": 0.003999948501586914,
+      "tool": "patch",
+      "trial_id": "r2-plain-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 3780,
+      "call_id": "call_767de8aea0fb4efca64bd8917c8a3642",
+      "created_to_ran_seconds_nonadditive": 14.8989999294281,
+      "ran_to_completed_seconds": 0.0559999942779541,
+      "tool": "patch",
+      "trial_id": "r2-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 3826,
+      "call_id": "call_e6e1c08bca5b4500acfb5e9f7d69a5ca",
+      "created_to_ran_seconds_nonadditive": 14.615000009536743,
+      "ran_to_completed_seconds": 0.05200004577636719,
+      "tool": "patch",
+      "trial_id": "r3-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 3729,
+      "call_id": "call_ade374653bab4423981b698978ab6ffb",
+      "created_to_ran_seconds_nonadditive": 14.414000034332275,
+      "ran_to_completed_seconds": 0.056999921798706055,
+      "tool": "patch",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 4103,
+      "call_id": "call_907b0791a7bc4a60a897c0ed8ae7615c",
+      "created_to_ran_seconds_nonadditive": 13.07699990272522,
+      "ran_to_completed_seconds": 0.05200004577636719,
+      "tool": "patch",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 4068,
+      "call_id": "call_ddb4b4bcec3a419080ffd90218c48f24",
+      "created_to_ran_seconds_nonadditive": 11.955000162124634,
+      "ran_to_completed_seconds": 0.06200003623962402,
+      "tool": "patch",
+      "trial_id": "r1-plain-s1"
+    },
+    {
+      "arguments_json_utf8_bytes": 3786,
+      "call_id": "call_e497eb63d18d46afb8a94b876c71ddf5",
+      "created_to_ran_seconds_nonadditive": 11.755000114440918,
+      "ran_to_completed_seconds": 0.06199979782104492,
+      "tool": "patch",
+      "trial_id": "r1-plain-s2"
+    },
+    {
+      "arguments_json_utf8_bytes": 3819,
+      "call_id": "call_bd840c037c17475c9ba76a26457e8944",
+      "created_to_ran_seconds_nonadditive": 11.688999891281128,
+      "ran_to_completed_seconds": 0.05200004577636719,
+      "tool": "patch",
+      "trial_id": "r3-cami-s1"
+    }
+  ],
+  "limits": [
+    "UTF8 bytes/characters are not token counts or billed units; no tokenizer/cost attribution is fabricated.",
+    "Replay byte proxy assumes an entire earlier tool response is replayed in later assistant prompts; actual provider packing/cache/truncation is unknown.",
+    "Same-file and exact visible-text overlap identify review candidates, not unnecessary native reads or causal stale reliance. Source guards/truncated remainder/adjacent code may require the read.",
+    "Tool created-to-ran includes argument streaming/scheduling/dispatch, not pure native execution or provider-only wait; spans may overlap and are not additive.",
+    "Different generated patches/tool sequences and task solutions are observations, not causal effects of memory. No historical cohort pooling."
+  ],
+  "model_calls": 0,
+  "runtime_identity_all36_verified": [
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-plain-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-cami-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-static-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-plain-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-cami-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-plain-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-static-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-plain-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-static-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r1-cami-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-plain-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-plain-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-plain-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-static-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-cami-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-static-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-cami-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r2-plain-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-plain-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-plain-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-cami-s2"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-static-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-cami-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-plain-s3"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-cami-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-plain-s4"
+    },
+    {
+      "all_frozen_runtime_fields_match": true,
+      "runtime_identity_sha256": "f1b329fa32c8d5ed699a945c1beccaee3dd5b1fe236bfe912b0afb3127ce8991",
+      "trial_id": "r3-static-s4"
+    }
+  ],
+  "same_file_read_evidence": [
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 5247,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_8664edd057cf4c2d9569d413aec675a3",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 4920,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_680a1e4ad6b44c0b9cf6ed5db8c6104d",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 9822,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_f9d7ae58933043c1bfec169f6c9d8c50",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3463,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_3afe1355af554531908464dd69508170",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1045,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_5d0534af0a1943f095bb3bb9eccf98b4",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 5523,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_1f52209a2ed948958dba88dedb39caff",
+      "read_call_id": "call_e1a1496151ae467db4cf34d5a931b0c5",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 4176,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_cbed231470194f41879eb3fa66ec3164",
+      "read_call_id": "call_48d34c05152741bba0b9f0139f2b9924",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 9790,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_cbed231470194f41879eb3fa66ec3164",
+      "read_call_id": "call_1a7678fc84f445d48029e8fb39b4fc51",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3985,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_cbed231470194f41879eb3fa66ec3164",
+      "read_call_id": "call_a394b74b80d844f2b6efac694f0063ac",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3750,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_b039bfac35414ca3aca0a8024517679f",
+      "read_call_id": "call_3a01952d2f994117b775e9b09425ee1e",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 11220,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_b039bfac35414ca3aca0a8024517679f",
+      "read_call_id": "call_7a110afc8e614567bdcee43c36c70197",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2738,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_b039bfac35414ca3aca0a8024517679f",
+      "read_call_id": "call_2731605211944c81ba9e4674b3baea90",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b554841902ccb1dffd238050",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3418,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_f19daa11765b473290ab02b6559204bc",
+      "read_call_id": "call_4595a0455e7e4c449aca2575c5a05bab",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 10899,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_f19daa11765b473290ab02b6559204bc",
+      "read_call_id": "call_fcfd440c21a04734a021fb05628216e0",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 2920,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_f19daa11765b473290ab02b6559204bc",
+      "read_call_id": "call_f8f4699006ec4d9d85f57777bff512bf",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 11773,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_f19daa11765b473290ab02b6559204bc",
+      "read_call_id": "call_bc9d9c99afa44aba9e23e6d53f6832bf",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 6120,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_f19daa11765b473290ab02b6559204bc",
+      "read_call_id": "call_fb245c053cb446f89abb48ef5845e625",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1666,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_069d0bcf2ac543a9b17700dc82bc8f69",
+      "read_call_id": "call_02f6e6009c364be7af6b9d6c2d9563d4",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10097,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_069d0bcf2ac543a9b17700dc82bc8f69",
+      "read_call_id": "call_53715973b82c403c85da4adeaa709078",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2051,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_069d0bcf2ac543a9b17700dc82bc8f69",
+      "read_call_id": "call_41b2707a73524848beee06628a2a95fc",
+      "returned_memory_record_ids_same_file": [
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2356,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_21f79f885d0e4c46b55f2027ecfc9abf",
+      "read_call_id": "call_10e71b1e98bb4d5caee992ea853d04c4",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10097,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_21f79f885d0e4c46b55f2027ecfc9abf",
+      "read_call_id": "call_f6ec2b16f6114715b4bdcccd5cc5318b",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2051,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_21f79f885d0e4c46b55f2027ecfc9abf",
+      "read_call_id": "call_3916257a7ce04c0bbad70acb85ff2e1c",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 11485,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_af52cf9f9afd449c85128488970fbea3",
+      "read_call_id": "call_354d35e4038a42b0b603eabe9b72be59",
+      "returned_memory_record_ids_same_file": [
+        "literal-335ddd93e2778431b2b10c35",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-496561e78ffd5dd795247e01",
+        "literal-31f47e29babfa9642fa2e6ca"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1943,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_af52cf9f9afd449c85128488970fbea3",
+      "read_call_id": "call_3a16f314de7b4d9a9e2bd121b42267be",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-335ddd93e2778431b2b10c35"
+      ],
+      "native_read_text_utf8_bytes": 1090,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_af52cf9f9afd449c85128488970fbea3",
+      "read_call_id": "call_477406d3dba440b5ac5f43316a4fbb64",
+      "returned_memory_record_ids_same_file": [
+        "literal-335ddd93e2778431b2b10c35",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-496561e78ffd5dd795247e01",
+        "literal-31f47e29babfa9642fa2e6ca"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2098,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_ed165dfd22424619a8ba39d2477d85b7",
+      "read_call_id": "call_7d84033de51c40f3ae90251dd14ecf1f",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 8311,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_ed165dfd22424619a8ba39d2477d85b7",
+      "read_call_id": "call_d57624f9f8df43bc9a1aa1f70ee0f734",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2934,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_ed165dfd22424619a8ba39d2477d85b7",
+      "read_call_id": "call_be8180bf95c7457ea71d94f090781658",
+      "returned_memory_record_ids_same_file": [
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 5765,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_ed165dfd22424619a8ba39d2477d85b7",
+      "read_call_id": "call_16fcdd3c843145e3983006c55d089595",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r1-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3418,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_6ec51b50956b4cf69bd5a4391b668502",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 11333,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_fedad21d9c094e348f68ca5101ff66a4",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3072,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_b24f9232c2f34ef0be29f5498df13675",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 11075,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_24f7b886acac4f9f8a52ea97cf91e78d",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 4069,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_c094f2d999764c528f64cf5adf93b8f7",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1431,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_4a8722a90ec64e309660e615a42054ce",
+      "read_call_id": "call_176ed44493874f70974e846c17c2bbc8",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1690,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_967144f5780c490ab3be56a95052c20a",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 9800,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_5f1735003c0647cc880c67ddb37eb02c",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3072,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_5eaa5110563b4365bdcb17c242d7a88f",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 10083,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_f30c55c7421a48348c9d1baeeec33d78",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 5344,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_2d5018695df244989922ed35e0eaa35f",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1101,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_e1eab2dacd4646b8b0f13133af065aee",
+      "read_call_id": "call_19359b733c9c496db98e12d9a88fa2bf",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 21325,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_7f4f878c4cd346a084105fb7306fd151",
+      "read_call_id": "call_8cd69c7cfbac4757beb90368dc5890cc",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 5523,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_7f4f878c4cd346a084105fb7306fd151",
+      "read_call_id": "call_669129bc7b304143822a4c726efa5ba3",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 10590,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_7f4f878c4cd346a084105fb7306fd151",
+      "read_call_id": "call_16a10745ecfc4333a323d2c142f5446e",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2296,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_7f4f878c4cd346a084105fb7306fd151",
+      "read_call_id": "call_0b7a3f4301a7490fa81a6049ac551fe2",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3158,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_7f4f878c4cd346a084105fb7306fd151",
+      "read_call_id": "call_19f01b475e1e42f7a50fd18af2fa3729",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3009,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_798c3e21fb024e35ad94adf8eb5a6b0e",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 4188,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_5208edc6c7bf4595ad899ca9fcb1a2e1",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 4052,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_7162c0da3f9c42a18a1f089c41b83fab",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 4218,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_a2e7e351c3be42c2a1c3c521d65b4c51",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 8673,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_3c1d51ed88f64798a7e3d1e40443f63e",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 6067,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_67c1b587957d468d8c46f8dcc51b9f26",
+      "read_call_id": "call_4cb83f2938354aa084415c549512b378",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1937,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_9b0ad81e2ab245ee9b082d4036ef102c",
+      "read_call_id": "call_3e9a27cc477a412c8d52259fd849010f",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 9844,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_9b0ad81e2ab245ee9b082d4036ef102c",
+      "read_call_id": "call_7f7a6e697ded4433b006986f0dd378c7",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2441,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_9b0ad81e2ab245ee9b082d4036ef102c",
+      "read_call_id": "call_4a74e05e4b96413babf2deadf24826a2",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1563,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_74a6894327bc40daa046ca09b3c4fb49",
+      "read_call_id": "call_8b6c886927bb4a2db48ba4a4d8fad6c9",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 5784,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_74a6894327bc40daa046ca09b3c4fb49",
+      "read_call_id": "call_6bf7d172945f440dbe441bd0c01efba2",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3984,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_74a6894327bc40daa046ca09b3c4fb49",
+      "read_call_id": "call_af27e973d9ff4d9fa031c1de06f38662",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2728,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_74a6894327bc40daa046ca09b3c4fb49",
+      "read_call_id": "call_912be17780c14731b32dc649efa1ceae",
+      "returned_memory_record_ids_same_file": [
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2052,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_86a466fd60104bb7b14d888a90c734c9",
+      "read_call_id": "call_bfe037deea514fb89c49b5148fe77ac5",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 12235,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_86a466fd60104bb7b14d888a90c734c9",
+      "read_call_id": "call_7620cd65e382488abe2bc0b7cf1ca98b",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1943,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_86a466fd60104bb7b14d888a90c734c9",
+      "read_call_id": "call_4558d8b7a29742779d3909f9bd382ad4",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1937,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_195e5575d7bb409a93c7d0115cb4409b",
+      "read_call_id": "call_d1d5181ed8b94fb89d1c23da3b4c2437",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-488f43e660682a257294c9e7"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10097,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_195e5575d7bb409a93c7d0115cb4409b",
+      "read_call_id": "call_0a6107a1906042f6a40f05a7e6bf7108",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-488f43e660682a257294c9e7"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r2-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1603,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_b2b3c81da12b418583457dbf682602bb",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 6073,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_9d39cde6b42f488ead6ee5b45ce9a521",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3750,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_45ae36e2c50f4e8dbd6e9fae051bcc0e",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3502,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_4fd2b9ac7c054413bb1d77519cfc6871",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 7102,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_bf70dabf22c4491ab93879f3cf0d3caf",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 5673,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_9a3f7bee88954a5cacadf2ae2e6c8200",
+      "read_call_id": "call_df59bddf7313414d9bd5bd13f4834c25",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 7334,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_c897b0e788b24d9e9a70154b333798be",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3362,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_bfdbdf2c94024231865d2b0615f6513d",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1154,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_9d7ab0600ab84538aadd1786ea454eb9",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 4373,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_fbd675ce37004785aa5f89e4f4485c6d",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 8448,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_80c00d600d0c4ef0979d494bb64fff81",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 4701,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0bfb3f2577cb40009d5963019e7c54e3",
+      "read_call_id": "call_44e80f9578d9494e9d0d88e883988637",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s1"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3661,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_25adbf98ac1c48b085b8a9f875568e69",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "native_read_text_utf8_bytes": 7334,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_d12c17a017ed4592aa5c3b54f4b34c19",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7"
+      ],
+      "native_read_text_utf8_bytes": 3782,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_2adb5dc97a2b442d88f8a610f743af10",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 9840,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_487a17911e674362a8efa7247640bab4",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 4701,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_108bcb36aaa44d31af348fb16038dfc8",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 3293,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_00172cc1bacb4ac6b8b6e69d2c647989",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2704,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_0e006d2724b84cefa15c95a5f8c7b329",
+      "read_call_id": "call_03087917ccbc46ae9cbdd8de09772722",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "native_read_text_utf8_bytes": 3664,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_6833a94e90be418d8946bdc354298842",
+      "read_call_id": "call_b7e86bdbc85a4e0a808b5642763b944a",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 9840,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_6833a94e90be418d8946bdc354298842",
+      "read_call_id": "call_6973db4ddcc24232afc3346e9b22d415",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 5312,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_6833a94e90be418d8946bdc354298842",
+      "read_call_id": "call_f418fee18dd241d89e026caf6d5ee288",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s2"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1448,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_96a29c1af04446698fdd90b14c40f81e",
+      "read_call_id": "call_e86920d84772493394fe5e4f4f7dcad1",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10481,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": false,
+      "preceding_memory_call_id": "call_96a29c1af04446698fdd90b14c40f81e",
+      "read_call_id": "call_063279562cf74f10a9e76b98a9887a93",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2934,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_96a29c1af04446698fdd90b14c40f81e",
+      "read_call_id": "call_cd656247e61440d5a4e76b57d08b8500",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1937,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_35dee3f415484485afe402ca2030bbe8",
+      "read_call_id": "call_f2893f20f00b47cd8c467c57d793e950",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10097,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_35dee3f415484485afe402ca2030bbe8",
+      "read_call_id": "call_0f743b69d04b480cac3cebdf6d88a412",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 8788,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_35dee3f415484485afe402ca2030bbe8",
+      "read_call_id": "call_78af32379e3348aa9c457f8934622490",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s3"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 10091,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_3e5306ababce441e88af24bf3a306d12",
+      "read_call_id": "call_fedf0e0a214b4456947d9f9519a44304",
+      "returned_memory_record_ids_same_file": [
+        "literal-335ddd93e2778431b2b10c35",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-31f47e29babfa9642fa2e6ca"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-335ddd93e2778431b2b10c35"
+      ],
+      "native_read_text_utf8_bytes": 1373,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_3e5306ababce441e88af24bf3a306d12",
+      "read_call_id": "call_16941103875c42f680c07a9aab9ac33b",
+      "returned_memory_record_ids_same_file": [
+        "literal-335ddd93e2778431b2b10c35",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-31f47e29babfa9642fa2e6ca"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-cami-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 1563,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_194553ae31bc44189a19791ca3ef0cac",
+      "read_call_id": "call_30ebea2dc15b4caba880119e4ba257c2",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [
+        "literal-57c9836ad708b7dca5bbd9a8"
+      ],
+      "native_read_text_utf8_bytes": 12529,
+      "path": "src/click/core.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_194553ae31bc44189a19791ca3ef0cac",
+      "read_call_id": "call_db95d2b3786b4cc49217025c8b4511a3",
+      "returned_memory_record_ids_same_file": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s4"
+    },
+    {
+      "exact_displayed_memory_text_found_in_numbered_read_output": [],
+      "native_read_text_utf8_bytes": 2441,
+      "path": "src/click/decorators.py",
+      "possible_write_since_or_overlapping_memory": true,
+      "preceding_memory_call_id": "call_194553ae31bc44189a19791ca3ef0cac",
+      "read_call_id": "call_acd8bf7abc754ecca9f691cc934bae7b",
+      "returned_memory_record_ids_same_file": [
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-d75d9cab5567c0fe04d947fc"
+      ],
+      "scope": "Visible text/path overlap only. Reading adjacent context, fresh source or truncated remainder can still be necessary; redundancy/causal reliance not established.",
+      "trial_id": "r3-static-s4"
+    }
+  ],
+  "status": "all36public_transcripts_inspected",
+  "trials": [
+    {
+      "arm": "plain",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "glob": 49,
+        "grep": 368,
+        "patch": 13330,
+        "read": 614,
+        "shell": 1177
+      },
+      "native_result_text_utf8_bytes": {
+        "glob": 45,
+        "grep": 1659,
+        "patch": 357,
+        "read": 46643,
+        "shell": 17577
+      },
+      "native_tool_count": 28,
+      "native_tool_counts": {
+        "glob": 1,
+        "grep": 4,
+        "patch": 4,
+        "read": 12,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 28
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 28776,
+      "tokens": {
+        "cache_read": 237824,
+        "cache_write": 0,
+        "input": 22438,
+        "output": 4848,
+        "reasoning": 1490
+      },
+      "trial_id": "r1-plain-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 88704,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8064,
+      "native_argument_json_utf8_bytes": {
+        "grep": 167,
+        "patch": 12137,
+        "read": 771,
+        "shell": 776
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3365,
+        "patch": 331,
+        "read": 43535,
+        "shell": 6778
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 2,
+        "patch": 4,
+        "read": 13,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 4646,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 6,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 38753,
+      "tokens": {
+        "cache_read": 166784,
+        "cache_write": 0,
+        "input": 32506,
+        "output": 4450,
+        "reasoning": 1797
+      },
+      "trial_id": "r1-static-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 90864,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7572,
+      "native_argument_json_utf8_bytes": {
+        "grep": 377,
+        "patch": 12489,
+        "read": 767,
+        "shell": 872
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 5803,
+        "patch": 292,
+        "read": 61371,
+        "shell": 10531
+      },
+      "native_tool_count": 27,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 3,
+        "read": 14,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 27
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 4110,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 3,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 35531,
+      "tokens": {
+        "cache_read": 233344,
+        "cache_write": 0,
+        "input": 28396,
+        "output": 4625,
+        "reasoning": 2510
+      },
+      "trial_id": "r1-cami-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 15,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 105154,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7511,
+      "native_argument_json_utf8_bytes": {
+        "grep": 386,
+        "patch": 11648,
+        "read": 794,
+        "shell": 1082
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 2376,
+        "patch": 292,
+        "read": 51524,
+        "shell": 6622
+      },
+      "native_tool_count": 28,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 3,
+        "read": 15,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 28
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 4110,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 2,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 30490,
+      "tokens": {
+        "cache_read": 260608,
+        "cache_write": 0,
+        "input": 23793,
+        "output": 4494,
+        "reasoning": 2203
+      },
+      "trial_id": "r1-static-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 92972,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8452,
+      "native_argument_json_utf8_bytes": {
+        "grep": 165,
+        "patch": 12383,
+        "read": 719,
+        "shell": 886
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1250,
+        "patch": 266,
+        "read": 54189,
+        "shell": 7825
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 2,
+        "patch": 3,
+        "read": 13,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 4954,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 5,
+      "same_file_reads_without_recorded_possible_intervening_write": 5,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 30556,
+      "tokens": {
+        "cache_read": 208896,
+        "cache_write": 0,
+        "input": 24135,
+        "output": 4568,
+        "reasoning": 1853
+      },
+      "trial_id": "r1-cami-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 304,
+        "patch": 13511,
+        "read": 740,
+        "shell": 924
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 8257,
+        "patch": 331,
+        "read": 45241,
+        "shell": 6372
+      },
+      "native_tool_count": 26,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 4,
+        "read": 13,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 26
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 31483,
+      "tokens": {
+        "cache_read": 229248,
+        "cache_write": 0,
+        "input": 25001,
+        "output": 4971,
+        "reasoning": 1511
+      },
+      "trial_id": "r1-plain-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 78012,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 6501,
+      "native_argument_json_utf8_bytes": {
+        "grep": 430,
+        "patch": 4185,
+        "read": 527,
+        "shell": 855
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3818,
+        "patch": 138,
+        "read": 25833,
+        "shell": 17144
+      },
+      "native_tool_count": 21,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 9,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 20,
+        "error": 1
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 3620,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 3,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 41545,
+      "tokens": {
+        "cache_read": 145664,
+        "cache_write": 0,
+        "input": 38114,
+        "output": 2212,
+        "reasoning": 1219
+      },
+      "trial_id": "r1-cami-s3",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 462,
+        "patch": 3952,
+        "read": 567,
+        "shell": 904
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3530,
+        "patch": 116,
+        "read": 34446,
+        "shell": 18730
+      },
+      "native_tool_count": 23,
+      "native_tool_counts": {
+        "grep": 5,
+        "patch": 2,
+        "read": 10,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 23
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 29436,
+      "tokens": {
+        "cache_read": 174720,
+        "cache_write": 0,
+        "input": 25759,
+        "output": 2206,
+        "reasoning": 1471
+      },
+      "trial_id": "r1-plain-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 96723,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8793,
+      "native_argument_json_utf8_bytes": {
+        "grep": 406,
+        "patch": 3866,
+        "read": 400,
+        "shell": 1066
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3466,
+        "patch": 116,
+        "read": 24735,
+        "shell": 22265
+      },
+      "native_tool_count": 21,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 8,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 21
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 5338,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 23852,
+      "tokens": {
+        "cache_read": 164864,
+        "cache_write": 0,
+        "input": 21013,
+        "output": 2145,
+        "reasoning": 694
+      },
+      "trial_id": "r1-static-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 11,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 379,
+        "patch": 3858,
+        "read": 572,
+        "shell": 480
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3838,
+        "patch": 130,
+        "read": 25765,
+        "shell": 9854
+      },
+      "native_tool_count": 20,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 10,
+        "shell": 4
+      },
+      "native_tool_status_counts": {
+        "completed": 20
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 18394,
+      "tokens": {
+        "cache_read": 107776,
+        "cache_write": 0,
+        "input": 15604,
+        "output": 1968,
+        "reasoning": 822
+      },
+      "trial_id": "r1-plain-s4",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 84276,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7023,
+      "native_argument_json_utf8_bytes": {
+        "grep": 433,
+        "patch": 4137,
+        "read": 569,
+        "shell": 1129
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 2783,
+        "patch": 175,
+        "read": 29426,
+        "shell": 22761
+      },
+      "native_tool_count": 23,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 3,
+        "read": 10,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 22,
+        "error": 1
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 3613,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 41717,
+      "tokens": {
+        "cache_read": 156416,
+        "cache_write": 0,
+        "input": 38298,
+        "output": 2346,
+        "reasoning": 1073
+      },
+      "trial_id": "r1-static-s4",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 71665,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 6515,
+      "native_argument_json_utf8_bytes": {
+        "grep": 390,
+        "patch": 3840,
+        "read": 590,
+        "shell": 1298
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 7365,
+        "patch": 116,
+        "read": 35959,
+        "shell": 23881
+      },
+      "native_tool_count": 23,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 2,
+        "read": 11,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 23
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 1,
+      "returned_literal_text_utf8_bytes": 3620,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 4,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 25500,
+      "tokens": {
+        "cache_read": 189952,
+        "cache_write": 0,
+        "input": 21683,
+        "output": 2332,
+        "reasoning": 1485
+      },
+      "trial_id": "r1-cami-s4",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 95724,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7977,
+      "native_argument_json_utf8_bytes": {
+        "grep": 99,
+        "patch": 11153,
+        "read": 729,
+        "shell": 714
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1090,
+        "patch": 292,
+        "read": 49526,
+        "shell": 6954
+      },
+      "native_tool_count": 23,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 3,
+        "read": 13,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 23
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 5,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 27868,
+      "tokens": {
+        "cache_read": 211840,
+        "cache_write": 0,
+        "input": 22639,
+        "output": 4095,
+        "reasoning": 1134
+      },
+      "trial_id": "r2-static-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 88539,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8049,
+      "native_argument_json_utf8_bytes": {
+        "grep": 74,
+        "patch": 10940,
+        "read": 856,
+        "shell": 1104
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1090,
+        "patch": 227,
+        "read": 49653,
+        "shell": 6858
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 2,
+        "read": 15,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 5,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 42008,
+      "tokens": {
+        "cache_read": 184960,
+        "cache_write": 0,
+        "input": 35478,
+        "output": 4254,
+        "reasoning": 2276
+      },
+      "trial_id": "r2-cami-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 16,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "glob": 49,
+        "grep": 367,
+        "patch": 14611,
+        "read": 696,
+        "shell": 1139
+      },
+      "native_result_text_utf8_bytes": {
+        "glob": 45,
+        "grep": 3245,
+        "patch": 461,
+        "read": 46354,
+        "shell": 13600
+      },
+      "native_tool_count": 31,
+      "native_tool_counts": {
+        "glob": 1,
+        "grep": 4,
+        "patch": 6,
+        "read": 13,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 31
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 32437,
+      "tokens": {
+        "cache_read": 275200,
+        "cache_write": 0,
+        "input": 25188,
+        "output": 5208,
+        "reasoning": 2041
+      },
+      "trial_id": "r2-plain-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 96528,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8044,
+      "native_argument_json_utf8_bytes": {
+        "grep": 74,
+        "patch": 13646,
+        "read": 712,
+        "shell": 977
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1090,
+        "patch": 292,
+        "read": 60688,
+        "shell": 7721
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 3,
+        "read": 14,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 5,
+      "same_file_reads_without_recorded_possible_intervening_write": 1,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 33055,
+      "tokens": {
+        "cache_read": 248448,
+        "cache_write": 0,
+        "input": 26125,
+        "output": 4935,
+        "reasoning": 1995
+      },
+      "trial_id": "r2-cami-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 300,
+        "patch": 11376,
+        "read": 825,
+        "shell": 736
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1665,
+        "patch": 357,
+        "read": 52826,
+        "shell": 7478
+      },
+      "native_tool_count": 27,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 4,
+        "read": 14,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 27
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 45447,
+      "tokens": {
+        "cache_read": 164096,
+        "cache_write": 0,
+        "input": 39695,
+        "output": 4310,
+        "reasoning": 1442
+      },
+      "trial_id": "r2-plain-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 103844,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7988,
+      "native_argument_json_utf8_bytes": {
+        "grep": 74,
+        "patch": 10965,
+        "read": 845,
+        "shell": 1466
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1090,
+        "patch": 266,
+        "read": 51205,
+        "shell": 7131
+      },
+      "native_tool_count": 26,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 3,
+        "read": 15,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 26
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 27320,
+      "tokens": {
+        "cache_read": 257024,
+        "cache_write": 0,
+        "input": 20334,
+        "output": 4272,
+        "reasoning": 2714
+      },
+      "trial_id": "r2-static-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 15,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 302,
+        "patch": 5264,
+        "read": 504,
+        "shell": 1041
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3462,
+        "patch": 270,
+        "read": 34375,
+        "shell": 34388
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 4,
+        "read": 9,
+        "shell": 8
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 44188,
+      "tokens": {
+        "cache_read": 221056,
+        "cache_write": 0,
+        "input": 40256,
+        "output": 2531,
+        "reasoning": 1401
+      },
+      "trial_id": "r2-plain-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 124008,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 10334,
+      "native_argument_json_utf8_bytes": {
+        "grep": 430,
+        "patch": 3542,
+        "read": 546,
+        "shell": 970
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3284,
+        "patch": 116,
+        "read": 26366,
+        "shell": 22036
+      },
+      "native_tool_count": 23,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 10,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 23
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 6863,
+      "returned_prefix_truncated_observations": 2,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 25097,
+      "tokens": {
+        "cache_read": 178944,
+        "cache_write": 0,
+        "input": 22036,
+        "output": 2152,
+        "reasoning": 909
+      },
+      "trial_id": "r2-static-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 11,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 65060,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 6506,
+      "native_argument_json_utf8_bytes": {
+        "grep": 383,
+        "patch": 4431,
+        "read": 562,
+        "shell": 707
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3959,
+        "patch": 130,
+        "read": 28566,
+        "shell": 22319
+      },
+      "native_tool_count": 21,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 10,
+        "shell": 5
+      },
+      "native_tool_status_counts": {
+        "completed": 21
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 3620,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 4,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 24294,
+      "tokens": {
+        "cache_read": 126976,
+        "cache_write": 0,
+        "input": 21225,
+        "output": 2192,
+        "reasoning": 877
+      },
+      "trial_id": "r2-cami-s3",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 105612,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8801,
+      "native_argument_json_utf8_bytes": {
+        "grep": 463,
+        "patch": 4719,
+        "read": 655,
+        "shell": 947
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3334,
+        "patch": 130,
+        "read": 42976,
+        "shell": 15407
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 5,
+        "patch": 2,
+        "read": 12,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 5338,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 28324,
+      "tokens": {
+        "cache_read": 195840,
+        "cache_write": 0,
+        "input": 24496,
+        "output": 2516,
+        "reasoning": 1312
+      },
+      "trial_id": "r2-static-s4",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 59026,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 5366,
+      "native_argument_json_utf8_bytes": {
+        "grep": 385,
+        "patch": 4823,
+        "read": 551,
+        "shell": 1014
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 3759,
+        "patch": 152,
+        "read": 31689,
+        "shell": 20711
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 11,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 2525,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 2,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 22428,
+      "tokens": {
+        "cache_read": 180224,
+        "cache_write": 0,
+        "input": 18600,
+        "output": 2537,
+        "reasoning": 1291
+      },
+      "trial_id": "r2-cami-s4",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 15,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 419,
+        "patch": 5320,
+        "read": 549,
+        "shell": 920
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 4708,
+        "patch": 248,
+        "read": 30668,
+        "shell": 22900
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 4,
+        "read": 10,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 2,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 25161,
+      "tokens": {
+        "cache_read": 197120,
+        "cache_write": 0,
+        "input": 21069,
+        "output": 2570,
+        "reasoning": 1522
+      },
+      "trial_id": "r2-plain-s4",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 11,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 81240,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8124,
+      "native_argument_json_utf8_bytes": {
+        "grep": 80,
+        "patch": 12220,
+        "read": 756,
+        "shell": 631
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1090,
+        "patch": 266,
+        "read": 41238,
+        "shell": 5574
+      },
+      "native_tool_count": 22,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 3,
+        "read": 13,
+        "shell": 5
+      },
+      "native_tool_status_counts": {
+        "completed": 22
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 4646,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 6,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 25365,
+      "tokens": {
+        "cache_read": 156544,
+        "cache_write": 0,
+        "input": 19880,
+        "output": 4282,
+        "reasoning": 1203
+      },
+      "trial_id": "r3-cami-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 232,
+        "patch": 11239,
+        "read": 756,
+        "shell": 810
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1643,
+        "patch": 266,
+        "read": 48228,
+        "shell": 6009
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 3,
+        "read": 14,
+        "shell": 5
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 25253,
+      "tokens": {
+        "cache_read": 170240,
+        "cache_write": 0,
+        "input": 19815,
+        "output": 4044,
+        "reasoning": 1394
+      },
+      "trial_id": "r3-plain-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 87747,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7977,
+      "native_argument_json_utf8_bytes": {
+        "grep": 88,
+        "patch": 12641,
+        "read": 876,
+        "shell": 1233
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1744,
+        "patch": 292,
+        "read": 59525,
+        "shell": 10116
+      },
+      "native_tool_count": 26,
+      "native_tool_counts": {
+        "grep": 1,
+        "patch": 3,
+        "read": 16,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 26
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 6,
+      "same_file_reads_without_recorded_possible_intervening_write": 4,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 33119,
+      "tokens": {
+        "cache_read": 222976,
+        "cache_write": 0,
+        "input": 26555,
+        "output": 4830,
+        "reasoning": 1734
+      },
+      "trial_id": "r3-static-s1",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 11,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 275,
+        "patch": 10345,
+        "read": 786,
+        "shell": 719
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 2173,
+        "patch": 201,
+        "read": 59829,
+        "shell": 6201
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 2,
+        "read": 14,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 29246,
+      "tokens": {
+        "cache_read": 175616,
+        "cache_write": 0,
+        "input": 23150,
+        "output": 3916,
+        "reasoning": 2180
+      },
+      "trial_id": "r3-plain-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 95940,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7995,
+      "native_argument_json_utf8_bytes": {
+        "grep": 182,
+        "patch": 11044,
+        "read": 983,
+        "shell": 1071
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1106,
+        "patch": 266,
+        "read": 55264,
+        "shell": 16152
+      },
+      "native_tool_count": 29,
+      "native_tool_counts": {
+        "grep": 2,
+        "patch": 3,
+        "read": 17,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 29
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 4575,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 7,
+      "same_file_reads_without_recorded_possible_intervening_write": 3,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 33200,
+      "tokens": {
+        "cache_read": 228992,
+        "cache_write": 0,
+        "input": 27033,
+        "output": 4353,
+        "reasoning": 1814
+      },
+      "trial_id": "r3-static-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 99944,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 7688,
+      "native_argument_json_utf8_bytes": {
+        "grep": 141,
+        "patch": 12627,
+        "read": 795,
+        "shell": 777
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 1176,
+        "patch": 266,
+        "read": 51910,
+        "shell": 5668
+      },
+      "native_tool_count": 26,
+      "native_tool_counts": {
+        "grep": 2,
+        "patch": 3,
+        "read": 15,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 26
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 4220,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 2,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 29850,
+      "tokens": {
+        "cache_read": 243584,
+        "cache_write": 0,
+        "input": 23333,
+        "output": 4537,
+        "reasoning": 1980
+      },
+      "trial_id": "r3-cami-s2",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 15,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 123396,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8814,
+      "native_argument_json_utf8_bytes": {
+        "grep": 452,
+        "patch": 4030,
+        "read": 645,
+        "shell": 878
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 4350,
+        "patch": 130,
+        "read": 31709,
+        "shell": 19804
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 2,
+        "read": 12,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 5338,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 2,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 22713,
+      "tokens": {
+        "cache_read": 220416,
+        "cache_write": 0,
+        "input": 19497,
+        "output": 2299,
+        "reasoning": 917
+      },
+      "trial_id": "r3-static-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 75166,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 5782,
+      "native_argument_json_utf8_bytes": {
+        "grep": 415,
+        "patch": 4751,
+        "read": 623,
+        "shell": 967
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 7683,
+        "patch": 189,
+        "read": 38784,
+        "shell": 34635
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 3,
+        "read": 11,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 2928,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 28911,
+      "tokens": {
+        "cache_read": 244608,
+        "cache_write": 0,
+        "input": 24994,
+        "output": 2500,
+        "reasoning": 1417
+      },
+      "trial_id": "r3-cami-s3",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 511,
+        "patch": 3704,
+        "read": 708,
+        "shell": 547
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 4240,
+        "patch": 175,
+        "read": 34665,
+        "shell": 13087
+      },
+      "native_tool_count": 25,
+      "native_tool_counts": {
+        "grep": 5,
+        "patch": 3,
+        "read": 12,
+        "shell": 5
+      },
+      "native_tool_status_counts": {
+        "completed": 25
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 21809,
+      "tokens": {
+        "cache_read": 144256,
+        "cache_write": 0,
+        "input": 18683,
+        "output": 2051,
+        "reasoning": 1075
+      },
+      "trial_id": "r3-plain-s3",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 15,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 66976,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 4784,
+      "native_argument_json_utf8_bytes": {
+        "grep": 387,
+        "patch": 4419,
+        "read": 538,
+        "shell": 1020
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 2896,
+        "patch": 248,
+        "read": 27832,
+        "shell": 35806
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 4,
+        "patch": 4,
+        "read": 10,
+        "shell": 6
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 2,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 1940,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 3,
+      "same_file_native_read_observations_after_memory": 2,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 28276,
+      "tokens": {
+        "cache_read": 217600,
+        "cache_write": 0,
+        "input": 25095,
+        "output": 2387,
+        "reasoning": 794
+      },
+      "trial_id": "r3-cami-s4",
+      "withheld_record_observations": 2
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 13,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "grep": 288,
+        "patch": 4738,
+        "read": 602,
+        "shell": 977
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 4067,
+        "patch": 189,
+        "read": 35848,
+        "shell": 17999
+      },
+      "native_tool_count": 24,
+      "native_tool_counts": {
+        "grep": 3,
+        "patch": 3,
+        "read": 11,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 24
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 21773,
+      "tokens": {
+        "cache_read": 181120,
+        "cache_write": 0,
+        "input": 18122,
+        "output": 2428,
+        "reasoning": 1223
+      },
+      "trial_id": "r3-plain-s4",
+      "withheld_record_observations": 0
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 14,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 114582,
+      "memory_calls": 1,
+      "memory_wire_utf8_bytes": 8814,
+      "native_argument_json_utf8_bytes": {
+        "grep": 275,
+        "patch": 4284,
+        "read": 547,
+        "shell": 1009
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 2816,
+        "patch": 130,
+        "read": 31286,
+        "shell": 24193
+      },
+      "native_tool_count": 21,
+      "native_tool_counts": {
+        "grep": 2,
+        "patch": 2,
+        "read": 10,
+        "shell": 7
+      },
+      "native_tool_status_counts": {
+        "completed": 21
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 1,
+      "repetition": 3,
+      "returned_literal_text_utf8_bytes": 5338,
+      "returned_prefix_truncated_observations": 1,
+      "returned_record_observations": 5,
+      "same_file_native_read_observations_after_memory": 3,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 23562,
+      "tokens": {
+        "cache_read": 207872,
+        "cache_write": 0,
+        "input": 20337,
+        "output": 2229,
+        "reasoning": 996
+      },
+      "trial_id": "r3-static-s4",
+      "withheld_record_observations": 0
+    }
+  ]
+}

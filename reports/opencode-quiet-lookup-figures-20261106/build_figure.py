@@ -57,7 +57,7 @@ svg = (HERE / "local-memory-comparison.svg").read_text()
 svg = svg[svg.index("<svg"):].replace("#000000", "var(--foreground)")
 html = ("<!doctype html><html lang='ru'><meta charset='utf-8'><style>"
         "body{margin:0;color:var(--foreground);font-family:var(--font-sans)}"
-        "figure{margin:0}svg{width:100%;height:auto;display:block}p{font-size:14px;line-height:1.5}"
+        "figure{margin:0}svg{width:100%;height:auto;display:block}svg text{fill:var(--foreground)}p{font-size:14px;line-height:1.5}"
         "</style><body><figure>" + svg + "</figure><p>"
         "Построение памяти и весь локальный сценарий стали быстрее по заранее выбранному правилу. "
         "Для отдельного обращения преимущество над исходной версией остаётся в пределах разброса. "

@@ -1,0 +1,25 @@
+{
+  "arms": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "cost_boundary": "Each static/CAMI arm independently executes and pays origin-source extraction and memory preparation. Plain has zero memory construction. Charged sequence wall time includes controller guards, construction, startup, private authentication transfer, model/native-tool/MCP work, and session cleanup. Canonical fixture reset, source export and fixed grading are separately timed evaluation infrastructure. Entire controller elapsed time is also retained. Nested component spans are descriptive and never summed twice.",
+  "model": "openai/gpt-6.1-sol#high",
+  "repetitions": 3,
+  "sequence": [
+    "first_task_local_cold",
+    "first_task_repeat",
+    "second_task_after_canonical_upstream_changes",
+    "second_task_repeat"
+  ],
+  "study_id": "opencode-cami-real-maintenance-v1",
+  "success_rule": {
+    "efficiency_eligibility": "Primary efficiency superiority is assessed only if all three arms have all 12 operationally complete and quality-passing trials with complete relevant measurements. Otherwise report outcomes and costs, but primary superiority is not established.",
+    "paired_win": "Against each comparator, CAMI must have a strictly lower full four-stage sequence total in all three repetition blocks for at least one predeclared metric: charged end-to-end elapsed seconds or non-cached normalized provider token work. The same winning metric must satisfy all six paired comparisons.",
+    "population_scope": "Only the two predefined historical final tasks and this sequence/model/runtime. Repetitions do not create new independent task instances; no broad population or noninferiority claim.",
+    "quality": "All 12 CAMI task trials must pass fixed acceptance and regression checks. Report paired per-task outcomes for every arm; no missing or failed trial can be treated as a cheap success.",
+    "token_work": "Non-cached normalized provider token work = input + cache.write + output + reasoning; cached reads separately reported and included in provider input volume, not silently discarded from cost evidence. Token counts are resource proxies, not verified subscription bills or equivalent-priced units. Missing/incomplete telemetry prevents a token-win claim."
+  },
+  "token_semantics": "Installed OpenCode normalizer input excludes cache, output excludes reasoning. Report input, output, reasoning, cache.read/write separately; provider input=input+cache.read+cache.write; provider output=output+reasoning when telemetry is complete. Missing/nonfinite provider values are normalized to0 by the client, so raw zero does not prove measured zero. Session totals and step sums must never be added together."
+}

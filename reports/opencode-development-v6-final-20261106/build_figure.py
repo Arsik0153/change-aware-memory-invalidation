@@ -48,10 +48,11 @@ fig.savefig(HERE / "comparison.png", dpi=180, facecolor="white")
 fig.savefig(HERE / "comparison.svg", transparent=True)
 plt.close(fig)
 svg = (HERE / "comparison.svg").read_text()
-svg = svg[svg.index("<svg"):].replace("#000000", "var(--foreground)")
+svg = (svg[svg.index("<svg"):].replace("#000000", "var(--foreground)")
+       .replace("#ffffff", "var(--card)").replace("#cccccc", "var(--border)"))
 html = ("<!doctype html><html lang='ru'><meta charset='utf-8'><style>"
         "body{margin:0;color:var(--foreground);font-family:var(--font-sans)}"
-        "figure{margin:0}svg{width:100%;height:auto;display:block}p{font-size:14px;line-height:1.5}"
+        "figure{margin:0}svg{width:100%;height:auto;display:block}svg text{fill:var(--foreground)}p{font-size:14px;line-height:1.5}"
         "</style><body><figure>" + svg + "</figure><p>"
         "CAMI использовал меньше токенов, чем обычный OpenCode, в 1 из 3 повторов, "
         "и меньше, чем обычная память, в 2 из 3. Заранее заданный критерий требует "

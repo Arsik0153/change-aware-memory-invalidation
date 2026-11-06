@@ -1,0 +1,1396 @@
+{
+  "affected_trial_ids_retained": [
+    "r2-cami-s3",
+    "r2-plain-s3",
+    "r2-static-s3"
+  ],
+  "arm_summaries": {
+    "cami": {
+      "assistant_responses": 152,
+      "charged_wall_seconds_total_descriptive_only": 1411.8263062676415,
+      "construction_wall_seconds_total": 12.469975914340466,
+      "container_cpu_seconds_total": 193.95353,
+      "max_container_peak_bytes_nonadditive": 487002112,
+      "token_work_blocks": [
+        133132,
+        121785,
+        112402
+      ],
+      "token_work_median": 121785,
+      "token_work_range": [
+        112402,
+        133132
+      ],
+      "tokens_total": {
+        "cache_read": 2380800,
+        "cache_write": 0,
+        "input": 307058,
+        "output": 41361,
+        "reasoning": 18900
+      }
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "charged_wall_seconds_total_descriptive_only": 1360.4554274461698,
+      "construction_wall_seconds_total": 0,
+      "container_cpu_seconds_total": 168.49077,
+      "max_container_peak_bytes_nonadditive": 301051904,
+      "token_work_blocks": [
+        108089,
+        147233,
+        98081
+      ],
+      "token_work_median": 108089,
+      "token_work_range": [
+        98081,
+        147233
+      ],
+      "tokens_total": {
+        "cache_read": 2278272,
+        "cache_write": 0,
+        "input": 294780,
+        "output": 41051,
+        "reasoning": 17572
+      }
+    },
+    "static": {
+      "assistant_responses": 159,
+      "charged_wall_seconds_total_descriptive_only": 1344.935550837312,
+      "construction_wall_seconds_total": 2.958831527037546,
+      "container_cpu_seconds_total": 167.64976000000001,
+      "max_container_peak_bytes_nonadditive": 322613248,
+      "token_work_blocks": [
+        134812,
+        108609,
+        112594
+      ],
+      "token_work_median": 112594,
+      "token_work_range": [
+        108609,
+        134812
+      ],
+      "tokens_total": {
+        "cache_read": 2472576,
+        "cache_write": 0,
+        "input": 298537,
+        "output": 40181,
+        "reasoning": 17297
+      }
+    }
+  },
+  "artifact_hashes_verified": 8130,
+  "assistant_response_tier_observations": {
+    "default": 469
+  },
+  "blocks": [
+    {
+      "arm": "plain",
+      "charged_wall_seconds_descriptive_only": 449.81731116143055,
+      "container_cpu_seconds": 55.813467,
+      "final_persistent_memory_logical_bytes": 0,
+      "maximum_container_peak_bytes_nonadditive": 301051904,
+      "repetition": 1,
+      "token_work": 108089,
+      "tokens": {
+        "cache_read": 749568,
+        "cache_write": 0,
+        "input": 88802,
+        "output": 13993,
+        "reasoning": 5294
+      }
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds_descriptive_only": 442.8062742210459,
+      "container_cpu_seconds": 53.895052,
+      "final_persistent_memory_logical_bytes": 840874,
+      "maximum_container_peak_bytes_nonadditive": 302784512,
+      "repetition": 1,
+      "token_work": 134812,
+      "tokens": {
+        "cache_read": 748672,
+        "cache_write": 0,
+        "input": 115610,
+        "output": 13435,
+        "reasoning": 5767
+      }
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds_descriptive_only": 482.73913762927987,
+      "container_cpu_seconds": 66.337258,
+      "final_persistent_memory_logical_bytes": 29046736,
+      "maximum_container_peak_bytes_nonadditive": 472219648,
+      "repetition": 1,
+      "token_work": 133132,
+      "tokens": {
+        "cache_read": 777856,
+        "cache_write": 0,
+        "input": 112328,
+        "output": 13737,
+        "reasoning": 7067
+      }
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds_descriptive_only": 477.46603204635903,
+      "container_cpu_seconds": 59.382775,
+      "final_persistent_memory_logical_bytes": 0,
+      "maximum_container_peak_bytes_nonadditive": 292577280,
+      "repetition": 2,
+      "token_work": 147233,
+      "tokens": {
+        "cache_read": 857472,
+        "cache_write": 0,
+        "input": 126208,
+        "output": 14619,
+        "reasoning": 6406
+      }
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds_descriptive_only": 457.68763025361113,
+      "container_cpu_seconds": 57.55351,
+      "final_persistent_memory_logical_bytes": 840873,
+      "maximum_container_peak_bytes_nonadditive": 319995904,
+      "repetition": 2,
+      "token_work": 108609,
+      "tokens": {
+        "cache_read": 843648,
+        "cache_write": 0,
+        "input": 89505,
+        "output": 13035,
+        "reasoning": 6069
+      }
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds_descriptive_only": 474.38208849704824,
+      "container_cpu_seconds": 63.961101,
+      "final_persistent_memory_logical_bytes": 29046718,
+      "maximum_container_peak_bytes_nonadditive": 487002112,
+      "repetition": 2,
+      "token_work": 121785,
+      "tokens": {
+        "cache_read": 740608,
+        "cache_write": 0,
+        "input": 101428,
+        "output": 13918,
+        "reasoning": 6439
+      }
+    },
+    {
+      "arm": "plain",
+      "charged_wall_seconds_descriptive_only": 433.1720842383802,
+      "container_cpu_seconds": 53.294528,
+      "final_persistent_memory_logical_bytes": 0,
+      "maximum_container_peak_bytes_nonadditive": 295596032,
+      "repetition": 3,
+      "token_work": 98081,
+      "tokens": {
+        "cache_read": 671232,
+        "cache_write": 0,
+        "input": 79770,
+        "output": 12439,
+        "reasoning": 5872
+      }
+    },
+    {
+      "arm": "static",
+      "charged_wall_seconds_descriptive_only": 444.44164636265486,
+      "container_cpu_seconds": 56.201198,
+      "final_persistent_memory_logical_bytes": 840884,
+      "maximum_container_peak_bytes_nonadditive": 322613248,
+      "repetition": 3,
+      "token_work": 112594,
+      "tokens": {
+        "cache_read": 880256,
+        "cache_write": 0,
+        "input": 93422,
+        "output": 13711,
+        "reasoning": 5461
+      }
+    },
+    {
+      "arm": "cami",
+      "charged_wall_seconds_descriptive_only": 454.7050801413134,
+      "container_cpu_seconds": 63.655170999999996,
+      "final_persistent_memory_logical_bytes": 29050832,
+      "maximum_container_peak_bytes_nonadditive": 473669632,
+      "repetition": 3,
+      "token_work": 112402,
+      "tokens": {
+        "cache_read": 862336,
+        "cache_write": 0,
+        "input": 93302,
+        "output": 13706,
+        "reasoning": 5394
+      }
+    }
+  ],
+  "bound_frozen_analysis_sha256": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+  "effective_reasoning": "high",
+  "heldout_reads": false,
+  "independent_token_winning_rule_all_six": false,
+  "limits": [
+    "No historical pooling; this is the declared two-task development cohort only.",
+    "All raw costs retained; wall ineligible across the cohort due mandatory shared-host cleanup caveat, even with uniform reported default tier.",
+    "Client-normalized fields may hide missing provider fields as0; raw billing/remote inference resources unavailable. Session and assistant-step sums agree but are never added together.",
+    "Container CPU phases sum, memory peaks max, persistent bytes stage observations; host and remote resources are separate."
+  ],
+  "model_calls": 0,
+  "operational_quality_pass": 36,
+  "paired_token_comparisons": [
+    {
+      "cami_token_work": 133132,
+      "charged_wall_strictly_lower_descriptive_only": false,
+      "comparator": "plain",
+      "comparator_token_work": 108089,
+      "delta_cami_minus_comparator": 25043,
+      "repetition": 1,
+      "token_strictly_lower": false
+    },
+    {
+      "cami_token_work": 133132,
+      "charged_wall_strictly_lower_descriptive_only": false,
+      "comparator": "static",
+      "comparator_token_work": 134812,
+      "delta_cami_minus_comparator": -1680,
+      "repetition": 1,
+      "token_strictly_lower": true
+    },
+    {
+      "cami_token_work": 121785,
+      "charged_wall_strictly_lower_descriptive_only": true,
+      "comparator": "plain",
+      "comparator_token_work": 147233,
+      "delta_cami_minus_comparator": -25448,
+      "repetition": 2,
+      "token_strictly_lower": true
+    },
+    {
+      "cami_token_work": 121785,
+      "charged_wall_strictly_lower_descriptive_only": false,
+      "comparator": "static",
+      "comparator_token_work": 108609,
+      "delta_cami_minus_comparator": 13176,
+      "repetition": 2,
+      "token_strictly_lower": false
+    },
+    {
+      "cami_token_work": 112402,
+      "charged_wall_strictly_lower_descriptive_only": false,
+      "comparator": "plain",
+      "comparator_token_work": 98081,
+      "delta_cami_minus_comparator": 14321,
+      "repetition": 3,
+      "token_strictly_lower": false
+    },
+    {
+      "cami_token_work": 112402,
+      "charged_wall_strictly_lower_descriptive_only": false,
+      "comparator": "static",
+      "comparator_token_work": 112594,
+      "delta_cami_minus_comparator": -192,
+      "repetition": 3,
+      "token_strictly_lower": true
+    }
+  ],
+  "protocol_sha256": "fdc5bcc642c1dc435d866b144c2654e89d91936a782485373b8b425951ff01f2",
+  "requested": "priority",
+  "status": "independent_audit_passed",
+  "study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+  "tier_scope": "Independently joined hashed exported assistant IDs/completion times to pinned pre-scrub native.serviceTier projection; not independent provider-wire/scheduler/billing verification. Priority configuration is not proof of priority service.",
+  "timing_caveats_sha256": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
+  "timing_evidence": [
+    {
+      "path": "/root/apps/change-aware-memory-invalidation/runs/space-maintenance-20261106/report.json",
+      "sha256": "c70a19e573c6a2bdee8c45e003876e1cb6b4ac97e17f8024117eea1a80db4091"
+    }
+  ],
+  "tracked_writes": false,
+  "trial_rows": [
+    {
+      "arm": "plain",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 134.90592795494013,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 16.686188,
+      "evaluation_infrastructure_seconds_separate": 5.5429290239699185,
+      "guard_wall_seconds": 0.4539176351390779,
+      "id": "r1-plain-s1",
+      "maximum_container_peak_bytes_nonadditive": 301051904,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 134.45201031980105,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 28776,
+      "tokens": {
+        "cache_read": 237824,
+        "cache_write": 0,
+        "input": 22438,
+        "output": 4848,
+        "reasoning": 1490
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 138.08719425508752,
+      "construction_cpu_seconds": 0.46499,
+      "construction_wall_seconds": 0.9798299539834261,
+      "container_cpu_seconds": 14.278796,
+      "evaluation_infrastructure_seconds_separate": 3.22481875307858,
+      "guard_wall_seconds": 0.4875546679832041,
+      "id": "r1-static-s1",
+      "maximum_container_peak_bytes_nonadditive": 302784512,
+      "persistent_memory_logical_bytes_after": 840874,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 136.6198096331209,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 38753,
+      "tokens": {
+        "cache_read": 166784,
+        "cache_write": 0,
+        "input": 32506,
+        "output": 4450,
+        "reasoning": 1797
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 156.96103252703324,
+      "construction_cpu_seconds": 3.475091,
+      "construction_wall_seconds": 4.188916420098394,
+      "container_cpu_seconds": 19.952597,
+      "evaluation_infrastructure_seconds_separate": 3.131524497875944,
+      "guard_wall_seconds": 0.5269990109372884,
+      "id": "r1-cami-s1",
+      "maximum_container_peak_bytes_nonadditive": 424099840,
+      "persistent_memory_logical_bytes_after": 15811641,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 152.24511709599756,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 35531,
+      "tokens": {
+        "cache_read": 233344,
+        "cache_write": 0,
+        "input": 28396,
+        "output": 4625,
+        "reasoning": 2510
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 15,
+      "charged_wall_seconds_descriptive_only": 145.08172663813457,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.063097,
+      "evaluation_infrastructure_seconds_separate": 3.2509905518963933,
+      "guard_wall_seconds": 0.5126465512439609,
+      "id": "r1-static-s2",
+      "maximum_container_peak_bytes_nonadditive": 298860544,
+      "persistent_memory_logical_bytes_after": 840874,
+      "predecessor": "r1-static-s1",
+      "provider_reported_tiers": {
+        "default": 15
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 144.5690800868906,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 30490,
+      "tokens": {
+        "cache_read": 260608,
+        "cache_write": 0,
+        "input": 23793,
+        "output": 4494,
+        "reasoning": 2203
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 130.6578211451415,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 17.058814,
+      "evaluation_infrastructure_seconds_separate": 3.0775554277934134,
+      "guard_wall_seconds": 0.5579099520109594,
+      "id": "r1-cami-s2",
+      "maximum_container_peak_bytes_nonadditive": 383557632,
+      "persistent_memory_logical_bytes_after": 15811641,
+      "predecessor": "r1-cami-s1",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 130.09991119313054,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 30556,
+      "tokens": {
+        "cache_read": 208896,
+        "cache_write": 0,
+        "input": 24135,
+        "output": 4568,
+        "reasoning": 1853
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 137.90918780560605,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.655568,
+      "evaluation_infrastructure_seconds_separate": 3.194879407295957,
+      "guard_wall_seconds": 0.47928347159177065,
+      "id": "r1-plain-s2",
+      "maximum_container_peak_bytes_nonadditive": 289697792,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r1-plain-s1",
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 137.42990433401428,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 31483,
+      "tokens": {
+        "cache_read": 229248,
+        "cache_write": 0,
+        "input": 25001,
+        "output": 4971,
+        "reasoning": 1511
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 94.0553125499282,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.560925,
+      "evaluation_infrastructure_seconds_separate": 5.252537644235417,
+      "guard_wall_seconds": 0.587428777012974,
+      "id": "r1-cami-s3",
+      "maximum_container_peak_bytes_nonadditive": 472219648,
+      "persistent_memory_logical_bytes_after": 29046736,
+      "predecessor": "r1-cami-s2",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 93.46788377291523,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 41545,
+      "tokens": {
+        "cache_read": 145664,
+        "cache_write": 0,
+        "input": 38114,
+        "output": 2212,
+        "reasoning": 1219
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 103.60856861202046,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.924909,
+      "evaluation_infrastructure_seconds_separate": 3.2022096160799265,
+      "guard_wall_seconds": 0.4474272159859538,
+      "id": "r1-plain-s3",
+      "maximum_container_peak_bytes_nonadditive": 289624064,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r1-plain-s2",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 103.16114139603451,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 29436,
+      "tokens": {
+        "cache_read": 174720,
+        "cache_write": 0,
+        "input": 25759,
+        "output": 2206,
+        "reasoning": 1471
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 71.8642289438285,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 11.862172,
+      "evaluation_infrastructure_seconds_separate": 3.0627404630649835,
+      "guard_wall_seconds": 0.48443903704173863,
+      "id": "r1-static-s3",
+      "maximum_container_peak_bytes_nonadditive": 291090432,
+      "persistent_memory_logical_bytes_after": 840874,
+      "predecessor": "r1-static-s2",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 71.37978990678675,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 23852,
+      "tokens": {
+        "cache_read": 164864,
+        "cache_write": 0,
+        "input": 21013,
+        "output": 2145,
+        "reasoning": 694
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 11,
+      "charged_wall_seconds_descriptive_only": 73.39362678886391,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 10.546802,
+      "evaluation_infrastructure_seconds_separate": 3.1758099840953946,
+      "guard_wall_seconds": 0.45882393093779683,
+      "id": "r1-plain-s4",
+      "maximum_container_peak_bytes_nonadditive": 290004992,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r1-plain-s3",
+      "provider_reported_tiers": {
+        "default": 11
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 72.93480285792612,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 18394,
+      "tokens": {
+        "cache_read": 107776,
+        "cache_write": 0,
+        "input": 15604,
+        "output": 1968,
+        "reasoning": 822
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 87.77312438399531,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.690987,
+      "evaluation_infrastructure_seconds_separate": 3.140016500838101,
+      "guard_wall_seconds": 0.49575548083521426,
+      "id": "r1-static-s4",
+      "maximum_container_peak_bytes_nonadditive": 291848192,
+      "persistent_memory_logical_bytes_after": 840874,
+      "predecessor": "r1-static-s3",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 87.2773689031601,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 41717,
+      "tokens": {
+        "cache_read": 156416,
+        "cache_write": 0,
+        "input": 38298,
+        "output": 2346,
+        "reasoning": 1073
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 101.06497140717693,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.764922,
+      "evaluation_infrastructure_seconds_separate": 3.1169066086877137,
+      "guard_wall_seconds": 0.6338197852019221,
+      "id": "r1-cami-s4",
+      "maximum_container_peak_bytes_nonadditive": 420761600,
+      "persistent_memory_logical_bytes_after": 29046736,
+      "predecessor": "r1-cami-s3",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 1,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 100.431151621975,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 25500,
+      "tokens": {
+        "cache_read": 189952,
+        "cache_write": 0,
+        "input": 21683,
+        "output": 2332,
+        "reasoning": 1485
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 123.75651884893887,
+      "construction_cpu_seconds": 0.48619,
+      "construction_wall_seconds": 0.9936984821688384,
+      "container_cpu_seconds": 16.257912,
+      "evaluation_infrastructure_seconds_separate": 3.2212482672184706,
+      "guard_wall_seconds": 0.47500858968123794,
+      "id": "r2-static-s1",
+      "maximum_container_peak_bytes_nonadditive": 289792000,
+      "persistent_memory_logical_bytes_after": 840873,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 122.28781177708879,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 27868,
+      "tokens": {
+        "cache_read": 211840,
+        "cache_write": 0,
+        "input": 22639,
+        "output": 4095,
+        "reasoning": 1134
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 148.11306614987552,
+      "construction_cpu_seconds": 3.453623,
+      "construction_wall_seconds": 4.128401660127565,
+      "container_cpu_seconds": 19.058754999999998,
+      "evaluation_infrastructure_seconds_separate": 3.009043889120221,
+      "guard_wall_seconds": 0.5880274528171867,
+      "id": "r2-cami-s1",
+      "maximum_container_peak_bytes_nonadditive": 383270912,
+      "persistent_memory_logical_bytes_after": 15811623,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 143.39663703693077,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 42008,
+      "tokens": {
+        "cache_read": 184960,
+        "cache_write": 0,
+        "input": 35478,
+        "output": 4254,
+        "reasoning": 2276
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 16,
+      "charged_wall_seconds_descriptive_only": 152.57912964210846,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 18.146602,
+      "evaluation_infrastructure_seconds_separate": 3.12908218591474,
+      "guard_wall_seconds": 0.44963590800762177,
+      "id": "r2-plain-s1",
+      "maximum_container_peak_bytes_nonadditive": 289652736,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 16
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 152.12949373410083,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 32437,
+      "tokens": {
+        "cache_read": 275200,
+        "cache_write": 0,
+        "input": 25188,
+        "output": 5208,
+        "reasoning": 2041
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 148.20897312206216,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 16.727515,
+      "evaluation_infrastructure_seconds_separate": 3.0887435199692845,
+      "guard_wall_seconds": 0.5500467710662633,
+      "id": "r2-cami-s2",
+      "maximum_container_peak_bytes_nonadditive": 387784704,
+      "persistent_memory_logical_bytes_after": 15811623,
+      "predecessor": "r2-cami-s1",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 147.6589263509959,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 33055,
+      "tokens": {
+        "cache_read": 248448,
+        "cache_write": 0,
+        "input": 26125,
+        "output": 4935,
+        "reasoning": 1995
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 118.53598398575559,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.098926,
+      "evaluation_infrastructure_seconds_separate": 3.0915614750701934,
+      "guard_wall_seconds": 0.4667416687589139,
+      "id": "r2-plain-s2",
+      "maximum_container_peak_bytes_nonadditive": 289832960,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r2-plain-s1",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 118.06924231699668,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 45447,
+      "tokens": {
+        "cache_read": 164096,
+        "cache_write": 0,
+        "input": 39695,
+        "output": 4310,
+        "reasoning": 1442
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 155.06920177163556,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.982988,
+      "evaluation_infrastructure_seconds_separate": 3.1872956233564764,
+      "guard_wall_seconds": 0.5065613826736808,
+      "id": "r2-static-s2",
+      "maximum_container_peak_bytes_nonadditive": 290799616,
+      "persistent_memory_logical_bytes_after": 840873,
+      "predecessor": "r2-static-s1",
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 154.56264038896188,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 27320,
+      "tokens": {
+        "cache_read": 257024,
+        "cache_write": 0,
+        "input": 20334,
+        "output": 4272,
+        "reasoning": 2714
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 15,
+      "charged_wall_seconds_descriptive_only": 94.9983762963675,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.550719,
+      "evaluation_infrastructure_seconds_separate": 3.487698486773297,
+      "guard_wall_seconds": 0.4974527913145721,
+      "id": "r2-plain-s3",
+      "maximum_container_peak_bytes_nonadditive": 292577280,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r2-plain-s2",
+      "provider_reported_tiers": {
+        "default": 15
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 94.50092350505292,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 44188,
+      "tokens": {
+        "cache_read": 221056,
+        "cache_write": 0,
+        "input": 40256,
+        "output": 2531,
+        "reasoning": 1401
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 82.97741176816635,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.475626,
+      "evaluation_infrastructure_seconds_separate": 3.3625402660109103,
+      "guard_wall_seconds": 0.5940875441301614,
+      "id": "r2-static-s3",
+      "maximum_container_peak_bytes_nonadditive": 319995904,
+      "persistent_memory_logical_bytes_after": 840873,
+      "predecessor": "r2-static-s2",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 82.38332422403619,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 25097,
+      "tokens": {
+        "cache_read": 178944,
+        "cache_write": 0,
+        "input": 22036,
+        "output": 2152,
+        "reasoning": 909
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 11,
+      "charged_wall_seconds_descriptive_only": 77.05343425320461,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 13.949461,
+      "evaluation_infrastructure_seconds_separate": 3.2579091077204794,
+      "guard_wall_seconds": 0.6908902800641954,
+      "id": "r2-cami-s3",
+      "maximum_container_peak_bytes_nonadditive": 487002112,
+      "persistent_memory_logical_bytes_after": 29046718,
+      "predecessor": "r2-cami-s2",
+      "provider_reported_tiers": {
+        "default": 11
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 76.36254397314042,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 24294,
+      "tokens": {
+        "cache_read": 126976,
+        "cache_write": 0,
+        "input": 21225,
+        "output": 2192,
+        "reasoning": 877
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 95.88449786487035,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.836984,
+      "evaluation_infrastructure_seconds_separate": 3.1901755819562823,
+      "guard_wall_seconds": 0.5073027308098972,
+      "id": "r2-static-s4",
+      "maximum_container_peak_bytes_nonadditive": 290570240,
+      "persistent_memory_logical_bytes_after": 840873,
+      "predecessor": "r2-static-s3",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 95.37719513406046,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 28324,
+      "tokens": {
+        "cache_read": 195840,
+        "cache_write": 0,
+        "input": 24496,
+        "output": 2516,
+        "reasoning": 1312
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 101.00661497190595,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.22537,
+      "evaluation_infrastructure_seconds_separate": 3.180395659059286,
+      "guard_wall_seconds": 0.633960944833234,
+      "id": "r2-cami-s4",
+      "maximum_container_peak_bytes_nonadditive": 418516992,
+      "persistent_memory_logical_bytes_after": 29046718,
+      "predecessor": "r2-cami-s3",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 100.37265402707271,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 22428,
+      "tokens": {
+        "cache_read": 180224,
+        "cache_write": 0,
+        "input": 18600,
+        "output": 2537,
+        "reasoning": 1291
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 15,
+      "charged_wall_seconds_descriptive_only": 111.35254212212749,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 13.586528,
+      "evaluation_infrastructure_seconds_separate": 3.183295245980844,
+      "guard_wall_seconds": 0.4791270352434367,
+      "id": "r2-plain-s4",
+      "maximum_container_peak_bytes_nonadditive": 289476608,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r2-plain-s3",
+      "provider_reported_tiers": {
+        "default": 15
+      },
+      "repetition": 2,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 110.87341508688405,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 25161,
+      "tokens": {
+        "cache_read": 197120,
+        "cache_write": 0,
+        "input": 21069,
+        "output": 2570,
+        "reasoning": 1522
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 11,
+      "charged_wall_seconds_descriptive_only": 120.83118554577231,
+      "construction_cpu_seconds": 3.502379,
+      "construction_wall_seconds": 4.152657834114507,
+      "container_cpu_seconds": 18.492748,
+      "evaluation_infrastructure_seconds_separate": 3.1948977992869914,
+      "guard_wall_seconds": 0.5555500155314803,
+      "id": "r3-cami-s1",
+      "maximum_container_peak_bytes_nonadditive": 377397248,
+      "persistent_memory_logical_bytes_after": 15811641,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 11
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 116.12297769612633,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 25365,
+      "tokens": {
+        "cache_read": 156544,
+        "cache_write": 0,
+        "input": 19880,
+        "output": 4282,
+        "reasoning": 1203
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 126.73613106878474,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 13.920921,
+      "evaluation_infrastructure_seconds_separate": 3.1245022031944245,
+      "guard_wall_seconds": 0.4575680987909436,
+      "id": "r3-plain-s1",
+      "maximum_container_peak_bytes_nonadditive": 289783808,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 126.2785629699938,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 25253,
+      "tokens": {
+        "cache_read": 170240,
+        "cache_write": 0,
+        "input": 19815,
+        "output": 4044,
+        "reasoning": 1394
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 143.0781691512093,
+      "construction_cpu_seconds": 0.463842,
+      "construction_wall_seconds": 0.9853030908852816,
+      "container_cpu_seconds": 16.241827,
+      "evaluation_infrastructure_seconds_separate": 3.04869437078014,
+      "guard_wall_seconds": 0.4967646242585033,
+      "id": "r3-static-s1",
+      "maximum_container_peak_bytes_nonadditive": 295538688,
+      "persistent_memory_logical_bytes_after": 840884,
+      "predecessor": null,
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 141.5961014360655,
+      "stage": 1,
+      "task": "click-help-option-api",
+      "token_work": 33119,
+      "tokens": {
+        "cache_read": 222976,
+        "cache_write": 0,
+        "input": 26555,
+        "output": 4830,
+        "reasoning": 1734
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 11,
+      "charged_wall_seconds_descriptive_only": 126.49732541432604,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.031144,
+      "evaluation_infrastructure_seconds_separate": 3.1719381518196315,
+      "guard_wall_seconds": 0.46131576830521226,
+      "id": "r3-plain-s2",
+      "maximum_container_peak_bytes_nonadditive": 289435648,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r3-plain-s1",
+      "provider_reported_tiers": {
+        "default": 11
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 126.03600964602083,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 29246,
+      "tokens": {
+        "cache_read": 175616,
+        "cache_write": 0,
+        "input": 23150,
+        "output": 3916,
+        "reasoning": 2180
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 125.78278625570238,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.355599,
+      "evaluation_infrastructure_seconds_separate": 3.183147957082838,
+      "guard_wall_seconds": 0.5063267557416111,
+      "id": "r3-static-s2",
+      "maximum_container_peak_bytes_nonadditive": 322613248,
+      "persistent_memory_logical_bytes_after": 840884,
+      "predecessor": "r3-static-s1",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 125.27645949996077,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 33200,
+      "tokens": {
+        "cache_read": 228992,
+        "cache_write": 0,
+        "input": 27033,
+        "output": 4353,
+        "reasoning": 1814
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 144.00828626123257,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.347044,
+      "evaluation_infrastructure_seconds_separate": 3.083318314747885,
+      "guard_wall_seconds": 0.6142347191926092,
+      "id": "r3-cami-s2",
+      "maximum_container_peak_bytes_nonadditive": 412188672,
+      "persistent_memory_logical_bytes_after": 15811641,
+      "predecessor": "r3-cami-s1",
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 143.39405154203996,
+      "stage": 2,
+      "task": "click-help-option-api",
+      "token_work": 29850,
+      "tokens": {
+        "cache_read": 243584,
+        "cache_write": 0,
+        "input": 23333,
+        "output": 4537,
+        "reasoning": 1980
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 15,
+      "charged_wall_seconds_descriptive_only": 92.95666929753497,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 13.182575,
+      "evaluation_infrastructure_seconds_separate": 3.280354011338204,
+      "guard_wall_seconds": 0.5154687676113099,
+      "id": "r3-static-s3",
+      "maximum_container_peak_bytes_nonadditive": 295542784,
+      "persistent_memory_logical_bytes_after": 840884,
+      "predecessor": "r3-static-s2",
+      "provider_reported_tiers": {
+        "default": 15
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 92.44120052992366,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 22713,
+      "tokens": {
+        "cache_read": 220416,
+        "cache_write": 0,
+        "input": 19497,
+        "output": 2299,
+        "reasoning": 917
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 100.4270519760903,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 15.206687,
+      "evaluation_infrastructure_seconds_separate": 3.0232307938858867,
+      "guard_wall_seconds": 0.5985900950618088,
+      "id": "r3-cami-s3",
+      "maximum_container_peak_bytes_nonadditive": 473669632,
+      "persistent_memory_logical_bytes_after": 29050832,
+      "predecessor": "r3-cami-s2",
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 99.82846188102849,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 28911,
+      "tokens": {
+        "cache_read": 244608,
+        "cache_write": 0,
+        "input": 24994,
+        "output": 2500,
+        "reasoning": 1417
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 12,
+      "charged_wall_seconds_descriptive_only": 82.42897373833694,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.60057,
+      "evaluation_infrastructure_seconds_separate": 3.157728894846514,
+      "guard_wall_seconds": 0.46584414946846664,
+      "id": "r3-plain-s3",
+      "maximum_container_peak_bytes_nonadditive": 289607680,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r3-plain-s2",
+      "provider_reported_tiers": {
+        "default": 12
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 81.96312958886847,
+      "stage": 3,
+      "task": "click-help-eagerness",
+      "token_work": 21809,
+      "tokens": {
+        "cache_read": 144256,
+        "cache_write": 0,
+        "input": 18683,
+        "output": 2051,
+        "reasoning": 1075
+      }
+    },
+    {
+      "arm": "cami",
+      "assistant_responses": 15,
+      "charged_wall_seconds_descriptive_only": 89.4385563582182,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 14.608692,
+      "evaluation_infrastructure_seconds_separate": 3.1736680567264557,
+      "guard_wall_seconds": 0.6384201680775732,
+      "id": "r3-cami-s4",
+      "maximum_container_peak_bytes_nonadditive": 421834752,
+      "persistent_memory_logical_bytes_after": 29050832,
+      "predecessor": "r3-cami-s3",
+      "provider_reported_tiers": {
+        "default": 15
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 88.80013619014062,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 28276,
+      "tokens": {
+        "cache_read": 217600,
+        "cache_write": 0,
+        "input": 25095,
+        "output": 2387,
+        "reasoning": 794
+      }
+    },
+    {
+      "arm": "plain",
+      "assistant_responses": 13,
+      "charged_wall_seconds_descriptive_only": 97.50965401693247,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.741893,
+      "evaluation_infrastructure_seconds_separate": 3.153063864214346,
+      "guard_wall_seconds": 0.4646301737520844,
+      "id": "r3-plain-s4",
+      "maximum_container_peak_bytes_nonadditive": 295596032,
+      "persistent_memory_logical_bytes_after": 0,
+      "predecessor": "r3-plain-s3",
+      "provider_reported_tiers": {
+        "default": 13
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 97.04502384318039,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 21773,
+      "tokens": {
+        "cache_read": 181120,
+        "cache_write": 0,
+        "input": 18122,
+        "output": 2428,
+        "reasoning": 1223
+      }
+    },
+    {
+      "arm": "static",
+      "assistant_responses": 14,
+      "charged_wall_seconds_descriptive_only": 82.62402165820822,
+      "construction_cpu_seconds": 0,
+      "construction_wall_seconds": 0,
+      "container_cpu_seconds": 12.421197,
+      "evaluation_infrastructure_seconds_separate": 3.1064529188442975,
+      "guard_wall_seconds": 0.5203436920419335,
+      "id": "r3-static-s4",
+      "maximum_container_peak_bytes_nonadditive": 292556800,
+      "persistent_memory_logical_bytes_after": 840884,
+      "predecessor": "r3-static-s3",
+      "provider_reported_tiers": {
+        "default": 14
+      },
+      "repetition": 3,
+      "requested_priority_wire_observed": false,
+      "session_wall_seconds": 82.10367796616629,
+      "stage": 4,
+      "task": "click-help-eagerness",
+      "token_work": 23562,
+      "tokens": {
+        "cache_read": 207872,
+        "cache_write": 0,
+        "input": 20337,
+        "output": 2229,
+        "reasoning": 996
+      }
+    }
+  ],
+  "trials": 36,
+  "wall_primary_disqualified_whole_cohort": true
+}

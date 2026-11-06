@@ -1,0 +1,44 @@
+{
+  "frozen_commit": "fa415f0c85d51c886f8f509d26241cb8a836634c",
+  "study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+  "mandatory_timing_caveats": "runs/opencode-development-v6-timing-caveats-20261106.json",
+  "mandatory_timing_caveats_sha256": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
+  "analysis_report_sha256": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+  "resource_report_sha256": "2bfc24b18fe1c571d6c4a18be1087250c49471942e41906c4189751d31ed9e81",
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "runs/opencode-v6-independent-audit-20261106/frozen-analysis/aggregate_study.py",
+        "--run",
+        "runs/opencode-development-v6-20261106",
+        "--protocol",
+        "reports/opencode-study-design-v6-20261106/protocol.json",
+        "--study-sha256",
+        "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+        "--timing-caveats",
+        "runs/opencode-development-v6-timing-caveats-20261106.json",
+        "--out",
+        "NEW_AGGREGATION_OUTPUT"
+      ],
+      "executed_exit_code": 0
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "runs/opencode-v6-independent-audit-20261106/frozen-analysis/summarize_resources.py",
+        "--analysis",
+        "runs/opencode-v6-independent-audit-20261106/frozen-reaggregation/report.json",
+        "--analysis-sha256",
+        "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+        "--run",
+        "runs/opencode-development-v6-20261106",
+        "--out",
+        "NEW_RESOURCE_OUTPUT"
+      ],
+      "executed_exit_code": 0
+    }
+  ],
+  "read_only_analysis": true,
+  "model_calls": 0
+}

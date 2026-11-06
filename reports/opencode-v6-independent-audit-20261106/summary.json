@@ -1,0 +1,331 @@
+{
+  "artifact_hashes_verified": 8130,
+  "commits": 0,
+  "cost_resource_summaries_descriptive": {
+    "cami": {
+      "assistant_responses": 152,
+      "charged_wall_seconds_total_descriptive_only": 1411.8263062676415,
+      "construction_wall_seconds_total": 12.469975914340466,
+      "container_cpu_seconds_total": 193.95353,
+      "max_container_peak_bytes_nonadditive": 487002112,
+      "token_work_blocks": [
+        133132,
+        121785,
+        112402
+      ],
+      "token_work_median": 121785,
+      "token_work_range": [
+        112402,
+        133132
+      ],
+      "tokens_total": {
+        "cache_read": 2380800,
+        "cache_write": 0,
+        "input": 307058,
+        "output": 41361,
+        "reasoning": 18900
+      }
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "charged_wall_seconds_total_descriptive_only": 1360.4554274461698,
+      "construction_wall_seconds_total": 0,
+      "container_cpu_seconds_total": 168.49077,
+      "max_container_peak_bytes_nonadditive": 301051904,
+      "token_work_blocks": [
+        108089,
+        147233,
+        98081
+      ],
+      "token_work_median": 108089,
+      "token_work_range": [
+        98081,
+        147233
+      ],
+      "tokens_total": {
+        "cache_read": 2278272,
+        "cache_write": 0,
+        "input": 294780,
+        "output": 41051,
+        "reasoning": 17572
+      }
+    },
+    "static": {
+      "assistant_responses": 159,
+      "charged_wall_seconds_total_descriptive_only": 1344.935550837312,
+      "construction_wall_seconds_total": 2.958831527037546,
+      "container_cpu_seconds_total": 167.64976000000001,
+      "max_container_peak_bytes_nonadditive": 322613248,
+      "token_work_blocks": [
+        134812,
+        108609,
+        112594
+      ],
+      "token_work_median": 112594,
+      "token_work_range": [
+        108609,
+        134812
+      ],
+      "tokens_total": {
+        "cache_read": 2472576,
+        "cache_write": 0,
+        "input": 298537,
+        "output": 40181,
+        "reasoning": 17297
+      }
+    }
+  },
+  "exact_frozen_analysis_report_sha256": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
+  "excluded_trials": [],
+  "frozen_analysis_commit": "fa415f0c85d51c886f8f509d26241cb8a836634c",
+  "frozen_analysis_runtime_pins_sha256": "480afd2b7ae3f3e345b9e0de24ccfbe4e577c569c13eeeb758dd012c8211c776",
+  "frozen_reaggregation_byte_identical": true,
+  "frozen_resource_report_sha256": "2bfc24b18fe1c571d6c4a18be1087250c49471942e41906c4189751d31ed9e81",
+  "heldout_access": false,
+  "historical_pooling": false,
+  "model_calls": 0,
+  "native_debug_outputs": {
+    "cami": {
+      "calls": 74,
+      "nonzero_exit_calls": 16,
+      "nonzero_exit_text_utf8_bytes": 127332,
+      "text_utf8_bytes": 198673
+    },
+    "plain": {
+      "calls": 73,
+      "nonzero_exit_calls": 15,
+      "nonzero_exit_text_utf8_bytes": 110371,
+      "text_utf8_bytes": 174195
+    },
+    "static": {
+      "calls": 77,
+      "nonzero_exit_calls": 14,
+      "nonzero_exit_text_utf8_bytes": 123050,
+      "text_utf8_bytes": 180219
+    }
+  },
+  "next_bounded_target": {
+    "bounded_next_unit": "Prototype and offline byte-account a reversible readable projection against the already collected development packets; prove exact prefix/metadata/receipt recovery including physical newlines, Unicode, decorators, control/backtick text and withholding. Freeze a separately versioned protocol before any new model comparison.",
+    "data_support": "Current model-visible memory JSON includes36,128nonliteral bytes across CAMI12calls, plus1,826escape expansion and96literal quote delimiters. Repeated source/subject/format structure is observable, not all safely removable.",
+    "not_established": "Bytes are not provider tokens or subscription bills; no causal claim that JSON structure caused v6 token losses or that changing format will improve quality/efficiency. Do not silently retrofit v6 or rewrite Rust.",
+    "preserve": [
+      "Every displayed prefix character, truncation flag, exact subject and origin source/span mapping",
+      "Trust/current-availability labels and withheld identity/action",
+      "Shared ranking/origin-record byte budget and full preprojection payload/receipt evidence",
+      "Both memory arms same model-facing format, no per-task rewriting"
+    ],
+    "proposal": "New generic lossless readable compact model-facing projection, identical for static/CAMI; no ranking/limits/catalog/predicate change.",
+    "secondary_observation": "Large parameterized local test failure outputs are another visible context source. Any summary-first native test output change must be shared across all arms, preserve complete diagnostics separately and use a distinct prospective protocol."
+  },
+  "normalized_provider_token_fields": {
+    "cami": {
+      "cache_read": 2380800,
+      "cache_write": 0,
+      "input": 307058,
+      "output": 41361,
+      "reasoning": 18900
+    },
+    "plain": {
+      "cache_read": 2278272,
+      "cache_write": 0,
+      "input": 294780,
+      "output": 41051,
+      "reasoning": 17572
+    },
+    "static": {
+      "cache_read": 2472576,
+      "cache_write": 0,
+      "input": 298537,
+      "output": 40181,
+      "reasoning": 17297
+    }
+  },
+  "observed_paired_token_wins": 3,
+  "operational_quality_pass": 36,
+  "precise_memory_json_byte_partition": {
+    "cami": {
+      "literal_format_json_string_bytes": 1344,
+      "literal_json_escape_expansion_bytes": 1826,
+      "literal_json_quote_delimiter_bytes": 96,
+      "literal_json_string_content_bytes": 47159,
+      "literal_json_string_token_bytes": 47255,
+      "literal_raw_utf8_bytes": 45333,
+      "model_visible_json_utf8_bytes": 83383,
+      "nonliteral_json_remainder_bytes": 36128,
+      "origin_source_json_value_bytes": 5700,
+      "origin_span_json_value_bytes": 1700,
+      "returned_records": 48,
+      "subject_json_value_bytes": 5125
+    },
+    "plain": {},
+    "static": {
+      "literal_format_json_string_bytes": 1680,
+      "literal_json_escape_expansion_bytes": 2411,
+      "literal_json_quote_delimiter_bytes": 120,
+      "literal_json_string_content_bytes": 61295,
+      "literal_json_string_token_bytes": 61415,
+      "literal_raw_utf8_bytes": 58884,
+      "model_visible_json_utf8_bytes": 100091,
+      "nonliteral_json_remainder_bytes": 38676,
+      "origin_source_json_value_bytes": 7160,
+      "origin_span_json_value_bytes": 2114,
+      "returned_records": 60,
+      "subject_json_value_bytes": 6380
+    }
+  },
+  "primary_superiority": "not_established",
+  "required_paired_token_wins": 6,
+  "same_file_read_scope": "Path overlap and literal overlap after removing native line numbers/joining visible lines withLF; not raw-source equivalence, necessary-read redundancy or causal reliance.",
+  "same_metric_all_six_met": false,
+  "source_changes": false,
+  "status": "closed_readonly_independent_audit",
+  "study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
+  "terminal_trials": 36,
+  "tier": {
+    "all36effective_configs_valid": true,
+    "all_provider_reported": "default",
+    "assistant_response_observations": 469,
+    "reasoning": "high",
+    "requested": "priority",
+    "scope": "Independently joined hashed exported assistant IDs/completion times to pinned pre-scrub native.serviceTier projection; not independent provider-wire/scheduler/billing verification. Priority configuration is not proof of priority service.",
+    "wire_request_observed_trials": 0
+  },
+  "timing_caveat_trial_ids_retained": [
+    "r2-cami-s3",
+    "r2-plain-s3",
+    "r2-static-s3"
+  ],
+  "timing_caveats_sha256": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
+  "timing_evidence": [
+    {
+      "path": "/root/apps/change-aware-memory-invalidation/runs/space-maintenance-20261106/report.json",
+      "sha256": "c70a19e573c6a2bdee8c45e003876e1cb6b4ac97e17f8024117eea1a80db4091"
+    }
+  ],
+  "token_wins": {
+    "plain": 1,
+    "static": 2
+  },
+  "token_work_blocks": {
+    "cami": [
+      133132,
+      121785,
+      112402
+    ],
+    "plain": [
+      108089,
+      147233,
+      98081
+    ],
+    "static": [
+      134812,
+      108609,
+      112594
+    ]
+  },
+  "visible_cost_totals": {
+    "cami": {
+      "assistant_responses": 152,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 965992,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 83383,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3301,
+        "patch": 100754,
+        "read": 7996,
+        "shell": 11108
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 40979,
+        "patch": 2582,
+        "read": 507712,
+        "shell": 198673
+      },
+      "native_tool_count": 286,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 146,
+        "shell": 74
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 17,
+      "returned_literal_text_utf8_bytes": 45333,
+      "returned_prefix_truncated_observations": 10,
+      "returned_record_observations": 48,
+      "same_file_native_read_observations_after_memory": 46,
+      "same_file_reads_without_recorded_possible_intervening_write": 25,
+      "token_work": 367319,
+      "withheld_record_observations": 12
+    },
+    "plain": {
+      "assistant_responses": 158,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+      "memory_calls": 0,
+      "memory_wire_utf8_bytes": 0,
+      "native_argument_json_utf8_bytes": {
+        "glob": 98,
+        "grep": 4207,
+        "patch": 101248,
+        "read": 7919,
+        "shell": 10374
+      },
+      "native_result_text_utf8_bytes": {
+        "glob": 90,
+        "grep": 42487,
+        "patch": 3101,
+        "read": 494888,
+        "shell": 174195
+      },
+      "native_tool_count": 302,
+      "native_tool_counts": {
+        "glob": 2,
+        "grep": 44,
+        "patch": 41,
+        "read": 142,
+        "shell": 73
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 0,
+      "returned_literal_text_utf8_bytes": 0,
+      "returned_prefix_truncated_observations": 0,
+      "returned_record_observations": 0,
+      "same_file_native_read_observations_after_memory": 0,
+      "same_file_reads_without_recorded_possible_intervening_write": 0,
+      "token_work": 353403,
+      "withheld_record_observations": 0
+    },
+    "static": {
+      "assistant_responses": 159,
+      "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 1225710,
+      "memory_calls": 12,
+      "memory_wire_utf8_bytes": 100091,
+      "native_argument_json_utf8_bytes": {
+        "grep": 3455,
+        "patch": 94166,
+        "read": 8360,
+        "shell": 12341
+      },
+      "native_result_text_utf8_bytes": {
+        "grep": 30804,
+        "patch": 2536,
+        "read": 497077,
+        "shell": 180219
+      },
+      "native_tool_count": 294,
+      "native_tool_counts": {
+        "grep": 34,
+        "patch": 32,
+        "read": 151,
+        "shell": 77
+      },
+      "reads_also_containing_exact_displayed_prefix_text": 18,
+      "returned_literal_text_utf8_bytes": 58884,
+      "returned_prefix_truncated_observations": 12,
+      "returned_record_observations": 60,
+      "same_file_native_read_observations_after_memory": 52,
+      "same_file_reads_without_recorded_possible_intervening_write": 22,
+      "token_work": 356015,
+      "withheld_record_observations": 0
+    }
+  },
+  "wall_primary_disqualified_whole_cohort": true
+}

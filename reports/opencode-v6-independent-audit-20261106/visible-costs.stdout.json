@@ -1,0 +1,104 @@
+{
+  "plain": {
+    "assistant_responses": 158,
+    "token_work": 353403,
+    "native_tool_count": 302,
+    "memory_calls": 0,
+    "memory_wire_utf8_bytes": 0,
+    "returned_literal_text_utf8_bytes": 0,
+    "returned_prefix_truncated_observations": 0,
+    "returned_record_observations": 0,
+    "withheld_record_observations": 0,
+    "same_file_native_read_observations_after_memory": 0,
+    "reads_also_containing_exact_displayed_prefix_text": 0,
+    "same_file_reads_without_recorded_possible_intervening_write": 0,
+    "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 0,
+    "native_tool_counts": {
+      "read": 142,
+      "grep": 44,
+      "glob": 2,
+      "shell": 73,
+      "patch": 41
+    },
+    "native_argument_json_utf8_bytes": {
+      "read": 7919,
+      "grep": 4207,
+      "glob": 98,
+      "shell": 10374,
+      "patch": 101248
+    },
+    "native_result_text_utf8_bytes": {
+      "read": 494888,
+      "grep": 42487,
+      "glob": 90,
+      "shell": 174195,
+      "patch": 3101
+    }
+  },
+  "static": {
+    "assistant_responses": 159,
+    "token_work": 356015,
+    "native_tool_count": 294,
+    "memory_calls": 12,
+    "memory_wire_utf8_bytes": 100091,
+    "returned_literal_text_utf8_bytes": 58884,
+    "returned_prefix_truncated_observations": 12,
+    "returned_record_observations": 60,
+    "withheld_record_observations": 0,
+    "same_file_native_read_observations_after_memory": 52,
+    "reads_also_containing_exact_displayed_prefix_text": 18,
+    "same_file_reads_without_recorded_possible_intervening_write": 22,
+    "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 1225710,
+    "native_tool_counts": {
+      "read": 151,
+      "grep": 34,
+      "shell": 77,
+      "patch": 32
+    },
+    "native_argument_json_utf8_bytes": {
+      "read": 8360,
+      "grep": 3455,
+      "shell": 12341,
+      "patch": 94166
+    },
+    "native_result_text_utf8_bytes": {
+      "read": 497077,
+      "grep": 30804,
+      "shell": 180219,
+      "patch": 2536
+    }
+  },
+  "cami": {
+    "assistant_responses": 152,
+    "token_work": 367319,
+    "native_tool_count": 286,
+    "memory_calls": 12,
+    "memory_wire_utf8_bytes": 83383,
+    "returned_literal_text_utf8_bytes": 45333,
+    "returned_prefix_truncated_observations": 10,
+    "returned_record_observations": 48,
+    "withheld_record_observations": 12,
+    "same_file_native_read_observations_after_memory": 46,
+    "reads_also_containing_exact_displayed_prefix_text": 17,
+    "same_file_reads_without_recorded_possible_intervening_write": 25,
+    "hypothetical_replayed_memory_bytes_proxy_not_provider_tokens": 965992,
+    "native_tool_counts": {
+      "read": 146,
+      "grep": 34,
+      "shell": 74,
+      "patch": 32
+    },
+    "native_argument_json_utf8_bytes": {
+      "read": 7996,
+      "grep": 3301,
+      "shell": 11108,
+      "patch": 100754
+    },
+    "native_result_text_utf8_bytes": {
+      "read": 507712,
+      "grep": 40979,
+      "shell": 198673,
+      "patch": 2582
+    }
+  }
+}

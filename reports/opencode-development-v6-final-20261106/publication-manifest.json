@@ -2,15 +2,15 @@
   "status": "closed_primary_staleness_raw_publication",
   "files": {
     "README.md": "ef3dbb5335037ba401b148f8b911f43ea88e6723a5e1fe717cc1497962b3dbe5",
-    "build_figure.py": "15ce45344d550e25a8ec1c8dcf410711d593462eb7558c1433cc95a16714eb8b",
+    "build_figure.py": "22e0843edbb54c71c92099bb91cf8cca0b339002d911e19f9e2e6610d46e703d",
     "blocks.csv": "43057faec8d8753ecd12487593beb0b77696e0d06e8d8d504bc3b3f22db86a3e",
     "timing-caveats.json": "8af29a1c66fda68bb089898368a5ea580a4b285fd3569aca77a3a39e3bb7b087",
     "comparison.svg": "2e642be482379b928b658972078661f9610b5e75c27e13195ccedd8a9b6f1cb5",
     "comparison.png": "b1957a069bd9ea86c95abd14bf915db7a26034fddb4c2581c27a77cabd7157dd",
-    "display.json": "aef0ad7a16cca77ea42c32a8f1d85da6d288b1d59e279153012cfb9d32cdb9fa",
+    "display.json": "1782338ac19f3c2bc64b727ec0d112860a8c2189297f37f46a9ad037551daf16",
     "paired.csv": "c0963dc3efad62f6c910d868e4da880a11fb7292bf67c111dcba75c5e4c0b112",
     "source-close-check.json": "0b88daf67e408013aeaa9222a7597b06cf3b26ebd0ca5940d00069ff1773a0f1",
-    "comparison.html": "853bfaa1256ef8be415106b2572250185b3caceee8882dbc13a07b76fa7e6b4f",
+    "comparison.html": "c7222412e3e69e407e9654a161eecf935f6e7da6e7280f35f8ed6ad0e257107a",
     "report.json": "632953c9879fb1f4f05c059d2dde747e0d4d8ead7724a13c1d7d7805faa1100b",
     "trials.csv": "6a9206213b94543e732a3e47eb017bb83456f83b5be1eb5d45eaf3b0ef692e84",
     "original-timing-caveats.json": "023b1bed14615262d3bf892eeeaf1030245f45e6424f29c553aa685d776a576c",
@@ -48,7 +48,11 @@
     "raw/offline-analysis-verification/aggregate/report.json": "b0c98ab47c1f36603a075f7f91c4c68618c3921db16cd44bcd37bd73710b9cb4",
     "raw/offline-analysis-verification/aggregate/trials.csv": "6a9206213b94543e732a3e47eb017bb83456f83b5be1eb5d45eaf3b0ef692e84"
   },
-  "resource_and_cost_audit_supplement": "pending separate publication; original primary results immutable",
+  "resource_and_cost_audit_supplement": {
+    "path": "reports/opencode-v6-independent-audit-20261106/manifest.json",
+    "sha256": "8bb133c68b482fa622e656d90ec5e3a74f57e1ae70f93b74d30f86eb02d0387c",
+    "original_primary_report_unchanged": true
+  },
   "study_sha256": "b66e4d557b7b7cdf0800b4c9121e793659f3a02029a74b026c7f7c4d75243cdd",
   "primary_superiority": "not_established",
   "all36_operational_quality_pass": true,
