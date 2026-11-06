@@ -2,13 +2,15 @@
 from __future__ import annotations
 
 import ast
+import gc
 import hashlib
 from pathlib import Path
+import weakref
 
 import pytest
 
 import cami.index as index
-from cami.repository import Blob, Snapshot
+from cami.repository import MAX_FILE_BYTES, Blob, Snapshot
 
 
 @pytest.fixture
@@ -45,7 +47,7 @@ SOURCES = (
 def test_every_valid_definition_span_matches_pinned_stdlib(source, newline, stdlib_reference):
     source = source.replace("\n", newline)
     tree = ast.parse(source)
-    lines = index._source_lines(source)
+    lines = tuple(index._source_lines(source))
     definitions = [node for node in ast.walk(tree) if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))]
     assert definitions
     for node in definitions:
@@ -60,7 +62,7 @@ def test_every_valid_definition_span_matches_pinned_stdlib(source, newline, stdl
 
 @pytest.mark.parametrize("source", ["", "\n", "\r\n", "\r", "text", "text\n", "a\fb\vc\x85d\u2028e\u2029f\r\ng\rh\ni"])
 def test_split_boundaries_and_final_empty_match_equal_pinned_stdlib(source, stdlib_reference):
-    lines = index._source_lines(source)
+    lines = tuple(index._source_lines(source))
     assert lines == tuple(stdlib_reference["_splitlines_no_ff"](source))
     assert "".join(lines) == source
 
@@ -82,6 +84,131 @@ def test_lines_are_built_once_per_module_and_never_reused_across_copies(monkeypa
     assert inputs == [source, changed]
     assert first.definitions[0].source != second.definitions[0].source
     assert "return 1" in first.definitions[1].source and "return 2" in second.definitions[1].source
+
+
+@pytest.mark.parametrize("newline", ["\n", "\r\n", "\r"])
+@pytest.mark.parametrize("tail", ["", "#"])
+def test_near_limit_trailing_lines_are_not_materialized(newline, tail, monkeypatch, stdlib_reference):
+    head = newline.join(("def early():", "    return 'λ'", ""))
+    trailing = tail + newline
+    count = (MAX_FILE_BYTES - len(head.encode("utf-8"))) // len(trailing.encode("utf-8"))
+    source = head + trailing * count
+    assert len(source.encode("utf-8")) <= MAX_FILE_BYTES
+    original = index._SOURCE_LINE_PATTERN
+    consumed = []
+
+    class GuardedPattern:
+        def finditer(self, value):
+            for line_number, match in enumerate(original.finditer(value), 1):
+                assert line_number <= 2, "unused trailing line materialized"
+                consumed.append(line_number)
+                yield match
+
+    monkeypatch.setattr(index, "_SOURCE_LINE_PATTERN", GuardedPattern())
+    module = index.parse_module(blob(source), "module")
+    node = ast.parse(source).body[0]
+    assert module.definitions[0].source == stdlib_reference["get_source_segment"](source, node)
+    assert consumed == [1, 2]
+
+
+def test_nested_backward_and_later_spans_reuse_the_prefix(monkeypatch, stdlib_reference):
+    source = ("def outer():\n    def inner(): return 'λ'\n    def sibling():\n"
+              "        return inner()\n    return sibling()\n\ndef later(): return '🙂'\n"
+              + "# unused tail\n" * 20)
+    original_lines, original_segment = index._source_lines, index._source_segment
+    consumed, checkpoints = [], []
+
+    def counted(value):
+        for line_number, line in enumerate(original_lines(value), 1):
+            consumed.append(line_number)
+            yield line
+
+    def observed(lines, node):
+        checkpoints.append((node.name, node.end_lineno, len(lines), len(consumed)))
+        result = original_segment(lines, node)
+        assert result == stdlib_reference["get_source_segment"](source, node)
+        return result
+
+    monkeypatch.setattr(index, "_source_lines", counted)
+    monkeypatch.setattr(index, "_source_segment", observed)
+    module = index.parse_module(blob(source), "module")
+    assert len(module.definitions) == 4
+    assert checkpoints == [("outer", 5, 5, 5), ("inner", 2, 5, 5),
+                           ("sibling", 4, 5, 5), ("later", 7, 7, 7)]
+    assert consumed == list(range(1, 8))
+
+
+def test_equal_parent_and_nested_end_lines_do_not_advance_twice(monkeypatch, stdlib_reference):
+    source = "def outer():\n    def inner(): return '🙂'\n# unused\n"
+    original = index._source_lines
+    consumed = []
+
+    def counted(value):
+        for line_number, line in enumerate(original(value), 1):
+            consumed.append(line_number)
+            yield line
+
+    monkeypatch.setattr(index, "_source_lines", counted)
+    module = index.parse_module(blob(source), "module")
+    nodes = {node.lineno: node for node in ast.walk(ast.parse(source))
+             if isinstance(node, ast.FunctionDef)}
+    assert len(module.definitions) == 2 and consumed == [1, 2]
+    for definition in module.definitions:
+        assert definition.source == stdlib_reference["get_source_segment"](source, nodes[definition.start_line])
+
+
+def test_identical_source_still_has_fresh_iterator_per_operation_and_file(monkeypatch):
+    source = "def f(): return 1\n# unused\n"
+    original = index._source_lines
+    factories, consumed = [], []
+
+    def counted(value):
+        factories.append(value)
+
+        def lines():
+            for line in original(value):
+                consumed.append(line)
+                yield line
+
+        return lines()
+
+    monkeypatch.setattr(index, "_source_lines", counted)
+    first = index.parse_module(blob(source), "module")
+    again = index.parse_module(blob(source), "module")
+    other = index.parse_module(blob(source, path="other.py"), "other")
+    assert first == again
+    assert other.definitions[0].source == first.definitions[0].source
+    assert factories == [source] * 3 and consumed == ["def f(): return 1\n"] * 3
+
+
+def test_prefix_iterator_is_released_on_return_without_cyclic_gc(monkeypatch):
+    original = index._source_lines
+    segment = index._source_segment
+    references, buffers = [], []
+
+    def tracked(source):
+        iterator = original(source)
+        references.append(weakref.ref(iterator))
+        return iterator
+
+    def observed(lines, node):
+        buffers.append(lines)
+        return segment(lines, node)
+
+    monkeypatch.setattr(index, "_source_lines", tracked)
+    monkeypatch.setattr(index, "_source_segment", observed)
+    enabled = gc.isenabled()
+    gc.disable()
+    try:
+        module = index.parse_module(blob("def f():\n    def inner(): return 1\n    return inner()\n# unused\n"), "module")
+        assert len(module.definitions) == 2 and len(references) == 1
+        assert references[0]() is None
+        assert buffers and all(not buffer for buffer in buffers)
+    finally:
+        if enabled:
+            gc.enable()
+        else:
+            gc.disable()
 
 
 @pytest.mark.parametrize("source,limitation", [(b"VALUE = 'no definitions'\n", None),

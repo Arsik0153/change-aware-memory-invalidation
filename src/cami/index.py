@@ -4,7 +4,7 @@ import ast
 import hashlib
 import re
 import sys
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Sequence
 from dataclasses import dataclass
 from pathlib import PurePosixPath
 
@@ -15,12 +15,12 @@ INDEX_VERSION = "4"
 _SOURCE_LINE_PATTERN = re.compile(r"(.*?(?:\r\n|\n|\r|$))")
 
 
-def _source_lines(source: str) -> tuple[str, ...]:
-    # Match Python's physical lines without treating form feed or Unicode separators as newlines.
-    return tuple(match[0] for match in _SOURCE_LINE_PATTERN.finditer(source))
+def _source_lines(source: str) -> Iterator[str]:
+    # Yield physical lines without treating form feed or Unicode separators as newlines.
+    return (match[0] for match in _SOURCE_LINE_PATTERN.finditer(source))
 
 
-def _source_segment(lines: tuple[str, ...], node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
+def _source_segment(lines: Sequence[str], node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
     """Default ast.get_source_segment slicing for parser-produced definition spans."""
     end_line, end_column = node.end_lineno, node.end_col_offset
     assert end_line is not None and end_column is not None
@@ -187,15 +187,20 @@ def parse_module(blob: Blob, name: str) -> Module:
     unresolved: set[Node] = set()
     assignments = module_class_globals(tree.body)
     scope_counts: dict[str, int] = {}
-    source_lines: tuple[str, ...] | None = None
+    source_lines: list[str] = []
+    source_line_iterator: Iterator[str] | None = None
 
     def visit(body: list[ast.stmt], prefix: str, in_class: bool, conditional: bool) -> None:
-        nonlocal source_lines
+        nonlocal source_line_iterator
         for statement in body:
             assignments.update(prefix + name for name in bound_names(scope_nodes((statement,))))
             if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                if source_lines is None:
-                    source_lines = _source_lines(source)
+                if source_line_iterator is None:
+                    source_line_iterator = _source_lines(source)
+                end_line = statement.end_lineno
+                assert end_line is not None
+                while len(source_lines) < end_line:
+                    source_lines.append(next(source_line_iterator))
                 qualname = prefix + statement.name
                 scope_counts[qualname] = scope_counts.get(qualname, 0) + 1
                 node = Node(path=blob.path, qualname=qualname)
@@ -271,6 +276,8 @@ def parse_module(blob: Blob, name: str) -> Module:
                             visit(case.body, prefix, in_class, True)
 
     visit(tree.body, "", False, False)
+    source_lines.clear()
+    source_line_iterator = None
     counts: dict[Node, int] = {}
     for definition in definitions:
         counts[definition.node] = counts.get(definition.node, 0) + 1
