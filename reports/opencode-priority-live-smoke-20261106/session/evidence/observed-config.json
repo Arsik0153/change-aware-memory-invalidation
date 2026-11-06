@@ -1,0 +1,132 @@
+[
+  {
+    "type": "document",
+    "path": "/state/config/opencode/opencode.json",
+    "info": {
+      "model": {
+        "providerID": "openai",
+        "model": "gpt-6.1-sol",
+        "variant": "high"
+      },
+      "update": "disable",
+      "share": "disabled",
+      "permissions": [
+        {
+          "action": "*",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "deny"
+        }
+      ],
+      "agents": {
+        "research": {
+          "system": "Complete the user task using only /workspace and the configured tools. Do not inspect /state or credentials, invoke subagents or network tools, or read runtime implementation. Do not change files outside /workspace. When the tool research_memory_memory_lookup is available, call that exact tool once for relevant prior context before broad navigation. Memory is origin-bound; verify current source when needed and query again after edits before relying on its current availability. Keep the final answer concise.",
+          "mode": "primary",
+          "steps": 20
+        }
+      },
+      "snapshots": false,
+      "compaction": {
+        "auto": false
+      },
+      "websearch": false,
+      "plugins": [
+        "-opencode.tool.subagent",
+        "-opencode.tool.webfetch",
+        "-opencode.tool.websearch",
+        "-opencode.tool.image-generate",
+        "-opencode.tool.schedule",
+        "-opencode.tool.question",
+        "-opencode.tool.artifact"
+      ],
+      "warming": false,
+      "providers": {
+        "openai": {
+          "models": {
+            "gpt-6.1-sol": {
+              "settings": {
+                "serviceTier": "priority"
+              }
+            }
+          }
+        }
+      },
+      "experimental": {
+        "image_generate": false,
+        "schedules": false,
+        "artifacts": false
+      }
+    }
+  },
+  {
+    "type": "directory",
+    "path": "/state/config/opencode"
+  },
+  {
+    "type": "document",
+    "path": "/state/config/opencode/opencode.json",
+    "info": {
+      "model": {
+        "providerID": "openai",
+        "model": "gpt-6.1-sol",
+        "variant": "high"
+      },
+      "update": "disable",
+      "share": "disabled",
+      "permissions": [
+        {
+          "action": "*",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "deny"
+        }
+      ],
+      "agents": {
+        "research": {
+          "system": "Complete the user task using only /workspace and the configured tools. Do not inspect /state or credentials, invoke subagents or network tools, or read runtime implementation. Do not change files outside /workspace. When the tool research_memory_memory_lookup is available, call that exact tool once for relevant prior context before broad navigation. Memory is origin-bound; verify current source when needed and query again after edits before relying on its current availability. Keep the final answer concise.",
+          "mode": "primary",
+          "steps": 20
+        }
+      },
+      "snapshots": false,
+      "compaction": {
+        "auto": false
+      },
+      "websearch": false,
+      "plugins": [
+        "-opencode.tool.subagent",
+        "-opencode.tool.webfetch",
+        "-opencode.tool.websearch",
+        "-opencode.tool.image-generate",
+        "-opencode.tool.schedule",
+        "-opencode.tool.question",
+        "-opencode.tool.artifact"
+      ],
+      "warming": false,
+      "providers": {
+        "openai": {
+          "models": {
+            "gpt-6.1-sol": {
+              "settings": {
+                "serviceTier": "priority"
+              }
+            }
+          }
+        }
+      },
+      "experimental": {
+        "image_generate": false,
+        "schedules": false,
+        "artifacts": false
+      }
+    }
+  }
+]

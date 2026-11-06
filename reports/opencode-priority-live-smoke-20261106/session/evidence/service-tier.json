@@ -1,0 +1,30 @@
+{
+  "requested": "priority",
+  "configured": "priority",
+  "reasoning_effort": "high",
+  "model_requested": true,
+  "request_on_wire_observed_for_this_session": false,
+  "actual_served": "default",
+  "actual_served_status": "provider_reported_complete",
+  "actual_served_reason": null,
+  "provider_reported_values": [
+    "default"
+  ],
+  "assistant_response_observations": [
+    {
+      "message_id": "msg_1b19bcb87001Qiwtcrbgq873ke",
+      "completed": 1793981143009,
+      "provider_reported": "default",
+      "status": "provider_reported",
+      "source_pointer": "/native/serviceTier",
+      "source": "Raw OpenCode assistant API response; native field is projected before public native scrub. Pinned local Responses SSE control verifies response.service_tier mapping."
+    }
+  ],
+  "assistant_export_complete": true,
+  "assistant_ids": [
+    "msg_1b19bcb87001Qiwtcrbgq873ke"
+  ],
+  "observation_ids_match_exported_assistants": true,
+  "provider_report_limit": "Response metadata reports service, not account entitlement, billing or independently verified backend scheduling.",
+  "setting_semantics": "Pinned OpenCode2.2.5 native Responses adapter forwards serviceTier as service_tier; synthetic Codex-auth transport control verifies serialization only."
+}

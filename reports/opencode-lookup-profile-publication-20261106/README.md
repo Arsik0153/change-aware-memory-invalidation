@@ -1,0 +1,22 @@
+# Baseline and candidate1 lookup profile evidence
+
+This archive preserves completed **no-model instrumented attribution**, not quiet timing, a model-quality experiment or an end-to-end speedup claim. Baseline contains 30 actual compact MCP dispatches across six fresh static/CAMI namespaces; candidate1 contains 15 CAMI dispatches across three fresh namespaces. Parent correctness work and other bounded infrastructure activity could overlap. cProfile adds overhead. Quiet timing and any candidate2 are separate, later evidence.
+
+`public-profile-evidence.tar.gz` contains exact original manifests, reports, cases, complete `.prof` and profile JSON outputs, actual MCP results/backend traces, preparation/container traces, query configs, reset/identity metadata, seed/catalog/preparation metrics, equivalence/comparison outputs and profiler scripts. Every admitted original report-bound body is SHA-verified. All 60 baseline core files and 60 candidate1 core files are included and verified; **only `cami/index.py` differs**. All nine shared frozen adapter files are included. The original candidate equivalence record has 11 index cases and 15 portable MCP comparisons; this package does not rerun them against target source.
+
+The package deliberately omits **all full workspace/Git trees and `memory/cami-state` bodies, including SQLite and generation/CAS payloads**. They are unnecessary for offline profile/output comparison. `publication-analysis/coverage.json` gives the complete original 2,431/1,258 declared-artifact denominators, included subsets and an explicit SHA-only record for every omission. Omitted bodies are not reread or reverified by this packager. The original reports remain byte-exact with their full declared inventories. This is not a full raw-payload backup or a standalone rerun of namespace construction. Full fixture archives and the original model transcript used to select the already frozen query remain externally hash-referenced; exact query arguments, source hash, study and reset/input inventories are included.
+
+Profiler worker/orchestrator, full production/adapter inventories and `preparation_worker.py` have explicit profile-plan pins and are preserved. The profile entry did **not** separately hash loaded controller helper bytes. Current helper snapshots are labelled publication-time corroboration under `publication-context/current-controller`; original v5 expected controller sources are preserved separately under `publication-context/frozen-study-controller`, verified against the frozen study pins and source tar. Neither set is retroactively claimed as independent proof of profile-start loaded bytes. No current mutable core is substituted for the frozen baseline/candidate sources.
+
+No OpenCode auth/credential state was mounted in these original network-none/no-model profiles. The packager additionally refuses private/auth/workspace/state paths, symlinks, special/hardlinked/privileged files, credential-valued JSON fields and credential-shaped text. Existing public evidence bytes are unchanged. The binary `.prof` files are admitted only by their frozen report hashes. These checks are bounded publication safeguards, not arbitrary-secret detection.
+
+The archive has an internal complete SHA256/size/mode manifest. Gzip/tar timestamps and ownership are normalized; two builds must be byte-identical, every extracted file is read back, and every admitted original is rehashed afterward. `packaging-report.json` records coverage and publication overhead. Any packaging failure is retained separately. No new profiler, microbenchmark, model, Docker or target source is executed during packaging/reproduction.
+
+To verify the extracted package and reproduce the original 15 comparison rows and changed-snapshot attribution summary from stored profiles:
+
+```sh
+python /EXTRACTED/runs/opencode-lookup-profile-publication-20261106/reproduce_comparison.py \
+  --root /EXTRACTED --out /NEW_SEPARATE_OUTPUT
+```
+
+This standard-library helper verifies every included file, retains omission semantics, loads the original comparison module's pure attribution functions, and compares the exact stored results. The original comparison CLI remains included unchanged; it requires the omitted full original raw trees for its broader all-artifact assertion and therefore cannot be advertised as directly runnable on this partial-body package. Re-running actual profiles additionally needs the external pinned Docker image, dependencies and frozen development fixtures; it is not performed here.

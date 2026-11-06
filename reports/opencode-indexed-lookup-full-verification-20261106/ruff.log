@@ -1,0 +1,10 @@
+E402 Module level import not at top of file
+  --> reports/opencode-control-record-fix-20261106/replay_closed_messages.py:11:1
+   |
+ 9 | sys.path.insert(0, str(ROOT / 'scripts/opencode_benchmark/analysis'))
+10 | sys.path.insert(0, str(ROOT / 'scripts/opencode_benchmark/controller'))
+11 | from aggregate_study import sha, verify_terminal
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+Found 1 error.

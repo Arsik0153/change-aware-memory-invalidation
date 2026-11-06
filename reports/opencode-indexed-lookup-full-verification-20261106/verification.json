@@ -1,0 +1,24 @@
+{
+  "status": "passed_with_separate_lint_remediation",
+  "original_full_verification_status": "failed",
+  "verified_source_commit": "10b81df84066990c466b410d69470caab90504c6",
+  "source_snapshots_match": true,
+  "pytest": {
+    "passed": 1556,
+    "seconds": 572.4639144008979
+  },
+  "mypy_exit_code": 0,
+  "ruff_remediation": {
+    "change": "Only narrow E402 exclusion for sealed replay evidence in ruff.toml; archived script bytes unchanged",
+    "command": ".venv/bin/ruff check .",
+    "exit_code": 0,
+    "output": "All checks passed!",
+    "config_sha256": "9bc8cc44829fad65f58762815d8d7753fb464b37aaf7c74df22d21fcaafa88ad"
+  },
+  "recorded_at": "2026-11-06T16:19:42.071352+00:00",
+  "limits": [
+    "Original failed verification is preserved unchanged.",
+    "Full pytest was not rerun for the subsequent lint-only configuration change.",
+    "No end-to-end performance claim."
+  ]
+}

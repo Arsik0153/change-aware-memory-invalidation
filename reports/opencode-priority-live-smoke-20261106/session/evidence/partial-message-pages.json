@@ -1,0 +1,65 @@
+[
+  {
+    "data": [
+      {
+        "id": "msg_1b19bcb5e001mbSPn3Gx8iUFbI",
+        "time": {
+          "created": 1793981139837
+        },
+        "text": "What is 2 + 2? Reply with exactly 4 and finish. Do not use tools, inspect files, or perform repository engineering.\n",
+        "type": "user"
+      },
+      {
+        "id": "msg_1b19bcb87001Qiwtcrbgq873ke",
+        "time": {
+          "created": 1793981139854,
+          "streamed": 1793981143005,
+          "completed": 1793981143009
+        },
+        "type": "assistant",
+        "agent": "research",
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "4"
+          }
+        ],
+        "finish": "stop",
+        "cost": 0,
+        "tokens": {
+          "input": 3098,
+          "output": 5,
+          "reasoning": 0,
+          "cache": {
+            "read": 0,
+            "write": 0
+          }
+        }
+      },
+      {
+        "id": "msg_1b19bd7e7001v8TMHFK2mCPKcj",
+        "time": {
+          "created": 1793981143015
+        },
+        "type": "idle",
+        "outcome": "succeeded"
+      }
+    ],
+    "cursor": {
+      "previous": "eyJpZCI6Im1zZ18xYjE5YmNiNWUwMDFtYlNQbjNHeDhpVUZiSSIsIm9yZGVyIjoiYXNjIiwiZGlyZWN0aW9uIjoicHJldmlvdXMifQ",
+      "next": "eyJpZCI6Im1zZ18xYjE5YmQ3ZTcwMDF2OFRNSEZLMm1DUEtjaiIsIm9yZGVyIjoiYXNjIiwiZGlyZWN0aW9uIjoibmV4dCJ9"
+    }
+  },
+  {
+    "data": [],
+    "cursor": {
+      "previous": null,
+      "next": null
+    }
+  }
+]

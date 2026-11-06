@@ -1,0 +1,57 @@
+{
+  "status": "complete_awaiting_parent_review",
+  "source_sha256": {
+    "src/cami/product/memory/validation.py": "cca76be12ba6c46ffc8d67a8abc5ec6931463d10a22af84e603b187e0be7e8c6",
+    "src/cami/product/service.py": "fbe443cb44f9e2ac022ea16f54bf55d4eae7a51c3003b0542ed5825b8bffb4ca",
+    "tests/memory/test_transition_many.py": "e97ba31c6819542327372d14684d7ce5dee4e82a6d1d08f9ffb55c1b6793b7c7",
+    "tests/memory/fixtures/validation_scan_reference.py.txt": "16a44a5c32a91a3e57c1435441782896df2f9005c28c501f277493750e8dbdfb"
+  },
+  "implementation": {
+    "scope": "Operation-local exact-subject index for memory transitions only",
+    "index": "dict[SymbolKey, tuple[DefinitionFact, ...]]",
+    "construction": "Once inside transition_many for a nonempty record batch; service invokes it only inside existing needs_transition branch",
+    "ordering": "Input record order and every matching definition occurrence are preserved",
+    "equality": "Frozen Pydantic SymbolKey hash and equality, including model-type distinctions",
+    "lifetime": "Local call only; no global or view-attached cache",
+    "single_entrypoints": "Existing signatures retained; transition scans once and shares found internally",
+    "fingerprint": "Existing source-hashed VALIDATOR_FINGERPRINT naturally changes; no schema/version migration",
+    "unchanged_boundaries": [
+      "CodeView schema",
+      "wire and persisted models",
+      "SQLite schema",
+      "source CAS authentication",
+      "source/readset final verification",
+      "request authorization",
+      "transaction publication",
+      "textual select semantics"
+    ]
+  },
+  "verification": {
+    "pytest": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/pytest -q tests/memory/test_transition_many.py tests/memory/test_source_excerpt.py tests/memory/test_source_excerpt_decorator_boundary.py",
+      "passed": 51,
+      "seconds": 0.76
+    },
+    "ruff": "3 owned files passed",
+    "mypy": "2 owned production files passed",
+    "reference": "Exact retained pre-index validation source executes verbatim under the current validator fingerprint; only checked_at is normalized in serialized comparisons",
+    "coverage": [
+      "All4payload kinds under15fresh-view scenarios",
+      "Serialized states, evidence, dependency stamps, availability and direct entrypoints",
+      "Carry, recheck, recovery and sticky manual-note histories",
+      "Ordered duplicate definitions and ambiguity",
+      "Identity uncertainty, missing definitions, coverage and errors",
+      "All4SymbolKey fields plus Pydantic subclass equality",
+      "Fresh copied views sharing the same IndexRef",
+      "Bulk path does not hash CodeView or invoke linear matches",
+      "24-record/24-definition authored comparator proves1152scan equalities and fewer than288indexed equalities while preserving output",
+      "Service four-kind atomic batch builds once; unchanged generation builds zero additional indexes; source edit builds fresh once"
+    ]
+  },
+  "limits": [
+    "No end-to-end speedup established; profiler agent owns measurements",
+    "No broad/full suite run by this agent",
+    "Changing the validator source invalidates prior validator fingerprints by existing design",
+    "No historical state changes, model calls or commits"
+  ]
+}

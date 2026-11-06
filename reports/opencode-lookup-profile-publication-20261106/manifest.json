@@ -1,0 +1,94 @@
+{
+  "all45_profiles_preserved": true,
+  "archive": {
+    "bytes": 7132294,
+    "regular_members_including_manifest": 785,
+    "sha256": "dad2a64d060cbd8144f78487711e88862b442670d34465d6a2e52731bf2ef435"
+  },
+  "controller_loaded_byte_provenance": "Only explicit profile-plan pins treated as execution-bound; current helpers and frozen-study expected helpers separately labelled.",
+  "coverage": [
+    {
+      "extra_top_level_files_publication_snapshot": [
+        "index-tests.log"
+      ],
+      "included_declared_artifacts": 403,
+      "omitted_declared_artifacts": 2028,
+      "original_declared_artifacts": 2431,
+      "role": "baseline"
+    },
+    {
+      "extra_top_level_files_publication_snapshot": [],
+      "included_declared_artifacts": 202,
+      "omitted_declared_artifacts": 1056,
+      "original_declared_artifacts": 1258,
+      "role": "candidate1"
+    }
+  ],
+  "files": {
+    "HANDOFF.md": {
+      "bytes": 2888,
+      "sha256": "d0c7a56b05e1979c097c202fce5dbd7d589106467d3c98f0f53c06c4623a4885"
+    },
+    "README.md": {
+      "bytes": 4531,
+      "sha256": "136354ab26d508c1408aaf3bac04166736357f820820f96f54909bacdc99fe8f"
+    },
+    "build_publication.py": {
+      "bytes": 15644,
+      "sha256": "48620138a40326f3653d6b0cf60de64a78f3795254676c8e148f29a80fb35b2e"
+    },
+    "offline-verification/verification.json": {
+      "bytes": 1152,
+      "sha256": "52f09b5582a7208b6dee2688c8bb589645ef0a652f8f34c63ed7a264f36bec45"
+    },
+    "offline.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "offline.stdout.txt": {
+      "bytes": 1018,
+      "sha256": "b314d112fb0ffe4f90478e5b41de5a0098c360d03f87ee8d26270e23db724885"
+    },
+    "packaging-report.json": {
+      "bytes": 1041,
+      "sha256": "ef98ce7c6ba787c322686aa06783d6fe0f43996fba3a0ffa8f03bd7480fc7f1e"
+    },
+    "packaging.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packaging.stdout.txt": {
+      "bytes": 1099,
+      "sha256": "8c630ded79ca61fb0a8aa1335abd0312c7f841ca028be121ca7694152a1393dc"
+    },
+    "public-profile-evidence.tar.gz": {
+      "bytes": 7132294,
+      "sha256": "dad2a64d060cbd8144f78487711e88862b442670d34465d6a2e52731bf2ef435"
+    },
+    "reproduce_comparison.py": {
+      "bytes": 6854,
+      "sha256": "6fb4fa3013309144690a02feec6881e93583871711aa6bb1416454e6ccf3d08c"
+    }
+  },
+  "offline_comparison_exact": true,
+  "omitted_bodies": [
+    "full workspace/Git",
+    "all memory/cami-state payloads including SQLite/CAS/generations"
+  ],
+  "omitted_original_sha_inventories_retained": true,
+  "original_admitted_inputs_unchanged": true,
+  "original_full_raw_body_coverage_claimed": false,
+  "quiet_window_coordination": "real_replay_independent_audit held quiet timing; notified after all hashing/compression/offline pstats verification completed.",
+  "schema_version": 1,
+  "scope": {
+    "Docker_calls": 0,
+    "commits": false,
+    "model_calls": 0,
+    "network_calls": 0,
+    "new_timing_or_speedup_claim": false,
+    "profile_reruns": 0,
+    "tracked_writes": false
+  },
+  "source_only_index_py_diff_verified": true,
+  "status": "complete_public_profile_archive_then_quiet_window_released"
+}

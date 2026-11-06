@@ -1,0 +1,197 @@
+{
+  "exclude": [
+    "workspace/.git",
+    "empty dummy memory directory",
+    "all credential/private OpenCode state (removed)"
+  ],
+  "files": {
+    "admission.json": {
+      "bytes": 2670,
+      "sha256": "99f476ec69e7b7a835d42a4f7e3a43dfa709f4f091ce02b66cdf7f571ac7c54d"
+    },
+    "harness.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "harness.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "process-result.json": {
+      "bytes": 150,
+      "sha256": "21c7f05edc46cb42ed7d207fc09e922c52ffa968a646ab062dbfaf562b4c5981"
+    },
+    "process.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "process.stdout.txt": {
+      "bytes": 33,
+      "sha256": "9e79027bada1ebc04c344e4332235066750dadea44365aa5723378e6b6a1867d"
+    },
+    "prompt.txt": {
+      "bytes": 116,
+      "sha256": "da4282dd9069d0bc7e6a51329835cd466ec8b64fd7c91c5963fbc9d85d45478a"
+    },
+    "runtime-manifest.json": {
+      "bytes": 7006,
+      "sha256": "9c221a0f11820ecabf356127e1a741d6adb361223e6e8053d5b5a4f057cbb035"
+    },
+    "session/cgroup-after-worker.json": {
+      "bytes": 775,
+      "sha256": "ccff67fc9dc53e352164034744177667d9904b2f719da63fb3cbba5f9f461c59"
+    },
+    "session/cgroup-before-auth.json": {
+      "bytes": 766,
+      "sha256": "62927e788765cb6ba2d3b09ca64b11fb450bb478db636855a8c70cd0b282d290"
+    },
+    "session/container-launch.json": {
+      "bytes": 3259,
+      "sha256": "1f5f713153f06d414f0cc1a7d7b7165b2b41da586d07c15cd005420d1e6fd866"
+    },
+    "session/credential-transfer.json": {
+      "bytes": 310,
+      "sha256": "43cdaede9cd46bc6f92644a86afe4163a6fc7bf7540bee2775f32c23451607bc"
+    },
+    "session/effective-input-config.json": {
+      "bytes": 1534,
+      "sha256": "0af4ebd5c6604d8c2622be8d73d9caa4c1fec655cd0f2c29a69db5a39e95773a"
+    },
+    "session/evidence/created-session.json": {
+      "bytes": 592,
+      "sha256": "16a39f0ed4842fc262e350c75552d1919a3f627fea95c508eb7cd39110303572"
+    },
+    "session/evidence/effective-input-config.json": {
+      "bytes": 1534,
+      "sha256": "0af4ebd5c6604d8c2622be8d73d9caa4c1fec655cd0f2c29a69db5a39e95773a"
+    },
+    "session/evidence/event-collector.json": {
+      "bytes": 80,
+      "sha256": "fdf17a50083f9626d540df5568b55d30bfe0a77aef6bbc2e1dca2d0bd1ce741a"
+    },
+    "session/evidence/events.jsonl": {
+      "bytes": 4635,
+      "sha256": "24e13e3e21ac1bf99944497604eb0b528f8d041faf3e162a43deea3bb54438a2"
+    },
+    "session/evidence/manifest.json": {
+      "bytes": 1215,
+      "sha256": "205eb99b9ab3baa29ed8f9ffe342bc451511a075137001ecc57a998fbc539a5d"
+    },
+    "session/evidence/mcp-readiness.json": {
+      "bytes": 196,
+      "sha256": "1970ad866c89cb7bfe80fb3301dd78bfd6e5572f9989631e6e817bfb1e76b378"
+    },
+    "session/evidence/message-pages.json": {
+      "bytes": 1575,
+      "sha256": "9ffabc8d82a074c2582ed71ae7b68d2a1720a4bf277aef38c7a46d602d13875f"
+    },
+    "session/evidence/messages.json": {
+      "bytes": 1005,
+      "sha256": "0d2cd91aa70a5ab28f4ccb5ee3995ab976d39a5bd5cfafab8ede4705422786be"
+    },
+    "session/evidence/model-admission.json": {
+      "bytes": 234,
+      "sha256": "c6ac9b4d871e61f25633d91a4443b63bd4ba393df62a7de23b014d8c1da4a8d0"
+    },
+    "session/evidence/observed-agents.json": {
+      "bytes": 17427,
+      "sha256": "6451183dc41b2ac17d75cb1d2e4954a5a8712c3dafc10cde7f068c47d34b516b"
+    },
+    "session/evidence/observed-config.json": {
+      "bytes": 3916,
+      "sha256": "9e72150f1013cfbc4d335e9d4fb792a9e77b51397e60e3686c7921c819e0af64"
+    },
+    "session/evidence/observed-mcp.json": {
+      "bytes": 68,
+      "sha256": "cfb51b8cb4730010c0a42cf36cfcdb3b4ff1017a1f48e09e6d5915da94bd1b1b"
+    },
+    "session/evidence/observed-model.json": {
+      "bytes": 1572,
+      "sha256": "62fb3c0b3c7569e2b8742e268b7884ccbf5efa9f8310649322349bafe557d25e"
+    },
+    "session/evidence/observed-plugins.json": {
+      "bytes": 17889,
+      "sha256": "5690861d18243c2cbb4329eec072f8b7f9db0753b62b1df4ebea7feb4a9a68c6"
+    },
+    "session/evidence/partial-message-pages.json": {
+      "bytes": 1575,
+      "sha256": "9ffabc8d82a074c2582ed71ae7b68d2a1720a4bf277aef38c7a46d602d13875f"
+    },
+    "session/evidence/prompt-admitted.json": {
+      "bytes": 369,
+      "sha256": "a6143820259b8aeaa7cbc766df1df9fb1f078b4f9fb053707c3bc770ad127e9d"
+    },
+    "session/evidence/prompt.json": {
+      "bytes": 134,
+      "sha256": "50034c2348f178f34a4988709004f2e42bdd0a685c4a83084dde77c0c4926b17"
+    },
+    "session/evidence/readiness.json": {
+      "bytes": 299,
+      "sha256": "87f85274501a550e62dcc94645f66f2c8e85a2b3bcc6be04e5d0ac4022e23151"
+    },
+    "session/evidence/server-resource.json": {
+      "bytes": 539,
+      "sha256": "3d0f33cd61e324369e8ab3f725275a3d8eb6c26e7cf6a7deb4996dc6ac897c34"
+    },
+    "session/evidence/server.log.redacted.txt": {
+      "bytes": 43,
+      "sha256": "cd87fe447c35e3ab8b116dffe2e3751e43d6fe701fd14de58420434128dd77ed"
+    },
+    "session/evidence/service-tier.json": {
+      "bytes": 1263,
+      "sha256": "ddacbb662c81ff2aafbc0131e4d7a371b68181302d83c1ff9840086021ee7725"
+    },
+    "session/evidence/session.json": {
+      "bytes": 607,
+      "sha256": "63c1d2e42208bde55d7e8c94ad132c054dab5596b60aa25ed163bc388ab6ab11"
+    },
+    "session/evidence/tool-registry-stabilization.json": {
+      "bytes": 332,
+      "sha256": "646a9efeb0f5145d785c8227ff0c15f0b2b1f4070bbdbbce3873cbbd1e581def"
+    },
+    "session/evidence/usage-reconciliation.json": {
+      "bytes": 256,
+      "sha256": "53ff2c5cedbe53140f31ddb0fb5cc5abb67d87af79897637e5776fc704a8564e"
+    },
+    "session/evidence/usage.json": {
+      "bytes": 823,
+      "sha256": "c50d93579113bf4e94caa086ab0740f01498e951d074313ac5a6d6c7292374ae"
+    },
+    "session/evidence/worker-sanitation-complete.json": {
+      "bytes": 97,
+      "sha256": "be351639d4a686aaa6858f749a7912e6a8035ca97383a54b9813875d9ae97c59"
+    },
+    "session/manifest.json": {
+      "bytes": 13653,
+      "sha256": "c2bffa490d99562f675d419c206adfaa751b20c91eb6d0b68348cf7f4beb42bc"
+    },
+    "session/owned-container-remove.json": {
+      "bytes": 292,
+      "sha256": "8b22b72b7cf3b6a4112a2a7465e4f56c5ae56b4dcad9732925ca0d8eaa15ce2a"
+    },
+    "session/publication-guard.json": {
+      "bytes": 214,
+      "sha256": "a41a4b744c79d372a247758156bfae8a7ae7f52186622def843ab8bd3cc420b6"
+    },
+    "session/runtime-identity.json": {
+      "bytes": 7006,
+      "sha256": "9c221a0f11820ecabf356127e1a741d6adb361223e6e8053d5b5a4f057cbb035"
+    },
+    "session/worker-process.json": {
+      "bytes": 686,
+      "sha256": "201635613ac3c3585af36e19c5c7df7d2d89654b8bcae35ba837c800d9de8ba7"
+    },
+    "summary.json": {
+      "bytes": 1882,
+      "sha256": "661baa0c348ed7b2901306a24caa5b8752a30e3ffbdfd47d3cd7a930034a24e3"
+    },
+    "workspace/README.txt": {
+      "bytes": 82,
+      "sha256": "ae005c8b30095590a5fdfcc3a0cd20873a2c2cd470e881f94ba0642c0395cd39"
+    }
+  },
+  "raw_meaning": "Exact already-sanitized harness public evidence; not credential or private-state export.",
+  "schema_version": 1,
+  "status": "public_one_shot_smoke_evidence",
+  "summary_sha256": "661baa0c348ed7b2901306a24caa5b8752a30e3ffbdfd47d3cd7a930034a24e3"
+}

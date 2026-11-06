@@ -1,0 +1,48 @@
+{
+  "answer_exact": "4",
+  "assistant_messages": 1,
+  "cleanup": {
+    "host_status": "passed",
+    "private_state_path_absent": true,
+    "publication_guard_status": "passed",
+    "state_removed": true,
+    "worker_status": "passed"
+  },
+  "configured_tier": "priority",
+  "harness_source_before_after_equal": true,
+  "interpretation": "Account route accepted priority request configuration but reports default service. No entitlement/override/reason inferred; no retry to chase desired tier.",
+  "model": "openai/gpt-6.1-sol#high",
+  "observed_total_compatibility_wall_seconds": 14.84926700592041,
+  "priority_request_serialization_reference": "runs/opencode-service-tier-development-20261106/proof-01/wire-selected.json",
+  "priority_service_confirmed": false,
+  "provider_reported_tier": "default",
+  "real_model_sessions": 1,
+  "requested_tier": "priority",
+  "retry": false,
+  "runtime_identity_matches_frozen_preflight": true,
+  "schema_version": 1,
+  "scope": {
+    "auth_access": "Only installed harness narrow credential transfer; no agent credential bodies read/printed.",
+    "auth_bodies_in_evidence": false,
+    "commits": false,
+    "heldout_or_development_tasks_read": false,
+    "isolated_auth_state_preserved": false,
+    "mutable_current_core_used": false,
+    "repo_engineering": false,
+    "shared_auth_or_user_config_modified_by_agent": false,
+    "source_edits": false
+  },
+  "status": "single_connectivity_smoke_passed_priority_service_not_confirmed",
+  "tier_evidence_sha256": "ddacbb662c81ff2aafbc0131e4d7a371b68181302d83c1ff9840086021ee7725",
+  "timing_scope": "Whole one-shot host invocation setup/auth/startup/model/export/cleanup; profiling can overlap. Not a speed comparison or service advantage.",
+  "tools_called": 0,
+  "usage": {
+    "cache": {
+      "read": 0,
+      "write": 0
+    },
+    "input": 3098,
+    "output": 5,
+    "reasoning": 0
+  }
+}

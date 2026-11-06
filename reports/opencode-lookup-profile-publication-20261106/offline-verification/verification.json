@@ -1,0 +1,35 @@
+{
+  "Docker_calls": 0,
+  "all_core_files_equal_except_index_py": true,
+  "changed_attribution_summary_exact": true,
+  "comparison_rows": 15,
+  "comparison_rows_exact": true,
+  "coverage": [
+    {
+      "extra_top_level_files_publication_snapshot": [
+        "index-tests.log"
+      ],
+      "included_declared_artifacts": 403,
+      "omitted_declared_artifacts": 2028,
+      "original_declared_artifacts": 2431,
+      "role": "baseline"
+    },
+    {
+      "extra_top_level_files_publication_snapshot": [],
+      "included_declared_artifacts": 202,
+      "omitted_declared_artifacts": 1056,
+      "original_declared_artifacts": 1258,
+      "role": "candidate1"
+    }
+  ],
+  "model_calls": 0,
+  "network_calls": 0,
+  "original_omitted_hashes_retained_not_payload_verified": true,
+  "portable_mcp_payloads_equal_except_original_receipts": true,
+  "profile_reruns": 0,
+  "scope": "Stored cProfile attribution/portable output reproduction only; not new timing or a complete re-execution of original profile setup.",
+  "shared_catalogs_byte_identical": true,
+  "status": "passed",
+  "target_source_execution": false,
+  "verified_public_payload_files": 784
+}
