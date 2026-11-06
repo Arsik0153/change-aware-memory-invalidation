@@ -1,0 +1,61 @@
+{
+  "status": "design_review_complete_before_implementation",
+  "draft_path": "runs/opencode-study-design-v6-draft-20261106/protocol-draft.json",
+  "draft_revision": "Initial review covered inherited v5 lifecycle_repair and comparability_rule_draft. Root owns subsequent protocol updates. No original draft hash is invented.",
+  "source_sha256": {
+    "scripts/opencode_benchmark/harness/container_common.py": "dd962278943d07cd6c31a21b890ce98f7a91d9069c346c2ce238f7196d06269e",
+    "scripts/opencode_benchmark/harness/container_worker.py": "34612f65b2bf5513242788b363340f15015452aa6356fd7164be5910f64d72d5",
+    "scripts/opencode_benchmark/controller/study_runtime.py": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21",
+    "scripts/opencode_benchmark/analysis/aggregate_study.py": "8c3d86f6ced392006419bf0a1e3067964a6314b4760180449cb84ec8f2594ca8",
+    "scripts/opencode_benchmark/analysis/aggregate_metrics.py": "777a98a622d017a7a77ec397189d1c57ab8b4c00eb5430668832d7351828dbc6",
+    "scripts/opencode_benchmark/analysis/supported_rules.json": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4"
+  },
+  "material_findings": [
+    {
+      "finding": "Current evaluator rejects v6 and all explicit-tier studies; it does not read captured service-tier evidence for wall comparability.",
+      "change": "Explicit v6-only admission, retain schema2 literal/compact/development cohort and freeze requested priority, high reasoning and the machine comparability rule."
+    },
+    {
+      "finding": "Producer actual_served_status can be provider_reported_complete even when per-response tiers differ and actual_served is null.",
+      "change": "Recompute from all observations joined to exactly the unique assistant IDs in the hashed messages array; do not infer uniformity from producer summary fields."
+    },
+    {
+      "finding": "Configured/requested priority does not prove provider-reported priority. Authored connectivity reports default.",
+      "change": "Uniform reported default across all36 is comparable under the declared rule, labeled default. Missing/mixed response tiers disable primary wall only; preserve quality, token counters and all paid costs."
+    },
+    {
+      "finding": "Inherited lifecycle_repair describes first3v5 and idle-only repair with unchanged v4 code.",
+      "change": "Replace with current full non-assistant union correction and actual v6 rollout/freeze evidence. Extend pre_model_evidence with current correction, priority transport/connectivity, profiling and final verification artifacts."
+    }
+  ],
+  "required_protocol_service_tier_fields": {
+    "requested": "priority",
+    "reasoning_effort": "high",
+    "all_arms_same_configuration": true,
+    "comparability_rule": "complete_uniform_provider_reported_tier_across_all_assistant_responses_v1",
+    "legacy_pooling": false
+  },
+  "admission_design": [
+    "Keep unchanged exact shared success/cost/token/order projection; admit only exact named v6 ID plus required machine tier constants, descriptive extras allowed.",
+    "Require actual study.service_tier string priority and the existing exact development schema2/source_excerpt_equals/python.definition-prefix/1/compact cohort. Historical cohorts retain old semantics and reject explicit tiers.",
+    "Verify terminal artifact inventory first, then use the same session/evidence/messages.json used by the observer and session/evidence/service-tier.json; configuration and observed-model identity are independently bound to the frozen request.",
+    "Every unique assistant record must join exactly one response-tier observation; no duplicate, orphan, omitted, incomplete or unsupported scalar may be counted as covered. Match finite nonbool completion timestamps to the exported message.",
+    "Compute complete coverage for every trial, then one uniform global provider-reported value across all36; do not allow within-arm or per-trial averages to mask cross-arm variation.",
+    "Apply tier wall restriction before winning-metric determination; retain independent existing timing-caveat wall restriction, all raw wall values and token/quality evidence. No filtering/retries/pooling."
+  ],
+  "authored_tests_proposed": [
+    "Exact v6 rule/cohort/priority admission and rejection of altered rules, unknown IDs, old manual-note/full cohorts, or missing tier policy.",
+    "All36 complete uniform default responses requested as priority admit wall; uniform priority does too.",
+    "Mixed tiers within one session or across arms/trials disable only wall and retain all token/cost/quality totals.",
+    "Producer complete/actual_served/id booleans cannot override inconsistent response rows.",
+    "Missing, duplicate, orphan observations; partial export; zero assistants; invalid tier scalar; absent/nonfinite/bool/mismatched completion time produce explicit noncomparability.",
+    "Hash-valid configuration/request/reasoning mismatch does not establish the tier cohort.",
+    "Actual reported fallback differs from requested priority without operational relabeling; no fast-service or billing inference.",
+    "Legacy reports stay byte/semantic compatible; explicit-tier studies cannot relabel old IDs; existing timing caveats and fixed all-six-pair rules still apply."
+  ],
+  "scope_limits": [
+    "Response metadata is a pinned runtime projection taken before public native scrub, not independently verified wire scheduling, entitlement or billing.",
+    "Coverage is every exported assistant record; it is not an inventory of every provider request. Compaction/native metadata may represent other model work and must not be described as covered assistant responses.",
+    "No tracked edits, tests, model calls, Docker or heavy packaging in this design-review phase."
+  ]
+}

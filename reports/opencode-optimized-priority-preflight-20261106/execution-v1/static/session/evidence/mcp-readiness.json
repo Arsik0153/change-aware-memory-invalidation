@@ -1,0 +1,28 @@
+{
+  "observations": [
+    {
+      "elapsed_seconds": 0.001560012111440301,
+      "servers": [
+        {
+          "name": "research_memory",
+          "status": {
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 0.10416375705972314,
+      "servers": [
+        {
+          "name": "research_memory",
+          "status": {
+            "status": "connected"
+          }
+        }
+      ]
+    }
+  ],
+  "timeout_seconds": 30,
+  "scope": "startup only; no prompt admission or trial retry"
+}

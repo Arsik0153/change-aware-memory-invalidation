@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "source_roots": [
+    "src/authored_fixture"
+  ],
+  "excluded_paths": [],
+  "records": [
+    {
+      "id": "literal-ccdb8b0320cfea5ca8e92140",
+      "kind": "source_excerpt_equals",
+      "selector": "src/authored_fixture/core.py:stable_value",
+      "subject": {
+        "language": "python",
+        "path": "src/authored_fixture/core.py",
+        "qualname": "stable_value",
+        "node_kind": "function"
+      },
+      "expected": {
+        "format": "python.definition-prefix/1",
+        "text": "def stable_value():\n    \"\"\"Authored structural literal.\"\"\"\n    return 7\n",
+        "truncated": false
+      },
+      "origin_source": {
+        "path": "src/authored_fixture/core.py",
+        "sha256": "5870e21f468510a06eb34cef303d6b676d9214f9af7255d9ba77303b956d58cd",
+        "size": 72
+      },
+      "origin_span": {
+        "first_line": 1,
+        "last_line": 3
+      }
+    }
+  ]
+}

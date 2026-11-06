@@ -60,7 +60,7 @@ def stats(values):
     }
 
 
-def summarize(rows, timing_caveat_trial_ids=()):
+def summarize(rows, timing_caveat_trial_ids=(), *, service_tier=None):
     affected = set(timing_caveat_trial_ids)
     blocks = []
     for repetition in range(1, 4):
@@ -115,7 +115,11 @@ def summarize(rows, timing_caveat_trial_ids=()):
     all_quality = all(r["quality_eligible"] for r in rows)
     all_metrics = all(r["wall_complete"] and r["tokens_complete"] for r in rows)
     eligible = len(rows) == 36 and all_quality and all_metrics
+    if service_tier is not None:
+        eligible = eligible and service_tier["configuration_valid"]
     metric_eligibility = {"charged_wall": eligible and not affected, "token_work": eligible}
+    if service_tier is not None:
+        metric_eligibility["charged_wall"] &= service_tier["wall_comparable"]
     winners = [
         key
         for key in ("charged_wall", "token_work")
@@ -153,7 +157,7 @@ def summarize(rows, timing_caveat_trial_ids=()):
         }
         for comparator in ("plain", "static")
     }
-    return {
+    result = {
         "expected_trials": 36,
         "terminal_trials": sum(r["terminal_present"] for r in rows),
         "all_trials_operational_quality_pass": all_quality,
@@ -184,3 +188,8 @@ def summarize(rows, timing_caveat_trial_ids=()):
             r["id"] for r in rows if not r["wall_complete"] or not r["tokens_complete"]
         ],
     }
+    if service_tier is not None:
+        result["service_tier"] = service_tier
+        result["charged_wall_disqualified_by_service_tier"] = not service_tier["wall_comparable"]
+        result["primary_metrics_disqualified_by_configuration"] = not service_tier["configuration_valid"]
+    return result

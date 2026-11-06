@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "plan_only_waiting_for_explicit_root_release",
+  "execution_authorized_now": false,
+  "quiet_window_owner": "/root/real_replay_independent_audit",
+  "frozen_commit_requested": "10b81df",
+  "image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "model": "openai/gpt-6.1-sol#high",
+  "service_tier": "priority",
+  "response_format": "compact",
+  "arms": ["plain", "static", "cami"],
+  "real_model_calls": 0,
+  "auth_reads_or_transfers": 0,
+  "fixture": {
+    "origin": "new entirely authored tiny repository, no benchmark or heldout inputs",
+    "source_root": "src/authored_fixture",
+    "path": "src/authored_fixture/core.py",
+    "source": "def stable_value():\n    \"\"\"Authored structural literal.\"\"\"\n    return 7\n",
+    "git": "one fresh initial commit, no remotes/extra refs/unreachable objects",
+    "container_identity": "/workspace",
+    "memory_identity": "/memory",
+    "state": "fresh separate OpenCode state per arm, never user/shared state"
+  },
+  "post_release_steps": [
+    {
+      "step": "freeze_runtime",
+      "actions": [
+        "Resolve 10b81df to its full immutable Git commit and record it.",
+        "Archive/extract only src and integrations/opencode from that commit into a new owned snapshot.",
+        "Verify all extracted runtime/adapter files against that commit; create runtime-manifest.json with image_id/binary_sha256/cami_files/adapter_files using the existing harness inventory definition.",
+        "Verify installed harness and required controller/probe helpers match the selected committed source; use installed harness because it binds owned runs paths to the repository root.",
+        "Record source/helper inventories before any container and compare them after all checks. Never mount mutable current src."
+      ]
+    },
+    {
+      "step": "prepare_authored_memory",
+      "actions": [
+        "Create the same authored source and fresh Git closure independently for each arm; chown only owned trial directories to UID65534.",
+        "Plain receives only an empty dummy memory directory.",
+        "Static/CAMI independently run frozen seed_source_literals_v2.py with --repo /workspace --source-root src/authored_fixture --out /memory/seed in network-none containers.",
+        "Run frozen memory_adapter.py prepare --backend ARM --repo /workspace --seed-spec /memory/seed/seed-spec.json --out /memory/prepared; CAMI additionally uses --state-home /memory/cami-state.",
+        "Require schema2, exactly the authored definition, identical seed/catalog bytes between static and CAMI; preserve construction metrics and failures."
+      ]
+    },
+    {
+      "step": "actual_compact_mcp_without_model",
+      "helper": "scripts/opencode_benchmark/controller/literal_stdio_worker.py",
+      "cli": ["python", "/opt/literal_stdio_worker.py", "--config", "/check/config.json", "--out", "/check/result.json"],
+      "config_fields": ["server", "expected", "backend", "format"],
+      "actions": [
+        "Use each frozen harness configuration's actual research_memory server command/environment/cwd, compact format, and one expected catalog record.",
+        "Use separate proof-only /state/evidence storage, not OpenCode/auth state; mount the same /workspace and /memory identities used for preparation.",
+        "Run stdio initialize/tools-list/tools-call in network-none containers for static and CAMI only.",
+        "Require exact ID/payload/source/span/truncation, compact receipt hash/projection/full-result binding and one matching backend trace event.",
+        "Require intended trust difference: static unchecked_current/origin_literal_source_assertion versus CAMI supported/validated_literal_source. Do not demand equal backend/trust labels.",
+        "Do not execute the authored function or target tests. Preserve raw MCP output and trace."
+      ]
+    },
+    {
+      "step": "three_arm_opencode_no_model",
+      "cli_template": [
+        ".venv/bin/python", "scripts/opencode_benchmark/harness/container_session.py",
+        "--workspace", "OWNED_ARM_WORKSPACE", "--memory-dir", "OWNED_ARM_MEMORY",
+        "--state-dir", "NEW_ARM_PRIVATE_STATE", "--out", "NEW_ARM_SESSION_OUTPUT",
+        "--arm", "ARM", "--no-model", "--service-tier", "priority",
+        "--memory-response-format", "compact",
+        "--image", "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+        "--cami-source", "FROZEN_10b81df_SRC", "--adapter-dir", "FROZEN_ADAPTER",
+        "--runtime-manifest", "NEW_FROZEN_RUNTIME_MANIFEST"
+      ],
+      "memory_arm_extra": ["--binding-relative", "prepared/binding.json"],
+      "actions": [
+        "One no-model session per arm using fresh state and existing verified isolation/cleanup.",
+        "Verify effective model gpt-6.1-sol#high, configured priority, native Responses package, unchanged runtime inventories and expected MCP catalog/connectivity.",
+        "Require zero model-session launches and no credential-transfer artifact; actual served tier remains unavailable because no model is called.",
+        "Require host/worker/publication-guard pass, manifest.state_removed=true and the private-state path absent.",
+        "Preserve every failure; no real account session or automatic paid retry."
+      ]
+    },
+    {
+      "step": "handoff",
+      "actions": [
+        "Record exact source/runtime identities, all three no-model outcomes, actual compact MCP checks, catalog parity and cleanup evidence.",
+        "Keep configuration/startup/lookup/preparation checks distinct; no model efficacy, actual priority-service or timing advantage claim.",
+        "Ask no permission by elapsed time: execute only after a new explicit root release."
+      ]
+    }
+  ],
+  "later_separate_archive": {
+    "status": "not_started_waiting_for_measurement_completion_and_root_release",
+    "suggested_stage": "runs/opencode-lookup-candidate2-quiet-publication-20261106",
+    "inputs": "Completed sealed candidate2 and quiet-measurement manifests supplied by their owner; never inspect an active timing output.",
+    "preserve": ["exact reports/inventories/profiles/comparison/correctness vectors", "quiet schedule/raw samples/resources/source pins", "all failures", "explicit included-body versus SHA-only omitted-body coverage"],
+    "boundaries": ["baseline/candidate1 existing archive immutable", "no compression/hashing during quiet window", "no full workspace/Git or auth state", "memory state only if explicitly needed, separate and labelled", "deterministic/readback/offline comparison after release only"]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "arms": [
+    {
+      "actual_compact_mcp": "not_applicable",
+      "actual_served": null,
+      "arm": "plain",
+      "configured_tier": "priority",
+      "model_session_launches": 0,
+      "reasoning_effort": "high",
+      "runtime_identity_match": true,
+      "state_removed": true,
+      "status": "passed"
+    },
+    {
+      "actual_compact_mcp": "passed_exact_receipt_and_literal",
+      "actual_served": null,
+      "arm": "static",
+      "configured_tier": "priority",
+      "model_session_launches": 0,
+      "reasoning_effort": "high",
+      "runtime_identity_match": true,
+      "state_removed": true,
+      "status": "passed"
+    },
+    {
+      "actual_compact_mcp": "passed_exact_receipt_and_literal",
+      "actual_served": null,
+      "arm": "cami",
+      "configured_tier": "priority",
+      "model_session_launches": 0,
+      "reasoning_effort": "high",
+      "runtime_identity_match": true,
+      "state_removed": true,
+      "status": "passed"
+    }
+  ],
+  "auth_import_artifacts_absent": true,
+  "auth_reads_or_transfers": 0,
+  "catalog_raw_bytes_equal": true,
+  "caveat": "No model/provider tier or latency/quality conclusion; preparation/configuration/actual stdio correctness only.",
+  "commit": "10b81df84066990c466b410d69470caab90504c6",
+  "current_mutable_core_mounted": false,
+  "image": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "installed_helpers_unchanged": true,
+  "real_model_calls": 0,
+  "source_before_after_equal": true,
+  "source_snapshot_from_requested_commit": true,
+  "status": "passed"
+}

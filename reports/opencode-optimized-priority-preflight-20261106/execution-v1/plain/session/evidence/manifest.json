@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "arm": "plain",
+  "model_generation_requested": false,
+  "model_session_launches": 0,
+  "max_agent_steps": 20,
+  "cgroup_before": {
+    "cpu.stat": "usage_usec 209465\nuser_usec 148720\nsystem_usec 60744\ncore_sched.force_idle_usec 0\nnr_periods 5\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+    "cpu.max": "200000 100000",
+    "memory.current": "32878592",
+    "memory.peak": "32882688",
+    "memory.max": "2147483648",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+    "pids.current": "3",
+    "pids.max": "256"
+  },
+  "session_id": "ses_e4e4f9d5dffe2jooYRiluf99xa",
+  "cgroup_after": {
+    "cpu.stat": "usage_usec 2258087\nuser_usec 1820325\nsystem_usec 437761\ncore_sched.force_idle_usec 0\nnr_periods 25\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+    "cpu.max": "200000 100000",
+    "memory.current": "59392000",
+    "memory.peak": "286109696",
+    "memory.max": "2147483648",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+    "pids.current": "3",
+    "pids.max": "256"
+  },
+  "worker_wall_seconds": 2.623198895016685,
+  "workspace_bytes": 27395,
+  "memory_bytes": 0
+}

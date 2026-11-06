@@ -1,0 +1,17 @@
+{
+  "requested": "priority",
+  "configured": "priority",
+  "reasoning_effort": "high",
+  "model_requested": false,
+  "request_on_wire_observed_for_this_session": false,
+  "actual_served": null,
+  "actual_served_status": "unavailable",
+  "actual_served_reason": "Provider response tier absent or unsupported for some/all assistant messages; requested/configured tier does not fill missing evidence.",
+  "provider_reported_values": [],
+  "assistant_response_observations": [],
+  "assistant_export_complete": true,
+  "assistant_ids": [],
+  "observation_ids_match_exported_assistants": true,
+  "provider_report_limit": "Response metadata reports service, not account entitlement, billing or independently verified backend scheduling.",
+  "setting_semantics": "Pinned OpenCode2.2.5 native Responses adapter forwards serviceTier as service_tier; synthetic Codex-auth transport control verifies serialization only."
+}

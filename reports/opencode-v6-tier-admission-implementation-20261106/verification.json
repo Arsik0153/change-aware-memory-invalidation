@@ -1,0 +1,62 @@
+{
+  "status": "ready_for_parent_review",
+  "study_id": "opencode-cami-real-maintenance-development-v6-priority-indexed",
+  "required_protocol_service_tier_fields": {
+    "requested": "priority",
+    "reasoning_effort": "high",
+    "all_arms_same_configuration": true,
+    "comparability_rule": "complete_uniform_provider_reported_tier_across_all_assistant_responses_v1",
+    "configuration_rule": "matching_priority_high_model_configuration_required_for_all_primary_metrics_v1",
+    "legacy_pooling": false
+  },
+  "additional_descriptive_protocol_fields_allowed": true,
+  "source_sha256": {
+    "scripts/opencode_benchmark/analysis/aggregate_study.py": "868e2c9c90ad8b1b5ec9d4122ce53e384c8e9cb7befefe9f89dddf9cd656d704",
+    "scripts/opencode_benchmark/analysis/aggregate_metrics.py": "fd63cf802e70b946b18002002bbdcab5b357fcba58aee5d3d989902ec56d8dee",
+    "scripts/opencode_benchmark/analysis/service_tier_evidence.py": "706c2bdb918782389b77afabcb245c93756e678571a876791c814428a90a78c6",
+    "scripts/opencode_benchmark/analysis/test_service_tier_admission.py": "8de06e515b8ebcea8c3bf54337da3c448c922f3f93ea6bb80b37a0d0fffcee91"
+  },
+  "behavior": [
+    "Exact named v6 protocol plus unchanged shared success/cost/token rules; actual frozen priority/development/schema2 literal/compact cohort required before trial reads.",
+    "Only v6 reads tier artifacts; old cohorts retain prior report shape and eligibility behavior.",
+    "Terminal inventory is authenticated first; exact observer messages and tier/config/model artifacts additionally require their session manifest hashes.",
+    "Recompute unique assistant IDs, exact response coverage, finite nonbool completion timestamps, actual response model refs and uniform global reported scalar; producer summary booleans/actual_served do not establish completeness or uniformity.",
+    "Independent frozen priority/high configuration/model mismatch or missing required config/model/message evidence disables both primary metrics; preserves all original statuses/costs/counters.",
+    "Absent/unreadable whole tier artifact, missing/unsupported response tier, incomplete response coverage or globally mixed values disables wall only when independent configuration remains valid.",
+    "Uniform provider-reported default is comparable with priority requested and remains labeled default. No served priority, billing or scheduler claim follows from configuration.",
+    "Apply tier/config gates before all-six-pair winner selection; existing timing-caveat wall gate stays independent. No filtering, retries, exclusions or cross-version pooling.",
+    "V6 no-model mode clears all per-metric and pair primary eligibility; unmeasured response counts remain null with known subtotal separately retained."
+  ],
+  "verification": {
+    "targeted_command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/pytest -q scripts/opencode_benchmark/analysis/test_service_tier_admission.py scripts/opencode_benchmark/analysis/test_literal_cohort.py scripts/opencode_benchmark/analysis/test_aggregate.py",
+    "passed": 78,
+    "seconds": 3.0,
+    "ruff": "All4owned files passed",
+    "actual_current_draft_admission": "passed with both exact machine rule constants",
+    "published_authored_connectivity_recomputation": {
+      "session_path": "runs/opencode-priority-live-smoke-20261106/session",
+      "required4artifact_hashes_checked_against_session_manifest": true,
+      "configuration_valid": true,
+      "provider_reported_complete": true,
+      "uniform_provider_reported_tier": "default",
+      "assistant_responses": 1,
+      "new_model_calls": 0
+    }
+  },
+  "coverage": [
+    "Full36trial uniform/mixed within/across trials/partial/missing artifact/unreadable artifact/missing config/rehashed configuration contradiction controls",
+    "All paid costs and quality/runtime/token rows retained under comparability failures",
+    "Duplicate/orphan/missing/unsupported response records and malformed completion times",
+    "Wrong effective config, provider/model/reasoning metadata and per-assistant model refs",
+    "Nested manifest hash disagreement remains integrity error",
+    "No active/private payload read before terminal; no unknown count converted to zero",
+    "Legacy cohorts require no new artifacts and keep old output schema",
+    "Timing caveats remain wall-only and valid token wins survive wall-only tier ineligibility"
+  ],
+  "scope_limits": [
+    "Public service metadata is the pinned runtime projection before native scrub, not independent provider scheduling verification.",
+    "Coverage concerns exported assistant records, not every possible provider request such as separate compaction model work.",
+    "No harness/controller/protocol edits by this agent, model/auth calls, Docker runs, heldout reads, historical result/state mutations or commits.",
+    "No full suite by this agent; root owns independent review and full verification."
+  ]
+}

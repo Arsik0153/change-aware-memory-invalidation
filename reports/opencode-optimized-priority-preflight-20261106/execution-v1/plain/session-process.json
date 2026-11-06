@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/root/apps/change-aware-memory-invalidation/.venv/bin/python",
+    "/root/apps/change-aware-memory-invalidation/scripts/opencode_benchmark/harness/container_session.py",
+    "--workspace",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/plain/workspace",
+    "--memory-dir",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/plain/memory",
+    "--state-dir",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/plain/private-state",
+    "--out",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/plain/session",
+    "--arm",
+    "plain",
+    "--no-model",
+    "--service-tier",
+    "priority",
+    "--memory-response-format",
+    "compact",
+    "--image",
+    "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+    "--cami-source",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/frozen/src",
+    "--adapter-dir",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/frozen/integrations/opencode",
+    "--runtime-manifest",
+    "/root/apps/change-aware-memory-invalidation/runs/opencode-optimized-priority-preflight-20261106/execution-v1/runtime-manifest.json"
+  ],
+  "model_calls": 0,
+  "returncode": 0,
+  "timing_scope": "correctness/setup only; no performance conclusion",
+  "wall_seconds": 4.752203626791015
+}

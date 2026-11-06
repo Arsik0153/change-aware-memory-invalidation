@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "exec",
+    "-i",
+    "cami-research-c32f266d3413455fa12ed21c8ae3725f",
+    "python",
+    "/opt/harness/container_worker.py",
+    "--arm",
+    "static",
+    "--timeout-seconds",
+    "900",
+    "--reported-token-budget",
+    "250000",
+    "--message-page-size",
+    "200",
+    "--service-tier",
+    "priority",
+    "--binding-relative",
+    "prepared/binding.json"
+  ],
+  "returncode": 0,
+  "wall_seconds": 2.898225052980706,
+  "stdout": "",
+  "stderr": ""
+}

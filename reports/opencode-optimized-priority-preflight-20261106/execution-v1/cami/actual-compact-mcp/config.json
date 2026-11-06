@@ -1,0 +1,60 @@
+{
+  "backend": "cami",
+  "expected": {
+    "id": "literal-ccdb8b0320cfea5ca8e92140",
+    "payload": {
+      "expected": {
+        "format": "python.definition-prefix/1",
+        "text": "def stable_value():\n    \"\"\"Authored structural literal.\"\"\"\n    return 7\n",
+        "truncated": false
+      },
+      "origin_source": {
+        "path": "src/authored_fixture/core.py",
+        "sha256": "5870e21f468510a06eb34cef303d6b676d9214f9af7255d9ba77303b956d58cd",
+        "size": 72
+      },
+      "origin_span": {
+        "first_line": 1,
+        "last_line": 3
+      },
+      "subject": {
+        "language": "python",
+        "node_kind": "function",
+        "path": "src/authored_fixture/core.py",
+        "qualname": "stable_value"
+      },
+      "type": "source_excerpt_equals"
+    },
+    "source": {
+      "path": "src/authored_fixture/core.py",
+      "sha256": "5870e21f468510a06eb34cef303d6b676d9214f9af7255d9ba77303b956d58cd",
+      "size": 72
+    }
+  },
+  "format": "compact",
+  "server": {
+    "codemode": false,
+    "command": [
+      "python",
+      "/opt/memory-adapter/memory_adapter.py",
+      "serve",
+      "--binding",
+      "/memory/prepared/binding.json",
+      "--trace",
+      "/state/evidence/memory-backend-trace.jsonl",
+      "--response-format",
+      "compact"
+    ],
+    "cwd": "/workspace",
+    "environment": {
+      "PYTHONPATH": "/opt/memory-adapter:/opt/cami-src:/opt/cami-deps",
+      "PYTHONSAFEPATH": "1"
+    },
+    "timeout": {
+      "catalog": 10000,
+      "execution": 30000,
+      "startup": 10000
+    },
+    "type": "local"
+  }
+}

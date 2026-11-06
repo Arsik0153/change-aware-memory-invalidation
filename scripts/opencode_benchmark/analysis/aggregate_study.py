@@ -13,6 +13,10 @@ from pathlib import Path
 import stat
 
 from aggregate_metrics import ARMS, TOKEN_KEYS, number, token_fields, summarize
+from service_tier_evidence import (
+    ARTIFACTS as TIER_ARTIFACTS, V6_STUDY_ID, admit_tier_policy,
+    inspect_tier, study_tier_summary,
+)
 
 HERE = Path(__file__).resolve().parent
 PRIVATE = {"private-state", "server-private", "private-export-client"}
@@ -27,10 +31,12 @@ LITERAL_COMPACT_DEVELOPMENT_IDS = (
 def admit_protocol(protocol, supported):
     """Explicit version IDs share the unchanged frozen success/cost/token rules."""
     expected = supported
-    if protocol.get("study_id") in LITERAL_COMPACT_DEVELOPMENT_IDS:
+    if protocol.get("study_id") in (*LITERAL_COMPACT_DEVELOPMENT_IDS, V6_STUDY_ID):
         expected = {**supported, "study_id": protocol['study_id']}
     if {key: protocol.get(key) for key in supported} != expected:
         raise ValueError("protocol success rules differ from independently supported frozen rules")
+    if protocol["study_id"] == V6_STUDY_ID:
+        admit_tier_policy(protocol)
     return protocol["study_id"]
 
 
@@ -43,9 +49,12 @@ def _cohort_path(value, basename=None):
 
 
 def admit_study_cohort(protocol_id, study):
-    if study.get("service_tier") is not None:
+    if protocol_id == V6_STUDY_ID:
+        if study.get("service_tier") != "priority":
+            raise ValueError("v6 requires frozen study service_tier priority")
+    elif study.get("service_tier") is not None:
         raise ValueError("historical protocol IDs did not freeze an explicit service tier; use a separately supported protocol")
-    if protocol_id not in LITERAL_COMPACT_DEVELOPMENT_IDS:
+    if protocol_id not in (*LITERAL_COMPACT_DEVELOPMENT_IDS, V6_STUDY_ID):
         return
     normalized = study.get("normalized")
     source = normalized.get("memory_source") if isinstance(normalized, dict) else None
@@ -440,6 +449,29 @@ def load_timing_caveats(path, expected_ids, study_sha):
     }
 
 
+def trial_tier(directory, row):
+    """Read only terminal-authenticated files; preserve partial evidence as explicit unknowns."""
+    if not row["terminal_present"]:
+        return inspect_tier({}, None, ("no terminal artifact; trial tier contents not inspected",))
+    path = directory / "session/manifest.json"
+    session = read(path) if path.is_file() else None
+    hashes = session.get("artifact_hashes") if isinstance(session, dict) else None
+    artifacts, errors, response_errors = {}, [], []
+    for name in TIER_ARTIFACTS:
+        path = directory / "session" / name
+        target_errors = response_errors if name == "evidence/service-tier.json" else errors
+        if not isinstance(hashes, dict) or name not in hashes or not path.is_file():
+            target_errors.append("required session tier/configuration artifact unavailable: " + name)
+            continue
+        if sha(path) != hashes[name]:
+            raise ValueError("session tier/configuration artifact hash mismatch: " + name)
+        try:
+            artifacts[name] = read(path)
+        except (ValueError, OSError):
+            target_errors.append("session tier/configuration artifact unreadable: " + name)
+    return inspect_tier(artifacts, session, errors, response_errors)
+
+
 def aggregate(
     run, protocol_path, expected_study_sha=None, study_path=None, timing_caveats_path=None
 ):
@@ -474,7 +506,12 @@ def aggregate(
     rows = [trial_row(trial_root / item["id"], item) for item in planned]
     for row in rows:
         row["timing_caveat"] = row["id"] in caveats["affected_trial_ids"]
-    summary = summarize(rows, caveats["affected_trial_ids"])
+    tier = None
+    if protocol_id == V6_STUDY_ID:
+        for row in rows:
+            row["service_tier"] = trial_tier(trial_root / row["id"], row)
+        tier = study_tier_summary(rows)
+    summary = summarize(rows, caveats["affected_trial_ids"], service_tier=tier)
     if binding.get("mode") != "model":
         summary.update(
             primary_efficiency_eligible=False,
@@ -482,6 +519,11 @@ def aggregate(
             winning_metrics_satisfying_all_six_pairs=[],
             incomplete_study=True,
         )
+        if protocol_id == V6_STUDY_ID:
+            summary["primary_metric_eligibility"] = {"charged_wall": False, "token_work": False}
+            for pair in summary["paired_comparisons"]:
+                for metric in ("charged_wall", "token_work"):
+                    pair[metric]["primary_metric_eligible"] = False
     return {
         "schema_version": 1,
         "run": str(run),

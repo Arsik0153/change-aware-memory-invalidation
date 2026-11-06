@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/opt/opencode",
+    "serve",
+    "--hostname",
+    "127.0.0.1",
+    "--port",
+    "43891"
+  ],
+  "returncode": 130,
+  "wall_seconds": 2.2734846908133477,
+  "reaped_child_cpu_seconds": 1.9394359999999997,
+  "cpu_scope": "all children reaped during server lifetime; includes separately recorded CLI clients, do not sum twice",
+  "sampled_peak_server_tree_rss_kib": 290904,
+  "rss_samples": 1,
+  "rss_limitations": "sampled RSS sum; shared pages may be double counted; no cgroup peak guarantee",
+  "private_state_bytes_at_stop": 380
+}

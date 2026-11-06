@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "docker",
+    "--host=unix:///var/run/docker.sock",
+    "exec",
+    "cami-research-076d164e657c4cd99ea8ccf26c02562a",
+    "python",
+    "-c",
+    "import json;from pathlib import Path;print(json.dumps({n:(Path('/sys/fs/cgroup')/n).read_text() for n in ['cpu.stat','cpu.max','memory.current','memory.peak','memory.max']}))"
+  ],
+  "returncode": 0,
+  "wall_seconds": 0.0838291491381824,
+  "stdout": "{\"cpu.stat\": \"usage_usec 2352501\\nuser_usec 1889631\\nsystem_usec 462869\\ncore_sched.force_idle_usec 0\\nnr_periods 26\\nnr_throttled 0\\nthrottled_usec 0\\nnr_bursts 0\\nburst_usec 0\\n\", \"cpu.max\": \"200000 100000\\n\", \"memory.current\": \"50659328\\n\", \"memory.peak\": \"286109696\\n\", \"memory.max\": \"2147483648\\n\"}\n",
+  "stderr": ""
+}
