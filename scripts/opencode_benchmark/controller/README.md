@@ -95,3 +95,23 @@ Before task-model execution, run a separate no-model container check of both
 backends and both formats, including full origin-catalog equality. Preserve failed
 preflights. Freeze source, bundle and runtime hashes again after development edits;
 do not rewrite an earlier study or pool its manual-note results with literal records.
+
+## Explicit priority service tier
+
+For a new study, pass `--service-tier priority` together with `--make-study`.
+The frozen study propagates this setting to all three arms. The model stays
+`openai/gpt-6.1-sol#high`; priority does not lower reasoning effort. Omitting the
+flag preserves the historical configuration, while `--service-tier auto` is an
+explicit alternative for separately declared studies. Execution reads the tier
+from the frozen study and cannot override it on resume.
+
+The pinned native OpenCode Responses adapter maps `serviceTier` to request
+`service_tier`. Isolated synthetic-auth controls verify request serialization
+and response metadata mapping without contacting a model. Each priority session
+publishes `evidence/service-tier.json`: requested/configured settings separately
+from the provider-reported `/native/serviceTier` scalar for each assistant
+response. Missing, mixed or incomplete observations never become a claimed
+uniform priority response. Provider metadata is not a billing or scheduling audit.
+
+An explicit tier requires a new supported analysis protocol. Historical protocol
+IDs reject it rather than silently mixing new priority runs with v3–v5 results.

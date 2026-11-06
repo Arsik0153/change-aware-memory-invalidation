@@ -1,0 +1,228 @@
+{
+  "actual_served_real_provider": "unavailable_no_real_provider_calls",
+  "all_owned_final_private_state_paths_absent": true,
+  "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+  "cleanup_field": "preflight-04/ARM/final-session/manifest.json#/state_removed",
+  "files": {
+    "README.md": {
+      "bytes": 6084,
+      "sha256": "e5cca184bc58f7182703f60b60a5f9efe98cb1bb3b5db67c6ec88664431eb1d3"
+    },
+    "binary-token-index.json": {
+      "bytes": 1334,
+      "sha256": "9bfc168e010d93e0286ee71d47bea47d83ab4d854335620e106650d417a92774"
+    },
+    "final-preflight-source-before.json": {
+      "bytes": 906,
+      "sha256": "dcdffa25b8957c3cc0f7c0a1fdf880c9fd9b2ed319de416fdd99f6101c0ae102"
+    },
+    "final-preflight.json": {
+      "bytes": 8256,
+      "sha256": "9d6ac8ebedf3cf52b88966824532a781ebd640160f3d7574ff5e00ea52e9f453"
+    },
+    "final-preflight.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "final-preflight.stdout.txt": {
+      "bytes": 61,
+      "sha256": "596025998cd3c176c0e1305749d50374be4882353d79bfc34e582b2afc3f6fd6"
+    },
+    "prepare_preflight.py": {
+      "bytes": 2595,
+      "sha256": "44e455d1754966c66cf90aa42c0d998959d6cce519287b1a66e89df69fc3bba5"
+    },
+    "proof-01/configured-model-selected.json": {
+      "bytes": 490,
+      "sha256": "62c837db5a0dc0c86dff955f38f2df96591b6c939743662ee55b559368911913"
+    },
+    "proof-01/plugin/index.js": {
+      "bytes": 703,
+      "sha256": "74691395bd597f6b27d42240d039ef11bfccb6df03b37b1c78d40182e77ed2f1"
+    },
+    "proof-01/plugin/package.json": {
+      "bytes": 80,
+      "sha256": "dfc517551d5b91fe797d62e809e70f6112cf630e8e2e06405cb471e43407ac53"
+    },
+    "proof-01/result.json": {
+      "bytes": 390,
+      "sha256": "6a574cb7f46837baaf325d7e18132afc361a6403be235f7ee40342bf462e2045"
+    },
+    "proof-01/wire-selected.json": {
+      "bytes": 295,
+      "sha256": "8c41d56d231888cb9d2d9c8d3d39811740cef8e5491cef62ebdde4a13ed46a41"
+    },
+    "proof-02/configured-model-selected.json": {
+      "bytes": 490,
+      "sha256": "62c837db5a0dc0c86dff955f38f2df96591b6c939743662ee55b559368911913"
+    },
+    "proof-02/plugin/index.js": {
+      "bytes": 723,
+      "sha256": "1bf7025d3aa24590b0f010da4e01a5200c3ef5a0aab0e62c714863951d0d52d4"
+    },
+    "proof-02/plugin/package.json": {
+      "bytes": 80,
+      "sha256": "dfc517551d5b91fe797d62e809e70f6112cf630e8e2e06405cb471e43407ac53"
+    },
+    "proof-02/response-metadata-shape.json": {
+      "bytes": 544,
+      "sha256": "caa2cdcbfbc1477ab9aa9aabead703f96224a9b1e41a1fe7029380eeb7bc798f"
+    },
+    "proof-02/wire-selected.json": {
+      "bytes": 304,
+      "sha256": "f99029b2ef8f2afb79562d2cb6f332965334a05ffc41645f6cdf0bf5ba342916"
+    },
+    "proof-response.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "proof-response.stdout.txt": {
+      "bytes": 426,
+      "sha256": "c6cb5917594016be7279078f05460910ee1c51965414df044f55fd4358d3be76"
+    },
+    "proof.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "proof.stdout.txt": {
+      "bytes": 316,
+      "sha256": "066fe8430c65c7a6c25ac41b1d8df8cd5c8280b031bb2cb42177454b9d800594"
+    },
+    "proof_request.py": {
+      "bytes": 5357,
+      "sha256": "a77d90db8c69a212082a9a9066f05c0401005bc3aba1ef610ec46b3f0b8ece17"
+    },
+    "proof_response.py": {
+      "bytes": 7732,
+      "sha256": "3d0f95cd2c7053bcbad4d49a9fb29d77f95e7cb7e758cfb6b3afc10da02bd848"
+    },
+    "reviewable.patch": {
+      "bytes": 23942,
+      "sha256": "9d7b5d2efbfd3e434d8a435ab46a318fce78b2f4a2fea8d2777b6c6463d4b3a1"
+    },
+    "ruff-final.txt": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "run_final_preflight.py": {
+      "bytes": 2730,
+      "sha256": "557811125962687fc3105196441a316b4c082e99dcd709e4f0b49e8a21ab63f5"
+    },
+    "service-tier-tests-final.txt": {
+      "bytes": 99,
+      "sha256": "fda48d494853090e13d2aef3b6ae2c07a6ce183894e2da3631e44edc63711802"
+    },
+    "source/scripts/opencode_benchmark/controller/study_controller.py": {
+      "bytes": 14112,
+      "sha256": "a87c24f0e6d8b638f8cbcbc67f1570c3dec974597147d1dd3cf89eaf3e5f7110"
+    },
+    "source/scripts/opencode_benchmark/controller/study_runtime.py": {
+      "bytes": 20176,
+      "sha256": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21"
+    },
+    "source/scripts/opencode_benchmark/controller/study_schema.py": {
+      "bytes": 12427,
+      "sha256": "e0818e8571ebda6fd82b5cbd8edf646a34a45457d78620c1b61ad3378e51511f"
+    },
+    "source/scripts/opencode_benchmark/controller/test_service_tier.py": {
+      "bytes": 9471,
+      "sha256": "96411a66571c6515e162bb87df3eb39b0bf59b2b6002fcea3fe95e12ea832a0d"
+    },
+    "source/scripts/opencode_benchmark/harness/container_common.py": {
+      "bytes": 13050,
+      "sha256": "dd962278943d07cd6c31a21b890ce98f7a91d9069c346c2ce238f7196d06269e"
+    },
+    "source/scripts/opencode_benchmark/harness/container_session.py": {
+      "bytes": 22987,
+      "sha256": "9c74d33a61366e91d997107fdba4024e647da8dc2e654a0d4a976dbd7b2a5302"
+    },
+    "source/scripts/opencode_benchmark/harness/container_worker.py": {
+      "bytes": 26054,
+      "sha256": "34612f65b2bf5513242788b363340f15015452aa6356fd7164be5910f64d72d5"
+    },
+    "targeted-tests-02.txt": {
+      "bytes": 180,
+      "sha256": "4ebacbd30fd1cc36a14915e1bd0b673184c036d21ba1ab4e17e1296366aa903f"
+    },
+    "targeted-tests-03.txt": {
+      "bytes": 180,
+      "sha256": "df7b3a1f274fdfa41c0ca9332b4ec97c821da097214df2d9cdaa9a6c7c09155e"
+    },
+    "targeted-tests-04.txt": {
+      "bytes": 180,
+      "sha256": "86e9ea39fbf36833b4afd8bf9459b7844cf4c3e25c73248ed8051be7229ee0ab"
+    },
+    "targeted-tests-final.txt": {
+      "bytes": 180,
+      "sha256": "cf8cfa60391c9d1fe79ad0fc5e9810ca132dbc1a80befbbde05e5d7c3b40d406"
+    },
+    "targeted-tests.txt": {
+      "bytes": 12158,
+      "sha256": "d7d67474811a039bee7bb75e4bbf477511f7b887af22c2e99bbaac5e1906ec57"
+    }
+  },
+  "legacy_omission": "unchanged full configuration golden controls",
+  "limitations": [
+    "Configured priority is not actual-served proof.",
+    "Only safe API response scalar is projected; missing or partial evidence remains unknown.",
+    "Provider metadata is not independent backend scheduling/entitlement/billing proof.",
+    "No performance claim from no-model correctness controls."
+  ],
+  "model": "openai/gpt-6.1-sol#high",
+  "no_model_preflight_arms": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "no_model_preflight_report": "final-preflight.json",
+  "preserved_failures": [
+    "targeted-tests.txt",
+    "preflight",
+    "preflight-02",
+    "preflight-03"
+  ],
+  "request_setting": "providers.openai.models.gpt-6.1-sol.settings.serviceTier",
+  "schema_version": 1,
+  "scope": {
+    "commits": false,
+    "external_network_in_synthetic_controls": "none",
+    "heldout_access": false,
+    "historical_outcomes_rewritten": false,
+    "new_study_launched": false,
+    "real_account_auth_mutations": false,
+    "real_account_credentials_read": false,
+    "real_model_calls": 0
+  },
+  "source_after_final_preflight_matches": true,
+  "source_sha256": {
+    "scripts/opencode_benchmark/controller/study_controller.py": "a87c24f0e6d8b638f8cbcbc67f1570c3dec974597147d1dd3cf89eaf3e5f7110",
+    "scripts/opencode_benchmark/controller/study_runtime.py": "53ad6dd51ca3b8daec6859b546a6359e549c1b706d0afb8167fb19dea5b87a21",
+    "scripts/opencode_benchmark/controller/study_schema.py": "e0818e8571ebda6fd82b5cbd8edf646a34a45457d78620c1b61ad3378e51511f",
+    "scripts/opencode_benchmark/controller/test_service_tier.py": "96411a66571c6515e162bb87df3eb39b0bf59b2b6002fcea3fe95e12ea832a0d",
+    "scripts/opencode_benchmark/harness/container_common.py": "dd962278943d07cd6c31a21b890ce98f7a91d9069c346c2ce238f7196d06269e",
+    "scripts/opencode_benchmark/harness/container_session.py": "9c74d33a61366e91d997107fdba4024e647da8dc2e654a0d4a976dbd7b2a5302",
+    "scripts/opencode_benchmark/harness/container_worker.py": "34612f65b2bf5513242788b363340f15015452aa6356fd7164be5910f64d72d5"
+  },
+  "status": "complete_correctness_preflight_no_real_models",
+  "supported_explicit_values": [
+    "auto",
+    "priority"
+  ],
+  "synthetic_request_control": {
+    "codex_path": "/backend-api/codex/responses",
+    "network": "none",
+    "transport_aborted": true,
+    "wire_model": "gpt-6.1-sol",
+    "wire_reasoning_effort": "high",
+    "wire_service_tier": "priority"
+  },
+  "synthetic_response_control": {
+    "api_scalar_path": "/native/serviceTier",
+    "source": "local authored SSE only"
+  },
+  "verification": {
+    "final_tier_31": "service-tier-tests-final.txt",
+    "ruff": "ruff-final.txt",
+    "targeted_129": "targeted-tests-final.txt"
+  }
+}

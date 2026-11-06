@@ -22,7 +22,7 @@ from study_common import (
     write,
 )
 from study_workspace import evaluation_workspace
-from study_schema import memory_response_format
+from study_schema import memory_response_format, service_tier_value
 from memory_format_evidence import inspect_format
 from memory_seed_schema import literal_catalog, policy_for
 
@@ -297,7 +297,10 @@ def session(study, trial, workspace, memory, prompt, out):
         study["adapter"],
     ]
     response_format = memory_response_format(study)
+    tier = service_tier_value(study)
     argv += ["--memory-response-format", response_format]
+    if tier is not None:
+        argv += ["--service-tier", tier]
     if trial["arm"] != "plain":
         argv += ["--binding-relative", "prepared/binding.json"]
     result = command(argv, timeout=1200)
@@ -309,11 +312,15 @@ def session(study, trial, workspace, memory, prompt, out):
         or manifest["image_id"] != study["image"]
         or not manifest["model_requested"]
         or manifest.get("memory_response_format") != response_format
+        or manifest.get("service_tier_requested") != tier
     ):
         raise ValueError("session identity or status mismatch")
     config = read(out / "effective-input-config.json")
     if config["model"] != study["model"] or config["agents"]["research"]["steps"] != 20:
         raise ValueError("effective model/config mismatch")
+    expected_providers = {"openai": {"models": {"gpt-6.1-sol": {"settings": {"serviceTier": tier}}}}} if tier is not None else None
+    if config.get("providers") != expected_providers:
+        raise ValueError("effective service tier differs from frozen study")
     validate_memory_command(config, trial["arm"], response_format)
     for name, expected_sha in manifest["artifact_hashes"].items():
         if digest(out / name) != expected_sha:
@@ -321,8 +328,23 @@ def session(study, trial, workspace, memory, prompt, out):
     messages_rel = "evidence/messages.json"
     trace_rel = "evidence/memory-backend-trace.jsonl"
     required = [messages_rel] + ([trace_rel] if trial["arm"] != "plain" else [])
+    if tier is not None:
+        required += ["evidence/service-tier.json", "evidence/observed-model.json"]
     if any(name not in manifest["artifact_hashes"] for name in required):
         raise ValueError("memory response evidence missing from session manifest")
+    if tier is not None:
+        evidence = read(out / "evidence/service-tier.json")
+        if (evidence.get("requested") != tier or evidence.get("configured") != tier
+                or evidence.get("reasoning_effort") != "high" or evidence.get("model_requested") is not True):
+            raise ValueError("configured service tier evidence differs from frozen study")
+        observed = read(out / "evidence/observed-model.json")
+        high = next((v for v in observed.get("variants", []) if v.get("id") == "high"), {})
+        settings = {**observed.get("settings", {}), **high.get("settings", {})}
+        if (observed.get("providerID") != "openai" or observed.get("id") != "gpt-6.1-sol"
+                or observed.get("modelID") != "gpt-6.1-sol"
+                or observed.get("package") != "@opencode/ai/providers/openai/responses"
+                or settings.get("serviceTier") != tier or settings.get("reasoningEffort") != "high"):
+            raise ValueError("observed model/tier evidence differs from frozen study")
     events = (
         [json.loads(line) for line in (out / trace_rel).read_text().splitlines()]
         if trial["arm"] != "plain"

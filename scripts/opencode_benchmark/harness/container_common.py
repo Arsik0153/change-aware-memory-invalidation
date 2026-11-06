@@ -20,6 +20,55 @@ BINARY = Path("/opt/opencode")
 EXPECTED_BINARY_SHA = "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050"
 
 
+def validate_service_tier(value):
+    """Omission preserves the legacy request; supported explicit settings are pinned."""
+    if value is not None and (not isinstance(value, str) or value not in ("auto", "priority")):
+        raise ValueError("unsupported OpenCode service tier")
+    return value
+
+
+def observe_service_tier(message, observations):
+    """Retain only the response-derived scalar before opaque native data is scrubbed."""
+    if message.get("type") != "assistant":
+        return
+    native = message.get("native")
+    value = native.get("serviceTier") if isinstance(native, dict) else None
+    valid = isinstance(value, str) and re.fullmatch(r"[a-z][a-z0-9_-]{0,31}", value) is not None
+    observations[message["id"]] = {"message_id": message["id"],
+        "completed": message.get("time", {}).get("completed"),
+        "provider_reported": value if valid else None,
+        "status": "provider_reported" if valid else "absent" if value is None else "unsupported_value",
+        "source_pointer": "/native/serviceTier",
+        "source": "Raw OpenCode assistant API response; native field is projected before public native scrub. Pinned local Responses SSE control verifies response.service_tier mapping."}
+
+
+def service_tier_evidence(requested, model, *, model_requested, observations=(),
+                          export_complete=False, assistant_ids=()):
+    """Configuration proves requested routing intent, never actual provider service."""
+    validate_service_tier(requested)
+    high = next(v for v in model["variants"] if v["id"] == "high")
+    effective = {**model.get("settings", {}), **high.get("settings", {})}
+    if requested is not None and effective.get("serviceTier") != requested:
+        raise ValueError("effective service tier differs from requested tier")
+    if high["settings"].get("reasoningEffort") != "high":
+        raise ValueError("effective high reasoning changed")
+    reported = sorted({row["provider_reported"] for row in observations if row["status"] == "provider_reported"})
+    covered = export_complete and {row["message_id"] for row in observations} == set(assistant_ids)
+    complete = covered and bool(observations) and all(
+        row["status"] == "provider_reported" and row["completed"] is not None for row in observations)
+    return {"requested": requested, "configured": effective.get("serviceTier"),
+            "reasoning_effort": "high", "model_requested": model_requested,
+            "request_on_wire_observed_for_this_session": False,
+            "actual_served": reported[0] if complete and len(reported) == 1 else None,
+            "actual_served_status": "provider_reported_complete" if complete else "partially_reported" if reported else "unavailable",
+            "actual_served_reason": None if complete else "Provider response tier absent or unsupported for some/all assistant messages; requested/configured tier does not fill missing evidence.",
+            "provider_reported_values": reported, "assistant_response_observations": list(observations),
+            "assistant_export_complete": export_complete, "assistant_ids": list(assistant_ids),
+            "observation_ids_match_exported_assistants": covered,
+            "provider_report_limit": "Response metadata reports service, not account entitlement, billing or independently verified backend scheduling.",
+            "setting_semantics": "Pinned OpenCode2.2.5 native Responses adapter forwards serviceTier as service_tier; synthetic Codex-auth transport control verifies serialization only."}
+
+
 def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
 

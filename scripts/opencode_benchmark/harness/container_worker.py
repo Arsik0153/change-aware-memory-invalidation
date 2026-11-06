@@ -13,7 +13,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, redact as redact, redact_data, redact_string, sanitize_artifact, sha, tree_bytes, write
+from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, observe_service_tier, redact as redact, redact_data, redact_string, sanitize_artifact, service_tier_evidence, sha, tree_bytes, write
 
 OUT = Path("/state/evidence")
 PRIVATE = Path("/state/server-private")
@@ -106,7 +106,7 @@ def await_mcp(server, location, arm, timeout=30):
         time.sleep(min(0.1, max(0, timeout - (time.monotonic() - started))))
 
 
-def capture_failure(server, session_id, page_size, manifest):
+def capture_failure(server, session_id, page_size, manifest, tier_observations=None):
     try:
         latest = server.request("GET", "/api/session/" + session_id, timeout=3)["data"]
         write(OUT / "session.json", public(latest))
@@ -114,10 +114,11 @@ def capture_failure(server, session_id, page_size, manifest):
             "status": "failed_attempt_latest_reported", "scope": "best effort, not complete remote billing record"}
         write(OUT / "failure-usage.json", usage)
         write(OUT / "usage.json", usage)
-        pages, entries = messages_all(server, session_id, page_size, deadline=time.monotonic() + 20)
+        pages, entries = messages_all(server, session_id, page_size, deadline=time.monotonic() + 20, tier_observations=tier_observations)
         write(OUT / "message-pages.json", pages)
         write(OUT / "messages.json", entries)
         manifest["failure_usage_capture"] = "available"
+        return entries
     except BaseException as error:
         manifest["failure_usage_capture"] = "partial_or_unavailable:" + type(error).__name__
         if not (OUT / "usage.json").exists():
@@ -125,7 +126,7 @@ def capture_failure(server, session_id, page_size, manifest):
                 "status": "unavailable", "reason": type(error).__name__})
 
 
-def messages_all(server, session_id, page_size=200, deadline=None):
+def messages_all(server, session_id, page_size=200, deadline=None, tier_observations=None):
     pages, all_messages, seen, cursor = [], [], set(), None
     for _ in range(10000):
         query = {"limit": str(page_size), **({"cursor": cursor} if cursor else {"order": "asc"})}
@@ -139,6 +140,8 @@ def messages_all(server, session_id, page_size=200, deadline=None):
             if item["id"] in seen:
                 raise ValueError("message pagination repeated an ID")
             seen.add(item["id"])
+            if tier_observations is not None:
+                observe_service_tier(item, tier_observations)
             all_messages.append(public(item))
         next_cursor = page["cursor"].get("next")
         if not next_cursor:
@@ -183,12 +186,15 @@ def main():
     parser.add_argument("--timeout-seconds", type=int, default=900)
     parser.add_argument("--message-page-size", type=int, default=200)
     parser.add_argument("--reported-token-budget", type=int, default=250000)
+    parser.add_argument("--service-tier", choices=["auto", "priority"])
     args = parser.parse_args()
     OUT.mkdir(exist_ok=False)
     PRIVATE.mkdir()
     started = time.monotonic()
     done, events_result, server, thread = threading.Event(), {}, None, None
     session_id = None
+    tier_observations, selected = {}, None
+    tier_export_complete, tier_assistant_ids = False, []
     manifest = {"status": "preflight", "arm": args.arm, "model_generation_requested": args.run_model,
         "model_session_launches": 0, "max_agent_steps": 20, "cgroup_before": cgroup()}
     write(OUT / "manifest.json", manifest)
@@ -279,12 +285,16 @@ print(json.dumps(result))
                 if sum(item["type"] == "shell" and bool(item.get("time", {}).get("completed")) for item in entries) == 2:
                     break
                 time.sleep(0.1)
-        if args.run_model:
+        if args.run_model or args.service_tier is not None:
             models = server.request("GET", "/api/model" + location)["data"]
             selected = next(m for m in models if m["id"] == "gpt-6.1-sol" and m["providerID"] == "openai")
             variant = next(v for v in selected["variants"] if v["id"] == "high")
             assert selected["modelID"] == "gpt-6.1-sol" and variant["settings"]["reasoningEffort"] == "high", "effective model settings mismatch"
             write(OUT / "observed-model.json", {key: public(value) for key, value in selected.items() if key in ["id", "modelID", "providerID", "package", "settings", "capabilities", "variants", "limit", "enabled", "status"]})
+            if args.service_tier is not None:
+                assert selected["package"] == "@opencode/ai/providers/openai/responses", "unverified service tier provider adapter"
+                write(OUT / "service-tier.json", service_tier_evidence(args.service_tier, selected, model_requested=args.run_model))
+        if args.run_model:
             request = json.load(__import__("sys").stdin)
             prompt = request["prompt"]
             write(OUT / "prompt.json", {"text": prompt})
@@ -315,7 +325,10 @@ print(json.dumps(result))
                 except Exception as error:
                     manifest["interrupt_error_type"] = type(error).__name__
                 raise TimeoutError("model session deadline reached")
-        pages, entries = messages_all(server, session["id"], args.message_page_size)
+        pages, entries = messages_all(server, session["id"], args.message_page_size,
+                                      tier_observations=tier_observations if args.service_tier is not None else None)
+        tier_export_complete = True
+        tier_assistant_ids = [m["id"] for m in entries if m["type"] == "assistant"]
         write(OUT / "message-pages.json", pages)
         write(OUT / "messages.json", entries)
         final = server.request("GET", "/api/session/" + session["id"])["data"]
@@ -357,9 +370,20 @@ print(json.dumps(result))
         # A failed/paid execution still needs the latest reported session usage
         # and every available message before server termination.
         if manifest["status"] == "failed" and server and session_id:
-            capture_failure(server, session_id, args.message_page_size, manifest)
+            failure_entries = capture_failure(server, session_id, args.message_page_size, manifest,
+                                              tier_observations if args.service_tier is not None else None)
+            if failure_entries is not None:
+                tier_export_complete = True
+                tier_assistant_ids = [m["id"] for m in failure_entries if m["type"] == "assistant"]
         done.set()
         finalization_errors = []
+        if args.service_tier is not None and selected is not None:
+            try:
+                write(OUT / "service-tier.json", service_tier_evidence(args.service_tier, selected,
+                      model_requested=args.run_model, observations=list(tier_observations.values()),
+                      export_complete=tier_export_complete, assistant_ids=tier_assistant_ids))
+            except BaseException as error:
+                finalization_errors.append("service tier evidence:" + type(error).__name__)
         if server:
             try:
                 write(OUT / "server-resource.json", server.stop())

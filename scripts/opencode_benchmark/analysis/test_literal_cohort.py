@@ -12,6 +12,14 @@ import aggregate_study as evaluator
 import test_aggregate as legacy
 
 
+@pytest.mark.parametrize('tier', ['priority', 'auto'])
+def test_explicit_tier_cannot_reuse_historical_protocol_ids(tier):
+    supported = json.loads((Path(__file__).parent / 'supported_rules.json').read_text())
+    for study_id in (supported['study_id'], *evaluator.LITERAL_COMPACT_DEVELOPMENT_IDS):
+        with pytest.raises(ValueError, match='did not freeze an explicit service tier'):
+            evaluator.admit_study_cohort(study_id, {'service_tier': tier})
+
+
 @pytest.mark.parametrize('study_id', sorted(evaluator.LITERAL_COMPACT_DEVELOPMENT_IDS))
 def test_explicit_literal_versions_keep_same_rules_and_cohort_gate(study_id):
     supported = json.loads((Path(__file__).parent / 'supported_rules.json').read_text())

@@ -133,7 +133,9 @@ def credential_pipe(container, state, shared_url):
             "credential_body_saved": False, "credential_body_decoded": False, "provider": "openai", "shared_server": shared_url}
 
 
-def configuration(arm, binding, response_format="full"):
+def configuration(arm, binding, response_format="full", service_tier=None):
+    from container_common import validate_service_tier
+    validate_service_tier(service_tier)
     if response_format not in ("full", "compact"):
         raise ValueError("unsupported memory response format")
     result = {"model": "openai/gpt-6.1-sol#high", "update": "disable", "share": "disabled", "warming": False,
@@ -142,6 +144,8 @@ def configuration(arm, binding, response_format="full"):
         "permissions": [{"action": "*", "resource": "*", "effect": "allow"}, {"action": "external_directory", "resource": "*", "effect": "deny"}],
         "agents": {"research": {"mode": "primary", "steps": 20, "system": "Complete the user task using only /workspace and the configured tools. Do not inspect /state or credentials, invoke subagents or network tools, or read runtime implementation. Do not change files outside /workspace. When the tool research_memory_memory_lookup is available, call that exact tool once for relevant prior context before broad navigation. Memory is origin-bound; verify current source when needed and query again after edits before relying on its current availability. Keep the final answer concise."}},
         "experimental": {"schedules": False, "artifacts": False, "image_generate": False}}
+    if service_tier is not None:
+        result["providers"] = {"openai": {"models": {"gpt-6.1-sol": {"settings": {"serviceTier": service_tier}}}}}
     if arm != "plain":
         result["mcp"] = {"servers": {"research_memory": {"type": "local", "command": ["python", "/opt/memory-adapter/memory_adapter.py", "serve",
             "--binding", "/memory/" + binding, "--trace", "/state/evidence/memory-backend-trace.jsonl"], "cwd": "/workspace", "codemode": False,
@@ -162,6 +166,7 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--binding-relative")
     parser.add_argument("--memory-response-format", choices=["full", "compact"], default="full")
+    parser.add_argument("--service-tier", choices=["auto", "priority"], help="Explicit provider request tier; omission preserves legacy behavior")
     parser.add_argument("--no-model", action="store_true", help="Explicit default; no auth import/prompt admission")
     parser.add_argument("--run-model", action="store_true")
     parser.add_argument("--boundary-probe", action="store_true")
@@ -191,6 +196,8 @@ def main():
     state, container = None, None
     initial_private_values = set()
     manifest = {"status": "preflight", "arm": args.arm, "model_requested": args.run_model, "model_calls_in_development_tests": 0, "memory_response_format": args.memory_response_format}
+    if args.service_tier is not None:
+        manifest["service_tier_requested"] = args.service_tier
     write(output / "manifest.json", manifest)
     try:
         assert sha(BINARY) == EXPECTED_BINARY_SHA, "installed OpenCode identity changed before auth"
@@ -206,7 +213,7 @@ def main():
         for path in [workspace, memory, state]:
             chown_owned(path)
         (state / "config/opencode").mkdir(parents=True)
-        config = configuration(args.arm, args.binding_relative, args.memory_response_format)
+        config = configuration(args.arm, args.binding_relative, args.memory_response_format, args.service_tier)
         write(state / "config/opencode/opencode.json", config)
         chown_owned(state)
         write(output / "effective-input-config.json", config)
@@ -252,6 +259,8 @@ def main():
             initial_private_values = collect_private_values(state, expect_credential=True)
         worker = [*DOCKER, "exec", "-i", container, "python", "/opt/harness/container_worker.py", "--arm", args.arm, "--timeout-seconds", str(args.timeout_seconds), "--reported-token-budget", str(args.reported_token_budget)]
         worker += ["--message-page-size", str(args.message_page_size)]
+        if args.service_tier is not None:
+            worker += ["--service-tier", args.service_tier]
         if args.binding_relative:
             worker += ["--binding-relative", args.binding_relative]
         if args.boundary_probe:

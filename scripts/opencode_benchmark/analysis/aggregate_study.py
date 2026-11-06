@@ -43,6 +43,8 @@ def _cohort_path(value, basename=None):
 
 
 def admit_study_cohort(protocol_id, study):
+    if study.get("service_tier") is not None:
+        raise ValueError("historical protocol IDs did not freeze an explicit service tier; use a separately supported protocol")
     if protocol_id not in LITERAL_COMPACT_DEVELOPMENT_IDS:
         return
     normalized = study.get("normalized")

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "broader_tests": 495,
+  "model": "openai/gpt-6.1-sol#high",
+  "requested_service_tier": "priority",
+  "actual_provider_calls": 0,
+  "real_provider_served_tier": "unavailable_no_real_model_calls",
+  "installed_binary_request_serialization_verified": true,
+  "synthetic_response_metadata_mapping_verified": true,
+  "no_model_arms_passed": [
+    "plain",
+    "static",
+    "cami"
+  ],
+  "historical_protocol_ids_reject_explicit_tier": true,
+  "archive_files": 155,
+  "archive_readback_sha256_verified": true,
+  "files": {
+    "README.md": "e5cca184bc58f7182703f60b60a5f9efe98cb1bb3b5db67c6ec88664431eb1d3",
+    "final-preflight.json": "9d6ac8ebedf3cf52b88966824532a781ebd640160f3d7574ff5e00ea52e9f453",
+    "handoff.json": "6baf4840197fedd4d7cfc48b125455193e2374ad1f3852261c8b65b6b6562104",
+    "evidence.tar.gz": "173c51d7e0c06d549ccc429d827f4b8843d8b46e715bf0bb668aa3044b80b37c",
+    "publication-allowlist.json": "85d114443205c6af5e33d5684e2e41c9a4b9877bc2ce476cb66df1b22f17bf52",
+    "controller-harness-analysis-tests.log": "68da62c96e2cebc69e26ec2b11d67d9b33485a8c3486220cea462758d988892f"
+  }
+}

@@ -146,11 +146,13 @@ def make_study(
     controller,
     runtime_manifest=None,
     memory_response_format="full",
+    service_tier=None,
 ):
+    service_tier_value({"service_tier": service_tier})
     if memory_response_format not in ("full", "compact"):
         raise ValueError("unsupported memory response format")
     data = normalize(bundle, kind)
-    return {
+    result = {
         "schema_version": 1,
         "execution_authorized": False,
         "bundle_kind": kind,
@@ -184,6 +186,9 @@ def make_study(
             "adapter": {"root": str(adapter), "files": runtime_files(adapter)},
         },
     }
+    if service_tier is not None:
+        result["service_tier"] = service_tier
+    return result
 
 
 def controller_files(root):
@@ -198,6 +203,7 @@ def controller_files(root):
         "fixed_grader.py",
         "memory_seed_schema.py",
         "memory_format_evidence.py",
+        "opencode_message_schema.py",
     }
     if not required <= {p.name for p in root.glob("*.py")}:
         raise ValueError("required controller/helper module missing")
@@ -236,8 +242,16 @@ def memory_response_format(study):
     return value
 
 
+def service_tier_value(study):
+    value = study.get("service_tier")
+    if value is not None and (not isinstance(value, str) or value not in ("auto", "priority")):
+        raise ValueError("unsupported frozen service tier")
+    return value
+
+
 def validate(study, *, execute=False):
     memory_response_format(study)
+    service_tier_value(study)
     if study["schema_version"] != 1 or study["arms"] != list(ARMS) or study["repetitions"] != 3:
         raise ValueError("unsupported study design")
     if study["model"] != MODEL or study["timeout_seconds"] != 900 or study["max_steps"] != 20:

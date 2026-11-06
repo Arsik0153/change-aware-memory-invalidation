@@ -237,6 +237,7 @@ def main():
     parser.add_argument("--cami-source", type=Path, default=ROOT / "src")
     parser.add_argument("--adapter", type=Path, default=ROOT / "integrations/opencode")
     parser.add_argument("--memory-response-format", choices=["full", "compact"])
+    parser.add_argument("--service-tier", choices=["auto", "priority"])
     args = parser.parse_args()
     if args.make_study:
         if args.run_model or args.resume or not all([args.bundle, args.harness, args.image]):
@@ -253,12 +254,15 @@ def main():
             Path(__file__).parent,
             args.runtime_manifest.resolve() if args.runtime_manifest else None,
             args.memory_response_format or "full",
+            args.service_tier,
         )
         write(output / "study.json", data)
         print(output / "study.json")
         return
     if args.memory_response_format is not None:
         parser.error("memory response format is frozen in --study; select it only with --make-study")
+    if args.service_tier is not None:
+        parser.error("service tier is frozen in --study; select it only with --make-study")
     if not args.study:
         parser.error("--study is required")
     study_sha = digest(args.study)
