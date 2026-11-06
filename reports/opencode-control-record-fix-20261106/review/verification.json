@@ -1,0 +1,58 @@
+{
+  "status": "complete",
+  "implementation_files": {
+    "scripts/opencode_benchmark/controller/memory_format_evidence.py": "8b4fe665d727fc1f739c803e15fbfbe80b26bf111e140d829daf69bb0e047a6d",
+    "scripts/opencode_benchmark/controller/opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+    "scripts/opencode_benchmark/controller/test_non_tool_messages.py": "80e41edb791c51393a374afa91c43236e9c2de91c84d9df7c0453aa1081bafa7"
+  },
+  "schema_provenance": {
+    "OpenCode_version": "2.2.5",
+    "OpenAPI_source": "runs/opencode-reconnaissance-20261104/installed-openapi.json",
+    "OpenAPI_sha256": "f5c4571bf7e9afc22a440875a746f593f988c4c31bf824f602601c04b20e6c8e",
+    "schema_subset_sha256": "7b5e9e8960c2660034332aac08e1b27de42db48f2935c90eda775541861d475d",
+    "exact_transitive_shapes": 34,
+    "all_copied_shapes_equal_pinned_source": true,
+    "supported_nonassistant_types": [
+      "agent-switched",
+      "compaction",
+      "idle",
+      "location-switched",
+      "model-switched",
+      "shell",
+      "skill",
+      "synthetic",
+      "system",
+      "user"
+    ]
+  },
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/pytest -q scripts/opencode_benchmark/controller/test_non_tool_messages.py scripts/opencode_benchmark/controller/test_idle_lifecycle.py scripts/opencode_benchmark/controller/test_format_observation.py scripts/opencode_benchmark/controller/test_format_selection.py",
+    "passed": 293,
+    "seconds": 0.33,
+    "ruff": "passed"
+  },
+  "coverage": [
+    "All10nonassistant Info union branches, includinguser andcompaction3states",
+    "Exact top-level/closednested shapes, requiredfields, optionalbranches, finiteJSONnumbers/boolseparation, pinnederrorbounds",
+    "No top-level content/tool_calls/state/unknownfield admitted",
+    "Genuine system date rollover admitted as non-tooldata",
+    "Failed/interrupted lifecycle outcomes remain descriptive, never runtimepass",
+    "Model/agent/location switchdata and shellstatus retained",
+    "Existing full/compact memorycall+backendmultiset reconciliation preserved",
+    "Malformedmemorytoolstate andnonobjectbackend event failinspection insteadofcrash",
+    "Typednonassistantrecord cannotreplace missingassistantmemorytool",
+    "Opaque native/metadata objects and JSON-looking text remain data, not executabletoolparts"
+  ],
+  "authored_regression": "authored-date-regression.json",
+  "parent_independent_fullarray_replay": {
+    "path": "runs/opencode-control-record-fix-20261106/replay-74.json",
+    "sha256": "c2679e00786407581ecc9df670f84cb761d17a64ce13faed61c358c3440be071",
+    "rerun_by_this_agent": false
+  },
+  "limits": [
+    "This observer validates memory format evidence, not runtime execution success or benchmark model/agent/location/resource invariants. Such status remains separate.",
+    "metadata and compaction.native are deliberately opaque objects in the pinned API; nested tool-shaped data is not counted as execution. Backend memory events must still reconcile to assistant calls.",
+    "New API message variants still reject until explicitly pinned; no typename-only fallback.",
+    "No originalresults changed; no model/auth/network/Docker/heldout access or commits."
+  ]
+}

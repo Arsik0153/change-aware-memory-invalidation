@@ -1,0 +1,55 @@
+{
+  "scope": "Authored date-rollover metadata reproduction; no original outcomes or traces rewritten",
+  "baseline_source_git_ref": "HEAD at verification",
+  "baseline_source_sha256": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+  "message": {
+    "id": "msg_authored_date_rollover",
+    "metadata": {
+      "notice": "instructions",
+      "instructionSources": [
+        "core/date"
+      ]
+    },
+    "time": {
+      "created": 1793836803990
+    },
+    "type": "system",
+    "text": "Today's date is now: Thu Nov 05 2026",
+    "description": "Instructions updated: core/date"
+  },
+  "before": {
+    "requested_format": "compact",
+    "arm": "plain",
+    "status": "unsupported_or_mismatch",
+    "completed_observations": 0,
+    "observations": [],
+    "incomplete_calls": [],
+    "errors": [
+      {
+        "reason": "unsupported pinned API message schema"
+      }
+    ],
+    "lifecycle_records": [],
+    "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+    "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+    "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub"
+  },
+  "after": {
+    "requested_format": "compact",
+    "arm": "plain",
+    "status": "not_applicable",
+    "completed_observations": 0,
+    "observations": [],
+    "incomplete_calls": [],
+    "errors": [],
+    "lifecycle_records": [
+      {
+        "id": "msg_authored_date_rollover",
+        "type": "system"
+      }
+    ],
+    "lifecycle_scope": "Validated non-tool records; outcomes retained, execution success is checked separately by the session harness",
+    "correlation": "multiset of complete-arguments digest and optional receipt; no timing/order pairing inferred",
+    "receipt_verification": "metadata_binding_only; original full/projected/model bytes not checked after publication scrub"
+  }
+}

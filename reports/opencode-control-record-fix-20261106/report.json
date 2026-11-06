@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "closed_full_message_arrays": 74,
+  "controller_analysis_tests": 416,
+  "original_results_rewritten": false,
+  "model_calls": 0,
+  "heldout_access": false,
+  "fix": "Admit all10non-assistant types from pinned OpenCode2.2.5 schema; validate structures and keep tool/backend reconciliation. Runtime outcome and session identity remain separate checks.",
+  "source_sha256": {
+    "scripts/opencode_benchmark/controller/memory_format_evidence.py": "8b4fe665d727fc1f739c803e15fbfbe80b26bf111e140d829daf69bb0e047a6d",
+    "scripts/opencode_benchmark/controller/opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+    "scripts/opencode_benchmark/controller/test_non_tool_messages.py": "80e41edb791c51393a374afa91c43236e9c2de91c84d9df7c0453aa1081bafa7"
+  },
+  "artifact_sha256": {
+    "controller-analysis-tests.log": "1c6e8502f85266ff89081e88a7c762295e8b34ac623e819244972f8535607bea",
+    "installed-openapi.json.gz": "db516d40d4f74c957477f8c67c7ce6292595ae66c858faf5a1242aa6042b5b44",
+    "memory_format_evidence_before.py": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+    "replay-74.json": "c2679e00786407581ecc9df670f84cb761d17a64ce13faed61c358c3440be071",
+    "replay_closed_messages.py": "d22c448edbc1e9e5506ecf2098ada0c9c1ab19158291993d674f8b97fe773bec",
+    "review/authored-date-regression.json": "f767afae6296915c8d7785f081cd5f46f82171b8356974907efe9cdf6da7210b",
+    "review/baseline-memory-format-evidence.py.txt": "ebd4b7d903b866e593286d1e0be3a7f1a939e341578931495b12af73fa75d1ef",
+    "review/manifest.json": "af2ddad4bcd3e0f422167c370007413aba87b4f4f50fe0a0aceee39b65a111b3",
+    "review/schema-provenance.json": "ed350e2d9920812bc7ef37d1aee858c98d36651fb3fdc7458d23d15cbe118172",
+    "review/verification.json": "63fe6d53cfd5c0377e0069ef34744aa4d85afa5d27eef11969a4ec0cde2a6091"
+  }
+}
