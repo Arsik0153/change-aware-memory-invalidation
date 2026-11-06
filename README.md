@@ -90,8 +90,11 @@ non-cached normalized token work than plain OpenCode in all three descriptive
 blocks, but took longer in all three; comparisons against static memory were
 mixed. CAMI withheld 12 obsolete literal observations that static memory returned;
 this measures exposure, not causal reliance or 12 independent cases. The sealed
-final task set still has zero model sessions. Work is paused at the user's request
-after preserving the complete series; the report records the remaining steps.
+final task set still has zero model sessions. Work resumed on November 6. The [typed message-admission fix](reports/opencode-control-record-fix-20261106/report.json)
+passes 416 controller/analysis tests and replays all 74 complete v3–v5 message
+arrays without rewriting historical outcomes. The [v5 cost diagnosis](reports/opencode-v5-cost-diagnosis-20261106/README.md)
+separates local memory work from overlapping tool intervals and the unassigned
+model/session time; it motivates bounded lookup profiling, not a speculative Rust rewrite.
 
 ## Install and run the offline demo
 

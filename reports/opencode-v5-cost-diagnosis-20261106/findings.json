@@ -1,0 +1,151 @@
+{
+  "backend_lookup_by_stage_seconds": {
+    "1": {
+      "cami": {
+        "median": 1.0232478708494455,
+        "range": [
+          0.9911167360842228,
+          1.0362417108844966
+        ],
+        "samples": [
+          1.0362417108844966,
+          0.9911167360842228,
+          1.0232478708494455
+        ]
+      },
+      "static": {
+        "median": 0.02589071705006063,
+        "range": [
+          0.008605421986430883,
+          0.028457188047468662
+        ],
+        "samples": [
+          0.028457188047468662,
+          0.02589071705006063,
+          0.008605421986430883
+        ]
+      }
+    },
+    "2": {
+      "cami": {
+        "median": 1.0361192289274186,
+        "range": [
+          0.9546832269988954,
+          1.1042863440234214
+        ],
+        "samples": [
+          0.9546832269988954,
+          1.1042863440234214,
+          1.0361192289274186
+        ]
+      },
+      "static": {
+        "median": 0.02272375812754035,
+        "range": [
+          0.012012477032840252,
+          0.02876569190993905
+        ],
+        "samples": [
+          0.02272375812754035,
+          0.02876569190993905,
+          0.012012477032840252
+        ]
+      }
+    },
+    "3": {
+      "cami": {
+        "median": 2.5998081790748984,
+        "range": [
+          2.5240284542087466,
+          2.6305184790398926
+        ],
+        "samples": [
+          2.5998081790748984,
+          2.5240284542087466,
+          2.6305184790398926
+        ]
+      },
+      "static": {
+        "median": 0.021855970146134496,
+        "range": [
+          0.02017790894024074,
+          0.029569003032520413
+        ],
+        "samples": [
+          0.02017790894024074,
+          0.029569003032520413,
+          0.021855970146134496
+        ]
+      }
+    },
+    "4": {
+      "cami": {
+        "median": 1.1673246091231704,
+        "range": [
+          1.1282111969776452,
+          1.2325218140613288
+        ],
+        "samples": [
+          1.1673246091231704,
+          1.2325218140613288,
+          1.1282111969776452
+        ]
+      },
+      "static": {
+        "median": 0.023200412979349494,
+        "range": [
+          0.011590578127652407,
+          0.031997535144910216
+        ],
+        "samples": [
+          0.031997535144910216,
+          0.023200412979349494,
+          0.011590578127652407
+        ]
+      }
+    }
+  },
+  "cami_lookup_cpu_to_wall_ratio": 0.92412090620415,
+  "cami_minus_static_charged_total_seconds": 71.69044319330715,
+  "cami_minus_static_measured_memory_phases_seconds": 27.92728071496822,
+  "cami_minus_static_non_tool_api_residual_seconds": 40.64000129699707,
+  "charged_wall_totals_seconds": {
+    "cami": 1701.4624596571084,
+    "plain": 1617.5742761727888,
+    "static": 1629.7720164638013
+  },
+  "fixed_trace_elimination_bound_note": "Accounting only: eliminating both measured phases with all other events unchanged. Not a predicted optimization gain or model-response counterfactual.",
+  "fixed_trace_elimination_fraction_cami": 0.018553069881466044,
+  "largest_measured_controllable_memory_scopes": [
+    {
+      "cami_seconds": 17.630000352859497,
+      "note": "Backend subspan17.428s,16.106CPU seconds; no separately timed observe/refresh.",
+      "scope": "12 API memory executions, including backend refresh/import/serialization"
+    },
+    {
+      "cami_seconds": 13.937351561849937,
+      "note": "Nested adapter context capture3.987s and registration4.054s. Do not add these to construction again.",
+      "scope": "3 origin constructions"
+    }
+  ],
+  "memory_construction_plus_api_memory_execution_seconds": {
+    "cami": 31.567351914709434,
+    "plain": 0,
+    "static": 3.6400711997412145
+  },
+  "next_bounded_target": {
+    "evidence": "This recurring scope exceeds total construction time. Stage3 med2.600s versus unchanged stage2 med1.036s; source refresh+origin verification are untimed subcomponents.",
+    "next_measurement": "Separately authorized no-model cProfile on fresh source/state copies: cold process, unchanged head and changed snapshot. Preparation separate; profile attribution timings are not benchmarks; quiet repeated unprofiled samples confirm later.",
+    "optimization_hypothesis": "Avoid redundant operation-internal source/index/materialization/serialization work only after profiling identifies it; retain fresh final source guards, complete329-record catalog, selected-before-availability ranking, withholding and receipt checks.",
+    "priority": "Attribute then reduce cold/new-process lookup/refresh overhead, especially changed canonical snapshot stage3."
+  },
+  "not_supported": [
+    "Do not call the API residual pure model/provider wait.",
+    "Do not attribute random generated patch size/tool sequence differences causally to CAMI.",
+    "Do not interpret generation_changed=true as source changed: new Backend.last_generation startsNone each session.",
+    "Do not interpret checked/carried state type counts as actual validator calls.",
+    "No superiority claim: original1operational failure retained and third CAMI-static block delta reverses."
+  ],
+  "report_sha256": "1321aaf590bcc0078359818d7fe6fb4743884a5e6765e0562b9b1c2d391d0e1e",
+  "scope": "Descriptive read-only diagnosis; all36 including original operational failure; no new benchmark/model."
+}
