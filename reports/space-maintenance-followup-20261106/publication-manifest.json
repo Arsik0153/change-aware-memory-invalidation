@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_directory": "runs/space-maintenance-followup-20261106",
+  "all_non_cache_files_retained": true,
+  "archive": {
+    "path": "evidence.tar.gz",
+    "bytes": 1081,
+    "sha256": "8dd277832a915ac5a36e57dcd7cd069b1f9086c6c461cc4997f71083e5534dd1"
+  },
+  "files": {
+    "observation.json": {
+      "sha256": "6c652b416ecf22a1ce9fc006414ab6ddd72d423bbf3e079c634b45b4c41e5ffe",
+      "bytes": 993
+    },
+    "test-temp-cleanup.json": {
+      "sha256": "11ddecb8c86d014c713f9833d84aa1979fbb57ced1d35190fcbfe7f362c71b92",
+      "bytes": 589
+    }
+  },
+  "verification": "Every archived member read back and hashed; originals rechecked unchanged. No experiments rerun.",
+  "publication_files_sha256": {
+    "evidence.tar.gz": "8dd277832a915ac5a36e57dcd7cd069b1f9086c6c461cc4997f71083e5534dd1"
+  }
+}

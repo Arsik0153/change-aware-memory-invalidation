@@ -128,8 +128,12 @@ differences from the prior baseline are within measured variation. Temporary
 line buffers are explicitly released after successful traversal. A [standalone readable projection](reports/opencode-readable-response-implementation-20261106/IMPLEMENTATION.md)
 also passes authored tests and all 24 packet checks, with fresh embedded receipts
 and exact compact fallback. Opt-in adapter/controller wiring and a separate
-receipt verifier now support this mode; full verification and pinned runtime
-checks precede the next model study.
+receipt verifier now support this mode. [Full verification](reports/opencode-readable-full-verification-20261106/checks.json)
+passes all 1694 tests, Ruff and mypy on unchanged source at `fe07667`. Pinned
+runtime [checks](reports/opencode-readable-runtime-preflight-20261106/README.md) pass all six
+configured stdio cases and all three OpenCode no-model arms. A root progress-log
+error in the first attempt and the complete successful second attempt are retained.
+No readable task-model study has started.
 
 The [repeated actual-tool comparison](reports/opencode-source-prefix-mcp-confirmation-20261106/README.md)
 finds 14.60% lower median wall time and 16.26% lower CPU time for a lookup after a
@@ -139,6 +143,13 @@ measurable difference. Process RSS peak increased by 4.65 MiB; cgroup peaks were
 similar. This is a bounded local timing result, not an OpenCode task advantage
 or a reduction in RAM usage. All 65 profile/quiet calls and failed buffer
 candidates are retained, with raw states, exact dependencies and standalone plots.
+
+The [storage diagnosis](reports/opencode-memory-storage-diagnosis-20261106/README.md)
+identifies repeated state JSON and dependency edge sets as the largest database
+contents. Two [lossless storage prototypes](reports/opencode-memory-storage-prototype-20261106/README.md)
+reconstruct every original row exactly from smaller fresh files. They use explicit
+experimental schemas; production storage and historical evidence remain unchanged.
+No latency or RAM improvement has been measured for these encodings.
 
 ## Install and run the offline demo
 
@@ -350,4 +361,4 @@ production-кода независимым proof kernel не заявляетс�
 - [Новая development-когорта Packaging](docs/packaging_development_replay_2026-11-04_ru.md): 24 новых утверждения, 69 переходов, два эпизода изменения аннотационных сигнатур. Проверок 28/71/552/552 при одинаковой доступности; 24 отрицательные строки включают два первых случая и 22 повтора. Сохранён [проверенный офлайн-корпус 72 снимков](reports/research-20261104/packaging-offline-corpus-v1/README.md).
 - [Цена переноса отрицательного ответа](docs/negative_structural_carry_cost_2026-11-04_ru.md): три реализации сокращают число проверок, но увеличивают CPU-время на закреплённых авторских историях. Отдельная регистрация неизменных входов также не окупилась; все результаты и независимые аудиты сохранены.
 
-Последняя полная проверка: [1601 passed, без skips, Ruff и mypy на a91ae44](reports/opencode-source-line-full-verification-20261106/checks.json). Все Docker-тесты включены; 54 production-файла прошли проверку типов. Снимки исходников до и после совпали. Проверка корректности не заменяет отдельные замеры скорости и памяти. Исторический PDF v10 сохраняет результаты своего прежнего среза.
+Последняя полная проверка: [1694 passed, без skips, Ruff и mypy на fe07667](reports/opencode-readable-full-verification-20261106/checks.json). Все Docker-тесты включены; 54 production-файла прошли проверку типов. Снимки исходников до и после совпали. Проверка корректности не заменяет отдельные замеры скорости и памяти. Исторический PDF v10 сохраняет результаты своего прежнего среза.

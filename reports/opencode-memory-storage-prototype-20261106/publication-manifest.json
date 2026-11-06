@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "source_directory": "runs/opencode-memory-storage-prototype-20261106",
+  "all_non_cache_files_retained": true,
+  "archive": {
+    "path": "evidence.tar.gz",
+    "bytes": 1723786,
+    "sha256": "e1acf834642fb85a88b0795e3abce77c9ba31a8553ea69ef6d77761da8554ece"
+  },
+  "files": {
+    "README.md": {
+      "sha256": "a11c264e8c84a54be2fea6a72056fc054ec3b34ca59142124000c29868e63cdf",
+      "bytes": 6387
+    },
+    "final-verification.json": {
+      "sha256": "ba5d1e9210cbad2f5057617309d59bd427c2ca4fb22443c6718779f897377069",
+      "bytes": 1051
+    },
+    "final-verification.log": {
+      "sha256": "fc10af26d5644e4a06462da363033b3999b61302fe03e406b98753c722706160",
+      "bytes": 1051
+    },
+    "prototype-attempt1.log": {
+      "sha256": "5b5c74f8c89efb2b64a859a11608d5c0f2abee132d792355a09b4c1f51877179",
+      "bytes": 3075
+    },
+    "prototype-report.json": {
+      "sha256": "7e0ff32ea37992b9e56e8a943c2969a7ee1fa6395c990ded32d91e0ba86f483d",
+      "bytes": 15506
+    },
+    "prototype.py": {
+      "sha256": "b7480899d8192eb16b4b1caf97011b073938da5035f7c8741d4cb1dabb9e2b3d",
+      "bytes": 22118
+    },
+    "queries.json": {
+      "sha256": "fe29e36c7e7869ff58a7ce9b88dea99a565f685286f39c65c326d812122d57b5",
+      "bytes": 2419
+    },
+    "representation-a.sqlite3": {
+      "sha256": "86b2da76819938027427f3e49789a4cc10839c8e97d9b7fd596e10e904bb19ca",
+      "bytes": 15007744
+    },
+    "representation-b.sqlite3": {
+      "sha256": "d8707bcab70b9ce5f1bba9a8975c430f2e5b9fd408e65af66766555133f36a37",
+      "bytes": 7684096
+    },
+    "summary.json": {
+      "sha256": "5e3d7ed9050288d950b6fc0494864eec4f34f8cad8cc97be6b9cde6c12f30b6c",
+      "bytes": 2019
+    },
+    "verify_final.py": {
+      "sha256": "c04fe9d731f3e4fdbae3ad8ae63a18c90818fde569cd26858fa51c3e06e7f336",
+      "bytes": 3038
+    }
+  },
+  "verification": "Every archived member read back and hashed; originals rechecked unchanged. No experiments rerun.",
+  "publication_files_sha256": {
+    "README.md": "a11c264e8c84a54be2fea6a72056fc054ec3b34ca59142124000c29868e63cdf",
+    "comparison.html": "290464df88fb8c15fcc9f7957f184ff11bdf6fc456811707875a52bf762b5483",
+    "display.json": "91a517b4374943c34604979d9b43fda2983a38ecdf906dbef9c43ea146c2e76c",
+    "evidence.tar.gz": "e1acf834642fb85a88b0795e3abce77c9ba31a8553ea69ef6d77761da8554ece",
+    "summary.json": "5e3d7ed9050288d950b6fc0494864eec4f34f8cad8cc97be6b9cde6c12f30b6c"
+  }
+}

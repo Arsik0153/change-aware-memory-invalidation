@@ -1,0 +1,15 @@
+{
+  "status": "passed_second_complete_attempt",
+  "source_commit": "fe0766761532d4544d3f39a95f4a4a622bf9707a",
+  "complete_attempts": 2,
+  "failed_attempts": 1,
+  "production_changed_between_attempts": false,
+  "final_six_case_stdio": 6,
+  "final_no_model_arms": 3,
+  "models": 0,
+  "auth_transfers": 0,
+  "heldout_models": 0,
+  "source_archive_sha256": "8804b6b6b37145c709ebb4e15e29584305e2739b9b80785fafa9152aa2b0c29a",
+  "final_report_sha256": "f4677d0d776e510c78a05a35cef1ddd921ea8a52f5ba7138e8f5293f13a2d1c5",
+  "failure_reason": "Root progress report exclusive-create reused progress.json; repaired driver uses unique per-arm files."
+}

@@ -1,0 +1,32 @@
+{
+  "a_logical_bytes": 15007744,
+  "all_original_memory_files_unchanged": 34,
+  "artifact_sha256": {
+    "README.md": "a11c264e8c84a54be2fea6a72056fc054ec3b34ca59142124000c29868e63cdf",
+    "final-verification.json": "ba5d1e9210cbad2f5057617309d59bd427c2ca4fb22443c6718779f897377069",
+    "final-verification.log": "fc10af26d5644e4a06462da363033b3999b61302fe03e406b98753c722706160",
+    "prototype-attempt1.log": "5b5c74f8c89efb2b64a859a11608d5c0f2abee132d792355a09b4c1f51877179",
+    "prototype-report.json": "7e0ff32ea37992b9e56e8a943c2969a7ee1fa6395c990ded32d91e0ba86f483d",
+    "prototype.py": "b7480899d8192eb16b4b1caf97011b073938da5035f7c8741d4cb1dabb9e2b3d",
+    "queries.json": "fe29e36c7e7869ff58a7ce9b88dea99a565f685286f39c65c326d812122d57b5",
+    "representation-a.sqlite3": "86b2da76819938027427f3e49789a4cc10839c8e97d9b7fd596e10e904bb19ca",
+    "representation-b.sqlite3": "d8707bcab70b9ce5f1bba9a8975c430f2e5b9fd408e65af66766555133f36a37",
+    "verify_final.py": "c04fe9d731f3e4fdbae3ad8ae63a18c90818fde569cd26858fa51c3e06e7f336"
+  },
+  "b_additional_observed_file_reduction_vs_a": 7323648,
+  "b_logical_bytes": 7684096,
+  "derived_database_total_bytes": 22691840,
+  "exact_original_state_and_generation_bytes_and_values_preserved": true,
+  "expected_corruption_rejections": 4,
+  "failed_build_attempts": 0,
+  "history_and_explicit_record_order_preserved": true,
+  "integrity_and_foreign_key_checks_passed": true,
+  "legacy_production_readers_must_reject": true,
+  "original_hash_after": "9b2ebeaa56154c261ac9068976ef7f45603fc01f656aba1e22b1bb70c879bda1",
+  "original_hash_before": "9b2ebeaa56154c261ac9068976ef7f45603fc01f656aba1e22b1bb70c879bda1",
+  "original_logical_bytes": 24862720,
+  "performance_or_RAM_claim": false,
+  "production_migration_implemented": false,
+  "recommendation": "A is the simplest viable representation to pursue; B is an additional storage option with more reference/reconstruction complexity. No production change.",
+  "status": "bounded_lossless_offline_prototype_passed"
+}

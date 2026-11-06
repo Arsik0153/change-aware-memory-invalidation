@@ -1,0 +1,37 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Headless Chrome could not render the page: the browser exited unexpectedly (exit code 1)."
+      }
+    ],
+    "structuredContent": {
+      "error": {
+        "_tag": "OrchestratorMcpFailure",
+        "operation": "preview",
+        "failureCount": 1,
+        "message": "Headless Chrome could not render the page: the browser exited unexpectedly (exit code 1)."
+      }
+    },
+    "isError": true
+  },
+  "render": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"htmlRender\":{\"attachmentId\":\"b75204ef-48b1-4216-acc5-0ebf20b469c5-2fb52cec-8c92-4418-8935-f08e1f8de2c4-html\",\"title\":\"Размер базы CAMI: исходный снимок и два прототипа\",\"height\":340},\"message\":\"Shown to the reader above your reply. Don't mention or describe the page; reply with only what it doesn't already say.\"}"
+      }
+    ],
+    "structuredContent": {
+      "htmlRender": {
+        "attachmentId": "b75204ef-48b1-4216-acc5-0ebf20b469c5-2fb52cec-8c92-4418-8935-f08e1f8de2c4-html",
+        "title": "Размер базы CAMI: исходный снимок и два прототипа",
+        "height": 340
+      },
+      "message": "Shown to the reader above your reply. Don't mention or describe the page; reply with only what it doesn't already say."
+    },
+    "isError": false
+  },
+  "visual_verification": "Preview browser exited1; render accepted. No successful screenshot verification."
+}
