@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from datetime import UTC, datetime
 import hashlib
 from pathlib import Path
@@ -26,6 +27,13 @@ def matches(view: CodeView, subject: SymbolKey) -> tuple[DefinitionFact, ...]:
     return tuple(d for d in view.definitions if d.subject == subject)
 
 
+def _definition_index(view: CodeView) -> dict[SymbolKey, tuple[DefinitionFact, ...]]:
+    grouped: dict[SymbolKey, list[DefinitionFact]] = {}
+    for definition in view.definitions:
+        grouped.setdefault(definition.subject, []).append(definition)
+    return {subject: tuple(definitions) for subject, definitions in grouped.items()}
+
+
 def identity_uncertainty(view: CodeView, subject: SymbolKey) -> bool:
     return subject.language in ("js", "jsx", "ts", "tsx") and any(
         g.covers(subject.path, subject.qualname, subject.node_kind)
@@ -39,9 +47,13 @@ def excerpt_source_bound(definition: DefinitionFact, view: CodeView) -> bool:
 
 
 def dependencies(record: RecordRevision, view: CodeView) -> DependencyStamp:
+    return _dependencies(record, view, matches(view, record.payload.subject))
+
+
+def _dependencies(record: RecordRevision, view: CodeView,
+                  found: tuple[DefinitionFact, ...]) -> DependencyStamp:
     payload = record.payload
     subject = payload.subject
-    found = matches(view, subject)
     coverage = next((c.status for c in view.coverage if c.path == subject.path), "unavailable")
     errors = tuple(error for path, error in view.path_errors if path == subject.path)
     if identity_uncertainty(view, subject):
@@ -94,7 +106,26 @@ def dependencies(record: RecordRevision, view: CodeView) -> DependencyStamp:
 
 def transition(record: RecordRevision, view: CodeView, previous: RecordState | None,
                previous_index: CodeView | None, transition_id: str) -> RecordState:
-    stamp = dependencies(record, view)
+    return _transition(record, view, previous, previous_index, transition_id,
+                       matches(view, record.payload.subject))
+
+
+def transition_many(records: tuple[RecordRevision, ...], view: CodeView,
+                    previous: Mapping[str, RecordState], previous_index: CodeView | None,
+                    transition_id: str) -> tuple[RecordState, ...]:
+    """Transition in input order using an exact-subject index owned by this operation."""
+    if not records:
+        return ()
+    definitions = _definition_index(view)
+    return tuple(_transition(record, view, previous.get(record.memory_id), previous_index,
+                             transition_id, definitions.get(record.payload.subject, ()))
+                 for record in records)
+
+
+def _transition(record: RecordRevision, view: CodeView, previous: RecordState | None,
+                previous_index: CodeView | None, transition_id: str,
+                found: tuple[DefinitionFact, ...]) -> RecordState:
+    stamp = _dependencies(record, view, found)
     scopes = set(stamp.scopes)
     if previous:
         scopes.update(previous.dependencies.scopes)
@@ -131,15 +162,19 @@ def transition(record: RecordRevision, view: CodeView, previous: RecordState | N
                 from_index=previous.state.check.index, to_index=view.index,
                 dependency_fingerprint=stamp.fingerprint))
     else:
-        state_claim = CheckedClaim(check=check(record, view, transition_id))
+        state_claim = CheckedClaim(check=_check(record, view, transition_id, found))
     return RecordState(record=record, state=state_claim, dependencies=stamp,
                        invalidation_scopes=tuple(sorted(scopes)))
 
 
 def check(record: RecordRevision, view: CodeView, transition_id: str) -> CheckRef:
+    return _check(record, view, transition_id, matches(view, record.payload.subject))
+
+
+def _check(record: RecordRevision, view: CodeView, transition_id: str,
+           found: tuple[DefinitionFact, ...]) -> CheckRef:
     payload = record.payload
     subject = payload.subject
-    found = matches(view, subject)
     errors = dict(view.path_errors)
     coverage = {c.path: c.status for c in view.coverage}
     verdict: Literal["supported", "contradicted", "insufficient_evidence"] = "insufficient_evidence"

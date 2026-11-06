@@ -288,6 +288,7 @@ def build_index(snapshot: Snapshot, config: IndexConfig = IndexConfig(),
     edges: set[Dependency] = set()
     unresolved = {node for module in modules for node in module.unresolved}
     for module in modules:
+        module_unresolved = frozenset(module.unresolved)
         local = {d.node.qualname: d for d in module.definitions}
         imported: dict[str, Node] = {}
         for alias, target_module, symbol in module.imports:
@@ -306,7 +307,7 @@ def build_index(snapshot: Snapshot, config: IndexConfig = IndexConfig(),
             if definition.loaded_names - definition.local_bindings - set(definition.calls):
                 unresolved.add(definition.node)
             for call in definition.calls:
-                if call in definition.local_bindings or Node(path=module.path, qualname=call) in module.unresolved:
+                if call in definition.local_bindings or Node(path=module.path, qualname=call) in module_unresolved:
                     unresolved.add(definition.node)
                     continue
                 candidate = local.get(call)

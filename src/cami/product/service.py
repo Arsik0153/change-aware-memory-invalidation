@@ -24,7 +24,7 @@ from cami.product.memory.python_excerpt import (
     prepare_python_excerpt_source, verify_origin_literal,
 )
 from cami.product.memory.store import MemoryStore
-from cami.product.memory.validation import VALIDATOR_FINGERPRINT, availability, transition
+from cami.product.memory.validation import VALIDATOR_FINGERPRINT, availability, transition_many
 
 
 def select(view: CodeView, query: str) -> tuple[DefinitionFact, ...]:
@@ -429,8 +429,8 @@ class ProductMemory:
                 transition_id = digest([previous.memory_generation_id if previous else None,
                                         view.index.model_dump(mode="json"), epoch, sequence])
                 prior = {s.record.memory_id: s for s in previous.states} if previous else {}
-                states = tuple(transition(r, view, prior.get(r.memory_id), old_view, transition_id)
-                               for r in sorted(records, key=lambda r: r.memory_id))
+                states = transition_many(tuple(sorted(records, key=lambda r: r.memory_id)),
+                                         view, prior, old_view, transition_id)
                 generation = MemoryGeneration(
                     memory_generation_id=digest([transition_id,
                                                 [s.model_dump(mode="json") for s in states]]),
