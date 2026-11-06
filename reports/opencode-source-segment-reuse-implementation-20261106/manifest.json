@@ -1,0 +1,20 @@
+{
+  "status": "ready_for_parent_review",
+  "source_sha256": {
+    "src/cami/index.py": "fccb66bfdf251b0bcdb092d010abf33b1db9a90069f943cc4a2daf507c500fea",
+    "tests/test_index_source_segments.py": "ed6ca8aa4822197ff7f5e9fe0d24a87bae2a0c82c1e35c81b335fca2e35fd9ba",
+    "tests/fixtures/python312_ast_source_segment.py.txt": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93"
+  },
+  "read_only_design_manifest": "runs/opencode-source-segment-reuse-design-20261106/manifest.json",
+  "artifact_sha256": {
+    "baseline-index.py.txt": "08c2a18e5a5f7b386cf1ef6aa854e985ca71ab7146777ce5ba228e2a1f68c61f",
+    "candidate-index.py.txt": "fccb66bfdf251b0bcdb092d010abf33b1db9a90069f943cc4a2daf507c500fea",
+    "click-equivalence.json": "b59a2028ffad2f07a5173a9ab4bf7ea275ec9498dbc984ffb009778459ddac42",
+    "container-python31212-ast.py.txt": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d",
+    "container-source-segment-reference.py.txt": "dd0c188c1eca1042a30e85d85cbc1749b1d541b93caee8e3c5cdd109f2222e6a",
+    "implementation.patch": "2f42c2a712ed1e6b10c6d617a20cb69852d5ad941904667289d947f4359c1ea8",
+    "stdlib-provenance.json": "0c423954e9269409d254590b5162e682bc76664515a45a441983c19664e295d3",
+    "verification.json": "a5223f99726fd91a3d1d4ed5b22e0697c85c26a58f3cd18dfbe9cd7372cd665d",
+    "verify_click_equivalence.py": "d4da2cc8fcafe7e1286c40deacd199d3bf73fadea13f02525b9fa4581a3d217d"
+  }
+}

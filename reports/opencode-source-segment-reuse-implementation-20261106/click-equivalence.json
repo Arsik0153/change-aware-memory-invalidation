@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "canonical_tree": "origin-and-stage1",
+      "canonical_inventory_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "source_roots": [
+        "src"
+      ],
+      "build_graph": false,
+      "all_fields_equal": true,
+      "input_python_files": 16,
+      "modules": 16,
+      "definitions": 512,
+      "baseline_source_segment_calls": 512,
+      "candidate_source_line_preparations": 15,
+      "edges": 0,
+      "unresolved": 1335,
+      "excluded_fields": [],
+      "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+    },
+    {
+      "canonical_tree": "origin-and-stage1",
+      "canonical_inventory_sha256": "6707f9b10a4b1b29695e319526113894a25fdbb6c4c70ba9a364f4b2e818a6a2",
+      "source_roots": [
+        "src"
+      ],
+      "build_graph": true,
+      "all_fields_equal": true,
+      "input_python_files": 16,
+      "modules": 16,
+      "definitions": 512,
+      "baseline_source_segment_calls": 512,
+      "candidate_source_line_preparations": 15,
+      "edges": 182,
+      "unresolved": 1335,
+      "excluded_fields": [],
+      "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+    },
+    {
+      "canonical_tree": "stage3",
+      "canonical_inventory_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "source_roots": [
+        "src"
+      ],
+      "build_graph": false,
+      "all_fields_equal": true,
+      "input_python_files": 16,
+      "modules": 16,
+      "definitions": 512,
+      "baseline_source_segment_calls": 512,
+      "candidate_source_line_preparations": 15,
+      "edges": 0,
+      "unresolved": 1335,
+      "excluded_fields": [],
+      "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+    },
+    {
+      "canonical_tree": "stage3",
+      "canonical_inventory_sha256": "b19c9160c31bfdd5c5d50937dfc423984df3cb9707e71360f3f218e1d0265d99",
+      "source_roots": [
+        "src"
+      ],
+      "build_graph": true,
+      "all_fields_equal": true,
+      "input_python_files": 16,
+      "modules": 16,
+      "definitions": 512,
+      "baseline_source_segment_calls": 512,
+      "candidate_source_line_preparations": 15,
+      "edges": 179,
+      "unresolved": 1335,
+      "excluded_fields": [],
+      "comparison": "dataclasses.asdict equality including complete module/definition/source/signature/hash/span/import/ambiguity/binding/loaded-name/edge/unresolved/revision data"
+    }
+  ],
+  "baseline_source_sha256": "08c2a18e5a5f7b386cf1ef6aa854e985ca71ab7146777ce5ba228e2a1f68c61f",
+  "candidate_index_sha256": "fccb66bfdf251b0bcdb092d010abf33b1db9a90069f943cc4a2daf507c500fea",
+  "reference_fixture_sha256": "3e5ad6d5a14a763e52bac9457446880d3a29dd43874df8689fd713de2b3c3c93",
+  "same_provenance_inputs_to_both_implementations": true,
+  "frozen_baseline_uses_exact_container31212_stdlib_source_reference": true,
+  "canonical_sources_unchanged": true,
+  "target_code_execution_or_imports": false,
+  "model_calls": 0,
+  "Docker_calls": 0,
+  "network_calls": 0,
+  "timing_or_speedup_claim": false
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ast
 import hashlib
+import re
 import sys
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
@@ -11,6 +12,24 @@ from cami.models import Dependency, Node, Parameter, Signature
 from cami.repository import Blob, Snapshot, changed_files
 
 INDEX_VERSION = "4"
+_SOURCE_LINE_PATTERN = re.compile(r"(.*?(?:\r\n|\n|\r|$))")
+
+
+def _source_lines(source: str) -> tuple[str, ...]:
+    # Match Python's physical lines without treating form feed or Unicode separators as newlines.
+    return tuple(match[0] for match in _SOURCE_LINE_PATTERN.finditer(source))
+
+
+def _source_segment(lines: tuple[str, ...], node: ast.FunctionDef | ast.AsyncFunctionDef) -> str:
+    """Default ast.get_source_segment slicing for parser-produced definition spans."""
+    end_line, end_column = node.end_lineno, node.end_col_offset
+    assert end_line is not None and end_column is not None
+    first, last = node.lineno - 1, end_line - 1
+    if first == last:
+        return lines[first].encode("utf-8")[node.col_offset:end_column].decode("utf-8")
+    start = lines[first].encode("utf-8")[node.col_offset:].decode("utf-8")
+    end = lines[last].encode("utf-8")[:end_column].decode("utf-8")
+    return "".join((start, *lines[first + 1:last], end))
 
 
 @dataclass(frozen=True)
@@ -168,11 +187,15 @@ def parse_module(blob: Blob, name: str) -> Module:
     unresolved: set[Node] = set()
     assignments = module_class_globals(tree.body)
     scope_counts: dict[str, int] = {}
+    source_lines: tuple[str, ...] | None = None
 
     def visit(body: list[ast.stmt], prefix: str, in_class: bool, conditional: bool) -> None:
+        nonlocal source_lines
         for statement in body:
             assignments.update(prefix + name for name in bound_names(scope_nodes((statement,))))
             if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                if source_lines is None:
+                    source_lines = _source_lines(source)
                 qualname = prefix + statement.name
                 scope_counts[qualname] = scope_counts.get(qualname, 0) + 1
                 node = Node(path=blob.path, qualname=qualname)
@@ -200,7 +223,7 @@ def parse_module(blob: Blob, name: str) -> Module:
                 definitions.append(Definition(node, "method" if in_class else "function", signature(statement),
                     hashlib.sha256(ast.dump(statement, include_attributes=False).encode()).hexdigest(),
                     statement.lineno, statement.end_lineno or statement.lineno,
-                    ast.get_source_segment(source, statement) or "", conditional, tuple(calls), frozenset(bindings),
+                    _source_segment(source_lines, statement), conditional, tuple(calls), frozenset(bindings),
                     frozenset(n.id for n in ast.walk(statement)
                               if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load))))
                 visit(statement.body, qualname + ".<locals>.", False, conditional)

@@ -1,0 +1,19 @@
+{
+  "status": "verified_static_image_source_extraction",
+  "image_archive": "output/opencode-runtime-v2-20261104/cami-opencode-runtime-v2.tar",
+  "archive_sha256": "a2ca0a587f915d6577a78962ea8e24ab90cde66518b90a8363f40f5eeb574dc9",
+  "image_manifest_digest": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "target": "usr/local/lib/python3.12/ast.py",
+  "source_layer": "blobs/sha256/90b93dccd534efdf46d219fcfa008ddce66480ce0259a99f6e756f629f018030",
+  "container_interpreter_from_sealed_profile": "3.12.12",
+  "stdlib_sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d",
+  "stdlib_bytes": 64452,
+  "selected_function_block_sha256": "dd0c188c1eca1042a30e85d85cbc1749b1d541b93caee8e3c5cdd109f2222e6a",
+  "selected_block_byte_identical_to_local3_12_3": true,
+  "module_byte_identical_to_local3_12_3": false,
+  "Docker_calls": 0,
+  "model_calls": 0,
+  "network_calls": 0,
+  "target_source_execution": false,
+  "scope": "Only exact stdlib target extracted from already pinned image archive; no container started and no auth used."
+}
