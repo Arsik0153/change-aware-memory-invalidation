@@ -32,8 +32,8 @@ that the result is correct. Only changes under `src/` are replayed. Candidate
 test or configuration edits are not replayed.
 
 The key binds exact task text, regular workspace file contents and modes, and
-the supplied context ID. Change the context ID when external dependencies or
-other relevant execution conditions change. Changed input produces a miss;
+the supplied context ID. Change the context ID when external dependencies,
+evaluation rules, agent instructions or relevant memory inputs change. Changed input produces a miss;
 there is no semantic reuse across different repositories. Use clean snapshots
 with at most 10,000 regular files and 64 MiB total content; keep the task file,
 cache and output outside both snapshots. The output must not already exist.
