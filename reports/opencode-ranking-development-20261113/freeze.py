@@ -40,7 +40,7 @@ study = schema.make_study(
     shared_server="http://host.docker.internal:49374",
 )
 sys.path.insert(0, str(root / "scripts/opencode_benchmark/analysis"))
-from ranking_probe import RULES
+from ranking_probe import RULES  # noqa: E402
 
 protocol = {
     "rules": RULES,

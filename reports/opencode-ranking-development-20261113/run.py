@@ -8,7 +8,7 @@ root = Path("/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v6"
 controller = root / "scripts/opencode_benchmark/controller"
 sys.path.insert(0, str(controller))
 from study_common import digest, read  # noqa: E402
-from study_schema import plan, validate  # noqa: E402
+from study_schema import plan, validate, runtime_files  # noqa: E402
 
 freeze = root / "runs/ranking-freeze"
 study_path = freeze / "study.json"
@@ -17,7 +17,6 @@ admission = read(freeze / "admission.json")
 assert admission["status"] == "passed" and admission["study_sha256"] == digest(study_path)
 assert admission["model_calls"] == 0 and len(admission["sessions"]) == 3
 assert digest(freeze / "protocol.json") == study["protocol_sha256"]
-from study_schema import runtime_files
 
 assert runtime_files(root / "scripts/opencode_benchmark/analysis") == study["analysis_files"]
 output = root / "runs/ranking-model"
