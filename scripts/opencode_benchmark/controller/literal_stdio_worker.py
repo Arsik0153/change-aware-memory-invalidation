@@ -56,7 +56,10 @@ def validate_response(result, expected, backend, response_format, trace, argumen
     if len(entries) != 1 or entries[0].get("id") != expected["id"] or value.get("withheld") != []:
         raise ValueError("origin lookup did not return exactly the selected literal")
     entry = entries[0]
-    if entry.get("payload") != expected["payload"]:
+    expected_payload = expected["payload"]
+    if response_format == "compact":
+        expected_payload = {key: value for key, value in expected_payload.items() if key != "sources"}
+    if entry.get("payload") != expected_payload:
         raise ValueError("literal tuple/source/span lost in MCP projection")
     note = expected["payload"]["type"] == "note"
     label = "manual_assertion" if note else (
@@ -95,6 +98,12 @@ def validate_response(result, expected, backend, response_format, trace, argumen
             or payload.get("full_result_sha256") != digest(audit.get("full_result"))
         ):
             raise ValueError("unscrubbed compact receipt binding differs")
+        full_value = json.loads(audit["full_result"]["content"][0]["text"])
+        full_entries = full_value.get("entries", [])
+        if (len(full_entries) != 1 or full_entries[0].get("id") != expected["id"]
+                or full_entries[0].get("payload") != expected["payload"]
+                or full_entries[0].get("origin_source") != expected["source"]):
+            raise ValueError("compact receipt lost original payload/source")
         base = dict(value)
         base.pop("audit_receipt")
         projected = {

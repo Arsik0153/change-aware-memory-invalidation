@@ -103,6 +103,28 @@ class StdioChecks(unittest.TestCase):
                         validate_response(*self.fixture(backend, response_format))["model_calls"], 0
                     )
 
+    def test_original_note_full_and_compact_receipt(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "integrations/opencode"))
+        from compact_response import compact_result
+        for backend in ("static", "cami"):
+            args = self.fixture(backend)
+            expected = args[1]
+            expected["payload"] = {"type": "note", "subject": expected["payload"]["subject"],
+                                   "note_key": "source", "text": "origin note", "sources": [expected["source"]]}
+            value = json.loads(args[0]["content"][0]["text"])
+            value["entries"][0].update(payload=expected["payload"], label="manual_assertion",
+                availability="unchecked_current" if backend == "static" else "manual_assertion_source_unchanged")
+            value["selection_budget"]["used_bytes"] = len(canonical(expected))
+            args[0]["content"][0]["text"] = canonical(value).decode()
+            self.assertEqual(validate_response(*args)["label"], "manual_assertion")
+            result, audit = compact_result(args[0])
+            args[0], args[3] = result, "compact"
+            args[4][0].update(response_format="compact", response_audit=audit)
+            self.assertEqual(validate_response(*args)["label"], "manual_assertion")
+            expected["payload"]["sources"][0]["sha256"] = "b" * 64
+            with self.assertRaisesRegex(ValueError, "original payload/source"):
+                validate_response(*args)
+
     def test_opposite_format_rejected(self):
         args = self.fixture(response_format="compact")
         args[3] = "full"
