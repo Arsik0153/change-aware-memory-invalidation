@@ -65,3 +65,29 @@ See summary.json, audit.json, prospective-evidence.tar.gz and driver.jsonl.
 The post-hoc auditor is scripts/opencode_benchmark/analysis/task_replay_audit.py.
 Subsequent interface/storage changes are separate and must retain source-equivalent
 outputs; they are not retroactively part of this measured block.
+
+## Usable CLI and compact storage
+
+Source 66e3142 adds the standalone record/materialize CLI, atomic durable
+publication, concurrent-write handling, bounded zlib source storage and a digest
+of the complete base-file inventory. Version 2 conservatively misses on version 1
+keys; it never changes the measured v1 run or imports its solution into a new run.
+See integrations/opencode/TASK_REPLAY.md for the exact usage contract.
+
+The two fresh learned results occupy 79,840 bytes versus
+368,822 bytes with the original storage representation
+(78.35% less). This is serialized entry size, not
+filesystem allocation, whole repository size or a new agent efficiency estimate.
+Both compact entries were materialized and freshly regraded successfully, with
+source-equivalent output and changed-input rejection. No new model calls were
+used in this storage verification. The earlier intermediate storage check and
+the final check are both retained in storage-v2-evidence.tar.gz.
+
+Final integration verification: 995 tests passed in 27.65 seconds across the
+OpenCode adapter, harness, controllers, analysis and new replay implementation.
+Ruff and git diff --check passed. The independent primary audit reproduced
+byte-for-byte after storage/interface changes. All experiment-owned containers
+were removed; private authentication state was absent before evidence export.
+CLI, atomic publication and compression were tested on authored cases; final
+compressed artifacts also passed real fixed graders on both fresh learned
+solutions. The primary model result remains the original v1 measurement.

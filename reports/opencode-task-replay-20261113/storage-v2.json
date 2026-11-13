@@ -1,0 +1,86 @@
+{
+  "compressed_total_bytes": 79840,
+  "implementation_commit": "66e3142",
+  "implementation_sha256": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+  "model_calls": 0,
+  "previous_total_bytes": 368822,
+  "reduction_fraction": 0.7835270130306761,
+  "results": [
+    {
+      "changed_input_rejected": true,
+      "fresh_grade_wall_seconds": 1.6881694599999264,
+      "learned_trial_sha256": "060f57612342c1fbe06a7a503e58eb7c2bcf9c2c4113b1481d7150b3bbf52ac1",
+      "materialize_wall_seconds": 0.030088583999940965,
+      "model_calls": 0,
+      "outcomes": {
+        "acceptance": {
+          "errors": 0,
+          "executed": 6,
+          "failed": 0,
+          "passed": 6,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "regression": {
+          "errors": 0,
+          "executed": 594,
+          "failed": 0,
+          "passed": 593,
+          "skipped": 22,
+          "xfailed": 1,
+          "xpassed": 0
+        }
+      },
+      "previous_stored_bytes": 199396,
+      "quality": "pass",
+      "record": {
+        "changed_files": 3,
+        "key": "0afcc7f84b1951479cd46c6812283363ec9cbaa845435c16f6df65d125c2f4e6",
+        "stored_bytes": 43817
+      },
+      "record_wall_seconds": 0.0318597079999563,
+      "replay_status": "candidate_requires_grading",
+      "task": "click-help-option-api"
+    },
+    {
+      "changed_input_rejected": true,
+      "fresh_grade_wall_seconds": 1.7849094999999124,
+      "learned_trial_sha256": "a76f6ee4fde6783258b164fced41cb38ce0af4c2c5223c9f3009b8fe176dcaaf",
+      "materialize_wall_seconds": 0.03336512500004574,
+      "model_calls": 0,
+      "outcomes": {
+        "acceptance": {
+          "errors": 0,
+          "executed": 35,
+          "failed": 0,
+          "passed": 35,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "regression": {
+          "errors": 0,
+          "executed": 594,
+          "failed": 0,
+          "passed": 593,
+          "skipped": 22,
+          "xfailed": 1,
+          "xpassed": 0
+        }
+      },
+      "previous_stored_bytes": 169426,
+      "quality": "pass",
+      "record": {
+        "changed_files": 1,
+        "key": "abf05bec236fdbc5379f9430421a75df999aa2f5c31d8ecee5967c505e1f8584",
+        "stored_bytes": 36023
+      },
+      "record_wall_seconds": 0.03128433400001995,
+      "replay_status": "candidate_requires_grading",
+      "task": "click-help-eagerness"
+    }
+  ],
+  "scope": "Post-hoc correctness verification using already completed development solutions. Not a new prospective agent trial, not a general speedup or causal token saving estimate. Learning costs remain in the historical runs. Every materialization freshly graded.",
+  "status": "passed"
+}

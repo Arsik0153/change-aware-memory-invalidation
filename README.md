@@ -48,6 +48,18 @@ codes and the [worktree index contract](docs/worktree_index_ru.md) for capture,
 exclusions, persistence, and failure behavior. The research `run` command keeps
 its existing contract.
 
+## Exact repeated-task result memory (experimental)
+
+The [result-memory CLI](integrations/opencode/TASK_REPLAY.md) records source changes
+and creates a new candidate only for an identical task, repository input and
+external context. Every candidate requires fresh tests; changed inputs miss.
+A [prospective empty-cache development experiment](reports/opencode-task-replay-20261113/README.md)
+passed all eight quality gates with 32.21% less noncached token work and 43.13% less
+measured pipeline time, including initial solutions and memory costs. This narrow
+result concerns exact repeated tasks, not arbitrary new tasks, semantic reuse
+after changes, or the existing source-prefix lookup. Subsequent compressed
+storage preserves source output and reduces the two entries' size 78.35%.
+
 ## OpenCode memory integration
 
 The [OpenCode adapter](integrations/opencode/README.md) exposes the same local

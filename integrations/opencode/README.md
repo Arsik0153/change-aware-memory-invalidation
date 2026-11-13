@@ -166,3 +166,14 @@ identifier ranking increased noncached token work 13.44% and native read text
 21.90% versus lexical CAMI. The predeclared direction criterion failed; this
 single dependent block establishes no general regression estimate. Lexical
 remains the default. Full evidence: `reports/opencode-ranking-development-20261113`.
+
+## Exact-task result replay (experimental)
+
+A separate [result-memory CLI](TASK_REPLAY.md) remembers source changes for exact
+repeats of a task, complete repository input and declared environment. It creates
+a new candidate and requires fresh grading; changed inputs miss. A prospective
+empty-cache development block reduced token work 32.21% and measured pipeline
+wall 43.13%, with all 8 attempts passing fixed quality. These figures include the
+initial solutions and memory costs, but apply only to exact repeated tasks and
+one dependent block. They do not establish a benefit for the original source
+lookup, arbitrary new tasks, or semantic reuse after changes.

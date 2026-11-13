@@ -202,3 +202,20 @@ Next work is a no-model information-sufficiency audit of the returned prefixes
 and subsequent reads. A further paid comparison needs a materially different,
 authored-case-supported intervention and a new prospective freeze; do not extend
 or pool the closed blocks.
+
+## Positive result for exact repeated tasks
+
+The subsequent empty-cache result-memory experiment completed all 8 attempts with
+fixed quality passing. Measured noncached token work fell 32.21% and charged
+pipeline wall 43.13%, including initial solutions, recording and fresh grading.
+This is a narrow result for two exact repeated tasks, not arbitrary new tasks or
+semantic reuse after source changes. Source-prefix lookup itself still has no
+established general advantage. See ../opencode-task-replay-20261113/README.md.
+
+The standalone experimental result-memory CLI now supports exact-input misses,
+new-output-only materialization, atomic publication, compressed source storage
+and fresh-test-required status. The two stored results are 78.35% smaller in the
+separate storage check, with identical reconstructed source and passing graders.
+Next research question is actual eligible repeat frequency and independent new
+development workloads; do not silently relax the exact-input guard to manufacture
+a higher hit rate, or present this block as a population estimate.
