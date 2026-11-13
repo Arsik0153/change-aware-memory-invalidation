@@ -165,3 +165,13 @@ Both the failed and successful no-model auth attempts are retained. The successf
 attempt removed its temporary private state and owned container. The common
 service configuration is mounted only in the trusted controller, never the
 trial agent's container.
+
+The immutable `runtime-v4` source is commit `420730d`. Before any measured call,
+four independently prepared memory catalogs were byte-identical (329 records),
+12 real stdio cases passed, and all five configured OpenCode no-model sessions
+passed with private state removed. The frozen study SHA256 is
+`d6199ba3b2b3b6952901b64325928213a7802b484574a4362d453f14637aa05d`.
+`format-freeze-v4.tar.gz` contains the protocol, study, exact plan and complete
+no-model admission artifacts. The driver attempts the20 declared trials in order
+without retries. The published proposal is retained unchanged; its hash and
+explicit authorization are recorded in the new protocol.
