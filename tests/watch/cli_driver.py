@@ -6,6 +6,7 @@ No CAMI imports, application execution, services or external test targets.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -16,6 +17,7 @@ import sqlite3
 import stat
 import subprocess
 import time
+import zlib
 
 BASE = 'export function createUser(name: string): string { return name; }\n'
 BODY = 'export function createUser(name: string): string { return name.trim(); }\n'
@@ -25,6 +27,22 @@ SYMBOL = 'src/lib/users.ts:createUser'
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def generation_json(value, version):
+    if version == 3:
+        codec, length, body = value.split(':', 2)
+        assert codec == 'cami-json-zlib/1' and length.isascii() and length.isdecimal()
+        assert not length.startswith('0') and len(length) <= 9
+        size = int(length)
+        assert 0 < size <= 256 * 1024 * 1024
+        compressed = base64.b64decode(body, validate=True)
+        assert base64.b64encode(compressed).decode('ascii') == body
+        decoder = zlib.decompressobj()
+        raw = decoder.decompress(compressed, size + 1)
+        assert len(raw) == size and decoder.eof and not decoder.unused_data and not decoder.unconsumed_tail
+        value = raw.decode('utf-8')
+    return json.loads(value)
 
 
 def bounded(path, limit=256 * 1024 * 1024):
@@ -63,9 +81,9 @@ def persisted(state, repo):
         db.deserialize(raw)
         db.execute('PRAGMA query_only=ON')
         version = db.execute('PRAGMA user_version').fetchone()[0]
-        assert version in (1, 2)
-        head = json.loads(db.execute('SELECT g.value FROM product_head h JOIN memory_generation g '
-                                     'ON g.id=h.generation_id WHERE h.singleton=1').fetchone()[0])
+        assert version in (1, 2, 3)
+        head = generation_json(db.execute('SELECT g.value FROM product_head h JOIN memory_generation g '
+                                          'ON g.id=h.generation_id WHERE h.singleton=1').fetchone()[0], version)
         index_id = head['index']['generation_id']
         view = json.loads(db.execute('SELECT value FROM index_view WHERE id=?', (index_id,)).fetchone()[0])
         sources = {p: {'sha256': h, 'size': n} for p, h, n in db.execute(

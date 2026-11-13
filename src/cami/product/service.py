@@ -253,10 +253,8 @@ class ProductMemory:
             origins[context.index.generation_id] = self.store.view(db, context.index.generation_id)
         origin = origins[context.index.generation_id]
         if context.memory_generation_id not in context_indexes:
-            row = db.execute("SELECT value FROM memory_generation WHERE id=?",
-                             (context.memory_generation_id,)).fetchone()
-            context_indexes[context.memory_generation_id] = (
-                MemoryGeneration.model_validate_json(row[0]).index if row else None)
+            generation = self.store.generation(db, context.memory_generation_id)
+            context_indexes[context.memory_generation_id] = generation.index if generation else None
         if (origin.index != context.index
                 or context_indexes[context.memory_generation_id] != context.index
                 or select(origin, context.query) != context.code):

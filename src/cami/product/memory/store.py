@@ -16,7 +16,10 @@ from cami.product.store import (
     MAX_CACHE_BYTES, CacheCorrupt, _sync_directory, _write_file,
 )
 from cami.product.memory.database import capture_database, read_evidence as read_evidence
-from cami.product.memory.schema import SCHEMA, EXPECTED_SCHEMAS, compact_legacy
+from cami.product.memory.encoding import (
+    check_decoded_budget, decode_generation, encode_generation,
+)
+from cami.product.memory.schema import SCHEMA, EXPECTED_SCHEMAS, upgrade_legacy
 from cami.product.memory.models import (
     CheckedClaim, CodeView, MemoryGeneration, MutationReceipt, RecordHistory,
     RecordRevision, SourceRef,
@@ -81,6 +84,8 @@ class MemoryStore:
                 * db.execute("PRAGMA page_size").fetchone()[0])
         if size > MAX_CACHE_BYTES:
             raise IncompleteError("memory_database_unavailable: database exceeds size limit")
+        if db.execute("PRAGMA user_version").fetchone()[0] == 3:
+            check_decoded_budget(row[0] for row in db.execute("SELECT value FROM memory_generation"))
         return db.serialize()
 
     def _validate_connection(self, db: sqlite3.Connection, private: Path) -> None:
@@ -88,7 +93,7 @@ class MemoryStore:
         try:
             version = db.execute("PRAGMA user_version").fetchone()[0]
             if version not in EXPECTED_SCHEMAS:
-                raise IncompleteError("memory_schema_error: expected schema version 1 or 2")
+                raise IncompleteError("memory_schema_error: expected schema version 1, 2 or 3")
             expected_tables = EXPECTED_SCHEMAS[version]
             tables = {name: " ".join(sql.split()) for name, sql in db.execute(
                 "SELECT name,sql FROM sqlite_schema WHERE type='table'")}
@@ -151,7 +156,7 @@ class MemoryStore:
                 snapshot.verify()
                 db.execute("PRAGMA foreign_keys=ON")
                 db.execute("PRAGMA synchronous=FULL")
-                compact_legacy(db)
+                upgrade_legacy(db)
                 if role is not DatabaseRole.ESTABLISHED:
                     self._mark_initialized()
                 yield db
@@ -211,9 +216,15 @@ class MemoryStore:
         return raw
 
     def head(self, db: sqlite3.Connection) -> MemoryGeneration | None:
-        row = db.execute("SELECT g.value FROM product_head h JOIN memory_generation g "
-                         "ON g.id=h.generation_id WHERE h.singleton=1").fetchone()
-        return MemoryGeneration.model_validate_json(row[0]) if row else None
+        row = db.execute("SELECT generation_id FROM product_head WHERE singleton=1").fetchone()
+        return self.generation(db, row[0]) if row else None
+
+    def generation(self, db: sqlite3.Connection, generation_id: str) -> MemoryGeneration | None:
+        row = db.execute("SELECT value FROM memory_generation WHERE id=?", (generation_id,)).fetchone()
+        if row is None:
+            return None
+        raw = decode_generation(row[0]) if db.execute("PRAGMA user_version").fetchone()[0] == 3 else row[0]
+        return MemoryGeneration.model_validate_json(raw)
 
     def view(self, db: sqlite3.Connection, generation_id: str) -> CodeView:
         row = db.execute("SELECT value FROM index_view WHERE id=?", (generation_id,)).fetchone()
@@ -257,7 +268,7 @@ class MemoryStore:
                        (view.index.generation_id, source.path, source.sha256, source.size))
         db.execute("INSERT INTO memory_generation VALUES(?,?,?,?)",
                    (generation.memory_generation_id, generation.sequence, view.index.generation_id,
-                    generation.model_dump_json()))
+                    encode_generation(generation.model_dump_json())))
         for item in generation.states:
             record = item.record
             db.execute("INSERT INTO record_state VALUES(?,?,?)",
@@ -279,9 +290,11 @@ class MemoryStore:
             "SELECT value FROM record_revision WHERE record_id=? ORDER BY revision", (memory_id,)))
         if not revisions:
             raise InputError("unknown memory ID")
+        compressed = db.execute("PRAGMA user_version").fetchone()[0] == 3
         return RecordHistory(
             memory_id=memory_id, revisions=revisions,
-            generations=tuple(MemoryGeneration.model_validate_json(row[0]) for row in db.execute(
+            generations=tuple(MemoryGeneration.model_validate_json(
+                decode_generation(row[0]) if compressed else row[0]) for row in db.execute(
                 "SELECT DISTINCT g.value FROM memory_generation g JOIN record_state s "
                 "ON s.generation_id=g.id WHERE s.record_id=? ORDER BY g.sequence", (memory_id,))),
             checks=tuple(CheckRef.model_validate_json(row[0]) for row in db.execute(

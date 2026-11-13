@@ -195,7 +195,7 @@ def test_cli_new_kind_and_strict_text_boundary(owner, tmp_path):
     bad = subprocess.run([*base, '--request-id', 'bad-cli', '--text', 'caller assertion'], env=env, capture_output=True, text=True)
     assert bad.returncode != 0 and 'does not accept text or note_key' in bad.stderr
     with sqlite3.connect(owner.store.path) as db:
-        assert db.execute('PRAGMA user_version').fetchone()[0] == 2
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 3
 
 
 @pytest.fixture(scope="session")

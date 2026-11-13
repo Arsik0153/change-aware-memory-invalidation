@@ -299,7 +299,9 @@ def test_concurrent_context_and_mutation_never_mix_generations(memory, tmp_path)
         with memory.index_store.writer(), memory.store.connection() as db:
             raw = db.execute('SELECT value FROM memory_generation WHERE id=?',
                              (current.memory_generation_id,)).fetchone()[0]
-        assert json.loads(raw)['index'] == current.index.model_dump(mode='json')
+        from cami.product.memory.encoding import decode_generation
+
+        assert json.loads(decode_generation(raw))['index'] == current.index.model_dump(mode='json')
 
 
 def test_actual_ecma_unsupported_method_unresolved_and_schema_mismatch():
