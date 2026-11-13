@@ -40,14 +40,19 @@ def main():
         capture = frozen.read(candidate / 'source-patch.json')
         if frozen.inventory(candidate / 'src') != capture['source_files']:
             raise ValueError('preserved candidate changed')
+        frozen.validate_source_scope(spec, run / ('base-' + task['id']), candidate)
         baseline = frozen.read(run / 'baselines' / task['id'] / 'allowance.json')
         quality = frozen.grade(spec, task, candidate,
                                run / 'diagnostics' / (trial_id + '-evaluation'),
                                allowance=baseline['outcomes'])
         if quality['source_files'] != frozen.file_hashes(candidate / 'src'):
             raise ValueError('graded source differs')
+        strict_pass = quality['status'] == 'pass' and all(
+            not outcome['exit_code'] and not outcome['counts']['failed']
+            and not outcome['counts']['errors'] and outcome['counts']['executed']
+            for outcome in quality['outcomes'].values())
         report['trials'].append({'trial': trial_id, 'primary_status': 'failed',
-            'primary_terminal_sha256': terminals[trial_id], 'forensic_quality': quality['status'],
+            'primary_terminal_sha256': terminals[trial_id], 'forensic_quality': 'pass' if strict_pass else 'fail',
             'source_files': quality['source_files'],
             'outcomes': quality['outcomes']})
     if terminals != {p.parent.name: hashlib.sha256(p.read_bytes()).hexdigest()
