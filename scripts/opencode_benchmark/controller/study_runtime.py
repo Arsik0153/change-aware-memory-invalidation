@@ -22,7 +22,7 @@ from study_common import (
     write,
 )
 from study_workspace import evaluation_workspace
-from study_schema import memory_response_format, service_tier_value
+from study_schema import trial_response_format, service_tier_value
 from memory_format_evidence import inspect_format
 from memory_seed_schema import literal_catalog, policy_for
 
@@ -298,7 +298,9 @@ def session(study, trial, workspace, memory, prompt, out):
     ]
     if "binary_path" in study:
         argv += ["--opencode-binary", study["binary_path"], "--opencode-sha256", study["binary_sha256"]]
-    response_format = memory_response_format(study)
+    if study.get("shared_server") is not None:
+        argv += ["--shared-server", study["shared_server"]]
+    response_format = trial_response_format(study, trial)
     tier = service_tier_value(study)
     argv += ["--memory-response-format", response_format]
     if tier is not None:

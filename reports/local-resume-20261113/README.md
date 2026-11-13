@@ -138,3 +138,30 @@ requires a new declared freeze, not editing the archived studies. These are
 correctness and isolation checks, not timing measurements. Task-model calls and
 heldout calls remain zero. The twenty-session format-only design still needs
 its own schedule and analysis before model execution.
+
+## Five-condition development design
+
+The controller now supports the explicit `format-only-development-v1` schema2
+study: one block, five conditions, four canonical stages, at most20 model
+sessions. Each condition has a distinct persistent memory namespace and its own
+origin construction charge. The deterministic condition order rotates by stage;
+four stages do not fully balance five positions. Historical schema1 studies
+retain their36-trial schedule. No result-selected retries or extensions are allowed.
+
+`analysis/format_probe.py` applies the existing artifact, grade, cost and token
+checks to this separate design. Direction is supported only if every trial has
+complete operational/quality/metric evidence and **both** memory backends have
+strictly lower noncached normalized token work **and** native read-result UTF8
+bytes with readable formatting. Shell reads are not inferred. Redacted or
+malformed read evidence is incomplete. The tool never asserts superiority.
+Wall totals remain descriptive because host quietness is not independently
+established. Provider tiers are retained separately from the requested priority.
+
+A frozen optional local `shared_server` endpoint supports Docker Desktop.
+Credentials still pass directly through the private exporter/importer pipe.
+The exporter runs from `/`, which exists on both hosts; inheriting `/workspace`
+failed because the native service validates client location before exporting.
+Both the failed and successful no-model auth attempts are retained. The successful
+attempt removed its temporary private state and owned container. The common
+service configuration is mounted only in the trusted controller, never the
+trial agent's container.

@@ -115,7 +115,7 @@ def credential_pipe(container, state, shared_url, *, binary=BINARY):
     environment["OPENCODE_PASSWORD"] = json.loads(Path("/root/.config/opencode/service.json").read_text())["password"]
     started = time.monotonic()
     exporter = subprocess.Popen([str(binary), "auth", "export", "openai", "--server", shared_url],
-        env=environment, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, start_new_session=True)
+        cwd="/", env=environment, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, start_new_session=True)
     importer = subprocess.Popen([*DOCKER, "exec", "-i", container, "/opt/opencode", "auth", "import", "--standalone"],
         env=docker_env(), stdin=exporter.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
     exporter.stdout.close()

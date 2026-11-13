@@ -4,11 +4,44 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+from urllib.parse import urlsplit
 
 from study_common import ARMS, contained, digest, file_hashes, read, verify_files
 from memory_seed_schema import literal_catalog, validate_policy
 
 MODEL = "openai/gpt-6.1-sol#high"
+FORMAT_DESIGN = "format-only-development-v1"
+FORMAT_CONDITIONS = (
+    ("plain", "plain", "compact"),
+    ("static_compact", "static", "compact"),
+    ("cami_compact", "cami", "compact"),
+    ("static_readable", "static", "readable"),
+    ("cami_readable", "cami", "readable"),
+)
+
+
+def format_conditions():
+    return [dict(id=name, arm=arm, response_format=fmt) for name, arm, fmt in FORMAT_CONDITIONS]
+
+
+def validate_design(study):
+    if study["schema_version"] == 1:
+        if study["arms"] != list(ARMS) or study["repetitions"] != 3:
+            raise ValueError("unsupported study design")
+        if "conditions" in study or "design" in study:
+            raise ValueError("legacy studies cannot carry a format-only design")
+    elif study["schema_version"] == 2:
+        if (
+            study.get("design") != FORMAT_DESIGN
+            or study["bundle_kind"] != "development"
+            or study["arms"] != list(ARMS)
+            or study["repetitions"] != 1
+            or study.get("conditions") != format_conditions()
+            or study.get("memory_response_format") != "compact"
+        ):
+            raise ValueError("unsupported format-only development design")
+    else:
+        raise ValueError("unsupported study design")
 
 
 def safe_id(value):
@@ -148,8 +181,15 @@ def make_study(
     memory_response_format="full",
     service_tier=None,
     binary_path=Path("/root/.opencode/bin/opencode"),
+    design=None,
+    shared_server=None,
 ):
+    if design is not None and (design != FORMAT_DESIGN or kind != "development"):
+        raise ValueError("format-only design requires a development bundle")
+    if design is not None and memory_response_format != "full":
+        raise ValueError("format-only design fixes the response format per condition")
     service_tier_value({"service_tier": service_tier})
+    shared_server_value({"shared_server": shared_server})
     if memory_response_format not in ("full", "compact", "readable"):
         raise ValueError("unsupported memory response format")
     data = normalize(bundle, kind)
@@ -189,6 +229,11 @@ def make_study(
     }
     if service_tier is not None:
         result["service_tier"] = service_tier
+    if shared_server is not None:
+        result["shared_server"] = shared_server
+    if design is not None:
+        result.update(schema_version=2, design=design, repetitions=1,
+                      conditions=format_conditions(), memory_response_format="compact")
     return result
 
 
@@ -251,11 +296,27 @@ def service_tier_value(study):
     return value
 
 
+def shared_server_value(study):
+    value = study.get("shared_server")
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        raise ValueError("shared auth server must be a local HTTP endpoint")
+    parsed = urlsplit(value)
+    if (parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "localhost", "host.docker.internal"}
+            or parsed.username is not None or parsed.password is not None
+            or parsed.path or parsed.query or parsed.fragment or parsed.port is None
+            or not 1 <= parsed.port <= 65535
+            or value != f"http://{parsed.hostname}:{parsed.port}"):
+        raise ValueError("shared auth server must be a local HTTP endpoint")
+    return value
+
+
 def validate(study, *, execute=False):
     memory_response_format(study)
     service_tier_value(study)
-    if study["schema_version"] != 1 or study["arms"] != list(ARMS) or study["repetitions"] != 3:
-        raise ValueError("unsupported study design")
+    shared_server_value(study)
+    validate_design(study)
     if study["model"] != MODEL or study["timeout_seconds"] != 900 or study["max_steps"] != 20:
         raise ValueError("frozen model/resource mismatch")
     if study.get("reported_token_budget") != 1_000_000:
@@ -300,6 +361,21 @@ def validate(study, *, execute=False):
 
 
 def plan(study):
+    if study.get("schema_version") == 2:
+        validate_design(study)
+        result = []
+        sequence = study["normalized"]["sequence"]
+        if len(sequence) != 4 or sequence[0] != sequence[1] or sequence[2] != sequence[3] or sequence[0] == sequence[2]:
+            raise ValueError("format-only design requires two tasks and four stages")
+        for stage, task in enumerate(sequence, 1):
+            offset = (stage - 1) % len(FORMAT_CONDITIONS)
+            for name, arm, fmt in FORMAT_CONDITIONS[offset:] + FORMAT_CONDITIONS[:offset]:
+                result.append(dict(
+                    id=f"r1-{name}-s{stage}", repetition=1, arm=arm, condition=name,
+                    response_format=fmt, stage=stage, task=task,
+                    predecessor=f"r1-{name}-s{stage - 1}" if stage > 1 else None,
+                ))
+        return result
     result = []
     for repetition in range(1, 4):
         for stage, task in enumerate(study["normalized"]["sequence"], 1):
@@ -316,3 +392,11 @@ def plan(study):
                     }
                 )
     return result
+
+
+def trial_response_format(study, trial):
+    if study.get("schema_version") == 2:
+        if trial not in plan(study):
+            raise ValueError("trial differs from frozen format-only schedule")
+        return trial["response_format"]
+    return memory_response_format(study)

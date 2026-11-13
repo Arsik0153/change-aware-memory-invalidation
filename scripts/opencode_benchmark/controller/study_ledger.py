@@ -64,18 +64,19 @@ def next_trials(planned, records):
             yield trial
 
 
-def summarize(records):
+def summarize(records, *, planned_trials=36):
     groups = defaultdict(list)
     for row in records.values():
         trial = row["trial"]
-        groups[(trial["repetition"], trial["arm"])].append(row)
+        groups[(trial["repetition"], trial.get("condition", trial["arm"]))].append(row)
     blocks = []
     for (rep, arm), rows in sorted(groups.items()):
         costs = [r.get("costs", {}) for r in rows]
         blocks.append(
             {
                 "repetition": rep,
-                "arm": arm,
+                "arm": rows[0]["trial"]["arm"],
+                **({"condition": arm} if "condition" in rows[0]["trial"] else {}),
                 "terminal_stages": len(rows),
                 "four_stage_complete": len(rows) == 4 and all(c.get("complete") for c in costs),
                 "passed_stages": sum(r["status"] == "passed" for r in rows),
@@ -101,9 +102,10 @@ def summarize(records):
         )
     return {
         "terminal_trials": len(records),
-        "planned_trials": 36,
+        "planned_trials": planned_trials,
         "blocks": blocks,
         "speedup_claim": None,
-        "scope": "two fixed tasks; dependent repeats within three blocks",
+        "scope": ("two fixed tasks; one exploratory block, no superiority claim"
+                  if planned_trials == 20 else "two fixed tasks; dependent repeats within three blocks"),
         "cost_accounting": "Construction includes generation and preparation once per memory arm. Session inclusive harness elapsed includes startup/auth/cleanup; authentication separately reported as infrastructure but not silently subtracted. Nested phase metrics are not added to inclusive totals. Canonical fixture export and fixed-test grading are separate infrastructure.",
     }

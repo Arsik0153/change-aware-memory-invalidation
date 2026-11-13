@@ -1,0 +1,22 @@
+{
+  "model_calls": 0,
+  "transfer": {
+    "status": "failed",
+    "export_returncode": 1,
+    "import_returncode": 1,
+    "import_stdout_bytes": 0,
+    "import_stderr_bytes": 29,
+    "wall_seconds": 0.1462952919999907,
+    "credential_body_saved": false,
+    "credential_body_decoded": false,
+    "provider": "openai",
+    "shared_server": "http://host.docker.internal:49374"
+  },
+  "private_state_removed": true,
+  "container_removed": true
+}
+Traceback (most recent call last):
+  File "/preflight.py", line 21, in <module>
+    assert result['transfer']['status']=='passed', 'credential import failed'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: credential import failed

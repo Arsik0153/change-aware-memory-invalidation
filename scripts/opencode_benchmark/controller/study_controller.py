@@ -10,7 +10,7 @@ import time
 from study_common import bytes_used, digest, file_hashes, inventory, read, write
 from study_ledger import complete, next_trials, summarize, terminals, verify_binding
 from study_runtime import grade, origin_memory, regression_allowance, session, verify_memory
-from study_schema import make_study, plan, validate
+from study_schema import FORMAT_DESIGN, make_study, plan, validate, trial_response_format
 from study_workspace import capture, create_namespace, reset, verify_namespace
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "src/cami").is_dir())
@@ -73,12 +73,14 @@ def run_trial(study, study_sha, output, trial, previous):
             "infrastructure_host_wall_seconds": 0,
         },
     }
-    namespace = output / "namespaces" / f"r{trial['repetition']}-{trial['arm']}"
+    condition = trial.get("condition", trial["arm"])
+    namespace = output / "namespaces" / f"r{trial['repetition']}-{condition}"
     (task,) = [t for t in study["normalized"]["tasks"] if t["id"] == trial["task"]]
     workspace = memory = None
     phase = "preflight"
     try:
         validate(study, execute=True)
+        trial_response_format(study, trial)
         if previous and not previous["memory_usable"]:
             raise ValueError("predecessor left unusable memory namespace; dependent trial blocked")
         if trial["stage"] == 1:
@@ -229,6 +231,7 @@ def main():
         "--one-trial", help="Only the next planned trial ID, development bundle only"
     )
     parser.add_argument("--make-study", action="store_true")
+    parser.add_argument("--design", choices=[FORMAT_DESIGN])
     parser.add_argument("--bundle", type=Path)
     parser.add_argument("--kind", choices=["development", "heldout"], default="development")
     parser.add_argument("--harness", type=Path)
@@ -239,6 +242,7 @@ def main():
     parser.add_argument("--adapter", type=Path, default=ROOT / "integrations/opencode")
     parser.add_argument("--memory-response-format", choices=["full", "compact", "readable"])
     parser.add_argument("--service-tier", choices=["auto", "priority"])
+    parser.add_argument("--shared-server")
     args = parser.parse_args()
     if args.make_study:
         if args.run_model or args.resume or not all([args.bundle, args.harness, args.image]):
@@ -257,10 +261,16 @@ def main():
             args.memory_response_format or "full",
             args.service_tier,
             args.opencode_binary or Path("/root/.opencode/bin/opencode"),
+            args.design,
+            args.shared_server,
         )
         write(output / "study.json", data)
         print(output / "study.json")
         return
+    if args.design is not None:
+        parser.error("design is frozen in --study; select it only with --make-study")
+    if args.shared_server is not None:
+        parser.error("shared auth server is frozen in --study; select it only with --make-study")
     if args.opencode_binary is not None:
         parser.error("OpenCode binary is frozen in --study; select it only with --make-study")
     if args.memory_response_format is not None:
@@ -299,7 +309,7 @@ def main():
             {"trials": planned, "model_calls": 0, "default_plan_only": not args.run_model},
         )
     if not args.run_model:
-        print("Plan only:36 trials; zero containers, zero model calls.")
+        print(f"Plan only:{len(planned)} trials; zero containers, zero model calls.")
         return
     records = terminals(output, planned, recover=args.resume)
     pending = list(next_trials(planned, records))
@@ -315,9 +325,9 @@ def main():
     report_dir = output / "summaries"
     report_dir.mkdir(exist_ok=True)
     write(
-        report_dir / f"summary-{len(list(report_dir.iterdir())) + 1:04d}.json", summarize(records)
+        report_dir / f"summary-{len(list(report_dir.iterdir())) + 1:04d}.json", summarize(records, planned_trials=len(planned))
     )
-    print(f"{len(records)}/36 terminal trials; no retries.")
+    print(f"{len(records)}/{len(planned)} terminal trials; no retries.")
 
 
 if __name__ == "__main__":
