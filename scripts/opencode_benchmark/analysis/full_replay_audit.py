@@ -13,7 +13,7 @@ CONDITIONS = ('plain', 'static', 'cami', 'cami_replay')
 
 def audit(root):
     protocol, summary = read(root / 'protocol.json'), read(root / 'summary.json')
-    if protocol['rules']['design'] != 'full-cami-result-memory-development-v1' or summary['rules'] != protocol['rules']:
+    if protocol['rules']['design'] != 'full-cami-result-memory-development-v2' or summary['rules'] != protocol['rules']:
         raise ValueError('unsupported protocol')
     sequence = protocol['runtime']['normalized']['sequence']
     expected = []

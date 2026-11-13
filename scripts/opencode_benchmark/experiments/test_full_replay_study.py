@@ -88,3 +88,40 @@ def test_success_requires_every_pair_both_metrics_and_all_quality():
     changed = deepcopy(rows)
     changed[0]['provider_reported_tiers'] = ['priority']
     assert not study.summarize(changed, 20)['eligible']
+
+
+@pytest.mark.parametrize('arm', ['plain', 'static', 'cami'])
+def test_full_runtime_passes_real_session_contract(tmp_path, monkeypatch, arm):
+    import sys
+    sys.path.insert(0, str(study.ROOT / 'scripts/opencode_benchmark/harness'))
+    import container_session as harness
+    import study_runtime
+    monkeypatch.setattr(study, 'digest', lambda _: 'authored-binary-hash')
+    runtime = {**study.runtime(), 'runtime_manifest_path': 'authored.json'}
+    out = tmp_path / 'session'
+    (out / 'evidence').mkdir(parents=True)
+    config = harness.configuration(arm, 'prepared/binding.json', 'readable', 'priority')
+    study.write(out / 'effective-input-config.json', config)
+    study.write(out / 'evidence/messages.json', [])
+    study.write(out / 'evidence/service-tier.json', {
+        'requested': 'priority', 'configured': 'priority', 'reasoning_effort': 'high', 'model_requested': True})
+    study.write(out / 'evidence/observed-model.json', {
+        'providerID': 'openai', 'id': 'gpt-6.1-sol', 'modelID': 'gpt-6.1-sol',
+        'package': '@opencode/ai/providers/openai/responses',
+        'settings': {'serviceTier': 'priority', 'reasoningEffort': 'high'}})
+    if arm != 'plain':
+        (out / 'evidence/memory-backend-trace.jsonl').write_text('')
+    manifest = {'status': 'passed', 'image_id': runtime['image'], 'model_requested': True,
+        'memory_response_format': 'readable', 'service_tier_requested': 'priority',
+        'artifact_hashes': {str(p.relative_to(out)): study_runtime.digest(p) for p in out.rglob('*') if p.is_file()}}
+    study.write(out / 'manifest.json', manifest)
+    calls = []
+    monkeypatch.setattr(study_runtime, 'command', lambda argv, **kw: calls.append(argv) or {'returncode': 0, 'timeout': False})
+    assert study_runtime.session(runtime, {'arm': arm}, tmp_path, tmp_path, tmp_path, out) == manifest
+    assert len(calls) == 1
+    for model in (None, 'different-model'):
+        calls.clear()
+        invalid = {**runtime, 'model': model}
+        with pytest.raises(ValueError, match='frozen model'):
+            study_runtime.session(invalid, {'arm': arm}, tmp_path, tmp_path, tmp_path, out)
+        assert calls == []

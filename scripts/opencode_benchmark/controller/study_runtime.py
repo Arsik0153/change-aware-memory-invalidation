@@ -22,7 +22,7 @@ from study_common import (
     write,
 )
 from study_workspace import evaluation_workspace
-from study_schema import trial_response_format, service_tier_value, trial_ranking_policy, LEXICAL_RANKING
+from study_schema import trial_response_format, service_tier_value, trial_ranking_policy, LEXICAL_RANKING, MODEL
 from memory_format_evidence import inspect_format
 from memory_seed_schema import literal_catalog, policy_for
 
@@ -280,6 +280,9 @@ def validate_ranking_trace(events, arm, policy):
 
 
 def session(study, trial, workspace, memory, prompt, out):
+    # Check the model contract before a potentially paid subprocess is launched.
+    if study.get("model") != MODEL:
+        raise ValueError("missing or unsupported frozen model")
     argv = [
         sys.executable,
         study["harness"],

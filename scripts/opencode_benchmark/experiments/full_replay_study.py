@@ -20,7 +20,7 @@ from aggregate_metrics import token_fields  # noqa: E402
 from format_probe import read_projection  # noqa: E402
 import task_replay  # noqa: E402
 
-DESIGN = 'full-cami-result-memory-development-v1'
+DESIGN = 'full-cami-result-memory-development-v2'
 CONDITIONS = ('plain', 'static', 'cami', 'cami_replay')
 REPETITIONS = 5
 IMAGE = 'sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040'
@@ -38,7 +38,7 @@ RULES = {
 
 def runtime():
     bundle = ROOT / 'examples/opencode_benchmark_development_v2'
-    return {'image': IMAGE, 'bundle_kind': 'development', 'bundle_path': str(bundle),
+    return {'image': IMAGE, 'model': 'openai/gpt-6.1-sol#high', 'bundle_kind': 'development', 'bundle_path': str(bundle),
             'normalized': normalize(bundle, 'development'), 'cami_source': str(ROOT / 'src'),
             'adapter': str(ROOT / 'integrations/opencode'),
             'harness': str(ROOT / 'scripts/opencode_benchmark/harness/container_session.py'),

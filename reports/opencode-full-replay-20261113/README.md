@@ -37,3 +37,17 @@ sessions. Private state was removed; no model calls occurred during admission.
 Host precheck: 8 logical CPUs, load averages 1.63/1.68/1.71, about 70GiB free.
 
 Status at freeze: admitted, paid/model execution not yet started.
+
+## Aborted execution (runtime-v8)
+
+This version is invalid and cannot support an efficiency claim. The first real
+model session finished, then the controller raised `KeyError: 'model'` while
+checking effective configuration. A second static-arm model session started before
+the controller was stopped; that worker was explicitly interrupted and removed.
+Thus two model sessions were started, not zero; no quality/economy result is claimed.
+The scrubbed artifacts are retained in `aborted-v8-evidence.tar.gz`. Private state
+was removed. Neither attempt is pooled or reused as a solution in the replacement.
+The no-model admission and mocked schedule test had missed the real controller
+contract. The repair freezes the model, validates it before any paid subprocess,
+and exercises the actual session postconditions for all three arms in tests.
+A separate runtime-v9, protocol version2 and empty namespaces are required.
