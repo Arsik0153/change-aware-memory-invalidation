@@ -296,10 +296,11 @@ def main():
         run(args.freeze, args.out)
     else:
         args.freeze.mkdir(exist_ok=False)
-        if args.design == HELDOUT_DESIGN:
-            admission = read(ROOT / 'runs/heldout-admission/admission.json')
+        if args.design in {HELDOUT_DESIGN, ABLATION_DESIGN}:
+            name = 'heldout-admission' if args.design == HELDOUT_DESIGN else 'ablation-admission'
+            admission = read(ROOT / 'runs' / name / 'admission.json')
             if admission['status'] != 'passed' or admission['model_calls'] != 0:
-                raise ValueError('heldout no-model admission required')
+                raise ValueError('registered no-model admission required')
         spec = runtime(args.design)
         write(args.freeze / 'protocol.json', {'rules': rules(args.design), 'runtime': spec, 'pins': pins(), 'schedule': schedule(spec)})
         write(args.freeze / 'runtime-manifest.json', {'image_id': IMAGE, 'binary_sha256': digest(ROOT / 'bin/opencode'),
