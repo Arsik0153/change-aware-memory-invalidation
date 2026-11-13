@@ -67,6 +67,7 @@ print(json.dumps(receipt))
     run([python, REPORT / 'verify_bindings.py', root, REPORT / 'binding-audit.json'])
     run([python, REPORT / 'account_all_attempts.py', root, REPORT / 'all-attempt-accounting.json'])
     run([python, REPORT / 'audit_note_usage.py', root, REPORT / 'note-usage-audit.json'])
+    run([python, REPO / 'reports/session-20261114/audit_physical_guards.py', root, REPORT / 'physical-guard-audit.json'])
     audit = json.loads((REPORT / 'audit.json').read_text())
     if audit['eligible']:
         run([python, REPORT / 'analyze_accounting.py', root, REPORT])
