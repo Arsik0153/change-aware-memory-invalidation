@@ -1,0 +1,29 @@
+{
+  "design": "result-memory-ablation-development-v1",
+  "status": "preregistered_not_started",
+  "production_commit": "a8c34cd",
+  "parent_commit": "07b5567d3b6f7dc130f735122de5731efc4d9bf2",
+  "purpose": "Test whether source-memory CAMI adds enough benefit to result replay to justify its overhead, comparing CAMI+replay with plain+replay on already exposed development tasks.",
+  "conditions": [
+    "cami_replay",
+    "plain_replay"
+  ],
+  "candidate": "plain_replay",
+  "comparator": "cami_replay",
+  "repetitions": 5,
+  "sequence": [
+    "A",
+    "A",
+    "B",
+    "B"
+  ],
+  "attempts": 40,
+  "model_sessions": 20,
+  "expected_exact_repeat_hits": 20,
+  "success": "All40 attempts pass fixed tests and operations; complete telemetry; uniform observed provider tier;20 expected hits and20 changed-input probes with positive controls. Plain+replay must have strictly lower four-stage token work AND charged pipeline wall in EACH of5 paired blocks. Otherwise evidence is inconclusive/unsupported; do not replace CAMI based on a favorable subset.",
+  "inputs": "Original development_v2 Click tasks and frozen literal source seed; no heldout tasks or outcomes used for tuning.",
+  "runtime": "Same immutable image and model Sol high as full replication; source/adapter remain a8c34cd. Exact runner/source/input pins frozen before any call.",
+  "accounting": "Include canonical resets, source-memory initialization where configured, model/auth, cache lookup/record/materialization, captures, fresh fixed grading, and equal shared baseline preflight. Interleave conditions per stage and block. Each condition/block starts empty isolated source and result memory. No retries/replacement/extension/pooling.",
+  "scope": "Development ablation on two previously exposed tasks, not new heldout evidence or representative production hit rates. Native model result cache remains exact-task/exact-input with fresh grading. Token work is not an invoice.",
+  "execution": "Only after heldout full experiment finishes; no concurrent model experiments or changes to its immutable snapshot."
+}
