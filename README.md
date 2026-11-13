@@ -66,6 +66,12 @@ every block. These are exact repeats of two development tasks, not 80 independen
 tasks or evidence for arbitrary new tasks, semantic reuse after changes, or the
 existing source-prefix lookup. Token work is not billed currency.
 
+The subsequent [heldout Packaging replication](reports/opencode-heldout-full-replay-20261114/README.md)
+completed all 80 attempts: 78 passed the primary gates, while two retained
+incomplete provider telemetry after transport errors. All ten exact-repeat hits
+passed fresh grading. The preregistered overall verdict is inconclusive; separate
+post-run quality checks of the two preserved solutions do not repair missing usage.
+
 The [subsequent storage upgrades](reports/opencode-generation-compression-20261114/README.md)
 removed redundant values and compressed generation JSON, reducing median SQLite
 size from 36.76 MB to 7.72 MB on the same ten source-memory databases. Histories
