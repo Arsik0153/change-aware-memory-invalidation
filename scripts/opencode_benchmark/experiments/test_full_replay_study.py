@@ -12,7 +12,7 @@ spec.loader.exec_module(study)
 
 
 @pytest.mark.parametrize('design', [study.DESIGN, study.ABLATION_DESIGN])
-@pytest.mark.parametrize('fail', [False, True])
+@pytest.mark.parametrize('fail', [False, True, 'tier'])
 def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path, monkeypatch, fail, design):
     base = tmp_path / 'source'
     (base / 'src').mkdir(parents=True)
@@ -33,11 +33,14 @@ def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path,
     def model(spec, trial, workspace, memory, directory, prompt):
         calls.append(prompt)
         (workspace / 'src/code.py').write_text(f'value = {1 if prompt == "a" else 2}\n')
-        return dict(input=100, cache_write=0, output=10, reasoning=5, cache_read=0), ['default']
+        tokens = dict(input=100, cache_write=0, output=10, reasoning=5, cache_read=0)
+        if fail == 'tier' and trial['id'] == f'r1-{study.conditions(design)[-1]}-s1':
+            raise study.TierEvidenceError(tokens, ['default'])
+        return tokens, ['default']
     def grade(spec, task, candidate, out, allowance):
         grades.append(task['id'])
         assert (candidate / 'src/code.py').read_text() == f'value = {1 if task["id"] == "a" else 2}\n'
-        return {'status': 'fail' if fail else 'pass'}
+        return {'status': 'fail' if fail is True else 'pass'}
     monkeypatch.setattr(study, 'origin_memory', lambda *a: {})
     monkeypatch.setattr(study, 'verify_memory', lambda *a: {})
     monkeypatch.setattr(study, 'model_session', model)
@@ -47,10 +50,19 @@ def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path,
     summary = json.loads((out / 'summary.json').read_text())
     total = study.rules(design)['attempts']
     model_calls = study.rules(design)['maximum_model_sessions']
-    if fail:
+    if fail is True:
         assert len(calls) == len(grades) == model_calls
         assert summary['direction_supported'] is False
         assert all(not b['complete'] for b in summary['blocks'])
+    elif fail == 'tier':
+        assert len(calls) == model_calls and len(grades) == total - 1
+        fault = out / 'trials' / f'r1-{study.conditions(design)[-1]}-s1'
+        terminal = study.read(fault / 'terminal.json')
+        assert terminal['status'] == 'failed' and terminal['quality'] == 'pass'
+        assert terminal['tokens']['input'] == 100 and terminal['evidence_error']
+        assert (fault / 'candidate/src/code.py').read_text() == 'value = 1\n'
+        assert not (fault / 'record.json').exists()
+        assert summary['eligible'] is False and summary['direction_supported'] is False
     else:
         assert len(calls) == model_calls and len(grades) == total
         assert len(list((out / 'namespaces').iterdir())) == total // 4

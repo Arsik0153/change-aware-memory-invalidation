@@ -108,6 +108,14 @@ def schedule(spec):
     return result
 
 
+class TierEvidenceError(ValueError):
+    """A completed model session can still have incomplete provider accounting."""
+    def __init__(self, tokens, reported_tiers):
+        super().__init__('model tier evidence incomplete')
+        self.tokens = tokens
+        self.reported_tiers = reported_tiers
+
+
 def model_session(spec, trial, workspace, memory, directory, prompt):
     prompt_file = directory / 'prompt.txt'
     prompt_file.write_text(prompt)
@@ -122,7 +130,7 @@ def model_session(spec, trial, workspace, memory, directory, prompt):
         raise ValueError('token telemetry incomplete')
     tier = trial_tier(directory, {'terminal_present': True})
     if not tier['configuration_valid'] or not tier['provider_reported_complete']:
-        raise ValueError('model tier evidence incomplete')
+        raise TierEvidenceError(tokens, tier['provider_reported_values'])
     return tokens, tier['provider_reported_values']
 
 
@@ -227,11 +235,19 @@ def run(freeze, out):
                 if hit != trial['expected_cache_hit']:
                     raise ValueError('unexpected hit/miss; frozen schedule not extended')
             result['cache_hit'] = hit
+            evidence_error = None
             if hit:
                 tokens = dict.fromkeys(('input', 'cache_read', 'cache_write', 'output', 'reasoning'), 0)
             else:
                 result['model_calls'] = 1
-                tokens, result['provider_reported_tiers'] = model_session(spec, trial, workspace, memory, directory, task['prompt'])
+                try:
+                    tokens, result['provider_reported_tiers'] = model_session(spec, trial, workspace, memory, directory, task['prompt'])
+                except TierEvidenceError as error:
+                    # Preserve and grade completed source, but never qualify incomplete telemetry.
+                    evidence_error = error
+                    tokens, result['provider_reported_tiers'] = error.tokens, error.reported_tiers
+                    result['evidence_error'] = str(error)
+                    result['token_accounting_scope'] = 'observed normalized subtotal; failed provider responses may be unreported'
                 capture(workspace, canonical['canonical_files'], candidate)
             result['tokens'] = tokens
             result['token_work'] = sum(tokens[k] for k in ('input', 'cache_write', 'output', 'reasoning'))
@@ -240,6 +256,8 @@ def run(freeze, out):
             result['quality'] = quality['status']
             if quality['status'] != 'pass':
                 raise ValueError('fixed quality failed')
+            if evidence_error is not None:
+                raise evidence_error
             if trial['condition'].endswith('_replay') and not hit:
                 write(directory / 'record.json', task_replay.record(before, candidate, task['prompt'], context, cache))
             verify_memory(spec, memory, trial['arm'], immutable)

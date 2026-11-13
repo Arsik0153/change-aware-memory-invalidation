@@ -1,0 +1,14 @@
+{
+  "status": "before_any_ablation_model_call",
+  "production_change": false,
+  "reason": "Heldout trial r3-static-s1 had two provider.transport WebSocket1006 error responses lacking tokens/tier, followed by successful model completion. Frozen heldout runtime-v14 correctly rejects complete accounting, but exits before source capture and fixed grading. Its source was preserved separately before the next canonical reset.",
+  "change": "For future runs only, a dedicated TierEvidenceError carries observed normalized subtotals. The controller captures and grades completed source before marking the attempt failed. Incomplete accounting never qualifies, and no failed attempt is learned into result memory. No retry, missing-value substitution or primary-rule change.",
+  "unchanged": [
+    "production source and adapter a8c34cd",
+    "model and service-tier request",
+    "attempt schedule and counts",
+    "all quality/evidence/strict paired success gates",
+    "current immutable heldout runtime-v14"
+  ],
+  "tests": "15 targeted checks passed, including missing-tier capture, fresh grading, failed status and no learning."
+}
