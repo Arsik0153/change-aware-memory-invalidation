@@ -1,0 +1,89 @@
+{
+  "status": "verified",
+  "model_calls": 0,
+  "verified_processes": 100,
+  "summary_sha256": "b5e055705cea7bbf5a2784b1cd68479dc0fafa501896a93ba0885615d977b186",
+  "cases": [
+    {
+      "id": "r1-cami",
+      "result_sha256": "bef52d63832154370cbd2c15ae6cf86524a3b0737b729bbb7174dd0df92b7571",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r1-cami_replay",
+      "result_sha256": "7feebebb55d2f30e98ecad9662ec35befaf9e36a616bc3a14f1072b1bea87be0",
+      "ranges_separated": {
+        "process_wall_seconds": false,
+        "wall_seconds": false
+      }
+    },
+    {
+      "id": "r2-cami",
+      "result_sha256": "dbcc4e1f51fbdece384bd2002272fe97197eef8a62bfcd80e2c00fe8a7d8be31",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r2-cami_replay",
+      "result_sha256": "a4637457ece37a92335aa3dbf28aaad4bd7f51e3a11195851cb2c29045f09378",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r3-cami",
+      "result_sha256": "315dd0f0a08773d92b1c4df2b9a80500b34f52480c5edb5f67abaed18cbc174d",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r3-cami_replay",
+      "result_sha256": "cb8f04455aaa865bb2aef6bdf0303a98597aa7dcb330cc0ca9032d88001b0839",
+      "ranges_separated": {
+        "process_wall_seconds": false,
+        "wall_seconds": false
+      }
+    },
+    {
+      "id": "r4-cami",
+      "result_sha256": "650573f53dccaa563826755147e2355ff62fba370d47367e759324a8addd4c25",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r4-cami_replay",
+      "result_sha256": "7aaab96568147131cab0bf79d79d3d10a8ef8e4427098686be5d84047a49352a",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r5-cami",
+      "result_sha256": "8b8b2679b0543d6915854b032526be3b577c0d5b30ad98fa5a6eef2573f36892",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    },
+    {
+      "id": "r5-cami_replay",
+      "result_sha256": "31c3657482f406ce1a5b7f730e702c83e4a33633d3ed57b4650a377ce1016163",
+      "ranges_separated": {
+        "process_wall_seconds": true,
+        "wall_seconds": true
+      }
+    }
+  ],
+  "scope": "All physical inputs and copied stores unchanged, exact public output hashes, successful process receipts, actual record counts and lexical-cache work, sample arithmetic and source imports pinned to each isolated version."
+}

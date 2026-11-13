@@ -1,0 +1,18 @@
+{
+  "status": "verified",
+  "baseline": {
+    "inputs": 37470,
+    "calls": 74940,
+    "accepted": 11510,
+    "rejected": 63430,
+    "observable_outcomes_sha256": "f375e5c2e78309d7d334875354ac5ccedfeb0956b75934ae25580c40d671522b"
+  },
+  "candidate": {
+    "inputs": 37470,
+    "calls": 74940,
+    "accepted": 11510,
+    "rejected": 63430,
+    "observable_outcomes_sha256": "f375e5c2e78309d7d334875354ac5ccedfeb0956b75934ae25580c40d671522b"
+  },
+  "scope": "Exhaustive strings of length 0\u20135 over eight path-relevant characters, plus long-path boundaries; repeated calls preserve exact errors and input identity."
+}

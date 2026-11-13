@@ -1,0 +1,885 @@
+{
+  "cases": [
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r1-cami",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r1-cami/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "91cdee35caea4f2f09ae6b0fd271e97fc88b1be2fd866ba7c29cf490a18b6e18",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "7e3649f87636008caf86588e9446d463d68f35febdc032811eada0341d7a8b9b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "846b90dc119ccded3c4a0a0b53cf9264bf9c9cdfb83461f0d8f9de161e724827",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "0d3b4a2e0027e14533b2b158d4caef7619ca97ddc5ed31be8e923c9f2cceb3f2",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "79ab430ffbb835979121c83676fb1f95464f18e8ac93aafd76912cbefbcd0cf6",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "56cba2fdca242c910e672786b1f1159321d0d78af3657a04f2d03ae7fcb046ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "25e9aa1aa95f08061151069566752a7ae95ba5b3fecd207df36b744b817b9225",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "8c76fffbc9636068bac468cce6a1b63089470b011c6bb903947f14162675a780",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "88649cb61056aaa5a56cbe625a1e06ef8d2351d43d1cdf7090ace1828fe4fe96",
+        "seed/metrics.json": "808c0c955661eac52bb370939f5d0f7bcd4c37a77dc44dcc0ce8b4c00f613a12",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r1-cami_replay",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r1-cami_replay/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "a89f14a2b2cc95e4e81ac4e73b3b7f54a4aba665e0a553322e9977192e8e5d51",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "27e95d0052b5bc919eb814d2d307f014a1bc809f4d3485d53cdcfb8fe34e74cc",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "ed5348e2ad64315814b0ea302265a097edc0c69b31721ea864cc98c2c5db8a61",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "97729ed87b48c88bf1eb7d36410e3afeb01c3d234287ef44545266dafa8551bb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "ccd371f5d24ac901090d5591f3ea2e221fde2dec787178c82f3d86a18cde7e83",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "13575f6d99a009691d98369a9c21a3759cea8016bbb0af76a4fbc6d0a6c78a2e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "3220ffa89f94eb582f1655d28a5485b713e8a49fe82a4bec520e3f80b87caa15",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "2b0f6385eb91651548e3081829a57f8d19c31f3ab70b13597d74e67518a69df4",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "986a02c80acbdda28093a3dd12aeb8e7e2a469829bc4c8f6a76fca920022fc73",
+        "seed/metrics.json": "e234d2df55e6ca5cccbb6afeafd134bc9d6c2ec92d95e26ea5f2d383311640f0",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r2-cami",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r2-cami/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "6c10611689cb4a7bc82fa6733d01d53b925a25630ad875504b09a6049cafc7c3",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "29fcfa094229822110077e163fad85391ec979054a494be75c8fab1ad16d52f8",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "8f2de4be96c9006b812fc7d49dba129e3e36a54493efb630867e76fd8ec79e54",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "7578823ed787e521c14dea45d49ee969ebf6d3d51928b37e1ffa02917f1faa31",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "de94a972079d96b67a9902d1f58a09c9ccb7708543a2c17f2a5a5bd62e468251",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "455f6bc0dee26d18af35f4496a65892c0cff928eee9c1f0e4d844342d6424188",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "402099f623a7a84963457e6723287d85c752c386e1044da6d8ae938d92826ec4",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "4857ddbf77141dbfd31bfb4ec8215cf853e924ac4d709aeaeb792bad11f1c84f",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "baa8a419496c209413fe0ba0ab0bd65df875139dc4fa0b72035307c4257d4909",
+        "seed/metrics.json": "12c3e7d345129727ee8604691ce10df52d0a25a3d64bdca23c78cf53144dfc46",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r2-cami_replay",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r2-cami_replay/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "bed2395bbe592a538071177eaff0bbea99335aa24aa2029bf2d621d0ee176411",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "8ef6a921d985bbef4eb0c73b4941881f58ed0e50511f2fd4d0c21bec8656014b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "5be2a7bd0ac540a05129ebb43d791132b08225688d4c26f321b990f333c02b4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "d679f6a959b532570e79d6be4ce9218e7a800d2d6f4e72ef6b0338bd4f8e7fd5",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "329d71bf2ff163a4b608b10b89f09b48e575962535da8a050b847f0e7de27f39",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "0a7b74b56855cf3b6ede1fb6e87bea1c26f8cdcd5e2a333c4590f83dcdcbab85",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "6433c9fc678e265db13c9b8176f500f32807813f43e27ec349848f1e1eb79713",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "422c9f2794a5c6fb858080466f6cfdc9be9f4f0fee5f4aad4f207645f7154435",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "f1e3e6ce0513db83140ab6279ba02b2e8f26dd0ac65b3476d4aee04ea228f2eb",
+        "seed/metrics.json": "6dc7a79033bfeb46fed3359a00d7e479df9b484dd6b357d0f8d9b545b28db12f",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r3-cami",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r3-cami/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "3b6af69f4ad1aa828dae3400d2aa79a9b739bce9c7e19e6f14acebf2b2ed3279",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "131d04da497b47bc9905410713cd68593e5909ca0674fba1414536a2bf38e510",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "7a796ddbf39087733c0633b0dfd96f3a1f1a44a95c0b82de2354378b83c74112",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "9b0b777fddfa1971dccf8d18cd28adea8c3a9313b6975563834442a657e5cd40",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "0bdfcc0d781b837ab0ee388defe07e3b972faee44e0aef5d764504cfebe894d4",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "58ac3e7e765c2924fd8df84ed532e297656e657a2bdfec50343da4a303f6f732",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "5a356c25271e9b75b4f5ea8d3c716ab2f0e1b2aa1166cc8501d4f73dbfaf9ffd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "c8996745d7444f7c0a9c100a1d28ef51c3746e4516c4b54d9572a5c68eba8b79",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "f2e720b250117229412070fdbc1e0a79371141d30687c7e86de0255ae2cade14",
+        "seed/metrics.json": "a8f1862cb2b5dfb5d9809c390ace655ec46ce29393ff24e07b920acd71bccde3",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r3-cami_replay",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r3-cami_replay/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "45069a2e929e9b54f768c44e313cdd1e3b7e60a287726bbbadd705e59c247b2d",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "16d8525984276b957cce9e1ad88fbf5f6c63cf7f5ccb088c26d35c888bf686d3",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "96f7c145cb3e4d22624c4fe6af024a96ae198fcaac61066301b26003cdd1f262",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "4a019ead9443a3ba0e7398f623808776acafc29dd1a9ef6d0ffabd8e6378e828",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "89a12b70b057e89f3f2a49c38ad36520f450f00b66d24a609357ecded6ac0980",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "ed889756c78b266fc46ba47bd4b67e60c4f40d615a1b4309fe77a23968df3007",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "dbe4d459ddd95542526fe1c687885b5089b4b1765003f743f89442447cd895cf",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "4bdea1eb9e7fa05c590793bc3062d82e714158643433da945137c45a64271c91",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "7045f88d568df479001737c911abfe0b7d7f84da930201901be57e32e032fe60",
+        "seed/metrics.json": "e5ad56107b9939d956ee49a346d0e58dbcf975719af12d86141ec582efaf489c",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r4-cami",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r4-cami/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "85e24c310ed60ebdb2e9116365f818ed611fcad8e60f088baaa53e90ccd2433c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "41668689fbd9d2b64da68907ff8eff1fddbc48947dd5774b91bdff00fbb9ab0f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "b164e1790cbd782252d6fdfb3fa7e7ec05b45a45be1f1f13362ab57a272455d4",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "a0d9512bda5dc1a77c44278dab08ca596e651e6cd0d4c151b6c8b892b629cab6",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "ea25540749bed92aa8e4116710c6b18c2360cb95fbac11d462a67833dfe38c00",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "a3516217cbf04e3f9b7285a97e8fcebb55b88d1d9b3c58c6f796a8b013330a03",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "faebc3412bcb842b19ac7bed0cf98924ae48379490147e8f9c08b412d2ba680d",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "d98e94014a7d94e465d7918f2f05ffc127b7c20914532c8420be886c719dc492",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "13d7e67d95a888753ae426375f138dfc37fae6f808906db73122232f932516f8",
+        "seed/metrics.json": "adec07bec27bc518f1be8d58108880ca4a10a664447f8e4ea379cace0a5be1fe",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r4-cami_replay",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r4-cami_replay/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "1ce7720ffb0aaf7bb648cb671bfeacc2a1841fd29fda343779a6f252065c6937",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "0e8a9bfe5672ab5e5f349bd5434b1e97c1da43520a874d72d0d3bbeb932e552c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "11de1c8db770f7658acf0611cdb70880b743e99df2db3e0204e9a17c2d900318",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "2543288885c83a5129d8208c61888153191f23efdef9f41c0c0be07c21e13d13",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "c4a8bed4d64cd72cd3e4f71877af0a1770b433fbe1c2ff9c2bd8f8aae582c335",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "4af63b05b94f23fcef9a67f9c35fd8826a3fcf0568c042e08dc1bfe95481412c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "a9c8e8121688c75a4cb0e3943369117cdd7a7ff50a622b14c0b2de0f0e7ef5f1",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "26942f4c0a8c30ace6da4fa534268139a5a2f58cc5a7b8f01cefac25ec7f4353",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "b459a976b8ab732441c3e285c00ce9724d4b5ad83428370b98839214f0daab4f",
+        "seed/metrics.json": "07fe9fa6c570b855881fb43d1940231c9d9a02ccf8442ff76f31d5a5244311b2",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r5-cami",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r5-cami/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "69743fe9142b80a6b34db4a3d98bb50135abf21f8555215e27fcc5435b3a066e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "561a81bc714b50d995bec2024123ca21e7965f8a8cc2fff1e35d562a617b21b2",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "9d2363d89d4e128cbd8499fa9b6aef7918746dc57919d1e8c20b1df30832570f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "40015cfa58e8879aaec7fd7fb4ba11053323fe5b044447486e22787da10c5565",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "c04cc208c54fc97e7ba48e0968958a0c5548b712ee541369b17a4bfb576704de",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "ef7e30323e0e79633fd39e63c1d50a1289d2e8f11ccb786ea4487d3751ba09bd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "a1048f5e46c13180bd95b2935ec0448f41cea3a56499bf8df3ba1cc1c6f99fe1",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "07c8e93fa239e1c9afeb92b1cda8a559340ac784e8005ffe808eb5ae5df447c8",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "248db830978efb5e75e0010f7bd150530db1e6903ee5669bee9046ebc381321e",
+        "seed/metrics.json": "9653c855e0bf6463f9e3e298b5ed565d04f6f1201def66678c9676af341bf49d",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    },
+    {
+      "expected": {
+        "id": "literal-91a42aa1441b49d42c254780",
+        "payload": {
+          "expected": {
+            "format": "python.definition-prefix/1",
+            "text": "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:\n        self._f = f\n        self._tmp_filename = tmp_filename\n        self._real_filename = real_filename\n        self.closed = False\n",
+            "truncated": false
+          },
+          "origin_source": {
+            "path": "src/click/_compat.py",
+            "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+            "size": 18730
+          },
+          "origin_span": {
+            "first_line": 455,
+            "last_line": 459
+          },
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/_compat.py",
+            "qualname": "_AtomicFile.__init__"
+          },
+          "type": "source_excerpt_equals"
+        },
+        "source": {
+          "path": "src/click/_compat.py",
+          "sha256": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+          "size": 18730
+        }
+      },
+      "id": "r5-cami_replay",
+      "source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v9/runs/full-model/namespaces/r5-cami_replay/memory",
+      "source_files": {
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/current.json": "7d42e9174863dcbfbfacf35290da525ee69f24310f01f304d13a70fc8f2192ab",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/index.json": "896b29460a4ba131a951dbbfe0adbdbda22055271b26dac1773a9de9a471b164",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/3ed94d258fc14edd9c35100b100cf423323a7ebc4ac5d1bd6a92b80671a8dc66/manifest.json": "a2861a7c30e76f54aa11ee4c19b5f92959d1044677512bd01318ed5c4ebca57b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/index.json": "1f90876b8ddb86a1587f9240f12b654077c04ec8320bc86ed2ea226f89a83ff5",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/61e81871d29966dbb22641bf88fd01203d7ba3c84d742594929a6b8968d3235e/manifest.json": "5beb636710fdd76040fb16bdcdaebbef2b724ab613ba371aba2156c376a99f27",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/index.json": "5683205b6b3f0fb7405ec797f462e73bb767212a8f3d7b9ec08d1d8848280d53",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/generations/7a7a8db28f9baa5796ff2e869fed4b8896fdf88cf8854c40bc2114237a170ac5/manifest.json": "fa5393bafd3a4cbe4c3eb7810295a18cdf6295585bb18d9fef6fc11ede314278",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.initialized": "b7782da5e3467ef1ff5e3375d829a9a517969b3f38f171c37d4bca62120c4872",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/memory.sqlite3": "8cf57644b7e655bf69e2a6f1322253fcef3667bb7cb46dd3ccb8aa56f812d723",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729": "16b7f4fb95b7dfe968c98fe2f6aaf05d1f3e4939d6de6e60bf2c4b554772c729",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c": "2062a1fc9e5075f2842e2b6745f4c61e779e8d6c680b0fcd5fdb5f31b75c837c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218": "28f78b430286ffa9a5dd85bc8d4eab65c11cbfe966ea6c2209913095d1a99218",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e": "4d1d1d5c419cbd66fd128dda6901171a19ef352dc51781f841cb8b9ef02f628e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac": "4f2dd533fb6cd2c4218fabbb7854e22f01cfa1381c5d31840148363a92ea60ac",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c": "57bcc34fa7a6a89f22365d241753f99291662cc590d53d4beda34d28ce18474c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f": "59f1bf29ed711306a869c98885e7eadb951941ba081d721d432c2c269ea80e4f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e": "5c1fd2c6938f798ff770f15beacf7a2bb919edf8e15fc7f8a386efcc29f44f5e",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f": "71ef88acef6294823be8b1a4537e78a4e7476dea4cf147ed7cd1fb49f314ff6f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98": "72e27a05ba34ef79601049a18ebdfde0f78cf901665ccf828bec267ec77b1f98",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a": "74bc624bbd143af21805d6bf9c411968f0053950d5991b35b043ccb8b0e8c10a",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c": "85ff8296ceb979f4d04a2f603db05c04cad597bb7995274b7d5b4e5b7c2e7a5c",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69": "8b96fa84d29c1e78afb2525021440dbf47f4aef033aa60b1020e0c5b46ebca69",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd": "bb6238e88add5653e043ee939e8d7a1e48527d6766789b54e5a9601650fe1bfd",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b": "bca66d64a2d14bb12d757e3cd985de10e7064dc2755e54c5d8410a366ad0d39b",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96": "cf664052aff371e3a98fb4b3444ce6b328741f924cc6eb4f008cb13e48f28f96",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286": "d747d0eb839c05432e2bb985be1f37eb7feea0ec4f95122d64198acd12438286",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed": "e63bb78d091c643d16dbb584306aa610fe32fdcad45733c2aac5ff1586fb04ed",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/source-objects/eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb": "eede85f905a8c2d2e1e85ffa97ee18578638c8d4dca85404bbd8b7ef3233ebcb",
+        "cami-state/cami/repos/4384b4849b7f004db243393653c15565c0a2ab2a8951d8513646c37d2a14a51f/writer.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "preparation-operation.json": "6d5a4b90f6eeb2ee326c44bd48937a101808c73336b9726fa8a453186e57d021",
+        "prepared/binding.json": "cd2398c18d4d6356929cc45de06be045bb30429651a6556092ff88c5d39ff633",
+        "prepared/catalog.json": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+        "prepared/construction-metrics.json": "fe7fb37f02c69e01ab444c0caf8af40ef3c201c310463ee00dcfbdf33f5db3ed",
+        "seed/metrics.json": "62a4a6d2017051ad7f482ae5dcd419fabb3b7644415d0226876aaf5141f5aee9",
+        "seed/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be"
+      }
+    }
+  ],
+  "design": "lexical-path-real-mcp-v1",
+  "image": "sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040",
+  "pins": {
+    "adapter": {
+      "README.md": "709b1e8a2863b7f2d56ef49f594c66444f8d46d65c042d697031fde565f3b450",
+      "TASK_REPLAY.md": "e5e7b065cd4081307ffb77e198a27ce987d477130afa480f6cb9c6749c9ad841",
+      "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+      "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+      "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+      "memory_adapter.py": "da1b685893355c23fc859e970e11b8a1a7c0ac2958152f8ae1b3ebed86badbb4",
+      "memory_backend.py": "ac59bd5712ce4936cbc497badb0bf833142fb2c3a22f2a4bc58ec1718de14386",
+      "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+      "readable_response.py": "85bd8be9dbf20deffd0dea2c15b09ecbe6341aa6d4956c907cb1f3efe1db19fa",
+      "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+      "task_replay.py": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+      "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+    },
+    "baseline": {
+      "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+      "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+      "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+      "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+      "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+      "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+      "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+      "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+      "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+      "cami/cli.py": "cd94b4b14ef18696dd41f01be46c13be1ade69808a82cdd4f0e2cebf7a8a5560",
+      "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+      "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+      "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+      "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+      "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+      "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+      "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+      "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+      "cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+      "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+      "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+      "cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+      "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+      "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+      "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+      "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+      "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+      "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+      "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+      "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+      "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+      "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+      "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+      "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+      "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+      "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+      "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+      "cami/product/memory/schema.py": "2bcb334717c35fe32021a84d9b9f65254ffd439d3baff1221b9e228a06061684",
+      "cami/product/memory/store.py": "343e66963846943a89b40bca9085aab8ef61547bcaedef4c1c814804d7aba97a",
+      "cami/product/memory/validation.py": "cca76be12ba6c46ffc8d67a8abc5ec6931463d10a22af84e603b187e0be7e8c6",
+      "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+      "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+      "cami/product/service.py": "fbe443cb44f9e2ac022ea16f54bf55d4eae7a51c3003b0542ed5825b8bffb4ca",
+      "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+      "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+      "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+      "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+      "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+      "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+      "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+      "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+      "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+      "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+      "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+      "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+      "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+      "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+      "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+      "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+    },
+    "candidate": {
+      "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+      "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+      "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+      "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+      "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+      "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+      "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+      "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+      "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+      "cami/cli.py": "cd94b4b14ef18696dd41f01be46c13be1ade69808a82cdd4f0e2cebf7a8a5560",
+      "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+      "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+      "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+      "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+      "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+      "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+      "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+      "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+      "cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+      "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+      "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+      "cami/models.py": "8e221041e6135bc993d102ebcd5aec6b3d5303c5e115dd9677a6cbb5790aee1a",
+      "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+      "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+      "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+      "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+      "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+      "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+      "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+      "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+      "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+      "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+      "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+      "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+      "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+      "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+      "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+      "cami/product/memory/schema.py": "2bcb334717c35fe32021a84d9b9f65254ffd439d3baff1221b9e228a06061684",
+      "cami/product/memory/store.py": "343e66963846943a89b40bca9085aab8ef61547bcaedef4c1c814804d7aba97a",
+      "cami/product/memory/validation.py": "cca76be12ba6c46ffc8d67a8abc5ec6931463d10a22af84e603b187e0be7e8c6",
+      "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+      "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+      "cami/product/service.py": "fbe443cb44f9e2ac022ea16f54bf55d4eae7a51c3003b0542ed5825b8bffb4ca",
+      "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+      "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+      "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+      "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+      "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+      "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+      "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+      "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+      "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+      "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+      "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+      "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+      "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+      "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+      "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+      "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+    },
+    "receipts": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324",
+    "runner": "df87b7d4b6a8eeb1848f1cd16b2783d376225c30bc545223503c961d9448ac66",
+    "study": "d0fb0620e389259bc54cac4ff788614b34c93e4c4b7a4b458931e10c8adf61d2",
+    "validation": "c51023306a138ef861d88212f1cd182865329757d28fd6e6f1d41d707d61059b",
+    "worker": "1336839c61b6a31c76e150c1dde4c26fd585330f0684cb3cea966e49f573eedc"
+  },
+  "repetitions_per_side": 5,
+  "scope": "Ten copied source-memory stores from two development tasks. One initial MCP process per side includes schema1 conversion and analyzer fingerprint recertification. Then five alternating fresh MCP processes per side and case. Each starts with empty in-process lexical cache; OS cache uncontrolled. Primary time spans Python process startup, initialize, list tools, one readable lookup of a fixed valid literal ID, wire serialization, shutdown and wait. Docker launch/cleanup is separately recorded and excluded from MCP latency. Every actual payload, supported status, source binding and numeric trace receipt must pass the existing independent validator. Retain all attempts, no retries. Report medians/ranges; consistent improvement requires separated ranges in all ten cases. No model requests or whole-agent speed claim."
+}
