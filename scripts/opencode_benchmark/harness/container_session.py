@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import signal
@@ -100,7 +101,7 @@ def shared_service_url():
     return candidates[0]
 
 
-def credential_pipe(container, state, shared_url):
+def credential_pipe(container, state, shared_url, *, binary=BINARY):
     # The exporter client uses separate local paths. Its server request is read-only.
     environment = docker_env()
     for name in list(environment):
@@ -113,7 +114,7 @@ def credential_pipe(container, state, shared_url):
         environment[key] = str(path)
     environment["OPENCODE_PASSWORD"] = json.loads(Path("/root/.config/opencode/service.json").read_text())["password"]
     started = time.monotonic()
-    exporter = subprocess.Popen([str(BINARY), "auth", "export", "openai", "--server", shared_url],
+    exporter = subprocess.Popen([str(binary), "auth", "export", "openai", "--server", shared_url],
         env=environment, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, start_new_session=True)
     importer = subprocess.Popen([*DOCKER, "exec", "-i", container, "/opt/opencode", "auth", "import", "--standalone"],
         env=docker_env(), stdin=exporter.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
@@ -174,6 +175,8 @@ def main():
     parser.add_argument("--message-page-size", type=int, default=200)
     parser.add_argument("--reported-token-budget", type=int, default=250000)
     parser.add_argument("--image", default=IMAGE)
+    parser.add_argument("--opencode-binary", type=Path)
+    parser.add_argument("--opencode-sha256")
     parser.add_argument("--cami-source", type=Path, default=ROOT / "src")
     parser.add_argument("--adapter-dir", type=Path, default=ROOT / "integrations/opencode")
     parser.add_argument("--shared-server")
@@ -191,6 +194,15 @@ def main():
         parser.error("invalid pagination or observed-token threshold")
     if args.arm != "plain" and (not args.binding_relative or Path(args.binding_relative).is_absolute() or ".." in Path(args.binding_relative).parts):
         parser.error("memory arm requires a contained binding-relative")
+    if (args.opencode_binary is None) != (args.opencode_sha256 is None):
+        parser.error("custom OpenCode binary requires both path and SHA256")
+    if args.opencode_binary is not None and (
+        not args.opencode_binary.is_absolute()
+        or re.fullmatch(r"[a-f0-9]{64}", args.opencode_sha256) is None
+    ):
+        parser.error("custom OpenCode binary requires absolute path and lowercase SHA256")
+    binary = args.opencode_binary if args.opencode_binary is not None else BINARY
+    expected_binary_sha = args.opencode_sha256 or EXPECTED_BINARY_SHA
     started = time.monotonic()
     output = owned(args.out, create=True)
     state, container = None, None
@@ -200,7 +212,7 @@ def main():
         manifest["service_tier_requested"] = args.service_tier
     write(output / "manifest.json", manifest)
     try:
-        assert sha(BINARY) == EXPECTED_BINARY_SHA, "installed OpenCode identity changed before auth"
+        assert sha(binary) == expected_binary_sha, "installed OpenCode identity changed before auth"
         workspace, memory = owned(args.workspace), owned(args.memory_dir)
         manifest["git_input_closure"] = git_closure(workspace)
         if args.arm == "plain" and any(memory.iterdir()):
@@ -219,7 +231,7 @@ def main():
         write(output / "effective-input-config.json", config)
         source, adapter = args.cami_source.resolve(), args.adapter_dir.resolve()
         assert (source / "cami/__init__.py").is_file() and (adapter / "memory_adapter.py").is_file(), "runtime source layout mismatch"
-        manifest["runtime_sources"] = {"cami_path": str(source), "adapter_path": str(adapter), "cami_files": source_inventory(source), "adapter_files": source_inventory(adapter), "binary_sha256": sha(BINARY)}
+        manifest["runtime_sources"] = {"cami_path": str(source), "adapter_path": str(adapter), "cami_files": source_inventory(source), "adapter_files": source_inventory(adapter), "binary_sha256": sha(binary)}
         inspected = command([*DOCKER, "image", "inspect", args.image, "--format", "{{.Id}}" ])
         assert inspected["returncode"] == 0, "runtime image not locally present"
         image = inspected["stdout"].strip()
@@ -230,7 +242,7 @@ def main():
         write(output / "runtime-identity.json", runtime_identity)
         if args.runtime_manifest:
             assert json.loads(args.runtime_manifest.read_text()) == runtime_identity, "frozen runtime identity mismatch before auth"
-        mounts = [(BINARY, "/opt/opencode", True), (source, "/opt/cami-src", True), (adapter, "/opt/memory-adapter", True),
+        mounts = [(binary, "/opt/opencode", True), (source, "/opt/cami-src", True), (adapter, "/opt/memory-adapter", True),
             (STAGE / "container_worker.py", "/opt/harness/container_worker.py", True),
             (STAGE / "container_common.py", "/opt/harness/container_common.py", True),
             (STAGE / "boundary-sentinel.txt", "/opt/boundary-sentinel", True),
@@ -253,12 +265,15 @@ def main():
         write(output / "cgroup-before-auth.json", before)
         assert before["returncode"] == 0, "cgroup-before observation unavailable"
         if args.run_model:
-            transfer = credential_pipe(container, state, args.shared_server or shared_service_url())
+            export_options = {"binary": binary} if args.opencode_binary is not None else {}
+            transfer = credential_pipe(container, state, args.shared_server or shared_service_url(), **export_options)
             write(output / "credential-transfer.json", transfer)
             assert transfer["status"] == "passed", "private credential import failed"
             initial_private_values = collect_private_values(state, expect_credential=True)
         worker = [*DOCKER, "exec", "-i", container, "python", "/opt/harness/container_worker.py", "--arm", args.arm, "--timeout-seconds", str(args.timeout_seconds), "--reported-token-budget", str(args.reported_token_budget)]
         worker += ["--message-page-size", str(args.message_page_size)]
+        if args.opencode_binary is not None:
+            worker += ["--opencode-sha256", expected_binary_sha]
         if args.service_tier is not None:
             worker += ["--service-tier", args.service_tier]
         if args.binding_relative:
@@ -278,7 +293,7 @@ def main():
         write(output / "cgroup-after-worker.json", after)
         assert after["returncode"] == 0, "cgroup-after observation unavailable"
         assert result["returncode"] == 0, "worker failed; preserve copied evidence"
-        assert source_inventory(source) == manifest["runtime_sources"]["cami_files"] and source_inventory(adapter) == manifest["runtime_sources"]["adapter_files"] and sha(BINARY) == manifest["runtime_sources"]["binary_sha256"], "runtime sources changed during execution"
+        assert source_inventory(source) == manifest["runtime_sources"]["cami_files"] and source_inventory(adapter) == manifest["runtime_sources"]["adapter_files"] and sha(binary) == manifest["runtime_sources"]["binary_sha256"], "runtime sources changed during execution"
         manifest["status"] = "passed"
     except BaseException as error:
         manifest.update(status="failed", failure=type(error).__name__ + ": " + str(error))

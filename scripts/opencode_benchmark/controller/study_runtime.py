@@ -296,6 +296,8 @@ def session(study, trial, workspace, memory, prompt, out):
         "--adapter-dir",
         study["adapter"],
     ]
+    if "binary_path" in study:
+        argv += ["--opencode-binary", study["binary_path"], "--opencode-sha256", study["binary_sha256"]]
     response_format = memory_response_format(study)
     tier = service_tier_value(study)
     argv += ["--memory-response-format", response_format]

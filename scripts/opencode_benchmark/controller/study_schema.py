@@ -147,6 +147,7 @@ def make_study(
     runtime_manifest=None,
     memory_response_format="full",
     service_tier=None,
+    binary_path=Path("/root/.opencode/bin/opencode"),
 ):
     service_tier_value({"service_tier": service_tier})
     if memory_response_format not in ("full", "compact", "readable"):
@@ -166,8 +167,8 @@ def make_study(
         "memory_response_format": memory_response_format,
         "reported_token_budget": 1_000_000,
         "image": image,
-        "binary_path": "/root/.opencode/bin/opencode",
-        "binary_sha256": digest(Path("/root/.opencode/bin/opencode")),
+        "binary_path": str(binary_path.resolve()),
+        "binary_sha256": digest(binary_path),
         "runtime_manifest_path": str(runtime_manifest) if runtime_manifest else None,
         "runtime_manifest_sha256": digest(runtime_manifest) if runtime_manifest else None,
         "harness": str(harness),

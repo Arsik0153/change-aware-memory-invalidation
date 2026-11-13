@@ -149,7 +149,8 @@ def test_private_fifo_denied_without_open(tmp_path, selected):
         scrub_state_evidence(tmp_path, expect_credential=False)
 
 
-def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch, authored_runtime):
+@pytest.mark.parametrize("custom_binary", [False, True])
+def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch, authored_runtime, custom_binary):
     with tempfile.TemporaryDirectory(prefix="admission-", dir=host.ROOT / "runs") as name:
         case = Path(name)
         workspace = repo(case / "workspace")
@@ -172,6 +173,9 @@ def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch, 
         monkeypatch.setattr(host, "credential_pipe", lambda *a: pytest.fail("credential export reached"))
         output, state = case / "output", case / "state"
         monkeypatch.setattr(sys, "argv", ["controller", "--workspace", str(workspace), "--memory-dir", str(memory), "--state-dir", str(state), "--out", str(output), "--arm", "plain", "--run-model", "--prompt-file", str(case / "NEVER_READ"), "--runtime-manifest", str(frozen), "--cami-source", str(source.parent), "--adapter-dir", str(adapter)])
+        if custom_binary:
+            sys.argv += ["--opencode-binary", str(host.BINARY), "--opencode-sha256", host.sha(host.BINARY)]
+            monkeypatch.setattr(host, "EXPECTED_BINARY_SHA", "0" * 64)
         with pytest.raises(AssertionError, match="runtime identity"):
             host.main()
         assert len(calls) == 1 and not state.exists()
@@ -179,7 +183,8 @@ def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch, 
 
 
 @pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence", "bad-json"])
-def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_runtime):
+@pytest.mark.parametrize("custom_binary", [False, True])
+def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_runtime, custom_binary):
     with tempfile.TemporaryDirectory(prefix="cleanup-", dir=host.ROOT / "runs") as name:
         case = Path(name)
         workspace = repo(case / "workspace")
@@ -208,6 +213,10 @@ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_
                 order.append("remove")
                 return {"returncode": int(mode == "writers-unfrozen"), "stdout": "", "stderr": ""}
             if "/opt/harness/container_worker.py" in argv:
+                if custom_binary:
+                    assert argv[argv.index("--opencode-sha256") + 1] == host.sha(host.BINARY)
+                else:
+                    assert "--opencode-sha256" not in argv
                 if mode != "missing-evidence":
                     evidence = state / "evidence"
                     evidence.mkdir()
@@ -219,6 +228,8 @@ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_
             return {"returncode": 0, "stdout": "{}", "stderr": ""}
         monkeypatch.setattr(host, "command", local_command)
         monkeypatch.setattr(sys, "argv", ["controller", "--workspace", str(workspace), "--memory-dir", str(memory), "--state-dir", str(state), "--out", str(output), "--arm", "plain", "--no-model", "--cami-source", str(source.parent), "--adapter-dir", str(adapter)])
+        if custom_binary:
+            sys.argv += ["--opencode-binary", str(host.BINARY), "--opencode-sha256", host.sha(host.BINARY)]
         with pytest.raises((AssertionError, SystemExit)):
             host.main()
         result = json.loads((output / "manifest.json").read_text())
@@ -234,3 +245,20 @@ def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_
             assert json.loads((output / "evidence/usage.json").read_text())["session_tokens"] is None
             assert json.loads((output / "publication-guard.json").read_text())["status"] == "partial"
             assert not result.get("publication_blocked")
+
+
+def test_changed_custom_binary_rejected_before_docker_or_auth(tmp_path, monkeypatch, authored_runtime):
+    monkeypatch.setattr(host, "ROOT", tmp_path)
+    output = tmp_path / "runs/output"
+    output.parent.mkdir()
+    expected = host.sha(host.BINARY)
+    host.BINARY.write_bytes(b"changed executable")
+    monkeypatch.setattr(host, "command", lambda *a, **kw: pytest.fail("Docker reached"))
+    monkeypatch.setattr(host, "credential_pipe", lambda *a, **kw: pytest.fail("auth reached"))
+    monkeypatch.setattr(sys, "argv", ["controller", "--workspace", str(tmp_path / "unused"),
+        "--memory-dir", str(tmp_path / "unused-memory"), "--state-dir", str(tmp_path / "unused-state"),
+        "--out", str(output), "--arm", "plain", "--no-model",
+        "--opencode-binary", str(host.BINARY), "--opencode-sha256", expected])
+    with pytest.raises(AssertionError, match="identity changed before auth"):
+        host.main()
+    assert json.loads((output / "manifest.json").read_text())["status"] == "failed"

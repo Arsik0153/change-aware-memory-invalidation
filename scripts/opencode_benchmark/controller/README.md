@@ -115,3 +115,18 @@ uniform priority response. Provider metadata is not a billing or scheduling audi
 
 An explicit tier requires a new supported analysis protocol. Historical protocol
 IDs reject it rather than silently mixing new priority runs with v3–v5 results.
+
+
+## Explicit executable identity for a new host
+
+Pass `--opencode-binary /absolute/path/to/opencode` with `--make-study` to freeze
+a host-specific executable and its SHA256. Loading a study cannot override this
+path. The controller passes the frozen path and hash to the session harness,
+which checks the binary before authentication and passes the hash to the worker.
+A standalone harness invocation accepts the paired `--opencode-binary` and
+`--opencode-sha256` options. Omitting both retains the historical VPS defaults.
+
+On the tested Docker Desktop configuration, Mac bind-mounted data failed a real
+cross-process flock exclusion probe. Keep live workspaces and memory on a verified
+Linux filesystem, and export evidence afterward. A different executable path does
+not establish that a new host's filesystem or runtime is suitable for a study.

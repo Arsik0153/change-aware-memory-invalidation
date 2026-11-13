@@ -145,3 +145,13 @@ def test_controller_rejects_valid_hash_opposite_wire_format(monkeypatch, tmp_pat
     with pytest.raises(ValueError, match='actual memory response format'):
         runtime.session(study, {'arm': arm}, tmp_path, tmp_path, tmp_path, out)
     assert json.loads((tmp_path / 'memory-response-format.json').read_text())['status'] == 'unsupported_or_mismatch'
+
+
+def test_loaded_study_rejects_binary_override(monkeypatch, tmp_path, capsys):
+    monkeypatch.setattr(sys, 'argv', ['study_controller.py', '--study', 'not-read.json',
+        '--out', str(tmp_path / 'unused'), '--opencode-binary', '/other/opencode'])
+    with pytest.raises(SystemExit) as caught:
+        controller.main()
+    assert caught.value.code == 2
+    assert 'binary is frozen' in capsys.readouterr().err
+    assert not (tmp_path / 'unused').exists()

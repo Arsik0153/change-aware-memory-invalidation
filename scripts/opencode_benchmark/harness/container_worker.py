@@ -5,6 +5,7 @@ import argparse
 import base64
 import json
 import os
+import re
 from pathlib import Path
 import sqlite3
 import shlex
@@ -187,7 +188,10 @@ def main():
     parser.add_argument("--message-page-size", type=int, default=200)
     parser.add_argument("--reported-token-budget", type=int, default=250000)
     parser.add_argument("--service-tier", choices=["auto", "priority"])
+    parser.add_argument("--opencode-sha256", default=EXPECTED_BINARY_SHA)
     args = parser.parse_args()
+    if re.fullmatch(r"[a-f0-9]{64}", args.opencode_sha256) is None:
+        parser.error("OpenCode SHA256 must be a lowercase digest")
     OUT.mkdir(exist_ok=False)
     PRIVATE.mkdir()
     started = time.monotonic()
@@ -199,7 +203,7 @@ def main():
         "model_session_launches": 0, "max_agent_steps": 20, "cgroup_before": cgroup()}
     write(OUT / "manifest.json", manifest)
     try:
-        assert sha(BINARY) == EXPECTED_BINARY_SHA, "OpenCode binary changed"
+        assert sha(BINARY) == args.opencode_sha256, "OpenCode binary changed"
         assert os.getuid() == 65534, "requires nonroot65534"
         assert "/workspace" not in os.environ.get("PYTHONPATH", ""), "trusted worker must not import target source"
         assert os.environ.get("OPENCODE_CONFIG_PROJECT_DISABLE") == "1", "project configuration must be disabled"

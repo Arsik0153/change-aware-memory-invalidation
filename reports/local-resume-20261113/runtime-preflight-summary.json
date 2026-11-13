@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "model_calls": 0,
+  "sessions": [
+    {
+      "arm": "plain",
+      "exit": 0,
+      "status": "passed",
+      "model_requested": false,
+      "state_removed": true
+    },
+    {
+      "arm": "static",
+      "exit": 0,
+      "status": "passed",
+      "model_requested": false,
+      "state_removed": true
+    },
+    {
+      "arm": "cami",
+      "exit": 0,
+      "status": "passed",
+      "model_requested": false,
+      "state_removed": true
+    }
+  ],
+  "stdio": {
+    "actual_configured_stdio_cases": 6,
+    "global_catalog_byte_parity": true,
+    "literal_records": 329,
+    "status": "passed"
+  }
+}

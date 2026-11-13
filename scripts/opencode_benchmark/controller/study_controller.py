@@ -233,6 +233,7 @@ def main():
     parser.add_argument("--kind", choices=["development", "heldout"], default="development")
     parser.add_argument("--harness", type=Path)
     parser.add_argument("--image")
+    parser.add_argument("--opencode-binary", type=Path)
     parser.add_argument("--runtime-manifest", type=Path)
     parser.add_argument("--cami-source", type=Path, default=ROOT / "src")
     parser.add_argument("--adapter", type=Path, default=ROOT / "integrations/opencode")
@@ -255,10 +256,13 @@ def main():
             args.runtime_manifest.resolve() if args.runtime_manifest else None,
             args.memory_response_format or "full",
             args.service_tier,
+            args.opencode_binary or Path("/root/.opencode/bin/opencode"),
         )
         write(output / "study.json", data)
         print(output / "study.json")
         return
+    if args.opencode_binary is not None:
+        parser.error("OpenCode binary is frozen in --study; select it only with --make-study")
     if args.memory_response_format is not None:
         parser.error("memory response format is frozen in --study; select it only with --make-study")
     if args.service_tier is not None:

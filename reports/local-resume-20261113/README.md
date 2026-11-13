@@ -101,3 +101,40 @@ smoke does not establish filesystem compatibility.
 Earlier image attempts remain under ignored `runs/`: one lacked dependencies
 when the driver removed `PYTHONPATH`, then the host-bind filesystem failed the
 real lease test. Model calls remain zero.
+
+## Local runtime admission completed
+
+The full non-Docker suite passed **1689 tests**, with one explicit Linux-only
+skip and four Docker tests deselected. The Linux-only Node cleanup check passed
+separately as described above. This result predates the explicit executable-path
+change; the affected controller/harness suite after that change passes 573 tests.
+
+New studies can select `--opencode-binary` during `--make-study`. The frozen
+study binds the resolved path and SHA256. The session harness receives both,
+checks the bytes before Docker/authentication, forwards the same digest to the
+container worker, and checks the executable again after the session. Default
+standalone harness behavior retains the original executable and expected hash.
+Loaded studies reject binary-path overrides. Corrupted custom executables are
+covered by a failure test that rejects before Docker or credential export.
+
+The first local stdio-only freeze passed all six static/CAMI format combinations
+with identical 329-record catalogs. Runtime attempt v2 then failed its first
+plain no-model session: the worker still enforced the old x64 digest. That
+failure remains in the archive. After forwarding the frozen digest to the
+worker, a fresh v3 source snapshot, independent preparation and new output tree
+passed all six stdio cases and all three no-model OpenCode sessions. Each session
+reports model_requested=false, successful cleanup, and passed admission.
+
+The Linux Docker volume is `cami-local-study-20261113`. Each source snapshot has
+its own directory and is never changed after freezing. Docker controller and
+sibling session containers use the volume's daemon path; target workspaces never
+receive the Docker socket. The controller is trusted orchestration. The working
+runtime image is bound by digest in each study. The source changes, scripts,
+archived failed/successful attempts and hashes preserve what was actually run.
+
+See `runtime-preflight-summary.json` and `runtime-preflight-evidence.tar.gz`.
+The retained drivers contain local absolute paths; reproduction on another host
+requires a new declared freeze, not editing the archived studies. These are
+correctness and isolation checks, not timing measurements. Task-model calls and
+heldout calls remain zero. The twenty-session format-only design still needs
+its own schedule and analysis before model execution.
