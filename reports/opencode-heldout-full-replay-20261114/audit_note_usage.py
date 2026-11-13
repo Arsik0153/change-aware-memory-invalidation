@@ -4,6 +4,11 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+repo = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(repo / 'scripts/opencode_benchmark/analysis'))
+from aggregate_study import verify_terminal  # noqa: E402
 
 
 def canonical(value):
@@ -14,19 +19,27 @@ def analyze(root):
     summary = json.loads((root / 'summary.json').read_bytes())
     if summary['terminal_attempts'] != 80:
         raise ValueError('all80 completed attempts required')
-    rows = []
+    protocol = json.loads((root / 'protocol.json').read_bytes())
+    if {p.name for p in (root / 'trials').iterdir()} != {t['id'] for t in protocol['schedule']}:
+        raise ValueError('scheduled terminal coverage differs')
+    rows, unavailable = [], []
     for path in sorted((root / 'trials').glob('*/terminal.json')):
-        terminal = json.loads(path.read_bytes())
-        if terminal['status'] != 'passed':
-            raise ValueError('complete successful quality/telemetry required for note audit')
+        terminal, terminal_sha, _ = verify_terminal(path.parent)
         trial = terminal['trial']
-        if trial['arm'] == 'plain' or terminal['cache_hit']:
+        if trial['arm'] == 'plain' or terminal.get('cache_hit', False):
             continue
         namespace = root / 'namespaces' / f"r{trial['repetition']}-{trial['condition']}"
+        trace = path.parent / 'session/evidence/memory-backend-trace.jsonl'
+        if not trace.exists():
+            unavailable.append({'trial': trial['id'], 'primary_status': terminal['status'],
+                                'reason': 'trace_unavailable', 'terminal_sha256': terminal_sha})
+            continue
         catalog = json.loads((namespace / 'memory/prepared/catalog.json').read_bytes())
         records = {r['id']: r for r in catalog['records']}
+        if len(records) != 75:
+            raise ValueError('original75 catalog required')
         catalog_sha = hashlib.sha256(canonical(catalog)).hexdigest()
-        events = [json.loads(line) for line in (path.parent / 'session/evidence/memory-backend-trace.jsonl').read_text().splitlines()]
+        events = [json.loads(line) for line in trace.read_text().splitlines()]
         lookups = [e for e in events if e.get('event') == 'memory_lookup']
         counts, fallback = Counter(), Counter()
         for event in lookups:
@@ -63,9 +76,11 @@ def analyze(root):
             counts['withheld'] += len(value['withheld'])
             fallback[receipt['fallback_reason'] or 'none'] += 1
         rows.append({'trial': trial['id'], 'stage': trial['stage'], 'condition': trial['condition'],
+                     'primary_status': terminal['status'], 'terminal_sha256': terminal_sha,
                      'lookups': len(lookups), 'counts': dict(counts), 'fallbacks': dict(fallback)})
-    return {'status': 'verified', 'model_sessions': len(rows), 'sessions_without_lookup': [r['trial'] for r in rows if not r['lookups']],
-            'rows': rows, 'scope': 'Original75 generic notes, backend trust labels and withheld identities verified against each immutable catalog and full-response receipt. Counts reflect actual selected queries, which differ between agents. Not an independent reconstruction of filesystem state at each lookup and not a causal speed claim.'}
+    return {'status': 'verified_observed_traces', 'model_sessions_with_trace': len(rows),
+            'unavailable': unavailable, 'sessions_without_lookup': [r['trial'] for r in rows if not r['lookups']],
+            'rows': rows, 'scope': 'Original75 generic notes, backend trust labels and withheld identities verified against each immutable catalog and full-response receipt. Includes available traces from failed primary attempts without changing their status or primary eligibility. Missing traces are explicit. Counts reflect actual selected queries, which differ between agents. Not an independent reconstruction of filesystem state at each lookup and not a causal speed claim.'}
 
 
 if __name__ == '__main__':
