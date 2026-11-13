@@ -32,23 +32,27 @@ def page(messages, cursor=None):
     return {"data": messages, "cursor": {"next": cursor}}
 
 
-def test_paginated_export_counts_utf8_before_redaction_without_disclosing_text(tmp_path, monkeypatch):
+@pytest.mark.parametrize("sensitive", ["user@example.invalid", "authored_opaque_credential_123456789"])
+def test_paginated_export_counts_utf8_before_redaction_without_disclosing_text(tmp_path, monkeypatch, sensitive):
     monkeypatch.setattr(worker, "OUT", tmp_path)
-    original = message()
+    monkeypatch.setattr(worker, "SECRETS", {sensitive})
+    text = "π " + sensitive
+    original = message(text)
     other = message("abc", message_id="msg_two", call_id="call_two")
     server = Pages(page([{"id": "msg_user", "type": "user", "text": "authored input"}, original], "next"),
                    page([other, {"id": "msg_idle", "type": "idle"}]))
     _, messages = worker.messages_all(server, "session")
     receipt = json.loads((tmp_path / "native-read-bytes.json").read_text())
-    expected = len("π user@example.invalid".encode()) + 3
+    expected = len(text.encode()) + 3
     assert receipt["utf8_bytes"] == expected and receipt["complete"]
     assert receipt["read_calls"] == 2 and len(receipt["messages"]) == 4
-    assert "user@example.invalid" not in json.dumps(messages)
-    assert "[REDACTED_EMAIL]" in json.dumps(messages)
+    assert sensitive not in json.dumps(messages)
+    assert "[REDACTED" in json.dumps(messages)
+    assert all(sensitive not in path.read_text() for path in tmp_path.glob("*.json"))
     raw = (tmp_path / "native-read-bytes.json").read_text()
-    for forbidden in ("user@example.invalid", "sensitive", "filePath", "duplicate ignored", "π"):
+    for forbidden in (sensitive, "sensitive", "filePath", "duplicate ignored", "π"):
         assert forbidden not in raw
-    assert original["content"][0]["state"]["content"][0]["text"] == "π user@example.invalid"
+    assert original["content"][0]["state"]["content"][0]["text"] == text
 
 
 def test_failed_pagination_keeps_subtotal_and_never_claims_complete(tmp_path, monkeypatch):
