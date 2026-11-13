@@ -7,7 +7,9 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import sys
 import zipfile
+import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,6 +39,8 @@ def build(output):
         "python": "3.12+",
         "external_python_dependencies": [],
         "python_runtime_included": False,
+        "build_python": sys.version,
+        "build_zlib_runtime": zlib.ZLIB_RUNTIME_VERSION,
         "model_calls": 0,
         "scope": "Packaging only. Exact production module bytes, no algorithm or performance change.",
     }
