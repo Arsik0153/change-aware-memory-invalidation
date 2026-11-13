@@ -1,6 +1,6 @@
 # Heldout full replay replication
 
-Status: final no-model admission passed; protocol frozen before paid model attempts. This is a separate replication, not a replacement for the original sealed 36-attempt source-memory study.
+Status: full80-attempt model run in progress on immutable runtime-v14; no final performance conclusion yet. Final no-model admission passed and protocol was frozen before paid attempts. This is a separate replication, not a replacement for the original sealed 36-attempt source-memory study.
 
 The decision rules in `preregistration.json` were committed as 49dfc24 before task prompts or solutions were opened. The production implementation remains a8c34cd, including schema3 compression. Only the experiment controller and independent admission/audit tools were adapted for the pre-existing Packaging task boundary and legacy note format.
 
