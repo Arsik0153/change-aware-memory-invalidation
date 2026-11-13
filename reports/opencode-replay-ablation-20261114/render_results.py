@@ -54,12 +54,18 @@ def render(audit_path, out):
             cells.append('unavailable' if v['median'] is None else f"{v['median']:,.1f} ({v['min']:,.1f}–{v['max']:,.1f}); {v['complete_blocks']}/5")
         rows.append('<tr><th>'+html.escape(label)+'</th>'+''.join('<td>'+html.escape(c)+'</td>' for c in cells)+'</tr>')
     chart=base64.b64encode((out/'results.png').read_bytes()).decode()
+    paired_rows = []
+    for pair in result['pairs']:
+        def label(value):
+            return 'incomplete' if value is None else 'lower' if value else 'higher'
+        paired_rows.append(f"<tr><th>{pair['repetition']}</th><td>{label(pair['token_work'])}</td><td>{label(pair['charged_wall_seconds'])}</td></tr>")
     (out/'chart.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Source-memory ablation</title>'
         '<style>body{font:15px var(--font-sans);margin:0;color:var(--foreground)}img{width:100%;height:340px;object-fit:contain;background:white;border-radius:var(--radius)}'
         'table{border-collapse:collapse;width:100%}td,th{padding:12px;text-align:left;border-bottom:1px solid var(--border)}p{line-height:1.5}</style>'
         '<p><strong>'+html.escape(verdict)+'</strong> · 40 attempts · 2 conditions · 5 fresh memory blocks · A,A,B,B</p>'
         '<img alt="Median and observed range per condition" src="data:image/png;base64,'+chart+'">'
         '<table><tr><th>Condition</th><th>Token work: median (range)</th><th>Seconds: median (range)</th></tr>'+''.join(rows)+'</table>'
+        '<p>Within-block Plain+replay compared with CAMI+replay:</p><table><tr><th>Block</th><th>Token work</th><th>Pipeline time</th></tr>'+''.join(paired_rows)+'</table>'
         '<p>Success requires lower token work AND full pipeline time for Plain+replay than CAMI+replay in every block, with every quality and evidence gate passing. '
         'Range bars are observed minima/maxima, not confidence intervals. This is exact-repeat evidence on two exposed Click development tasks, not40 independent tasks. '
         'Token work is not billed dollars; cache-read tokens are reported separately. Pre-model environment and MCP admission are preserved separately.</p></html>')

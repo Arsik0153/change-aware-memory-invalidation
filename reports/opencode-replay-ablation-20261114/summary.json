@@ -1,0 +1,137 @@
+{
+  "blocks": [
+    {
+      "charged_wall_seconds": 230.853250922199,
+      "complete": true,
+      "condition": "cami_replay",
+      "repetition": 1,
+      "token_work": 81376
+    },
+    {
+      "charged_wall_seconds": 199.08036795120134,
+      "complete": true,
+      "condition": "plain_replay",
+      "repetition": 1,
+      "token_work": 49468
+    },
+    {
+      "charged_wall_seconds": 217.96765124919912,
+      "complete": true,
+      "condition": "cami_replay",
+      "repetition": 2,
+      "token_work": 48486
+    },
+    {
+      "charged_wall_seconds": 207.7086796612006,
+      "complete": true,
+      "condition": "plain_replay",
+      "repetition": 2,
+      "token_work": 61233
+    },
+    {
+      "charged_wall_seconds": 223.14928625220128,
+      "complete": true,
+      "condition": "cami_replay",
+      "repetition": 3,
+      "token_work": 50716
+    },
+    {
+      "charged_wall_seconds": null,
+      "complete": false,
+      "condition": "plain_replay",
+      "repetition": 3,
+      "token_work": null
+    },
+    {
+      "charged_wall_seconds": 230.59099425419882,
+      "complete": true,
+      "condition": "cami_replay",
+      "repetition": 4,
+      "token_work": 54285
+    },
+    {
+      "charged_wall_seconds": 204.5412547841992,
+      "complete": true,
+      "condition": "plain_replay",
+      "repetition": 4,
+      "token_work": 45183
+    },
+    {
+      "charged_wall_seconds": 216.69706958219868,
+      "complete": true,
+      "condition": "cami_replay",
+      "repetition": 5,
+      "token_work": 46935
+    },
+    {
+      "charged_wall_seconds": 237.10749546419757,
+      "complete": true,
+      "condition": "plain_replay",
+      "repetition": 5,
+      "token_work": 54317
+    }
+  ],
+  "direction_supported": false,
+  "eligible": false,
+  "guard_probes_passed": false,
+  "model_calls": 20,
+  "pairs": [
+    {
+      "charged_wall_seconds": true,
+      "comparator": "cami_replay",
+      "repetition": 1,
+      "token_work": true
+    },
+    {
+      "charged_wall_seconds": true,
+      "comparator": "cami_replay",
+      "repetition": 2,
+      "token_work": false
+    },
+    {
+      "charged_wall_seconds": null,
+      "comparator": "cami_replay",
+      "repetition": 3,
+      "token_work": null
+    },
+    {
+      "charged_wall_seconds": true,
+      "comparator": "cami_replay",
+      "repetition": 4,
+      "token_work": true
+    },
+    {
+      "charged_wall_seconds": false,
+      "comparator": "cami_replay",
+      "repetition": 5,
+      "token_work": false
+    }
+  ],
+  "planned_attempts": 40,
+  "provider_reported_tiers": [
+    "default"
+  ],
+  "rules": {
+    "attempts": 40,
+    "cache": "Each block/condition isolated; source memory and result memory empty initially. Only prior successful same-condition source changes may be recorded. Exact task, all workspace files/modes and external context must match. No historical solutions.",
+    "conditions": [
+      "cami_replay",
+      "plain_replay"
+    ],
+    "design": "result-memory-ablation-development-v1",
+    "limits": "Sol high requested priority, readable source-memory display, legacy lexical ranking. Fresh model state per call; persistent isolated memory per block/condition. 900 seconds,20 steps,1000000 token threshold. No retry, replacement, extension, pooling, heldout exposure or implementation tuning during run.",
+    "maximum_model_sessions": 20,
+    "repetitions": 5,
+    "scope": "Development ablation on previously exposed Click tasks: plain result replay versus CAMI plus result replay. Two tasks and exact repeats, not heldout evidence, production hit rate or billed currency.",
+    "sequence": [
+      "A",
+      "A",
+      "B",
+      "B"
+    ],
+    "success": "All40 operational/quality attempts and telemetry complete;20 changed-input rejection probes with successful unchanged-input controls; uniform observed tier on20 model sessions;20 expected hits without model. Plain+replay strictly lower four-stage token work AND pipeline wall than CAMI+replay in EACH of5 paired blocks. Otherwise unsupported. No retry, replacement, extension or pooling.",
+    "wall": "Includes canonical reset, independent source-memory construction, guards, model/auth/cleanup, cache lookup/record/materialization, capture and fresh grading. Shared fixed-baseline preflight divided equally across10 block-condition sequences. Interleaved order; host load recorded, not a guarantee of independent host quietness."
+  },
+  "shared_preflight_wall_seconds": 2.54237275199921,
+  "terminal_attempts": 40
+}

@@ -1,0 +1,1226 @@
+{
+  "scope": "All scheduled attempts retained, including failures. Known normalized token subtotals are not estimates of missing provider usage or invoices. Native automatic retry records are counted separately from controller session attempts; no controller trial was repeated. Failed trial wall can end before capture/grading, so these observed sums are not complete comparable pipeline totals. Primary eligibility/decision is unchanged.",
+  "status": "verified_observed_accounting",
+  "totals": {
+    "cami_replay": {
+      "attempts": 20,
+      "cache_hits": 10,
+      "declared_model_session_attempts": 10,
+      "native_retry_records": 0,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 1987584,
+        "cache_write": 0,
+        "input": 231635,
+        "output": 33350,
+        "reasoning": 16813
+      },
+      "observed_wall_seconds_including_failed_attempts": 1117.9870658839973,
+      "quality_outcomes": {
+        "pass": 20
+      },
+      "statuses": {
+        "passed": 20
+      },
+      "unknown_usage_trials": []
+    },
+    "plain_replay": {
+      "attempts": 20,
+      "cache_hits": 9,
+      "declared_model_session_attempts": 10,
+      "native_retry_records": 1,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 2072192,
+        "cache_write": 0,
+        "input": 216443,
+        "output": 34261,
+        "reasoning": 14998
+      },
+      "observed_wall_seconds_including_failed_attempts": 1103.0118221249995,
+      "quality_outcomes": {
+        "not_run": 1,
+        "pass": 19
+      },
+      "statuses": {
+        "failed": 2,
+        "passed": 18
+      },
+      "unknown_usage_trials": [
+        "r3-plain_replay-s3"
+      ]
+    }
+  },
+  "trials": [
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 287616,
+        "cache_write": 0,
+        "input": 52363,
+        "output": 4859,
+        "reasoning": 2090
+      },
+      "observed_wall_seconds": 150.18526519399893,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "785907fd7d33753df988a79cb388d82a2b85fb152a175ce27d6909b15618910d",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 196480,
+        "cache_write": 0,
+        "input": 23305,
+        "output": 4616,
+        "reasoning": 1835
+      },
+      "observed_wall_seconds": 125.39341459900061,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "7529329e90a5d1d4b10f694c117bc8ceb38f6d7410d413d0a3eacc00e5c3ace1",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-plain_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1439230020005198,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "95e1e6097865b8e66d78f06d46de0c9c51f7efa60b758dba0385ab5c6e7505e6",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1341239600005792,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "afb9d289d7cabf0147ecb8751ccb6be397cb47000ee1a7b00754caffecad0316",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 133120,
+        "cache_write": 0,
+        "input": 18800,
+        "output": 2237,
+        "reasoning": 1027
+      },
+      "observed_wall_seconds": 76.13152607600023,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "bdc611a09a907e29a623d94d666ede5f4d9be76685c388e9c8ad9de53df719b4",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 140288,
+        "cache_write": 0,
+        "input": 16674,
+        "output": 2062,
+        "reasoning": 976
+      },
+      "observed_wall_seconds": 69.14907161500014,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b6fa9c15261842c38136bc38a16f20b7c7a6c0d182cd04b976918defb04e7aa7",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-plain_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.139721460000146,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "9f9c804225207d7b405dacc1251a559494b1b2c2913e0ec658e67b73b81753bb",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1480984169993462,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "5c198a192c13de689326c483e82890ea67e3ae6a418b9cd95211bafbcfc3f447",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 228736,
+        "cache_write": 0,
+        "input": 20704,
+        "output": 4394,
+        "reasoning": 1530
+      },
+      "observed_wall_seconds": 125.62495572400076,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c8ff9893d672743e205e62f8f6993f63ef32995b0949aa2e16e47cb30b1a6a7e",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 269568,
+        "cache_write": 0,
+        "input": 19695,
+        "output": 4761,
+        "reasoning": 1819
+      },
+      "observed_wall_seconds": 132.1936116859997,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "98dec9282bc7dfc51eb4ea8d26d178bee796032032dbfcb992c489f47ce067fc",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1828020009998,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "7fd5bedcdd43eeaa64e8b806cefaaed1b3613f055a7735403fdf276450ebc31e",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-plain_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.145590000998709,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3b6231f747e99a67ab4a00326f2a4a8e1673d153c8c8a8ee7c89d42e4985fa47",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 171136,
+        "cache_write": 0,
+        "input": 31560,
+        "output": 2336,
+        "reasoning": 709
+      },
+      "observed_wall_seconds": 77.56288616000165,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "6047f8f2cb26e62cd330b82aee6e39395ae6979fb19dae58511bfdec9322360f",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 170752,
+        "cache_write": 0,
+        "input": 19058,
+        "output": 2197,
+        "reasoning": 956
+      },
+      "observed_wall_seconds": 81.23354091100009,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "41d48c32813c1a710f00443a4d3e45cf829ab1d75d7271eb9cacebec1c3692fe",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1034593759995914,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "86a044fc4bd9376235e65e9688c13dda1d5d24a60a16f68c688e39014d456912",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-plain_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.121010500999546,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "18f1438123b88b8432e56ce783d92b082c8b73c70ea735d8900b1e8db64e46cd",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 212608,
+        "cache_write": 0,
+        "input": 22541,
+        "output": 4418,
+        "reasoning": 2891
+      },
+      "observed_wall_seconds": 147.61494844200024,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "ab02777100eeb2a18b0b6079e1ef74e5c54883a57528c501a5b026ddc1408e30",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-plain_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 292736,
+        "cache_write": 0,
+        "input": 25729,
+        "output": 4293,
+        "reasoning": 4046
+      },
+      "observed_wall_seconds": 167.34225486700052,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3bd81404d3f6bb910d599d2b2a374a2e809685fbb114f49a13991ac4d1d1405e",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r3-plain_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.157068626000182,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "e92a1ad4baeb61bd875510f8f0bdefcba13ad31bb163339533549855a7c4cc90",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r3-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1665416680007183,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "7bc3254e3c84238e16e359f012dd289c1baf018395ef02570bba3477208a2e4b",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 114688,
+        "cache_write": 0,
+        "input": 17493,
+        "output": 2131,
+        "reasoning": 1242
+      },
+      "observed_wall_seconds": 70.99783282499993,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "f97d0483cedcce2c0b1174bf21f17109f26649d7b5d1bd180c4443361eff7587",
+      "tier": {
+        "assistant_responses": 10,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [
+        "msg_1d6f18363001A7l0ci1VfONL6n"
+      ],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": "TierEvidenceError: model tier evidence incomplete",
+      "id": "r3-plain_replay-s3",
+      "missing_tier_responses": [
+        "msg_1d6f18363001A7l0ci1VfONL6n"
+      ],
+      "native_retry_records": 1,
+      "normalized_tokens": {
+        "cache_read": 140032,
+        "cache_write": 0,
+        "input": 18887,
+        "output": 2070,
+        "reasoning": 476
+      },
+      "observed_wall_seconds": 85.8261307470002,
+      "provider_error_responses": [
+        {
+          "finish": "error",
+          "id": "msg_1d6f18363001A7l0ci1VfONL6n",
+          "type": "provider.transport"
+        }
+      ],
+      "quality": "pass",
+      "status": "failed",
+      "terminal_sha256": "6df3492d45c1b53f30ccb11938bb4d5e6aa8f5fbfd814ee86cde4730230d4324",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": false,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [
+          "assistant provider-reported tier absent or unsupported"
+        ],
+        "uniform_provider_reported_tier": null
+      },
+      "unknown_usage": true
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": "ValueError: unexpected hit/miss; frozen schedule not extended",
+      "id": "r3-plain_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 0.2655191249996278,
+      "provider_error_responses": [],
+      "quality": "not_run",
+      "status": "failed",
+      "terminal_sha256": "ea849329db22f6d0e72bc12afb839d34e2e8fa9e8642ec7ecba7a31e0434f3e8",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r3-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1157260420004604,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "93cda9a381ec4d5a9bf1a86a92a45f7b03e9e2bab6bb876a945df8e8d53cdd14",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 268544,
+        "cache_write": 0,
+        "input": 18745,
+        "output": 4894,
+        "reasoning": 1175
+      },
+      "observed_wall_seconds": 125.26203097399957,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3a075d6c9b0c07efca370c4cbc5b4f199b427dbba5e9528395e7537a7df9c940",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 253568,
+        "cache_write": 0,
+        "input": 25207,
+        "output": 4281,
+        "reasoning": 2214
+      },
+      "observed_wall_seconds": 135.192951852001,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "880b9f0514c2d94f27f504e56d93ae39da500e9317d121c742323c30b73ce7d4",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.2322883760007244,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "03f865128ab7a8cd335a8ee1588915b599936d98e1432a7b2e643e9024cf31f9",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-plain_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1259602089994587,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "5b5a5fb38ddd1fc728bb331ed77184b5e86f09c935398a6ef18e4c4d9c70629f",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 134400,
+        "cache_write": 0,
+        "input": 17431,
+        "output": 2130,
+        "reasoning": 808
+      },
+      "observed_wall_seconds": 74.77075311699991,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "226d82453d36e25975acca2bd0f64884c557c36997f094ec584771550887ca2a",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 195840,
+        "cache_write": 0,
+        "input": 19020,
+        "output": 2384,
+        "reasoning": 1179
+      },
+      "observed_wall_seconds": 90.77068179199887,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "ab8534d41670b4ed84babb3fac35679bc67f6c0c967b749651d015d758c28332",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1408349589983118,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b3ae59c629619c351a25836935e7830e824d4391879f6469d4c5679fc94a3007",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-plain_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1282732090003265,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b58f57efd0203e62b8a1b9513f0ee375221ac165cfde6b67c26c3d8d62c1d187",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 179200,
+        "cache_write": 0,
+        "input": 16218,
+        "output": 4063,
+        "reasoning": 2662
+      },
+      "observed_wall_seconds": 135.83223397899928,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b9d403046d1c6a9ae9f785330bdb0f0b17e34c740ac1eaf8bbf3c83b6bb8e6fc",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 276864,
+        "cache_write": 0,
+        "input": 24667,
+        "output": 5019,
+        "reasoning": 2445
+      },
+      "observed_wall_seconds": 144.41259798199826,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "f77b4e7ea93cd720497bfdedcdc298efec7f7d74756e64ac2c1894d3fc92f395",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-plain_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.183068125999853,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "1e350d765d70e475183c631690d0a83f9302cdf0619871e53ac1378e004d947b",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.204345875999934,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a617818d306f39ebf12448e9f943b46631b229c1153076e8c0f00f99108109db",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 170624,
+        "cache_write": 0,
+        "input": 21240,
+        "output": 2019,
+        "reasoning": 733
+      },
+      "observed_wall_seconds": 76.16794215899972,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "e94c3c3701736c48307f1e6edbc70845a04d87715509c82abe7f07a953e71cb9",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 222976,
+        "cache_write": 0,
+        "input": 18741,
+        "output": 2447,
+        "reasoning": 998
+      },
+      "observed_wall_seconds": 88.07477453899992,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c73e9b0115c090b9e931e659f0c124f99d9085f200985faa0ac334d15fcc9a32",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "plain_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-plain_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.1828175419996114,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "55c56858511ebf9c008be4ad2512ae0a5d37fc7b75ecfc81cc96dbb71071326b",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 2.238310292999813,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c6292071049afaf105fcb4d14bf05028c25227fca294c8b8f9750af7bf8b8062",
+      "unknown_usage": false
+    }
+  ]
+}

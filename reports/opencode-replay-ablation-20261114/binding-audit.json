@@ -1,0 +1,453 @@
+{
+  "status": "verified",
+  "trials": [
+    {
+      "trial": "r1-cami_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "785907fd7d33753df988a79cb388d82a2b85fb152a175ce27d6909b15618910d",
+      "candidate_source_files": 17,
+      "verified_artifacts": 233,
+      "native_reads": {
+        "bytes": 53983,
+        "observed_subtotal": 53983,
+        "complete": true,
+        "calls": 17,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r1-cami_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "afb9d289d7cabf0147ecb8751ccb6be397cb47000ee1a7b00754caffecad0316",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r1-cami_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "bdc611a09a907e29a623d94d666ede5f4d9be76685c388e9c8ad9de53df719b4",
+      "candidate_source_files": 17,
+      "verified_artifacts": 226,
+      "native_reads": {
+        "bytes": 28691,
+        "observed_subtotal": 28691,
+        "complete": true,
+        "calls": 11,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r1-cami_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "5c198a192c13de689326c483e82890ea67e3ae6a418b9cd95211bafbcfc3f447",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r1-plain_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "7529329e90a5d1d4b10f694c117bc8ceb38f6d7410d413d0a3eacc00e5c3ace1",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 53252,
+        "observed_subtotal": 53252,
+        "complete": true,
+        "calls": 13,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r1-plain_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "95e1e6097865b8e66d78f06d46de0c9c51f7efa60b758dba0385ab5c6e7505e6",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r1-plain_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "b6fa9c15261842c38136bc38a16f20b7c7a6c0d182cd04b976918defb04e7aa7",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 32717,
+        "observed_subtotal": 32717,
+        "complete": true,
+        "calls": 10,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r1-plain_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "9f9c804225207d7b405dacc1251a559494b1b2c2913e0ec658e67b73b81753bb",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r2-cami_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "98dec9282bc7dfc51eb4ea8d26d178bee796032032dbfcb992c489f47ce067fc",
+      "candidate_source_files": 17,
+      "verified_artifacts": 233,
+      "native_reads": {
+        "bytes": 47813,
+        "observed_subtotal": 47813,
+        "complete": true,
+        "calls": 14,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r2-cami_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "7fd5bedcdd43eeaa64e8b806cefaaed1b3613f055a7735403fdf276450ebc31e",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r2-cami_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "41d48c32813c1a710f00443a4d3e45cf829ab1d75d7271eb9cacebec1c3692fe",
+      "candidate_source_files": 17,
+      "verified_artifacts": 226,
+      "native_reads": {
+        "bytes": 31088,
+        "observed_subtotal": 31088,
+        "complete": true,
+        "calls": 9,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r2-cami_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "86a044fc4bd9376235e65e9688c13dda1d5d24a60a16f68c688e39014d456912",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r2-plain_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "c8ff9893d672743e205e62f8f6993f63ef32995b0949aa2e16e47cb30b1a6a7e",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 47809,
+        "observed_subtotal": 47809,
+        "complete": true,
+        "calls": 14,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r2-plain_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "3b6231f747e99a67ab4a00326f2a4a8e1673d153c8c8a8ee7c89d42e4985fa47",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r2-plain_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "6047f8f2cb26e62cd330b82aee6e39395ae6979fb19dae58511bfdec9322360f",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 36041,
+        "observed_subtotal": 36041,
+        "complete": true,
+        "calls": 11,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r2-plain_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "18f1438123b88b8432e56ce783d92b082c8b73c70ea735d8900b1e8db64e46cd",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r3-cami_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "ab02777100eeb2a18b0b6079e1ef74e5c54883a57528c501a5b026ddc1408e30",
+      "candidate_source_files": 17,
+      "verified_artifacts": 233,
+      "native_reads": {
+        "bytes": 45259,
+        "observed_subtotal": 45259,
+        "complete": true,
+        "calls": 15,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r3-cami_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "7bc3254e3c84238e16e359f012dd289c1baf018395ef02570bba3477208a2e4b",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r3-cami_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "f97d0483cedcce2c0b1174bf21f17109f26649d7b5d1bd180c4443361eff7587",
+      "candidate_source_files": 17,
+      "verified_artifacts": 226,
+      "native_reads": {
+        "bytes": 26663,
+        "observed_subtotal": 26663,
+        "complete": true,
+        "calls": 9,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r3-cami_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "93cda9a381ec4d5a9bf1a86a92a45f7b03e9e2bab6bb876a945df8e8d53cdd14",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r3-plain_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "3bd81404d3f6bb910d599d2b2a374a2e809685fbb114f49a13991ac4d1d1405e",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 77873,
+        "observed_subtotal": 77873,
+        "complete": true,
+        "calls": 16,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r3-plain_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "e92a1ad4baeb61bd875510f8f0bdefcba13ad31bb163339533549855a7c4cc90",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r3-plain_replay-s3",
+      "status": "failed_attempt_preserved",
+      "terminal_sha256": "6df3492d45c1b53f30ccb11938bb4d5e6aa8f5fbfd814ee86cde4730230d4324"
+    },
+    {
+      "trial": "r3-plain_replay-s4",
+      "status": "failed_attempt_preserved",
+      "terminal_sha256": "ea849329db22f6d0e72bc12afb839d34e2e8fa9e8642ec7ecba7a31e0434f3e8"
+    },
+    {
+      "trial": "r4-cami_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "880b9f0514c2d94f27f504e56d93ae39da500e9317d121c742323c30b73ce7d4",
+      "candidate_source_files": 17,
+      "verified_artifacts": 233,
+      "native_reads": {
+        "bytes": 57580,
+        "observed_subtotal": 57580,
+        "complete": true,
+        "calls": 14,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r4-cami_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "03f865128ab7a8cd335a8ee1588915b599936d98e1432a7b2e643e9024cf31f9",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r4-cami_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "ab8534d41670b4ed84babb3fac35679bc67f6c0c967b749651d015d758c28332",
+      "candidate_source_files": 17,
+      "verified_artifacts": 226,
+      "native_reads": {
+        "bytes": 28790,
+        "observed_subtotal": 28790,
+        "complete": true,
+        "calls": 11,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r4-cami_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "b3ae59c629619c351a25836935e7830e824d4391879f6469d4c5679fc94a3007",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r4-plain_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "3a075d6c9b0c07efca370c4cbc5b4f199b427dbba5e9528395e7537a7df9c940",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 49816,
+        "observed_subtotal": 49816,
+        "complete": true,
+        "calls": 13,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r4-plain_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "5b5a5fb38ddd1fc728bb331ed77184b5e86f09c935398a6ef18e4c4d9c70629f",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r4-plain_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "226d82453d36e25975acca2bd0f64884c557c36997f094ec584771550887ca2a",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 31666,
+        "observed_subtotal": 31666,
+        "complete": true,
+        "calls": 10,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r4-plain_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "b58f57efd0203e62b8a1b9513f0ee375221ac165cfde6b67c26c3d8d62c1d187",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r5-cami_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "b9d403046d1c6a9ae9f785330bdb0f0b17e34c740ac1eaf8bbf3c83b6bb8e6fc",
+      "candidate_source_files": 17,
+      "verified_artifacts": 233,
+      "native_reads": {
+        "bytes": 36308,
+        "observed_subtotal": 36308,
+        "complete": true,
+        "calls": 13,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r5-cami_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "a617818d306f39ebf12448e9f943b46631b229c1153076e8c0f00f99108109db",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r5-cami_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "e94c3c3701736c48307f1e6edbc70845a04d87715509c82abe7f07a953e71cb9",
+      "candidate_source_files": 17,
+      "verified_artifacts": 226,
+      "native_reads": {
+        "bytes": 42264,
+        "observed_subtotal": 42264,
+        "complete": true,
+        "calls": 11,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r5-cami_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "c6292071049afaf105fcb4d14bf05028c25227fca294c8b8f9750af7bf8b8062",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r5-plain_replay-s1",
+      "status": "verified",
+      "terminal_sha256": "f77b4e7ea93cd720497bfdedcdc298efec7f7d74756e64ac2c1894d3fc92f395",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 61557,
+        "observed_subtotal": 61557,
+        "complete": true,
+        "calls": 16,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r5-plain_replay-s2",
+      "status": "verified",
+      "terminal_sha256": "1e350d765d70e475183c631690d0a83f9302cdf0619871e53ac1378e004d947b",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    },
+    {
+      "trial": "r5-plain_replay-s3",
+      "status": "verified",
+      "terminal_sha256": "c73e9b0115c090b9e931e659f0c124f99d9085f200985faa0ac334d15fcc9a32",
+      "candidate_source_files": 17,
+      "verified_artifacts": 225,
+      "native_reads": {
+        "bytes": 31562,
+        "observed_subtotal": 31562,
+        "complete": true,
+        "calls": 9,
+        "errors": [],
+        "source": "pre_publication_runtime_projection",
+        "limitation": "Original text is not retained; redacted bodies cannot be independently remeasured. IDs, states, arithmetic, public unredacted bytes and artifact hashes are checked."
+      }
+    },
+    {
+      "trial": "r5-plain_replay-s4",
+      "status": "verified",
+      "terminal_sha256": "55c56858511ebf9c008be4ad2512ae0a5d37fc7b75ecfc81cc96dbb71071326b",
+      "candidate_source_files": 17,
+      "verified_artifacts": 312
+    }
+  ],
+  "scope": "Supplemental source-to-grade, session-hash and native-read binding checks. No changed outcome criterion."
+}
