@@ -3,7 +3,8 @@
 `cami-replay.pyz` is a 3,450-byte CLI containing the unchanged production
 `integrations/opencode/task_replay.py` module and its entry point. It requires
 Python 3.12 or newer; Python itself is not included. No CAMI installation,
-Pydantic, or third-party Python packages are required. Verified on macOS ARM64.
+Pydantic, or third-party Python packages are required. Verified on macOS ARM64
+and Linux ARM64 in separate empty environments.
 This is a packaging result, not a new speed measurement.
 
 Record a successful source change from two isolated workspace snapshots:
@@ -37,7 +38,8 @@ there is no semantic reuse across different repositories. Use clean snapshots
 with at most 10,000 regular files and 64 MiB total content; keep the task file,
 cache and output outside both snapshots. The output must not already exist.
 
-`build.json` records size and hashes; `verification.json` records the empty-venv
+`build.json` records size, hashes and the build interpreter/compressor;
+`verification.json` and `verification-linux.json` record the empty-venv
 behavioral checks, including corrupt-cache rejection and changed-input misses.
 The shipped module matches production commit `a8c34cd`. Two independent builds
 produced identical archive bytes:

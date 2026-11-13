@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "artifact_bytes": 3450,
+  "artifact_sha256": "30ab9c7e2429717cf2483dcbc7e222750d53bb965a1de3272ed04eab80621bb8",
+  "source_sha256": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+  "checks": [
+    "empty_venv_without_cami_or_pydantic",
+    "archive_contains_only_entrypoint_and_original_module",
+    "idempotent_record",
+    "exact_hit",
+    "fresh_behavioral_grade",
+    "source_add_change_delete_and_mode",
+    "input_unchanged",
+    "non_source_edits_not_replayed",
+    "changed_task_miss",
+    "changed_context_miss",
+    "changed_input_miss",
+    "existing_output_preserved",
+    "corrupt_cache_rejected_before_output"
+  ],
+  "python": "3.12.12 (main, Feb 24 2026, 19:53:06) [GCC 14.2.0]",
+  "model_calls": 0,
+  "scope": "Artifact delivery correctness, not a new performance measurement."
+}
