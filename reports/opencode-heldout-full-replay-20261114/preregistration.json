@@ -1,0 +1,37 @@
+{
+  "design": "full-cami-result-memory-heldout-v1",
+  "production_commit": "a8c34cd",
+  "preregistration_parent": "63a66a1640e02bc152c9d3fa48e3dc5f45c821aa",
+  "sealed_assets": {
+    "heldout-task-assets-v1.tar.gz": "72b4e060612ceefbae4529453a97ca450cfc78ba2e5cd438d66cf2817a41fcab",
+    "asset-freeze.json": "ed6e15d1d3cf3bc0d55d1e15dec31ba73f1a8db606f99e194e229cb5d099d7aa",
+    "INTERFACE.json": "0aaef0abd5026a0a9202c027e4e4f299d327ec17b84e252c4b426156c55ea3f1"
+  },
+  "claim": "Exact-repeat result reuse with CAMI reduces token work and complete four-task pipeline time versus plain, static memory and CAMI in every one of five blocks, with all fixed quality checks passing.",
+  "conditions": [
+    "plain",
+    "static",
+    "cami",
+    "cami_replay"
+  ],
+  "blocks": 5,
+  "sequence": [
+    "A",
+    "A",
+    "B",
+    "B"
+  ],
+  "attempts": 80,
+  "maximum_model_sessions": 70,
+  "expected_hits": 10,
+  "success": "All 80 attempts pass operational, fixed acceptance and full frozen regression checks; complete telemetry; uniform observed provider tier; 10 expected hits and 10 changed-input rejections with positive controls. Both block token work and charged pipeline wall strictly lower than EACH comparator in EACH block. Otherwise unsupported.",
+  "accounting": "Count reset, memory construction, auth, guards, model, capture, replay lookup/record, fresh grading and shared baseline preflight divided across 20 block-condition sequences. No retry, replacement, extension, pooling or task-based implementation tuning. Preserve failed attempts and costs.",
+  "model": "openai/gpt-6.1-sol#high",
+  "requested_tier": "priority",
+  "seed": "Original sealed 75 generic origin-source notes, identical catalog for static and CAMI; no task-dependent content.",
+  "source_scope": "Only regular candidate files under src/packaging; restore all other evaluator files from sealed assets.",
+  "environment": "Pin immutable runtime before any paid calls; recheck sealed base failures, gold acceptance and full regression, and restoration control with fixed runner. Record any CPython patch/dependency portability adaptation. No performance-driven tuning.",
+  "exposure": "Task/outcome held-out, not unseen project: Packaging previously used in structural research. Public historical tasks may be in model training. No prompts/solutions opened before this preregistration.",
+  "separate_design": "Separate replication with four conditions and five blocks. Does not replace the original sealed three-arm, three-repeat source-memory protocol.",
+  "limits": "Two tasks and exact repeats; not arbitrary task generalization, not billing currency. No future production tuning from these outcomes without a new independent final study."
+}
