@@ -62,11 +62,14 @@ every block. These are exact repeats of two development tasks, not 80 independen
 tasks or evidence for arbitrary new tasks, semantic reuse after changes, or the
 existing source-prefix lookup. Token work is not billed currency.
 
-A [subsequent storage change](reports/opencode-storage-compaction-20261114/README.md)
-removed redundant SQLite values and reduced database size by 44.13% on all ten
-source-memory databases while preserving histories and public outputs. Its local
-timing result is inconclusive; the full model experiment describes the earlier
-version.
+The [subsequent storage upgrades](reports/opencode-generation-compression-20261114/README.md)
+removed redundant values and compressed generation JSON, reducing median SQLite
+size from 36.76 MB to 7.72 MB on the same ten source-memory databases. Histories
+and public outputs remain unchanged. Compared with the intermediate compact
+format, compression reduced peak memory of the local read process by 39.18% and
+its complete process time by 4.70%, with separated ranges in all ten cases.
+Full MCP latency remains inconclusive; the full model experiment describes the
+earlier frozen version.
 
 ## OpenCode memory integration
 

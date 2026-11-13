@@ -1,0 +1,79 @@
+{
+  "status": "verified",
+  "verified_processes": 120,
+  "model_calls": 0,
+  "cases": [
+    {
+      "id": "r1-cami",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "98db88f6db8fba7dc7699420fc48f5bba0f26fe58ff6d25aa2ee58469689e031"
+    },
+    {
+      "id": "r1-cami_replay",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "b4bb893a8e00d9f20b3ec58bb7b3ee8da985fc69e5e2b7c102580da625ada77f"
+    },
+    {
+      "id": "r2-cami",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "0e2abc80a8bc6c7de29567feb28b5020949dc6a8a0d91abc24a56f228a06e3a1"
+    },
+    {
+      "id": "r2-cami_replay",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "72523ffcfbbe6bcc713284c7eb3add660132902e448509594198b057bfaa8bd6"
+    },
+    {
+      "id": "r3-cami",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "018dd69103ba0f520ffcc2112a38b07d3b450a2c13c6dcfdd6f1c46a84b6eac1"
+    },
+    {
+      "id": "r3-cami_replay",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "c732025da0203083c4ef56bf5328da9fda42daacd093b8cb9f241aad94fb3ba2"
+    },
+    {
+      "id": "r4-cami",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "3ac867739da83363896ad4c7cb50f817aef1db8c886a0c9b398c75d4ff5ff286"
+    },
+    {
+      "id": "r4-cami_replay",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "7c5b7090bd7e828df2ea71b0409ed4bd4a5e0350a6d5b0e31bfc0ecca8a271b9"
+    },
+    {
+      "id": "r5-cami",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "23a0a3daf160855ce2c5afcc2e14ea3b866a6ae8b331f27dcdb278398aeb48b8"
+    },
+    {
+      "id": "r5-cami_replay",
+      "status": "verified",
+      "all_logical_rows_exact": true,
+      "original_unchanged": true,
+      "result_sha256": "97ee92e784dbed64889251fae798d6ed3561497027373ad1599ff474d08e3454"
+    }
+  ],
+  "summary_sha256": "d3864e60566ffb387614a15ee147f6fd69b21adeedea08aa2edf6b171f7bc13c",
+  "scope": "Exact reconstruction of all SQL values including historic raw generation JSON; physical originals and other files unchanged; every successful process receipt, correct frozen source import, output hash, latency/RSS arithmetic and size gate."
+}

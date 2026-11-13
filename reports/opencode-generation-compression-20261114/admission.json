@@ -1,0 +1,23 @@
+{
+  "fresh_mcp_cases": 6,
+  "legacy_mcp_cases": [
+    {
+      "legacy_schema": 1,
+      "original_files_unchanged": true,
+      "preserved_generations": 4,
+      "schema": 3,
+      "status": "passed"
+    },
+    {
+      "legacy_schema": 2,
+      "original_files_unchanged": true,
+      "preserved_generations": 5,
+      "schema": 3,
+      "status": "passed"
+    }
+  ],
+  "model_calls": 0,
+  "old_reader_refused_schema3": true,
+  "scope": "Real Docker MCP fresh and migrated stores; exact historic JSON and original files preserved. Actual prior schema2 reader refuses schema3. Correctness only, no timing claim.",
+  "status": "passed"
+}
