@@ -1,0 +1,977 @@
+{
+  "pins": {
+    "adapter": {
+      "README.md": "709b1e8a2863b7f2d56ef49f594c66444f8d46d65c042d697031fde565f3b450",
+      "TASK_REPLAY.md": "e5e7b065cd4081307ffb77e198a27ce987d477130afa480f6cb9c6749c9ad841",
+      "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+      "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+      "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+      "memory_adapter.py": "da1b685893355c23fc859e970e11b8a1a7c0ac2958152f8ae1b3ebed86badbb4",
+      "memory_backend.py": "ac59bd5712ce4936cbc497badb0bf833142fb2c3a22f2a4bc58ec1718de14386",
+      "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+      "readable_response.py": "85bd8be9dbf20deffd0dea2c15b09ecbe6341aa6d4956c907cb1f3efe1db19fa",
+      "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+      "task_replay.py": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+      "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+    },
+    "analysis": {
+      "README.md": "c00c7cd24dd6ada29d68ba9c48e1089e08f39e3615122eda4eaad14cc2ddaea9",
+      "STALENESS.md": "bd619f90ab2f5b36f0d180f16742f32ff6ab30f46704d7187e3d6551cd659e79",
+      "aggregate_metrics.py": "fd63cf802e70b946b18002002bbdcab5b357fcba58aee5d3d989902ec56d8dee",
+      "aggregate_study.py": "05845521d2a2a477207d2d45cc283b88b2c4f662645b6378daef0deda7f4a996",
+      "classify_literal_calls.py": "098f0e29fc76e07b12eeb41c2fa5e41023d38fa3fdcde8b461269ff08de4c5bf",
+      "classify_memory_calls.py": "2af162c62de6078e5502e31b4421270cd2c7815bc5c0909d374bdc7402ba7c1c",
+      "format_diagnostics.py": "4d9460f09a3671c425820ca23a48e7b9bb7d980eaf9554765c02e42f72136896",
+      "format_probe.py": "2f716f3f6bdfe426708a4a1e8bb2f1f2bdc536783d096b53f9f3b70acbafee7d",
+      "full_replay_audit.py": "ddff4cc9c737afd1d03870a57e6ebd90a34d055647e73e198e62d1685d08ecbe",
+      "identifier_replay.py": "5b53fab729c567a4dc1090f32daa4b4d526637fc67649571c260211fc3408702",
+      "literal_reference.py": "3431703805f84a695a5e05be9f1a9284b42218cadc2a871cb3d2b7e05b5bb6a9",
+      "memory_read_overlap.py": "956e5b302d5de925a4a2b2334e5892401501ac7e148862ab2dcbfb2263d37f1e",
+      "ranking_probe.py": "db66c1c0f5b2460e5ce6ea38b42c1a2df9de654ac126f53947770b4c6424c7af",
+      "service_tier_evidence.py": "706c2bdb918782389b77afabcb245c93756e678571a876791c814428a90a78c6",
+      "summarize_literal_staleness.py": "063da330decbd340fd2bb524b82a1e43f71c273cc9029c6ced939c05b2e99e9d",
+      "summarize_resources.py": "a32c022005abdf885be0b77b1002595c0c4cb592c7c967d88564533f21c3bb60",
+      "summarize_terminal_staleness.py": "084677acdb75c9e53c8e7d510cd52dd7ee57d870aff49f5b208f50dfe9b1fa87",
+      "supported_rules.json": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4",
+      "task_replay_audit.py": "6ffd81cce7696d590cc9bfee4eb4c5fbb461533043f13b588b007f3a94f02b61",
+      "test_aggregate.py": "f688054926b54ac81976dd268fba8e6eb0e3f49a371b884a284a1b48d0e14ea2",
+      "test_format_probe_analysis.py": "cc11a0296ec9988cae6d19ad9cdd860b92a7ea64b02b467910689ba33949d66c",
+      "test_literal_cohort.py": "e43dc12cfaa949f80ecd16348c6a141ce09420c47c5cff8ae4aa6081dccef60c",
+      "test_literal_staleness.py": "bdc013b012eaccc7f85b3c2d3a7c9e339b852b3b589130d53af65306569c6033",
+      "test_memory_read_overlap.py": "463f8bcee856b8068b691ec6086063de1c3cd665e6c9df78d3ace8c5f3b1442d",
+      "test_ranking_probe_analysis.py": "e05e0586263e5da38d997d4e555af54bd81e0cbddeeda360ac3b46eb6cab6830",
+      "test_resources.py": "6cf8dab22d19f49c1a8da6734720b82ce2477e2ee9500078aa662d922e075780",
+      "test_service_tier_admission.py": "a68c65799d5ada7939c7003c7e324d189bb7e4efebd086b76b9b0133b6c0ad74",
+      "test_staleness.py": "20ce00c8b363430af83c882a3178a1aaeb2faefb7f3cfc219ad350376e4e036a"
+    },
+    "binary": "dcc7e6f4ac1672e1884dcb8d26ab333e55ffc3f080e01a7a60177aa05f54935f",
+    "controller": {
+      "authored_integration.py": "3a2260c56a6c3ef490c4f1818bf6d94a8af83f6b425b720eb7e6c9dcbdaf57ea",
+      "fixed_grader.py": "4d369f797dc067bdf57b154036b1220c0a785ba17b457b79c78a4f315cb07f6a",
+      "literal_stdio_worker.py": "c51023306a138ef861d88212f1cd182865329757d28fd6e6f1d41d707d61059b",
+      "memory_format_evidence.py": "e38234d386bfa86a203719dae8ae19ec9247f38f03a728413b3332a0cc9ca05f",
+      "memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+      "opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+      "preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+      "readable_receipts.py": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324",
+      "study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+      "study_controller.py": "0fad44cee89605e7b1eb66dece99b0783ea629d33759f08fc2881ab262ad898e",
+      "study_ledger.py": "b9a6e62e8588100ab9a9c980332528e9e13d77c9cf7f2ac3bc105358570f2d2c",
+      "study_runtime.py": "d06595f650ca8a3af6daab3f6ec612c0eeaba9b8e905a51c0d6d1332ad2a4289",
+      "study_schema.py": "9e5938cb0f7ea68c90c7c41c377739e89c7e6faaf258fc8e181264a764eb781f",
+      "study_workspace.py": "aaa74710114b1c37bdf4101cec0fb847967541bb23d03de6943677c27ac47e89",
+      "test_controller.py": "ab497678ff421f848ac6683f6914d72b387447b93be9e7eb74cfc914c322d810",
+      "test_format_observation.py": "c9010037e0958e22480aee7885faf9cacb3e0313e2ec7678c9fe0cf2ed6ceb77",
+      "test_format_probe.py": "d3c1ca7438fa1f2b02f937bf96c7ecc4446cee836ff18f364f8f5769f98d8c61",
+      "test_format_selection.py": "e86069dc01b23299c70097113c35d8bd91e7957efc0bfc24c3d66077a2cbd71c",
+      "test_idle_lifecycle.py": "6276bb6e0cd89ebf1d655a346ba5e2458d493f080d99e8497516a311682ed9bd",
+      "test_literal_controller.py": "0d38c84880418a280bcaec82ba203656a2974d1a997e1ea9ec0c65f003ebd563",
+      "test_literal_stdio.py": "3829ef2b7d67193121a065dddeab0c8ed1dedf6005fb302642bf09ff1b9fa56c",
+      "test_non_tool_messages.py": "80e41edb791c51393a374afa91c43236e9c2de91c84d9df7c0453aa1081bafa7",
+      "test_ranking_probe.py": "08031a510fe01b96d7c8570c52a477c236a21bbd9a05aae8795b54ef91af2238",
+      "test_readable_integration.py": "07c689633e520fa3313799c7b792c9e01b0017d114a154e0ec8abe462c07176c",
+      "test_readable_receipts.py": "485c15ba97ac8282a296f44dc2465368a41786900cf9e58a8bba0ba7bd10c191",
+      "test_service_tier.py": "96411a66571c6515e162bb87df3eb39b0bf59b2b6002fcea3fe95e12ea832a0d",
+      "verify_literal_containers.py": "802457c9d3771d0eb263142dfa3db1dd095110151053ab4f1f2fdb801f5867b7"
+    },
+    "harness": {
+      "boundary-sentinel.txt": "2c254255be5ae1d1741ee5ec813738d044f47f086c5ba13c0f6dfd964bd61212",
+      "container_common.py": "dd962278943d07cd6c31a21b890ce98f7a91d9069c346c2ce238f7196d06269e",
+      "container_session.py": "849d160601f64ee9b33855155ece8545cc8a1584daeec170b5ad45dc44592ef0",
+      "container_worker.py": "a1ebad39b16c725017c8c7301b75f0eb92ded7543a16ddabbc9099f780fcd56b",
+      "evidence_safety.py": "3ff3d798413f7ced9202a9d7ac0ecd16d8643390c3f7790df5fea270936ce430",
+      "native_read_evidence.py": "33c8e992b2d8ed4858b2b9938bce41bb065d1754f00af9377df9ab5d4265b77e",
+      "test_failure_contracts.py": "fcd2ce2de8f8a4ff420f090adcf4c50d8ae8abac4b8a51596d9768d12b812c5b",
+      "test_native_read_evidence.py": "e49e85e2e3576ddce71ed7413917ac06dabae14f0e43920060a5182776f34001",
+      "test_publication_guards.py": "dabdfe747148f6af771a0d28f2f801e55f24c3ea7ed5d54a8a30d163c0dbf0a4",
+      "test_structured_redaction.py": "c5959253d25f4d2e4e6721a30292e38bc57fb702120f7f666e4d89e352ddf7b6",
+      "trial_guards.py": "03fc81278ae7f0f411a0132c02aec26d8a59405bd6b49d11eca535ebb03f24f1"
+    },
+    "production": {
+      "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+      "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+      "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+      "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+      "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+      "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+      "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+      "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+      "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+      "cami/cli.py": "cd94b4b14ef18696dd41f01be46c13be1ade69808a82cdd4f0e2cebf7a8a5560",
+      "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+      "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+      "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+      "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+      "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+      "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+      "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+      "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+      "cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+      "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+      "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+      "cami/models.py": "bcb3c3a33b1342134d448490b1cc2f98e04820f61f43aa7fa9dbfa1e6d1dce37",
+      "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+      "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+      "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+      "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+      "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+      "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+      "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+      "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+      "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+      "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+      "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+      "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+      "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+      "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+      "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+      "cami/product/memory/store.py": "b5c8ac3d1917afa443b0af6dfdedd8b9e9ebed3c90d5b7db17af4f93f4e19b8f",
+      "cami/product/memory/validation.py": "cca76be12ba6c46ffc8d67a8abc5ec6931463d10a22af84e603b187e0be7e8c6",
+      "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+      "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+      "cami/product/service.py": "fbe443cb44f9e2ac022ea16f54bf55d4eae7a51c3003b0542ed5825b8bffb4ca",
+      "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+      "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+      "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+      "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+      "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+      "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+      "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+      "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+      "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+      "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+      "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+      "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+      "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+      "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+      "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+      "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+    },
+    "runner": "60551de53dd42476520837cbb0488cc17919f0e837401d33f9952fe355d3e6e5"
+  },
+  "rules": {
+    "attempts": 80,
+    "cache": "Each block/condition isolated; source memory and result memory empty initially. Only prior successful same-condition source changes may be recorded. Exact task, all workspace files/modes and external context must match. No historical solutions.",
+    "conditions": [
+      "plain",
+      "static",
+      "cami",
+      "cami_replay"
+    ],
+    "design": "full-cami-result-memory-development-v1",
+    "limits": "Sol high requested priority, readable source-memory display, legacy lexical ranking. Fresh model state per call; persistent isolated memory per block/condition. 900 seconds,20 steps,1000000 token threshold. No retry, replacement, extension, pooling, heldout exposure or implementation tuning during run.",
+    "maximum_model_sessions": 70,
+    "repetitions": 5,
+    "scope": "Full development replication of exact-repeat result reuse added to CAMI, compared with original plain/static/CAMI. Still two historical development tasks, not80 independent tasks or proof for arbitrary new tasks. Canonical A-to-B source change; explicit same-task changed-input rejection probes separate from timed results.",
+    "sequence": [
+      "A",
+      "A",
+      "B",
+      "B"
+    ],
+    "success": "All 80 operational/quality trials and telemetry complete; all10 changed-input rejection probes with successful unchanged-input controls pass; uniform provider tier on all 70 model sessions; 10 expected exact-repeat hits with no model. Candidate strictly lower four-stage token work AND pipeline wall than EACH of three comparators in EACH of five blocks (15 comparisons per metric). Missing or failed attempts prevent support.",
+    "wall": "Includes canonical reset, independent source-memory construction, guards, model/auth/cleanup, cache lookup/record/materialization, capture and fresh grading. Shared fixed-baseline preflight divided equally across20 block-condition sequences. Interleaved order; host load recorded, not a guarantee of independent host quietness."
+  },
+  "runtime": {
+    "adapter": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v8/integrations/opencode",
+    "binary_path": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v8/bin/opencode",
+    "binary_sha256": "dcc7e6f4ac1672e1884dcb8d26ab333e55ffc3f080e01a7a60177aa05f54935f",
+    "bundle_kind": "development",
+    "bundle_path": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v8/examples/opencode_benchmark_development_v2",
+    "cami_source": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v8/src",
+    "harness": "/var/lib/docker/volumes/cami-local-study-20261113/_data/runtime-v8/scripts/opencode_benchmark/harness/container_session.py",
+    "image": "sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040",
+    "memory_response_format": "readable",
+    "normalized": {
+      "asset_hashes": {
+        "fixture-manifest.json": "908a61eaf7ebbd99b7355add5cf5f795c65e942be47a2ddcb3cfc27afc757529",
+        "fixtures/click-help-eagerness-base.tar.gz": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+        "fixtures/click-help-option-api-base.tar.gz": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+        "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+        "memory-origin-literal-v2/seed-spec.json": "d2c594782d4877bca0180761988764e25a1071e8b39ab6d5e3d0b634e69bb6be",
+        "memory-source.json": "87c0042f0595387872dd139c3cfd356a0997c3241761321d572f0efd39f44474",
+        "oracles/conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b",
+        "oracles/test_commands.py": "093c5d2dc314e84204c0d1592077f16b21aa1078afcdac98596b4cf93e34edc7",
+        "oracles/test_help_option_api.py": "8b9e4acc076b7231ee57e1540088a7cfa25a37ed848b72ff31a4487dd2fb624d",
+        "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+        "task-evaluation.json": "89b29c509cd62d8db585721f931a74a94061d4705bc249cca5a5942cd787951d",
+        "task-prompts.json": "71c3c093a217c6c16c35b5e7e04ca8fb253253931aa22aef53e2a8db534e3ab1"
+      },
+      "memory_source": {
+        "extractor_format": "python.definition-prefix/1",
+        "generator": "seed_source_literals_v2.py",
+        "helpers": [
+          "literal_source.py"
+        ],
+        "payload_kind": "source_excerpt_equals",
+        "schema_version": 2,
+        "seed": "memory-origin-literal-v2/seed-spec.json"
+      },
+      "seed": "memory-origin-literal-v2/seed-spec.json",
+      "sequence": [
+        "click-help-option-api",
+        "click-help-option-api",
+        "click-help-eagerness",
+        "click-help-eagerness"
+      ],
+      "source_roots": [
+        "src/click"
+      ],
+      "tasks": [
+        {
+          "acceptance": [
+            "oracles/test_help_option_api.py"
+          ],
+          "archive": "fixtures/click-help-option-api-base.tar.gz",
+          "archive_sha256": "002c3c09ebaa1ba309f2db997076b527c61d14ab16d0b661c8f9e54616cadb4e",
+          "id": "click-help-option-api",
+          "oracle_root": "oracles",
+          "prompt": "Consolidate Click's duplicated built-in help-option behavior into a reusable public click.HelpOption class derived from Option. It should default to --help, an eager flag that prints help and exits without passing a value to the command. Use the same class for automatically generated command help and the help_option decorator. Preserve custom option names, disabled automatic help, resilient parsing, existing help output/color behavior, explicit option keyword overrides (including callback), and the decorator's custom cls support. Keep existing applications working and add focused tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+          "pytest_selection": null,
+          "regression": "tests",
+          "replace_regression_tests": null
+        },
+        {
+          "acceptance": [
+            "oracles/test_commands.py"
+          ],
+          "archive": "fixtures/click-help-eagerness-base.tar.gz",
+          "archive_sha256": "f068a1ec2331afb8a716f4d050120502be07659e19c62378bd640df15bcd15e7",
+          "id": "click-help-eagerness",
+          "oracle_root": "oracles",
+          "prompt": "Fix the ordering of Click's automatically generated help option when help_option_names supplies a custom name. For a command with a non-eager flag -a, an eager flag -b whose callback prints and exits, and automatic --my-help: --my-help before -b must print help, while -b before --my-help must invoke -b. Help must take precedence over the non-eager flag regardless of order. Keep ordinary callback ordering, disabled help, and other option behavior intact. Add focused regression tests. Work only in this repository; do not look up the upstream implementation or use the network. Run relevant local tests and summarize the change.",
+          "pytest_selection": "help_param_priority or iter_params_for_processing",
+          "regression": "tests",
+          "replace_regression_tests": null
+        }
+      ]
+    },
+    "reported_token_budget": 1000000,
+    "service_tier": "priority",
+    "shared_server": "http://host.docker.internal:49374"
+  },
+  "schedule": [
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r1-plain-s1",
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r1-static-s1",
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r1-cami-s1",
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r1-cami_replay-s1",
+      "repetition": 1,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r1-static-s2",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r1-cami-s2",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r1-cami_replay-s2",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r1-plain-s2",
+      "repetition": 1,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r1-cami-s3",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r1-cami_replay-s3",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r1-plain-s3",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r1-static-s3",
+      "repetition": 1,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r1-cami_replay-s4",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r1-plain-s4",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r1-static-s4",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r1-cami-s4",
+      "repetition": 1,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r2-static-s1",
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r2-cami-s1",
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r2-cami_replay-s1",
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r2-plain-s1",
+      "repetition": 2,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r2-cami-s2",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r2-cami_replay-s2",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r2-plain-s2",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r2-static-s2",
+      "repetition": 2,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r2-cami_replay-s3",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r2-plain-s3",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r2-static-s3",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r2-cami-s3",
+      "repetition": 2,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r2-plain-s4",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r2-static-s4",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r2-cami-s4",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r2-cami_replay-s4",
+      "repetition": 2,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r3-cami-s1",
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r3-cami_replay-s1",
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r3-plain-s1",
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r3-static-s1",
+      "repetition": 3,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r3-cami_replay-s2",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r3-plain-s2",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r3-static-s2",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r3-cami-s2",
+      "repetition": 3,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r3-plain-s3",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r3-static-s3",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r3-cami-s3",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r3-cami_replay-s3",
+      "repetition": 3,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r3-static-s4",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r3-cami-s4",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r3-cami_replay-s4",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r3-plain-s4",
+      "repetition": 3,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r4-cami_replay-s1",
+      "repetition": 4,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r4-plain-s1",
+      "repetition": 4,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r4-static-s1",
+      "repetition": 4,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r4-cami-s1",
+      "repetition": 4,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r4-plain-s2",
+      "repetition": 4,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r4-static-s2",
+      "repetition": 4,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r4-cami-s2",
+      "repetition": 4,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r4-cami_replay-s2",
+      "repetition": 4,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r4-static-s3",
+      "repetition": 4,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r4-cami-s3",
+      "repetition": 4,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r4-cami_replay-s3",
+      "repetition": 4,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r4-plain-s3",
+      "repetition": 4,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r4-cami-s4",
+      "repetition": 4,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r4-cami_replay-s4",
+      "repetition": 4,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r4-plain-s4",
+      "repetition": 4,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r4-static-s4",
+      "repetition": 4,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r5-plain-s1",
+      "repetition": 5,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r5-static-s1",
+      "repetition": 5,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r5-cami-s1",
+      "repetition": 5,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r5-cami_replay-s1",
+      "repetition": 5,
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r5-static-s2",
+      "repetition": 5,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r5-cami-s2",
+      "repetition": 5,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r5-cami_replay-s2",
+      "repetition": 5,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r5-plain-s2",
+      "repetition": 5,
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r5-cami-s3",
+      "repetition": 5,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": false,
+      "id": "r5-cami_replay-s3",
+      "repetition": 5,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r5-plain-s3",
+      "repetition": 5,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r5-static-s3",
+      "repetition": 5,
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_replay",
+      "expected_cache_hit": true,
+      "id": "r5-cami_replay-s4",
+      "repetition": 5,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "expected_cache_hit": false,
+      "id": "r5-plain-s4",
+      "repetition": 5,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "static",
+      "condition": "static",
+      "expected_cache_hit": false,
+      "id": "r5-static-s4",
+      "repetition": 5,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami",
+      "expected_cache_hit": false,
+      "id": "r5-cami-s4",
+      "repetition": 5,
+      "stage": 4,
+      "task": "click-help-eagerness"
+    }
+  ]
+}
