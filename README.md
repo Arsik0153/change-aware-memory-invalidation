@@ -71,6 +71,10 @@ completed all 80 attempts: 78 passed the primary gates, while two retained
 incomplete provider telemetry after transport errors. All ten exact-repeat hits
 passed fresh grading. The preregistered overall verdict is inconclusive; separate
 post-run quality checks of the two preserved solutions do not repair missing usage.
+The [40-attempt source-memory ablation](reports/opencode-replay-ablation-20261114/README.md)
+did not support removing CAMI: only two of four complete pairs improved both token
+work and time with plain+replay, and one candidate block had incomplete telemetry
+and a dependent cache miss. All attempts and unknown usage are retained.
 
 The [subsequent storage upgrades](reports/opencode-generation-compression-20261114/README.md)
 removed redundant values and compressed generation JSON, reducing median SQLite
