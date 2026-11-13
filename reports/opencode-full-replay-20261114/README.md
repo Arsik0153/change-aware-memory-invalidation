@@ -34,3 +34,8 @@ valid model identities; this does not change the frozen production/controller fi
 Linux admission: six real MCP stdio probes and three real no-model OpenCode sessions
 passed, with zero model calls, exact model/config validation and private-state removal.
 Status: admission complete; waiting for local test suites before model execution.
+
+Final local admission: project suite1719 passed,1 skipped,4 Docker-marked deselected
+in708.01s; benchmark integration suite835 passed in28.57s. Ruff passed on changed
+code. Both suites finished before model timing began. The repaired freeze and all
+admission artifacts were committed before model execution.
