@@ -53,6 +53,10 @@ its existing contract.
 The [result-memory CLI](integrations/opencode/TASK_REPLAY.md) records source changes
 and creates a new candidate only for an identical task, repository input and
 external context. Every candidate requires fresh tests; changed inputs miss.
+The same module is available as a [standalone 3,450-byte CLI](artifacts/replay/README.md)
+for Python 3.12+, with no third-party Python dependencies. Python is not bundled.
+Its deterministic build and empty-environment behavioral checks are included;
+packaging does not change the replay algorithm or establish another speedup.
 A [full development experiment](reports/opencode-full-replay-20261114/README.md)
 passed all 80 attempts across five fresh-memory blocks and four conditions.
 CAMI with exact-result reuse reduced median noncached token work by 53.65% and
