@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
+import sqlite3
 import subprocess
 
 import pytest
@@ -173,3 +175,27 @@ def test_v2_only_separates_explicit_note_publication(repo, monkeypatch, weakened
     else:
         driver.prepare(repo.root, protocol, out, cache)
     assert not out.exists()
+
+
+@pytest.mark.parametrize('missing_membership', [False, True])
+def test_persisted_oracle_reads_compact_store_and_checks_membership(repo, monkeypatch, missing_membership):
+    from cami.product.service import ProductMemory
+
+    repo.commit({'src/api.py': 'def target(x):\n    return x\n'})
+    state = repo.root.parent / 'state'
+    monkeypatch.setenv('XDG_STATE_HOME', str(state))
+    memory = ProductMemory(repo.root)
+    subject = 'src/api.py:target'
+    memory.remember('symbol_exists', subject, memory.context(subject), 'oracle')
+    head = memory.refresh()
+    spec = importlib.util.spec_from_file_location('persisted_oracle', driver.ROOT / 'tests/watch/cli_driver.py')
+    reader = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(reader)
+    if missing_membership:
+        with sqlite3.connect(memory.store.path) as db:
+            db.execute('DELETE FROM record_state WHERE generation_id=?', (head.memory_generation_id,))
+        with pytest.raises(AssertionError):
+            reader.persisted(state, repo.root)
+    else:
+        proof = reader.persisted(state, repo.root)
+        assert proof['head'] == head.model_dump(mode='json')

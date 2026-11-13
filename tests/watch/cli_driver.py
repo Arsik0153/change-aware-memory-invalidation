@@ -62,6 +62,8 @@ def persisted(state, repo):
     with sqlite3.connect(':memory:') as db:
         db.deserialize(raw)
         db.execute('PRAGMA query_only=ON')
+        version = db.execute('PRAGMA user_version').fetchone()[0]
+        assert version in (1, 2)
         head = json.loads(db.execute('SELECT g.value FROM product_head h JOIN memory_generation g '
                                      'ON g.id=h.generation_id WHERE h.singleton=1').fetchone()[0])
         index_id = head['index']['generation_id']
@@ -70,10 +72,16 @@ def persisted(state, repo):
             'SELECT path,sha256,size FROM source_reference WHERE index_id=?', (index_id,))}
         counts = {table: db.execute(f'SELECT count(*) FROM {table}').fetchone()[0] for table in
                   ('memory_generation', 'validation_event', 'record_revision', 'operation_receipt')}
-        states = [json.loads(row[0]) for row in db.execute(
-            'SELECT value FROM record_state WHERE generation_id=? ORDER BY record_id',
-            (head['memory_generation_id'],))]
-        assert states == head['states']
+        membership = db.execute(
+            'SELECT record_id,revision FROM record_state WHERE generation_id=? ORDER BY record_id',
+            (head['memory_generation_id'],)).fetchall()
+        assert membership == [(s['record']['memory_id'], s['record']['revision'])
+                              for s in head['states']]
+        if version == 1:
+            states = [json.loads(row[0]) for row in db.execute(
+                'SELECT value FROM record_state WHERE generation_id=? ORDER BY record_id',
+                (head['memory_generation_id'],))]
+            assert states == head['states']
         assert view['index'] == head['index']
     artifacts = None
     manifest_path = directory / 'generations' / index_id / 'manifest.json'
