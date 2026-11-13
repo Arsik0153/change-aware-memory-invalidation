@@ -1,0 +1,59 @@
+{
+  "scope": "Post-run forensic quality only. No primary outcome, timing, telemetry, cache or decision is changed.",
+  "model_calls": 0,
+  "primary_terminal_hashes_unchanged": true,
+  "trials": [
+    {
+      "trial": "r3-static-s1",
+      "primary_status": "failed",
+      "primary_terminal_sha256": "e267b46a3df389a64908afc08ac4ac0ccef4767882043b499980d3f2b9752864",
+      "forensic_quality": "pass",
+      "counts": {
+        "acceptance": {
+          "errors": 0,
+          "executed": 159,
+          "failed": 0,
+          "passed": 159,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "regression": {
+          "errors": 0,
+          "executed": 26828,
+          "failed": 0,
+          "passed": 26828,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        }
+      }
+    },
+    {
+      "trial": "r3-static-s3",
+      "primary_status": "failed",
+      "primary_terminal_sha256": "48a74377210dbe0b1096058caee0b81c9be10512d277484187552a55cbd582e5",
+      "forensic_quality": "pass",
+      "counts": {
+        "acceptance": {
+          "errors": 0,
+          "executed": 185,
+          "failed": 0,
+          "passed": 185,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "regression": {
+          "errors": 0,
+          "executed": 26857,
+          "failed": 0,
+          "passed": 26857,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        }
+      }
+    }
+  ]
+}

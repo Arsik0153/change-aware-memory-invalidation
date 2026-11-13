@@ -1,0 +1,22 @@
+{
+  "attempts": 80,
+  "primary_passed": 78,
+  "primary_failed": 2,
+  "model_sessions": 70,
+  "cache_hits": 10,
+  "native_retry_records": 3,
+  "physical_guards_passed": true,
+  "memory_sessions_with_trace": 50,
+  "memory_sessions_without_lookup": [
+    "r3-static-s3"
+  ],
+  "observed_memory_counts": {
+    "returned": 168,
+    "withheld": 75,
+    "withheld_manual_review_required": 75
+  },
+  "started_utc": "2026-11-13T19:22:04.706627+00:00",
+  "finished_utc": "2026-11-13T21:38:29.395410+00:00",
+  "max_one_minute_host_load": 3.68505859375,
+  "logical_cpus": 8
+}

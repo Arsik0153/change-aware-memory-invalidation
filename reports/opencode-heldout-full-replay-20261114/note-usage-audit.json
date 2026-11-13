@@ -1,0 +1,771 @@
+{
+  "model_sessions_with_trace": 50,
+  "rows": [
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "d6fb45c7bbc444bbe2fa0b7cf7fa93639f2f48e721f414f718f2898f9810f518",
+      "trial": "r1-cami-s1"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "4ecaf02724435f9affacbcc8f0ccd75d8d34a67ccf528bf9d0b343de1f0412d7",
+      "trial": "r1-cami-s2"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "c4d0206b96f1d094235601913f5a0c1520b962b369ab4c9b8d996cec61aac881",
+      "trial": "r1-cami-s3"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "d4361344510aeee81f328f780bde4797855f88ae2ad44048cf22a71ff1dedf3e",
+      "trial": "r1-cami-s4"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "a80a9627e833c6a58eb3e712e831c2c6e8a6866ad3b5761b4beafdb3e98000dd",
+      "trial": "r1-cami_replay-s1"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "aa957f7dfeb2214212cafbb27467d592966559e2d5a0a20fded4cc61d90f6b96",
+      "trial": "r1-cami_replay-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "5814cd63d31f42279fb91f10ed1e5e83f6e168a10ba11126c89e1f2f0874a13e",
+      "trial": "r1-static-s1"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "8806b29ea327204680f197d416ef8a76e29056142138c302e669e6d239859591",
+      "trial": "r1-static-s2"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "3e29d5b43538b84c1aea9ef4e74ba2053fad156fad6efadb4f2e8dbd0502f111",
+      "trial": "r1-static-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "9e094ed58333e661b6c34090974ba1dd173db1a4e9c7767ab8ac66302cd9f014",
+      "trial": "r1-static-s4"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "0ab5339d9eab7ae50454c04cf6dcd4cc35e31193f581566543990e757be8ddd3",
+      "trial": "r2-cami-s1"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "2d5532451c86e40d807fd7246175641724713c5abb7bf87757cbc8cf27656fc5",
+      "trial": "r2-cami-s2"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "a87868fe31873282cd3db0857b364bdb5cd1b4b24bdbc93a793036f3a6eed2bf",
+      "trial": "r2-cami-s3"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "0a657554bcd2a1a454a0f0afa59b62acd836adc3fe7e5c6025c739e4be4dcb1f",
+      "trial": "r2-cami-s4"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "121554e72c70366a57a607bc9564185ce9461ec545337a511f26346c114a9c5a",
+      "trial": "r2-cami_replay-s1"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "c8501158ada000e310290c5206f9e37b8f55f5fd37def4b5f983be341dd68cdb",
+      "trial": "r2-cami_replay-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "35c2daa899b54d63459c501beaf3a23db76855d20fd008a3595671e2c4ec7eda",
+      "trial": "r2-static-s1"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "11120966a0af4e5a93bb81c5e63f7e879a597f3991588aaa9daa8a5f3b38a8dd",
+      "trial": "r2-static-s2"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "7dfe6e1251db9ff63a2d4ceca1e53653c22e6a983afec77d2678cede41d3d079",
+      "trial": "r2-static-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "cb47550231a437a59306aa087fb9d31e8433bde39ddbd15aad4686a52b65d9bd",
+      "trial": "r2-static-s4"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "15b3db8886b3062cd529086ec65a6bb0217c12698dd617a9f0227a0f0c6c6bd1",
+      "trial": "r3-cami-s1"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "b0f07b26e66de68b933f1b71e80be044061ddaec0e4ea0a29e24feec97b4b11a",
+      "trial": "r3-cami-s2"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "c3b0fa79b7cafe1ed98276de2e7416a327b6c77471359822a09937c4b60ef90d",
+      "trial": "r3-cami-s3"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "c5bf069a9a6e67ab779e1fb31e2407949880f9c05423dc50664b5c3e0a66c27d",
+      "trial": "r3-cami-s4"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "49f433b06c1583e5cc73533a07bf8fab9e8ffe80231217b6b3a5d208d20b93d7",
+      "trial": "r3-cami_replay-s1"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "b48c0ffdc13ea47655cace2c0ca2dd09d3acaa6de86baea4931d6854ccfd02ef",
+      "trial": "r3-cami_replay-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 3,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "failed",
+      "stage": 1,
+      "terminal_sha256": "e267b46a3df389a64908afc08ac4ac0ccef4767882043b499980d3f2b9752864",
+      "trial": "r3-static-s1"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "a1965a67482649a224556499f4d272773d02afac0e58dc6b130861f2e605245d",
+      "trial": "r3-static-s2"
+    },
+    {
+      "condition": "static",
+      "counts": {},
+      "fallbacks": {},
+      "lookups": 0,
+      "primary_status": "failed",
+      "stage": 3,
+      "terminal_sha256": "48a74377210dbe0b1096058caee0b81c9be10512d277484187552a55cbd582e5",
+      "trial": "r3-static-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "5562915b620437add256a8b823662b02b08579f9ae7e8f041c08e6f7290384e0",
+      "trial": "r3-static-s4"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "20e63746e3af18fe18fbc9d69a401dfe3e8184b5d663181b3b52e2f26ab7607f",
+      "trial": "r4-cami-s1"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "421045a8e739958d83d8d2a2112a03218fdb3091807e89e6821204e895c547f4",
+      "trial": "r4-cami-s2"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "12bb93908a9f9ef7ef94954ae5db65893db4e27f013a27c6ffb7526fc515fc3e",
+      "trial": "r4-cami-s3"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "5c66d08725c2576e212d5fdfef647b2bb98f865a17d4c66db67edb5cda54f508",
+      "trial": "r4-cami-s4"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "0653e71b195478cb4cafde1e03161f5ad1246c9e2bab95e18effe50f267ea236",
+      "trial": "r4-cami_replay-s1"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "311f2934db336b041478394b83ad3d59a9d4d27aaf86b547263d9e6efbd54a00",
+      "trial": "r4-cami_replay-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "4c049dfe9e3925a33702854e1869578c8711a3ca59286f61446a36daea4a35df",
+      "trial": "r4-static-s1"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "c26e5c424d18f8de18276feb315d986fdcab440fa6b6580a962ba065388edef5",
+      "trial": "r4-static-s2"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "c057885dd021e711d61adda5de6c665eaff9ddf153e14404cb9541bc9829b368",
+      "trial": "r4-static-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "9d13eb82fbec191cf3f43ca6ceb7681c73a6df141fb92a431996bdb678c5241d",
+      "trial": "r4-static-s4"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "fc462964ad5a524e0bac8cbb915645b1e1efcf72abd7d7cf7bfe1cc90477068c",
+      "trial": "r5-cami-s1"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "ecb8a384970059e895a43788695c33731fde1ec85aa97dc56e94c95ba2c0a1f9",
+      "trial": "r5-cami-s2"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "7d56836e408075d6f48dddf091fbdd4e7ac0256832e1aef958531c4ead257661",
+      "trial": "r5-cami-s3"
+    },
+    {
+      "condition": "cami",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "f7538f36e6b94014a2b2d06851ab9eeecc9460bca3f9fdc398f778852bf7f880",
+      "trial": "r5-cami-s4"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "cf8304b47f9a53371bd14bd25f8fb47e2566dd28dfe679d7c775059e47045839",
+      "trial": "r5-cami_replay-s1"
+    },
+    {
+      "condition": "cami_replay",
+      "counts": {
+        "returned": 0,
+        "withheld": 5,
+        "withheld_manual_review_required": 5
+      },
+      "fallbacks": {
+        "withheld_only": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "e859ce8f8ec04baf5fbc2786c3341891e39081e0e08febb8c2fc3672c67d1346",
+      "trial": "r5-cami_replay-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 1,
+      "terminal_sha256": "e0f4f22c19b0726d4e2771fdd5aa80500c5d2acb000b39b0f7be037197e80f40",
+      "trial": "r5-static-s1"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 2,
+      "terminal_sha256": "611015e5f9d6238d14c81569694d4f81f7947d2e8e0f9364a123eaf46311531b",
+      "trial": "r5-static-s2"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 3,
+      "terminal_sha256": "18a690c88a66fbda6720b52148ab5377d4a545a730754e64047d1a11eba19c3c",
+      "trial": "r5-static-s3"
+    },
+    {
+      "condition": "static",
+      "counts": {
+        "returned": 5,
+        "withheld": 0
+      },
+      "fallbacks": {
+        "non_literal_or_mixed_records": 1
+      },
+      "lookups": 1,
+      "primary_status": "passed",
+      "stage": 4,
+      "terminal_sha256": "3046523204a698b4869d8d8ac654a012bafc3486b7e8ec34ba0e5205bb95a908",
+      "trial": "r5-static-s4"
+    }
+  ],
+  "scope": "Original75 generic notes, backend trust labels and withheld identities verified against each immutable catalog and full-response receipt. Includes available traces from failed primary attempts without changing their status or primary eligibility. Missing traces are explicit. Counts reflect actual selected queries, which differ between agents. Not an independent reconstruction of filesystem state at each lookup and not a causal speed claim.",
+  "sessions_without_lookup": [
+    "r3-static-s3"
+  ],
+  "status": "verified_observed_traces",
+  "unavailable": []
+}

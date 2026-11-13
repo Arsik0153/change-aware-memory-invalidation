@@ -1,0 +1,2808 @@
+{
+  "scope": "All scheduled attempts retained, including failures. Known normalized token subtotals are not estimates of missing provider usage or invoices. Native automatic retry records are counted separately from controller session attempts; no controller trial was repeated. Failed trial wall can end before capture/grading, so these observed sums are not complete comparable pipeline totals. Primary eligibility/decision is unchanged.",
+  "status": "verified_observed_accounting",
+  "totals": {
+    "cami": {
+      "attempts": 20,
+      "cache_hits": 0,
+      "declared_model_session_attempts": 20,
+      "native_retry_records": 0,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 4177792,
+        "cache_write": 0,
+        "input": 482688,
+        "output": 66966,
+        "reasoning": 26061
+      },
+      "observed_wall_seconds_including_failed_attempts": 2269.530888409998,
+      "quality_outcomes": {
+        "pass": 20
+      },
+      "statuses": {
+        "passed": 20
+      },
+      "unknown_usage_trials": []
+    },
+    "cami_replay": {
+      "attempts": 20,
+      "cache_hits": 10,
+      "declared_model_session_attempts": 10,
+      "native_retry_records": 0,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 2510080,
+        "cache_write": 0,
+        "input": 259492,
+        "output": 33693,
+        "reasoning": 14817
+      },
+      "observed_wall_seconds_including_failed_attempts": 1322.0692993070015,
+      "quality_outcomes": {
+        "pass": 20
+      },
+      "statuses": {
+        "passed": 20
+      },
+      "unknown_usage_trials": []
+    },
+    "plain": {
+      "attempts": 20,
+      "cache_hits": 0,
+      "declared_model_session_attempts": 20,
+      "native_retry_records": 0,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 3659264,
+        "cache_write": 0,
+        "input": 426575,
+        "output": 67534,
+        "reasoning": 26308
+      },
+      "observed_wall_seconds_including_failed_attempts": 2301.5035037160014,
+      "quality_outcomes": {
+        "pass": 20
+      },
+      "statuses": {
+        "passed": 20
+      },
+      "unknown_usage_trials": []
+    },
+    "static": {
+      "attempts": 20,
+      "cache_hits": 0,
+      "declared_model_session_attempts": 20,
+      "native_retry_records": 3,
+      "observed_normalized_token_subtotals": {
+        "cache_read": 4604032,
+        "cache_write": 0,
+        "input": 496261,
+        "output": 64300,
+        "reasoning": 26377
+      },
+      "observed_wall_seconds_including_failed_attempts": 2268.600261579002,
+      "quality_outcomes": {
+        "not_run": 2,
+        "pass": 18
+      },
+      "statuses": {
+        "failed": 2,
+        "passed": 18
+      },
+      "unknown_usage_trials": [
+        "r3-static-s1",
+        "r3-static-s3"
+      ]
+    }
+  },
+  "trials": [
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 150272,
+        "cache_write": 0,
+        "input": 13719,
+        "output": 2610,
+        "reasoning": 1475
+      },
+      "observed_wall_seconds": 112.29705088600002,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "9808c76571c6de8f0e7cf38e29dc64a8aeed82bd73e7ae6bab7244b36edcb841",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-static-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 351872,
+        "cache_write": 0,
+        "input": 23177,
+        "output": 4867,
+        "reasoning": 1495
+      },
+      "observed_wall_seconds": 163.75988453399998,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "5814cd63d31f42279fb91f10ed1e5e83f6e168a10ba11126c89e1f2f0874a13e",
+      "tier": {
+        "assistant_responses": 20,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 210816,
+        "cache_write": 0,
+        "input": 16598,
+        "output": 2792,
+        "reasoning": 1712
+      },
+      "observed_wall_seconds": 119.87723655399998,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "d6fb45c7bbc444bbe2fa0b7cf7fa93639f2f48e721f414f718f2898f9810f518",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 260096,
+        "cache_write": 0,
+        "input": 41137,
+        "output": 4762,
+        "reasoning": 2148
+      },
+      "observed_wall_seconds": 162.08444849,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a80a9627e833c6a58eb3e712e831c2c6e8a6866ad3b5761b4beafdb3e98000dd",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-static-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 211200,
+        "cache_write": 0,
+        "input": 32143,
+        "output": 2616,
+        "reasoning": 1418
+      },
+      "observed_wall_seconds": 104.52784742199992,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "8806b29ea327204680f197d416ef8a76e29056142138c302e669e6d239859591",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 247552,
+        "cache_write": 0,
+        "input": 23984,
+        "output": 4444,
+        "reasoning": 1564
+      },
+      "observed_wall_seconds": 126.92929185000003,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "4ecaf02724435f9affacbcc8f0ccd75d8d34a67ccf528bf9d0b343de1f0412d7",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.107825879999837,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "4cf4e5efcfa0415bdbbde81a6a002cb9f8e74874c3d632435368ae7e2b55dd05",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 165760,
+        "cache_write": 0,
+        "input": 33542,
+        "output": 2656,
+        "reasoning": 1577
+      },
+      "observed_wall_seconds": 116.24746734500013,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a79b0c95319b1a3f0f46424f19b54d6c8faa9a6d99622303c0134d7beacfd4d4",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 169088,
+        "cache_write": 0,
+        "input": 21065,
+        "output": 2298,
+        "reasoning": 818
+      },
+      "observed_wall_seconds": 85.60907362199987,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c4d0206b96f1d094235601913f5a0c1520b962b369ab4c9b8d996cec61aac881",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 233984,
+        "cache_write": 0,
+        "input": 20786,
+        "output": 2555,
+        "reasoning": 1239
+      },
+      "observed_wall_seconds": 104.10725459000014,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "aa957f7dfeb2214212cafbb27467d592966559e2d5a0a20fded4cc61d90f6b96",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 112256,
+        "cache_write": 0,
+        "input": 18772,
+        "output": 2462,
+        "reasoning": 566
+      },
+      "observed_wall_seconds": 80.3158234949999,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "e26ee1f872e02989e58f314390ac07fbd1900cfc9b538d9c04f61dd3581b12b8",
+      "tier": {
+        "assistant_responses": 10,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-static-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 200320,
+        "cache_write": 0,
+        "input": 29700,
+        "output": 2395,
+        "reasoning": 809
+      },
+      "observed_wall_seconds": 89.94559758299988,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3e29d5b43538b84c1aea9ef4e74ba2053fad156fad6efadb4f2e8dbd0502f111",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r1-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.289648713000133,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "71b246ae524cdc8dcbada3d6bc5a797c7a055d5ab43fdecd23c84f2cab4cbbab",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-plain-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 156672,
+        "cache_write": 0,
+        "input": 20598,
+        "output": 3321,
+        "reasoning": 853
+      },
+      "observed_wall_seconds": 93.35174250099999,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "49337db86a24e5fffb7c7180bcf480cd702f34b498c1d50347321a47ecbad9d5",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-static-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 225536,
+        "cache_write": 0,
+        "input": 31791,
+        "output": 2338,
+        "reasoning": 968
+      },
+      "observed_wall_seconds": 85.77369416400006,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "9e094ed58333e661b6c34090974ba1dd173db1a4e9c7767ab8ac66302cd9f014",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r1-cami-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 187904,
+        "cache_write": 0,
+        "input": 33626,
+        "output": 2618,
+        "reasoning": 488
+      },
+      "observed_wall_seconds": 93.86820866900007,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "d4361344510aeee81f328f780bde4797855f88ae2ad44048cf22a71ff1dedf3e",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-static-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 250496,
+        "cache_write": 0,
+        "input": 46694,
+        "output": 2888,
+        "reasoning": 2021
+      },
+      "observed_wall_seconds": 138.10883393799986,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "35c2daa899b54d63459c501beaf3a23db76855d20fd008a3595671e2c4ec7eda",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 206720,
+        "cache_write": 0,
+        "input": 17996,
+        "output": 2680,
+        "reasoning": 2316
+      },
+      "observed_wall_seconds": 125.506706141,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "0ab5339d9eab7ae50454c04cf6dcd4cc35e31193f581566543990e757be8ddd3",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 317568,
+        "cache_write": 0,
+        "input": 32512,
+        "output": 2876,
+        "reasoning": 1192
+      },
+      "observed_wall_seconds": 114.33635417600044,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "121554e72c70366a57a607bc9564185ce9461ec545337a511f26346c114a9c5a",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 110336,
+        "cache_write": 0,
+        "input": 14183,
+        "output": 2787,
+        "reasoning": 1558
+      },
+      "observed_wall_seconds": 95.21243000100003,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "1ee1dd4c322c7ce2152533f6cfbc1f777b6b2a600c4f4c022b484ebf85f41ee3",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 199040,
+        "cache_write": 0,
+        "input": 39863,
+        "output": 3168,
+        "reasoning": 1155
+      },
+      "observed_wall_seconds": 117.60019026200007,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "2d5532451c86e40d807fd7246175641724713c5abb7bf87757cbc8cf27656fc5",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.138271046000227,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "6de8da963e7862631a12a452a6bb1f0637a7bfe9cf5a574f5186a2618e9d1b3c",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 231296,
+        "cache_write": 0,
+        "input": 18736,
+        "output": 2725,
+        "reasoning": 1149
+      },
+      "observed_wall_seconds": 115.87296301099968,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a617c7539310ecfa0cbd2bb041712a7c493bca4d9e108feb3d28b8fb90468330",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-static-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 193536,
+        "cache_write": 0,
+        "input": 17603,
+        "output": 2571,
+        "reasoning": 1540
+      },
+      "observed_wall_seconds": 103.7018756299999,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "11120966a0af4e5a93bb81c5e63f7e879a597f3991588aaa9daa8a5f3b38a8dd",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 172416,
+        "cache_write": 0,
+        "input": 23804,
+        "output": 3527,
+        "reasoning": 650
+      },
+      "observed_wall_seconds": 89.50625312400007,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c8501158ada000e310290c5206f9e37b8f55f5fd37def4b5f983be341dd68cdb",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 189952,
+        "cache_write": 0,
+        "input": 17873,
+        "output": 3773,
+        "reasoning": 852
+      },
+      "observed_wall_seconds": 106.42434342300021,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b06098d91cd7b18835b3c3c7d6dbc0da97cc34e971752aa46ac4b06ddad03df1",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-static-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 199680,
+        "cache_write": 0,
+        "input": 21595,
+        "output": 2549,
+        "reasoning": 748
+      },
+      "observed_wall_seconds": 82.88122245500017,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "7dfe6e1251db9ff63a2d4ceca1e53653c22e6a983afec77d2678cede41d3d079",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 194816,
+        "cache_write": 0,
+        "input": 22437,
+        "output": 3339,
+        "reasoning": 897
+      },
+      "observed_wall_seconds": 99.10788171099966,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a87868fe31873282cd3db0857b364bdb5cd1b4b24bdbc93a793036f3a6eed2bf",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-plain-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 221184,
+        "cache_write": 0,
+        "input": 23849,
+        "output": 3775,
+        "reasoning": 883
+      },
+      "observed_wall_seconds": 118.2504957619999,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "56fdc57ba2657b0699ec32d989137423ef9983b17a1008edbfa676b51dcb2c54",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-static-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 190720,
+        "cache_write": 0,
+        "input": 20334,
+        "output": 2614,
+        "reasoning": 1538
+      },
+      "observed_wall_seconds": 97.04335895899976,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "cb47550231a437a59306aa087fb9d31e8433bde39ddbd15aad4686a52b65d9bd",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r2-cami-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 206080,
+        "cache_write": 0,
+        "input": 20218,
+        "output": 3736,
+        "reasoning": 963
+      },
+      "observed_wall_seconds": 107.08023075899973,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "0a657554bcd2a1a454a0f0afa59b62acd836adc3fe7e5c6025c739e4be4dcb1f",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r2-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.359547463000126,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3a02482c13ff218eafee7ceb60fc51e1488358cc14f55c027ba45886c188d73a",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 286976,
+        "cache_write": 0,
+        "input": 26751,
+        "output": 2604,
+        "reasoning": 1344
+      },
+      "observed_wall_seconds": 117.78976117799994,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "15b3db8886b3062cd529086ec65a6bb0217c12698dd617a9f0227a0f0c6c6bd1",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 328960,
+        "cache_write": 0,
+        "input": 40348,
+        "output": 2495,
+        "reasoning": 1144
+      },
+      "observed_wall_seconds": 109.24476455000013,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "49f433b06c1583e5cc73533a07bf8fab9e8ffe80231217b6b3a5d208d20b93d7",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-plain-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 326272,
+        "cache_write": 0,
+        "input": 18816,
+        "output": 4775,
+        "reasoning": 2873
+      },
+      "observed_wall_seconds": 186.560552294,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c360a6c41bd00ef34fd3269267e0abe42faa4f4a059a7ec303e657692185be67",
+      "tier": {
+        "assistant_responses": 20,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [
+        "msg_1d691fa52001j56l9TSithZPkp",
+        "msg_1d6920c1c001i7hTwLnWGHnmUs"
+      ],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": "ValueError: model tier evidence incomplete",
+      "id": "r3-static-s1",
+      "missing_tier_responses": [
+        "msg_1d691fa52001j56l9TSithZPkp",
+        "msg_1d6920c1c001i7hTwLnWGHnmUs"
+      ],
+      "native_retry_records": 2,
+      "normalized_tokens": {
+        "cache_read": 150784,
+        "cache_write": 0,
+        "input": 15803,
+        "output": 2624,
+        "reasoning": 1567
+      },
+      "observed_wall_seconds": 108.28573363400028,
+      "provider_error_responses": [
+        {
+          "finish": "error",
+          "id": "msg_1d691fa52001j56l9TSithZPkp",
+          "type": "provider.transport"
+        },
+        {
+          "finish": "error",
+          "id": "msg_1d6920c1c001i7hTwLnWGHnmUs",
+          "type": "provider.transport"
+        }
+      ],
+      "quality": "not_run",
+      "status": "failed",
+      "terminal_sha256": "e267b46a3df389a64908afc08ac4ac0ccef4767882043b499980d3f2b9752864",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": false,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [
+          "assistant provider-reported tier absent or unsupported"
+        ],
+        "uniform_provider_reported_tier": null
+      },
+      "unknown_usage": true
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r3-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.275891421999859,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "70af4bf73374f51f64105ca81a0589b39c7fd1e8b559e9640fb9a114dcc0ecdd",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-plain-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 146304,
+        "cache_write": 0,
+        "input": 35325,
+        "output": 4502,
+        "reasoning": 1361
+      },
+      "observed_wall_seconds": 131.4020852679996,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b2e57845541efd6535621c0f4a2fa28c71068d0509d77ebf8c2e83946100a4f9",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-static-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 308864,
+        "cache_write": 0,
+        "input": 33667,
+        "output": 3194,
+        "reasoning": 1219
+      },
+      "observed_wall_seconds": 119.85731609699997,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "a1965a67482649a224556499f4d272773d02afac0e58dc6b130861f2e605245d",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 313984,
+        "cache_write": 0,
+        "input": 25576,
+        "output": 4824,
+        "reasoning": 1579
+      },
+      "observed_wall_seconds": 152.96814602799986,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b0f07b26e66de68b933f1b71e80be044061ddaec0e4ea0a29e24feec97b4b11a",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-plain-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 172928,
+        "cache_write": 0,
+        "input": 19895,
+        "output": 2403,
+        "reasoning": 732
+      },
+      "observed_wall_seconds": 87.52393662200029,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "9837d6d57ecc2952d4d2e440bc082bacfa3f399ea58deea1eddb5aa1dd45c222",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [
+        "msg_1d69b491c001WM2mQYt0gN0aA5"
+      ],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": "ValueError: model tier evidence incomplete",
+      "id": "r3-static-s3",
+      "missing_tier_responses": [
+        "msg_1d69b491c001WM2mQYt0gN0aA5"
+      ],
+      "native_retry_records": 1,
+      "normalized_tokens": {
+        "cache_read": 123264,
+        "cache_write": 0,
+        "input": 17418,
+        "output": 2022,
+        "reasoning": 611
+      },
+      "observed_wall_seconds": 86.16786716500064,
+      "provider_error_responses": [
+        {
+          "finish": "error",
+          "id": "msg_1d69b491c001WM2mQYt0gN0aA5",
+          "type": "provider.transport"
+        }
+      ],
+      "quality": "not_run",
+      "status": "failed",
+      "terminal_sha256": "48a74377210dbe0b1096058caee0b81c9be10512d277484187552a55cbd582e5",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": false,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [
+          "assistant provider-reported tier absent or unsupported"
+        ],
+        "uniform_provider_reported_tier": null
+      },
+      "unknown_usage": true
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 226816,
+        "cache_write": 0,
+        "input": 32857,
+        "output": 3213,
+        "reasoning": 868
+      },
+      "observed_wall_seconds": 103.03366829700008,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c3b0fa79b7cafe1ed98276de2e7416a327b6c77471359822a09937c4b60ef90d",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 313856,
+        "cache_write": 0,
+        "input": 25528,
+        "output": 4315,
+        "reasoning": 981
+      },
+      "observed_wall_seconds": 122.29839768000056,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b48c0ffdc13ea47655cace2c0ca2dd09d3acaa6de86baea4931d6854ccfd02ef",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-static-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 196096,
+        "cache_write": 0,
+        "input": 23271,
+        "output": 3526,
+        "reasoning": 1655
+      },
+      "observed_wall_seconds": 119.66722255500008,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "5562915b620437add256a8b823662b02b08579f9ae7e8f041c08e6f7290384e0",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-cami-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 146304,
+        "cache_write": 0,
+        "input": 19536,
+        "output": 3586,
+        "reasoning": 935
+      },
+      "observed_wall_seconds": 103.59502300700024,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c5bf069a9a6e67ab779e1fb31e2407949880f9c05423dc50664b5c3e0a66c27d",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r3-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.41897004600014,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "25e3088df775d46dc132214058576ca8614facf3afe1943b97276b79b5f4ef7c",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r3-plain-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 187776,
+        "cache_write": 0,
+        "input": 23734,
+        "output": 3858,
+        "reasoning": 762
+      },
+      "observed_wall_seconds": 103.95481413199923,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "cc7dfbdffc8157bd48a6e95b5af205d479342801056e3f46ee03ce87c4170acb",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 276992,
+        "cache_write": 0,
+        "input": 18638,
+        "output": 3548,
+        "reasoning": 2044
+      },
+      "observed_wall_seconds": 150.53739431799931,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "0653e71b195478cb4cafde1e03161f5ad1246c9e2bab95e18effe50f267ea236",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 206720,
+        "cache_write": 0,
+        "input": 20133,
+        "output": 2641,
+        "reasoning": 908
+      },
+      "observed_wall_seconds": 106.39236034100031,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c5c36d19890ceae4a69716ea18f24bde6eddb24d1422fb386a2a7ca612f52c76",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-static-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 223744,
+        "cache_write": 0,
+        "input": 17393,
+        "output": 4265,
+        "reasoning": 1839
+      },
+      "observed_wall_seconds": 135.40856068700032,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "4c049dfe9e3925a33702854e1869578c8711a3ca59286f61446a36daea4a35df",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 206976,
+        "cache_write": 0,
+        "input": 40698,
+        "output": 4954,
+        "reasoning": 1513
+      },
+      "observed_wall_seconds": 129.76026905899926,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "20e63746e3af18fe18fbc9d69a401dfe3e8184b5d663181b3b52e2f26ab7607f",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 257920,
+        "cache_write": 0,
+        "input": 18644,
+        "output": 3378,
+        "reasoning": 2054
+      },
+      "observed_wall_seconds": 128.13698922500043,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "22791f8f1be4c80143cf43ebca4a84251d8e73ae74543cdc957416f6a9200257",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-static-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 271744,
+        "cache_write": 0,
+        "input": 15380,
+        "output": 4295,
+        "reasoning": 1986
+      },
+      "observed_wall_seconds": 152.42627685999923,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c26e5c424d18f8de18276feb315d986fdcab440fa6b6580a962ba065388edef5",
+      "tier": {
+        "assistant_responses": 17,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 197888,
+        "cache_write": 0,
+        "input": 20532,
+        "output": 5205,
+        "reasoning": 2855
+      },
+      "observed_wall_seconds": 159.16192807400057,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "421045a8e739958d83d8d2a2112a03218fdb3091807e89e6821204e895c547f4",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.244003963000068,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c72ab981cb7adb7f47c803abba41a0054aed1ba00419e5e8d7013aea92f81a77",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-static-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 178944,
+        "cache_write": 0,
+        "input": 22294,
+        "output": 2847,
+        "reasoning": 931
+      },
+      "observed_wall_seconds": 87.24563516499984,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "c057885dd021e711d61adda5de6c665eaff9ddf153e14404cb9541bc9829b368",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 208768,
+        "cache_write": 0,
+        "input": 18289,
+        "output": 3565,
+        "reasoning": 836
+      },
+      "observed_wall_seconds": 105.15523129799931,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "12bb93908a9f9ef7ef94954ae5db65893db4e27f013a27c6ffb7526fc515fc3e",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 186368,
+        "cache_write": 0,
+        "input": 21839,
+        "output": 3307,
+        "reasoning": 1960
+      },
+      "observed_wall_seconds": 123.76829393200023,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "311f2934db336b041478394b83ad3d59a9d4d27aaf86b547263d9e6efbd54a00",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 165632,
+        "cache_write": 0,
+        "input": 17464,
+        "output": 3448,
+        "reasoning": 793
+      },
+      "observed_wall_seconds": 98.11503004499991,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "44af80b62f2c7f5a3cc7610e1df420fd3c26d2ba07c7f2a32af5e1021abf4450",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-cami-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 231936,
+        "cache_write": 0,
+        "input": 24766,
+        "output": 2401,
+        "reasoning": 708
+      },
+      "observed_wall_seconds": 94.41641450000043,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "5c66d08725c2576e212d5fdfef647b2bb98f865a17d4c66db67edb5cda54f508",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r4-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.408659837999949,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "48631a6e1f96323c24f7300c1a97e5a106a6d7f6466c52b990eee076f7288c67",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-plain-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 139776,
+        "cache_write": 0,
+        "input": 14480,
+        "output": 4060,
+        "reasoning": 656
+      },
+      "observed_wall_seconds": 106.95776983999986,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "31863899fc60f3409e5a87c34e82fa86de20a17c9d7e0af3eac9b02e4874bdd4",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r4-static-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 225536,
+        "cache_write": 0,
+        "input": 20883,
+        "output": 5131,
+        "reasoning": 841
+      },
+      "observed_wall_seconds": 119.50505580499976,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "9d13eb82fbec191cf3f43ca6ceb7681c73a6df141fb92a431996bdb678c5241d",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 161664,
+        "cache_write": 0,
+        "input": 16078,
+        "output": 3230,
+        "reasoning": 2726
+      },
+      "observed_wall_seconds": 135.8214503119998,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "b767bcfd67086326e01eeed1358b70da45bef9b0eb9a02d4a451905a31a62c3d",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-static-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 317952,
+        "cache_write": 0,
+        "input": 38963,
+        "output": 2680,
+        "reasoning": 1608
+      },
+      "observed_wall_seconds": 116.76498651299971,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "e0f4f22c19b0726d4e2771fdd5aa80500c5d2acb000b39b0f7be037197e80f40",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 145280,
+        "cache_write": 0,
+        "input": 14917,
+        "output": 2993,
+        "reasoning": 2233
+      },
+      "observed_wall_seconds": 123.5693574299994,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "fc462964ad5a524e0bac8cbb915645b1e1efcf72abd7d7cf7bfe1cc90477068c",
+      "tier": {
+        "assistant_responses": 11,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami_replay-s1",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 227456,
+        "cache_write": 0,
+        "input": 17658,
+        "output": 3030,
+        "reasoning": 2286
+      },
+      "observed_wall_seconds": 136.4138771449998,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "cf8304b47f9a53371bd14bd25f8fb47e2566dd28dfe679d7c775059e47045839",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-static-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 225024,
+        "cache_write": 0,
+        "input": 19235,
+        "output": 4407,
+        "reasoning": 1815
+      },
+      "observed_wall_seconds": 131.84703901900048,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "611015e5f9d6238d14c81569694d4f81f7947d2e8e0f9364a123eaf46311531b",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 217216,
+        "cache_write": 0,
+        "input": 21264,
+        "output": 2915,
+        "reasoning": 1657
+      },
+      "observed_wall_seconds": 112.70233396700041,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "ecb8a384970059e895a43788695c33731fde1ec85aa97dc56e94c95ba2c0a1f9",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-cami_replay-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.19660642100007,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "46885c7705ea5f436acdb66288d36a5f3ada1bf2480fb8f11c906c6621122ba3",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain-s2",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 192256,
+        "cache_write": 0,
+        "input": 24732,
+        "output": 4673,
+        "reasoning": 1723
+      },
+      "observed_wall_seconds": 144.78571902299973,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "cf1c63abf3378e56bdd60dbd86bf9d0905c31b57ea403cff15e6f535f0b4c010",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 161280,
+        "cache_write": 0,
+        "input": 16388,
+        "output": 3388,
+        "reasoning": 1131
+      },
+      "observed_wall_seconds": 99.66584542000055,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "7d56836e408075d6f48dddf091fbdd4e7ac0256832e1aef958531c4ead257661",
+      "tier": {
+        "assistant_responses": 13,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami_replay-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 192384,
+        "cache_write": 0,
+        "input": 17242,
+        "output": 3278,
+        "reasoning": 1173
+      },
+      "observed_wall_seconds": 106.97849642300025,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "e859ce8f8ec04baf5fbc2786c3341891e39081e0e08febb8c2fc3672c67d1346",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 214528,
+        "cache_write": 0,
+        "input": 40444,
+        "output": 4015,
+        "reasoning": 1128
+      },
+      "observed_wall_seconds": 122.23030463900068,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "6f6068c2568a83b27fa0e843dca2465f3c675454ce8124c0da5ecbb89377db44",
+      "tier": {
+        "assistant_responses": 15,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-static-s3",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 285056,
+        "cache_write": 0,
+        "input": 24633,
+        "output": 2549,
+        "reasoning": 527
+      },
+      "observed_wall_seconds": 104.53476058900105,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "18a690c88a66fbda6720b52148ab5377d4a545a730754e64047d1a11eba19c3c",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": true,
+      "condition": "cami_replay",
+      "declared_model_session_attempts": 0,
+      "error": null,
+      "id": "r5-cami_replay-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "observed_wall_seconds": 10.35434008700031,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "d21fdcb7304c96dedc61ea413f991eb5f26d7209806174c78bd4c3f927fc2683",
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "plain",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-plain-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 149760,
+        "cache_write": 0,
+        "input": 15558,
+        "output": 2442,
+        "reasoning": 1679
+      },
+      "observed_wall_seconds": 111.65017555100167,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "75ffa71ac11e226bb7829d92064518d7627394f50adfa7e76bbe74f581cb62c7",
+      "tier": {
+        "assistant_responses": 12,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "static",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-static-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 273664,
+        "cache_write": 0,
+        "input": 24284,
+        "output": 3922,
+        "reasoning": 1241
+      },
+      "observed_wall_seconds": 121.1474928050011,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "3046523204a698b4869d8d8ac654a012bafc3486b7e8ec34ba0e5205bb95a908",
+      "tier": {
+        "assistant_responses": 16,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    },
+    {
+      "assistant_responses_without_tokens": [],
+      "cache_hit": false,
+      "condition": "cami",
+      "declared_model_session_attempts": 1,
+      "error": null,
+      "id": "r5-cami-s4",
+      "missing_tier_responses": [],
+      "native_retry_records": 0,
+      "normalized_tokens": {
+        "cache_read": 212352,
+        "cache_write": 0,
+        "input": 25327,
+        "output": 2243,
+        "reasoning": 489
+      },
+      "observed_wall_seconds": 92.13409058399884,
+      "provider_error_responses": [],
+      "quality": "pass",
+      "status": "passed",
+      "terminal_sha256": "f7538f36e6b94014a2b2d06851ab9eeecc9460bca3f9fdc398f778852bf7f880",
+      "tier": {
+        "assistant_responses": 14,
+        "configuration_errors": [],
+        "configuration_valid": true,
+        "evidence_scope": "Pinned runtime projection of each exported assistant native.serviceTier before native scrub; not independent wire/scheduler, entitlement or billing verification.",
+        "provider_reported_complete": true,
+        "provider_reported_values": [
+          "default"
+        ],
+        "tier_errors": [],
+        "uniform_provider_reported_tier": "default"
+      },
+      "unknown_usage": false
+    }
+  ]
+}
