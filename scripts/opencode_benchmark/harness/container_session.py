@@ -245,6 +245,7 @@ def main():
         mounts = [(binary, "/opt/opencode", True), (source, "/opt/cami-src", True), (adapter, "/opt/memory-adapter", True),
             (STAGE / "container_worker.py", "/opt/harness/container_worker.py", True),
             (STAGE / "container_common.py", "/opt/harness/container_common.py", True),
+            (STAGE / "native_read_evidence.py", "/opt/harness/native_read_evidence.py", True),
             (STAGE / "boundary-sentinel.txt", "/opt/boundary-sentinel", True),
             (workspace, "/workspace", False), (state, "/state", False), (memory, "/memory", False),
             (Path("/etc/ssl/certs/ca-certificates.crt"), "/opt/ca-bundle.crt", True)]

@@ -61,3 +61,53 @@ def test_utf8_bytes_counted_once_and_shell_not_inferred():
     assert not native_reads([])["complete"]
     data[0]["content"].append(deepcopy(data[0]["content"][0]))
     assert not native_reads(data)["complete"]
+
+
+def test_valid_user_and_idle_records_do_not_hide_reads_or_invalidate_export():
+    data = [{"id": "msg_user", "type": "user", "time": {"created": 1}, "text": "request"},
+            *messages(), {"id": "msg_idle", "type": "idle", "time": {"created": 2}, "outcome": "succeeded"}]
+    assert native_reads(data)["complete"] and native_reads(data)["bytes"] == 3
+    data[-1]["content"] = [{"type": "tool", "name": "read"}]
+    assert not native_reads(data)["complete"]
+
+
+def projection_fixture():
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "harness"))
+    from native_read_evidence import observe_message, summarize as receipt
+    from container_worker import public
+    value = messages("π user@example.invalid")
+    value[0]["id"] = "msg_one"
+    return public(value), receipt([observe_message(m) for m in value], export_complete=True)
+
+
+def test_original_count_survives_redaction_and_is_not_public_text_length():
+    from format_probe import read_projection
+    visible, receipt = projection_fixture()
+    result = read_projection(visible, receipt)
+    assert result["complete"] and result["bytes"] == len("π user@example.invalid".encode())
+    assert result["bytes"] != len(visible[0]["content"][0]["state"]["content"][0]["text"].encode())
+
+
+@pytest.mark.parametrize("fault", ["message_id", "call_id", "state", "missing", "negative", "total", "bool", "unredacted_size"])
+def test_projection_cannot_misbind_calls_or_invent_totals(fault):
+    from format_probe import read_projection
+    visible, receipt = projection_fixture()
+    row = receipt["messages"][0]["reads"][0]
+    if fault == "message_id":
+        receipt["messages"][0]["message_id"] = "msg_other"
+    elif fault == "call_id":
+        row["call_id"] = "other"
+    elif fault == "state":
+        row["status"] = "error"
+    elif fault == "missing":
+        receipt["messages"][0]["reads"] = []
+    elif fault == "negative":
+        row["utf8_bytes"] = -1
+    elif fault == "total":
+        receipt["utf8_bytes"] += 1
+    elif fault == "bool":
+        row["utf8_bytes"] = True
+    else:
+        visible[0]["content"][0]["state"]["content"][0]["text"] = "short"
+    with pytest.raises(ValueError):
+        read_projection(visible, receipt)

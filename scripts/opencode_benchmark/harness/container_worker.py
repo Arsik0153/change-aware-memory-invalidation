@@ -16,6 +16,8 @@ import urllib.request
 
 from container_common import BINARY, EXPECTED_BINARY_SHA, PrivateServer, observe_service_tier, redact as redact, redact_data, redact_string, sanitize_artifact, service_tier_evidence, sha, tree_bytes, write
 
+from native_read_evidence import observe_message as observe_native_reads, summarize as native_read_summary
+
 OUT = Path("/state/evidence")
 PRIVATE = Path("/state/server-private")
 WORKSPACE = Path("/workspace")
@@ -122,6 +124,12 @@ def capture_failure(server, session_id, page_size, manifest, tier_observations=N
         return entries
     except BaseException as error:
         manifest["failure_usage_capture"] = "partial_or_unavailable:" + type(error).__name__
+        try:
+            receipt = OUT / "native-read-bytes.json"
+            observations = json.loads(receipt.read_text())["messages"] if receipt.exists() else []
+            write(receipt, native_read_summary(observations, export_complete=False))
+        except (OSError, ValueError, KeyError, TypeError) as capture_error:
+            manifest["failure_read_capture"] = "unavailable:" + type(capture_error).__name__
         if not (OUT / "usage.json").exists():
             write(OUT / "usage.json", {"session_tokens": None, "session_client_cost_field": None,
                 "status": "unavailable", "reason": type(error).__name__})
@@ -129,28 +137,34 @@ def capture_failure(server, session_id, page_size, manifest, tier_observations=N
 
 def messages_all(server, session_id, page_size=200, deadline=None, tier_observations=None):
     pages, all_messages, seen, cursor = [], [], set(), None
-    for _ in range(10000):
-        query = {"limit": str(page_size), **({"cursor": cursor} if cursor else {"order": "asc"})}
-        if deadline is not None and time.monotonic() >= deadline:
-            raise TimeoutError("failure message export deadline")
-        page = server.request("GET", f"/api/session/{session_id}/message?" + urllib.parse.urlencode(query),
-            timeout=15 if deadline is None else min(3, max(0.1, deadline - time.monotonic())))
-        pages.append(public(page))
-        write(OUT / "partial-message-pages.json", pages)
-        for item in page["data"]:
-            if item["id"] in seen:
-                raise ValueError("message pagination repeated an ID")
-            seen.add(item["id"])
-            if tier_observations is not None:
-                observe_service_tier(item, tier_observations)
-            all_messages.append(public(item))
-        next_cursor = page["cursor"].get("next")
-        if not next_cursor:
-            return pages, all_messages
-        if next_cursor == cursor:
-            raise ValueError("message pagination cursor failed to advance")
-        cursor = next_cursor
-    raise ValueError("message pagination exceeded10000 pages")
+    read_observations, export_complete = [], False
+    try:
+        for _ in range(10000):
+            query = {"limit": str(page_size), **({"cursor": cursor} if cursor else {"order": "asc"})}
+            if deadline is not None and time.monotonic() >= deadline:
+                raise TimeoutError("failure message export deadline")
+            page = server.request("GET", f"/api/session/{session_id}/message?" + urllib.parse.urlencode(query),
+                timeout=15 if deadline is None else min(3, max(0.1, deadline - time.monotonic())))
+            pages.append(public(page))
+            write(OUT / "partial-message-pages.json", pages)
+            for item in page["data"]:
+                if item["id"] in seen:
+                    raise ValueError("message pagination repeated an ID")
+                seen.add(item["id"])
+                if tier_observations is not None:
+                    observe_service_tier(item, tier_observations)
+                read_observations.append(observe_native_reads(item))
+                all_messages.append(public(item))
+            next_cursor = page["cursor"].get("next")
+            if not next_cursor:
+                export_complete = True
+                return pages, all_messages
+            if next_cursor == cursor:
+                raise ValueError("message pagination cursor failed to advance")
+            cursor = next_cursor
+        raise ValueError("message pagination exceeded10000 pages")
+    finally:
+        write(OUT / "native-read-bytes.json", native_read_summary(read_observations, export_complete=export_complete))
 
 
 def event_stream(server, done, result):

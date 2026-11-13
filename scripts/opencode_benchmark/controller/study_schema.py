@@ -263,6 +263,7 @@ def harness_files(root):
         "container_worker.py",
         "container_common.py",
         "evidence_safety.py",
+        "native_read_evidence.py",
         "trial_guards.py",
     }
     if not required <= {p.name for p in root.glob("*.py")}:
