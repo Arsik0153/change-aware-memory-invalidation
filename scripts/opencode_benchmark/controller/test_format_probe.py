@@ -106,7 +106,7 @@ def test_session_forwards_exact_condition_and_auth_bridge(monkeypatch, tmp_path,
     data = study()
     data.update(harness="fake.py", runtime_manifest_path="fake.json", reported_token_budget=1000000,
                 image="image", cami_source="source", adapter="adapter", service_tier="priority",
-                shared_server="http://host.docker.internal:49374")
+                shared_server="http://host.docker.internal:49374", model="openai/gpt-6.1-sol#high")
     row = next(r for r in plan(data) if r["condition"] == condition)
     def stopped_before_launch(argv, timeout):
         assert argv[argv.index("--arm") + 1] == row["arm"]

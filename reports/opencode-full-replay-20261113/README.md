@@ -51,3 +51,10 @@ The no-model admission and mocked schedule test had missed the real controller
 contract. The repair freezes the model, validates it before any paid subprocess,
 and exercises the actual session postconditions for all three arms in tests.
 A separate runtime-v9, protocol version2 and empty namespaces are required.
+
+Recovery clarification: both native workers had written `passed` evidence by the
+time of removal, including the second call. Its controller had not completed the
+publication/grading pipeline. Scrubbed recovery records 60,007 uncached/input plus
+visible/output/reasoning token-work units and 494,592 cache-read tokens across the
+two calls (`aborted-cost.json`). Neither candidate was quality-scored. These are
+observed usage, not billing dollars; invalid-run usage remains outside v9 results.

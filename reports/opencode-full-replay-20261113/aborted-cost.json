@@ -1,0 +1,39 @@
+{
+  "status": "invalid_protocol_aborted",
+  "started_model_sessions": 2,
+  "observed_token_work": 60007,
+  "observed_cache_read_tokens": 494592,
+  "trials": [
+    {
+      "trial": "r1-plain-s1",
+      "native_worker_status": "passed",
+      "tokens": {
+        "input": 19810,
+        "output": 4260,
+        "reasoning": 2747,
+        "cache": {
+          "read": 190464,
+          "write": 0
+        }
+      },
+      "token_work": 26817,
+      "quality_scored": false
+    },
+    {
+      "trial": "r1-static-s1",
+      "native_worker_status": "passed",
+      "tokens": {
+        "input": 25746,
+        "output": 4669,
+        "reasoning": 2775,
+        "cache": {
+          "read": 304128,
+          "write": 0
+        }
+      },
+      "token_work": 33190,
+      "quality_scored": false
+    }
+  ],
+  "limitation": "Worker evidence for both calls reached passed; second controller was stopped before publication/grade, recovered using credential scrub after worker removal. No quality or timing comparison. Client cost0 is not zero monetary cost."
+}

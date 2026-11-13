@@ -92,7 +92,8 @@ def test_session_passes_policy_before_launch(monkeypatch, tmp_path, condition):
     import study_runtime as runtime
     data = study()
     data.update(harness="fake.py", runtime_manifest_path="fake.json", reported_token_budget=1000000,
-                image="image", cami_source="source", adapter="adapter", service_tier="priority")
+                image="image", cami_source="source", adapter="adapter", service_tier="priority",
+                model="openai/gpt-6.1-sol#high")
     row = next(r for r in plan(data) if r["condition"] == condition["id"])
     def stop(argv, timeout):
         assert argv[argv.index("--memory-ranking-policy") + 1] == row["ranking_policy"]
