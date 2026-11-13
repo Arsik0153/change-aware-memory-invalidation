@@ -33,7 +33,11 @@ def analyze(root):
     verified = audit(root)
     if not verified['eligible']:
         raise ValueError('complete quality and telemetry eligibility required')
-    blocks = {(rep, arm): dict.fromkeys(KEYS, 0) for rep in range(1, 6) for arm in ARMS}
+    arms = tuple(json.loads((root / 'protocol.json').read_bytes())['rules']['conditions'])
+    if arms not in (ARMS, ('cami_replay', 'plain_replay')):
+        raise ValueError('unsupported registered condition order')
+    candidate_arm = arms[-1]
+    blocks = {(rep, arm): dict.fromkeys(KEYS, 0) for rep in range(1, 6) for arm in arms}
     for trial in verified['trials']:
         row = trial['trial']
         directory = root / 'trials' / row['id']
@@ -44,16 +48,16 @@ def analyze(root):
         for key in KEYS:
             blocks[row['repetition'], row['condition']][key] += actual[key]
     pairs = [{'repetition': rep, 'comparator': arm,
-              'candidate': blocks[rep, 'cami_replay'], 'baseline': blocks[rep, arm],
-              **compare(blocks[rep, 'cami_replay'], blocks[rep, arm])}
-             for rep in range(1, 6) for arm in ARMS[:-1]]
+              'candidate': blocks[rep, candidate_arm], 'baseline': blocks[rep, arm],
+              **compare(blocks[rep, candidate_arm], blocks[rep, arm])}
+             for rep in range(1, 6) for arm in arms[:-1]]
     return {'status': 'verified', 'analysis': 'secondary_component_dominance_v1',
             'protocol_sha256': verified['protocol_sha256'], 'pairs': pairs,
-            'all15_pairs_componentwise_nonincreasing': all(p['nonincreasing'] for p in pairs),
+            f'all{len(pairs)}_pairs_componentwise_nonincreasing': all(p['nonincreasing'] for p in pairs),
             'strict_components_in_every_pair': sorted(set.intersection(*(set(p['strict_components']) for p in pairs))),
             'statistics': {arm: {key: {'median': statistics.median(blocks[rep, arm][key] for rep in range(1, 6)),
                                       'min': min(blocks[rep, arm][key] for rep in range(1, 6)),
-                                      'max': max(blocks[rep, arm][key] for rep in range(1, 6))} for key in KEYS} for arm in ARMS},
+                                      'max': max(blocks[rep, arm][key] for rep in range(1, 6))} for key in KEYS} for arm in arms},
             'interpretation': 'For identical nonnegative per-component linear token rates, componentwise dominance implies no greater modeled token charge. Strict decrease needs a positive rate on a strictly reduced component. Bounds apply when baseline modeled token charge is positive; zero-baseline components must introduce no usage. No actual prices, invoice, subscription savings, request overheads or missing provider fields are inferred. Normalized OpenCode2.2.5 components are disjoint; cache_read is included. This secondary analysis does not alter the frozen primary success gate.'}
 
 

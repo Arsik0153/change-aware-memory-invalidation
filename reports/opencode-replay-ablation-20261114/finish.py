@@ -68,6 +68,8 @@ print(json.dumps(receipt))
     run([python, REPORT / 'account_all_attempts.py', root, REPORT / 'all-attempt-accounting.json'])
     run([python, REPO / 'reports/session-20261114/audit_physical_guards.py', root, REPORT / 'physical-guard-audit.json'])
     audit = json.loads((REPORT / 'audit.json').read_text())
+    if audit['eligible']:
+        run([python, REPO / 'reports/opencode-full-replay-20261114/audit_token_components.py', '--run', root, '--out', REPORT / 'token-components-audit.json'])
     run([python, REPORT / 'render_results.py', REPORT / 'audit.json', REPORT])
     print(json.dumps({key: audit[key] for key in ('status','eligible','direction_supported')}))
 
