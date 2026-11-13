@@ -20,7 +20,7 @@ c.execute('UPDATE index_view SET value=?', ('uncommitted' * 100000,))
 os.kill(os.getpid(), signal.SIGKILL)
 '''
 INTERRUPT = '''
-import json, os, signal, sys
+import fcntl, json, os, signal, sys
 from pathlib import Path
 from cami.cli import main
 from cami.product.memory import database
@@ -36,7 +36,12 @@ rename, replace, unlink, sync = os.rename, os.replace, Path.unlink, database._sy
 fsync = os.fsync
 def fsync_hook(fd):
     result = fsync(fd)
-    events.append({'fsync': os.readlink('/proc/self/fd/' + str(fd))})
+    if sys.platform == 'darwin':
+        raw = fcntl.fcntl(fd, fcntl.F_GETPATH, bytes(1024))
+        path = os.fsdecode(raw.split(bytes(1), 1)[0])
+    else:
+        path = os.readlink('/proc/self/fd/' + str(fd))
+    events.append({'fsync': path})
     trace.write_text(json.dumps(events))
     return result
 def rename_hook(source, destination, *args, **kwargs):

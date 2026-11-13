@@ -1,0 +1,12 @@
+{
+  "image_id": "sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040",
+  "architecture": "arm64",
+  "opencode_version": "2.2.5",
+  "binary_sha256": "dcc7e6f4ac1672e1884dcb8d26ab333e55ffc3f080e01a7a60177aa05f54935f",
+  "model_calls": 0,
+  "version_smoke": "passed",
+  "limitations": [
+    "Version invocation only; no MCP or task-session acceptance yet.",
+    "First invocation failed because the non-root home was not writable; explicit temporary XDG paths passed."
+  ]
+}

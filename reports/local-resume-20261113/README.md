@@ -33,7 +33,11 @@ These unit checks do not verify real container ownership or binary compatibility
 
 The initial full non-Docker run was interrupted after missing-TypeScript failures.
 A separate fail-fast run confirmed that cause (13 passed, one failed). A new
-full run after compiler setup is in progress. Neither is a full-suite PASS.
+full run after compiler setup was interrupted with 80 passes and 19 failures.
+All 19 failures came from Linux-only `/proc/self/fd` tracing in the publication
+crash-test hook. The hook now uses `F_GETPATH` on macOS, retaining actual fsync
+and all durability assertions. All 24 publication checks then passed. Neither
+interrupted run is a full-suite PASS.
 Raw working logs are under ignored `runs/local-resume-20261113/`.
 
 ## Next execution units
@@ -53,3 +57,8 @@ Raw working logs are under ignored `runs/local-resume-20261113/`.
    A single block supplies development evidence, not confirmed superiority.
 
 No task-model or heldout sessions have been launched in this continuation.
+
+The Linux ARM64 image builds successfully and its pinned OpenCode executable
+passes a network-disabled, read-only, non-root version smoke. See
+`runtime-smoke.json`. Existing local OpenCode authentication lists an OpenAI
+credential; no credential contents were printed or copied into this report.
