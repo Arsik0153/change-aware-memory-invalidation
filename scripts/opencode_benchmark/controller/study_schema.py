@@ -125,6 +125,7 @@ def normalize(bundle, kind):
             tasks.append(
                 {
                     "id": task_id,
+                    "candidate_root": "src/packaging",
                     "archive": row["base_archive"]["path"],
                     "archive_sha256": row["base_archive"]["sha256"],
                     "prompt": contained(bundle, row["prompt_path"]).read_text(),

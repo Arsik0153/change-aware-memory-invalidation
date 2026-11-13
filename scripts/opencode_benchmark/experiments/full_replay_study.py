@@ -21,6 +21,7 @@ from format_probe import read_projection  # noqa: E402
 import task_replay  # noqa: E402
 
 DESIGN = 'full-cami-result-memory-development-v2'
+HELDOUT_DESIGN = 'full-cami-result-memory-heldout-v1'
 CONDITIONS = ('plain', 'static', 'cami', 'cami_replay')
 REPETITIONS = 5
 IMAGE = 'sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040'
@@ -36,10 +37,33 @@ RULES = {
 
 
 
-def runtime():
-    bundle = ROOT / 'examples/opencode_benchmark_development_v2'
-    return {'image': IMAGE, 'model': 'openai/gpt-6.1-sol#high', 'bundle_kind': 'development', 'bundle_path': str(bundle),
-            'normalized': normalize(bundle, 'development'), 'cami_source': str(ROOT / 'src'),
+def rules(design=DESIGN):
+    if design == DESIGN:
+        return RULES
+    if design != HELDOUT_DESIGN:
+        raise ValueError('unsupported full-study design')
+    return {**RULES, 'design': design,
+        'limits': RULES['limits'].replace('heldout exposure or ', ''),
+        'scope': 'Task/outcome-held-out Packaging replication; previously studied project and public historical tasks. Original sealed75 generic source notes. Separate four-condition five-block protocol, not the original three-arm three-repeat design. Two tasks, exact repeats, no arbitrary-task or billing claim.'}
+
+
+def runtime(design=DESIGN):
+    if design == HELDOUT_DESIGN:
+        bundle = ROOT / 'examples/opencode_benchmark_heldout_v1/expanded'
+        kind = 'heldout'
+    elif design == DESIGN:
+        bundle = ROOT / 'examples/opencode_benchmark_development_v2'
+        kind = 'development'
+    else:
+        raise ValueError('unsupported full-study design')
+    return runtime_for_bundle(bundle, kind)
+
+
+def runtime_for_bundle(bundle, kind):
+    admission = ROOT / 'runs/heldout-admission/admission.json'
+    allowances = read(admission)['baseline_failure_allowances'] if kind == 'heldout' and admission.exists() else {}
+    return {'baseline_failure_allowances': allowances, 'image': IMAGE, 'model': 'openai/gpt-6.1-sol#high', 'bundle_kind': kind, 'bundle_path': str(bundle),
+            'normalized': normalize(bundle, kind), 'cami_source': str(ROOT / 'src'),
             'adapter': str(ROOT / 'integrations/opencode'),
             'harness': str(ROOT / 'scripts/opencode_benchmark/harness/container_session.py'),
             'binary_path': str(ROOT / 'bin/opencode'), 'binary_sha256': digest(ROOT / 'bin/opencode'),
@@ -86,7 +110,7 @@ def model_session(spec, trial, workspace, memory, directory, prompt):
     return tokens, tier['provider_reported_values']
 
 
-def summarize(records, shared_wall):
+def summarize(records, shared_wall, design=DESIGN):
     blocks = []
     for repetition in range(1, REPETITIONS + 1):
         for condition in CONDITIONS:
@@ -105,15 +129,28 @@ def summarize(records, shared_wall):
                 **{key: (lookup['cami_replay'][key] < lookup[comparator][key]
                          if lookup['cami_replay'][key] is not None and lookup[comparator][key] is not None else None)
                    for key in ('token_work', 'charged_wall_seconds')}})
-    return {'rules': RULES, 'planned_attempts': 80, 'terminal_attempts': len(records),
+    return {'rules': rules(design), 'planned_attempts': 80, 'terminal_attempts': len(records),
         'model_calls': sum(r['model_calls'] for r in records), 'shared_preflight_wall_seconds': shared_wall,
         'provider_reported_tiers': tiers, 'blocks': blocks, 'pairs': pairs, 'eligible': eligible,
         'direction_supported': eligible and all(p[k] is True for p in pairs for k in ('token_work', 'charged_wall_seconds'))}
 
 
+def validate_source_scope(spec, before, candidate):
+    if spec.get('bundle_kind') != 'heldout':
+        return
+    def outside(root):
+        return {name: row for name, row in inventory(root / 'src').items()
+                if not name.startswith('packaging/')}
+    if outside(before) != outside(candidate):
+        raise ValueError('heldout candidate changed source outside src/packaging')
+    inventory(candidate / 'src/packaging')
+
+
 def run(freeze, out):
     protocol = read(freeze / 'protocol.json')
-    if protocol['rules'] != RULES or protocol['pins'] != pins() or protocol['runtime'] != runtime():
+    design = protocol['rules']['design']
+    expected_runtime = runtime() if design == DESIGN else runtime(design)
+    if protocol['rules'] != rules(design) or protocol['pins'] != pins() or protocol['runtime'] != expected_runtime:
         raise ValueError('frozen code, inputs or rules changed')
     spec = {**protocol['runtime'], 'runtime_manifest_path': str(freeze / 'runtime-manifest.json')}
     if protocol['schedule'] != schedule(spec):
@@ -125,7 +162,7 @@ def run(freeze, out):
     (out / 'namespaces').mkdir()
     (out / 'trials').mkdir()
     memory_states = {}
-    context = json.dumps({'image': spec['image'], 'binary': protocol['pins']['binary'], 'source_scope': 'src/**'}, sort_keys=True)
+    context = json.dumps({'image': spec['image'], 'binary': protocol['pins']['binary'], 'source_scope': 'src/packaging/**' if spec.get('bundle_kind') == 'heldout' else 'src/**'}, sort_keys=True)
     bases, allowances = {}, {}
     started = time.perf_counter()
     for task in spec['normalized']['tasks']:
@@ -181,6 +218,7 @@ def run(freeze, out):
                 capture(workspace, canonical['canonical_files'], candidate)
             result['tokens'] = tokens
             result['token_work'] = sum(tokens[k] for k in ('input', 'cache_write', 'output', 'reasoning'))
+            validate_source_scope(spec, before, candidate)
             quality = grade(spec, task, candidate, directory / 'evaluation', allowance=allowances[task['id']])
             result['quality'] = quality['status']
             if quality['status'] != 'pass':
@@ -199,7 +237,7 @@ def run(freeze, out):
         write(directory / 'terminal.json', result)
         records.append(result)
         print(json.dumps({'event': 'terminal', 'trial': trial['id'], 'status': result['status'], 'error': result.get('error')}), flush=True)
-        write(out / f'summary-{len(records):03d}.json', summarize(records, shared_wall))
+        write(out / f'summary-{len(records):03d}.json', summarize(records, shared_wall, design))
     probes = []
     for rep in range(1, REPETITIONS + 1):
         cache = out / 'namespaces' / f'r{rep}-cami_replay' / 'result-cache'
@@ -217,7 +255,7 @@ def run(freeze, out):
     probe_passed = all(p['status'] == 'miss' and p['output_absent'] and p['control_status'] == 'candidate_requires_grading' for p in probes)
     write(out / 'guard-probes.json', {'scope': 'Separate correctness probes after timed attempts; not counted as agent work or performance savings',
         'passed': probe_passed, 'probes': probes})
-    final = summarize(records, shared_wall)
+    final = summarize(records, shared_wall, design)
     final['guard_probes_passed'] = probe_passed
     final['eligible'] = final['eligible'] and probe_passed
     final['direction_supported'] = final['direction_supported'] and probe_passed
@@ -230,6 +268,7 @@ def main():
     parser.add_argument('--freeze', type=Path, required=True)
     parser.add_argument('--out', type=Path)
     parser.add_argument('--run', action='store_true')
+    parser.add_argument('--design', choices=[DESIGN, HELDOUT_DESIGN], default=DESIGN)
     args = parser.parse_args()
     if args.run:
         if args.out is None:
@@ -237,8 +276,12 @@ def main():
         run(args.freeze, args.out)
     else:
         args.freeze.mkdir(exist_ok=False)
-        spec = runtime()
-        write(args.freeze / 'protocol.json', {'rules': RULES, 'runtime': spec, 'pins': pins(), 'schedule': schedule(spec)})
+        if args.design == HELDOUT_DESIGN:
+            admission = read(ROOT / 'runs/heldout-admission/admission.json')
+            if admission['status'] != 'passed' or admission['model_calls'] != 0:
+                raise ValueError('heldout no-model admission required')
+        spec = runtime(args.design)
+        write(args.freeze / 'protocol.json', {'rules': rules(args.design), 'runtime': spec, 'pins': pins(), 'schedule': schedule(spec)})
         write(args.freeze / 'runtime-manifest.json', {'image_id': IMAGE, 'binary_sha256': digest(ROOT / 'bin/opencode'),
             'cami_files': runtime_files(ROOT / 'src'), 'adapter_files': runtime_files(ROOT / 'integrations/opencode')})
         print('Frozen; zero model calls')

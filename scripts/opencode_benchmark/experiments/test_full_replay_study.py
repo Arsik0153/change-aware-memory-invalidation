@@ -125,3 +125,44 @@ def test_full_runtime_passes_real_session_contract(tmp_path, monkeypatch, arm):
         with pytest.raises(ValueError, match='frozen model'):
             study_runtime.session(invalid, {'arm': arm}, tmp_path, tmp_path, tmp_path, out)
         assert calls == []
+
+
+def test_heldout_source_boundary_and_fixed_evaluator(tmp_path):
+    from study_workspace import evaluation_workspace
+    before = tmp_path / 'base'
+    candidate = tmp_path / 'candidate'
+    for root in (before, candidate):
+        (root / 'src/packaging').mkdir(parents=True)
+        (root / 'src/packaging/value.py').write_text('value = 1')
+        (root / 'src/unchanged.py').write_text('original')
+    (candidate / 'src/packaging/value.py').write_text('value = 2')
+    study.validate_source_scope({'bundle_kind': 'heldout'}, before, candidate)
+    (candidate / 'src/unchanged.py').write_text('injected')
+    with pytest.raises(ValueError, match='outside src/packaging'):
+        study.validate_source_scope({'bundle_kind': 'heldout'}, before, candidate)
+    archive = tmp_path / 'base.tar'
+    (before / 'tests').mkdir()
+    (before / 'tests/test_fixed.py').write_text('original test')
+    (before / 'pytest.ini').write_text('original config')
+    with tarfile.open(archive, 'w') as stream:
+        for path in before.iterdir():
+            stream.add(path, arcname=path.name)
+    (tmp_path / 'oracle/tests').mkdir(parents=True)
+    (tmp_path / 'oracle/tests/test_fixed.py').write_text('frozen test')
+    (candidate / 'pytest.ini').write_text('injected config')
+    task = {'archive': archive.name, 'candidate_root': 'src/packaging',
+            'replace_regression_tests': 'oracle/tests', 'regression': 'tests'}
+    target = evaluation_workspace(tmp_path, task, candidate, tmp_path / 'grade')
+    assert (target / 'src/packaging/value.py').read_text() == 'value = 2'
+    assert (target / 'src/unchanged.py').read_text() == 'original'
+    assert (target / 'pytest.ini').read_text() == 'original config'
+    assert (target / 'tests/test_fixed.py').read_text() == 'frozen test'
+
+
+def test_heldout_rules_keep_success_gate():
+    heldout = study.rules(study.HELDOUT_DESIGN)
+    assert heldout['success'] == study.RULES['success']
+    assert heldout['attempts'] == 80
+    assert heldout['maximum_model_sessions'] == 70
+    with pytest.raises(ValueError, match='unsupported'):
+        study.rules('unknown')

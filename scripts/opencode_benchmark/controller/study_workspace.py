@@ -179,8 +179,12 @@ def capture(workspace, canonical, out):
 def evaluation_workspace(bundle, task, candidate, out):
     target = out / "workspace"
     extract(bundle / task["archive"], target)
-    shutil.rmtree(target / "src")
-    shutil.copytree(candidate / "src", target / "src")
+    admitted = task.get("candidate_root", "src")
+    if admitted not in {"src", "src/packaging"}:
+        raise ValueError("unsupported candidate source boundary")
+    inventory(candidate / admitted)
+    shutil.rmtree(target / admitted)
+    shutil.copytree(candidate / admitted, target / admitted)
     if task["replace_regression_tests"]:
         tests = target / task["regression"]
         if tests.exists():

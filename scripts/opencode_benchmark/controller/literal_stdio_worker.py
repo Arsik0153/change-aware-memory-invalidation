@@ -58,8 +58,11 @@ def validate_response(result, expected, backend, response_format, trace, argumen
     entry = entries[0]
     if entry.get("payload") != expected["payload"]:
         raise ValueError("literal tuple/source/span lost in MCP projection")
-    label = "origin_literal_source_assertion" if backend == "static" else "validated_literal_source"
-    availability = "unchecked_current" if backend == "static" else "supported"
+    note = expected["payload"]["type"] == "note"
+    label = "manual_assertion" if note else (
+        "origin_literal_source_assertion" if backend == "static" else "validated_literal_source")
+    availability = "unchecked_current" if backend == "static" else (
+        "manual_assertion_source_unchanged" if note else "supported")
     if entry.get("label") != label or entry.get("availability") != availability:
         raise ValueError("literal trust/status label differs")
     if response_format in ("full", "readable") and entry.get("origin_source") != expected["source"]:

@@ -13,8 +13,11 @@ CONDITIONS = ('plain', 'static', 'cami', 'cami_replay')
 
 def audit(root):
     protocol, summary = read(root / 'protocol.json'), read(root / 'summary.json')
-    if protocol['rules']['design'] != 'full-cami-result-memory-development-v2' or summary['rules'] != protocol['rules']:
+    if protocol['rules']['design'] not in {'full-cami-result-memory-development-v2', 'full-cami-result-memory-heldout-v1'} or summary['rules'] != protocol['rules']:
         raise ValueError('unsupported protocol')
+    if protocol['rules']['design'].endswith('heldout-v1'):
+        if protocol['runtime']['bundle_kind'] != 'heldout' or any(t.get('candidate_root') != 'src/packaging' for t in protocol['runtime']['normalized']['tasks']):
+            raise ValueError('heldout source boundary differs')
     sequence = protocol['runtime']['normalized']['sequence']
     expected = []
     for rep in range(1, 6):
@@ -41,6 +44,14 @@ def audit(root):
             grade = read(directory / 'evaluation/report.json')
             if grade['status'] != 'pass' or not grade['fixed_tests_restored'] or grade['agent_tests_scored']:
                 raise ValueError('invalid grade binding')
+            if protocol['runtime']['bundle_kind'] == 'heldout':
+                canonical = read(directory / 'canonical-reset.json')['canonical_files']
+                expected_outside = {name[4:]: row['sha256'] for name, row in canonical.items()
+                                    if name.startswith('src/') and not name.startswith('src/packaging/')}
+                actual_outside = {name: value for name, value in grade['source_files'].items()
+                                  if not name.startswith('packaging/')}
+                if expected_outside != actual_outside:
+                    raise ValueError('heldout source escaped package boundary')
             for outcome in grade['outcomes'].values():
                 if outcome['exit_code'] or outcome['counts']['failed'] or outcome['counts']['errors'] or not outcome['counts']['executed']:
                     raise ValueError('invalid quality outcome')
