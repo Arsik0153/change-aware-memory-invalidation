@@ -1,0 +1,159 @@
+{
+  "scope": "Separate unreported CPU-time cProfile run; never pooled with five alternating timing repetitions.",
+  "conditions": {
+    "baseline": {
+      "self_cpu_total": 0.34517800000000004,
+      "top_self": [
+        {
+          "function": "<method 'validate_json' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+          "calls": 335,
+          "self_cpu_seconds": 0.053202993000000004,
+          "cumulative_cpu_seconds": 0.235355
+        },
+        {
+          "function": "models.py:29:safe_path",
+          "calls": 6856,
+          "self_cpu_seconds": 0.026187977,
+          "cumulative_cpu_seconds": 0.175069005
+        },
+        {
+          "function": "<method 'serialize' of 'sqlite3.Connection' objects>",
+          "calls": 2,
+          "self_cpu_seconds": 0.025913000000000002,
+          "cumulative_cpu_seconds": 0.025913000000000002
+        },
+        {
+          "function": "pathlib.py:387:_parse_path",
+          "calls": 6875,
+          "self_cpu_seconds": 0.018964027,
+          "cumulative_cpu_seconds": 0.040939013
+        },
+        {
+          "function": "<built-in method posix.read>",
+          "calls": 598,
+          "self_cpu_seconds": 0.017387,
+          "cumulative_cpu_seconds": 0.017387
+        },
+        {
+          "function": "pathlib.py:437:__str__",
+          "calls": 6894,
+          "self_cpu_seconds": 0.012736019000000001,
+          "cumulative_cpu_seconds": 0.033538067000000005
+        },
+        {
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 18,
+          "self_cpu_seconds": 0.012193,
+          "cumulative_cpu_seconds": 0.012193
+        },
+        {
+          "function": "pathlib.py:358:__init__",
+          "calls": 6913,
+          "self_cpu_seconds": 0.010990006,
+          "cumulative_cpu_seconds": 0.019367991
+        },
+        {
+          "function": "<method 'to_json' of 'pydantic_core._pydantic_core.SchemaSerializer' objects>",
+          "calls": 331,
+          "self_cpu_seconds": 0.010054,
+          "cumulative_cpu_seconds": 0.010054
+        },
+        {
+          "function": "pathlib.py:407:_load_parts",
+          "calls": 6875,
+          "self_cpu_seconds": 0.009755981,
+          "cumulative_cpu_seconds": 0.054708988
+        },
+        {
+          "function": "pathlib.py:702:parts",
+          "calls": 6856,
+          "self_cpu_seconds": 0.008810968,
+          "cumulative_cpu_seconds": 0.07325398100000001
+        },
+        {
+          "function": "pathlib.py:551:drive",
+          "calls": 13754,
+          "self_cpu_seconds": 0.00850099,
+          "cumulative_cpu_seconds": 0.063209978
+        }
+      ]
+    },
+    "compact": {
+      "self_cpu_total": 0.29393,
+      "top_self": [
+        {
+          "function": "<method 'validate_json' of 'pydantic_core._pydantic_core.SchemaValidator' objects>",
+          "calls": 335,
+          "self_cpu_seconds": 0.049598982,
+          "cumulative_cpu_seconds": 0.23087100000000002
+        },
+        {
+          "function": "pathlib.py:387:_parse_path",
+          "calls": 6875,
+          "self_cpu_seconds": 0.024086997000000002,
+          "cumulative_cpu_seconds": 0.045878995000000006
+        },
+        {
+          "function": "models.py:29:safe_path",
+          "calls": 6856,
+          "self_cpu_seconds": 0.020010009000000002,
+          "cumulative_cpu_seconds": 0.173998027
+        },
+        {
+          "function": "pathlib.py:437:__str__",
+          "calls": 6894,
+          "self_cpu_seconds": 0.012847002000000001,
+          "cumulative_cpu_seconds": 0.03363399
+        },
+        {
+          "function": "<method 'serialize' of 'sqlite3.Connection' objects>",
+          "calls": 2,
+          "self_cpu_seconds": 0.012387,
+          "cumulative_cpu_seconds": 0.012387
+        },
+        {
+          "function": "pathlib.py:358:__init__",
+          "calls": 6913,
+          "self_cpu_seconds": 0.011492038000000001,
+          "cumulative_cpu_seconds": 0.019745038000000003
+        },
+        {
+          "function": "<method 'to_json' of 'pydantic_core._pydantic_core.SchemaSerializer' objects>",
+          "calls": 331,
+          "self_cpu_seconds": 0.010152000000000001,
+          "cumulative_cpu_seconds": 0.010152000000000001
+        },
+        {
+          "function": "pathlib.py:407:_load_parts",
+          "calls": 6875,
+          "self_cpu_seconds": 0.009187012000000001,
+          "cumulative_cpu_seconds": 0.059161025000000006
+        },
+        {
+          "function": "pathlib.py:702:parts",
+          "calls": 6856,
+          "self_cpu_seconds": 0.008874032,
+          "cumulative_cpu_seconds": 0.07773703300000001
+        },
+        {
+          "function": "pathlib.py:551:drive",
+          "calls": 13754,
+          "self_cpu_seconds": 0.008359984,
+          "cumulative_cpu_seconds": 0.067521009
+        },
+        {
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 19,
+          "self_cpu_seconds": 0.008205001,
+          "cumulative_cpu_seconds": 0.008205001
+        },
+        {
+          "function": "<built-in method posix.read>",
+          "calls": 350,
+          "self_cpu_seconds": 0.007193011,
+          "cumulative_cpu_seconds": 0.007193011
+        }
+      ]
+    }
+  }
+}

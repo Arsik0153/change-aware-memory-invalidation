@@ -53,12 +53,20 @@ its existing contract.
 The [result-memory CLI](integrations/opencode/TASK_REPLAY.md) records source changes
 and creates a new candidate only for an identical task, repository input and
 external context. Every candidate requires fresh tests; changed inputs miss.
-A [prospective empty-cache development experiment](reports/opencode-task-replay-20261113/README.md)
-passed all eight quality gates with 32.21% less noncached token work and 43.13% less
-measured pipeline time, including initial solutions and memory costs. This narrow
-result concerns exact repeated tasks, not arbitrary new tasks, semantic reuse
-after changes, or the existing source-prefix lookup. Subsequent compressed
-storage preserves source output and reduces the two entries' size 78.35%.
+A [full development experiment](reports/opencode-full-replay-20261114/README.md)
+passed all 80 attempts across five fresh-memory blocks and four conditions.
+CAMI with exact-result reuse reduced median noncached token work by 53.65% and
+measured pipeline time by 49.77% relative to CAMI alone, including initial
+solutions and memory costs. Both metrics improved against every comparator in
+every block. These are exact repeats of two development tasks, not 80 independent
+tasks or evidence for arbitrary new tasks, semantic reuse after changes, or the
+existing source-prefix lookup. Token work is not billed currency.
+
+A [subsequent storage change](reports/opencode-storage-compaction-20261114/README.md)
+removed redundant SQLite values and reduced database size by 44.13% on all ten
+source-memory databases while preserving histories and public outputs. Its local
+timing result is inconclusive; the full model experiment describes the earlier
+version.
 
 ## OpenCode memory integration
 
@@ -71,7 +79,8 @@ now handles all 329 source notes in three fresh runs; the previous sequential
 implementation exceeded its database bound after 131 notes. [Preparation evidence](reports/opencode-batch-preparation-20261104/summary.json)
 and [the preserved failure](reports/opencode-preflight-20261104/summary.json)
 are separate from agent-task results. An end-to-end speed or quality advantage
-has not yet been established.
+for source-prefix lookup alone has not yet been established. The exact-task
+result reuse above is a separate mechanism.
 
 The [frozen comparison protocol](reports/opencode-study-design-20261104/protocol.json)
 compares plain OpenCode, static memory and CAMI on the same model, task versions

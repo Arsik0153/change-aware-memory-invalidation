@@ -1,0 +1,590 @@
+{
+  "cases": [
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "77fd7dc40db8f92d627e0b027c38df4f5f76a1710d1fcfe695de4744387349c4",
+          "wall_seconds": 0.18251804099418223
+        },
+        "compact": {
+          "output_sha256": "77fd7dc40db8f92d627e0b027c38df4f5f76a1710d1fcfe695de4744387349c4",
+          "wall_seconds": 0.5133560419781134
+        }
+      },
+      "database_bytes": {
+        "baseline": 36753408,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.132397191574725,
+      "id": "r1-cami",
+      "load_start": [
+        1.5615234375,
+        1.669921875,
+        1.96435546875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41452679,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.2421778329880908,
+          0.23285479203332216,
+          0.23280004190746695,
+          0.23768108407966793,
+          0.23851495806593448
+        ],
+        "compact": [
+          0.20861579210031778,
+          0.1851899999892339,
+          0.18430466705467552,
+          0.18793316709343344,
+          0.19386466697324067
+        ]
+      },
+      "warm_median_reduction_percent": 20.930532683686167,
+      "warm_ranges_separated": true,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.2421778329880908,
+          "median": 0.23768108407966793,
+          "min": 0.23280004190746695
+        },
+        "compact": {
+          "max": 0.20861579210031778,
+          "median": 0.18793316709343344,
+          "min": 0.18430466705467552
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "1e2503bfea1a790b455e244110bb9787efc4198267021a55300b5a1ce39e0166",
+          "wall_seconds": 0.22408104210626334
+        },
+        "compact": {
+          "output_sha256": "1e2503bfea1a790b455e244110bb9787efc4198267021a55300b5a1ce39e0166",
+          "wall_seconds": 0.6237622909247875
+        }
+      },
+      "database_bytes": {
+        "baseline": 36757504,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.13862268776465,
+      "id": "r1-cami_replay",
+      "load_start": [
+        1.75634765625,
+        1.70849609375,
+        1.97607421875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41456775,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.18054204189684242,
+          0.17918525007553399,
+          0.1795014999806881,
+          0.1793448330136016,
+          0.17973150010220706
+        ],
+        "compact": [
+          0.1946163329994306,
+          0.15576195798348635,
+          0.15549699997063726,
+          0.15625129197724164,
+          0.15686591691337526
+        ]
+      },
+      "warm_median_reduction_percent": 12.952653880857746,
+      "warm_ranges_separated": false,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.18054204189684242,
+          "median": 0.1795014999806881,
+          "min": 0.17918525007553399
+        },
+        "compact": {
+          "max": 0.1946163329994306,
+          "median": 0.15625129197724164,
+          "min": 0.15549699997063726
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "76e4c238eac23634bbd5f92f392584cbca7a76d7e2df89c6f8cf8069361de3bd",
+          "wall_seconds": 0.19462991692125797
+        },
+        "compact": {
+          "output_sha256": "76e4c238eac23634bbd5f92f392584cbca7a76d7e2df89c6f8cf8069361de3bd",
+          "wall_seconds": 0.5520985410548747
+        }
+      },
+      "database_bytes": {
+        "baseline": 36749312,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.12617030762371,
+      "id": "r2-cami",
+      "load_start": [
+        1.85546875,
+        1.7294921875,
+        1.98193359375
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41448583,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.1813310410361737,
+          0.1795739169465378,
+          0.18091054097749293,
+          0.17979683307930827,
+          0.18134741706307977
+        ],
+        "compact": [
+          0.17467325006145984,
+          0.16186754091177136,
+          0.15879491704981774,
+          0.15824666700791568,
+          0.16029575001448393
+        ]
+      },
+      "warm_median_reduction_percent": 11.395019246321137,
+      "warm_ranges_separated": true,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.18134741706307977,
+          "median": 0.18091054097749293,
+          "min": 0.1795739169465378
+        },
+        "compact": {
+          "max": 0.17467325006145984,
+          "median": 0.16029575001448393,
+          "min": 0.15824666700791568
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "a6857b97aaed321deebe176c04b35212260046cf62c006902458ad1795829bb0",
+          "wall_seconds": 0.1853027920005843
+        },
+        "compact": {
+          "output_sha256": "a6857b97aaed321deebe176c04b35212260046cf62c006902458ad1795829bb0",
+          "wall_seconds": 0.49416337499860674
+        }
+      },
+      "database_bytes": {
+        "baseline": 36749312,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.12617030762371,
+      "id": "r2-cami_replay",
+      "load_start": [
+        1.78662109375,
+        1.71728515625,
+        1.97607421875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41448583,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.17881687497720122,
+          0.17716608406044543,
+          0.1805697079980746,
+          0.20067320798989385,
+          0.2131855000043288
+        ],
+        "compact": [
+          0.1609544160310179,
+          0.1609500830527395,
+          0.15899224998429418,
+          0.16109833295922726,
+          0.19250087498221546
+        ]
+      },
+      "warm_median_reduction_percent": 10.863002540418265,
+      "warm_ranges_separated": false,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.2131855000043288,
+          "median": 0.1805697079980746,
+          "min": 0.17716608406044543
+        },
+        "compact": {
+          "max": 0.19250087498221546,
+          "median": 0.1609544160310179,
+          "min": 0.15899224998429418
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "1bcc8f8908bbe57a7bd955ad7af886799a5168ec39e31b0c26f17e23cf535cbd",
+          "wall_seconds": 0.26994687505066395
+        },
+        "compact": {
+          "output_sha256": "1bcc8f8908bbe57a7bd955ad7af886799a5168ec39e31b0c26f17e23cf535cbd",
+          "wall_seconds": 0.6707065419759601
+        }
+      },
+      "database_bytes": {
+        "baseline": 36757504,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.13862268776465,
+      "id": "r3-cami",
+      "load_start": [
+        1.80322265625,
+        1.7216796875,
+        1.97607421875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41456775,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.17790937493555248,
+          0.18028891691938043,
+          0.18286716600414366,
+          0.18076949997339398,
+          0.18007395800668746
+        ],
+        "compact": [
+          0.1547017089324072,
+          0.1606500829802826,
+          0.163390125031583,
+          0.16040704201441258,
+          0.1969235830474645
+        ]
+      },
+      "warm_median_reduction_percent": 10.892979044230266,
+      "warm_ranges_separated": false,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.18286716600414366,
+          "median": 0.18028891691938043,
+          "min": 0.17790937493555248
+        },
+        "compact": {
+          "max": 0.1969235830474645,
+          "median": 0.1606500829802826,
+          "min": 0.1547017089324072
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "20915d87e36a51851230496e16d132569ed384a42455fd06c2eef7073327bb45",
+          "wall_seconds": 0.19535833306144923
+        },
+        "compact": {
+          "output_sha256": "20915d87e36a51851230496e16d132569ed384a42455fd06c2eef7073327bb45",
+          "wall_seconds": 0.4844717080704868
+        }
+      },
+      "database_bytes": {
+        "baseline": 36749312,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.12617030762371,
+      "id": "r3-cami_replay",
+      "load_start": [
+        1.80322265625,
+        1.7216796875,
+        1.97607421875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41448583,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.19036512495949864,
+          0.19041924993507564,
+          0.19824841700028628,
+          0.17924066609703004,
+          0.18224750005174428
+        ],
+        "compact": [
+          0.1714748750673607,
+          0.16525691701099277,
+          0.16727049998007715,
+          0.20048387499991804,
+          0.16254783410113305
+        ]
+      },
+      "warm_median_reduction_percent": 12.13175206558188,
+      "warm_ranges_separated": false,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.19824841700028628,
+          "median": 0.19036512495949864,
+          "min": 0.17924066609703004
+        },
+        "compact": {
+          "max": 0.20048387499991804,
+          "median": 0.16727049998007715,
+          "min": 0.16254783410113305
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "9f4d487638378e70ab64c1c3748fff75bba0b0c344aa57e5390ee915972bcd39",
+          "wall_seconds": 0.18171783303841949
+        },
+        "compact": {
+          "output_sha256": "9f4d487638378e70ab64c1c3748fff75bba0b0c344aa57e5390ee915972bcd39",
+          "wall_seconds": 0.45066416694317013
+        }
+      },
+      "database_bytes": {
+        "baseline": 36757504,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.13862268776465,
+      "id": "r4-cami",
+      "load_start": [
+        2.05908203125,
+        1.77587890625,
+        1.99365234375
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41456775,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.1830607089214027,
+          0.18166804197244346,
+          0.18347004195675254,
+          0.18418929097242653,
+          0.18440541601739824
+        ],
+        "compact": [
+          0.16151958296541125,
+          0.16782970901113003,
+          0.15731254196725786,
+          0.20036245801020414,
+          0.15849904203787446
+        ]
+      },
+      "warm_median_reduction_percent": 11.964056233505104,
+      "warm_ranges_separated": false,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.18440541601739824,
+          "median": 0.18347004195675254,
+          "min": 0.18166804197244346
+        },
+        "compact": {
+          "max": 0.20036245801020414,
+          "median": 0.16151958296541125,
+          "min": 0.15731254196725786
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "6264dbeb0fc633166880b13b482d98ea3e6a95090db5373190429f0652435591",
+          "wall_seconds": 0.1808322089491412
+        },
+        "compact": {
+          "output_sha256": "6264dbeb0fc633166880b13b482d98ea3e6a95090db5373190429f0652435591",
+          "wall_seconds": 0.44892504101153463
+        }
+      },
+      "database_bytes": {
+        "baseline": 36757504,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.13862268776465,
+      "id": "r4-cami_replay",
+      "load_start": [
+        2.13427734375,
+        1.7958984375,
+        1.99951171875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41456775,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.18217979196924716,
+          0.18359462497755885,
+          0.2219811249524355,
+          0.1838369999313727,
+          0.1784040000056848
+        ],
+        "compact": [
+          0.16083025000989437,
+          0.15943012502975762,
+          0.15856979100499302,
+          0.16160070896148682,
+          0.15824412507936358
+        ]
+      },
+      "warm_median_reduction_percent": 13.161877669760159,
+      "warm_ranges_separated": true,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.2219811249524355,
+          "median": 0.18359462497755885,
+          "min": 0.1784040000056848
+        },
+        "compact": {
+          "max": 0.16160070896148682,
+          "median": 0.15943012502975762,
+          "min": 0.15824412507936358
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "6c7f2c77b701a34af0f53a831aff074a2aa1c34bfd20a1a5dfc74fffa338af0e",
+          "wall_seconds": 0.18703862489201128
+        },
+        "compact": {
+          "output_sha256": "6c7f2c77b701a34af0f53a831aff074a2aa1c34bfd20a1a5dfc74fffa338af0e",
+          "wall_seconds": 0.4968910829629749
+        }
+      },
+      "database_bytes": {
+        "baseline": 36757504,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.13862268776465,
+      "id": "r5-cami",
+      "load_start": [
+        2.123046875,
+        1.798828125,
+        1.99951171875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41456775,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.18098629196174443,
+          0.2266829169820994,
+          0.1868772499728948,
+          0.18555137503426522,
+          0.18087637494318187
+        ],
+        "compact": [
+          0.16050237498711795,
+          0.16473058401606977,
+          0.16457066603470594,
+          0.16275529097765684,
+          0.16282608290202916
+        ]
+      },
+      "warm_median_reduction_percent": 12.247439356372025,
+      "warm_ranges_separated": true,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.2266829169820994,
+          "median": 0.18555137503426522,
+          "min": 0.18087637494318187
+        },
+        "compact": {
+          "max": 0.16473058401606977,
+          "median": 0.16282608290202916,
+          "min": 0.16050237498711795
+        }
+      }
+    },
+    {
+      "cold": {
+        "baseline": {
+          "output_sha256": "d25913b2cd9f9479a85c36f53be06d88711a714893e7eefa03c60577335bd696",
+          "wall_seconds": 0.1862954159732908
+        },
+        "compact": {
+          "output_sha256": "d25913b2cd9f9479a85c36f53be06d88711a714893e7eefa03c60577335bd696",
+          "wall_seconds": 0.5039697079919279
+        }
+      },
+      "database_bytes": {
+        "baseline": 36749312,
+        "compact": 20533248
+      },
+      "database_reduction_percent": 44.12617030762371,
+      "id": "r5-cami_replay",
+      "load_start": [
+        2.123046875,
+        1.798828125,
+        1.99951171875
+      ],
+      "memory_directory_bytes": {
+        "baseline": 41448583,
+        "compact": 25232519
+      },
+      "status": "verified",
+      "warm": {
+        "baseline": [
+          0.1834215420531109,
+          0.22882970806676894,
+          0.18594316695816815,
+          0.18489787494763732,
+          0.18718849995639175
+        ],
+        "compact": [
+          0.1646097080083564,
+          0.17037758394144475,
+          0.16620887501630932,
+          0.16153516597114503,
+          0.16669949993956834
+        ]
+      },
+      "warm_median_reduction_percent": 10.613077245424396,
+      "warm_ranges_separated": true,
+      "warm_summary": {
+        "baseline": {
+          "max": 0.22882970806676894,
+          "median": 0.18594316695816815,
+          "min": 0.1834215420531109
+        },
+        "compact": {
+          "max": 0.17037758394144475,
+          "median": 0.16620887501630932,
+          "min": 0.16153516597114503
+        }
+      }
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Ten copied stores from completed development run, not new tasks. First operation includes private-copy schema migration and compaction. Five alternating subsequent operations include validated connection, head/revisions/view, source-byte verification and result serialization. Exact public outputs, sampled histories, logical rows and foreign keys must agree; original evidence remains unchanged. Primary storage target >=35% smaller DB in every case. Report warm medians/ranges; overlapping ranges do not establish speedup. No model calls or whole-agent speed claim.",
+  "status": "verified",
+  "storage_target_passed": true,
+  "warm_all_case_medians_lower": true,
+  "warm_all_ranges_separated": false
+}

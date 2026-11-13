@@ -56,6 +56,24 @@ the frozen experiment are not silently reinterpreted as version 2 records.
 
 ## Evidence
 
+The [full development experiment](../../reports/opencode-full-replay-20261114/README.md)
+ran 80 attempts: five independent empty-memory blocks, four conditions, and the
+sequence A,A,B,B within each condition. All attempts passed fresh fixed tests.
+CAMI plus version 2 result memory used 53.65% less noncached token work and 49.77%
+less measured pipeline time than CAMI alone, comparing medians across blocks.
+Both metrics improved against plain OpenCode, static memory and CAMI in every
+paired block. Ten exact-repeat hits made no model request; all ten changed-input
+probes rejected reuse and their unchanged positive controls succeeded.
+
+The first solutions, source-memory construction, replay costs and fresh quality
+checks are included. Final evidence packaging is outside the timed region. This
+is evidence on exact repeats of two development tasks, not 80 independent tasks
+or a real-world hit-rate estimate. All 70 model sessions observed the same service
+tier. Token work is not billed currency. Later SQLite compaction is measured
+separately and does not retroactively change this model experiment.
+
+### Earlier pilot
+
 The separate prospective experiment began with an empty cache and ran two
 real Click development tasks twice per condition. All eight attempts passed
 fresh fixed tests. Including the initial solutions, recording, materialization,

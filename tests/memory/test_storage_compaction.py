@@ -93,3 +93,20 @@ def test_concurrent_legacy_readers_publish_one_equivalent_upgrade(legacy_memory)
     assert histories == [history] * 3
     with memory.store.observation_connection() as db:
         assert db.execute('PRAGMA user_version').fetchone()[0] == 2
+
+
+@pytest.mark.parametrize('point', ['before-main', 'after-main'])
+def test_killed_schema_upgrade_recovers_identical_history(legacy_memory, tmp_path, point):
+    from test_database_publication import INTERRUPT, cli
+
+    memory, head, history, receipt = legacy_memory
+    interrupted = cli(memory, [], 'history', receipt.memory_id,
+                      script=[INTERRUPT, point, str(tmp_path / 'upgrade-events.json')])
+    assert interrupted.returncode == -9, interrupted.stderr
+    recovered = cli(memory, [], 'history', receipt.memory_id)
+    assert recovered.returncode == 0, recovered.stderr
+    assert json.loads(recovered.stdout) == history.model_dump(mode='json')
+    assert not memory.store.path.with_name('memory.pending').exists()
+    with memory.store.observation_connection() as db:
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 2
+        assert memory.store.head(db) == head
