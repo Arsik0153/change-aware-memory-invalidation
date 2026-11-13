@@ -269,8 +269,10 @@ def test_preflight_plans_all_six_cases_without_writes(capsys, monkeypatch):
     assert plan["writes"] is False and plan["model_calls"] == 0
 
 
-def test_preflight_mounts_pinned_worker_and_helper_readonly_for_all_six_cases(tmp_path, monkeypatch):
+@pytest.mark.parametrize("policy", ["lexical-overlap/1", "identifier-mentions/1"])
+def test_preflight_mounts_pinned_worker_and_helper_readonly_for_all_six_cases(tmp_path, monkeypatch, policy):
     import container_session as harness
+    from study_runtime import validate_ranking_trace
 
     controller = tmp_path / "installed-controller"
     controller.mkdir()
@@ -309,7 +311,12 @@ def test_preflight_mounts_pinned_worker_and_helper_readonly_for_all_six_cases(tm
         if mode == "full":
             assert "--response-format" not in command
         else:
-            assert command[-2:] == ["--response-format", mode]
+            assert command[command.index("--response-format") + 1] == mode
+        assert ("--ranking-policy" in command) == (policy != "lexical-overlap/1")
+        if "--ranking-policy" in command:
+            assert command[-2:] == ["--ranking-policy", policy]
+        events = [{"event": event, "ranking_policy": policy} for event in ("server_start", "memory_lookup")]
+        (case / "evidence/memory-backend-trace.jsonl").write_text("\n".join(json.dumps(e) for e in events))
         common.write(case / "result.json", {"status": "passed", "format": mode})
         return {"status": "passed"}
     fake_modules = {
@@ -317,7 +324,7 @@ def test_preflight_mounts_pinned_worker_and_helper_readonly_for_all_six_cases(tm
         "study_common": types.SimpleNamespace(**{name: getattr(common, name) for name in (
             "read", "write", "digest", "file_hashes")}, chown=lambda path: None),
         "study_workspace": types.SimpleNamespace(create_namespace=namespace, reset=lambda *args: {}),
-        "study_runtime": types.SimpleNamespace(origin_memory=prepare, container=container),
+        "study_runtime": types.SimpleNamespace(origin_memory=prepare, container=container, validate_ranking_trace=validate_ranking_trace),
         "memory_seed_schema": types.SimpleNamespace(policy_for=lambda value: {"schema_version": 2},
                                                    literal_catalog=lambda value: {"records": [record]}),
         "container_session": harness,
@@ -326,7 +333,7 @@ def test_preflight_mounts_pinned_worker_and_helper_readonly_for_all_six_cases(tm
         if name != "container_session":
             module.__file__ = str(controller / (name + ".py"))
     monkeypatch.setattr(preflight.importlib, "import_module", lambda name: fake_modules[name])
-    report = preflight.execute(study_path, controller, tmp_path / "output")
+    report = preflight.execute(study_path, controller, tmp_path / "output", ranking_policy=policy)
     assert report["status"] == "passed" and report["actual_configured_stdio_cases"] == 6
     assert len(calls) == 6 and validations == [False, False]
     assert common.file_hashes(controller) == original_sources

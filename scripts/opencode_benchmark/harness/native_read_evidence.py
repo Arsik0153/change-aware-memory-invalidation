@@ -1,7 +1,7 @@
 """Content-free native read byte observations before publication redaction."""
 from __future__ import annotations
 
-SCHEMA = "opencode-native-read-text/1"
+SCHEMA = "opencode-native-read-text/2"
 NON_ASSISTANT = {"user", "idle", "system", "synthetic", "shell", "skill", "compaction",
                  "agent-switched", "location-switched", "model-switched"}
 
@@ -32,7 +32,17 @@ def observe_message(message):
             continue
         row["status"] = state["status"]
         content = state.get("content")
-        if state["status"] != "completed":
+        if state["status"] == "error":
+            error = state.get("error")
+            if (isinstance(error, dict) and set(error) == {"type", "message"}
+                    and isinstance(error["type"], str) and isinstance(error["message"], str)):
+                try:
+                    row["utf8_bytes"] = len(error["message"].encode("utf-8"))
+                except UnicodeEncodeError:
+                    result["errors"].append("invalid_read_text_encoding")
+            else:
+                result["errors"].append("unsupported_read_error")
+        elif state["status"] != "completed":
             result["errors"].append("read_not_completed")
         elif not isinstance(content, list) or any(
             not isinstance(item, dict) or item.get("type") != "text" or not isinstance(item.get("text"), str)
@@ -60,4 +70,4 @@ def summarize(observations, *, export_complete):
         "export_complete": export_complete, "complete": complete,
         "utf8_bytes": subtotal if complete else None, "observed_subtotal": subtotal,
         "read_calls": len(calls), "messages": observations, "errors": errors,
-        "scope": "Returned text content of completed native read tools before redaction. No source bodies, paths, inputs or content hashes. Errors/nontext/incomplete exports remain unknown. Shell reads and wire bytes are not inferred."}
+        "scope": "Native read result text before redaction: completed content text plus error.message for the exact {type, message} error object. No source bodies, paths, inputs or content hashes. Pending/running, unsupported errors, nontext and incomplete exports remain unknown. Error type labels and serialization wrappers are excluded. Shell reads and wire bytes are not inferred."}

@@ -22,7 +22,7 @@ from study_common import (
     write,
 )
 from study_workspace import evaluation_workspace
-from study_schema import trial_response_format, service_tier_value
+from study_schema import trial_response_format, service_tier_value, trial_ranking_policy, LEXICAL_RANKING
 from memory_format_evidence import inspect_format
 from memory_seed_schema import literal_catalog, policy_for
 
@@ -245,7 +245,7 @@ def verify_memory(study, memory, backend, expected=None):
     return hashes
 
 
-def validate_memory_command(config, arm, response_format):
+def validate_memory_command(config, arm, response_format, ranking_policy=LEXICAL_RANKING):
     server = config.get("mcp", {}).get("servers", {}).get("research_memory")
     if arm == "plain":
         if server is not None:
@@ -262,8 +262,21 @@ def validate_memory_command(config, arm, response_format):
     ]
     if response_format in ("compact", "readable"):
         expected += ["--response-format", response_format]
+    if ranking_policy != LEXICAL_RANKING:
+        expected += ["--ranking-policy", ranking_policy]
     if not isinstance(server, dict) or server.get("command") != expected:
         raise ValueError("effective memory command differs from frozen response format")
+
+
+def validate_ranking_trace(events, arm, policy):
+    relevant = [e for e in events if e.get("event") in {"server_start", "memory_lookup"}]
+    if arm == "plain":
+        if relevant:
+            raise ValueError("plain session has memory ranking events")
+        return
+    if not any(e.get("event") == "server_start" for e in relevant) or any(
+            e.get("ranking_policy", LEXICAL_RANKING) != policy for e in relevant):
+        raise ValueError("actual memory ranking differs from frozen policy")
 
 
 def session(study, trial, workspace, memory, prompt, out):
@@ -301,8 +314,11 @@ def session(study, trial, workspace, memory, prompt, out):
     if study.get("shared_server") is not None:
         argv += ["--shared-server", study["shared_server"]]
     response_format = trial_response_format(study, trial)
+    ranking_policy = trial_ranking_policy(study, trial)
     tier = service_tier_value(study)
     argv += ["--memory-response-format", response_format]
+    if study.get("schema_version") == 3:
+        argv += ["--memory-ranking-policy", ranking_policy]
     if tier is not None:
         argv += ["--service-tier", tier]
     if trial["arm"] != "plain":
@@ -319,13 +335,15 @@ def session(study, trial, workspace, memory, prompt, out):
         or manifest.get("service_tier_requested") != tier
     ):
         raise ValueError("session identity or status mismatch")
+    if study.get("schema_version") == 3 and manifest.get("memory_ranking_policy") != ranking_policy:
+        raise ValueError("session ranking policy differs")
     config = read(out / "effective-input-config.json")
     if config["model"] != study["model"] or config["agents"]["research"]["steps"] != 20:
         raise ValueError("effective model/config mismatch")
     expected_providers = {"openai": {"models": {"gpt-6.1-sol": {"settings": {"serviceTier": tier}}}}} if tier is not None else None
     if config.get("providers") != expected_providers:
         raise ValueError("effective service tier differs from frozen study")
-    validate_memory_command(config, trial["arm"], response_format)
+    validate_memory_command(config, trial["arm"], response_format, ranking_policy)
     for name, expected_sha in manifest["artifact_hashes"].items():
         if digest(out / name) != expected_sha:
             raise ValueError("session evidence hash mismatch")
@@ -354,6 +372,8 @@ def session(study, trial, workspace, memory, prompt, out):
         if trial["arm"] != "plain"
         else []
     )
+    if study.get("schema_version") == 3:
+        validate_ranking_trace(events, trial["arm"], ranking_policy)
     observed = inspect_format(read(out / messages_rel), events, trial["arm"], response_format)
     write(out.parent / "memory-response-format.json", observed)
     if observed["status"] == "unsupported_or_mismatch":

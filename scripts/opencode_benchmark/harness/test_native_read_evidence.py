@@ -98,3 +98,28 @@ def test_failed_read_capture_invalidates_previous_complete_receipt(tmp_path, mon
     receipt = json.loads((tmp_path / "native-read-bytes.json").read_text())
     assert not receipt["complete"] and receipt["utf8_bytes"] is None
     assert receipt["observed_subtotal"] == 3
+
+
+def test_error_message_counted_before_redaction_through_exporter(tmp_path, monkeypatch):
+    monkeypatch.setattr(worker, "OUT", tmp_path)
+    sensitive = "authored_opaque_credential_987654321"
+    monkeypatch.setattr(worker, "SECRETS", {sensitive})
+    value = message()
+    text = "π failed " + sensitive
+    value["content"][0]["state"] = {"status": "error", "error": {"type": "ToolError", "message": text}}
+    _, visible = worker.messages_all(Pages(page([value])), "session")
+    receipt = json.loads((tmp_path / "native-read-bytes.json").read_text())
+    assert receipt["schema"] == "opencode-native-read-text/2"
+    assert receipt["complete"] and receipt["utf8_bytes"] == len(text.encode())
+    assert receipt["messages"][0]["reads"][0]["status"] == "error"
+    assert sensitive not in json.dumps(visible) and "[REDACTED" in json.dumps(visible)
+    assert all(sensitive not in path.read_text() for path in tmp_path.glob("*.json"))
+
+
+@pytest.mark.parametrize("error", [None, {}, {"message": "x"}, {"type": "ToolError", "message": 0},
+    {"type": "ToolError", "message": "x", "details": "unmeasured"}])
+def test_unrecognized_errors_remain_unknown(error):
+    value = message()
+    value["content"][0]["state"] = {"status": "error", "error": error}
+    result = summarize([observe_message(value)], export_complete=True)
+    assert not result["complete"] and result["utf8_bytes"] is None

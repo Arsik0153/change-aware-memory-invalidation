@@ -13,7 +13,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = next(p for p in HERE.parents if (p / "src/cami").is_dir())
 
 
-def execute(study_path, controller, output):
+def execute(study_path, controller, output, *, ranking_policy="lexical-overlap/1"):
     # Explicit run only: pinned installed helpers, no auth import/model session invocation.
     sys.path.insert(0, str(controller))
     schema = importlib.import_module("study_schema")
@@ -40,6 +40,7 @@ def execute(study_path, controller, output):
         "status": "started",
         "study_sha256": study_sha,
         "model_calls": 0,
+        "ranking_policy": ranking_policy,
         "scope": "correctness only; no OpenCode model/API/auth/session; no task gold/evaluator execution",
         "timing_interpretation": "overlapping correctness work; not performance evidence",
         "preparation": {},
@@ -76,7 +77,7 @@ def execute(study_path, controller, output):
                 case.mkdir()
                 evidence = case / "evidence"
                 evidence.mkdir()
-                server = harness.configuration(backend, "prepared/binding.json", response_format)[
+                server = harness.configuration(backend, "prepared/binding.json", response_format, ranking_policy=ranking_policy)[
                     "mcp"
                 ]["servers"]["research_memory"]
                 common.write(
@@ -118,6 +119,8 @@ def execute(study_path, controller, output):
                     or common.read(case / "result.json")["status"] != "passed"
                 ):
                     raise ValueError("configured stdio correctness failed; evidence retained")
+                events = [json.loads(line) for line in (evidence / "memory-backend-trace.jsonl").read_text().splitlines()]
+                runtime.validate_ranking_trace(events, backend, ranking_policy)
                 report["observations"].append(common.read(case / "result.json"))
         if catalogs["static"] != catalogs["cami"]:
             raise ValueError("global static/CAMI catalog bytes differ")
@@ -148,6 +151,7 @@ def main():
         "--controller-dir", type=Path, default=ROOT / "scripts/opencode_benchmark/controller"
     )
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--ranking-policy", choices=["lexical-overlap/1", "identifier-mentions/1"], default="lexical-overlap/1")
     args = parser.parse_args()
     if not args.run:
         print(
@@ -168,7 +172,7 @@ def main():
     output = args.out.resolve()
     if not output.is_relative_to(ROOT / "runs") or output.exists():
         parser.error("--out must be a new path under runs; prior attempts are preserved")
-    execute(args.study.resolve(), args.controller_dir.resolve(), output)
+    execute(args.study.resolve(), args.controller_dir.resolve(), output, ranking_policy=args.ranking_policy)
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ from study_schema import FORMAT_DESIGN, format_conditions, plan, validate_design
 from opencode_message_schema import non_tool_record  # noqa: E402
 
 
-def native_reads(messages):
+def native_reads(messages, *, include_error_messages=False):
     """Count returned native read text, never shell-inferred bytes or duplicated output."""
     total, calls, ids, errors = 0, 0, set(), []
     if not isinstance(messages, list) or not messages:
@@ -41,6 +41,17 @@ def native_reads(messages):
                 errors.append("missing or duplicate read identity")
             ids.add(part.get("id") if isinstance(part.get("id"), str) else None)
             state = part.get("state", {})
+            if isinstance(state, dict) and state.get("status") == "error" and include_error_messages:
+                error = state.get("error")
+                if (isinstance(error, dict) and set(error) == {"type", "message"}
+                        and isinstance(error["type"], str) and isinstance(error["message"], str)):
+                    text = error["message"]
+                    if "[REDACTED" in text:
+                        errors.append("redacted read bytes cannot reconstruct original result")
+                    total += len(text.encode("utf-8"))
+                else:
+                    errors.append("unsupported native read error")
+                continue
             if not isinstance(state, dict) or state.get("status") != "completed":
                 errors.append("native read not completed")
                 continue
@@ -61,11 +72,12 @@ def native_reads(messages):
 
 def read_projection(messages, receipt):
     """Verify coverage/arithmetic of content-free runtime measurements against public IDs."""
-    if (receipt.get("schema") != "opencode-native-read-text/1"
+    if (receipt.get("schema") not in {"opencode-native-read-text/1", "opencode-native-read-text/2"}
             or receipt.get("source") != "pre_publication_message_export"
             or type(receipt.get("export_complete")) is not bool):
         raise ValueError("unsupported native read projection")
-    observed = native_reads(messages)
+    include_errors = receipt["schema"] == "opencode-native-read-text/2"
+    observed = native_reads(messages, include_error_messages=include_errors)
     errors = [e for e in observed["errors"] if e != "redacted read bytes cannot reconstruct original result"]
     records = receipt.get("messages")
     if not isinstance(messages, list) or not isinstance(records, list) or len(messages) != len(records):
@@ -95,16 +107,23 @@ def read_projection(messages, receipt):
                 raise ValueError("read projection call identity or state differs")
             call_ids.append(item["call_id"])
             value = item.get("utf8_bytes")
-            if value is not None and (type(value) is not int or value < 0 or status != "completed"):
+            if value is not None and (type(value) is not int or value < 0 or status not in ({"completed", "error"} if include_errors else {"completed"})):
                 raise ValueError("invalid original native read byte count")
             if value is not None:
-                parts_text = state.get("content")
-                if not isinstance(parts_text, list) or any(
-                    not isinstance(t, dict) or t.get("type") != "text" or not isinstance(t.get("text"), str)
-                    for t in parts_text
-                ):
-                    raise ValueError("byte projection claims an unsupported result")
-                text = "".join(t["text"] for t in parts_text)
+                if status == "error":
+                    error = state.get("error")
+                    if (not isinstance(error, dict) or set(error) != {"type", "message"}
+                            or not isinstance(error["type"], str) or not isinstance(error["message"], str)):
+                        raise ValueError("byte projection claims an unsupported error")
+                    text = error["message"]
+                else:
+                    parts_text = state.get("content")
+                    if not isinstance(parts_text, list) or any(
+                        not isinstance(t, dict) or t.get("type") != "text" or not isinstance(t.get("text"), str)
+                        for t in parts_text
+                    ):
+                        raise ValueError("byte projection claims an unsupported result")
+                    text = "".join(t["text"] for t in parts_text)
                 if "[REDACTED" not in text and len(text.encode("utf-8")) != value:
                     raise ValueError("unredacted read bytes differ from projection")
             values.append(value)

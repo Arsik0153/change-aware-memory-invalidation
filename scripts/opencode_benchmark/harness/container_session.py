@@ -134,7 +134,11 @@ def credential_pipe(container, state, shared_url, *, binary=BINARY):
             "credential_body_saved": False, "credential_body_decoded": False, "provider": "openai", "shared_server": shared_url}
 
 
-def configuration(arm, binding, response_format="full", service_tier=None):
+def configuration(arm, binding, response_format="full", service_tier=None, *, ranking_policy="lexical-overlap/1"):
+    if ranking_policy not in ("lexical-overlap/1", "identifier-mentions/1"):
+        raise ValueError("unsupported memory ranking policy")
+    if arm == "plain" and ranking_policy != "lexical-overlap/1":
+        raise ValueError("plain sessions cannot select memory ranking")
     from container_common import validate_service_tier
     validate_service_tier(service_tier)
     if response_format not in ("full", "compact", "readable"):
@@ -154,6 +158,8 @@ def configuration(arm, binding, response_format="full", service_tier=None):
             "timeout": {"startup": 10000, "catalog": 10000, "execution": 30000}}}}
         if response_format in ("compact", "readable"):
             result["mcp"]["servers"]["research_memory"]["command"] += ["--response-format", response_format]
+    if arm != "plain" and ranking_policy != "lexical-overlap/1":
+        result["mcp"]["servers"]["research_memory"]["command"] += ["--ranking-policy", ranking_policy]
     return result
 
 
@@ -167,6 +173,7 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--binding-relative")
     parser.add_argument("--memory-response-format", choices=["full", "compact", "readable"], default="full")
+    parser.add_argument("--memory-ranking-policy", choices=["lexical-overlap/1", "identifier-mentions/1"], default="lexical-overlap/1")
     parser.add_argument("--service-tier", choices=["auto", "priority"], help="Explicit provider request tier; omission preserves legacy behavior")
     parser.add_argument("--no-model", action="store_true", help="Explicit default; no auth import/prompt admission")
     parser.add_argument("--run-model", action="store_true")
@@ -207,7 +214,7 @@ def main():
     output = owned(args.out, create=True)
     state, container = None, None
     initial_private_values = set()
-    manifest = {"status": "preflight", "arm": args.arm, "model_requested": args.run_model, "model_calls_in_development_tests": 0, "memory_response_format": args.memory_response_format}
+    manifest = {"status": "preflight", "arm": args.arm, "model_requested": args.run_model, "model_calls_in_development_tests": 0, "memory_response_format": args.memory_response_format, "memory_ranking_policy": args.memory_ranking_policy}
     if args.service_tier is not None:
         manifest["service_tier_requested"] = args.service_tier
     write(output / "manifest.json", manifest)
@@ -225,7 +232,7 @@ def main():
         for path in [workspace, memory, state]:
             chown_owned(path)
         (state / "config/opencode").mkdir(parents=True)
-        config = configuration(args.arm, args.binding_relative, args.memory_response_format, args.service_tier)
+        config = configuration(args.arm, args.binding_relative, args.memory_response_format, args.service_tier, ranking_policy=args.memory_ranking_policy)
         write(state / "config/opencode/opencode.json", config)
         chown_owned(state)
         write(output / "effective-input-config.json", config)

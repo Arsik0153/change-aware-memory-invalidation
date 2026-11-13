@@ -24,7 +24,22 @@ def format_conditions():
     return [dict(id=name, arm=arm, response_format=fmt) for name, arm, fmt in FORMAT_CONDITIONS]
 
 
+RANKING_DESIGN = "identifier-ranking-development-v1"
+LEXICAL_RANKING = "lexical-overlap/1"
+IDENTIFIER_RANKING = "identifier-mentions/1"
+
+
+def ranking_conditions():
+    return [dict(id=name, arm=arm, response_format="readable", ranking_policy=policy)
+            for name, arm, policy in (
+                ("plain", "plain", LEXICAL_RANKING),
+                ("cami_lexical", "cami", LEXICAL_RANKING),
+                ("cami_identifier", "cami", IDENTIFIER_RANKING))]
+
+
 def validate_design(study):
+    if "memory_ranking_policy" in study or "ranking_policy" in study:
+        raise ValueError("ranking is fixed per registered condition, not a study override")
     if study["schema_version"] == 1:
         if study["arms"] != list(ARMS) or study["repetitions"] != 3:
             raise ValueError("unsupported study design")
@@ -40,6 +55,12 @@ def validate_design(study):
             or study.get("memory_response_format") != "compact"
         ):
             raise ValueError("unsupported format-only development design")
+    elif study["schema_version"] == 3:
+        if (study.get("design") != RANKING_DESIGN or study["bundle_kind"] != "development"
+                or study["arms"] != ["plain", "cami"] or study["repetitions"] != 1
+                or study.get("conditions") != ranking_conditions()
+                or study.get("memory_response_format") != "readable"):
+            raise ValueError("unsupported identifier-ranking development design")
     else:
         raise ValueError("unsupported study design")
 
@@ -184,7 +205,7 @@ def make_study(
     design=None,
     shared_server=None,
 ):
-    if design is not None and (design != FORMAT_DESIGN or kind != "development"):
+    if design is not None and (design not in {FORMAT_DESIGN, RANKING_DESIGN} or kind != "development"):
         raise ValueError("format-only design requires a development bundle")
     if design is not None and memory_response_format != "full":
         raise ValueError("format-only design fixes the response format per condition")
@@ -231,9 +252,12 @@ def make_study(
         result["service_tier"] = service_tier
     if shared_server is not None:
         result["shared_server"] = shared_server
-    if design is not None:
+    if design == FORMAT_DESIGN:
         result.update(schema_version=2, design=design, repetitions=1,
                       conditions=format_conditions(), memory_response_format="compact")
+    elif design == RANKING_DESIGN:
+        result.update(schema_version=3, design=design, repetitions=1, arms=["plain", "cami"],
+                      conditions=ranking_conditions(), memory_response_format="readable")
     return result
 
 
@@ -362,18 +386,21 @@ def validate(study, *, execute=False):
 
 
 def plan(study):
-    if study.get("schema_version") == 2:
+    if study.get("schema_version") in (2, 3):
         validate_design(study)
         result = []
         sequence = study["normalized"]["sequence"]
         if len(sequence) != 4 or sequence[0] != sequence[1] or sequence[2] != sequence[3] or sequence[0] == sequence[2]:
             raise ValueError("format-only design requires two tasks and four stages")
+        conditions = format_conditions() if study["schema_version"] == 2 else ranking_conditions()
         for stage, task in enumerate(sequence, 1):
-            offset = (stage - 1) % len(FORMAT_CONDITIONS)
-            for name, arm, fmt in FORMAT_CONDITIONS[offset:] + FORMAT_CONDITIONS[:offset]:
+            offset = (stage - 1) % len(conditions)
+            for condition in conditions[offset:] + conditions[:offset]:
+                name, arm, fmt = (condition[k] for k in ("id", "arm", "response_format"))
                 result.append(dict(
                     id=f"r1-{name}-s{stage}", repetition=1, arm=arm, condition=name,
                     response_format=fmt, stage=stage, task=task,
+                    **({"ranking_policy": condition["ranking_policy"]} if "ranking_policy" in condition else {}),
                     predecessor=f"r1-{name}-s{stage - 1}" if stage > 1 else None,
                 ))
         return result
@@ -396,8 +423,18 @@ def plan(study):
 
 
 def trial_response_format(study, trial):
-    if study.get("schema_version") == 2:
+    if study.get("schema_version") in (2, 3):
         if trial not in plan(study):
             raise ValueError("trial differs from frozen format-only schedule")
         return trial["response_format"]
     return memory_response_format(study)
+
+
+def trial_ranking_policy(study, trial):
+    if study.get("schema_version") == 3:
+        if trial not in plan(study):
+            raise ValueError("trial differs from frozen ranking schedule")
+        return trial["ranking_policy"]
+    if "ranking_policy" in trial:
+        raise ValueError("legacy trial cannot override ranking")
+    return LEXICAL_RANKING

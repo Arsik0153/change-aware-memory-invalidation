@@ -106,6 +106,6 @@ def summarize(records, *, planned_trials=36):
         "blocks": blocks,
         "speedup_claim": None,
         "scope": ("two fixed tasks; one exploratory block, no superiority claim"
-                  if planned_trials == 20 else "two fixed tasks; dependent repeats within three blocks"),
+                  if planned_trials in (12, 20) else "two fixed tasks; dependent repeats within three blocks"),
         "cost_accounting": "Construction includes generation and preparation once per memory arm. Session inclusive harness elapsed includes startup/auth/cleanup; authentication separately reported as infrastructure but not silently subtracted. Nested phase metrics are not added to inclusive totals. Canonical fixture export and fixed-test grading are separate infrastructure.",
     }

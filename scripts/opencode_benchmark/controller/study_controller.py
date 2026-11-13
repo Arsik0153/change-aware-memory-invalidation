@@ -10,7 +10,7 @@ import time
 from study_common import bytes_used, digest, file_hashes, inventory, read, write
 from study_ledger import complete, next_trials, summarize, terminals, verify_binding
 from study_runtime import grade, origin_memory, regression_allowance, session, verify_memory
-from study_schema import FORMAT_DESIGN, make_study, plan, validate, trial_response_format
+from study_schema import FORMAT_DESIGN, RANKING_DESIGN, trial_ranking_policy, make_study, plan, validate, trial_response_format
 from study_workspace import capture, create_namespace, reset, verify_namespace
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "src/cami").is_dir())
@@ -81,6 +81,7 @@ def run_trial(study, study_sha, output, trial, previous):
     try:
         validate(study, execute=True)
         trial_response_format(study, trial)
+        trial_ranking_policy(study, trial)
         if previous and not previous["memory_usable"]:
             raise ValueError("predecessor left unusable memory namespace; dependent trial blocked")
         if trial["stage"] == 1:
@@ -231,7 +232,7 @@ def main():
         "--one-trial", help="Only the next planned trial ID, development bundle only"
     )
     parser.add_argument("--make-study", action="store_true")
-    parser.add_argument("--design", choices=[FORMAT_DESIGN])
+    parser.add_argument("--design", choices=[FORMAT_DESIGN, RANKING_DESIGN])
     parser.add_argument("--bundle", type=Path)
     parser.add_argument("--kind", choices=["development", "heldout"], default="development")
     parser.add_argument("--harness", type=Path)

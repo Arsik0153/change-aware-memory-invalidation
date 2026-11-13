@@ -111,3 +111,36 @@ def test_projection_cannot_misbind_calls_or_invent_totals(fault):
         visible[0]["content"][0]["state"]["content"][0]["text"] = "short"
     with pytest.raises(ValueError):
         read_projection(visible, receipt)
+
+
+def test_v2_error_projection_counts_message_only_and_preserves_v1_semantics():
+    from format_probe import read_projection
+    from native_read_evidence import observe_message, summarize as receipt_for
+    from container_worker import public
+    data = messages()
+    data[0]["id"] = "msg_error"
+    text = "π failure for user@example.invalid"
+    data[0]["content"][0]["state"] = {"status": "error", "error": {"type": "ToolError", "message": text}}
+    receipt = receipt_for([observe_message(data[0])], export_complete=True)
+    visible = public(data)
+    assert read_projection(visible, receipt)["bytes"] == len(text.encode())
+    assert not native_reads(visible)["complete"]  # historical fallback unchanged
+    receipt["schema"] = "opencode-native-read-text/1"
+    with pytest.raises(ValueError, match="byte count"):
+        read_projection(visible, receipt)
+    receipt["messages"][0]["reads"][0]["utf8_bytes"] = None
+    receipt["messages"][0]["errors"] = ["read_not_completed"]
+    receipt.update(complete=False, utf8_bytes=None, observed_subtotal=0, errors=["read_not_completed"])
+    assert not read_projection(visible, receipt)["complete"]
+
+
+def test_v2_error_unredacted_mismatch_rejected():
+    from format_probe import read_projection
+    from native_read_evidence import observe_message, summarize as receipt_for
+    data = messages()
+    data[0]["id"] = "msg_error"
+    data[0]["content"][0]["state"] = {"status": "error", "error": {"type": "ToolError", "message": "abc"}}
+    receipt = receipt_for([observe_message(data[0])], export_complete=True)
+    data[0]["content"][0]["state"]["error"]["message"] = "x"
+    with pytest.raises(ValueError, match="bytes differ"):
+        read_projection(data, receipt)

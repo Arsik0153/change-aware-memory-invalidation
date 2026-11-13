@@ -152,5 +152,11 @@ freshness claims and source validation are unchanged.
 This option is a separate retrieval intervention, not part of the closed format
 comparison. Generic tests and replay of recorded queries verify identifier
 coverage; no model cost, latency or task-quality improvement is established.
-The existing fixed study controller does not admit this flag: a future model
-comparison must freeze and validate its own ranking conditions first.
+The separate `identifier-ranking-development-v1` controller design freezes twelve
+sessions: plain, CAMI lexical and CAMI identifier, each with four canonical stages.
+Both memory conditions use readable display. Earlier fixed studies retain legacy
+ranking. Runtime config, manifest and startup/lookup traces must match the frozen
+policy. The prospective analysis requires both lower token work and lower native
+read text bytes, complete quality/telemetry and a uniform provider tier; one block
+cannot establish population superiority. Native read receipt version2 also counts
+error messages before redaction, while version1 semantics remain unchanged.
