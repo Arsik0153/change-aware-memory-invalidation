@@ -1,0 +1,665 @@
+{
+  "all15_pairs_componentwise_nonincreasing": true,
+  "analysis": "secondary_component_dominance_v1",
+  "interpretation": "For identical nonnegative per-component linear token rates, componentwise dominance implies no greater modeled token charge. Strict decrease needs a positive rate on a strictly reduced component. Bounds apply when baseline modeled token charge is positive; zero-baseline components must introduce no usage. No actual prices, invoice, subscription savings, request overheads or missing provider fields are inferred. Normalized OpenCode2.2.5 components are disjoint; cache_read is included. This secondary analysis does not alter the frozen primary success gate.",
+  "pairs": [
+    {
+      "baseline": {
+        "cache_read": 838528,
+        "cache_write": 0,
+        "input": 92225,
+        "output": 12910,
+        "reasoning": 6520
+      },
+      "candidate": {
+        "cache_read": 408320,
+        "cache_write": 0,
+        "input": 41189,
+        "output": 6174,
+        "reasoning": 2724
+      },
+      "comparator": "plain",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5130514425278583,
+        "input": 0.5533857413933315,
+        "output": 0.5217660728117739,
+        "reasoning": 0.5822085889570552
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 1,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5130514425278583,
+        0.5822085889570552
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 695680,
+        "cache_write": 0,
+        "input": 99238,
+        "output": 12224,
+        "reasoning": 5775
+      },
+      "candidate": {
+        "cache_read": 408320,
+        "cache_write": 0,
+        "input": 41189,
+        "output": 6174,
+        "reasoning": 2724
+      },
+      "comparator": "static",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.41306347746090155,
+        "input": 0.584947298413914,
+        "output": 0.49492801047120416,
+        "reasoning": 0.5283116883116883
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 1,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.41306347746090155,
+        0.584947298413914
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 769408,
+        "cache_write": 0,
+        "input": 97980,
+        "output": 13481,
+        "reasoning": 5737
+      },
+      "candidate": {
+        "cache_read": 408320,
+        "cache_write": 0,
+        "input": 41189,
+        "output": 6174,
+        "reasoning": 2724
+      },
+      "comparator": "cami",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.4693062718349692,
+        "input": 0.5796182894468258,
+        "output": 0.5420221051850753,
+        "reasoning": 0.5251873801638487
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 1,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.4693062718349692,
+        0.5796182894468258
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 854144,
+        "cache_write": 0,
+        "input": 105176,
+        "output": 14076,
+        "reasoning": 5622
+      },
+      "candidate": {
+        "cache_read": 423808,
+        "cache_write": 0,
+        "input": 41936,
+        "output": 6467,
+        "reasoning": 2428
+      },
+      "comparator": "plain",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5038213696987861,
+        "input": 0.601277858066479,
+        "output": 0.540565501562944,
+        "reasoning": 0.568125222340804
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 2,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5038213696987861,
+        0.601277858066479
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 918784,
+        "cache_write": 0,
+        "input": 86057,
+        "output": 14727,
+        "reasoning": 6352
+      },
+      "candidate": {
+        "cache_read": 423808,
+        "cache_write": 0,
+        "input": 41936,
+        "output": 6467,
+        "reasoning": 2428
+      },
+      "comparator": "static",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5387294511005851,
+        "input": 0.5126950741950103,
+        "output": 0.5608745840972365,
+        "reasoning": 0.6177581863979849
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 2,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5126950741950103,
+        0.6177581863979849
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 958720,
+        "cache_write": 0,
+        "input": 84871,
+        "output": 13600,
+        "reasoning": 5856
+      },
+      "candidate": {
+        "cache_read": 423808,
+        "cache_write": 0,
+        "input": 41936,
+        "output": 6467,
+        "reasoning": 2428
+      },
+      "comparator": "cami",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5579439252336449,
+        "input": 0.5058854025521085,
+        "output": 0.524485294117647,
+        "reasoning": 0.5853825136612022
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 2,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5058854025521085,
+        0.5853825136612022
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 720384,
+        "cache_write": 0,
+        "input": 77642,
+        "output": 13323,
+        "reasoning": 6455
+      },
+      "candidate": {
+        "cache_read": 305664,
+        "cache_write": 0,
+        "input": 58455,
+        "output": 6268,
+        "reasoning": 2260
+      },
+      "comparator": "plain",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5756929637526653,
+        "input": 0.24712140336415855,
+        "output": 0.5295353899271935,
+        "reasoning": 0.6498838109992254
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 3,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.24712140336415855,
+        0.6498838109992254
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 801024,
+        "cache_write": 0,
+        "input": 88147,
+        "output": 13478,
+        "reasoning": 6652
+      },
+      "candidate": {
+        "cache_read": 305664,
+        "cache_write": 0,
+        "input": 58455,
+        "output": 6268,
+        "reasoning": 2260
+      },
+      "comparator": "static",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.6184084372003835,
+        "input": 0.3368464043019048,
+        "output": 0.534945837661374,
+        "reasoning": 0.6602525556223693
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 3,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.3368464043019048,
+        0.6602525556223693
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 882304,
+        "cache_write": 0,
+        "input": 78336,
+        "output": 13655,
+        "reasoning": 6288
+      },
+      "candidate": {
+        "cache_read": 305664,
+        "cache_write": 0,
+        "input": 58455,
+        "output": 6268,
+        "reasoning": 2260
+      },
+      "comparator": "cami",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.6535615842158712,
+        "input": 0.25379136029411764,
+        "output": 0.5409740021969974,
+        "reasoning": 0.64058524173028
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 3,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.25379136029411764,
+        0.6535615842158712
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 894208,
+        "cache_write": 0,
+        "input": 106238,
+        "output": 14008,
+        "reasoning": 7231
+      },
+      "candidate": {
+        "cache_read": 492288,
+        "cache_write": 0,
+        "input": 52452,
+        "output": 6637,
+        "reasoning": 3500
+      },
+      "comparator": "plain",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.4494703693100487,
+        "input": 0.5062783561437527,
+        "output": 0.5261993146773272,
+        "reasoning": 0.5159728944820909
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 4,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.4494703693100487,
+        0.5261993146773272
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 914048,
+        "cache_write": 0,
+        "input": 106774,
+        "output": 13094,
+        "reasoning": 6129
+      },
+      "candidate": {
+        "cache_read": 492288,
+        "cache_write": 0,
+        "input": 52452,
+        "output": 6637,
+        "reasoning": 3500
+      },
+      "comparator": "static",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.4614199691919899,
+        "input": 0.5087568134564595,
+        "output": 0.49312662288070874,
+        "reasoning": 0.42894436286506776
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 4,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.42894436286506776,
+        0.5087568134564595
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 753920,
+        "cache_write": 0,
+        "input": 110848,
+        "output": 12866,
+        "reasoning": 5186
+      },
+      "candidate": {
+        "cache_read": 492288,
+        "cache_write": 0,
+        "input": 52452,
+        "output": 6637,
+        "reasoning": 3500
+      },
+      "comparator": "cami",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.3470288624787776,
+        "input": 0.5268114896073903,
+        "output": 0.48414425617907664,
+        "reasoning": 0.32510605476282295
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 4,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.32510605476282295,
+        0.5268114896073903
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 768768,
+        "cache_write": 0,
+        "input": 76601,
+        "output": 13720,
+        "reasoning": 6482
+      },
+      "candidate": {
+        "cache_read": 358272,
+        "cache_write": 0,
+        "input": 44136,
+        "output": 6816,
+        "reasoning": 3365
+      },
+      "comparator": "plain",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5339660339660339,
+        "input": 0.4238195323820838,
+        "output": 0.5032069970845481,
+        "reasoning": 0.4808701018204258
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 5,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.4238195323820838,
+        0.5339660339660339
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 953088,
+        "cache_write": 0,
+        "input": 104219,
+        "output": 14246,
+        "reasoning": 6824
+      },
+      "candidate": {
+        "cache_read": 358272,
+        "cache_write": 0,
+        "input": 44136,
+        "output": 6816,
+        "reasoning": 3365
+      },
+      "comparator": "static",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.6240934730056407,
+        "input": 0.5765071628014086,
+        "output": 0.5215499087463147,
+        "reasoning": 0.5068874560375147
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 5,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5068874560375147,
+        0.6240934730056407
+      ]
+    },
+    {
+      "baseline": {
+        "cache_read": 837120,
+        "cache_write": 0,
+        "input": 95792,
+        "output": 14258,
+        "reasoning": 7141
+      },
+      "candidate": {
+        "cache_read": 358272,
+        "cache_write": 0,
+        "input": 44136,
+        "output": 6816,
+        "reasoning": 3365
+      },
+      "comparator": "cami",
+      "fraction_reduction_by_component": {
+        "cache_read": 0.5720183486238533,
+        "input": 0.5392517120427593,
+        "output": 0.5219525880207603,
+        "reasoning": 0.5287774821453578
+      },
+      "introduced_components": [],
+      "nonincreasing": true,
+      "repetition": 5,
+      "strict_components": [
+        "input",
+        "cache_read",
+        "output",
+        "reasoning"
+      ],
+      "weighted_reduction_bounds": [
+        0.5219525880207603,
+        0.5720183486238533
+      ]
+    }
+  ],
+  "protocol_sha256": "e0ee8573fcfe1526c62fa99848262b0b000bf35e57c479471a16d7a46aac123d",
+  "statistics": {
+    "cami": {
+      "cache_read": {
+        "max": 958720,
+        "median": 837120,
+        "min": 753920
+      },
+      "cache_write": {
+        "max": 0,
+        "median": 0,
+        "min": 0
+      },
+      "input": {
+        "max": 110848,
+        "median": 95792,
+        "min": 78336
+      },
+      "output": {
+        "max": 14258,
+        "median": 13600,
+        "min": 12866
+      },
+      "reasoning": {
+        "max": 7141,
+        "median": 5856,
+        "min": 5186
+      }
+    },
+    "cami_replay": {
+      "cache_read": {
+        "max": 492288,
+        "median": 408320,
+        "min": 305664
+      },
+      "cache_write": {
+        "max": 0,
+        "median": 0,
+        "min": 0
+      },
+      "input": {
+        "max": 58455,
+        "median": 44136,
+        "min": 41189
+      },
+      "output": {
+        "max": 6816,
+        "median": 6467,
+        "min": 6174
+      },
+      "reasoning": {
+        "max": 3500,
+        "median": 2724,
+        "min": 2260
+      }
+    },
+    "plain": {
+      "cache_read": {
+        "max": 894208,
+        "median": 838528,
+        "min": 720384
+      },
+      "cache_write": {
+        "max": 0,
+        "median": 0,
+        "min": 0
+      },
+      "input": {
+        "max": 106238,
+        "median": 92225,
+        "min": 76601
+      },
+      "output": {
+        "max": 14076,
+        "median": 13720,
+        "min": 12910
+      },
+      "reasoning": {
+        "max": 7231,
+        "median": 6482,
+        "min": 5622
+      }
+    },
+    "static": {
+      "cache_read": {
+        "max": 953088,
+        "median": 914048,
+        "min": 695680
+      },
+      "cache_write": {
+        "max": 0,
+        "median": 0,
+        "min": 0
+      },
+      "input": {
+        "max": 106774,
+        "median": 99238,
+        "min": 86057
+      },
+      "output": {
+        "max": 14727,
+        "median": 13478,
+        "min": 12224
+      },
+      "reasoning": {
+        "max": 6824,
+        "median": 6352,
+        "min": 5775
+      }
+    }
+  },
+  "status": "verified",
+  "strict_components_in_every_pair": [
+    "cache_read",
+    "input",
+    "output",
+    "reasoning"
+  ]
+}
