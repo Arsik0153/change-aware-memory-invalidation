@@ -1,0 +1,245 @@
+{
+  "status": "verified",
+  "totals": {
+    "plain": {
+      "tokens": {
+        "input": 457882,
+        "cache_read": 4076032,
+        "cache_write": 0,
+        "output": 68037,
+        "reasoning": 32310
+      },
+      "model_calls": 20,
+      "native_read_bytes": 936160,
+      "memory_lookup_calls": 0,
+      "memory_lookup_errors": 0,
+      "no_lookup_model_trials": [],
+      "backend_wall_seconds": 0,
+      "session_wall_seconds": 2153.733956980999,
+      "result_cache_bytes": 0,
+      "source_memory_bytes": 0
+    },
+    "static": {
+      "tokens": {
+        "input": 484435,
+        "cache_read": 4282624,
+        "cache_write": 0,
+        "output": 67769,
+        "reasoning": 31732
+      },
+      "model_calls": 20,
+      "native_read_bytes": 907636,
+      "memory_lookup_calls": 20,
+      "memory_lookup_errors": 0,
+      "no_lookup_model_trials": [],
+      "backend_wall_seconds": 0.43892308199889385,
+      "session_wall_seconds": 2108.4951104140027,
+      "result_cache_bytes": 0,
+      "source_memory_bytes": 4204041
+    },
+    "cami": {
+      "tokens": {
+        "input": 467827,
+        "cache_read": 4201472,
+        "cache_write": 0,
+        "output": 67860,
+        "reasoning": 30208
+      },
+      "model_calls": 20,
+      "native_read_bytes": 821632,
+      "memory_lookup_calls": 20,
+      "memory_lookup_errors": 0,
+      "no_lookup_model_trials": [],
+      "backend_wall_seconds": 16.20580171900184,
+      "session_wall_seconds": 2141.6079643159983,
+      "result_cache_bytes": 0,
+      "source_memory_bytes": 211690072
+    },
+    "cami_replay": {
+      "tokens": {
+        "input": 238168,
+        "cache_read": 1988352,
+        "cache_write": 0,
+        "output": 32362,
+        "reasoning": 14277
+      },
+      "model_calls": 10,
+      "native_read_bytes": 435900,
+      "memory_lookup_calls": 10,
+      "memory_lookup_errors": 0,
+      "no_lookup_model_trials": [],
+      "backend_wall_seconds": 10.305736542998375,
+      "session_wall_seconds": 1027.4016217619994,
+      "result_cache_bytes": 399396,
+      "source_memory_bytes": 211677761
+    }
+  },
+  "comparisons": {
+    "plain": {
+      "token_work": {
+        "reduction_of_medians_percent": 51.352827907393305,
+        "paired_reduction_percent": {
+          "median": 50.901731292703786,
+          "min": 31.243071237938825,
+          "max": 59.29416852187004,
+          "values": [
+            55.14128341767051,
+            59.29416852187004,
+            31.243071237938825,
+            50.901731292703786,
+            43.88913566728304
+          ]
+        }
+      },
+      "charged_wall_seconds": {
+        "reduction_of_medians_percent": 49.29437930161706,
+        "paired_reduction_percent": {
+          "median": 49.29437930161706,
+          "min": 47.109418518448585,
+          "max": 56.819532624356306,
+          "values": [
+            47.109418518448585,
+            56.819532624356306,
+            52.14862009256481,
+            48.24972311734136,
+            49.29437930161706
+          ]
+        }
+      }
+    },
+    "static": {
+      "token_work": {
+        "reduction_of_medians_percent": 53.66906352090211,
+        "paired_reduction_percent": {
+          "median": 52.554696833930706,
+          "min": 38.137369893883275,
+          "max": 57.27713946962136,
+          "values": [
+            57.27713946962136,
+            52.554696833930706,
+            38.137369893883275,
+            50.32500773827948,
+            56.64663298453975
+          ]
+        }
+      },
+      "charged_wall_seconds": {
+        "reduction_of_medians_percent": 50.48731460859488,
+        "paired_reduction_percent": {
+          "median": 50.48731460859488,
+          "min": 40.614721850758364,
+          "max": 56.45633714099447,
+          "values": [
+            44.30336512517042,
+            55.802518541400104,
+            56.45633714099447,
+            40.614721850758364,
+            50.48731460859488
+          ]
+        }
+      }
+    },
+    "cami": {
+      "token_work": {
+        "reduction_of_medians_percent": 53.65087762712153,
+        "paired_reduction_percent": {
+          "median": 51.443754848719934,
+          "min": 31.844035857100707,
+          "max": 57.26292257547057,
+          "values": [
+            57.26292257547057,
+            51.27723408130206,
+            31.844035857100707,
+            51.443754848719934,
+            53.65087762712153
+          ]
+        }
+      },
+      "charged_wall_seconds": {
+        "reduction_of_medians_percent": 49.77297591909586,
+        "paired_reduction_percent": {
+          "median": 52.49475938719775,
+          "min": 40.659965521215746,
+          "max": 56.82565689959459,
+          "values": [
+            49.258128575173124,
+            56.82565689959459,
+            53.76608204812576,
+            40.659965521215746,
+            52.49475938719775
+          ]
+        }
+      }
+    }
+  },
+  "physical_guard_probes": [
+    {
+      "repetition": 1,
+      "task": "click-help-eagerness",
+      "status": "verified"
+    },
+    {
+      "repetition": 1,
+      "task": "click-help-option-api",
+      "status": "verified"
+    },
+    {
+      "repetition": 2,
+      "task": "click-help-eagerness",
+      "status": "verified"
+    },
+    {
+      "repetition": 2,
+      "task": "click-help-option-api",
+      "status": "verified"
+    },
+    {
+      "repetition": 3,
+      "task": "click-help-eagerness",
+      "status": "verified"
+    },
+    {
+      "repetition": 3,
+      "task": "click-help-option-api",
+      "status": "verified"
+    },
+    {
+      "repetition": 4,
+      "task": "click-help-eagerness",
+      "status": "verified"
+    },
+    {
+      "repetition": 4,
+      "task": "click-help-option-api",
+      "status": "verified"
+    },
+    {
+      "repetition": 5,
+      "task": "click-help-eagerness",
+      "status": "verified"
+    },
+    {
+      "repetition": 5,
+      "task": "click-help-option-api",
+      "status": "verified"
+    }
+  ],
+  "hit_wall_seconds": {
+    "median": 2.08524766800042,
+    "min": 2.031661375999988,
+    "max": 2.1767218760001015,
+    "values": [
+      2.031661375999988,
+      2.1249875009998505,
+      2.0787807510000675,
+      2.1767218760001015,
+      2.0947519579999607,
+      2.091714585000773,
+      2.0641991669999697,
+      2.1292144589997406,
+      2.0771150420005142,
+      2.075252958999954
+    ]
+  },
+  "scope": "Token components are not monetary billing. Backend spans exclude process imports/JSON-RPC/trace append, so their share is not a whole-adapter CPU profile. Timed trial wall ends before terminal hashing/publication and final analysis; shared baseline preflight is charged equally. Physical guards verify output absence, exact changed bytes, and positive-control source identity."
+}

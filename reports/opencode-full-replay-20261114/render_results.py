@@ -55,9 +55,9 @@ def render(audit_path, out):
         rows.append('<tr><th>'+html.escape(label)+'</th>'+''.join('<td>'+html.escape(c)+'</td>' for c in cells)+'</tr>')
     chart=base64.b64encode((out/'results.png').read_bytes()).decode()
     (out/'chart.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Full experiment</title>'
-        '<style>body{font:16px system-ui;margin:36px;color:#182535;max-width:1200px}h1{font-size:26px}img{width:100%}'
-        'table{border-collapse:collapse;width:100%}td,th{padding:12px;text-align:left;border-bottom:1px solid #ccd5df}p{line-height:1.5}</style>'
-        '<h1>'+html.escape(verdict)+'</h1><p>80 attempts · 4 conditions · 5 fresh memory blocks · A,A,B,B</p>'
+        '<style>body{font:15px var(--font-sans);margin:0;color:var(--foreground)}img{width:100%;height:340px;object-fit:contain;background:white;border-radius:var(--radius)}'
+        'table{border-collapse:collapse;width:100%}td,th{padding:12px;text-align:left;border-bottom:1px solid var(--border)}p{line-height:1.5}</style>'
+        '<p><strong>'+html.escape(verdict)+'</strong> · 80 attempts · 4 conditions · 5 fresh memory blocks · A,A,B,B</p>'
         '<img alt="Median and observed range per condition" src="data:image/png;base64,'+chart+'">'
         '<table><tr><th>Condition</th><th>Token work: median (range)</th><th>Seconds: median (range)</th></tr>'+''.join(rows)+'</table>'
         '<p>Success requires lower token work AND full pipeline time than each comparator in every block, with every quality and evidence gate passing. '
