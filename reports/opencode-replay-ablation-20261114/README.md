@@ -1,6 +1,8 @@
 # Source-memory ablation with result replay
 
-Status: preregistered and controller tests passed; no model attempts or runtime freeze yet. Actual container admission and execution wait for the independent heldout study to finish.
+Status: no-model admission passed on immutable runtime-v15, and the40-attempt protocol is frozen before model execution. The independent heldout study is complete and archived with its inconclusive primary verdict. No heldout outcome or solution is imported into this development ablation.
+
+Admission passed six actual configured MCP cases, eight fixed-quality gold/replay evaluations and four changed-input/control probes. Source snapshot24e91fe retains production source/adapter a8c34cd; only the experimental controller includes the previously declared telemetry-preservation correction. Protocol SHA256: `cf18c9534d7dcc1a55a3c477c1f52c953cfc390c066ad513a0c07091ff452cea`.
 
 `preregistration.json` fixes40 attempts, five blocks, two conditions and20 expected exact-repeat hits. Plain+replay is the candidate; CAMI+replay is the comparator. Both must solve and freshly grade the initial tasks, maintain separate empty-at-start caches, and freshly grade every replay. Every block must improve both token work and charged pipeline time for a positive conclusion. The inputs are already exposed development tasks, not the heldout Packaging tasks.
 
