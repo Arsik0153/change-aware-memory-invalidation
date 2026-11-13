@@ -11,8 +11,9 @@ study = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(study)
 
 
+@pytest.mark.parametrize('design', [study.DESIGN, study.ABLATION_DESIGN])
 @pytest.mark.parametrize('fail', [False, True])
-def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path, monkeypatch, fail):
+def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path, monkeypatch, fail, design):
     base = tmp_path / 'source'
     (base / 'src').mkdir(parents=True)
     (base / 'src/code.py').write_text('value = 0\n')
@@ -21,12 +22,12 @@ def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path,
         stream.add(base / 'src', arcname='src')
     tasks = [{'id': name, 'archive': archive.name, 'archive_sha256': study.digest(archive), 'prompt': name}
              for name in ('a', 'b')]
-    runtime = {'image': 'authored', 'bundle_path': str(tmp_path), 'normalized': {'tasks': tasks, 'sequence': ['a', 'a', 'b', 'b']}}
+    runtime = {'full_design': design, 'image': 'authored', 'bundle_path': str(tmp_path), 'normalized': {'tasks': tasks, 'sequence': ['a', 'a', 'b', 'b']}}
     freeze = tmp_path / 'freeze'
     freeze.mkdir()
-    study.write(freeze / 'protocol.json', {'rules': study.RULES, 'pins': {'binary': 'authored'}, 'runtime': runtime, 'schedule': study.schedule(runtime)})
+    study.write(freeze / 'protocol.json', {'rules': study.rules(design), 'pins': {'binary': 'authored'}, 'runtime': runtime, 'schedule': study.schedule(runtime)})
     monkeypatch.setattr(study, 'pins', lambda: {'binary': 'authored'})
-    monkeypatch.setattr(study, 'runtime', lambda: runtime)
+    monkeypatch.setattr(study, 'runtime', lambda *args: runtime)
     monkeypatch.setattr(study, 'regression_allowance', lambda *a: ({}, 'authored'))
     calls, grades = [], []
     def model(spec, trial, workspace, memory, directory, prompt):
@@ -44,17 +45,19 @@ def test_full_schedule_isolated_learning_and_failed_trials_not_retried(tmp_path,
     out = tmp_path / 'run'
     study.run(freeze, out)
     summary = json.loads((out / 'summary.json').read_text())
+    total = study.rules(design)['attempts']
+    model_calls = study.rules(design)['maximum_model_sessions']
     if fail:
-        assert len(calls) == len(grades) == 70
+        assert len(calls) == len(grades) == model_calls
         assert summary['direction_supported'] is False
         assert all(not b['complete'] for b in summary['blocks'])
     else:
-        assert len(calls) == 70 and len(grades) == 80
-        assert len(list((out / 'namespaces').iterdir())) == 20
+        assert len(calls) == model_calls and len(grades) == total
+        assert len(list((out / 'namespaces').iterdir())) == total // 4
         for block in summary['blocks']:
-            assert block['token_work'] == (230 if block['condition'] == 'cami_replay' else 460)
-    assert summary['terminal_attempts'] == 80
-    assert len(summary['pairs']) == 15
+            assert block['token_work'] == (230 if block['condition'].endswith('_replay') else 460)
+    assert summary['terminal_attempts'] == total
+    assert len(summary['pairs']) == (len(study.conditions(design)) - 1) * 5
     with pytest.raises(ValueError, match='no retries'):
         study.run(freeze, out)
 
@@ -70,24 +73,26 @@ def test_rotations_isolation_and_counts():
             assert all(r['arm'] == ('cami' if r['condition'] == 'cami_replay' else r['condition']) for r in group)
 
 
-def test_success_requires_every_pair_both_metrics_and_all_quality():
+@pytest.mark.parametrize('design', [study.DESIGN, study.ABLATION_DESIGN])
+def test_success_requires_every_pair_both_metrics_and_all_quality(design):
     from copy import deepcopy
+    candidate = study.conditions(design)[-1]
     rows = [{'trial': trial, 'status': 'passed', 'model_calls': int(not trial['expected_cache_hit']),
-             'token_work': 10 if trial['condition'] == 'cami_replay' else 20,
-             'wall_seconds': 1 if trial['condition'] == 'cami_replay' else 2,
+             'token_work': 10 if trial['condition'] == candidate else 20,
+             'wall_seconds': 1 if trial['condition'] == candidate else 2,
              'provider_reported_tiers': ['default'] if not trial['expected_cache_hit'] else []}
-            for trial in study.schedule({'normalized': {'sequence': ['a', 'a', 'b', 'b']}})]
-    assert study.summarize(rows, 20)['direction_supported']
+            for trial in study.schedule({'full_design': design, 'normalized': {'sequence': ['a', 'a', 'b', 'b']}})]
+    assert study.summarize(rows, 20, design)['direction_supported']
     for field, value in [('token_work', 1000), ('wall_seconds', 1000)]:
         changed = deepcopy(rows)
-        next(r for r in changed if r['trial']['condition'] == 'cami_replay')[field] = value
-        assert not study.summarize(changed, 20)['direction_supported']
+        next(r for r in changed if r['trial']['condition'] == candidate)[field] = value
+        assert not study.summarize(changed, 20, design)['direction_supported']
     changed = deepcopy(rows)
     changed[0]['status'] = 'failed'
-    assert not study.summarize(changed, 20)['eligible']
+    assert not study.summarize(changed, 20, design)['eligible']
     changed = deepcopy(rows)
     changed[0]['provider_reported_tiers'] = ['priority']
-    assert not study.summarize(changed, 20)['eligible']
+    assert not study.summarize(changed, 20, design)['eligible']
 
 
 @pytest.mark.parametrize('arm', ['plain', 'static', 'cami'])
@@ -166,3 +171,13 @@ def test_heldout_rules_keep_success_gate():
     assert heldout['maximum_model_sessions'] == 70
     with pytest.raises(ValueError, match='unsupported'):
         study.rules('unknown')
+
+
+def test_ablation_all_conditions_pay_first_solution_and_share_no_cache():
+    spec = {'full_design': study.ABLATION_DESIGN, 'normalized': {'sequence': ['a','a','b','b']}}
+    rows = study.schedule(spec)
+    assert len(rows) == 40
+    assert sum(r['expected_cache_hit'] for r in rows) == 20
+    assert {r['arm'] for r in rows} == {'plain', 'cami'}
+    assert all(r['expected_cache_hit'] == (r['stage'] in (2,4)) for r in rows)
+    assert study.rules(study.ABLATION_DESIGN)['maximum_model_sessions'] == 20

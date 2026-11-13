@@ -22,6 +22,7 @@ import task_replay  # noqa: E402
 
 DESIGN = 'full-cami-result-memory-development-v2'
 HELDOUT_DESIGN = 'full-cami-result-memory-heldout-v1'
+ABLATION_DESIGN = 'result-memory-ablation-development-v1'
 CONDITIONS = ('plain', 'static', 'cami', 'cami_replay')
 REPETITIONS = 5
 IMAGE = 'sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040'
@@ -37,9 +38,23 @@ RULES = {
 
 
 
+def conditions(design=DESIGN):
+    if design == ABLATION_DESIGN:
+        return ('cami_replay', 'plain_replay')
+    if design not in {DESIGN, HELDOUT_DESIGN}:
+        raise ValueError('unsupported full-study design')
+    return CONDITIONS
+
+
 def rules(design=DESIGN):
     if design == DESIGN:
         return RULES
+    if design == ABLATION_DESIGN:
+        return {**RULES, 'design': design, 'conditions': list(conditions(design)),
+            'maximum_model_sessions': 20, 'attempts': 40,
+            'success': 'All40 operational/quality attempts and telemetry complete;20 changed-input rejection probes with successful unchanged-input controls; uniform observed tier on20 model sessions;20 expected hits without model. Plain+replay strictly lower four-stage token work AND pipeline wall than CAMI+replay in EACH of5 paired blocks. Otherwise unsupported. No retry, replacement, extension or pooling.',
+            'wall': RULES['wall'].replace('across20', 'across10'),
+            'scope': 'Development ablation on previously exposed Click tasks: plain result replay versus CAMI plus result replay. Two tasks and exact repeats, not heldout evidence, production hit rate or billed currency.'}
     if design != HELDOUT_DESIGN:
         raise ValueError('unsupported full-study design')
     return {**RULES, 'design': design,
@@ -51,12 +66,12 @@ def runtime(design=DESIGN):
     if design == HELDOUT_DESIGN:
         bundle = ROOT / 'examples/opencode_benchmark_heldout_v1/expanded'
         kind = 'heldout'
-    elif design == DESIGN:
+    elif design in {DESIGN, ABLATION_DESIGN}:
         bundle = ROOT / 'examples/opencode_benchmark_development_v2'
         kind = 'development'
     else:
         raise ValueError('unsupported full-study design')
-    return runtime_for_bundle(bundle, kind)
+    return {**runtime_for_bundle(bundle, kind), 'full_design': design}
 
 
 def runtime_for_bundle(bundle, kind):
@@ -80,15 +95,16 @@ def pins():
 
 
 def schedule(spec):
+    arms = conditions(spec.get('full_design', DESIGN))
     result = []
     for repetition in range(1, REPETITIONS + 1):
         for stage, task in enumerate(spec['normalized']['sequence'], 1):
-            offset = (repetition + stage - 2) % len(CONDITIONS)
-            for condition in CONDITIONS[offset:] + CONDITIONS[:offset]:
+            offset = (repetition + stage - 2) % len(arms)
+            for condition in arms[offset:] + arms[:offset]:
                 result.append({'id': f'r{repetition}-{condition}-s{stage}', 'condition': condition,
-                    'arm': 'cami' if condition == 'cami_replay' else condition,
+                    'arm': condition.removesuffix('_replay'),
                     'repetition': repetition, 'stage': stage, 'task': task,
-                    'expected_cache_hit': condition == 'cami_replay' and stage in (2, 4)})
+                    'expected_cache_hit': condition.endswith('_replay') and stage in (2, 4)})
     return result
 
 
@@ -111,25 +127,26 @@ def model_session(spec, trial, workspace, memory, directory, prompt):
 
 
 def summarize(records, shared_wall, design=DESIGN):
+    arms = conditions(design)
     blocks = []
     for repetition in range(1, REPETITIONS + 1):
-        for condition in CONDITIONS:
+        for condition in arms:
             members = [r for r in records if r['trial']['repetition'] == repetition and r['trial']['condition'] == condition]
             complete = len(members) == 4 and all(r['status'] == 'passed' for r in members)
             blocks.append({'repetition': repetition, 'condition': condition, 'complete': complete,
                 'token_work': sum(r['token_work'] for r in members) if complete else None,
-                'charged_wall_seconds': shared_wall / (REPETITIONS * len(CONDITIONS)) + sum(r['wall_seconds'] for r in members) if complete else None})
+                'charged_wall_seconds': shared_wall / (REPETITIONS * len(arms)) + sum(r['wall_seconds'] for r in members) if complete else None})
     tiers = sorted({tier for r in records for tier in r.get('provider_reported_tiers', [])})
-    eligible = len(records) == 80 and all(b['complete'] for b in blocks) and len(tiers) == 1
+    eligible = len(records) == rules(design)['attempts'] and all(b['complete'] for b in blocks) and len(tiers) == 1
     pairs = []
     for repetition in range(1, REPETITIONS + 1):
         lookup = {b['condition']: b for b in blocks if b['repetition'] == repetition}
-        for comparator in CONDITIONS[:-1]:
+        for comparator in arms[:-1]:
             pairs.append({'repetition': repetition, 'comparator': comparator,
-                **{key: (lookup['cami_replay'][key] < lookup[comparator][key]
-                         if lookup['cami_replay'][key] is not None and lookup[comparator][key] is not None else None)
+                **{key: (lookup[arms[-1]][key] < lookup[comparator][key]
+                         if lookup[arms[-1]][key] is not None and lookup[comparator][key] is not None else None)
                    for key in ('token_work', 'charged_wall_seconds')}})
-    return {'rules': rules(design), 'planned_attempts': 80, 'terminal_attempts': len(records),
+    return {'rules': rules(design), 'planned_attempts': rules(design)['attempts'], 'terminal_attempts': len(records),
         'model_calls': sum(r['model_calls'] for r in records), 'shared_preflight_wall_seconds': shared_wall,
         'provider_reported_tiers': tiers, 'blocks': blocks, 'pairs': pairs, 'eligible': eligible,
         'direction_supported': eligible and all(p[k] is True for p in pairs for k in ('token_work', 'charged_wall_seconds'))}
@@ -203,7 +220,7 @@ def run(freeze, out):
                 raise ValueError('canonical inputs changed during preparation')
             result['immutable_memory'] = immutable
             hit = False
-            if trial['condition'] == 'cami_replay':
+            if trial['condition'].endswith('_replay'):
                 lookup = task_replay.materialize(workspace, task['prompt'], context, cache, candidate)
                 hit = lookup['status'] == 'candidate_requires_grading'
                 write(directory / 'lookup.json', lookup)
@@ -223,7 +240,7 @@ def run(freeze, out):
             result['quality'] = quality['status']
             if quality['status'] != 'pass':
                 raise ValueError('fixed quality failed')
-            if trial['condition'] == 'cami_replay' and not hit:
+            if trial['condition'].endswith('_replay') and not hit:
                 write(directory / 'record.json', task_replay.record(before, candidate, task['prompt'], context, cache))
             verify_memory(spec, memory, trial['arm'], immutable)
             result['status'] = 'passed'
@@ -240,18 +257,21 @@ def run(freeze, out):
         write(out / f'summary-{len(records):03d}.json', summarize(records, shared_wall, design))
     probes = []
     for rep in range(1, REPETITIONS + 1):
-        cache = out / 'namespaces' / f'r{rep}-cami_replay' / 'result-cache'
-        for task in spec['normalized']['tasks']:
-            directory = out / 'guard-probes' / f'r{rep}-{task["id"]}'
-            directory.mkdir(parents=True)
-            control = task_replay.materialize(bases[task['id']], task['prompt'], context, cache, directory / 'unchanged-control')
-            changed = directory / 'changed-input'
-            shutil.copytree(bases[task['id']], changed)
-            source = next(iter(sorted((changed / 'src').rglob('*.py'))))
-            source.write_bytes(source.read_bytes() + b'\n# explicit changed-input rejection probe\n')
-            result = task_replay.materialize(changed, task['prompt'], context, cache, directory / 'must-not-exist')
-            probes.append({'repetition': rep, 'task': task['id'], 'status': result['status'], 'control_status': control['status'],
-                           'output_absent': not (directory / 'must-not-exist').exists()})
+        for condition in conditions(design):
+            if not condition.endswith('_replay'):
+                continue
+            cache = out / 'namespaces' / f'r{rep}-{condition}' / 'result-cache'
+            for task in spec['normalized']['tasks']:
+                directory = out / 'guard-probes' / f'r{rep}-{condition}-{task["id"]}'
+                directory.mkdir(parents=True)
+                control = task_replay.materialize(bases[task['id']], task['prompt'], context, cache, directory / 'unchanged-control')
+                changed = directory / 'changed-input'
+                shutil.copytree(bases[task['id']], changed)
+                source = next(iter(sorted((changed / 'src').rglob('*.py'))))
+                source.write_bytes(source.read_bytes() + b'\n# explicit changed-input rejection probe\n')
+                result = task_replay.materialize(changed, task['prompt'], context, cache, directory / 'must-not-exist')
+                probes.append({'repetition': rep, 'condition': condition, 'task': task['id'], 'status': result['status'], 'control_status': control['status'],
+                               'output_absent': not (directory / 'must-not-exist').exists()})
     probe_passed = all(p['status'] == 'miss' and p['output_absent'] and p['control_status'] == 'candidate_requires_grading' for p in probes)
     write(out / 'guard-probes.json', {'scope': 'Separate correctness probes after timed attempts; not counted as agent work or performance savings',
         'passed': probe_passed, 'probes': probes})
@@ -268,7 +288,7 @@ def main():
     parser.add_argument('--freeze', type=Path, required=True)
     parser.add_argument('--out', type=Path)
     parser.add_argument('--run', action='store_true')
-    parser.add_argument('--design', choices=[DESIGN, HELDOUT_DESIGN], default=DESIGN)
+    parser.add_argument('--design', choices=[DESIGN, HELDOUT_DESIGN, ABLATION_DESIGN], default=DESIGN)
     args = parser.parse_args()
     if args.run:
         if args.out is None:
