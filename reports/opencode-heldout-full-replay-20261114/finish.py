@@ -65,6 +65,7 @@ print(json.dumps(receipt))
     python = REPO / '.venv-local/bin/python'
     run([python, REPO / 'scripts/opencode_benchmark/analysis/full_replay_audit.py', '--run', root, '--out', REPORT / 'audit.json'])
     run([python, REPORT / 'verify_bindings.py', root, REPORT / 'binding-audit.json'])
+    run([python, REPORT / 'account_all_attempts.py', root, REPORT / 'all-attempt-accounting.json'])
     audit = json.loads((REPORT / 'audit.json').read_text())
     if audit['eligible']:
         run([python, REPORT / 'analyze_accounting.py', root, REPORT])
