@@ -16,46 +16,13 @@ from cami.product.store import (
     MAX_CACHE_BYTES, CacheCorrupt, _sync_directory, _write_file,
 )
 from cami.product.memory.database import capture_database, read_evidence as read_evidence
+from cami.product.memory.schema import SCHEMA, EXPECTED_SCHEMAS, compact_legacy
 from cami.product.memory.models import (
     CheckedClaim, CodeView, MemoryGeneration, MutationReceipt, RecordHistory,
     RecordRevision, SourceRef,
 )
 
-SCHEMA = """
-BEGIN IMMEDIATE;
-CREATE TABLE record (id TEXT PRIMARY KEY, revision INTEGER NOT NULL);
-CREATE TABLE record_revision (
-    record_id TEXT NOT NULL REFERENCES record(id), revision INTEGER NOT NULL,
-    value TEXT NOT NULL, PRIMARY KEY(record_id, revision));
-CREATE TABLE index_view (id TEXT PRIMARY KEY, value TEXT NOT NULL);
-CREATE TABLE memory_generation (
-    id TEXT PRIMARY KEY, sequence INTEGER NOT NULL UNIQUE,
-    index_id TEXT NOT NULL REFERENCES index_view(id), value TEXT NOT NULL);
-CREATE TABLE record_state (
-    generation_id TEXT NOT NULL REFERENCES memory_generation(id),
-    record_id TEXT NOT NULL REFERENCES record(id), revision INTEGER NOT NULL,
-    value TEXT NOT NULL, PRIMARY KEY(generation_id, record_id),
-    FOREIGN KEY(record_id, revision) REFERENCES record_revision(record_id, revision));
-CREATE TABLE validation_event (
-    id TEXT PRIMARY KEY, record_id TEXT NOT NULL, revision INTEGER NOT NULL,
-    generation_id TEXT NOT NULL REFERENCES memory_generation(id), value TEXT NOT NULL,
-    FOREIGN KEY(record_id, revision) REFERENCES record_revision(record_id, revision));
-CREATE TABLE operation_receipt (
-    request_id TEXT PRIMARY KEY, request_hash TEXT NOT NULL, value TEXT NOT NULL);
-CREATE TABLE product_head (
-    singleton INTEGER PRIMARY KEY CHECK(singleton=1),
-    generation_id TEXT NOT NULL REFERENCES memory_generation(id), catalog_epoch INTEGER NOT NULL);
-CREATE TABLE source_reference (
-    index_id TEXT NOT NULL REFERENCES index_view(id), path TEXT NOT NULL,
-    sha256 TEXT NOT NULL, size INTEGER NOT NULL, PRIMARY KEY(index_id, path));
-PRAGMA user_version=1;
-COMMIT;
-"""
 INITIALIZED = b"cami.memory/1\n"
-EXPECTED_TABLES = {
-    statement.split()[2]: " ".join(statement.split())
-    for statement in SCHEMA.split(";") if statement.lstrip().startswith("CREATE TABLE ")
-}
 
 
 class DatabaseRole(Enum):
@@ -119,11 +86,13 @@ class MemoryStore:
     def _validate_connection(self, db: sqlite3.Connection, private: Path) -> None:
         db.execute("BEGIN")
         try:
-            if db.execute("PRAGMA user_version").fetchone()[0] != 1:
-                raise IncompleteError("memory_schema_error: expected schema version 1")
+            version = db.execute("PRAGMA user_version").fetchone()[0]
+            if version not in EXPECTED_SCHEMAS:
+                raise IncompleteError("memory_schema_error: expected schema version 1 or 2")
+            expected_tables = EXPECTED_SCHEMAS[version]
             tables = {name: " ".join(sql.split()) for name, sql in db.execute(
                 "SELECT name,sql FROM sqlite_schema WHERE type='table'")}
-            if tables != EXPECTED_TABLES or db.execute(
+            if tables != expected_tables or db.execute(
                 "SELECT 1 FROM sqlite_schema WHERE type IN ('view','trigger') "
                 "OR (type='index' AND sql IS NOT NULL)").fetchone() is not None:
                 raise IncompleteError("memory_schema_error: unrecognized schema")
@@ -142,7 +111,7 @@ class MemoryStore:
                 if head.index.worktree_key != self.path.parent.name:
                     raise IncompleteError("memory_database_scope_mismatch")
             elif any(db.execute(f"SELECT 1 FROM {table} LIMIT 1").fetchone() is not None
-                     for table in EXPECTED_TABLES):
+                     for table in expected_tables):
                 raise IncompleteError("memory_database_corrupt: knowledge without head")
         finally:
             db.execute("ROLLBACK")
@@ -182,6 +151,7 @@ class MemoryStore:
                 snapshot.verify()
                 db.execute("PRAGMA foreign_keys=ON")
                 db.execute("PRAGMA synchronous=FULL")
+                compact_legacy(db)
                 if role is not DatabaseRole.ESTABLISHED:
                     self._mark_initialized()
                 yield db
@@ -290,9 +260,8 @@ class MemoryStore:
                     generation.model_dump_json()))
         for item in generation.states:
             record = item.record
-            db.execute("INSERT INTO record_state VALUES(?,?,?,?)",
-                       (generation.memory_generation_id, record.memory_id, record.revision,
-                        item.model_dump_json()))
+            db.execute("INSERT INTO record_state VALUES(?,?,?)",
+                       (generation.memory_generation_id, record.memory_id, record.revision))
             if isinstance(item.state, CheckedClaim):
                 check = item.state.check
                 db.execute("INSERT INTO validation_event VALUES(?,?,?,?,?)",

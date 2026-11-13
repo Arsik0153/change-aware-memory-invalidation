@@ -195,7 +195,7 @@ def test_cli_new_kind_and_strict_text_boundary(owner, tmp_path):
     bad = subprocess.run([*base, '--request-id', 'bad-cli', '--text', 'caller assertion'], env=env, capture_output=True, text=True)
     assert bad.returncode != 0 and 'does not accept text or note_key' in bad.stderr
     with sqlite3.connect(owner.store.path) as db:
-        assert db.execute('PRAGMA user_version').fetchone()[0] == 1
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 2
 
 
 @pytest.fixture(scope="session")
@@ -221,8 +221,9 @@ def baseline_runtime(tmp_path_factory):
     return directory / 'src'
 
 
-def test_actual_old_reader_rejects_new_projection_without_sql_migration(owner, baseline_runtime):
+def test_actual_old_reader_rejects_new_projection_without_sql_migration(owner, baseline_runtime, legacy_database):
     pin(owner)
+    legacy_database(owner.store.path)
     env = dict(os.environ, PYTHONPATH=str(baseline_runtime))
     code = 'from pathlib import Path;from cami.product.service import ProductMemory;ProductMemory(Path(__import__("sys").argv[1])).observe()'
     result = subprocess.run([sys.executable, '-c', code, str(owner.root)], env=env, capture_output=True, text=True)
