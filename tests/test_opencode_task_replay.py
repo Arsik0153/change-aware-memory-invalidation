@@ -66,7 +66,7 @@ def test_corrupt_entry_rejected_before_materialization(case, fault):
     elif fault == "body":
         value["changes"]["src/old.py"]["content"] = "YQ=="
     elif fault == "base":
-        value["base_files"] = {}
+        value["base_files_sha256"] = "0" * 64
     else:
         value["changes"]["src/old.py"]["mode"] = 0o4777
     path.write_text(json.dumps(value))
@@ -104,3 +104,64 @@ def test_symlink_input_is_rejected(case, tmp_path):
     with pytest.raises(ValueError, match="nonregular"):
         replay.materialize(before, "update value", "toolchain-v1", cache, output)
     assert not output.exists()
+
+
+def test_concurrent_identical_publish_is_atomic_and_idempotent(case):
+    from concurrent.futures import ThreadPoolExecutor
+    before, after, cache, _, record = case
+    (cache / (record['key'] + '.json')).unlink()
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        results = list(pool.map(lambda _: replay.record(before, after, 'update value', 'toolchain-v1', cache), range(8)))
+    assert all(result == record for result in results)
+    assert [p.name for p in cache.iterdir()] == [record['key'] + '.json']
+
+
+def test_interrupted_publication_leaves_no_visible_entry(case, monkeypatch):
+    before, after, cache, _, record = case
+    (cache / (record['key'] + '.json')).unlink()
+    def failed_sync(*args):
+        raise OSError('authored interrupted persistence')
+    monkeypatch.setattr(replay.os, 'fsync', failed_sync)
+    with pytest.raises(OSError):
+        replay.record(before, after, 'update value', 'toolchain-v1', cache)
+    assert list(cache.iterdir()) == []
+
+
+def test_compression_is_bounded_and_rejects_trailing_payload(monkeypatch):
+    import base64
+    encoded = replay.encode(b'x' * 1024)
+    assert replay.decode(encoded) == b'x' * 1024
+    junk = base64.b64encode(base64.b64decode(encoded) + b'trailing').decode()
+    with pytest.raises(ValueError):
+        replay.decode(junk)
+    monkeypatch.setattr(replay, 'MAX_BYTES', 32)
+    with pytest.raises(ValueError):
+        replay.decode(encoded)
+
+
+def test_symlink_parent_cannot_put_output_or_cache_inside_input(case, tmp_path):
+    before, after, cache, _, _ = case
+    alias = tmp_path / 'alias'
+    alias.symlink_to(before, target_is_directory=True)
+    with pytest.raises(ValueError, match='outside'):
+        replay.materialize(before, 'update value', 'toolchain-v1', cache, alias / 'output')
+    with pytest.raises(ValueError, match='outside'):
+        replay.record(before, after, 'update value', 'toolchain-v1', alias / 'cache')
+    assert not (before / 'output').exists() and not (before / 'cache').exists()
+
+
+def test_cli_materializes_a_candidate_and_reports_miss(case, tmp_path):
+    import subprocess
+    import sys
+    before, after, cache, output, _ = case
+    task_file = tmp_path / 'task.txt'
+    task_file.write_text('update value')
+    command = [sys.executable, str(Path(replay.__file__)), 'materialize', '--workspace', str(before),
+               '--task-file', str(task_file), '--context-id', 'toolchain-v1', '--cache', str(cache), '--out', str(output)]
+    result = subprocess.run(command, check=True, capture_output=True, text=True)
+    assert json.loads(result.stdout)['status'] == 'candidate_requires_grading'
+    assert replay.inventory(output) == replay.inventory(after)
+    task_file.write_text('different task')
+    command[-1] = str(tmp_path / 'miss')
+    result = subprocess.run(command, check=True, capture_output=True, text=True)
+    assert json.loads(result.stdout)['status'] == 'miss' and not (tmp_path / 'miss').exists()
