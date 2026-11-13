@@ -39,3 +39,11 @@ Final local admission: project suite1719 passed,1 skipped,4 Docker-marked desele
 in708.01s; benchmark integration suite835 passed in28.57s. Ruff passed on changed
 code. Both suites finished before model timing began. The repaired freeze and all
 admission artifacts were committed before model execution.
+
+Execution launched2026-11-13T15:13:34Z (2026-11-14 in Asia/Seoul), after both test
+suites finished, using launch.py. The controller runs the complete schedule without
+intermediate performance-based decisions. Live operational progress is in
+../../runs/local-resume-20261113/full-driver-v9.jsonl; host load observations are in
+../../runs/local-resume-20261113/full-host-load-v9.jsonl. The final audit and charts
+will be added only after the complete run. render_results.py requires an80-attempt
+independent audit and fixes the median/range presentation before final outcomes.
