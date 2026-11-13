@@ -1,0 +1,30 @@
+[
+  {
+    "argv": [
+      "/usr/local/bin/cami",
+      "watch",
+      "status",
+      "--repo",
+      "/evidence/node-stop/repo",
+      "--format",
+      "json"
+    ],
+    "exit": 0,
+    "stdout": "{\"schema_version\":1,\"lifecycle\":\"stopped\",\"reason\":\"lease_free\",\"ownership\":\"lease_free\",\"retrieved_at\":\"2026-11-13T10:56:44.518714+00:00\",\"session_id\":null,\"pid_hint\":null,\"worktree_key\":\"4ba7041ff506663d9e117d5a86ec32606fd74379d3fdda4692ccac373fb783d2\",\"settings\":null,\"phase\":\"stopped\",\"current_observation\":null,\"data_freshness\":\"unknown\",\"latest_successful\":null,\"pending_since\":null,\"last_error\":null,\"polls\":0,\"refreshes\":0}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/usr/local/bin/cami",
+      "watch",
+      "stop",
+      "--repo",
+      "/evidence/node-stop/repo",
+      "--format",
+      "json"
+    ],
+    "exit": 0,
+    "stdout": "{\"schema_version\":1,\"lifecycle\":\"stopped\",\"reason\":\"lease_free\",\"ownership\":\"lease_free\",\"retrieved_at\":\"2026-11-13T10:56:44.661718+00:00\",\"session_id\":null,\"pid_hint\":null,\"worktree_key\":\"4ba7041ff506663d9e117d5a86ec32606fd74379d3fdda4692ccac373fb783d2\",\"settings\":null,\"phase\":\"stopped\",\"current_observation\":null,\"data_freshness\":\"unknown\",\"latest_successful\":null,\"pending_since\":null,\"last_error\":null,\"polls\":0,\"refreshes\":0}\n",
+    "stderr": ""
+  }
+]

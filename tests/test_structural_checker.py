@@ -37,7 +37,7 @@ class StructuralCheckerTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="authored-test-")
         self.addCleanup(self.temp.cleanup)
-        self.packet = Path(self.temp.name)
+        self.packet = Path(self.temp.name).resolve()
 
     def case(self, source="def target():\n    pass\n", signature=None):
         raw = source if isinstance(source, bytes) else source.encode("utf-8")

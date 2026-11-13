@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/checks/node_cleanup_driver.py", line 130, in <module>
+    print(json.dumps(run(args.cami.resolve(), args.out.resolve(), args.expect_leak), indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/checks/node_cleanup_driver.py", line 83, in run
+    assert watcher.wait(timeout=5) == 0
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 2045, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/usr/local/bin/cami', 'watch', '--repo', '/evidence/node-stop/repo', '--format', 'json']' timed out after 5 seconds

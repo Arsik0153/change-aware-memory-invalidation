@@ -62,3 +62,42 @@ The Linux ARM64 image builds successfully and its pinned OpenCode executable
 passes a network-disabled, read-only, non-root version smoke. See
 `runtime-smoke.json`. Existing local OpenCode authentication lists an OpenAI
 credential; no credential contents were printed or copied into this report.
+
+## Fresh-clone and filesystem checks
+
+The next full run reached 1665 passes, 13 failures and 12 setup errors. The
+remaining causes were test assumptions: unresolved macOS temporary paths,
+Linux `/proc` socket creation, an overlong Unix socket path, a Linux-only
+subreaper driver, and a collector fixture reading ignored VPS `runs/` files.
+The collector now uses the tracked study plan and vocabulary and seals the
+installed tokenizer's real files. `tiktoken==0.12.0` is a locked dev dependency.
+Socket fixtures bind relative names in their actual parent directories.
+
+The affected groups pass 130 tests, with the Linux subreaper test explicitly
+skipped on macOS. Ruff passes and mypy passes for 54 source files. A further
+full non-Docker run is in progress; do not treat these focused results as its
+completion.
+
+The original Linux Node-stop driver passed against a separately installed wheel
+inside Docker, using container-internal working data. It verified Node was gone
+at stop confirmation, the watcher exited, the unrelated sentinel survived and
+no subsequent memory head appeared. The same driver failed with working data
+on a Mac bind mount: status incorrectly observed a free lease while the watcher
+was running. The failed attempt and control commands are preserved.
+
+A separate two-process `flock` probe reproduces the filesystem difference:
+the contender is excluded on internal `/tmp`, but obtains the lock on the host
+bind mount. This is evidence about this Docker Desktop configuration, not all
+macOS filesystems. The small script and raw result are retained. Repeat it in a
+container with a writable host directory mounted at `/evidence`; both probe
+files must be absent before invocation. It creates and removes only those files.
+
+**Local experiment admission now requires working repositories, SQLite state,
+and leases on the internal Linux filesystem or a verified Docker volume.** Host
+bind mounts are suitable for read-only inputs and post-run evidence export, but
+cannot host this experiment's live locking state. A passing binary-version
+smoke does not establish filesystem compatibility.
+
+Earlier image attempts remain under ignored `runs/`: one lacked dependencies
+when the driver removed `PYTHONPATH`, then the host-bind filesystem failed the
+real lease test. Model calls remain zero.

@@ -192,6 +192,7 @@ def test_analyzer_wait_failure_reaps_node(tmp_path, monkeypatch, failure):
             child.wait(timeout=5)
 
 
+@pytest.mark.skipif(sys.platform != "linux", reason="Linux subreaper and pidfd acceptance driver")
 def test_watch_stop_reaps_real_node(tmp_path):
     driver = Path(__file__).with_name('node_cleanup_driver.py')
     result = subprocess.run([sys.executable, str(driver), '--cami',
@@ -209,7 +210,8 @@ def test_unprovable_bound_endpoint_is_preserved(tmp_path, monkeypatch):
     subprocess.run(['git', 'init', '-q', str(repo)], check=True)
     lease = Lease.open(repo, create=True)
     assert lease is not None and lease.acquire()
-    endpoint = tmp_path / 'unverifiable.sock'
+    monkeypatch.chdir(tmp_path)
+    endpoint = Path('unverifiable.sock')
     monkeypatch.setattr(runtime, 'prepare_endpoint', lambda session_id: endpoint)
     lstat = Path.lstat
     original = PermissionError('cannot establish endpoint ownership')

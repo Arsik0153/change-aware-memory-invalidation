@@ -650,11 +650,13 @@ def test_cache_artifact_types_repair_persistently_without_following_targets(repo
     if kind == "fifo":
         os.mkfifo(damaged)
     elif kind == "socket":
-        fd = os.open(damaged.parent, os.O_RDONLY | os.O_DIRECTORY)
+        fd = os.open(".", os.O_RDONLY | os.O_DIRECTORY)
         try:
+            os.chdir(damaged.parent)
             with socket.socket(socket.AF_UNIX) as node:
-                node.bind(f"/proc/self/fd/{fd}/{damaged.name}")
+                node.bind(damaged.name)
         finally:
+            os.fchdir(fd)
             os.close(fd)
     elif kind == "symlink":
         damaged.symlink_to(outside, target_is_directory=True)
