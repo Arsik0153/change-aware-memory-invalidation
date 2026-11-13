@@ -30,6 +30,38 @@ def test_paths(path):
         safe_path(path)
 
 
+@pytest.mark.parametrize("path", [".", "a.py", "src/a.py", "α/日本語.py", "a..b",
+                                 "a/..b", "a b/c", "a" * 512, "a" * 513,
+                                 "a/" * 300 + "b"])
+def test_repeated_valid_paths_preserve_input(path):
+    for _ in range(2):
+        assert safe_path(path) is path
+
+
+@pytest.mark.parametrize("path,kind", [
+    ("", "unsafe"), ("/a", "unsafe"), ("//a", "unsafe"), ("..", "unsafe"),
+    ("a/../b", "unsafe"), ("a\\b", "unsafe"), ("a\x00b", "unsafe"),
+    ("a//b", "noncanonical"), ("a/", "noncanonical"), ("./a", "noncanonical"),
+    ("a/./b", "noncanonical"), ("a" * 513 + "/../b", "unsafe"),
+    ("a" * 513 + "//b", "noncanonical"),
+])
+def test_repeated_invalid_paths_keep_error_contract(path, kind):
+    for _ in range(2):
+        with pytest.raises(ValueError) as error:
+            safe_path(path)
+        assert str(error.value) == f"{kind} repository path: {path!r}"
+
+
+def test_unhashable_string_subclass_keeps_validation_and_identity():
+    class PathText(str):
+        __hash__ = None
+
+    path = PathText("src/a.py")
+    assert safe_path(path) is path
+    with pytest.raises(ValueError, match="unsafe repository path"):
+        safe_path(PathText("../a"))
+
+
 def test_run_schema_has_no_labels():
     assert "labels" not in RunConfig.model_fields
 

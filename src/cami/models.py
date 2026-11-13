@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import lru_cache
 from pathlib import PurePosixPath
 from typing import Annotated, Literal, Self
 
@@ -26,12 +27,23 @@ class Value(BaseModel):
                               populate_by_name=True)
 
 
-def safe_path(value: str) -> str:
+def _validate_path(value: str) -> None:
     p = PurePosixPath(value)
     if not value or p.is_absolute() or ".." in p.parts or "\\" in value or "\x00" in value:
         raise ValueError(f"unsafe repository path: {value!r}")
     if value != p.as_posix():
         raise ValueError(f"noncanonical repository path: {value!r}")
+
+
+_cached_path_validation = lru_cache(maxsize=1024)(_validate_path)
+
+
+def safe_path(value: str) -> str:
+    # Cache only lexical validation, never filesystem state; bound retained bytes too.
+    if type(value) is str and len(value) <= 512:
+        _cached_path_validation(value)
+    else:
+        _validate_path(value)
     return value
 
 
