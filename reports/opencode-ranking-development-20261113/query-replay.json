@@ -1,0 +1,246 @@
+{
+  "adapter_source_sha256": "ac59bd5712ce4936cbc497badb0bf833142fb2c3a22f2a4bc58ec1718de14386",
+  "calls": [
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "explicit_symbols": {
+        "literal-b72f27654121d1cca0325ebc": "help_option",
+        "literal-f1e763299ebc7560da7b62d7": "Command.get_help_option"
+      },
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050",
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "limit": 5,
+      "query": "Click HelpOption get_help_option help_option decorator repository prior context",
+      "recorded_policy": "lexical-overlap/1",
+      "selected_order_changed": true,
+      "selected_set_changed": false,
+      "terminal_sha256": "7dae6d5e3fa2dd9477ca80ad502affb0c63792de9cd69460735b1efbe3034601",
+      "trial_id": "r1-cami_lexical-s1"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "explicit_symbols": {
+        "literal-b72f27654121d1cca0325ebc": "help_option",
+        "literal-f1e763299ebc7560da7b62d7": "Command.get_help_option"
+      },
+      "legacy_omitted": {
+        "literal-b72f27654121d1cca0325ebc": "help_option"
+      },
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "limit": 5,
+      "query": "Click HelpOption built in help option Command.get_help_option help_option decorator",
+      "recorded_policy": "identifier-mentions/1",
+      "selected_order_changed": true,
+      "selected_set_changed": true,
+      "terminal_sha256": "fc4e2407a9a70bb7e861846893e5310dc3169cca729da680cc96317335d61445",
+      "trial_id": "r1-cami_identifier-s1"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050"
+      ],
+      "explicit_symbols": {
+        "literal-b72f27654121d1cca0325ebc": "help_option",
+        "literal-f1e763299ebc7560da7b62d7": "Command.get_help_option"
+      },
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b554841902ccb1dffd238050",
+        "literal-b72f27654121d1cca0325ebc"
+      ],
+      "limit": 5,
+      "query": "Click HelpOption help_option get_help_option Option repository prior context",
+      "recorded_policy": "lexical-overlap/1",
+      "selected_order_changed": true,
+      "selected_set_changed": false,
+      "terminal_sha256": "866f1681aa87ebdfbeb7c11c71ea80e8e5aa6a4553a2729e02f6eafc66a389db",
+      "trial_id": "r1-cami_lexical-s2"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0"
+      ],
+      "explicit_symbols": {
+        "literal-b72f27654121d1cca0325ebc": "help_option",
+        "literal-f1e763299ebc7560da7b62d7": "Command.get_help_option"
+      },
+      "legacy_omitted": {
+        "literal-b72f27654121d1cca0325ebc": "help_option"
+      },
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-d8719d75bd3f22319a8b90e0",
+        "literal-df9d3e32ee61af23abd5ed04"
+      ],
+      "limit": 5,
+      "query": "Click built-in help option Option Command get_help_option help_option decorator tests",
+      "recorded_policy": "identifier-mentions/1",
+      "selected_order_changed": true,
+      "selected_set_changed": true,
+      "terminal_sha256": "b4860815c7c6c1e34c2fa70695c100caf44b48935325e4e0c07dd4053b515f30",
+      "trial_id": "r1-cami_identifier-s2"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "explicit_symbols": {},
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "limit": 5,
+      "query": "Click custom help_option_names eager option ordering auto help regression",
+      "recorded_policy": "identifier-mentions/1",
+      "selected_order_changed": false,
+      "selected_set_changed": false,
+      "terminal_sha256": "4b5f91f8c2724857d87b5ac622a94a3b5cc235fc9c5403d1b2f65088f42afdba",
+      "trial_id": "r1-cami_identifier-s3"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "explicit_symbols": {
+        "literal-f1e763299ebc7560da7b62d7": "Command.get_help_option"
+      },
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-15251bab7cf7d5130f4cb2bd"
+      ],
+      "limit": 5,
+      "query": "Click automatically generated help option help_option_names custom eager ordering get_help_option tests",
+      "recorded_policy": "lexical-overlap/1",
+      "selected_order_changed": true,
+      "selected_set_changed": false,
+      "terminal_sha256": "127bd1ff17c74bc0dbf79de5246d087f5ddc528475ff800abd7a5140e0060ebe",
+      "trial_id": "r1-cami_lexical-s3"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "explicit_symbols": {},
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "limit": 5,
+      "query": "Click automatic help custom help_option_names eager option ordering regression",
+      "recorded_policy": "lexical-overlap/1",
+      "selected_order_changed": false,
+      "selected_set_changed": false,
+      "terminal_sha256": "383b3f81708aee7341fa1a0edc8cfebc7c752c04100c159b6c27a6942d3a7931",
+      "trial_id": "r1-cami_lexical-s4"
+    },
+    {
+      "candidate_omitted": {},
+      "candidate_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "explicit_symbols": {},
+      "legacy_omitted": {},
+      "legacy_selected": [
+        "literal-57c9836ad708b7dca5bbd9a8",
+        "literal-b72f27654121d1cca0325ebc",
+        "literal-f1e763299ebc7560da7b62d7",
+        "literal-32bcf24ccfd38aeacdee34f6",
+        "literal-cce673a84e2664e111ed6f89"
+      ],
+      "limit": 5,
+      "query": "Click automatic help option custom help_option_names eager option ordering regression",
+      "recorded_policy": "identifier-mentions/1",
+      "selected_order_changed": false,
+      "selected_set_changed": false,
+      "terminal_sha256": "9a56844adcda29a72ce6a149206618f4d6f41012223d9f720bb16442f8000af0",
+      "trial_id": "r1-cami_identifier-s4"
+    }
+  ],
+  "catalog_file_sha256": "c4eb9c2b6128518f4d3255a73a0a0883561fad2b6d0b95c50693a0ba4d5c604c",
+  "schema_version": 1,
+  "scope": "Post-hoc replay of every recorded query against the same origin catalog. Both policies rank before availability, with identical requested limits and16384-byte origin budget. Explicit-reference coverage is defined by the declared identifier rule, not task correctness. No new model calls, timings or causal/efficiency claims.",
+  "summary": {
+    "candidate_omitted_observations": 0,
+    "candidate_queries_with_omissions": 0,
+    "explicit_symbol_observations": 9,
+    "legacy_omitted_observations": 2,
+    "legacy_queries_with_omissions": 2,
+    "model_calls": 0,
+    "queries": 8,
+    "queries_with_changed_order": 5,
+    "queries_with_changed_selection": 2,
+    "recorded_policy_matches_frozen_selections": true
+  }
+}

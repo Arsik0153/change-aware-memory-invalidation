@@ -13,8 +13,8 @@ from format_probe import plan, validate_design
 def analyze(root):
     study = read(root / "frozen-study.json")
     validate_design(study)
-    if study.get("schema_version") != 2:
-        raise ValueError("requires the five-condition development cohort")
+    if study.get("schema_version") not in (2, 3):
+        raise ValueError("requires a registered format or ranking development cohort")
     trials, groups = [], defaultdict(list)
     for expected in plan(study):
         directory = root / "trials" / expected["id"]
@@ -34,7 +34,7 @@ def analyze(root):
                     continue
                 state = part["state"]
                 if part.get("name") == "read":
-                    reads.append({"status": state["status"], "path": state.get("input", {}).get("filePath"),
+                    reads.append({"status": state["status"], "path": state.get("input", {}).get("path", state.get("input", {}).get("filePath")),
                                   "call_id": part["id"]})
                 elif part.get("name", "").endswith("memory_lookup"):
                     query_limits.append({"status": state["status"], "input": state.get("input")})

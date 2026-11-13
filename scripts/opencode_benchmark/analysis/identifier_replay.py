@@ -10,18 +10,30 @@ from aggregate_study import read, sha, verify_terminal, write
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "integrations/opencode"))
-from memory_backend import IDENTIFIER_RANKING, identifier_mentions, mention_priority, rank  # noqa: E402
+from memory_backend import IDENTIFIER_RANKING, LEXICAL_RANKING, digest, identifier_mentions, mention_priority, rank  # noqa: E402
+
+from format_probe import plan, validate_design  # noqa: E402
 
 
 def replay(root):
-    catalog_path = root / "namespaces/r1-cami_compact/memory/prepared/catalog.json"
-    last, _, _ = verify_terminal(root / "trials/r1-cami_compact-s4")
+    study = read(root / "frozen-study.json")
+    validate_design(study)
+    if study.get("schema_version") not in (2, 3):
+        raise ValueError("requires a registered format or ranking development cohort")
+    condition = "cami_compact" if study["schema_version"] == 2 else "cami_lexical"
+    catalog_path = root / f"namespaces/r1-{condition}/memory/prepared/catalog.json"
+    last, _, _ = verify_terminal(root / f"trials/r1-{condition}-s4")
     if sha(catalog_path) != last["memory_files_after"]["prepared/catalog.json"]:
         raise ValueError("catalog differs from terminal memory inventory")
     catalog = read(catalog_path)
     calls = []
-    for directory in sorted((root / "trials").iterdir()):
+    for expected in plan(study):
+        directory = root / "trials" / expected["id"]
         terminal, terminal_sha, _ = verify_terminal(directory)
+        if terminal["trial"] != expected:
+            raise ValueError("terminal differs from frozen schedule")
+        if expected["arm"] != "plain" and terminal["memory_files_after"]["prepared/catalog.json"] != sha(catalog_path):
+            raise ValueError("condition catalog differs from shared origin")
         trace = directory / "session/evidence/memory-backend-trace.jsonl"
         if not trace.exists():
             continue
@@ -32,21 +44,29 @@ def replay(root):
                 raise ValueError("failed lookup requires a separate incomplete analysis")
             body = json.loads(event["response_audit"]["full_result"]["content"][0]["text"])
             query, limit = body["query"], event["requested_limit"]
+            if body.get("catalog_sha256") != digest(catalog):
+                raise ValueError("lookup catalog differs from verified origin")
             old, matched = rank(catalog, query, limit)
+            candidate, _ = rank(catalog, query, limit, ranking_policy=IDENTIFIER_RANKING)
+            recorded_policy = expected.get("ranking_policy", LEXICAL_RANKING)
+            if event.get("ranking_policy", LEXICAL_RANKING) != recorded_policy:
+                raise ValueError("trace ranking policy differs from frozen schedule")
+            recorded = candidate if recorded_policy == IDENTIFIER_RANKING else old
             observed = {r["id"] for r in body["entries"] + body["withheld"]}
-            if {r["id"] for r in old} != observed or matched != body["matched_records"]:
-                raise ValueError("legacy replay differs from frozen observed selection")
+            if {r["id"] for r in recorded} != observed or matched != body["matched_records"]:
+                raise ValueError("recorded-policy replay differs from frozen observed selection")
             for group in ("entries", "withheld"):
                 identities = {r["id"] for r in body[group]}
-                if [r["id"] for r in old if r["id"] in identities] != [r["id"] for r in body[group]]:
-                    raise ValueError("legacy replay order differs from frozen observations")
-            candidate, _ = rank(catalog, query, limit, ranking_policy=IDENTIFIER_RANKING)
+                if [r["id"] for r in recorded if r["id"] in identities] != [r["id"] for r in body[group]]:
+                    raise ValueError("recorded-policy replay order differs from frozen observations")
             mentions = identifier_mentions(query)
             explicit = {r["id"]: r["payload"]["subject"]["qualname"] for r in catalog["records"]
                         if mention_priority(r["payload"]["subject"], mentions) < 2}
             old_ids, new_ids = {r["id"] for r in old}, {r["id"] for r in candidate}
             calls.append({"trial_id": terminal["trial"]["id"], "terminal_sha256": terminal_sha,
                 "query": query, "limit": limit, "explicit_symbols": explicit,
+                "recorded_policy": recorded_policy, "selected_set_changed": old_ids != new_ids,
+                "selected_order_changed": [r["id"] for r in old] != [r["id"] for r in candidate],
                 "legacy_selected": [r["id"] for r in old],
                 "candidate_selected": [r["id"] for r in candidate],
                 "legacy_omitted": {key: value for key, value in explicit.items() if key not in old_ids},
@@ -59,7 +79,10 @@ def replay(root):
             "candidate_queries_with_omissions": sum(bool(c["candidate_omitted"]) for c in calls),
             "legacy_omitted_observations": sum(len(c["legacy_omitted"]) for c in calls),
             "candidate_omitted_observations": sum(len(c["candidate_omitted"]) for c in calls),
-            "legacy_matches_frozen_selections": True, "model_calls": 0},
+            "recorded_policy_matches_frozen_selections": True,
+            "queries_with_changed_selection": sum(c["selected_set_changed"] for c in calls),
+            "queries_with_changed_order": sum(c["selected_order_changed"] for c in calls),
+            "model_calls": 0},
         "calls": calls}
 
 

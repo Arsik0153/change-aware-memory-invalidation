@@ -160,3 +160,9 @@ policy. The prospective analysis requires both lower token work and lower native
 read text bytes, complete quality/telemetry and a uniform provider tier; one block
 cannot establish population superiority. Native read receipt version2 also counts
 error messages before redaction, while version1 semantics remain unchanged.
+
+The completed twelve-session development block passed quality and telemetry, but
+identifier ranking increased noncached token work 13.44% and native read text
+21.90% versus lexical CAMI. The predeclared direction criterion failed; this
+single dependent block establishes no general regression estimate. Lexical
+remains the default. Full evidence: `reports/opencode-ranking-development-20261113`.

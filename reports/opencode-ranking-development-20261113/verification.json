@@ -1,0 +1,36 @@
+{
+  "all_original_read_counts_complete": true,
+  "analysis_byte_identical": true,
+  "completed_native_reads": 157,
+  "error_native_reads": 1,
+  "final_focused_tests_passed": 58,
+  "focused_preflight_tests_passed": 816,
+  "frozen_analysis_sha256": "21154cfe630a9635f7ac59fc08cd0b962243063f0cbedbe62e6221d9407ebff9",
+  "frozen_study_sha256": "cfdf8732cf3f8abc49a0615e318669fe5ee7467e5e78bb686c70be3b0cd3404a",
+  "git_diff_check": "passed",
+  "historical_query_replay_reverified": {
+    "candidate_omitted_observations": 0,
+    "candidate_queries_with_omissions": 0,
+    "explicit_symbol_observations": 16,
+    "legacy_omitted_observations": 4,
+    "legacy_queries_with_omissions": 4,
+    "model_calls": 0,
+    "queries": 17,
+    "queries_with_changed_order": 8,
+    "queries_with_changed_selection": 4,
+    "recorded_policy_matches_frozen_selections": true
+  },
+  "macos_reproduced_analysis_sha256": "21154cfe630a9635f7ac59fc08cd0b962243063f0cbedbe62e6221d9407ebff9",
+  "model_trials": 12,
+  "native_read_calls": 158,
+  "owned_containers_removed": true,
+  "posthoc_source_files": {
+    "scripts/opencode_benchmark/analysis/format_diagnostics.py": "4d9460f09a3671c425820ca23a48e7b9bb7d980eaf9554765c02e42f72136896",
+    "scripts/opencode_benchmark/analysis/identifier_replay.py": "5b53fab729c567a4dc1090f32daa4b4d526637fc67649571c260211fc3408702"
+  },
+  "private_state_absent_before_export": true,
+  "quality_passed": 12,
+  "retries": 0,
+  "ruff": "passed",
+  "source_commit": "19fb65e"
+}

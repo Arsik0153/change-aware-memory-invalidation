@@ -191,6 +191,14 @@ message handling; no-model verification and limitations are preserved in
 Subsequent post-hoc diagnosis identified explicit symbol omissions in compound
 queries. The opt-in identifier ranking now addresses that case without changing
 the default or CAMI freshness rules. Its authored tests and offline fixed-query
-replay are in `../opencode-identifier-ranking-20261113/README.md`. The next unit
-is a separately frozen agent comparison, not a replay or extension of the closed
-format experiment. No heldout sessions or further model calls have been run.
+replay are in `../opencode-identifier-ranking-20261113/README.md`. A separate twelve-session ranking-only agent comparison is now complete; see
+`../opencode-ranking-development-20261113/README.md`. All 12 sessions passed quality
+and telemetry, but identifier ranking increased token work 13.44% and native read
+text 21.90% versus lexical CAMI. The frozen criterion failed. Lexical stays default.
+Native-read version2 preserved full counts including one failed read; macOS
+reanalysis reproduced the frozen result byte-for-byte. No retries or heldout calls.
+
+Next work is a no-model information-sufficiency audit of the returned prefixes
+and subsequent reads. A further paid comparison needs a materially different,
+authored-case-supported intervention and a new prospective freeze; do not extend
+or pool the closed blocks.

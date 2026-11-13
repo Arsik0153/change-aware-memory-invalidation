@@ -1,0 +1,1672 @@
+{
+  "schema_version": 1,
+  "scope": "Post-hoc descriptive diagnostics, not a new success rule or causal attribution. Repeated observations are dependent. Backend spans exclude RPC/trace append and are nested within session wall: never add them to charged totals. Native read counts do not recover original read bytes or identify avoidable reads.",
+  "study_sha256": "cfdf8732cf3f8abc49a0615e318669fe5ee7467e5e78bb686c70be3b0cd3404a",
+  "summary": {
+    "cami_identifier": {
+      "construction_host_wall_seconds": 2.0026684179999847,
+      "lookup_backend_wall_seconds": 2.925559875999909,
+      "lookup_nested_fraction_of_session_wall": 0.006683038112910126,
+      "memory_calls": 4,
+      "memory_response_bytes": 32068,
+      "native_read_calls": 59,
+      "native_read_paths": {
+        "/workspace": 4,
+        "/workspace/.pre-commit-config.yaml": 1,
+        "/workspace/CHANGES.rst": 3,
+        "/workspace/docs/api.rst": 2,
+        "/workspace/pyproject.toml": 4,
+        "/workspace/src/click/__init__.py": 2,
+        "/workspace/src/click/core.py": 11,
+        "/workspace/src/click/decorators.py": 7,
+        "/workspace/src/click/testing.py": 1,
+        "/workspace/tests": 1,
+        "/workspace/tests/conftest.py": 4,
+        "/workspace/tests/test_basic.py": 4,
+        "/workspace/tests/test_context.py": 2,
+        "/workspace/tests/test_custom_classes.py": 1,
+        "/workspace/tests/test_formatting.py": 4,
+        "/workspace/tests/test_help_option.py": 1,
+        "/workspace/tests/test_info_dict.py": 1,
+        "/workspace/tests/test_shell_completion.py": 1,
+        "/workspace/tests/typing/typing_help_option.py": 2,
+        "/workspace/tox.ini": 3
+      },
+      "native_read_states": {
+        "completed": 59
+      },
+      "requested_limits": {
+        "5": 4
+      },
+      "returned_record_observations": 16,
+      "session_host_wall_seconds": 437.7589692850001,
+      "truncated_record_observations": 6,
+      "withheld_record_observations": 4
+    },
+    "cami_lexical": {
+      "construction_host_wall_seconds": 2.0346336679999695,
+      "lookup_backend_wall_seconds": 2.9358867110000233,
+      "lookup_nested_fraction_of_session_wall": 0.007360446685574836,
+      "memory_calls": 4,
+      "memory_response_bytes": 29048,
+      "native_read_calls": 46,
+      "native_read_paths": {
+        "/workspace": 4,
+        "/workspace/CHANGES.rst": 3,
+        "/workspace/docs/api.rst": 2,
+        "/workspace/pyproject.toml": 4,
+        "/workspace/src/click/__init__.py": 2,
+        "/workspace/src/click/core.py": 10,
+        "/workspace/src/click/decorators.py": 8,
+        "/workspace/tests/conftest.py": 4,
+        "/workspace/tests/test_basic.py": 3,
+        "/workspace/tests/test_formatting.py": 3,
+        "/workspace/tests/typing/typing_help_option.py": 1,
+        "/workspace/tox.ini": 2
+      },
+      "native_read_states": {
+        "completed": 46
+      },
+      "requested_limits": {
+        "5": 4
+      },
+      "returned_record_observations": 16,
+      "session_host_wall_seconds": 398.873442933,
+      "truncated_record_observations": 5,
+      "withheld_record_observations": 4
+    },
+    "plain": {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "lookup_nested_fraction_of_session_wall": 0.0,
+      "memory_calls": 0,
+      "memory_response_bytes": 0,
+      "native_read_calls": 53,
+      "native_read_paths": {
+        "/workspace": 4,
+        "/workspace/.pre-commit-config.yaml": 2,
+        "/workspace/CHANGES.rst": 4,
+        "/workspace/docs/api.rst": 2,
+        "/workspace/pyproject.toml": 4,
+        "/workspace/src/click/__init__.py": 2,
+        "/workspace/src/click/core.py": 13,
+        "/workspace/src/click/decorators.py": 6,
+        "/workspace/tests/conftest.py": 4,
+        "/workspace/tests/test_basic.py": 4,
+        "/workspace/tests/test_formatting.py": 4,
+        "/workspace/tests/test_options.py": 1,
+        "/workspace/tests/typing/typing_help.py": 1,
+        "/workspace/tox.ini": 2
+      },
+      "native_read_states": {
+        "completed": 52,
+        "error": 1
+      },
+      "requested_limits": {},
+      "returned_record_observations": 0,
+      "session_host_wall_seconds": 481.92571734400013,
+      "truncated_record_observations": 0,
+      "withheld_record_observations": 0
+    }
+  },
+  "trials": [
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_b1101775770c4811809f9fbb56bfdd24",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bf146a57ed684493b67182a580fcbee5",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_72f4b1a0774d49d3842524429a90a11b",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_28f74f0e030c4f5abc3d0efbb38fb4f5",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_892ad58aae8e4724a836061e9bea1ed0",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0fc1f3580b934bc5b0bd6124fd705218",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3f36269dee494bfe853f8fb7ea18c85b",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_635773a004d54c30ae74eadbe43fbfe9",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_699f5fae6e0c4ed58955302a98a61a02",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c187c1d5b0b843d08bcd7007d13c162e",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1a9892b874ed4ac1a599da26bd794a76",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c12d671db8654416a00ae908255b7fb9",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2a6413cfce584c07a2442f3b6937731d",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3f625eacec0d46b497feca9b8a5a9fd6",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8975f4f9e56d49a6a771afc20bcea4e9",
+          "path": "/workspace/.pre-commit-config.yaml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dead29949d6548e799394d0b413aaa57",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 173.08664899499996,
+      "terminal_sha256": "89eb5959562c2ce09c471ef0873036528b7482e82db20896d32df0b64798158f",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s1",
+        "predecessor": null,
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 2.0346336679999695,
+      "lookup_backend_wall_seconds": 0.9457735010000192,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click HelpOption get_help_option help_option decorator repository prior context"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7735,
+      "reads": [
+        {
+          "call_id": "call_eec4747d59d64ca5ad3349c4501d9d89",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0c204a5277834ccca1bbd9254c4e1b11",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_59e03ab8208d44e18eecaea5f2ec8962",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9c74733e89794c60a1c47ccaa66b909e",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_33e1bdd784c844bba13b6bd2714f1bd8",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_49f705b39d1e4f04bcefb11ed73f24e4",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5538b59cdb2d4e598be2cc8411aa93a3",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0a3d1ec9078a4ea89d12c6d1bb54f970",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_499ad00d77cd4e07b540ae6793dc0945",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fda12d6b121a4266a14fa22626652f14",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_855e421d5d4647d3a5f34a753c4a4863",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f72cf451ca1b4a819bf57af4fc9b5cc3",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2dd98c7bfa944cf2831dfbf53f6a8867",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d1c5dac991514e648aa96ce02000ea70",
+          "path": "/workspace/tests/typing/typing_help_option.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d7b648d3db5545c5aa4263cd4cb5a1a8",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-b554841902ccb1dffd238050",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Context.get_help"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 113.52701817599996,
+      "terminal_sha256": "7dae6d5e3fa2dd9477ca80ad502affb0c63792de9cd69460735b1efbe3034601",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_lexical",
+        "id": "r1-cami_lexical-s1",
+        "predecessor": null,
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 2.0026684179999847,
+      "lookup_backend_wall_seconds": 0.932312917000047,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click HelpOption built in help option Command.get_help_option help_option decorator"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8069,
+      "reads": [
+        {
+          "call_id": "call_3148afb6ff50492ea67c7d3fd7d4cb2d",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_557d16d6735c403eb116b87008f35c69",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_550978e8e7e243ecbb238484af9d1eaf",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_430553548bfb4d8bbafdc9b1306ac8fc",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cc4b90aaee25456a94a4ce1c22e71bb4",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_077e5859329d468ebd19afa8bd147cc5",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7f1eb4605a7e46bb9528af90b37f5e20",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_41a082c860994708ac75bff580dc3e5b",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e6a436c8ae1d4bbbbd151aec8831a55d",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1a534e71365b43b1b577c3b60a79297e",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fd9cbdb717814bc0b06f17f50515ead2",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dec1fa0d16cf45f4a2b8100cacbb40ba",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bab7efede4c14e5a89f90fb9e8210158",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4146fc6b3ad84cf28f64f46a8e977e93",
+          "path": "/workspace/src/click/testing.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_539bd172a6b04d15838c14aa95443479",
+          "path": "/workspace/tests/test_shell_completion.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e81d315c45614f588e58e6a406b2b326",
+          "path": "/workspace/tests/typing/typing_help_option.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 137.39489956300002,
+      "terminal_sha256": "fc4e2407a9a70bb7e861846893e5310dc3169cca729da680cc96317335d61445",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_identifier",
+        "id": "r1-cami_identifier-s1",
+        "predecessor": null,
+        "ranking_policy": "identifier-mentions/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.46819766700002674,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click HelpOption help_option get_help_option Option repository prior context"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7735,
+      "reads": [
+        {
+          "call_id": "call_eea92a7868bf41df8b74add71a8e863f",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_397c6eb1a220407b9c3a9670d42686fd",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f9fca95397194e179fbe234a1dc2ffe2",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_15395f068b3a455d8abb028bccd576ea",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9d7ad2240dc94174b194dc38b945ad3d",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5a793670e60c4081b35b2a1cb1ddcf2f",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f4b538bf9e0e4737910833e7ac87e55b",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1e10139c13c448c38c21b92f1e8733e3",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_effb5d59387c474f82d7408feaecc3e2",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3f7ba71d706e4929951206b5b2a76a72",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_de5991d6aa58457d81c16b36b63f405d",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_52ac9eb3b6e5430a9f472e82b4d2b2d3",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3e614967da3d4d289436187a60c14aa0",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-b554841902ccb1dffd238050",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Context.get_help"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 128.28328514200007,
+      "terminal_sha256": "866f1681aa87ebdfbeb7c11c71ea80e8e5aa6a4553a2729e02f6eafc66a389db",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_lexical",
+        "id": "r1-cami_lexical-s2",
+        "predecessor": "r1-cami_lexical-s1",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.44967449999990095,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click built-in help option Option Command get_help_option help_option decorator tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8069,
+      "reads": [
+        {
+          "call_id": "call_b5607071d63649c4925385ff3d6d5592",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_044059cc236141c4b6d1fdac1037f62b",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2f009c0cb96c470fb88e24b6faf2f8d1",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_32994c6de9f844b2a0b2b9f94308b462",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7cb558ed953647ec9ecf899635b6e3bc",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8d557b26aa47406ea75c4cbde66997fa",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2f763f06e334402ca11be07997b792ee",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_59f05466119f4cc1b839fb3f1c85cb2d",
+          "path": "/workspace/tests",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1526663ac1c14e3c816707c104afc7f0",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ea17143537e74ca79bc1e4494d7bd488",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_977a4a90cd6040fda7dd6c5dd8c94117",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e1e7cb3387c94138bd453db5bb855dcc",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_366d15951b5c478ca99cea2ae8b7d48c",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dc8b9ba59d424d15b63f8b799a85b120",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ab7625af95cb424c94d814685935e677",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_564654182ac94e0197bb31f6cd2808e7",
+          "path": "/workspace/tests/test_custom_classes.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7a01110784eb4e268c17772b6310e422",
+          "path": "/workspace/tests/test_info_dict.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_89d9f6aca4cb4183a8b074aa9815edad",
+          "path": "/workspace/tests/typing/typing_help_option.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b2935060c57348adbe15f659ea00874d",
+          "path": "/workspace/.pre-commit-config.yaml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1d31efb651d54d2eb2f19de61874a274",
+          "path": "/workspace/tests/test_help_option.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 127.88418935000004,
+      "terminal_sha256": "b4860815c7c6c1e34c2fa70695c100caf44b48935325e4e0c07dd4053b515f30",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_identifier",
+        "id": "r1-cami_identifier-s2",
+        "predecessor": "r1-cami_identifier-s1",
+        "ranking_policy": "identifier-mentions/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_6c0438a5488240edaa1b793385efa6fb",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cfa502b2e8f6475a9ed9f525773b0588",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b12a79376a5a4342912a9e2120aa1038",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7ff15d9e66ae411493bb18e710685aa4",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5da60ed657294be6b0c0cf7a83bf4d94",
+          "path": "/workspace/src/click/__init__.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_53799b98863049a59e2e44c5245bae9a",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8410d52e26dd477ab5e811ef2021ca95",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ec2dcec075d649bf83e2989526890a24",
+          "path": "/workspace/docs/api.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2347440786e5447ab434fc4fa7288bc0",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e218aa353b524d48836692d7996103e8",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_08558eec885b4dfd83f2773ad8613ffb",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3947c09f697c465584e89958c4d45d58",
+          "path": "/workspace/tests/test_options.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5b6bfb9d274641d080efb9e1adbd006c",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cd06a0bdc1a14ed8b245ef92b3de0c1b",
+          "path": "/workspace/tests/typing/typing_help.py",
+          "status": "error"
+        },
+        {
+          "call_id": "call_4fe2761120d540afb63ca4a4d871bd09",
+          "path": "/workspace/.pre-commit-config.yaml",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 133.9638224360001,
+      "terminal_sha256": "67aba7bce6832fdfb99e4b9d71271bf83aef7f8117b525001f21f620ab979847",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s2",
+        "predecessor": "r1-plain-s1",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 1.0670846250000068,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click custom help_option_names eager option ordering auto help regression"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7965,
+      "reads": [
+        {
+          "call_id": "call_584033ccb3e14edbb800ec22e1a9874f",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3bc879ecff184fff83bdf213f4aae1d5",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a93ae208b8054cefb177d391ceee4f12",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f4d29d6fc5504acc80d428d38522212c",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4eb747f8eab94b038974e9c109446910",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_59440f9b006f49aba114a0071b4e5f8d",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c8aaaa99741a4d9fb4d2c56dffc73153",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b87575b76bbf4e19907f1c2fd01e1fc9",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_884d0c3b35a4463cab508d0683892d90",
+          "path": "/workspace/tests/test_context.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7bc07c5a844a4dda88d356c0c7cbff1a",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9f614cbd4433475db01432590ed253fe",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_be2bf49d014042a096f988f16dbbab53",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 91.29278550100003,
+      "terminal_sha256": "4b5f91f8c2724857d87b5ac622a94a3b5cc235fc9c5403d1b2f65088f42afdba",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_identifier",
+        "id": "r1-cami_identifier-s3",
+        "predecessor": "r1-cami_identifier-s2",
+        "ranking_policy": "identifier-mentions/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_0e8e9345555e4a1bad16d0c430a3af9a",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1965f1e553cd4021b40937ec90d42579",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a8741f49a8054ec9aff325292c1cba29",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1adb10467f0f4f6e89638096416384e2",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fa4c94f9d6c04f948483347d30be4012",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6e84d6a62d76444cb5507973cf19c4af",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7851db22d9264bdea25fc16cd79b0b88",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d6d28f5806d443c9b46716dbbae13534",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b07a002b2f434332a93742cdb12752a1",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8431851689604fa792f36808ed4dd51b",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ba56caa9dcec4909a5b565696339b6e2",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_245da6f2f41845e98393270a2b5adb68",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 102.50031458800004,
+      "terminal_sha256": "bd64ad9d37fcd4a78e92e85d1ef4abc528a2c8f9252369b7eb8ea4e98db9fd72",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s3",
+        "predecessor": "r1-plain-s2",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 1.027993042999924,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatically generated help option help_option_names custom eager ordering get_help_option tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 5613,
+      "reads": [
+        {
+          "call_id": "call_6132cae97fe8426c8f96fb3782a94d7d",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_db3432354046435ea4a1d18af26f8ed4",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_139ff5af86d84590b309751fadb459b6",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_62b1c6aaeefa42098b765b1d3e7365d0",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c1383cfce05a44a09e3566e5054470ab",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_65bcb14d5f944996825a7c367d70d216",
+          "path": "/workspace/tox.ini",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ef362c4cbf664f48a69d029df41af18f",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4dc2a74aa2484706b0691d9f2f9d4f92",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2cf5c987ca9441aa861c29599dfe15c5",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_737d585cfb2d499091fca8311765bed3",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-15251bab7cf7d5130f4cb2bd",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "BaseCommand.get_help"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 78.7399384119999,
+      "terminal_sha256": "127bd1ff17c74bc0dbf79de5246d087f5ddc528475ff800abd7a5140e0060ebe",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_lexical",
+        "id": "r1-cami_lexical-s3",
+        "predecessor": "r1-cami_lexical-s2",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_3544b5ba9f9d4af4abfac444f7daacfd",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c55b0321d5da4c5b8570f5849bcdd00b",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a5b1c31d457f4464968f742cce5d3889",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3ca1d26b8747409892c1c47517369c9c",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d31bd77d0a504a79b31796842a644305",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0b5869e410a44b9da77b145f4c799eaa",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ec9e117ac0d9486da40fa8c691fc0531",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f95faee6171d42298a80ca02e0accf29",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_30a15e9c017b4964a17c8b9cd2f2dc69",
+          "path": "/workspace/CHANGES.rst",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a5c015386c124a6f81d9704d7f5ade37",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 72.37493132500003,
+      "terminal_sha256": "ba751677e980544963cea7f0c7ee0a77b24481ab8be23a0d06aaa00f1bff28d4",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s4",
+        "predecessor": "r1-plain-s3",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.49392250000005333,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help custom help_option_names eager option ordering regression"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7965,
+      "reads": [
+        {
+          "call_id": "call_398d94d188b2452494748b486005014a",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_56cb8f4b70fb473fa1fd2fc927f11afb",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_97119a79ea1d46969b46a0bb5972e80a",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c35f729d88e340be96dabe81554605d0",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fcd8d0b0d91440dca0abab57770db9cb",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4ce97566c4dd4476b0dcab77b3a678bd",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_050712e441624846a4eb4ed2b4beff36",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_25e58aeaa9b34d63a3925539c846cb77",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 78.32320120300005,
+      "terminal_sha256": "383b3f81708aee7341fa1a0edc8cfebc7c752c04100c159b6c27a6942d3a7931",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_lexical",
+        "id": "r1-cami_lexical-s4",
+        "predecessor": "r1-cami_lexical-s3",
+        "ranking_policy": "lexical-overlap/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.4764878339999541,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option custom help_option_names eager option ordering regression"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7965,
+      "reads": [
+        {
+          "call_id": "call_72e754e337d2495bbde84fbe6c2a3d4d",
+          "path": "/workspace",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_15e1f3e7b3674c09b96a8dcc28288741",
+          "path": "/workspace/pyproject.toml",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9271079365c5418087204269dd08fbf2",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6f5c94179ff0418481a0c7348587562a",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f5db7e9c8f0b482a8743649a579847d1",
+          "path": "/workspace/src/click/decorators.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0e5af0b6a57f4a77bf471a2350639168",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_746bd23a82d745ceaa39d9169d25877c",
+          "path": "/workspace/tests/test_formatting.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a1ce4f8c42c240bb97fc82b25dfd1091",
+          "path": "/workspace/tests/test_basic.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_945afebc625c448db5a1c547309f2bda",
+          "path": "/workspace/src/click/core.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_17ef598605904b5daa4ca35f3534896c",
+          "path": "/workspace/tests/test_context.py",
+          "status": "completed"
+        },
+        {
+          "call_id": "call_61b5916e2d6749efa151be525b594963",
+          "path": "/workspace/tests/conftest.py",
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 81.187094871,
+      "terminal_sha256": "9a56844adcda29a72ce6a149206618f4d6f41012223d9f720bb16442f8000af0",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_identifier",
+        "id": "r1-cami_identifier-s4",
+        "predecessor": "r1-cami_identifier-s3",
+        "ranking_policy": "identifier-mentions/1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    }
+  ]
+}
