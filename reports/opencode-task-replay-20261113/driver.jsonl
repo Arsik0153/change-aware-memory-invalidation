@@ -1,0 +1,16 @@
+{"event": "starting", "condition": "plain", "expected_cache_hit": false, "id": "plain-s1", "stage": 1, "task": "click-help-option-api"}
+{"event": "terminal", "trial": "plain-s1", "status": "passed", "error": null}
+{"event": "starting", "condition": "exact_replay", "expected_cache_hit": false, "id": "exact_replay-s1", "stage": 1, "task": "click-help-option-api"}
+{"event": "terminal", "trial": "exact_replay-s1", "status": "passed", "error": null}
+{"event": "starting", "condition": "exact_replay", "expected_cache_hit": true, "id": "exact_replay-s2", "stage": 2, "task": "click-help-option-api"}
+{"event": "terminal", "trial": "exact_replay-s2", "status": "passed", "error": null}
+{"event": "starting", "condition": "plain", "expected_cache_hit": false, "id": "plain-s2", "stage": 2, "task": "click-help-option-api"}
+{"event": "terminal", "trial": "plain-s2", "status": "passed", "error": null}
+{"event": "starting", "condition": "plain", "expected_cache_hit": false, "id": "plain-s3", "stage": 3, "task": "click-help-eagerness"}
+{"event": "terminal", "trial": "plain-s3", "status": "passed", "error": null}
+{"event": "starting", "condition": "exact_replay", "expected_cache_hit": false, "id": "exact_replay-s3", "stage": 3, "task": "click-help-eagerness"}
+{"event": "terminal", "trial": "exact_replay-s3", "status": "passed", "error": null}
+{"event": "starting", "condition": "exact_replay", "expected_cache_hit": true, "id": "exact_replay-s4", "stage": 4, "task": "click-help-eagerness"}
+{"event": "terminal", "trial": "exact_replay-s4", "status": "passed", "error": null}
+{"event": "starting", "condition": "plain", "expected_cache_hit": false, "id": "plain-s4", "stage": 4, "task": "click-help-eagerness"}
+{"event": "terminal", "trial": "plain-s4", "status": "passed", "error": null}

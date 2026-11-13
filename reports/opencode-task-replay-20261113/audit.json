@@ -1,0 +1,127 @@
+{
+  "blocks": {
+    "exact_replay": {
+      "charged_wall_seconds": 225.03199483199995,
+      "complete": true,
+      "token_work": 67567
+    },
+    "plain": {
+      "charged_wall_seconds": 395.714169244,
+      "complete": true,
+      "token_work": 99672
+    }
+  },
+  "direction_supported": true,
+  "protocol_sha256": "5dcb049c598aa232a6c46eadfa3efd610b6001ea6231fcc0309c5867a239d547",
+  "provider_reported_tiers": [
+    "default"
+  ],
+  "scope": "Exact repeated tasks with fresh grading. First-solution and recording costs included. Measured pipeline durations verified arithmetically, not an independent clock or host-quietness audit. No inference for changed-input reuse or general task distributions.",
+  "status": "verified",
+  "trials": [
+    {
+      "terminal_sha256": "54bd9a202c0596393b3a81ac634e4dfb14ce5e78923e44419f1de32af3b3637f",
+      "token_work": 27967,
+      "trial": {
+        "condition": "plain",
+        "expected_cache_hit": false,
+        "id": "plain-s1",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "verified_artifacts": 552,
+      "wall_seconds": 122.03575109699995
+    },
+    {
+      "terminal_sha256": "060f57612342c1fbe06a7a503e58eb7c2bcf9c2c4113b1481d7150b3bbf52ac1",
+      "token_work": 27899,
+      "trial": {
+        "condition": "exact_replay",
+        "expected_cache_hit": false,
+        "id": "exact_replay-s1",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "verified_artifacts": 555,
+      "wall_seconds": 143.354498357
+    },
+    {
+      "terminal_sha256": "25a75df4e83594ff5bb22eebdcb4b0a1189048e4a4a08ef82218a08f7ff08094",
+      "token_work": 0,
+      "trial": {
+        "condition": "exact_replay",
+        "expected_cache_hit": true,
+        "id": "exact_replay-s2",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "verified_artifacts": 311,
+      "wall_seconds": 1.7414190419999613
+    },
+    {
+      "terminal_sha256": "853ee985198c86569dc4f51b8e31a5a3b43afdf21b8898dfc13e68ed5a0144c2",
+      "token_work": 24956,
+      "trial": {
+        "condition": "plain",
+        "expected_cache_hit": false,
+        "id": "plain-s2",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "verified_artifacts": 552,
+      "wall_seconds": 111.356405343
+    },
+    {
+      "terminal_sha256": "f59891c4593ecc8317aa402fcb7faad2eae46ec9c2cab1f15dedfaf06479206b",
+      "token_work": 26986,
+      "trial": {
+        "condition": "plain",
+        "expected_cache_hit": false,
+        "id": "plain-s3",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "verified_artifacts": 552,
+      "wall_seconds": 69.46126178099996
+    },
+    {
+      "terminal_sha256": "a76f6ee4fde6783258b164fced41cb38ce0af4c2c5223c9f3009b8fe176dcaaf",
+      "token_work": 39668,
+      "trial": {
+        "condition": "exact_replay",
+        "expected_cache_hit": false,
+        "id": "exact_replay-s3",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "verified_artifacts": 554,
+      "wall_seconds": 76.96042511899998
+    },
+    {
+      "terminal_sha256": "eed3e69f3f3f657ae1678c43c3d5786d9dc31c31b5414cb744c556f5ca002fbe",
+      "token_work": 0,
+      "trial": {
+        "condition": "exact_replay",
+        "expected_cache_hit": true,
+        "id": "exact_replay-s4",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "verified_artifacts": 311,
+      "wall_seconds": 1.7340328340000042
+    },
+    {
+      "terminal_sha256": "128ff743d6fe96cdece1852444770006f02e66628bd4c125c10b757fc6b07850",
+      "token_work": 19763,
+      "trial": {
+        "condition": "plain",
+        "expected_cache_hit": false,
+        "id": "plain-s4",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "verified_artifacts": 552,
+      "wall_seconds": 91.6191315430001
+    }
+  ]
+}
