@@ -1,0 +1,9 @@
+{
+  "algorithm": "zlib level1, canonical base64 TEXT, explicit decoded length",
+  "design": "generation-json-zlib1-screening-v1",
+  "input_protocol_sha256": "90b3d3d6ce1125f2d21c6bb86ae512b304a18cbb4a8a5e5329042c66096657f1",
+  "maximum_total_decoded_generation_bytes": 268435456,
+  "primary_target": "at least50% smaller SQLite file in every case; exact reconstruction of every SQL row",
+  "runner_sha256": "c860b24ae19304dfef1f9c68ccf9571048b47399dcdc38aca2be5b6d7f67c1d9",
+  "scope": "Offline experimental schema1003 copies only. No production reader/migration, no agent or MCP calls, no speed claim. Encoding elapsed time is one descriptive observation, including updates and VACUUM. Originals must remain unchanged."
+}

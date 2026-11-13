@@ -1,0 +1,57 @@
+{
+  "status": "verified",
+  "cases": [
+    {
+      "id": "r1-cami",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r1-cami_replay",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r2-cami",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r2-cami_replay",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r3-cami",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r3-cami_replay",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r4-cami",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r4-cami_replay",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r5-cami",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    },
+    {
+      "id": "r5-cami_replay",
+      "status": "verified",
+      "all_sql_rows_exact": true
+    }
+  ],
+  "summary_sha256": "c3e548c953f9201d880f8db638327ae0f50299b1b46d5919b470db3e9f3eb860",
+  "scope": "Offline copied-file representation only. All SQL rows reconstruct exactly, including original generation JSON bytes; original hashes unchanged. No production compatibility, speed or model efficiency claim."
+}

@@ -13,6 +13,8 @@ import sys
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime-root', type=Path, required=True)
+    parser.add_argument('--baseline-runtime', type=Path)
+    parser.add_argument('--design', default='lexical-path-real-mcp-v1')
     parser.add_argument('--run', action='store_true')
     args = parser.parse_args()
     root = args.runtime_root.resolve()
@@ -26,8 +28,9 @@ def main():
     study_path = root.parent / 'runtime-v10/runs/storage-admission/study.json'
     study = common.read(study_path)
     protocol_path = root / 'runs/path-mcp-protocol.json'
-    sides = {'baseline': root.parent / 'runtime-v10/src', 'candidate': root / 'src'}
-    adapter = root.parent / 'runtime-v10/integrations/opencode'
+    baseline = args.baseline_runtime.resolve() if args.baseline_runtime else root.parent / 'runtime-v10'
+    sides = {'baseline': baseline / 'src', 'candidate': root / 'src'}
+    adapter = baseline / 'integrations/opencode'
     worker = Path(__file__).with_name('path_mcp_worker.py')
     pins = {side: common.file_hashes(path) for side, path in sides.items()}
     pins.update(adapter=common.file_hashes(adapter), worker=common.digest(worker),
@@ -46,7 +49,7 @@ def main():
                     and len(json.dumps(row, sort_keys=True, ensure_ascii=True, separators=(',', ':')).encode()) <= 16384)
                 cases.append({'id': name, 'source': str(source),
                               'source_files': common.file_hashes(source), 'expected': expected})
-        common.write(protocol_path, {'design': 'lexical-path-real-mcp-v1', 'pins': pins,
+        common.write(protocol_path, {'design': args.design, 'pins': pins,
             'image': study['image'], 'cases': cases, 'repetitions_per_side': 5,
             'scope': 'Ten copied source-memory stores from two development tasks. '
                      'One initial MCP process per side includes schema1 conversion and analyzer '
@@ -63,7 +66,7 @@ def main():
         return
 
     protocol = common.read(protocol_path)
-    assert pins == protocol['pins']
+    assert pins == protocol['pins'] and args.design == protocol['design']
     out = root / 'runs/path-mcp'
     out.mkdir(exist_ok=False)
     common.write(out / 'protocol.json', protocol)
