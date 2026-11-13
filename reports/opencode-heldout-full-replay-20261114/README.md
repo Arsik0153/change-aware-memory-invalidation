@@ -38,3 +38,23 @@ Final runtime-v14 admission passed both fixed gold evaluations, both poisoned-ba
 During the frozen run, `r3-static-s1` encountered two native OpenCode `provider.transport` WebSocket1006 errors. OpenCode internally retried and completed the model session; both failed assistant responses lack token/tier evidence. This is a provider-telemetry failure, not a controller trial retry. Its normalized known subtotal is19,994 token work plus150,784 cache-read tokens; unreported failed-response usage remains unknown. Runtime-v14 rejects the trial before capture/grading, so it remains a failed primary attempt. Its source was separately preserved at `diagnostics/r3-static-s1-source` before the next canonical reset, without changing terminal artifacts or rerunning a model. The preregistered full-study eligibility gate therefore cannot pass. All remaining scheduled attempts were completed and retained; no outcome was replaced. A future-controller correction preserves/grades completed source before rejecting missing-tier evidence, while keeping all primary gates and no-learning rules unchanged.
 
 `r3-static-s3` subsequently encountered the same transport failure with one missing-token/tier assistant response and an internal native retry. Its primary attempt also remains failed and ungraded. The completed source was preserved separately at `diagnostics/r3-static-s3-source` before the next canonical reset. `grade_preserved.py` graded both preserved candidates after all80 primary attempts terminated, with zero model calls and unchanged primary terminal hashes. Those forensic grades cannot repair missing usage or make the original study eligible. `account_all_attempts.py` retains known normalized subtotals and explicit unknown usage from every attempt, including both failures.
+
+
+## Separate post-hoc lower-bound audit
+
+`post-hoc-lower-bounds.json` is an analysis chosen **after** observing the completed
+run. It rechecks all80 primary artifacts and the separately preserved forensic
+grades. It leaves `eligible=false` and `direction_supported=false` unchanged.
+The complete candidate is below the baseline’s already-observed token work and
+pipeline wall in all15 pairs, including the incomplete static block:74,811 versus
+**at least**106,577 token work and253.25 versus **at least**434.99 seconds. Unknown
+baseline response usage is never guessed or set to zero; nonnegative additions
+cannot reverse these inequalities. Any omitted grading cost also only adds time.
+
+All five disjoint token components are nonincreasing against the known baseline
+subtotals in all15 pairs. Thus identical nonnegative linear token rates imply a
+nonincreasing modeled token charge under these bounds, without implying an actual
+invoice. This does not estimate a retry-free counterfactual, isolate transport
+causality, establish a population confidence interval, or satisfy the original
+all80-successful/all-telemetry-complete gate. See the [separate figure](lower-bounds.png),
+[PDF](lower-bounds.pdf) and reproducible `audit_lower_bounds.py`.
