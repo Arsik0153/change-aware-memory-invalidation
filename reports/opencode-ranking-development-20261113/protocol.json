@@ -1,0 +1,204 @@
+{
+  "analysis_files": {
+    "README.md": "c00c7cd24dd6ada29d68ba9c48e1089e08f39e3615122eda4eaad14cc2ddaea9",
+    "STALENESS.md": "bd619f90ab2f5b36f0d180f16742f32ff6ab30f46704d7187e3d6551cd659e79",
+    "aggregate_metrics.py": "fd63cf802e70b946b18002002bbdcab5b357fcba58aee5d3d989902ec56d8dee",
+    "aggregate_study.py": "05845521d2a2a477207d2d45cc283b88b2c4f662645b6378daef0deda7f4a996",
+    "classify_literal_calls.py": "098f0e29fc76e07b12eeb41c2fa5e41023d38fa3fdcde8b461269ff08de4c5bf",
+    "classify_memory_calls.py": "2af162c62de6078e5502e31b4421270cd2c7815bc5c0909d374bdc7402ba7c1c",
+    "format_diagnostics.py": "5236217c2713b9212ffc365c4124fabaf6fd24a3b8476131309105214d22fb99",
+    "format_probe.py": "2f716f3f6bdfe426708a4a1e8bb2f1f2bdc536783d096b53f9f3b70acbafee7d",
+    "identifier_replay.py": "c89637e4511c286741fd76d53b2a6a953055cc1d41f0fd5fbc2775c652cf036e",
+    "literal_reference.py": "3431703805f84a695a5e05be9f1a9284b42218cadc2a871cb3d2b7e05b5bb6a9",
+    "ranking_probe.py": "db66c1c0f5b2460e5ce6ea38b42c1a2df9de654ac126f53947770b4c6424c7af",
+    "service_tier_evidence.py": "706c2bdb918782389b77afabcb245c93756e678571a876791c814428a90a78c6",
+    "summarize_literal_staleness.py": "063da330decbd340fd2bb524b82a1e43f71c273cc9029c6ced939c05b2e99e9d",
+    "summarize_resources.py": "a32c022005abdf885be0b77b1002595c0c4cb592c7c967d88564533f21c3bb60",
+    "summarize_terminal_staleness.py": "084677acdb75c9e53c8e7d510cd52dd7ee57d870aff49f5b208f50dfe9b1fa87",
+    "supported_rules.json": "f77c6979430ef54f4c8663baf50af5d2623a96be5d53ecf2e3f9b12fd8ea8fc4",
+    "test_aggregate.py": "f688054926b54ac81976dd268fba8e6eb0e3f49a371b884a284a1b48d0e14ea2",
+    "test_format_probe_analysis.py": "cc11a0296ec9988cae6d19ad9cdd860b92a7ea64b02b467910689ba33949d66c",
+    "test_literal_cohort.py": "e43dc12cfaa949f80ecd16348c6a141ce09420c47c5cff8ae4aa6081dccef60c",
+    "test_literal_staleness.py": "bdc013b012eaccc7f85b3c2d3a7c9e339b852b3b589130d53af65306569c6033",
+    "test_ranking_probe_analysis.py": "e05e0586263e5da38d997d4e555af54bd81e0cbddeeda360ac3b46eb6cab6830",
+    "test_resources.py": "6cf8dab22d19f49c1a8da6734720b82ce2477e2ee9500078aa662d922e075780",
+    "test_service_tier_admission.py": "a68c65799d5ada7939c7003c7e324d189bb7e4efebd086b76b9b0133b6c0ad74",
+    "test_staleness.py": "20ce00c8b363430af83c882a3178a1aaeb2faefb7f3cfc219ad350376e4e036a"
+  },
+  "authorization": "User requested continued local implementation and execution until stopped; no heldout sessions.",
+  "host": "macOS ARM64 with Docker Desktop; Linux named volume for all live state",
+  "motivation": "Post-hoc replay found four omissions of one explicitly named function among seventeen dependent historical queries; no prior model utility evidence for this intervention.",
+  "rules": {
+    "conditions": [
+      {
+        "arm": "plain",
+        "id": "plain",
+        "ranking_policy": "lexical-overlap/1",
+        "response_format": "readable"
+      },
+      {
+        "arm": "cami",
+        "id": "cami_lexical",
+        "ranking_policy": "lexical-overlap/1",
+        "response_format": "readable"
+      },
+      {
+        "arm": "cami",
+        "id": "cami_identifier",
+        "ranking_policy": "identifier-mentions/1",
+        "response_format": "readable"
+      }
+    ],
+    "design": "identifier-ranking-development-v1",
+    "direction_rule": "Strictly lower total noncached normalized token work AND native read result text bytes over four stages; all twelve operational/quality/telemetry gates pass and provider tier is uniform and complete.",
+    "maximum_model_sessions": 12,
+    "plain_role": "Descriptive context only; not a primary superiority comparison.",
+    "primary_comparison": [
+      "cami_identifier",
+      "cami_lexical"
+    ],
+    "read_schema": "opencode-native-read-text/2",
+    "read_scope": "UTF8 text in completed native read content plus error.message in exact {type,message} error objects, before redaction. Excludes error type labels, wrappers, shell reads and wire bytes. Unsupported/pending/running/incomplete evidence is unknown, never zero.",
+    "repetitions": 1,
+    "scope": "Exploratory dependent A,A,B,B sequence on two development tasks, selected after offline diagnosis. No independent replication or population superiority inference.",
+    "stopping_rule": "Exactly one scheduled block. Preserve all failures. No retries, replacement sessions, extensions, old-block pooling or heldout calls.",
+    "token_scope": "Normalized input+cache.write+output+reasoning once per session; cache.read separately retained. Not billed currency.",
+    "wall_eligibility": "Descriptive only; host quietness not independently established."
+  },
+  "schedule": [
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s1",
+      "predecessor": null,
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s1",
+      "predecessor": null,
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s1",
+      "predecessor": null,
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s2",
+      "predecessor": "r1-cami_lexical-s1",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s2",
+      "predecessor": "r1-cami_identifier-s1",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s2",
+      "predecessor": "r1-plain-s1",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s3",
+      "predecessor": "r1-cami_identifier-s2",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s3",
+      "predecessor": "r1-plain-s2",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s3",
+      "predecessor": "r1-cami_lexical-s2",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s4",
+      "predecessor": "r1-plain-s3",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s4",
+      "predecessor": "r1-cami_lexical-s3",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s4",
+      "predecessor": "r1-cami_identifier-s3",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    }
+  ],
+  "source_commit": "19fb65e",
+  "status": "frozen_authorized_development_execution"
+}

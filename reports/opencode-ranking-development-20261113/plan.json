@@ -1,0 +1,137 @@
+{
+  "maximum_model_sessions": 12,
+  "trials": [
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s1",
+      "predecessor": null,
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s1",
+      "predecessor": null,
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s1",
+      "predecessor": null,
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 1,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s2",
+      "predecessor": "r1-cami_lexical-s1",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s2",
+      "predecessor": "r1-cami_identifier-s1",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s2",
+      "predecessor": "r1-plain-s1",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 2,
+      "task": "click-help-option-api"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s3",
+      "predecessor": "r1-cami_identifier-s2",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s3",
+      "predecessor": "r1-plain-s2",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s3",
+      "predecessor": "r1-cami_lexical-s2",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 3,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "plain",
+      "condition": "plain",
+      "id": "r1-plain-s4",
+      "predecessor": "r1-plain-s3",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_lexical",
+      "id": "r1-cami_lexical-s4",
+      "predecessor": "r1-cami_lexical-s3",
+      "ranking_policy": "lexical-overlap/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    },
+    {
+      "arm": "cami",
+      "condition": "cami_identifier",
+      "id": "r1-cami_identifier-s4",
+      "predecessor": "r1-cami_identifier-s3",
+      "ranking_policy": "identifier-mentions/1",
+      "repetition": 1,
+      "response_format": "readable",
+      "stage": 4,
+      "task": "click-help-eagerness"
+    }
+  ]
+}
