@@ -100,7 +100,7 @@ def test_typed_expectations_are_preserved(kind, expected):
 def test_dispatch_same_backend_once_and_audited_errors(tmp_path, monkeypatch, arm, mode, fail):
     value, calls = response(arm), []
     class FakeBackend:
-        def __init__(self, path):
+        def __init__(self, path, *, ranking_policy="lexical-overlap/1"):
             self.binding = {'repo': str(tmp_path / 'repo'), 'backend': arm, 'catalog_sha256': 'b' * 64, 'state_home': None}
         def lookup(self, query, limit):
             calls.append((query, limit))
@@ -173,12 +173,12 @@ def test_cli_optin_and_default(monkeypatch, tmp_path, mode):
     if mode == 'compact':
         argv += ['--response-format', 'compact']
     monkeypatch.setattr(sys, 'argv', argv)
-    assert adapter.main() == 0 and seen == [{'response_format': mode}]
+    assert adapter.main() == 0 and seen == [{'response_format': mode, 'ranking_policy': 'lexical-overlap/1'}]
 
 
 def test_stdio_compact_transport_has_only_jsonrpc_stdout(tmp_path, monkeypatch):
     class FakeBackend:
-        def __init__(self, path):
+        def __init__(self, path, *, ranking_policy="lexical-overlap/1"):
             self.binding = {'repo': str(tmp_path / 'repo'), 'backend': 'static', 'catalog_sha256': 'b' * 64, 'state_home': None}
         def lookup(self, query, limit):
             return response('static'), {}
@@ -195,7 +195,7 @@ def test_stdio_compact_transport_has_only_jsonrpc_stdout(tmp_path, monkeypatch):
 
 def test_failed_audit_append_does_not_return_unbound_compact_response(tmp_path, monkeypatch):
     class FakeBackend:
-        def __init__(self, path):
+        def __init__(self, path, *, ranking_policy="lexical-overlap/1"):
             self.binding = {'repo': str(tmp_path / 'repo'), 'backend': 'static', 'catalog_sha256': 'b' * 64, 'state_home': None}
         def lookup(self, query, limit):
             return response('static'), {}

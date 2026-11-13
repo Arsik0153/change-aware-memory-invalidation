@@ -175,3 +175,22 @@ passed with private state removed. The frozen study SHA256 is
 no-model admission artifacts. The driver attempts the20 declared trials in order
 without retries. The published proposal is retained unchanged; its hash and
 explicit authorization are recorded in the new protocol.
+
+## Completed continuation and current next step
+
+The20-session format experiment is complete: every attempt passed fixed quality,
+with no retries. The combined hypothesis remains inconclusive because published
+native read text was redacted before exact byte measurement. See
+`../opencode-format-development-20261113/README.md` for the untouched frozen
+analysis and complete evidence.
+
+Source `66ed57a` repairs pre-publication byte measurement and non-assistant
+message handling; no-model verification and limitations are preserved in
+`../opencode-native-read-measurement-20261113/README.md`.
+
+Subsequent post-hoc diagnosis identified explicit symbol omissions in compound
+queries. The opt-in identifier ranking now addresses that case without changing
+the default or CAMI freshness rules. Its authored tests and offline fixed-query
+replay are in `../opencode-identifier-ranking-20261113/README.md`. The next unit
+is a separately frozen agent comparison, not a replay or extension of the closed
+format experiment. No heldout sessions or further model calls have been run.

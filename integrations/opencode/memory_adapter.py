@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 import time
 
-from memory_backend import Backend, canonical, cpu, digest, prepare, storage
+from memory_backend import Backend, LEXICAL_RANKING, RANKING_POLICIES, canonical, cpu, digest, prepare, storage
 from compact_response import compact_result
 from readable_response import readable_result
 
@@ -47,12 +47,13 @@ def trace(path, value):
 
 
 class Server:
-    def __init__(self, binding_path, trace_path, response_format="full"):
+    def __init__(self, binding_path, trace_path, response_format="full", *, ranking_policy=LEXICAL_RANKING):
         if response_format not in {"full", "compact", "readable"}:
             raise ValueError("response format must be full, compact or readable")
         self.response_format = response_format
+        self.ranking_policy = ranking_policy
         started, started_cpu = time.perf_counter(), cpu()
-        self.backend = Backend(binding_path)
+        self.backend = Backend(binding_path, ranking_policy=ranking_policy)
         self.trace_path = trace_path
         if trace_path.is_relative_to(Path(self.backend.binding["repo"])):
             raise ValueError("trace must be outside target repo")
@@ -63,6 +64,7 @@ class Server:
                 "event": "server_start",
                 "backend": self.backend.binding["backend"],
                 "catalog_sha256": self.backend.binding["catalog_sha256"],
+                **({"ranking_policy": ranking_policy} if ranking_policy != LEXICAL_RANKING else {}),
                 "wall_seconds": time.perf_counter() - started,
                 "cpu_seconds_self_and_completed_children": cpu() - started_cpu,
                 "timing_scope": "server constructor; excludes Python/stdlib imports/CLI startup; first CAMI import charged to first lookup",
@@ -173,6 +175,7 @@ class Server:
                     "response_bytes": len(canonical(result)),
                     "error": error,
                     **detail,
+                    **({"ranking_policy": self.ranking_policy} if self.ranking_policy != LEXICAL_RANKING else {}),
                     **response_audit,
                     "timing_scope": "tool backend/imports/retrieval/serialization/storage observation; excludes JSON-RPC input/output and trace append; external harness must time whole process/session",
                 },
@@ -182,12 +185,13 @@ class Server:
 
 
 def serve(
-    binding_path, trace_path, input_stream=None, output_stream=None, *, response_format="full"
+    binding_path, trace_path, input_stream=None, output_stream=None, *, response_format="full",
+    ranking_policy=LEXICAL_RANKING,
 ):
     incoming = input_stream or sys.stdin.buffer
     outgoing = output_stream or sys.stdout.buffer
     with redirect_stdout(sys.stderr):
-        server = Server(binding_path, trace_path, response_format=response_format)
+        server = Server(binding_path, trace_path, response_format=response_format, ranking_policy=ranking_policy)
     while True:
         line = incoming.readline(MAX_MESSAGE + 1)
         if not line:
@@ -232,6 +236,7 @@ def main():
     server = commands.add_parser("serve")
     server.add_argument("--binding", type=Path, required=True)
     server.add_argument("--trace", type=Path, required=True)
+    server.add_argument("--ranking-policy", choices=RANKING_POLICIES, default=LEXICAL_RANKING)
     server.add_argument(
         "--response-format",
         choices=("full", "compact", "readable"),
@@ -257,7 +262,8 @@ def main():
             )
         else:
             serve(
-                args.binding.resolve(), args.trace.resolve(), response_format=args.response_format
+                args.binding.resolve(), args.trace.resolve(), response_format=args.response_format,
+                ranking_policy=args.ranking_policy,
             )
         return 0
     except (OSError, ValueError) as exc:

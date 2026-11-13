@@ -78,7 +78,7 @@ def make_server(tmp_path, monkeypatch, arm, mode="readable", case="literal"):
         value["entries"] = []
 
     class FakeBackend:
-        def __init__(self, path):
+        def __init__(self, path, *, ranking_policy="lexical-overlap/1"):
             self.binding = {"repo": str(tmp_path / "repo"), "backend": arm,
                             "catalog_sha256": "b" * 64, "state_home": None}
             self.fail = case == "error"
@@ -239,7 +239,7 @@ def test_adapter_cli_accepts_optin_and_preserves_default(tmp_path, monkeypatch, 
     if mode:
         argv += ["--response-format", mode]
     monkeypatch.setattr(sys, "argv", argv)
-    assert adapter.main() == 0 and seen == [{"response_format": mode or "full"}]
+    assert adapter.main() == 0 and seen == [{"response_format": mode or "full", "ranking_policy": "lexical-overlap/1"}]
 
 
 def test_adapter_rejects_unknown_format_before_backend_construction(tmp_path, monkeypatch):

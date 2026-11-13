@@ -100,7 +100,7 @@ The study controller freezes one format for both memory arms and checks actual c
 
 Unsupported responses, including notes, mixed record types, empty or withheld-only results and backend failures, use the existing compact response and receipt exactly. The trace keeps `response_format: "readable"` as the requested mode; its audit records `requested_format`, `effective_format` and `fallback_reason`. Backend failures still return unavailable freshness and no historical data. The default remains `full`, and existing full and compact responses are unchanged.
 
-The container harness accepts `--memory-response-format readable` and forwards the option for both memory arms. Plain OpenCode has no memory MCP server even when this study option is selected. Use an updated study controller that verifies readable receipts and compact fallbacks before admitting this format; older controllers do not support it. Readable mode has not yet been benchmarked. Its full-response audit storage and serialization remain chargeable, and no token, latency or cost advantage is claimed.
+The container harness accepts `--memory-response-format readable` and forwards the option for both memory arms. Plain OpenCode has no memory MCP server even when this study option is selected. Use an updated study controller that verifies readable receipts and compact fallbacks before admitting this format; older controllers do not support it. A [20-session local development comparison](../../reports/opencode-format-development-20261113/README.md) preserved quality but remained inconclusive under its combined token/read-byte criterion. Its full-response audit storage and serialization remain chargeable, and no token, latency or cost advantage is claimed.
 
 ## OpenCode 2.2.5 local configuration
 
@@ -130,3 +130,27 @@ Profile representative operations before optimizing. For example, use `python -m
 The authored tests cover independent static preparation with zero CAMI imports, exact semantic catalog equality, method notes, dirty/untracked edits, sticky note review, failed refresh without old-text fallback, origin mismatch, frozen-catalog tampering, two-worktree state isolation, optional existence/signature carry/mismatch/deletion, shared ranking/budget, 1024-entry cap before capture, JSON-only stdio lifecycle, protocol fallback, invalid arguments, and oversized-message recovery. Tests use newly authored temporary repositories, not benchmark tasks or future oracles.
 
 This integration has passed authored transport/backend tests. Real OpenCode smoke results and task benchmark results are recorded separately. A full-catalog preflight exposed a duplicate note-key error in the first source-note generator; the failed run is preserved and catalog validation now rejects duplicate global note keys before CAMI imports or source capture. No end-to-end efficiency advantage is claimed.
+
+
+## Optional identifier ranking
+
+`serve --ranking-policy identifier-mentions/1` prioritizes explicitly named code
+symbols in a compound query before the existing lexical overlap score. Qualified
+and snake-style references match without case sensitivity. Other capitalized
+names require the written spelling, so ordinary lowercase prose does not become
+a class reference. A qualified reference takes priority over an unqualified one;
+whole-query exact matches retain their original first priority. Ambiguous names
+still use the existing lexical score and stable ID order.
+
+The default is `lexical-overlap/1`. Both policies use the same immutable origin
+catalog, requested limit,16384-byte origin-record ceiling, and ranking before
+availability. CAMI withholds unsupported selected records without backfilling;
+static keeps its unchecked-origin label. The chosen opt-in policy is recorded
+in server-start and lookup traces, including failed lookups. Display formatting,
+freshness claims and source validation are unchanged.
+
+This option is a separate retrieval intervention, not part of the closed format
+comparison. Generic tests and replay of recorded queries verify identifier
+coverage; no model cost, latency or task-quality improvement is established.
+The existing fixed study controller does not admit this flag: a future model
+comparison must freeze and validate its own ranking conditions first.

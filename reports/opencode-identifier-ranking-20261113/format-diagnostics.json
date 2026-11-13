@@ -1,0 +1,2783 @@
+{
+  "schema_version": 1,
+  "scope": "Post-hoc descriptive diagnostics, not a new success rule or causal attribution. Repeated observations are dependent. Backend spans exclude RPC/trace append and are nested within session wall: never add them to charged totals. Native read counts do not recover original read bytes or identify avoidable reads.",
+  "study_sha256": "d6199ba3b2b3b6952901b64325928213a7802b484574a4362d453f14637aa05d",
+  "summary": {
+    "cami_compact": {
+      "construction_host_wall_seconds": 2.015599500999997,
+      "lookup_backend_wall_seconds": 2.900853749999669,
+      "lookup_nested_fraction_of_session_wall": 0.006694955199265424,
+      "memory_calls": 4,
+      "memory_response_bytes": 33620,
+      "native_read_calls": 50,
+      "native_read_paths": {
+        "null": 50
+      },
+      "native_read_states": {
+        "completed": 50
+      },
+      "requested_limits": {
+        "5": 4
+      },
+      "returned_record_observations": 16,
+      "session_host_wall_seconds": 433.289493904,
+      "truncated_record_observations": 5,
+      "withheld_record_observations": 4
+    },
+    "cami_readable": {
+      "construction_host_wall_seconds": 2.041695292999975,
+      "lookup_backend_wall_seconds": 4.446385875999795,
+      "lookup_nested_fraction_of_session_wall": 0.009894755254991797,
+      "memory_calls": 5,
+      "memory_response_bytes": 37213,
+      "native_read_calls": 52,
+      "native_read_paths": {
+        "null": 52
+      },
+      "native_read_states": {
+        "completed": 52
+      },
+      "requested_limits": {
+        "3": 1,
+        "5": 4
+      },
+      "returned_record_observations": 18,
+      "session_host_wall_seconds": 449.3679491219999,
+      "truncated_record_observations": 7,
+      "withheld_record_observations": 5
+    },
+    "plain": {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "lookup_nested_fraction_of_session_wall": 0.0,
+      "memory_calls": 0,
+      "memory_response_bytes": 0,
+      "native_read_calls": 42,
+      "native_read_paths": {
+        "null": 42
+      },
+      "native_read_states": {
+        "completed": 41,
+        "error": 1
+      },
+      "requested_limits": {},
+      "returned_record_observations": 0,
+      "session_host_wall_seconds": 467.0050118389996,
+      "truncated_record_observations": 0,
+      "withheld_record_observations": 0
+    },
+    "static_compact": {
+      "construction_host_wall_seconds": 0.6038062500000478,
+      "lookup_backend_wall_seconds": 0.059986082000136776,
+      "lookup_nested_fraction_of_session_wall": 0.0001370491308670046,
+      "memory_calls": 4,
+      "memory_response_bytes": 36067,
+      "native_read_calls": 51,
+      "native_read_paths": {
+        "null": 51
+      },
+      "native_read_states": {
+        "completed": 51
+      },
+      "requested_limits": {
+        "5": 4
+      },
+      "returned_record_observations": 20,
+      "session_host_wall_seconds": 437.6976462429999,
+      "truncated_record_observations": 4,
+      "withheld_record_observations": 0
+    },
+    "static_readable": {
+      "construction_host_wall_seconds": 0.6324004580000064,
+      "lookup_backend_wall_seconds": 0.05516666700032147,
+      "lookup_nested_fraction_of_session_wall": 0.00012940291461267952,
+      "memory_calls": 4,
+      "memory_response_bytes": 34278,
+      "native_read_calls": 50,
+      "native_read_paths": {
+        "null": 50
+      },
+      "native_read_states": {
+        "completed": 50
+      },
+      "requested_limits": {
+        "5": 4
+      },
+      "returned_record_observations": 20,
+      "session_host_wall_seconds": 426.31703594500004,
+      "truncated_record_observations": 6,
+      "withheld_record_observations": 0
+    }
+  },
+  "trials": [
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_7560d3f59366455486dfc34b6bbba6b5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0f4311ea936f401ea23e01d537efba93",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9d54e3f421d54d9d941cf88c8ba2f168",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ebc1606c7d8e49ff810c2eaaf1220b75",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e6d5475073d44bf8afa259c5c99991a2",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e7904e1b4af44f80984e4aad007dda03",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dab2668854bb444da1dfae767918768a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e02f043ee3f44dd19bb4e1558da5aa27",
+          "path": null,
+          "status": "error"
+        },
+        {
+          "call_id": "call_d80a9bf16f6f4bf4984d099e7c9daf11",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1ae54bda3cba40b4b0b4b775f20b8352",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_40fcc5fc8d8c474b95f4a4c57809162f",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 139.513962398,
+      "terminal_sha256": "75e8690084e703e53ab61a5da5052a97c7597a256bf6ab40079dcc59514deef4",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0.6038062500000478,
+      "lookup_backend_wall_seconds": 0.014539124999942032,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click help option Option Command.get_help_option decorators help_option tests repository prior context"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8754,
+      "reads": [
+        {
+          "call_id": "call_87c9a23282894db199f88bf4b57a1232",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_679b791d31e74855b3f8fc2f36ace98b",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_25beeec2fcf64c44a55b0c00fb9f1a12",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ca92086239f544418d0de85cb30a2229",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e378d9c33b2244ab8d8f5b2790b50c8e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_649dcf052f8b470b8c44ab7387b2ebc7",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fe6aa8193d3c47109d4626db48a8f43d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cc1807af3f2c45d1acdf6ad04c037b6f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f60584a5f5a241c8ab34624a0b4c455c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0f30eb417f6042c886aaa98ab111992e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_315befa386f34d70956d32fdf9a2f13f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0cd972892d2f4c23b5dc18ed155e08bc",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5164abbf8e0a4b8e9b00c44a8242397a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e4c0e9e2d6ef46a7a8854c3837f238c5",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b554841902ccb1dffd238050",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Context.get_help"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 142.700235272,
+      "terminal_sha256": "15a718b8075bd39eca0f2a0a64b3409f8837adc5884ed8462857bac527733535",
+      "trial": {
+        "arm": "static",
+        "condition": "static_compact",
+        "id": "r1-static_compact-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 2.015599500999997,
+      "lookup_backend_wall_seconds": 0.8960147079999388,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click help option get_help_option help_option decorator Option public exports tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8737,
+      "reads": [
+        {
+          "call_id": "call_e3dfc9e294334ae89b7c3e4ed717a597",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_46a3909ac8014909acba0e571cf6a269",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7245156ce130485aa1b53359508051dd",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_027bbd90fb6d44df8d64e488bdb5b398",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7e4d09acc92a4651b5a0162137a07a1c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4a7aa61626034c6a9c958e038f593cc7",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8ca92c2ba8b847eeac76636bac654446",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_17b7d0e200f2414d8138ee7e50368de5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3f53b544a84540399d4f12e2f50db465",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_529e39ab51cc4cc0b996fc679bd3f84c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a1114d2300194cbabcd2d59f8b7ec334",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_206e7ea5e6254dc889d1c4767962283d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d6a4f5bcf8da40e98778241a75878b12",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e8ddcef520cf47dfbc043667856de24e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7633d9badd844ddf9df4dd3b9fc6a471",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-15251bab7cf7d5130f4cb2bd",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "BaseCommand.get_help"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 137.45986951999998,
+      "terminal_sha256": "bc03f2e4d7cbc5e2b233d7c29a10ccdcf2b951d67067ebc2a2176b01220c799e",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_compact",
+        "id": "r1-cami_compact-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0.6324004580000064,
+      "lookup_backend_wall_seconds": 0.014463125000020227,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click HelpOption built-in help option Command.get_help_option help_option decorator tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7213,
+      "reads": [
+        {
+          "call_id": "call_914ca313f23b478e8689d3e1b8d30327",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5e7ba2a2730843229759d8a54590b3ba",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cb09a8d8a2a3443283fa3fab89b0c834",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ae22496916724d558b0c891316aa38f2",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3795fc096cc14994a3f7cd5dcdc6e6aa",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2c518b0aa0244a9b9ab12d6b9f7bad91",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b3be86d57aa24979905c0a35e4305b46",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9bda68486c78489c90304c65af92dbbd",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bc81eeace7ea429b872d6ed27da677b2",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c5c3cad7a1d0436ab4af530c184becf1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_27ef433528c1441db80f484c2280e2bf",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_df6b11d4462f410c8c70a655b3442ce4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_983231e55d6f41308a4d99d38ba62c13",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-df9d3e32ee61af23abd5ed04",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 115.51451459500004,
+      "terminal_sha256": "a724a3af83d1fdb211ff5d660c8d5fcdf0862d9198c7dcdc88f98a6136e59250",
+      "trial": {
+        "arm": "static",
+        "condition": "static_readable",
+        "id": "r1-static_readable-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 2.041695292999975,
+      "lookup_backend_wall_seconds": 1.8989601250000305,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click built-in help option HelpOption core decorators tests repository"
+          },
+          "status": "completed"
+        },
+        {
+          "input": {
+            "limit": 3,
+            "query": "src/click/core.py HelpOption Command.get_help_option src/click/decorators.py help_option"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 12810,
+      "reads": [
+        {
+          "call_id": "call_aaee7b80626c4c43bb5c688f98517d05",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0337931b8bfe463c94573150e94055eb",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0215803f7c914583a198507fad596638",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e8f3fca54a9e45d0854937ce0a08a9b1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_42f695e9646a427595418d1c2bba0e1e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0844f53277cd42ce93374884d8c001b8",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4462bc46270947c09fe3c52e552f3a26",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ee433b6e04c246b09a20ca2e7705efab",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_221ffdbdb5cf44ee9fa314fc50919b65",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_047db61a0d684606a562a6ed5aae739e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1dbf226bfb4f4c32a3c1db31b0b3d39a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_66f3b961c4a64be8b8986fd0009ac338",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_07be128e9f1049cc95933b166bace38f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9cb2cea6d27948cdac6e3e2c57aafad3",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-ae6d796088248b354c1b72e6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.__init__"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 138.77968827200004,
+      "terminal_sha256": "e1e73ce084d3c8815c4a4c738da600a5196c1b6c236e28d38024765a13c55084",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_readable",
+        "id": "r1-cami_readable-s1",
+        "predecessor": null,
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 1,
+        "task": "click-help-option-api"
+      },
+      "withheld": [
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.014915166000037061,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click help option Option Command get_help_option help_option decorator tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8259,
+      "reads": [
+        {
+          "call_id": "call_1ecaf17a9e304bdbabb4a2c9742d7ed6",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_929829c3d60448faaa7e777d44918e03",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f5c6ac20198141e0b1944751991bcf5f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bf034babf3e14e9abcfdc39c9dcc329f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dad26782219b45d380269d6bc5538896",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_02ff4289c5674e3a96c45a6090077af6",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8cd64ca187c9413991a411568d9a9250",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3cc3ad6db3af4c24a320ff5aade843d3",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3d383350fe0845a8953e73d6de245060",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9118a382f09e43d892f24424cb3f088d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c7798da5e4b84b19b5b5374e584b05eb",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_433b0070bc954b3484a554433152c034",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fd21e964fb744eadbea4b6d5580876a8",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f8281eec62f44757aa75bf1df7c066bb",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4450230def82480d9ba9ec8017435bc5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cd1c5eed17f9410cae8a4967559aad08",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-df9d3e32ee61af23abd5ed04",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 125.04868684999997,
+      "terminal_sha256": "f210ac6db4a2350ed59624ff78a52f371df5d87e0c0fb538c5673a12611db151",
+      "trial": {
+        "arm": "static",
+        "condition": "static_compact",
+        "id": "r1-static_compact-s2",
+        "predecessor": "r1-static_compact-s1",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.457272458000034,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click help option Command.get_help_option decorators help_option Option public exports tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 9183,
+      "reads": [
+        {
+          "call_id": "call_c660ad632e0f44a0a78f6c5297b28dda",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f370f8ac0a5641f9bfd00b765f62a954",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fcebd29cb96d4522a489f8cc60d673cd",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b148923640524f39bb56ef2a969bde25",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0c717c2d2ffb4b519d6465709061827a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_85805f8aae0f430b90bc7cd73a723280",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4bcb7674a4364829ab20ef451323e62a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1172acd9e7934039b3d73ad41d1c5a09",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_55b39f84cb3547c78fae88a01ac8f013",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6469cce8b75e404982519b084f3c95fc",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c87d6c77d252442f8daf3e5893726a4f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8828a3a0bf7b42f8b2a3664d51ac815d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c65eb92bd296488d8128ac98a3675d34",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e38811668b8f4c1f9d51271ca172709f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7bff068a606b448e8b895bd2d6e455d3",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8c892bf655fc431c8519e22758771e71",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4c74c9bcc7ab4eb0bcbe090a951a17af",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 144.97420527200006,
+      "terminal_sha256": "e6787205c804ab99d7e681163ac7d45316e85f2b16a63202200ec5b0f31617ef",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_compact",
+        "id": "r1-cami_compact-s2",
+        "predecessor": "r1-cami_compact-s1",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.013930750000099579,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click built-in help option Command.get_help_option help_option decorator Option tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7213,
+      "reads": [
+        {
+          "call_id": "call_b1a0109512f441248a7265abb78f368a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5e469d92be7e4b89b89e07b51b5872a4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_47e1932f47d54eefadadd435ac398282",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_21b5b0ddfb7641ce82085a77e4d2e989",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_97aa8874a06a46babadf8e7b468bd88b",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_366e46dbdae249aaa718fd046e9c9f07",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c6a032e3dc524abe9d75056bae8cfb16",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9083f80702be45189f5c4ff9a8d7cdca",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_033522645499464f9837c7d76b052c01",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_45aeb4392c8245de8a6137f5d6c3596c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8f355649a5a147f0bd4faa1d83a72045",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_598dfd7b40d6482bb5e242a1867553e0",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_eed6f11800a44485a50959f7ab96cd99",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_103377fd7a5d4f4db280156cfacaf90d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8d087bc122e849af812da84c394de03d",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d8719d75bd3f22319a8b90e0",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_short_help_str"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-df9d3e32ee61af23abd5ed04",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 129.9027959340001,
+      "terminal_sha256": "1de4177bf6cdcb0d8fbb2a057221f0a8742fb5f13893d768e3e67edc4f659167",
+      "trial": {
+        "arm": "static",
+        "condition": "static_readable",
+        "id": "r1-static_readable-s2",
+        "predecessor": "r1-static_readable-s1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.7825211250001303,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click help option get_help_option help_option decorators Option implementation tests"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 10013,
+      "reads": [
+        {
+          "call_id": "call_9b0da07b30f645e3ba51b0211539ef77",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_36e5cae9a77241e6af4ef265028db095",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bf6433200ee3461bb2228dfe1966aa49",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f05e429c270641aaab0414bb857994db",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_56e0f50bce3e40409ac4b4d262d05835",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5099d8716ad84d49afef6e66ca6db84e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6137177fd9464ee08d12a07a5cfc6c0f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7c76c5bfb9d04af69c5edc4ab58af886",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fbeac8a283944490abab048dda232704",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b888a2d9bfbc4d7d867af56baf045b5a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2ba83277d98e4967964551ecb54cdeef",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6d0a64a632ac4dc3a56b8c471e7fdac5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4c8579bfc82047e0bab5e68625957b1f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e17d102f861b4ebaa793183a71a2bf4f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ab9cfb0416244e68877748c21fbe4c52",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 143.845693816,
+      "terminal_sha256": "d2b425141d2917e5b3d1d1d10e0d8420b50bb185583fd92607c8d5e2b1323256",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_readable",
+        "id": "r1-cami_readable-s2",
+        "predecessor": "r1-cami_readable-s1",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_d49d5f26b8604b519ec7ab0276a095df",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ea162f451efd4c6abe18df7789210df0",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ffa011c3f4754aeab07731c2f8991119",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_334ae605c6764135be1106259f41792d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4135331beb0b47e7ae62e7dae2f8e71c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d7762e52c77642c0b319628378b801f3",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8f5b69e5a38d42bc93ffdfcbd15cbfb4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fe5e655b831342eaab44ae12602a3043",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_836cf16155bd4d21a0936636fee99164",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_db7441e49b2b4205bc260a432c35fa7c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e37c2ff19af4421786f6ba4a935100c6",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 156.16769544599993,
+      "terminal_sha256": "a928a4287e268e51a9bcdb59e669650ea9cb674a6b724ac0459da08d10b42777",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s2",
+        "predecessor": "r1-plain-s1",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 2,
+        "task": "click-help-option-api"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 1.0406989169998724,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatically generated help option custom help_option_names eager callback invocation ordering"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7088,
+      "reads": [
+        {
+          "call_id": "call_d567c2b18f12408386fe185084f668e3",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_70abe7581d4d41e7b0f393e91bab7b82",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_40924a589c51426a804b036976fcaa6a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9312e0b2b0fa4cb08f61e10717f53dc1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6eaf6bfbec184a678d2aacab12666910",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8d1ddeddf3dc4fc093a1586042239ce1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_74f63dc34cfe4319875317ec3b28f899",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_6ddd4514e8c1462093c08d4a230d8764",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c477fd26895240ffb7853fca0e95f974",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d75d9cab5567c0fe04d947fc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 73.199127868,
+      "terminal_sha256": "43ede8f8d19eeffb9bced03e1b28b53236032bc0d1a7d8d2486f4d55c3323203",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_compact",
+        "id": "r1-cami_compact-s3",
+        "predecessor": "r1-cami_compact-s2",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.013786541999934343,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option help_option_names eager callback ordering custom help name"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 9926,
+      "reads": [
+        {
+          "call_id": "call_30dd9b5fd46744cca71b06a25ae3fdbf",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b4bd6190e0cb4408a83bb3ba36fe9a9f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_61339d30714a477695ebcf955e3af733",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c786aef24a6c446c846a442c47ba2e5e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_19b9bec6bd924ff6b6e79adf5b21558f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_aaefca77de984688b81ae12c5d38f982",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a9c3a4da2927415caf4abb56261a5b6c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8c1cbe524ee7468bbab0e6a954085fc5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_82385c8033334ab4bf1f7325ab6b6d14",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_44651598728547bc96dd0e25d077c451",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_d83a1058e25d473c96b4cceb51eea14e",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 101.30853633800007,
+      "terminal_sha256": "4f41e22817c2d2dbdc5e9ff57b24d3e5378f2d4c60a1e83116bc93e5ef512391",
+      "trial": {
+        "arm": "static",
+        "condition": "static_readable",
+        "id": "r1-static_readable-s3",
+        "predecessor": "r1-static_readable-s2",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 1.2062608759999875,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatically generated help option ordering custom help_option_names eager callback"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 6425,
+      "reads": [
+        {
+          "call_id": "call_90a3a09c1a2c44a58ced94dd67d40eeb",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5abc015004cb460bb0c8e9a94225277e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7cccb6fd202542d99f2c05431db87b57",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_19a9326f299d4d3180fce0bb9025e6b3",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_18ca8113e36543e0b4115f42e91a76c4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_5f30708c61244b98a556de7cc55d8451",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7f94357cb5d44b2bb1921ab94b3f1d42",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_61f1a8bfd1784c08acc1dd4eda6d1c16",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f220d406c0fe4144a1f118ea78b9d031",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cc2191d12348465884b852d753d3e7aa",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_89635b9d89164739bd5e50e96e46a90c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8177249e535e4848a9c85587ed0ed769",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d75d9cab5567c0fe04d947fc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 81.43795182899976,
+      "terminal_sha256": "10ba18383277d9841832f28a72c226c32bec57c06b58a7ffa6f331bdf671acc9",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_readable",
+        "id": "r1-cami_readable-s3",
+        "predecessor": "r1-cami_readable-s2",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_b4e9eadf8b6e49dfa665ba5b869c7d3a",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_37a5d48827bf4a9c99baa4dccb2465f5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fc1694396bfd40f9923e9bd644114f6b",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7f01e5f102fd4e7da4c9dde0deabc711",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_410b3164045c407f9964621970b5faab",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ead64806b3174cf9bb8870a40e08f712",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b4ea3d7df4234306ad5c06b050e27fec",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a25c7c37a8c14d5592e3f86daabec82e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_17847fd0d80f4a6999b4b41f81650144",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2db8250625b84a509e40f1cb0dd9e602",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 84.71681733099967,
+      "terminal_sha256": "f74f518b553db4ff64378b21b2ed6a7007768012b5105cbf46b9bdfa72488d6d",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s3",
+        "predecessor": "r1-plain-s2",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.015721624999969208,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option custom help_option_names eager callback ordering"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 9524,
+      "reads": [
+        {
+          "call_id": "call_caf35ea240554473863d5def637aee72",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_81ece27437a94e17b3c09c9dab8f6384",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1b53a2780ff648c5a16e4d3efa90a861",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7d74bd4257594d188904c812a64c925e",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e2d1a9e621a04cba91f1ea4e23ef7cbb",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_30f1a5e2bb0841f3972194b286ebb335",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_76e9ef658ac84dd08c1ab57ac29d26e0",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_99645883c2b04a53830365a7f8f6956c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9b0f05aea2994d3e85e7fee123ac61a1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_cadd241363b6405a882b5d49dbf68c48",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4772a204cd6e46698b39a5ac8eabb928",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d75d9cab5567c0fe04d947fc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 94.3085285860002,
+      "terminal_sha256": "d95f5f1c63f3a2de7f8abb114448e210f156b89ae6b5eba4b553c4b2a67bf744",
+      "trial": {
+        "arm": "static",
+        "condition": "static_compact",
+        "id": "r1-static_compact-s3",
+        "predecessor": "r1-static_compact-s2",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 3,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.012986250000267319,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option custom help_option_names eager option ordering"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 9926,
+      "reads": [
+        {
+          "call_id": "call_f5f7827684cc4652bad5145e24cf4791",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b4395403963f46cc827a30936a1dcf27",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c5be31690b6142d8bc6fbb74ea0f5541",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_92b95195fa0f4ac29bdd17d6a3018cee",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_09eec5d48bca40f89f6f19f744b74ccf",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_f11e2ef27c3746dc8a0bc9ccd2914271",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4c17a359511f4233b3feb7118234f536",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_8d7e81f3b4644ccaaf591de81cc81ab5",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_762210a318ab435ea1718ce67f84eca9",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0b142b648c5c414592261613645e403d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b95492c1cfd64197847bf08719060b60",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 79.59118907799984,
+      "terminal_sha256": "5f7a920d4137dd5d0ed378d5f45df05869a4b70d47102239f97ea67f829f61a1",
+      "trial": {
+        "arm": "static",
+        "condition": "static_readable",
+        "id": "r1-static_readable-s4",
+        "predecessor": "r1-static_readable-s3",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.5586437499996464,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help custom help_option_names eager option ordering"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 7965,
+      "reads": [
+        {
+          "call_id": "call_f2af58db5fdc45a68c4e3ca59dd822fc",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_99e0a76913994108b1fece21e9bbe4b4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b9e849bb69e04d91a9d896797ecb48f9",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_47c95e039e174ad2aef908a8a7aeee24",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a9ca5acfd0de4c2da8377b23f2acf131",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_da44cb5786284d5e975e2686ac041146",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b0a28d679c40414d9e7b8e2879dfeaf6",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_60f29a431e7c4390ac3924ff89f0c0ae",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9eb7e9f084f846c3b9479f244c387d9d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_ce3f450091044576b42f5aafffc104e1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_90dbd76c52a04a91997736f3b8b91acb",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 85.30461520500012,
+      "terminal_sha256": "595cc753f8da346d874322f949cecc8b5be8559075e7dee09c7fc294f6d7bd65",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_readable",
+        "id": "r1-cami_readable-s4",
+        "predecessor": "r1-cami_readable-s3",
+        "repetition": 1,
+        "response_format": "readable",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0,
+      "memory_calls": [],
+      "memory_response_bytes": 0,
+      "reads": [
+        {
+          "call_id": "call_aa9b0de44cd549be949ab2ffeac2b8ba",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_fbbbc0d7844044c58e62334541ee4e9c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_1fbf7d38879c4d278a55f5c726445879",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_0285871bf6894f5295d2d5f8f5a24612",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a4f189e3456e478cbb95a94099334c65",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_59b7a6d54e364d6b870f4b820a9fa567",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2e48597faa5d4a379f062517393bf6d4",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_83835bb451e84c6abb8ed44c0d1d7e30",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_792f719324d34ab7a54f1b24e08dfc45",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_7b81e62c5b744dc481910c2ebffef026",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [],
+      "session_host_wall_seconds": 86.60653666400003,
+      "terminal_sha256": "7be5e9a3e6896fef95590af9ae8ccb578b6b43de8b1f30e049d46aa78206489e",
+      "trial": {
+        "arm": "plain",
+        "condition": "plain",
+        "id": "r1-plain-s4",
+        "predecessor": "r1-plain-s3",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.014810166000188474,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option ordering custom help_option_names eager callback order"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 9530,
+      "reads": [
+        {
+          "call_id": "call_8d2fd2bb92cd4dbbb27a8551f5376f95",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_bc2091f2c27c4ae7a8d554dc3900ea8b",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3a5da7a7cc674a9e8469d00f05075852",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3c12c293365048478af3208d953fe99f",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9f60dd81406a465898a46f20c9a2d3ca",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_2da82481eea54bf09c804b1affea74f8",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_a364bc8309e449618236117af12b098c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_3474939f79394d54bf84c6c4f578ea71",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_9a4d341f1d3644e7bd9c83967fde6cd1",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c9e0394f020f44acb9f4bb4ee4701bf5",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-d75d9cab5567c0fe04d947fc",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "confirmation_option"
+          },
+          "truncated": false
+        }
+      ],
+      "session_host_wall_seconds": 75.64019553499975,
+      "terminal_sha256": "2e3b892a4fc9970bbf3a990d0bad6bc06f05be88e67263d2a748b48f4cddbaa2",
+      "trial": {
+        "arm": "static",
+        "condition": "static_compact",
+        "id": "r1-static_compact-s4",
+        "predecessor": "r1-static_compact-s3",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": []
+    },
+    {
+      "construction_host_wall_seconds": 0,
+      "lookup_backend_wall_seconds": 0.506867666999824,
+      "memory_calls": [
+        {
+          "input": {
+            "limit": 5,
+            "query": "Click automatic help option help_option_names custom name eager option ordering"
+          },
+          "status": "completed"
+        }
+      ],
+      "memory_response_bytes": 8612,
+      "reads": [
+        {
+          "call_id": "call_666e0780c09a43bf8048da1e3c42a07c",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_b1dd94a77975456faaee25a72d0511fa",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_4e1a1f335bd647fdae9f410b1a3d2d34",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_c263b1937f83498cbc8090d4553338fc",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_321f1dcb03584a7f84677cf307d168f8",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e0a55b3ee7ea40cb98def668118ac5e2",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_e36de2979bcc4c679747248aed6a8db7",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_87bb5aad4cef4a4c9ffed5a9e400b51d",
+          "path": null,
+          "status": "completed"
+        },
+        {
+          "call_id": "call_dabd2d178b4040dfb13ac44fa5a27b40",
+          "path": null,
+          "status": "completed"
+        }
+      ],
+      "returned_entries": [
+        {
+          "id": "literal-57c9836ad708b7dca5bbd9a8",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option_names"
+          },
+          "truncated": false
+        },
+        {
+          "id": "literal-32bcf24ccfd38aeacdee34f6",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Option.get_help_record"
+          },
+          "truncated": true
+        },
+        {
+          "id": "literal-cce673a84e2664e111ed6f89",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "version_option"
+          },
+          "truncated": true
+        }
+      ],
+      "session_host_wall_seconds": 77.65629124399993,
+      "terminal_sha256": "f125f3f7ac248adb2be5ce18d1ab14ff74937dad4973895007b2ea1f63f93f7c",
+      "trial": {
+        "arm": "cami",
+        "condition": "cami_compact",
+        "id": "r1-cami_compact-s4",
+        "predecessor": "r1-cami_compact-s3",
+        "repetition": 1,
+        "response_format": "compact",
+        "stage": 4,
+        "task": "click-help-eagerness"
+      },
+      "withheld": [
+        {
+          "id": "literal-b72f27654121d1cca0325ebc",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "function",
+            "path": "src/click/decorators.py",
+            "qualname": "help_option"
+          }
+        },
+        {
+          "id": "literal-f1e763299ebc7560da7b62d7",
+          "kind": "source_excerpt_equals",
+          "reason": "source_excerpt_mismatch",
+          "required_action": "review_and_update_expectation",
+          "subject": {
+            "language": "python",
+            "node_kind": "method",
+            "path": "src/click/core.py",
+            "qualname": "Command.get_help_option"
+          }
+        }
+      ]
+    }
+  ]
+}

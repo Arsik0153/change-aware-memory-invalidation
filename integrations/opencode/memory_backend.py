@@ -264,12 +264,38 @@ def freeze_spec(service, spec):
     return catalog, contexts
 
 
-def rank(catalog, query, limit):
+LEXICAL_RANKING = "lexical-overlap/1"
+IDENTIFIER_RANKING = "identifier-mentions/1"
+RANKING_POLICIES = (LEXICAL_RANKING, IDENTIFIER_RANKING)
+
+
+def identifier_mentions(query):
+    names = set(re.findall(r"[^\W\d]\w*(?:\.[^\W\d]\w*)*", query))
+    qualified = {".".join(name.split(".")[offset:]).casefold()
+                 for name in names for offset in range(len(name.split(".")))}
+    return names, qualified
+
+
+def mention_priority(subject, mentions):
+    names, folded = mentions
+    qualname = subject["qualname"]
+    if "." in qualname and qualname.casefold() in folded:
+        return 0
+    basename = qualname.rsplit(".", 1)[-1]
+    if ("_" in basename and basename.casefold() in folded
+            or any(c.isupper() for c in basename) and basename in names):
+        return 1
+    return 2
+
+
+def rank(catalog, query, limit, *, ranking_policy=LEXICAL_RANKING):
+    check(ranking_policy in RANKING_POLICIES, "unsupported ranking policy")
     check(
         isinstance(query, str) and 0 < len(query.strip()) <= 1000 and "\x00" not in query,
         "query must be 1..1000 non-NUL characters",
     )
     check(type(limit) is int and 1 <= limit <= 20, "limit must be integer 1..20")
+    mentions = identifier_mentions(query) if ranking_policy == IDENTIFIER_RANKING else None
     query = query.strip().casefold()
     tokens = set(re.findall(r"[^\W_]+", query))
     check(bool(tokens), "query requires a name, path or text token")
@@ -294,10 +320,11 @@ def rank(catalog, query, limit):
         overlap = len(tokens & identity_tokens) * 4 + len(tokens & text_tokens)
         is_exact = query in [item.casefold() for item in exact]
         if is_exact or overlap:
-            results.append((0 if is_exact else 1, -overlap, record["id"], record))
-    results.sort(key=lambda item: item[:3])
+            priority = mention_priority(subject, mentions) if mentions is not None else 2
+            results.append((0 if is_exact else 1, priority, -overlap, record["id"], record))
+    results.sort(key=lambda item: item[:4])
     selected, used = [], 0
-    for _, _, _, record in results[:limit]:
+    for _, _, _, _, record in results[:limit]:
         cost = len(canonical(record))
         if used + cost > 16384:
             break
@@ -604,7 +631,9 @@ def prepare(backend, repo, output, catalog_path=None, spec_path=None, state_home
 
 
 class Backend:
-    def __init__(self, binding_path):
+    def __init__(self, binding_path, *, ranking_policy=LEXICAL_RANKING):
+        check(ranking_policy in RANKING_POLICIES, "unsupported ranking policy")
+        self.ranking_policy = ranking_policy
         self.binding = load(binding_path)
         check(
             set(self.binding)
@@ -640,7 +669,7 @@ class Backend:
             )
 
     def lookup(self, query, limit=5):
-        selected, total = rank(self.catalog, query, limit)
+        selected, total = rank(self.catalog, query, limit, ranking_policy=self.ranking_policy)
         states, generation = {}, None
         if self.binding["backend"] == "cami":
             with isolated_state(Path(self.binding["state_home"])):
@@ -737,6 +766,8 @@ class Backend:
             "returned_records": len(entries),
             "withheld_records": len(withheld),
         }
+        if self.ranking_policy != LEXICAL_RANKING:
+            detail["ranking_policy"] = self.ranking_policy
         if generation is not None:
             result["snapshot_id"] = generation.index.snapshot_id
             result["memory_generation_id"] = generation.memory_generation_id
