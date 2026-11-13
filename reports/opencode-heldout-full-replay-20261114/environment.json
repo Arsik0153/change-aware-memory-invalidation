@@ -1,0 +1,19 @@
+{
+  "python": "3.12.12 (main, Feb 24 2026, 19:53:06) [GCC 14.2.0]",
+  "platform": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.41",
+  "packages": {
+    "pytest": "8.4.2",
+    "pretend": "1.0.9",
+    "packaging": "26.0",
+    "pluggy": "1.6.0",
+    "iniconfig": "2.3.0",
+    "pygments": "2.19.2",
+    "pydantic": "2.12.5"
+  },
+  "runtime_image": "sha256:b0ac577d424f3ef181e3c4a5b188abf0ecf8a4fde0d544e55a3e825999826040",
+  "model": "openai/gpt-6.1-sol#high",
+  "source_commit": "38ad3c3",
+  "production_commit": "a8c34cd",
+  "adaptation": "Original x86 CPython3.12.3 environment not reproduced byte-for-byte. Same pinned ARM image as completed development full study. All fixed oracle checks revalidated before paid calls.",
+  "runtime_snapshot": "runtime-v14"
+}

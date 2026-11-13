@@ -1,0 +1,17 @@
+# Heldout full replay replication
+
+Status: final no-model admission passed; protocol frozen before paid model attempts. This is a separate replication, not a replacement for the original sealed 36-attempt source-memory study.
+
+The decision rules in `preregistration.json` were committed as 49dfc24 before task prompts or solutions were opened. The production implementation remains a8c34cd, including schema3 compression. Only the experiment controller and independent admission/audit tools were adapted for the pre-existing Packaging task boundary and legacy note format.
+
+The planned experiment has 80 attempts: four conditions, five independently initialized blocks per condition, and canonical A,A,B,B stages. Ten expected exact-repeat hits avoid model calls and must pass fresh fixed grading. The strict success gate requires all attempts to pass quality and operation checks, complete token/tier evidence, positive and changed-input cache controls, and lower block token work **and** complete charged pipeline time than each comparator in every block. Failures, costs, and incomplete evidence are retained; no retries, replacements, extension, or outcome-driven tuning.
+
+Packaging was previously used for structural research: the two tasks and their outcomes are held out, the project is not unseen. These are public historical tasks and exact repeats, not proof for arbitrary new work or an estimate of production hit rate. Token work is not billed currency.
+
+`environment.json` records the portable runtime adaptation. The sealed task preparation used Linux x86 CPython3.12.3; this replication uses the same immutable Linux ARM CPython3.12.12 image as the completed development full study. Pytest8.4.2 and pretend1.0.9 match; other dependency versions differ and are explicitly recorded. Every condition uses the same image. Admission rechecks base assertion failures, gold acceptance/full regression, and evaluator restoration controls on that image.
+
+Only regular candidate files under `src/packaging` enter heldout grading. Original evaluator tests and canonical configuration are restored outside the agent. The agent receives neither private gold/evaluator assets nor the other task's archive/history. Static and CAMI receive the same original sealed75 generic origin-source notes. Requested readable formatting uses the existing compact fallback for notes, with full payloads bound in audit receipts; no task-dependent note regeneration or selection is introduced.
+
+The first no-model admission (runtime-v13, b79e4fc) passed both gold tasks and restoration controls, but its generic MCP checker incorrectly expected provenance fields in the visible compact note payload. Actual compact responses retain those fields in a bound full-response receipt. Commit38ad3c3 corrects the checker and verifies both visible fields and the original full payload; production code is unchanged. The failed admission, including zero model calls, is retained in `failed-admission-v13.tar.xz` and `failed-admission-v13.json`. The corrected checker passed84 focused tests; the preceding controller/harness suite passed816.
+
+Final runtime-v14 admission passed both fixed gold evaluations, both poisoned-base restoration controls, and six real MCP cases across static/CAMI and full/compact/readable formats. Static and CAMI catalog bytes match exactly. The80-attempt schedule and full runtime/input/code identities are frozen in `protocol.json`; `admission.json` binds to its SHA256. Production source and adapter match a8c34cd.
