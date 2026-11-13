@@ -17,6 +17,16 @@ from evidence_safety import collect_private_values, scrub_state_evidence  # noqa
 from trial_guards import git_closure  # noqa: E402
 
 
+@pytest.fixture
+def authored_runtime(tmp_path, monkeypatch):
+    binary = tmp_path / "opencode"
+    binary.write_bytes(b"authored executable identity; never executed")
+    monkeypatch.setattr(host, "BINARY", binary)
+    monkeypatch.setattr(host, "EXPECTED_BINARY_SHA", host.sha(binary))
+    monkeypatch.setattr(host, "chown_owned", lambda path: None)
+    (host.ROOT / "runs").mkdir(exist_ok=True)
+
+
 def git(repo, *args):
     return subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True)
 
@@ -139,7 +149,7 @@ def test_private_fifo_denied_without_open(tmp_path, selected):
         scrub_state_evidence(tmp_path, expect_credential=False)
 
 
-def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch):
+def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch, authored_runtime):
     with tempfile.TemporaryDirectory(prefix="admission-", dir=host.ROOT / "runs") as name:
         case = Path(name)
         workspace = repo(case / "workspace")
@@ -169,7 +179,7 @@ def test_runtime_mismatch_prevents_any_auth_or_container(tmp_path, monkeypatch):
 
 
 @pytest.mark.parametrize("mode", ["worker-failed", "writers-unfrozen", "missing-evidence", "bad-json"])
-def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch):
+def test_failed_publication_and_cleanup_are_durable(mode, monkeypatch, authored_runtime):
     with tempfile.TemporaryDirectory(prefix="cleanup-", dir=host.ROOT / "runs") as name:
         case = Path(name)
         workspace = repo(case / "workspace")

@@ -15,7 +15,7 @@ from aggregate_study import ARMS, HERE, aggregate, artifact_files, export_csv, s
 class AggregateTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
-        self.root = Path(self.temp.name)
+        self.root = Path(self.temp.name).resolve()
         self.run = self.root / "run"
         (self.run / "trials").mkdir(parents=True)
         rules = json.loads((HERE / "supported_rules.json").read_bytes())
