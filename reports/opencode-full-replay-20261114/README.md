@@ -51,7 +51,8 @@ The traced CAMI backend spans total16.21s out of2,141.61s of model-session wall
 CPU profile. The dominant measured improvement comes from avoiding repeated model
 sessions. Source-memory storage still totals211.69MB over five CAMI namespaces,
 while candidate result caches total399,396bytes. That large source-memory store
-is the next storage investigation; it is not retrospectively changed in this run.
+motivated the later [lossless storage optimization](../opencode-generation-compression-20261114/README.md);
+it is not retrospectively changed in this run.
 
 The aborted v8 remains separate: two started model sessions, observed60,007 token
 work and494,592 cache-read tokens, no scored quality result. Neither its answers nor
@@ -78,7 +79,9 @@ Wall observations on this laptop do not establish independently isolated host lo
 
 This is a full development replication on two historical tasks. It can establish
 benefit for exact repeated tasks under these guards, not arbitrary new-task benefit
-or semantic reuse after source changes. The sealed heldout remains unopened. Token
+or semantic reuse after source changes. The sealed heldout was unopened when this
+protocol was frozen; the later [heldout replication](../opencode-heldout-full-replay-20261114/README.md)
+is a separate experiment. Token
 work excludes cache-read tokens and is not monetary billing; all components are
 retained for separate accounting. Requested priority does not imply served priority.
 
