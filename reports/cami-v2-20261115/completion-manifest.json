@@ -1,0 +1,121 @@
+{
+  "status": "complete with explicit scope limits",
+  "default": "legacy",
+  "measured_positive": false,
+  "target_50_achieved": false,
+  "deliverables": {
+    "integrated_path": "task_session.py; run_task.py; final-focused-tests.log; installed-switch.json",
+    "context": "task_context.py; context.txt and durable task_prompt in raw archive; freshness/budget/suffix tests",
+    "structured_methods": "task_memory.py; controlled adapter contract tests (OpenCode cannot train)",
+    "persistent_memory": "existing ProductMemory and generation refresh in separate index-v2; not a new incremental parser or resident daemon",
+    "isolation_and_rollback": "TASK_V2.md; binding rejection; byte-for-byte legacy-state test; installed-switch.json",
+    "failure_and_eligibility": "57 focused checks; errors, partial usage, SIGKILL, idempotent recovery, publication recovery, unadmitted replay and failed fresh check",
+    "package": "final-package.json; wheels/final; separate real final-admission in all-attempt-accounting.json",
+    "study": "protocol.json/seal; 12 attempts once, fixed independent audits; results.json; comparison.png/html",
+    "all_model_attempts": "14 complete journals: 12 main and 2 admissions; first admission full wall uninstrumented and unknown",
+    "baseline": "807285f; unchanged annotated tag cami-baseline-20261115"
+  },
+  "limits": [
+    "No live OpenCode solution learning or result replay until request coverage is proved; not bypassed.",
+    "The 12-attempt result measures the preserved evaluated wheel; final hardening has separate admission/fault validation, no second performance claim.",
+    "One small synthetic dependent sequence; shared host and concurrent local tests; not production hit frequency.",
+    "Broad suite tested initial v2; final changes tested in focused suite. Groups overlap."
+  ],
+  "checks": {
+    "initial_non_docker_passed": 1821,
+    "final_focused_passed": 57,
+    "docker_passed": 4,
+    "mypy_source_files": 56,
+    "ruff": "pass"
+  },
+  "artifacts": {
+    "README.md": {
+      "bytes": 10657,
+      "sha256": "a164e6901508df19aaceb1c0960e981e99c5e7a92a6a8d87ec744045ab8e4691"
+    },
+    "REPRODUCE.md": {
+      "bytes": 3063,
+      "sha256": "65723f75dd3664ccde6609076ec6d8d2076deaddfc7145b1139321fd4d5d3cc4"
+    },
+    "all-attempt-accounting.json": {
+      "bytes": 16564,
+      "sha256": "f76b6fcd87f14e6d9c644ef63bc910cfd35eefe507b3ea1d8f5c0f7ddc0bb68d"
+    },
+    "comparison.html": {
+      "bytes": 725,
+      "sha256": "9299565f3e529e23956cbe73f8359725c084a4c5e204fc4e76f20b769bf339f3"
+    },
+    "comparison.png": {
+      "bytes": 51951,
+      "sha256": "a465bb102b22adbdae08220cb68502fd79c710f5b84d15e03f9dbf17178367ee"
+    },
+    "constraints.txt": {
+      "bytes": 870,
+      "sha256": "f7b5b4e6de42966b1309f5c5f97cda70d974dc58319b7f07dc40475e39c5d54c"
+    },
+    "docker-tests.log": {
+      "bytes": 116,
+      "sha256": "6d4c74a48667228b1d29db86e1d43b1bc34f199a6b8c5d131c2e2505f8dd1aad"
+    },
+    "final-focused-tests.log": {
+      "bytes": 100,
+      "sha256": "b6f627b49c7b2b5884d95a012b1f040e6e55ceefe3369954920fbe672d95b943"
+    },
+    "final-installed-packages.txt": {
+      "bytes": 462,
+      "sha256": "6d0d09e351a8df4df3e4c667d7da2fc8f521b42edb48b16434a796a1a0f4e118"
+    },
+    "final-package.json": {
+      "bytes": 1654,
+      "sha256": "82fcfccd2cea177f7687b7cdf8d2bfb96fb5204b86bd2a84057793e08e077566"
+    },
+    "installed-packages.txt": {
+      "bytes": 453,
+      "sha256": "28cacf051c42fae6c3cd66c224e38a36e0bfa7e03d22ed5ab45a6b5a4b809c09"
+    },
+    "installed-switch.json": {
+      "bytes": 3650,
+      "sha256": "4529825ff3ef576c615edfdc6036da0b90fb0228f4e9a33b6f5edfa89cfa0c88"
+    },
+    "mypy.log": {
+      "bytes": 44,
+      "sha256": "070c9c331a2e491aabe528a802fadba01ab960cc6017b0199149ee76a8b866b5"
+    },
+    "protocol-seal.json": {
+      "bytes": 118,
+      "sha256": "52640bbaaa4779c485de0c4cc3da4ab4c85febee930c296bff61fc6f16eeb0f5"
+    },
+    "protocol.json": {
+      "bytes": 6384,
+      "sha256": "9418960033b5b5e4c62f26f792c9b367c51802a10882e8830c4548df2db9bfe9"
+    },
+    "quality-admission.json": {
+      "bytes": 626,
+      "sha256": "6d6da43b4fe223091df8011ab7d3258c38848b3073f1b453c573f33d29b04e17"
+    },
+    "raw-evidence.tar.xz": {
+      "bytes": 73396,
+      "sha256": "55b7bff662e9e1c366e60b00a36d797d246c35fb44f704104078b1c15e4161cc"
+    },
+    "results.json": {
+      "bytes": 20487,
+      "sha256": "18f5c6ab36913db1b20442cc2652d13cc9dd519ed6c96cf6e42f51d07fda52f1"
+    },
+    "ruff.log": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "tests.log": {
+      "bytes": 2127,
+      "sha256": "db722f36d4c7f51ea11e1b62fe1190c57fc320a302044156107906352332938c"
+    },
+    "wheels/evaluated/cami-0.1.0-py3-none-any.whl": {
+      "bytes": 180333,
+      "sha256": "6f496417601a1a1739ffa2c0ba1173d5a927ca1e41b085ceddd351d3f5f43e46"
+    },
+    "wheels/final/cami-0.1.0-py3-none-any.whl": {
+      "bytes": 181289,
+      "sha256": "73ba2c9781c2ea8d30e025b55eef177466f2a8bbcaa221fd030685868079ec36"
+    }
+  }
+}

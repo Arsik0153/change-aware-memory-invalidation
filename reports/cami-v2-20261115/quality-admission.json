@@ -1,0 +1,42 @@
+[
+  {
+    "arm": "base",
+    "fixture": "labels",
+    "returncode": 1
+  },
+  {
+    "arm": "gold",
+    "fixture": "labels",
+    "returncode": 0
+  },
+  {
+    "arm": "base",
+    "fixture": "labels-changed",
+    "returncode": 1
+  },
+  {
+    "arm": "gold",
+    "fixture": "labels-changed",
+    "returncode": 0
+  },
+  {
+    "arm": "base",
+    "fixture": "duration",
+    "returncode": 1
+  },
+  {
+    "arm": "gold",
+    "fixture": "duration",
+    "returncode": 0
+  },
+  {
+    "arm": "base",
+    "fixture": "duration-changed",
+    "returncode": 1
+  },
+  {
+    "arm": "gold",
+    "fixture": "duration-changed",
+    "returncode": 0
+  }
+]

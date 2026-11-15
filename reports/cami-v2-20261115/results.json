@@ -1,0 +1,688 @@
+{
+  "claim_scope": "one sealed synthetic sequence; no production frequency or invoice estimate",
+  "positive": false,
+  "quality_and_usage_gate": true,
+  "rows": [
+    {
+      "api_receipt": {
+        "client_pid": 2484384,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2484346,
+        "owner_token": "233753039",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e215adff4ffes7IARYNs35tMkp",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels",
+      "id": "01-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/01-baseline/journals/494f754a83e346bf87bb1b48fd1fdf80",
+      "known_subtotal": {
+        "cache_read": 40448,
+        "cache_write": 0,
+        "input": 3948,
+        "output": 900,
+        "reasoning": 21
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 33.54952409444377,
+      "spans_seconds": {
+        "agent": 32.792382283,
+        "capture": 0.009355301,
+        "context_and_lookup": 0.002970084,
+        "finish": 0.082763298
+      },
+      "stage": 1,
+      "terminal_sha256": "652dded40fb4306e0c372da3e7f8420fd27a61cec8b659dcda12676fae861989",
+      "token_work": 4869,
+      "usage": {
+        "cache_read": 40448,
+        "cache_write": 0,
+        "input": 3948,
+        "output": 900,
+        "reasoning": 21
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2487900,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2487719,
+        "owner_token": "233756395",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e215a5a8bffefLFakjcG6ytdy5",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels",
+      "id": "01-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/01-v2/journals/0307338c545d4f0da6bb0be76167d1c2",
+      "known_subtotal": {
+        "cache_read": 29184,
+        "cache_write": 0,
+        "input": 13085,
+        "output": 933,
+        "reasoning": 22
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 38.382024767808616,
+      "spans_seconds": {
+        "agent": 37.076986142,
+        "capture": 0.014581147,
+        "context_and_lookup": 0.746718798,
+        "finish": 0.060000762
+      },
+      "stage": 1,
+      "terminal_sha256": "267f5a7bb8a8a885bd8980b18f5816a4a171e6074554c91606c1e6290e039d3c",
+      "token_work": 14040,
+      "usage": {
+        "cache_read": 29184,
+        "cache_write": 0,
+        "input": 13085,
+        "output": 933,
+        "reasoning": 22
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2495577,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2495167,
+        "owner_token": "233760233",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e2159c407ffe5uj8P5uTeYTTqH",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration",
+      "id": "02-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/02-v2/journals/04388060da174fa791d4fed73a1a1bdc",
+      "known_subtotal": {
+        "cache_read": 31104,
+        "cache_write": 0,
+        "input": 13122,
+        "output": 1444,
+        "reasoning": 143
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 49.69110859464854,
+      "spans_seconds": {
+        "agent": 48.23141129,
+        "capture": 0.011752944,
+        "context_and_lookup": 0.861720589,
+        "finish": 0.052548804
+      },
+      "stage": 2,
+      "terminal_sha256": "bda0bc9cde8038597ebcf7dc49def6061f9d321eb94a79a351ab4778de68aa94",
+      "token_work": 14709,
+      "usage": {
+        "cache_read": 31104,
+        "cache_write": 0,
+        "input": 13122,
+        "output": 1444,
+        "reasoning": 143
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2504526,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2504475,
+        "owner_token": "233765202",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e215904f7ffeZqn4pcRVzWO7m0",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration",
+      "id": "02-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/02-baseline/journals/e0db963003e348ed8a6eaff5f056ac31",
+      "known_subtotal": {
+        "cache_read": 37248,
+        "cache_write": 0,
+        "input": 3717,
+        "output": 1331,
+        "reasoning": 207
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 45.630827450193465,
+      "spans_seconds": {
+        "agent": 44.877359222,
+        "capture": 0.014492638,
+        "context_and_lookup": 0.004295385,
+        "finish": 0.107033852
+      },
+      "stage": 2,
+      "terminal_sha256": "dae77b1ac1641b88c7291df6d0b8ea0a9a06cb37160853a2db26627e7dfa6b05",
+      "token_work": 5255,
+      "usage": {
+        "cache_read": 37248,
+        "cache_write": 0,
+        "input": 3717,
+        "output": 1331,
+        "reasoning": 207
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2509688,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2509485,
+        "owner_token": "233769765",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e215852a0ffeKBSpg51uFiEVLA",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels",
+      "id": "03-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/03-baseline/journals/56a12e8104ed472899e32febb02eed88",
+      "known_subtotal": {
+        "cache_read": 40448,
+        "cache_write": 0,
+        "input": 4002,
+        "output": 905,
+        "reasoning": 35
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 31.869583780877292,
+      "spans_seconds": {
+        "agent": 31.161014317,
+        "capture": 0.019672565,
+        "context_and_lookup": 0.005394306,
+        "finish": 0.07275979
+      },
+      "stage": 3,
+      "terminal_sha256": "ccb834f30ed1cd35d33fd75c951a0a55bb8aec0011f8a62743de25d02001f4c5",
+      "token_work": 4942,
+      "usage": {
+        "cache_read": 40448,
+        "cache_write": 0,
+        "input": 4002,
+        "output": 905,
+        "reasoning": 35
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2518172,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2517841,
+        "owner_token": "233772952",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e2157d2e3ffeZEHYsUi2aUNeft",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels",
+      "id": "03-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/03-v2/journals/826c05a8759640e0824ad869cfb41ff7",
+      "known_subtotal": {
+        "cache_read": 43520,
+        "cache_write": 0,
+        "input": 4394,
+        "output": 847,
+        "reasoning": 11
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 39.35446977801621,
+      "spans_seconds": {
+        "agent": 37.902142262,
+        "capture": 0.017661532,
+        "context_and_lookup": 0.777597527,
+        "finish": 0.040312431
+      },
+      "stage": 3,
+      "terminal_sha256": "8a0d38defc98f6d266091e2f25bf9b8cd20ce7d73a09d08615144ce5e28f0574",
+      "token_work": 5252,
+      "usage": {
+        "cache_read": 43520,
+        "cache_write": 0,
+        "input": 4394,
+        "output": 847,
+        "reasoning": 11
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2524664,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2524555,
+        "owner_token": "233776888",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e21573ad5ffeFt6gVQr9oek9gx",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration",
+      "id": "04-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/04-v2/journals/4122a2d72693409eb316c609aae16d86",
+      "known_subtotal": {
+        "cache_read": 38656,
+        "cache_write": 0,
+        "input": 11515,
+        "output": 1489,
+        "reasoning": 140
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 48.386173537001014,
+      "spans_seconds": {
+        "agent": 47.246936025,
+        "capture": 0.010693054,
+        "context_and_lookup": 0.610813677,
+        "finish": 0.060896017
+      },
+      "stage": 4,
+      "terminal_sha256": "5385aa47e08949033d940e618aea6c905719ddd02aad69953972ced86bb5b91d",
+      "token_work": 13144,
+      "usage": {
+        "cache_read": 38656,
+        "cache_write": 0,
+        "input": 11515,
+        "output": 1489,
+        "reasoning": 140
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2528569,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2528529,
+        "owner_token": "233781726",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e21567fdaffejxuRc6QgOKePjA",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration",
+      "id": "04-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/04-baseline/journals/2c63e152bdb64f258fd42183e5655cb1",
+      "known_subtotal": {
+        "cache_read": 38144,
+        "cache_write": 0,
+        "input": 3581,
+        "output": 1454,
+        "reasoning": 261
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 53.09251731587574,
+      "spans_seconds": {
+        "agent": 52.467891362,
+        "capture": 0.009316342,
+        "context_and_lookup": 0.001797762,
+        "finish": 0.067427596
+      },
+      "stage": 4,
+      "terminal_sha256": "0076f989f95dd19c52675a5c0d2790de59fbab187696d3f5c37dd84a614de029",
+      "token_work": 5296,
+      "usage": {
+        "cache_read": 38144,
+        "cache_write": 0,
+        "input": 3581,
+        "output": 1454,
+        "reasoning": 261
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2533104,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2533031,
+        "owner_token": "233787036",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e2155aff7ffeegsxO8VQ0r9B63",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels-changed",
+      "id": "05-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/05-baseline/journals/9bfb5993ffd14d45bae975a8d5dc7ee4",
+      "known_subtotal": {
+        "cache_read": 37248,
+        "cache_write": 0,
+        "input": 7708,
+        "output": 1083,
+        "reasoning": 74
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 44.26949110580608,
+      "spans_seconds": {
+        "agent": 43.584899436,
+        "capture": 0.016813662,
+        "context_and_lookup": 0.004195515,
+        "finish": 0.066729196
+      },
+      "stage": 5,
+      "terminal_sha256": "47f9c9d2ba8e74e4d5201a28c09b839b47c9fac3321aac85853b6d10f4be5947",
+      "token_work": 8865,
+      "usage": {
+        "cache_read": 37248,
+        "cache_write": 0,
+        "input": 7708,
+        "output": 1083,
+        "reasoning": 74
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2537809,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2537664,
+        "owner_token": "233791463",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e21550152ffecLrfjNh5m6tyDV",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "labels-changed",
+      "id": "05-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/05-v2/journals/4143d572d9b94595a1d196a49cdc0ef1",
+      "known_subtotal": {
+        "cache_read": 44288,
+        "cache_write": 0,
+        "input": 4966,
+        "output": 1215,
+        "reasoning": 47
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 44.61005828715861,
+      "spans_seconds": {
+        "agent": 43.427934664,
+        "capture": 0.010738884,
+        "context_and_lookup": 0.643595924,
+        "finish": 0.066016867
+      },
+      "stage": 5,
+      "terminal_sha256": "6296ce9dc16493ac339189c0665f107d1ff07bda07abbc95d66e7b402fb8ff19",
+      "token_work": 6228,
+      "usage": {
+        "cache_read": 44288,
+        "cache_write": 0,
+        "input": 4966,
+        "output": 1215,
+        "reasoning": 47
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2542490,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2542377,
+        "owner_token": "233795924",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e2154531affeALonEsel3KyOfP",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/v2-work"
+      },
+      "arm": "v2",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration-changed",
+      "id": "06-v2",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/06-v2/journals/f45252d4535d47cd8124388b1a4a9c22",
+      "known_subtotal": {
+        "cache_read": 38912,
+        "cache_write": 0,
+        "input": 6659,
+        "output": 1687,
+        "reasoning": 231
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 57.123309846036136,
+      "spans_seconds": {
+        "agent": 55.927455913,
+        "capture": 0.017433773,
+        "context_and_lookup": 0.598003701,
+        "finish": 0.09897531
+      },
+      "stage": 6,
+      "terminal_sha256": "315b7ebf2ce84eb9e5cd33cacd59d9111837db4ed6872b8bcc3baa6d45a06902",
+      "token_work": 8577,
+      "usage": {
+        "cache_read": 38912,
+        "cache_write": 0,
+        "input": 6659,
+        "output": 1687,
+        "reasoning": 231
+      },
+      "usage_complete": true
+    },
+    {
+      "api_receipt": {
+        "client_pid": 2544947,
+        "model": {
+          "id": "gpt-6.1-sol",
+          "providerID": "openai",
+          "variant": "high"
+        },
+        "owner_pid": 2544938,
+        "owner_token": "233801637",
+        "schema": "cami-opencode-session/1",
+        "session_id": "ses_e21537677ffebfJ7MGVQFCkrrK",
+        "type": "session_bound",
+        "workspace": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/study/baseline-work"
+      },
+      "arm": "baseline",
+      "cache_recorded": false,
+      "execution": "success",
+      "fixture": "duration-changed",
+      "id": "06-baseline",
+      "independent_quality": true,
+      "journal": "runs/cami-v2/study/06-baseline/journals/e9c0ed41ae7d4861af1c248b430c3abe",
+      "known_subtotal": {
+        "cache_read": 51456,
+        "cache_write": 0,
+        "input": 8433,
+        "output": 1780,
+        "reasoning": 240
+      },
+      "quality": "pass",
+      "replayed": false,
+      "returncode": 0,
+      "seconds": 59.085848157759756,
+      "spans_seconds": {
+        "agent": 58.560285185,
+        "capture": 0.010009453,
+        "context_and_lookup": 0.002344954,
+        "finish": 0.106031959
+      },
+      "stage": 6,
+      "terminal_sha256": "7b8963a18ffc692c7e34bb021dc784a03277630e23d851d6135c413ecbc14262",
+      "token_work": 10453,
+      "usage": {
+        "cache_read": 51456,
+        "cache_write": 0,
+        "input": 8433,
+        "output": 1780,
+        "reasoning": 240
+      },
+      "usage_complete": true
+    }
+  ],
+  "scenarios": {
+    "changed-similar": {
+      "baseline": {
+        "quality_pass": 2,
+        "seconds": 103.35533926356584,
+        "token_work": 19318
+      },
+      "v2": {
+        "quality_pass": 2,
+        "seconds": 101.73336813319474,
+        "token_work": 14805
+      }
+    },
+    "exact-repeat": {
+      "baseline": {
+        "quality_pass": 2,
+        "seconds": 84.96210109675303,
+        "token_work": 10238
+      },
+      "v2": {
+        "quality_pass": 2,
+        "seconds": 87.74064331501722,
+        "token_work": 18396
+      }
+    },
+    "new": {
+      "baseline": {
+        "quality_pass": 2,
+        "seconds": 79.18035154463723,
+        "token_work": 10124
+      },
+      "v2": {
+        "quality_pass": 2,
+        "seconds": 88.07313336245716,
+        "token_work": 28749
+      }
+    }
+  },
+  "target_50": false,
+  "time_ratio": 1.037567984521097,
+  "token_work_ratio": 1.5612399193548387,
+  "totals": {
+    "baseline": {
+      "attempts": 6,
+      "quality_pass": 6,
+      "seconds": 267.4977919049561,
+      "token_work": 39680,
+      "usage": {
+        "cache_read": 244992,
+        "cache_write": 0,
+        "input": 31389,
+        "output": 7453,
+        "reasoning": 838
+      }
+    },
+    "v2": {
+      "attempts": 6,
+      "quality_pass": 6,
+      "seconds": 277.5471448106691,
+      "token_work": 61950,
+      "usage": {
+        "cache_read": 225664,
+        "cache_write": 0,
+        "input": 53741,
+        "output": 7615,
+        "reasoning": 594
+      }
+    }
+  }
+}

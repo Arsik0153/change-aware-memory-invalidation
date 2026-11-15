@@ -1,0 +1,112 @@
+{
+  "module": "/root/.t3/worktrees/change-aware-memory-invalidation/feature-cami-v2-task-me-1fd075d2c5b84aa1/runs/cami-v2/final-installed/lib/python3.12/site-packages/cami/opencode/task_session.py",
+  "module_sha256": "7632e6dd68de2bce677ede7d292b962daf2783dc3b3ee350ba388ea8f4e13fbc",
+  "model_requests": 0,
+  "kind": "local child-process contract; not a live model measurement",
+  "legacy_state_unchanged": true,
+  "runs": [
+    {
+      "mode": "legacy",
+      "result": {
+        "quality": "pass",
+        "execution": "success",
+        "telemetry": {
+          "complete": false,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "requests": 0,
+          "missing_usage": [],
+          "errors": [],
+          "known_component_requests": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "known_subtotal": null,
+          "total": null,
+          "billing_reconciliation": "unavailable; no invoice source configured"
+        },
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "input_key": "f8a585ee302d1f0b34ae21d31d10f92f6b1b3f756a6743b4cda471372ca8a2c1",
+        "solution_files": {
+          "src/math.py": {
+            "sha256": "4aa1bf4e3fa71a9a654d303a535c5b0a6e9396c23a69ca050f30b17798f7d2b6",
+            "mode": 420
+          }
+        },
+        "replayed": false
+      }
+    },
+    {
+      "mode": "v2",
+      "result": {
+        "quality": "pass",
+        "execution": "success",
+        "telemetry": {
+          "complete": false,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "requests": 0,
+          "missing_usage": [],
+          "errors": [],
+          "known_component_requests": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "known_subtotal": null,
+          "total": null,
+          "billing_reconciliation": "unavailable; no invoice source configured"
+        },
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "input_key": "f8a585ee302d1f0b34ae21d31d10f92f6b1b3f756a6743b4cda471372ca8a2c1",
+        "solution_files": {
+          "src/math.py": {
+            "sha256": "4aa1bf4e3fa71a9a654d303a535c5b0a6e9396c23a69ca050f30b17798f7d2b6",
+            "mode": 420
+          }
+        },
+        "method_recorded": false,
+        "replayed": false
+      }
+    },
+    {
+      "mode": "legacy",
+      "result": {
+        "quality": "pass",
+        "execution": "success",
+        "telemetry": {
+          "complete": false,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "requests": 0,
+          "missing_usage": [],
+          "errors": [],
+          "known_component_requests": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache_read": 0,
+            "cache_write": 0
+          },
+          "known_subtotal": null,
+          "total": null,
+          "billing_reconciliation": "unavailable; no invoice source configured"
+        },
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "input_key": "f8a585ee302d1f0b34ae21d31d10f92f6b1b3f756a6743b4cda471372ca8a2c1",
+        "solution_files": {
+          "src/math.py": {
+            "sha256": "4aa1bf4e3fa71a9a654d303a535c5b0a6e9396c23a69ca050f30b17798f7d2b6",
+            "mode": 420
+          }
+        },
+        "replayed": false
+      }
+    }
+  ]
+}

@@ -343,7 +343,12 @@ def forward_recorded(binary, model, parent_pid, directory):
         or json.loads(config["context"])["model"] != model
     ):
         raise ValueError("recorded workspace or model differs")
-    return forward(binary, model, config["task"], parent_pid, str(directory))
+    journal = task_session.Journal(directory / "events.sqlite")
+    try:
+        prompts = [data["text"] for kind, data in journal.events() if kind == "task_prompt"]
+    finally:
+        journal.close()
+    return forward(binary, model, prompts[-1] if prompts else config["task"], parent_pid, str(directory))
 
 
 def main(argv=None):
@@ -375,6 +380,8 @@ def main(argv=None):
     parser.add_argument("--model", default="openai/gpt-6.1-sol#high")
     parser.add_argument("--opencode-binary", default="opencode")
     parser.add_argument("--origin", choices=["user", "admission", "experiment"], default="user")
+    parser.add_argument("--mode", choices=["legacy", "v2"], default="legacy")
+    parser.add_argument("--memory-root", type=Path, default=Path.home() / ".local/state/cami-task-memory")
     args = parser.parse_args(argv)
     binary = shutil.which(args.opencode_binary)
     if binary is None:
@@ -395,8 +402,19 @@ def main(argv=None):
     task = args.task_file.read_bytes().decode("utf-8")
     external = args.context_file.read_bytes().decode("utf-8")
     grade = json.loads(args.grade_json)
+    v2_inputs = {}
+    if args.mode == "v2":
+        try:
+            from . import task_context, task_memory
+        except ImportError:
+            import task_context
+            import task_memory
+        v2_inputs = {"v2_module_sha256": {
+            module.__name__.rsplit(".", 1)[-1]: hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest()
+            for module in (task_context, task_memory)}}
     context = json.dumps(
         {
+            **v2_inputs,
             "origin": args.origin,
             "external": external,
             "model": args.model,
@@ -412,6 +430,13 @@ def main(argv=None):
         },
         sort_keys=True,
     )
+    try:
+        from .task_memory import namespace
+    except ImportError:
+        from task_memory import namespace
+    state = namespace(args.memory_root, workspace) if args.mode == "v2" else None
+    if state and (state.is_relative_to(workspace) or workspace.is_relative_to(state)):
+        parser.error("memory namespace must be outside workspace")
     result = task_session.run(
         directory,
         workspace,
@@ -427,6 +452,8 @@ def main(argv=None):
             str(directory),
         ],
         grade,
+        cache=state / "replay" if state else None,
+        v2_state=state,
         request_coverage=False,
     )
     print(json.dumps({"journal": str(directory), **result}, sort_keys=True))

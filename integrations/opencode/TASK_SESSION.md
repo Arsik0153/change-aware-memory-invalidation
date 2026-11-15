@@ -72,3 +72,6 @@ cami task recover --directory /path/to/journal
 стартовые снимки и строгие ключи. Он отдельно считает повтор задания и возможность
 использовать уже завершённое проверенное решение. Admission и experiment
 исключены. Пустая выборка имеет неопределённую долю, а не нулевую частоту.
+
+The opt-in integrated pipeline is documented in [TASK_V2.md](TASK_V2.md).
+`--mode legacy` remains the default; v2 state has separate worktree namespaces.

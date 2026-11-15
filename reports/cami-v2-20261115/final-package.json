@@ -1,0 +1,48 @@
+{
+  "wheel_sha256": "73ba2c9781c2ea8d30e025b55eef177466f2a8bbcaa221fd030685868079ec36",
+  "modules": {
+    "run_task": "d16fde13d778020d53bb028010f0441a672c652521cde4411356848e0830e1ba",
+    "task_session": "7632e6dd68de2bce677ede7d292b962daf2783dc3b3ee350ba388ea8f4e13fbc",
+    "task_replay": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+    "task_context": "b018768684a72d93c22a124b733b4a36ac9947ed9939190f79e107379b3e44c4",
+    "task_memory": "20700c1f56f58092d69f095e975ad50691b9f03086975528afab57c14e14355f"
+  },
+  "evaluated_wheel_sha256": "6f496417601a1a1739ffa2c0ba1173d5a927ca1e41b085ceddd351d3f5f43e46",
+  "final_model_admission": {
+    "journal": "runs/cami-v2/final-admission/journals/40841b88123646239c1a093a83f6d0a5",
+    "origin": "admission",
+    "quality": "pass",
+    "execution": "success",
+    "telemetry": {
+      "billing_reconciliation": "unavailable; no invoice source configured",
+      "complete": true,
+      "errors": [],
+      "known_component_requests": {
+        "cache_read": 6,
+        "cache_write": 6,
+        "input": 6,
+        "output": 6,
+        "reasoning": 6
+      },
+      "known_subtotal": {
+        "cache_read": 26496,
+        "cache_write": 0,
+        "input": 6118,
+        "output": 503,
+        "reasoning": 49
+      },
+      "missing_usage": [],
+      "requests": 6,
+      "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+      "total": {
+        "cache_read": 26496,
+        "cache_write": 0,
+        "input": 6118,
+        "output": 503,
+        "reasoning": 49
+      }
+    },
+    "cache_eligible": false,
+    "cache_recorded": false
+  }
+}

@@ -148,6 +148,7 @@ def finish(directory, journal):
         return terminal[-1]
     # Caller must stop any orphan agent before recovery. Never repeat a provider call.
     journal.append("capture_started", {})
+    replayed = any(k == "replay_materialized" for k, _ in events)
     candidate = directory / "solution"
     if not candidate.exists():
         snapshot(Path(config["workspace"]), candidate)
@@ -176,6 +177,9 @@ def finish(directory, journal):
     events = journal.events()
     exits = [d["returncode"] for k, d in events if k == "agent_finished"]
     usage = telemetry(events)
+    if replayed:
+        usage = {**usage, "complete": True, "requests": 0,
+                 "total": {k: 0 for k in FIELDS}, "scope": "exact replay; no provider invocation"}
     execution = bool(exits) and exits[-1] == 0 and not any(k == "agent_timeout" for k, _ in events)
     # An explicit caller declaration is required, and does not prove foreign API coverage.
     eligible = quality and execution and usage["complete"] and config["request_coverage"]
@@ -188,12 +192,19 @@ def finish(directory, journal):
         "input_key": config["key"],
         "solution_files": files,
     }
-    if eligible and config["cache"]:
+    if eligible and config["cache"] and not replayed:
         journal.append("cache_record_started", {})
         replay.record(
             directory / "before", candidate, config["task"], config["context"], config["cache"]
         )
         terminal["cache_recorded"] = True
+    if config.get("v2_state") and not replayed:
+        try:
+            from . import task_memory
+        except ImportError:
+            import task_memory
+        terminal["method_recorded"] = task_memory.remember(directory, config, terminal)
+    terminal["replayed"] = replayed
     journal.append("terminal", terminal)
     return terminal
 
@@ -208,10 +219,18 @@ def run(
     cache=None,
     request_coverage=False,
     timeout=900,
+    v2_state=None,
 ):
     directory, workspace = Path(directory).resolve(), Path(workspace).resolve()
     if directory.is_relative_to(workspace):
         raise ValueError("journal must be outside input")
+    if v2_state:
+        v2_state = Path(v2_state).resolve()
+        if v2_state.is_relative_to(workspace) or workspace.is_relative_to(v2_state):
+            raise ValueError("v2 memory must be outside workspace")
+        if cache and Path(cache).resolve() != v2_state / "replay":
+            raise ValueError("v2 cache must use its own replay namespace")
+        cache = v2_state / "replay"
     directory.mkdir(exist_ok=False, mode=0o700)
     journal = Journal(directory / "events.sqlite")
     try:
@@ -230,8 +249,49 @@ def run(
                 "grade": grade,
                 "cache": str(Path(cache).resolve()) if cache else None,
                 "request_coverage": request_coverage,
+                "v2_state": str(v2_state) if v2_state else None,
             },
         )
+        if v2_state:
+            try:
+                from . import task_context, task_memory
+            except ImportError:
+                import task_context
+                import task_memory
+            state = Path(v2_state)
+            state.mkdir(parents=True, exist_ok=True)
+            replay.publish(state / "binding.json", replay.canonical({
+                "schema": "cami-task-state/2", "workspace": str(workspace)}))
+            if task_memory.reusable(state, key, context):
+                hit = replay.materialize(directory / "before", task, context, state / "replay", directory / "solution")
+            else:
+                hit = {"status": "miss", "reason": "no committed eligible exact solution", "key": key}
+            journal.append("replay_decision", hit)
+            if hit["status"] == "candidate_requires_grading":
+                candidate_files = replay.inventory(directory / "solution")
+                with (directory / "replay-grade.log").open("ab") as log:
+                    try:
+                        checked = subprocess.run(grade, cwd=directory / "solution", stdout=log,
+                                                 stderr=log, timeout=300,
+                                                 env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+                        valid = checked.returncode == 0 and replay.inventory(directory / "solution") == candidate_files
+                    except (OSError, subprocess.TimeoutExpired):
+                        valid = False
+                    log.flush()
+                    os.fsync(log.fileno())
+                journal.append("replay_checked", {"valid": valid})
+                if valid:
+                    journal.append("replay_materialized", hit)
+                    journal.append("agent_finished", {"returncode": 0})
+                    return finish(directory, journal)
+                (directory / "solution").rename(directory / "rejected-replay")
+            packet = task_context.prepare(workspace, task, state, directory / "context.txt")
+            methods = json.dumps(task_memory.hints(state, task), sort_keys=True)
+            prompt = task + "\n\nCurrent source packet (read more with native tools as needed):\n" + packet
+            prompt += "\nVerified previous methods, hints only; reassess applicability:\n" + methods
+            if replay.inventory(workspace) != files:
+                raise ValueError("workspace changed after capture; model not admitted")
+            journal.append("task_prompt", {"text": prompt})
         journal.append("agent_started", {"argv": agent})
         with (directory / "stderr.log").open("ab") as stderr:
             try:
