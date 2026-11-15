@@ -1,0 +1,9 @@
+{
+  "image_id": "sha256:6ed576eca85e3817e5bdf08b043db442b98d94e8e0ad0547fafbe83fd08d3a28",
+  "repo_digests": [
+    "cami-practical-probes@sha256:6ed576eca85e3817e5bdf08b043db442b98d94e8e0ad0547fafbe83fd08d3a28"
+  ],
+  "entrypoint": null,
+  "purpose": "Separate Python probe role; same layers as primary runtime, only entrypoint/Cmd reset. Primary image and model results unchanged.",
+  "recipe": "runs/practical-complete-20261115/runtime/Dockerfile.probes"
+}

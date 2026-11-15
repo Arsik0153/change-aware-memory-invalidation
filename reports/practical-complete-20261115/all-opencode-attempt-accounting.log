@@ -1,0 +1,24 @@
+{
+  "scope": "Observed normalized usage for all OpenCode admissions and primary comparison attempts in this execution; not parent-chat usage or an account invoice.",
+  "primary_terminal_attempts": 72,
+  "primary_planned_attempts": 72,
+  "admission_attempts": 5,
+  "observed_accounting_complete": true,
+  "known_token_component_lower_bounds": {
+    "input": 1545122,
+    "cache_read": 7953536,
+    "cache_write": 0,
+    "output": 114359,
+    "reasoning": 31916
+  },
+  "observed_token_components_total": {
+    "input": 1545122,
+    "cache_read": 7953536,
+    "cache_write": 0,
+    "output": 114359,
+    "reasoning": 31916
+  },
+  "actual_invoice_amount": null,
+  "billing_reconciliation": "No independent invoice source configured.",
+  "failures_policy": "Failed admission calls are retained separately; none enters the primary sample. Unknown usage never becomes an exact zero."
+}

@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "analysis_timing": "Post-run endpoint audit, separate from the predeclared primary result. Original records and criteria unchanged.",
+  "deviation": "Protocol wording ended after the durable terminal journal; implementation stopped immediately before terminal journal/publication. Source/quality journal commits and all substantive work are inside the recorded span.",
+  "observed_tail_upper_max_seconds": 0.142319512,
+  "observed_tail_upper_median_seconds": 0.009481624000000001,
+  "corrected_median_time_ratio_bounds": [
+    1.1123579250023568,
+    1.1127013468525369
+  ],
+  "bound_scope": "Observed same-host UTC clocks and immutable terminal-file mtimes; a conservative interval from quality acknowledgement to later JSON write, not a new timed run.",
+  "verdict": "Default recommendation remains rejected: the independent primary token-work gate already fails, and even the most favorable observed publication-tail correction does not approach the required time ratio <=0.90."
+}

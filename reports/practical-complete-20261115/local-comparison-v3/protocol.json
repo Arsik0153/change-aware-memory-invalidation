@@ -1,0 +1,24 @@
+{
+  "version": 3,
+  "scope": "complete find CLI, cold and verified warm index; help is a nonregression control",
+  "pairs_per_case": 5,
+  "cases": [
+    "help",
+    "found-cold",
+    "found-warm",
+    "missing-cold",
+    "missing-warm"
+  ],
+  "correctness": "All payload fields equal except observation and two implementation IDs at snapshot.fingerprint and snapshot.generation_id. Both IDs validated, generation must bind fingerprint+unchanged snapshot. No recursive field stripping.",
+  "acceptance": "All find cases: >=10% lower median and candidate max<baseline min; help median <=110% baseline; all outputs/exits match. Otherwise do not deploy candidate. No reruns or extension.",
+  "limiter": "Previously profiled repeated PurePosixPath parent construction; same capture, file reads, hash guards and index contract retained.",
+  "source_sha256": {
+    "baseline": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+    "candidate": "e9e856fac0fd9d525f2d0c03d024a4cc9a2b49c0d5f70f589d3fa8799d408300"
+  },
+  "load": [
+    1.2001953125,
+    1.041015625,
+    0.73388671875
+  ]
+}

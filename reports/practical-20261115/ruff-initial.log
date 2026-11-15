@@ -1,0 +1,63 @@
+E702 Multiple statements on one line (semicolon)
+  --> scripts/practical/benchmark.py:24:28
+   |
+23 | def main():
+24 |     out = Path(sys.argv[1]);out.mkdir(exist_ok=False)
+   |                            ^
+25 |     records = []
+26 |     with tempfile.TemporaryDirectory() as tmp:
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> scripts/practical/benchmark.py:40:56
+   |
+38 |                     raw = proc.stdout
+39 |                     try:
+40 |                         value = stable(json.loads(raw));raw = json.dumps(value, sort_keys=True).encode()
+   |                                                        ^
+41 |                     except ValueError:
+42 |                         pass
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> scripts/practical/benchmark.py:47:52
+   |
+45 |                     records.append(r)
+46 |                     with (out/'attempts.jsonl').open('a') as f:
+47 |                         f.write(json.dumps(r)+'\n');f.flush();os.fsync(f.fileno())
+   |                                                    ^
+48 |         summary = {}
+49 |         for case in ['help','found','missing']:
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> scripts/practical/benchmark.py:47:62
+   |
+45 |                     records.append(r)
+46 |                     with (out/'attempts.jsonl').open('a') as f:
+47 |                         f.write(json.dumps(r)+'\n');f.flush();os.fsync(f.fileno())
+   |                                                              ^
+48 |         summary = {}
+49 |         for case in ['help','found','missing']:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> scripts/practical/benchmark.py:62:24
+   |
+60 |         print(json.dumps(summary,indent=2))
+61 |
+62 | if __name__=='__main__':main()
+   |                        ^
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests/test_task_session.py:94:34
+   |
+93 | def test_corrupt_journal(tmp_path):
+94 |     path=tmp_path/'events.sqlite';path.write_bytes(b'broken sqlite')
+   |                                  ^
+95 |     with pytest.raises(Exception):
+96 |         Journal(path)
+   |
+
+Found 7 errors (1 fixed, 6 remaining).

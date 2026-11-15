@@ -1,0 +1,38 @@
+{
+  "status": "verified",
+  "wheel_sha256": "f3b1668795a66a74e4f00e43818f72e6ce6fb2a3c8ab22527f30aafbf0f2b2d6",
+  "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-final/24cd8e727f5746338f922eb425496baa",
+  "source": "def twice(value):\n    return value * 2\n",
+  "quality": "pass",
+  "execution": "success",
+  "usage": {
+    "billing_reconciliation": "unavailable; no invoice source configured",
+    "complete": true,
+    "errors": [],
+    "known_subtotal": {
+      "cache_read": 22144,
+      "cache_write": 0,
+      "input": 3165,
+      "output": 260,
+      "reasoning": 0
+    },
+    "missing_usage": [],
+    "requests": 5,
+    "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+    "total": {
+      "cache_read": 22144,
+      "cache_write": 0,
+      "input": 3165,
+      "output": 260,
+      "reasoning": 0
+    }
+  },
+  "visible_response_observations": 10,
+  "input_key": "a21017a3b295c8db3aad539b50d40999356a08b6d731c4df3cb623570cfb9152",
+  "model": {
+    "providerID": "openai",
+    "id": "gpt-6.1-sol",
+    "variant": "high"
+  },
+  "origin": "admission; not production frequency or primary comparison"
+}

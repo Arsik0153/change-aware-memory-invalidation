@@ -1,0 +1,1578 @@
+{
+  "scope": "Observed normalized usage for all OpenCode admissions and primary comparison attempts in this execution; not parent-chat usage or an account invoice.",
+  "primary_terminal_attempts": 72,
+  "primary_planned_attempts": 72,
+  "admission_attempts": 5,
+  "admission_records": [
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals/0f0ec021722d452582e552d73d04cbd0/events.sqlite",
+      "complete": true,
+      "quality": "fail",
+      "execution": "success",
+      "usage_total": {
+        "cache_read": 24320,
+        "cache_write": 0,
+        "input": 7123,
+        "output": 188,
+        "reasoning": 27
+      },
+      "known_subtotal": {
+        "cache_read": 24320,
+        "cache_write": 0,
+        "input": 7123,
+        "output": 188,
+        "reasoning": 27
+      },
+      "requests": 6,
+      "role": "authored admission; excluded from production hit rate and primary experiment"
+    },
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-accounting-final/32c1fdb7149a43659af03d89a751048d/events.sqlite",
+      "complete": true,
+      "quality": "pass",
+      "execution": "success",
+      "usage_total": {
+        "cache_read": 17280,
+        "cache_write": 0,
+        "input": 8033,
+        "output": 264,
+        "reasoning": 0
+      },
+      "known_subtotal": {
+        "cache_read": 17280,
+        "cache_write": 0,
+        "input": 8033,
+        "output": 264,
+        "reasoning": 0
+      },
+      "requests": 5,
+      "role": "authored admission; excluded from production hit rate and primary experiment"
+    },
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-final/24cd8e727f5746338f922eb425496baa/events.sqlite",
+      "complete": true,
+      "quality": "pass",
+      "execution": "success",
+      "usage_total": {
+        "cache_read": 22144,
+        "cache_write": 0,
+        "input": 3165,
+        "output": 260,
+        "reasoning": 0
+      },
+      "known_subtotal": {
+        "cache_read": 22144,
+        "cache_write": 0,
+        "input": 3165,
+        "output": 260,
+        "reasoning": 0
+      },
+      "requests": 5,
+      "role": "authored admission; excluded from production hit rate and primary experiment"
+    },
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-v2/678fd75de8e74a289a91462c7844b93f/events.sqlite",
+      "complete": true,
+      "quality": "fail",
+      "execution": "success",
+      "usage_total": {
+        "cache_read": 27392,
+        "cache_write": 0,
+        "input": 5956,
+        "output": 247,
+        "reasoning": 33
+      },
+      "known_subtotal": {
+        "cache_read": 27392,
+        "cache_write": 0,
+        "input": 5956,
+        "output": 247,
+        "reasoning": 33
+      },
+      "requests": 5,
+      "role": "authored admission; excluded from production hit rate and primary experiment"
+    },
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-v3/9fa6763478684fe9b5b53189a69b2d28/events.sqlite",
+      "complete": true,
+      "quality": "pass",
+      "execution": "success",
+      "usage_total": {
+        "cache_read": 14592,
+        "cache_write": 0,
+        "input": 10699,
+        "output": 254,
+        "reasoning": 0
+      },
+      "known_subtotal": {
+        "cache_read": 14592,
+        "cache_write": 0,
+        "input": 10699,
+        "output": 254,
+        "reasoning": 0
+      },
+      "requests": 5,
+      "role": "authored admission; excluded from production hit rate and primary experiment"
+    }
+  ],
+  "primary_records": [
+    {
+      "id": "r1-completion-hidden-argument-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 19832,
+        "cache_read": 147840,
+        "cache_write": 0,
+        "output": 1114,
+        "reasoning": 401
+      },
+      "known_subtotal": {
+        "input": 19832,
+        "cache_read": 147840,
+        "cache_write": 0,
+        "output": 1114,
+        "reasoning": 401
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-completion-hidden-argument-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 13809,
+        "cache_read": 103808,
+        "cache_write": 0,
+        "output": 1037,
+        "reasoning": 223
+      },
+      "known_subtotal": {
+        "input": 13809,
+        "cache_read": 103808,
+        "cache_write": 0,
+        "output": 1037,
+        "reasoning": 223
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-dynamic-field-error-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 30322,
+        "cache_read": 50816,
+        "cache_write": 0,
+        "output": 885,
+        "reasoning": 97
+      },
+      "known_subtotal": {
+        "input": 30322,
+        "cache_read": 50816,
+        "cache_write": 0,
+        "output": 885,
+        "reasoning": 97
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-dynamic-field-error-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 26439,
+        "cache_read": 47744,
+        "cache_write": 0,
+        "output": 796,
+        "reasoning": 80
+      },
+      "known_subtotal": {
+        "input": 26439,
+        "cache_read": 47744,
+        "cache_write": 0,
+        "output": 796,
+        "reasoning": 80
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-empty-default-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 14000,
+        "cache_read": 112384,
+        "cache_write": 0,
+        "output": 1111,
+        "reasoning": 417
+      },
+      "known_subtotal": {
+        "input": 14000,
+        "cache_read": 112384,
+        "cache_write": 0,
+        "output": 1111,
+        "reasoning": 417
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-empty-default-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16849,
+        "cache_read": 77312,
+        "cache_write": 0,
+        "output": 1096,
+        "reasoning": 86
+      },
+      "known_subtotal": {
+        "input": 16849,
+        "cache_read": 77312,
+        "cache_write": 0,
+        "output": 1096,
+        "reasoning": 86
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-escaped-path-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 20354,
+        "cache_read": 134272,
+        "cache_write": 0,
+        "output": 1331,
+        "reasoning": 399
+      },
+      "known_subtotal": {
+        "input": 20354,
+        "cache_read": 134272,
+        "cache_write": 0,
+        "output": 1331,
+        "reasoning": 399
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-escaped-path-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17097,
+        "cache_read": 104576,
+        "cache_write": 0,
+        "output": 1148,
+        "reasoning": 408
+      },
+      "known_subtotal": {
+        "input": 17097,
+        "cache_read": 104576,
+        "cache_write": 0,
+        "output": 1148,
+        "reasoning": 408
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-flag-default-map-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 31671,
+        "cache_read": 111360,
+        "cache_write": 0,
+        "output": 1302,
+        "reasoning": 613
+      },
+      "known_subtotal": {
+        "input": 31671,
+        "cache_read": 111360,
+        "cache_write": 0,
+        "output": 1302,
+        "reasoning": 613
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-flag-default-map-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15868,
+        "cache_read": 97152,
+        "cache_write": 0,
+        "output": 1068,
+        "reasoning": 206
+      },
+      "known_subtotal": {
+        "input": 15868,
+        "cache_read": 97152,
+        "cache_write": 0,
+        "output": 1068,
+        "reasoning": 206
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-http-status-aliases-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 23277,
+        "cache_read": 141952,
+        "cache_write": 0,
+        "output": 3757,
+        "reasoning": 743
+      },
+      "known_subtotal": {
+        "input": 23277,
+        "cache_read": 141952,
+        "cache_write": 0,
+        "output": 3757,
+        "reasoning": 743
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-http-status-aliases-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 14840,
+        "cache_read": 90368,
+        "cache_write": 0,
+        "output": 1923,
+        "reasoning": 589
+      },
+      "known_subtotal": {
+        "input": 14840,
+        "cache_read": 90368,
+        "cache_write": 0,
+        "output": 1923,
+        "reasoning": 589
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-iterable-specifiers-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 21855,
+        "cache_read": 108928,
+        "cache_write": 0,
+        "output": 1821,
+        "reasoning": 659
+      },
+      "known_subtotal": {
+        "input": 21855,
+        "cache_read": 108928,
+        "cache_write": 0,
+        "output": 1821,
+        "reasoning": 659
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-iterable-specifiers-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 33779,
+        "cache_read": 92032,
+        "cache_write": 0,
+        "output": 2003,
+        "reasoning": 290
+      },
+      "known_subtotal": {
+        "input": 33779,
+        "cache_read": 92032,
+        "cache_write": 0,
+        "output": 2003,
+        "reasoning": 290
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-json-error-pickle-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 31224,
+        "cache_read": 147968,
+        "cache_write": 0,
+        "output": 2112,
+        "reasoning": 483
+      },
+      "known_subtotal": {
+        "input": 31224,
+        "cache_read": 147968,
+        "cache_write": 0,
+        "output": 2112,
+        "reasoning": 483
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-json-error-pickle-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 26877,
+        "cache_read": 151552,
+        "cache_write": 0,
+        "output": 1687,
+        "reasoning": 355
+      },
+      "known_subtotal": {
+        "input": 26877,
+        "cache_read": 151552,
+        "cache_write": 0,
+        "output": 1687,
+        "reasoning": 355
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-leading-url-slashes-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 14273,
+        "cache_read": 128128,
+        "cache_write": 0,
+        "output": 2230,
+        "reasoning": 1006
+      },
+      "known_subtotal": {
+        "input": 14273,
+        "cache_read": 128128,
+        "cache_write": 0,
+        "output": 2230,
+        "reasoning": 1006
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-leading-url-slashes-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 23942,
+        "cache_read": 62848,
+        "cache_write": 0,
+        "output": 1512,
+        "reasoning": 341
+      },
+      "known_subtotal": {
+        "input": 23942,
+        "cache_read": 62848,
+        "cache_write": 0,
+        "output": 1512,
+        "reasoning": 341
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-platform-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 41206,
+        "cache_read": 93824,
+        "cache_write": 0,
+        "output": 1327,
+        "reasoning": 297
+      },
+      "known_subtotal": {
+        "input": 41206,
+        "cache_read": 93824,
+        "cache_write": 0,
+        "output": 1327,
+        "reasoning": 297
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-platform-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 20978,
+        "cache_read": 68864,
+        "cache_write": 0,
+        "output": 1202,
+        "reasoning": 328
+      },
+      "known_subtotal": {
+        "input": 20978,
+        "cache_read": 68864,
+        "cache_write": 0,
+        "output": 1202,
+        "reasoning": 328
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-provided-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17242,
+        "cache_read": 85760,
+        "cache_write": 0,
+        "output": 1226,
+        "reasoning": 280
+      },
+      "known_subtotal": {
+        "input": 17242,
+        "cache_read": 85760,
+        "cache_write": 0,
+        "output": 1226,
+        "reasoning": 280
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-provided-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 37152,
+        "cache_read": 88960,
+        "cache_write": 0,
+        "output": 1560,
+        "reasoning": 199
+      },
+      "known_subtotal": {
+        "input": 37152,
+        "cache_read": 88960,
+        "cache_write": 0,
+        "output": 1560,
+        "reasoning": 199
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-utf8-body-length-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 30876,
+        "cache_read": 156416,
+        "cache_write": 0,
+        "output": 1696,
+        "reasoning": 779
+      },
+      "known_subtotal": {
+        "input": 30876,
+        "cache_read": 156416,
+        "cache_write": 0,
+        "output": 1696,
+        "reasoning": 779
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r1-utf8-body-length-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 18635,
+        "cache_read": 165632,
+        "cache_write": 0,
+        "output": 1710,
+        "reasoning": 710
+      },
+      "known_subtotal": {
+        "input": 18635,
+        "cache_read": 165632,
+        "cache_write": 0,
+        "output": 1710,
+        "reasoning": 710
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-completion-hidden-argument-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 20590,
+        "cache_read": 108160,
+        "cache_write": 0,
+        "output": 1109,
+        "reasoning": 327
+      },
+      "known_subtotal": {
+        "input": 20590,
+        "cache_read": 108160,
+        "cache_write": 0,
+        "output": 1109,
+        "reasoning": 327
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-completion-hidden-argument-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17872,
+        "cache_read": 126720,
+        "cache_write": 0,
+        "output": 1164,
+        "reasoning": 217
+      },
+      "known_subtotal": {
+        "input": 17872,
+        "cache_read": 126720,
+        "cache_write": 0,
+        "output": 1164,
+        "reasoning": 217
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-dynamic-field-error-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 9280,
+        "cache_read": 60288,
+        "cache_write": 0,
+        "output": 812,
+        "reasoning": 81
+      },
+      "known_subtotal": {
+        "input": 9280,
+        "cache_read": 60288,
+        "cache_write": 0,
+        "output": 812,
+        "reasoning": 81
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-dynamic-field-error-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 27522,
+        "cache_read": 39936,
+        "cache_write": 0,
+        "output": 741,
+        "reasoning": 243
+      },
+      "known_subtotal": {
+        "input": 27522,
+        "cache_read": 39936,
+        "cache_write": 0,
+        "output": 741,
+        "reasoning": 243
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-empty-default-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 25768,
+        "cache_read": 66048,
+        "cache_write": 0,
+        "output": 929,
+        "reasoning": 282
+      },
+      "known_subtotal": {
+        "input": 25768,
+        "cache_read": 66048,
+        "cache_write": 0,
+        "output": 929,
+        "reasoning": 282
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-empty-default-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 18285,
+        "cache_read": 77824,
+        "cache_write": 0,
+        "output": 1217,
+        "reasoning": 196
+      },
+      "known_subtotal": {
+        "input": 18285,
+        "cache_read": 77824,
+        "cache_write": 0,
+        "output": 1217,
+        "reasoning": 196
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-escaped-path-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17236,
+        "cache_read": 107520,
+        "cache_write": 0,
+        "output": 1024,
+        "reasoning": 572
+      },
+      "known_subtotal": {
+        "input": 17236,
+        "cache_read": 107520,
+        "cache_write": 0,
+        "output": 1024,
+        "reasoning": 572
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-escaped-path-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 12026,
+        "cache_read": 84608,
+        "cache_write": 0,
+        "output": 1068,
+        "reasoning": 272
+      },
+      "known_subtotal": {
+        "input": 12026,
+        "cache_read": 84608,
+        "cache_write": 0,
+        "output": 1068,
+        "reasoning": 272
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-flag-default-map-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 12519,
+        "cache_read": 115968,
+        "cache_write": 0,
+        "output": 1336,
+        "reasoning": 265
+      },
+      "known_subtotal": {
+        "input": 12519,
+        "cache_read": 115968,
+        "cache_write": 0,
+        "output": 1336,
+        "reasoning": 265
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-flag-default-map-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 14973,
+        "cache_read": 95616,
+        "cache_write": 0,
+        "output": 1117,
+        "reasoning": 293
+      },
+      "known_subtotal": {
+        "input": 14973,
+        "cache_read": 95616,
+        "cache_write": 0,
+        "output": 1117,
+        "reasoning": 293
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-http-status-aliases-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 13794,
+        "cache_read": 112640,
+        "cache_write": 0,
+        "output": 1864,
+        "reasoning": 624
+      },
+      "known_subtotal": {
+        "input": 13794,
+        "cache_read": 112640,
+        "cache_write": 0,
+        "output": 1864,
+        "reasoning": 624
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-http-status-aliases-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15426,
+        "cache_read": 87168,
+        "cache_write": 0,
+        "output": 2221,
+        "reasoning": 514
+      },
+      "known_subtotal": {
+        "input": 15426,
+        "cache_read": 87168,
+        "cache_write": 0,
+        "output": 2221,
+        "reasoning": 514
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-iterable-specifiers-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15579,
+        "cache_read": 111104,
+        "cache_write": 0,
+        "output": 3293,
+        "reasoning": 669
+      },
+      "known_subtotal": {
+        "input": 15579,
+        "cache_read": 111104,
+        "cache_write": 0,
+        "output": 3293,
+        "reasoning": 669
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-iterable-specifiers-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 30853,
+        "cache_read": 104064,
+        "cache_write": 0,
+        "output": 3090,
+        "reasoning": 813
+      },
+      "known_subtotal": {
+        "input": 30853,
+        "cache_read": 104064,
+        "cache_write": 0,
+        "output": 3090,
+        "reasoning": 813
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-json-error-pickle-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 23695,
+        "cache_read": 156288,
+        "cache_write": 0,
+        "output": 1875,
+        "reasoning": 646
+      },
+      "known_subtotal": {
+        "input": 23695,
+        "cache_read": 156288,
+        "cache_write": 0,
+        "output": 1875,
+        "reasoning": 646
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-json-error-pickle-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 39855,
+        "cache_read": 156544,
+        "cache_write": 0,
+        "output": 1842,
+        "reasoning": 512
+      },
+      "known_subtotal": {
+        "input": 39855,
+        "cache_read": 156544,
+        "cache_write": 0,
+        "output": 1842,
+        "reasoning": 512
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-leading-url-slashes-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 10061,
+        "cache_read": 112256,
+        "cache_write": 0,
+        "output": 2384,
+        "reasoning": 756
+      },
+      "known_subtotal": {
+        "input": 10061,
+        "cache_read": 112256,
+        "cache_write": 0,
+        "output": 2384,
+        "reasoning": 756
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-leading-url-slashes-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 31323,
+        "cache_read": 171520,
+        "cache_write": 0,
+        "output": 2583,
+        "reasoning": 1219
+      },
+      "known_subtotal": {
+        "input": 31323,
+        "cache_read": 171520,
+        "cache_write": 0,
+        "output": 2583,
+        "reasoning": 1219
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-platform-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 18267,
+        "cache_read": 84992,
+        "cache_write": 0,
+        "output": 1281,
+        "reasoning": 436
+      },
+      "known_subtotal": {
+        "input": 18267,
+        "cache_read": 84992,
+        "cache_write": 0,
+        "output": 1281,
+        "reasoning": 436
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-platform-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 32695,
+        "cache_read": 65024,
+        "cache_write": 0,
+        "output": 1231,
+        "reasoning": 472
+      },
+      "known_subtotal": {
+        "input": 32695,
+        "cache_read": 65024,
+        "cache_write": 0,
+        "output": 1231,
+        "reasoning": 472
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-provided-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15001,
+        "cache_read": 87552,
+        "cache_write": 0,
+        "output": 1374,
+        "reasoning": 168
+      },
+      "known_subtotal": {
+        "input": 15001,
+        "cache_read": 87552,
+        "cache_write": 0,
+        "output": 1374,
+        "reasoning": 168
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-provided-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 10363,
+        "cache_read": 71296,
+        "cache_write": 0,
+        "output": 1472,
+        "reasoning": 172
+      },
+      "known_subtotal": {
+        "input": 10363,
+        "cache_read": 71296,
+        "cache_write": 0,
+        "output": 1472,
+        "reasoning": 172
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-utf8-body-length-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 30717,
+        "cache_read": 175360,
+        "cache_write": 0,
+        "output": 1887,
+        "reasoning": 867
+      },
+      "known_subtotal": {
+        "input": 30717,
+        "cache_read": 175360,
+        "cache_write": 0,
+        "output": 1887,
+        "reasoning": 867
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r2-utf8-body-length-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16670,
+        "cache_read": 116864,
+        "cache_write": 0,
+        "output": 1455,
+        "reasoning": 210
+      },
+      "known_subtotal": {
+        "input": 16670,
+        "cache_read": 116864,
+        "cache_write": 0,
+        "output": 1455,
+        "reasoning": 210
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-completion-hidden-argument-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16463,
+        "cache_read": 105600,
+        "cache_write": 0,
+        "output": 1041,
+        "reasoning": 238
+      },
+      "known_subtotal": {
+        "input": 16463,
+        "cache_read": 105600,
+        "cache_write": 0,
+        "output": 1041,
+        "reasoning": 238
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-completion-hidden-argument-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 29782,
+        "cache_read": 99584,
+        "cache_write": 0,
+        "output": 1193,
+        "reasoning": 233
+      },
+      "known_subtotal": {
+        "input": 29782,
+        "cache_read": 99584,
+        "cache_write": 0,
+        "output": 1193,
+        "reasoning": 233
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-dynamic-field-error-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 21178,
+        "cache_read": 63488,
+        "cache_write": 0,
+        "output": 928,
+        "reasoning": 198
+      },
+      "known_subtotal": {
+        "input": 21178,
+        "cache_read": 63488,
+        "cache_write": 0,
+        "output": 928,
+        "reasoning": 198
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-dynamic-field-error-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 19458,
+        "cache_read": 57856,
+        "cache_write": 0,
+        "output": 861,
+        "reasoning": 184
+      },
+      "known_subtotal": {
+        "input": 19458,
+        "cache_read": 57856,
+        "cache_write": 0,
+        "output": 861,
+        "reasoning": 184
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-empty-default-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 14382,
+        "cache_read": 96768,
+        "cache_write": 0,
+        "output": 1032,
+        "reasoning": 199
+      },
+      "known_subtotal": {
+        "input": 14382,
+        "cache_read": 96768,
+        "cache_write": 0,
+        "output": 1032,
+        "reasoning": 199
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-empty-default-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 13201,
+        "cache_read": 95744,
+        "cache_write": 0,
+        "output": 1208,
+        "reasoning": 102
+      },
+      "known_subtotal": {
+        "input": 13201,
+        "cache_read": 95744,
+        "cache_write": 0,
+        "output": 1208,
+        "reasoning": 102
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-escaped-path-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 34632,
+        "cache_read": 128384,
+        "cache_write": 0,
+        "output": 1542,
+        "reasoning": 500
+      },
+      "known_subtotal": {
+        "input": 34632,
+        "cache_read": 128384,
+        "cache_write": 0,
+        "output": 1542,
+        "reasoning": 500
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-escaped-path-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 19786,
+        "cache_read": 161792,
+        "cache_write": 0,
+        "output": 1086,
+        "reasoning": 593
+      },
+      "known_subtotal": {
+        "input": 19786,
+        "cache_read": 161792,
+        "cache_write": 0,
+        "output": 1086,
+        "reasoning": 593
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-flag-default-map-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17642,
+        "cache_read": 142336,
+        "cache_write": 0,
+        "output": 1507,
+        "reasoning": 190
+      },
+      "known_subtotal": {
+        "input": 17642,
+        "cache_read": 142336,
+        "cache_write": 0,
+        "output": 1507,
+        "reasoning": 190
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-flag-default-map-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 23550,
+        "cache_read": 85248,
+        "cache_write": 0,
+        "output": 1194,
+        "reasoning": 98
+      },
+      "known_subtotal": {
+        "input": 23550,
+        "cache_read": 85248,
+        "cache_write": 0,
+        "output": 1194,
+        "reasoning": 98
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-http-status-aliases-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 11774,
+        "cache_read": 141824,
+        "cache_write": 0,
+        "output": 2387,
+        "reasoning": 750
+      },
+      "known_subtotal": {
+        "input": 11774,
+        "cache_read": 141824,
+        "cache_write": 0,
+        "output": 2387,
+        "reasoning": 750
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-http-status-aliases-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15284,
+        "cache_read": 41600,
+        "cache_write": 0,
+        "output": 1648,
+        "reasoning": 373
+      },
+      "known_subtotal": {
+        "input": 15284,
+        "cache_read": 41600,
+        "cache_write": 0,
+        "output": 1648,
+        "reasoning": 373
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-iterable-specifiers-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16608,
+        "cache_read": 131200,
+        "cache_write": 0,
+        "output": 2825,
+        "reasoning": 888
+      },
+      "known_subtotal": {
+        "input": 16608,
+        "cache_read": 131200,
+        "cache_write": 0,
+        "output": 2825,
+        "reasoning": 888
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-iterable-specifiers-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 12753,
+        "cache_read": 105600,
+        "cache_write": 0,
+        "output": 1988,
+        "reasoning": 958
+      },
+      "known_subtotal": {
+        "input": 12753,
+        "cache_read": 105600,
+        "cache_write": 0,
+        "output": 1988,
+        "reasoning": 958
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-json-error-pickle-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 10102,
+        "cache_read": 133120,
+        "cache_write": 0,
+        "output": 2933,
+        "reasoning": 901
+      },
+      "known_subtotal": {
+        "input": 10102,
+        "cache_read": 133120,
+        "cache_write": 0,
+        "output": 2933,
+        "reasoning": 901
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-json-error-pickle-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16257,
+        "cache_read": 174336,
+        "cache_write": 0,
+        "output": 2626,
+        "reasoning": 1024
+      },
+      "known_subtotal": {
+        "input": 16257,
+        "cache_read": 174336,
+        "cache_write": 0,
+        "output": 2626,
+        "reasoning": 1024
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-leading-url-slashes-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 17043,
+        "cache_read": 171008,
+        "cache_write": 0,
+        "output": 1718,
+        "reasoning": 597
+      },
+      "known_subtotal": {
+        "input": 17043,
+        "cache_read": 171008,
+        "cache_write": 0,
+        "output": 1718,
+        "reasoning": 597
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-leading-url-slashes-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 50896,
+        "cache_read": 131072,
+        "cache_write": 0,
+        "output": 1747,
+        "reasoning": 741
+      },
+      "known_subtotal": {
+        "input": 50896,
+        "cache_read": 131072,
+        "cache_write": 0,
+        "output": 1747,
+        "reasoning": 741
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-platform-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 18432,
+        "cache_read": 131968,
+        "cache_write": 0,
+        "output": 1365,
+        "reasoning": 536
+      },
+      "known_subtotal": {
+        "input": 18432,
+        "cache_read": 131968,
+        "cache_write": 0,
+        "output": 1365,
+        "reasoning": 536
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-platform-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 26899,
+        "cache_read": 92672,
+        "cache_write": 0,
+        "output": 1143,
+        "reasoning": 609
+      },
+      "known_subtotal": {
+        "input": 26899,
+        "cache_read": 92672,
+        "cache_write": 0,
+        "output": 1143,
+        "reasoning": 609
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-provided-full-version-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 13911,
+        "cache_read": 87552,
+        "cache_write": 0,
+        "output": 1355,
+        "reasoning": 208
+      },
+      "known_subtotal": {
+        "input": 13911,
+        "cache_read": 87552,
+        "cache_write": 0,
+        "output": 1355,
+        "reasoning": 208
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-provided-full-version-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15411,
+        "cache_read": 87424,
+        "cache_write": 0,
+        "output": 1275,
+        "reasoning": 170
+      },
+      "known_subtotal": {
+        "input": 15411,
+        "cache_read": 87424,
+        "cache_write": 0,
+        "output": 1275,
+        "reasoning": 170
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-utf8-body-length-cami",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 16266,
+        "cache_read": 174080,
+        "cache_write": 0,
+        "output": 1899,
+        "reasoning": 393
+      },
+      "known_subtotal": {
+        "input": 16266,
+        "cache_read": 174080,
+        "cache_write": 0,
+        "output": 1899,
+        "reasoning": 393
+      },
+      "role": "predeclared primary comparison"
+    },
+    {
+      "id": "r3-utf8-body-length-plain",
+      "quality_pass": true,
+      "complete": true,
+      "usage_total": {
+        "input": 15669,
+        "cache_read": 141696,
+        "cache_write": 0,
+        "output": 1622,
+        "reasoning": 358
+      },
+      "known_subtotal": {
+        "input": 15669,
+        "cache_read": 141696,
+        "cache_write": 0,
+        "output": 1622,
+        "reasoning": 358
+      },
+      "role": "predeclared primary comparison"
+    }
+  ],
+  "observed_accounting_complete": true,
+  "known_token_component_lower_bounds": {
+    "input": 1545122,
+    "cache_read": 7953536,
+    "cache_write": 0,
+    "output": 114359,
+    "reasoning": 31916
+  },
+  "observed_token_components_total": {
+    "input": 1545122,
+    "cache_read": 7953536,
+    "cache_write": 0,
+    "output": 114359,
+    "reasoning": 31916
+  },
+  "actual_invoice_amount": null,
+  "billing_reconciliation": "No independent invoice source configured.",
+  "failures_policy": "Failed admission calls are retained separately; none enters the primary sample. Unknown usage never becomes an exact zero."
+}

@@ -1,0 +1,40 @@
+{
+  "status": "verified",
+  "wheel_sha256": "732111e7c0aa561b9e65b6e133241705336503c545605207f43f94a47cfe5206",
+  "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-accounting-final/32c1fdb7149a43659af03d89a751048d",
+  "input_key": "2a8dbfd141cdc38ecfe387e72576ad16c1f4f70d968f571ce3b94f85af9c804a",
+  "quality": "pass",
+  "execution": "success",
+  "usage": {
+    "billing_reconciliation": "unavailable; no invoice source configured",
+    "complete": true,
+    "errors": [],
+    "known_component_requests": {
+      "cache_read": 5,
+      "cache_write": 5,
+      "input": 5,
+      "output": 5,
+      "reasoning": 5
+    },
+    "known_subtotal": {
+      "cache_read": 17280,
+      "cache_write": 0,
+      "input": 8033,
+      "output": 264,
+      "reasoning": 0
+    },
+    "missing_usage": [],
+    "requests": 5,
+    "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+    "total": {
+      "cache_read": 17280,
+      "cache_write": 0,
+      "input": 8033,
+      "output": 264,
+      "reasoning": 0
+    }
+  },
+  "visible_response_observations": 10,
+  "origin": "admission; excluded from primary sample and production repeat frequency",
+  "checks": "Exact task, durable receipt, model/workspace, all packaged capture source hashes, changed source, fresh grading, observed responses and normalized usage."
+}

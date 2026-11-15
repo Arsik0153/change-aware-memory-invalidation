@@ -1,0 +1,797 @@
+{
+  "status": "verified",
+  "analysis_timing": "Post-run endpoint audit, separate from the predeclared primary result. Original records and criteria unchanged.",
+  "deviation": "Protocol wording ended after the durable terminal journal; implementation stopped immediately before terminal journal/publication. Source/quality journal commits and all substantive work are inside the recorded span.",
+  "observed_tail_upper_max_seconds": 0.142319512,
+  "observed_tail_upper_median_seconds": 0.009481624000000001,
+  "corrected_median_time_ratio_bounds": [
+    1.1123579250023568,
+    1.1127013468525369
+  ],
+  "bound_scope": "Observed same-host UTC clocks and immutable terminal-file mtimes; a conservative interval from quality acknowledgement to later JSON write, not a new timed run.",
+  "verdict": "Default recommendation remains rejected: the independent primary token-work gate already fails, and even the most favorable observed publication-tail correction does not approach the required time ratio <=0.90.",
+  "rows": [
+    {
+      "trial": {
+        "id": "r1-flag-default-map-plain",
+        "task": "flag-default-map",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 62.348476603737154,
+      "publication_tail_upper_seconds": 0.006630451
+    },
+    {
+      "trial": {
+        "id": "r1-flag-default-map-cami",
+        "task": "flag-default-map",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 92.15954159024922,
+      "publication_tail_upper_seconds": 0.009381944
+    },
+    {
+      "trial": {
+        "id": "r1-empty-default-cami",
+        "task": "empty-default",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 73.27926659175945,
+      "publication_tail_upper_seconds": 0.008442528
+    },
+    {
+      "trial": {
+        "id": "r1-empty-default-plain",
+        "task": "empty-default",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 48.46318701572535,
+      "publication_tail_upper_seconds": 0.007253452
+    },
+    {
+      "trial": {
+        "id": "r1-escaped-path-plain",
+        "task": "escaped-path",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 68.69542908772645,
+      "publication_tail_upper_seconds": 0.009333871
+    },
+    {
+      "trial": {
+        "id": "r1-escaped-path-cami",
+        "task": "escaped-path",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 76.48770550230337,
+      "publication_tail_upper_seconds": 0.005177711
+    },
+    {
+      "trial": {
+        "id": "r1-completion-hidden-argument-cami",
+        "task": "completion-hidden-argument",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 80.38789333926333,
+      "publication_tail_upper_seconds": 0.007875433
+    },
+    {
+      "trial": {
+        "id": "r1-completion-hidden-argument-plain",
+        "task": "completion-hidden-argument",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 53.29709220548911,
+      "publication_tail_upper_seconds": 0.009930181
+    },
+    {
+      "trial": {
+        "id": "r1-json-error-pickle-plain",
+        "task": "json-error-pickle",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 96.37003027146501,
+      "publication_tail_upper_seconds": 0.008804108
+    },
+    {
+      "trial": {
+        "id": "r1-json-error-pickle-cami",
+        "task": "json-error-pickle",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 115.06636786471871,
+      "publication_tail_upper_seconds": 0.022979439
+    },
+    {
+      "trial": {
+        "id": "r1-utf8-body-length-cami",
+        "task": "utf8-body-length",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 112.98678890766395,
+      "publication_tail_upper_seconds": 0.010429662
+    },
+    {
+      "trial": {
+        "id": "r1-utf8-body-length-plain",
+        "task": "utf8-body-length",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 116.60438210155634,
+      "publication_tail_upper_seconds": 0.009993517
+    },
+    {
+      "trial": {
+        "id": "r1-leading-url-slashes-plain",
+        "task": "leading-url-slashes",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 67.47120611846266,
+      "publication_tail_upper_seconds": 0.008874342
+    },
+    {
+      "trial": {
+        "id": "r1-leading-url-slashes-cami",
+        "task": "leading-url-slashes",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 118.02050913834763,
+      "publication_tail_upper_seconds": 0.006187017
+    },
+    {
+      "trial": {
+        "id": "r1-http-status-aliases-cami",
+        "task": "http-status-aliases",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 146.0734853927214,
+      "publication_tail_upper_seconds": 0.011493198
+    },
+    {
+      "trial": {
+        "id": "r1-http-status-aliases-plain",
+        "task": "http-status-aliases",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 92.45219258276565,
+      "publication_tail_upper_seconds": 0.009581304
+    },
+    {
+      "trial": {
+        "id": "r1-iterable-specifiers-plain",
+        "task": "iterable-specifiers",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 91.66801981545804,
+      "publication_tail_upper_seconds": 0.085032145
+    },
+    {
+      "trial": {
+        "id": "r1-iterable-specifiers-cami",
+        "task": "iterable-specifiers",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 100.0469552954827,
+      "publication_tail_upper_seconds": 0.095705159
+    },
+    {
+      "trial": {
+        "id": "r1-dynamic-field-error-cami",
+        "task": "dynamic-field-error",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 48.77031170680938,
+      "publication_tail_upper_seconds": 0.009935006
+    },
+    {
+      "trial": {
+        "id": "r1-dynamic-field-error-plain",
+        "task": "dynamic-field-error",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 41.4700708627869,
+      "publication_tail_upper_seconds": 0.006415683
+    },
+    {
+      "trial": {
+        "id": "r1-provided-full-version-plain",
+        "task": "provided-full-version",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 71.05988855065597,
+      "publication_tail_upper_seconds": 0.020422873
+    },
+    {
+      "trial": {
+        "id": "r1-provided-full-version-cami",
+        "task": "provided-full-version",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 69.07002278940571,
+      "publication_tail_upper_seconds": 0.010287464
+    },
+    {
+      "trial": {
+        "id": "r1-platform-full-version-cami",
+        "task": "platform-full-version",
+        "arm": "cami",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 75.92181468253774,
+      "publication_tail_upper_seconds": 0.012469514
+    },
+    {
+      "trial": {
+        "id": "r1-platform-full-version-plain",
+        "task": "platform-full-version",
+        "arm": "plain",
+        "repetition": 1
+      },
+      "recorded_pipeline_seconds": 121.01184368423937,
+      "publication_tail_upper_seconds": 0.012461405
+    },
+    {
+      "trial": {
+        "id": "r2-flag-default-map-cami",
+        "task": "flag-default-map",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 74.16487471863447,
+      "publication_tail_upper_seconds": 0.009660366
+    },
+    {
+      "trial": {
+        "id": "r2-flag-default-map-plain",
+        "task": "flag-default-map",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 66.24017571249796,
+      "publication_tail_upper_seconds": 0.004468934
+    },
+    {
+      "trial": {
+        "id": "r2-empty-default-plain",
+        "task": "empty-default",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 61.61516614548681,
+      "publication_tail_upper_seconds": 0.004912521
+    },
+    {
+      "trial": {
+        "id": "r2-empty-default-cami",
+        "task": "empty-default",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 62.836876402719,
+      "publication_tail_upper_seconds": 0.009794684
+    },
+    {
+      "trial": {
+        "id": "r2-escaped-path-cami",
+        "task": "escaped-path",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 86.16533137542946,
+      "publication_tail_upper_seconds": 0.008052349
+    },
+    {
+      "trial": {
+        "id": "r2-escaped-path-plain",
+        "task": "escaped-path",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 57.154278312919715,
+      "publication_tail_upper_seconds": 0.006858953
+    },
+    {
+      "trial": {
+        "id": "r2-completion-hidden-argument-plain",
+        "task": "completion-hidden-argument",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 64.67371604556037,
+      "publication_tail_upper_seconds": 0.006182858
+    },
+    {
+      "trial": {
+        "id": "r2-completion-hidden-argument-cami",
+        "task": "completion-hidden-argument",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 65.15949126949353,
+      "publication_tail_upper_seconds": 0.008267037
+    },
+    {
+      "trial": {
+        "id": "r2-json-error-pickle-cami",
+        "task": "json-error-pickle",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 105.24747614480374,
+      "publication_tail_upper_seconds": 0.009077187
+    },
+    {
+      "trial": {
+        "id": "r2-json-error-pickle-plain",
+        "task": "json-error-pickle",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 100.39309143565414,
+      "publication_tail_upper_seconds": 0.009381198
+    },
+    {
+      "trial": {
+        "id": "r2-utf8-body-length-plain",
+        "task": "utf8-body-length",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 81.25065172428084,
+      "publication_tail_upper_seconds": 0.010562788
+    },
+    {
+      "trial": {
+        "id": "r2-utf8-body-length-cami",
+        "task": "utf8-body-length",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 183.30349032033052,
+      "publication_tail_upper_seconds": 0.008108908
+    },
+    {
+      "trial": {
+        "id": "r2-leading-url-slashes-cami",
+        "task": "leading-url-slashes",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 107.54472204355342,
+      "publication_tail_upper_seconds": 0.00853855
+    },
+    {
+      "trial": {
+        "id": "r2-leading-url-slashes-plain",
+        "task": "leading-url-slashes",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 148.38059667555433,
+      "publication_tail_upper_seconds": 0.009808625
+    },
+    {
+      "trial": {
+        "id": "r2-http-status-aliases-plain",
+        "task": "http-status-aliases",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 86.93664608860207,
+      "publication_tail_upper_seconds": 0.009857443
+    },
+    {
+      "trial": {
+        "id": "r2-http-status-aliases-cami",
+        "task": "http-status-aliases",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 96.71327143126918,
+      "publication_tail_upper_seconds": 0.009261081
+    },
+    {
+      "trial": {
+        "id": "r2-iterable-specifiers-cami",
+        "task": "iterable-specifiers",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 123.9226704417896,
+      "publication_tail_upper_seconds": 0.064392434
+    },
+    {
+      "trial": {
+        "id": "r2-iterable-specifiers-plain",
+        "task": "iterable-specifiers",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 127.36587462585238,
+      "publication_tail_upper_seconds": 0.061910444
+    },
+    {
+      "trial": {
+        "id": "r2-dynamic-field-error-plain",
+        "task": "dynamic-field-error",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 48.47075373178167,
+      "publication_tail_upper_seconds": 0.007009086
+    },
+    {
+      "trial": {
+        "id": "r2-dynamic-field-error-cami",
+        "task": "dynamic-field-error",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 43.92693845053954,
+      "publication_tail_upper_seconds": 0.008810392
+    },
+    {
+      "trial": {
+        "id": "r2-provided-full-version-cami",
+        "task": "provided-full-version",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 60.07162148749275,
+      "publication_tail_upper_seconds": 0.02296514
+    },
+    {
+      "trial": {
+        "id": "r2-provided-full-version-plain",
+        "task": "provided-full-version",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 68.66416089340863,
+      "publication_tail_upper_seconds": 0.017300479
+    },
+    {
+      "trial": {
+        "id": "r2-platform-full-version-plain",
+        "task": "platform-full-version",
+        "arm": "plain",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 59.90952850237308,
+      "publication_tail_upper_seconds": 0.019492346
+    },
+    {
+      "trial": {
+        "id": "r2-platform-full-version-cami",
+        "task": "platform-full-version",
+        "arm": "cami",
+        "repetition": 2
+      },
+      "recorded_pipeline_seconds": 67.04518327640189,
+      "publication_tail_upper_seconds": 0.023791499
+    },
+    {
+      "trial": {
+        "id": "r3-flag-default-map-plain",
+        "task": "flag-default-map",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 60.42326401790423,
+      "publication_tail_upper_seconds": 0.00738405
+    },
+    {
+      "trial": {
+        "id": "r3-flag-default-map-cami",
+        "task": "flag-default-map",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 76.12753634864283,
+      "publication_tail_upper_seconds": 0.005686195
+    },
+    {
+      "trial": {
+        "id": "r3-empty-default-cami",
+        "task": "empty-default",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 63.39670027943147,
+      "publication_tail_upper_seconds": 0.0053709
+    },
+    {
+      "trial": {
+        "id": "r3-empty-default-plain",
+        "task": "empty-default",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 59.85893281141115,
+      "publication_tail_upper_seconds": 0.009085511
+    },
+    {
+      "trial": {
+        "id": "r3-escaped-path-plain",
+        "task": "escaped-path",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 85.05141642048774,
+      "publication_tail_upper_seconds": 0.010236151
+    },
+    {
+      "trial": {
+        "id": "r3-escaped-path-cami",
+        "task": "escaped-path",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 86.28947491815133,
+      "publication_tail_upper_seconds": 0.011812551
+    },
+    {
+      "trial": {
+        "id": "r3-completion-hidden-argument-cami",
+        "task": "completion-hidden-argument",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 68.13647671567095,
+      "publication_tail_upper_seconds": 0.008484472
+    },
+    {
+      "trial": {
+        "id": "r3-completion-hidden-argument-plain",
+        "task": "completion-hidden-argument",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 70.32800992961792,
+      "publication_tail_upper_seconds": 0.00880117
+    },
+    {
+      "trial": {
+        "id": "r3-json-error-pickle-plain",
+        "task": "json-error-pickle",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 129.0481336793099,
+      "publication_tail_upper_seconds": 0.010071543
+    },
+    {
+      "trial": {
+        "id": "r3-json-error-pickle-cami",
+        "task": "json-error-pickle",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 134.22791618119743,
+      "publication_tail_upper_seconds": 0.011727598
+    },
+    {
+      "trial": {
+        "id": "r3-utf8-body-length-cami",
+        "task": "utf8-body-length",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 101.86505666060192,
+      "publication_tail_upper_seconds": 0.006195222
+    },
+    {
+      "trial": {
+        "id": "r3-utf8-body-length-plain",
+        "task": "utf8-body-length",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 89.54735929064272,
+      "publication_tail_upper_seconds": 0.009295972
+    },
+    {
+      "trial": {
+        "id": "r3-leading-url-slashes-plain",
+        "task": "leading-url-slashes",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 103.21108874829305,
+      "publication_tail_upper_seconds": 0.006276224
+    },
+    {
+      "trial": {
+        "id": "r3-leading-url-slashes-cami",
+        "task": "leading-url-slashes",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 102.71506763167498,
+      "publication_tail_upper_seconds": 0.008707701
+    },
+    {
+      "trial": {
+        "id": "r3-http-status-aliases-cami",
+        "task": "http-status-aliases",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 104.71748513646243,
+      "publication_tail_upper_seconds": 0.007431723
+    },
+    {
+      "trial": {
+        "id": "r3-http-status-aliases-plain",
+        "task": "http-status-aliases",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 64.18612027272401,
+      "publication_tail_upper_seconds": 0.009800005
+    },
+    {
+      "trial": {
+        "id": "r3-iterable-specifiers-plain",
+        "task": "iterable-specifiers",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 117.0110666813497,
+      "publication_tail_upper_seconds": 0.142319512
+    },
+    {
+      "trial": {
+        "id": "r3-iterable-specifiers-cami",
+        "task": "iterable-specifiers",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 136.28898238774207,
+      "publication_tail_upper_seconds": 0.061283595
+    },
+    {
+      "trial": {
+        "id": "r3-dynamic-field-error-cami",
+        "task": "dynamic-field-error",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 53.64967505365429,
+      "publication_tail_upper_seconds": 0.012627224
+    },
+    {
+      "trial": {
+        "id": "r3-dynamic-field-error-plain",
+        "task": "dynamic-field-error",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 44.2946206495334,
+      "publication_tail_upper_seconds": 0.007782685
+    },
+    {
+      "trial": {
+        "id": "r3-provided-full-version-plain",
+        "task": "provided-full-version",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 67.80666902998281,
+      "publication_tail_upper_seconds": 0.021273314
+    },
+    {
+      "trial": {
+        "id": "r3-provided-full-version-cami",
+        "task": "provided-full-version",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 63.8043870996852,
+      "publication_tail_upper_seconds": 0.013520771
+    },
+    {
+      "trial": {
+        "id": "r3-platform-full-version-cami",
+        "task": "platform-full-version",
+        "arm": "cami",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 87.32313390133721,
+      "publication_tail_upper_seconds": 0.023396591
+    },
+    {
+      "trial": {
+        "id": "r3-platform-full-version-plain",
+        "task": "platform-full-version",
+        "arm": "plain",
+        "repetition": 3
+      },
+      "recorded_pipeline_seconds": 77.91046705759881,
+      "publication_tail_upper_seconds": 0.017004302
+    }
+  ],
+  "pairs": [
+    {
+      "task": "flag-default-map",
+      "most_favorable_cami_ratio": 1.2826082627642448,
+      "least_favorable_cami_ratio": 1.282864519154819
+    },
+    {
+      "task": "empty-default",
+      "most_favorable_cami_ratio": 1.173891269362267,
+      "least_favorable_cami_ratio": 1.1741769926704315
+    },
+    {
+      "task": "escaped-path",
+      "most_favorable_cami_ratio": 1.1802275638995943,
+      "least_favorable_cami_ratio": 1.180494204564005
+    },
+    {
+      "task": "completion-hidden-argument",
+      "most_favorable_cami_ratio": 1.1346624167488717,
+      "least_favorable_cami_ratio": 1.1349433327902279
+    },
+    {
+      "task": "json-error-pickle",
+      "most_favorable_cami_ratio": 1.088087070098953,
+      "least_favorable_cami_ratio": 1.0883158225892566
+    },
+    {
+      "task": "utf8-body-length",
+      "most_favorable_cami_ratio": 1.3852145758508838,
+      "least_favorable_cami_ratio": 1.3854445168771439
+    },
+    {
+      "task": "leading-url-slashes",
+      "most_favorable_cami_ratio": 1.0288085179650068,
+      "least_favorable_cami_ratio": 1.0289624421523822
+    },
+    {
+      "task": "http-status-aliases",
+      "most_favorable_cami_ratio": 1.4265117155082103,
+      "least_favorable_cami_ratio": 1.4267986720351777
+    },
+    {
+      "task": "iterable-specifiers",
+      "most_favorable_cami_ratio": 1.0711327698741042,
+      "least_favorable_cami_ratio": 1.072713568174692
+    },
+    {
+      "task": "dynamic-field-error",
+      "most_favorable_cami_ratio": 1.0900534332558416,
+      "least_favorable_cami_ratio": 1.0904593609148456
+    },
+    {
+      "task": "provided-full-version",
+      "most_favorable_cami_ratio": 0.9294585295153731,
+      "least_favorable_cami_ratio": 0.9299481357296906
+    },
+    {
+      "task": "platform-full-version",
+      "most_favorable_cami_ratio": 0.8895605014530663,
+      "least_favorable_cami_ratio": 0.8899592497464689
+    }
+  ]
+}

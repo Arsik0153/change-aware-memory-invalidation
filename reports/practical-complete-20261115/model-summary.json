@@ -1,0 +1,637 @@
+{
+  "status": "completed_and_verified",
+  "attempts": 72,
+  "tasks": 12,
+  "repetitions_per_arm": 3,
+  "protocol_sha256": "ac5e1a6bcde83aec8fca87f78b1ec315ed89f06cc89a2e7732276bd671c5fe68",
+  "quality_passes": {
+    "plain": 36,
+    "cami": 36
+  },
+  "repository_quality": {
+    "click": {
+      "plain": 12,
+      "cami": 12
+    },
+    "packaging-development-v1": {
+      "plain": 12,
+      "cami": 12
+    },
+    "requests": {
+      "plain": 12,
+      "cami": 12
+    }
+  },
+  "median_paired_task_time_ratio": 1.1125190969073608,
+  "median_paired_task_token_work_ratio": 0.9522289612207004,
+  "gates": {
+    "all_sessions_operational": true,
+    "all_usage_complete": true,
+    "minimum_cami_quality_30_of_36": true,
+    "no_total_quality_regression": true,
+    "no_repository_quality_regression": true,
+    "time_improves_at_least_10_percent": false,
+    "token_work_improves_at_least_10_percent": false
+  },
+  "recommend_cami_by_default": false,
+  "decision": "reject_default_recommendation_for_tested_workload",
+  "task_results": [
+    {
+      "task": "flag-default-map",
+      "repository": "click",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 63.00397211137978,
+        "time_min": 60.42326401790423,
+        "time_max": 66.24017571249796,
+        "token_work_mean": 19455.666666666668,
+        "token_work_min": 16383,
+        "token_work_max": 24842,
+        "known_token_components": {
+          "input": 54391,
+          "cache_read": 278016,
+          "cache_write": 0,
+          "output": 3379,
+          "reasoning": 597
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 80.81731755250884,
+        "time_min": 74.16487471863447,
+        "time_max": 92.15954159024922,
+        "token_work_mean": 22348.333333333332,
+        "token_work_min": 14120,
+        "token_work_max": 33586,
+        "known_token_components": {
+          "input": 61832,
+          "cache_read": 369664,
+          "cache_write": 0,
+          "output": 4145,
+          "reasoning": 1068
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 9.93574129184708
+      },
+      "time_ratio": 1.2827336887528018,
+      "token_work_ratio": 1.1486799047406924
+    },
+    {
+      "task": "empty-default",
+      "repository": "click",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 56.64576199087444,
+        "time_min": 48.46318701572535,
+        "time_max": 61.61516614548681,
+        "token_work_mean": 17413.333333333332,
+        "token_work_min": 14511,
+        "token_work_max": 19698,
+        "known_token_components": {
+          "input": 48335,
+          "cache_read": 250880,
+          "cache_write": 0,
+          "output": 3521,
+          "reasoning": 384
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 66.50428109130331,
+        "time_min": 62.836876402719,
+        "time_max": 73.27926659175945,
+        "token_work_mean": 19373.333333333332,
+        "token_work_min": 15528,
+        "token_work_max": 26979,
+        "known_token_components": {
+          "input": 54150,
+          "cache_read": 275200,
+          "cache_write": 0,
+          "output": 3072,
+          "reasoning": 898
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 9.679653555620462
+      },
+      "time_ratio": 1.174038070174024,
+      "token_work_ratio": 1.1125574272588055
+    },
+    {
+      "task": "escaped-path",
+      "repository": "click",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 70.30037460704463,
+        "time_min": 57.154278312919715,
+        "time_max": 85.05141642048774,
+        "token_work_mean": 17828,
+        "token_work_min": 13366,
+        "token_work_max": 21465,
+        "known_token_components": {
+          "input": 48909,
+          "cache_read": 350976,
+          "cache_write": 0,
+          "output": 3302,
+          "reasoning": 1273
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 82.98083726529472,
+        "time_min": 76.48770550230337,
+        "time_max": 86.28947491815133,
+        "token_work_mean": 25863.333333333332,
+        "token_work_min": 18832,
+        "token_work_max": 36674,
+        "known_token_components": {
+          "input": 72222,
+          "cache_read": 370176,
+          "cache_write": 0,
+          "output": 3897,
+          "reasoning": 1471
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 9.735401750542223
+      },
+      "time_ratio": 1.1803754635608927,
+      "token_work_ratio": 1.45071423229377
+    },
+    {
+      "task": "completion-hidden-argument",
+      "repository": "click",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 62.766272726889135,
+        "time_min": 53.29709220548911,
+        "time_max": 70.32800992961792,
+        "token_work_mean": 21843.333333333332,
+        "token_work_min": 15069,
+        "token_work_max": 31208,
+        "known_token_components": {
+          "input": 61463,
+          "cache_read": 330112,
+          "cache_write": 0,
+          "output": 3394,
+          "reasoning": 673
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 71.22795377480927,
+        "time_min": 65.15949126949353,
+        "time_max": 80.38789333926333,
+        "token_work_mean": 20371.666666666668,
+        "token_work_min": 17742,
+        "token_work_max": 22026,
+        "known_token_components": {
+          "input": 56885,
+          "cache_read": 361600,
+          "cache_write": 0,
+          "output": 3264,
+          "reasoning": 966
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 9.927982438821346
+      },
+      "time_ratio": 1.1348125462975778,
+      "token_work_ratio": 0.9326262780405922
+    },
+    {
+      "task": "json-error-pickle",
+      "repository": "requests",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 108.60375179547636,
+        "time_min": 96.37003027146501,
+        "time_max": 129.0481336793099,
+        "token_work_mean": 30345,
+        "token_work_min": 19907,
+        "token_work_max": 42209,
+        "known_token_components": {
+          "input": 82989,
+          "cache_read": 482432,
+          "cache_write": 0,
+          "output": 6155,
+          "reasoning": 1891
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 118.18058673023997,
+        "time_min": 105.24747614480374,
+        "time_max": 134.22791618119743,
+        "token_work_mean": 24657,
+        "token_work_min": 13936,
+        "token_work_max": 33819,
+        "known_token_components": {
+          "input": 65021,
+          "cache_read": 437376,
+          "cache_write": 0,
+          "output": 6920,
+          "reasoning": 2030
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 5.965195433236659
+      },
+      "time_ratio": 1.0881814373484886,
+      "token_work_ratio": 0.8125556104794859
+    },
+    {
+      "task": "utf8-body-length",
+      "repository": "requests",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 95.8007977054933,
+        "time_min": 81.25065172428084,
+        "time_max": 116.60438210155634,
+        "token_work_mean": 19013,
+        "token_work_min": 17649,
+        "token_work_max": 21055,
+        "known_token_components": {
+          "input": 50974,
+          "cache_read": 424192,
+          "cache_write": 0,
+          "output": 4787,
+          "reasoning": 1278
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 132.7184452961988,
+        "time_min": 101.86505666060192,
+        "time_max": 183.30349032033052,
+        "token_work_mean": 28460,
+        "token_work_min": 18558,
+        "token_work_max": 33471,
+        "known_token_components": {
+          "input": 77859,
+          "cache_read": 505856,
+          "cache_write": 0,
+          "output": 5482,
+          "reasoning": 2039
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 6.282567706890404
+      },
+      "time_ratio": 1.3853584570787831,
+      "token_work_ratio": 1.4968705622468836
+    },
+    {
+      "task": "leading-url-slashes",
+      "repository": "requests",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 106.35429718077002,
+        "time_min": 67.47120611846266,
+        "time_max": 148.38059667555433,
+        "token_work_mean": 38101.333333333336,
+        "token_work_min": 25795,
+        "token_work_max": 53384,
+        "known_token_components": {
+          "input": 106161,
+          "cache_read": 365440,
+          "cache_write": 0,
+          "output": 5842,
+          "reasoning": 2301
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 109.42676627119201,
+        "time_min": 102.71506763167498,
+        "time_max": 118.02050913834763,
+        "token_work_mean": 16689.333333333332,
+        "token_work_min": 13201,
+        "token_work_max": 19358,
+        "known_token_components": {
+          "input": 41377,
+          "cache_read": 411392,
+          "cache_write": 0,
+          "output": 6332,
+          "reasoning": 2359
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 6.079469783231616
+      },
+      "time_ratio": 1.028888998111658,
+      "token_work_ratio": 0.4380249160134378
+    },
+    {
+      "task": "http-status-aliases",
+      "repository": "requests",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 81.19165298136392,
+        "time_min": 64.18612027272401,
+        "time_max": 92.45219258276565,
+        "token_work_mean": 17606,
+        "token_work_min": 17305,
+        "token_work_max": 18161,
+        "known_token_components": {
+          "input": 45550,
+          "cache_read": 219136,
+          "cache_write": 0,
+          "output": 5792,
+          "reasoning": 1476
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 115.83474732015101,
+        "time_min": 96.71327143126918,
+        "time_max": 146.0734853927214,
+        "token_work_mean": 19656.666666666668,
+        "token_work_min": 14911,
+        "token_work_max": 27777,
+        "known_token_components": {
+          "input": 48845,
+          "cache_read": 396416,
+          "cache_write": 0,
+          "output": 8008,
+          "reasoning": 2117
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 6.169865272939205
+      },
+      "time_ratio": 1.4266829540561121,
+      "token_work_ratio": 1.116475443977432
+    },
+    {
+      "task": "iterable-specifiers",
+      "repository": "packaging-development-v1",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 112.01498704088671,
+        "time_min": 91.66801981545804,
+        "time_max": 127.36587462585238,
+        "token_work_mean": 28842.333333333332,
+        "token_work_min": 15699,
+        "token_work_max": 36072,
+        "known_token_components": {
+          "input": 77385,
+          "cache_read": 301696,
+          "cache_write": 0,
+          "output": 7081,
+          "reasoning": 2061
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 120.08620270833812,
+        "time_min": 100.0469552954827,
+        "time_max": 136.28898238774207,
+        "token_work_mean": 21399,
+        "token_work_min": 19541,
+        "token_work_max": 24335,
+        "known_token_components": {
+          "input": 54042,
+          "cache_read": 351232,
+          "cache_write": 0,
+          "output": 7939,
+          "reasoning": 2216
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 5.363349099177867
+      },
+      "time_ratio": 1.0720547837451906,
+      "token_work_ratio": 0.7419302645417037
+    },
+    {
+      "task": "dynamic-field-error",
+      "repository": "packaging-development-v1",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 44.74514841470066,
+        "time_min": 41.4700708627869,
+        "time_max": 48.47075373178167,
+        "token_work_mean": 25441.333333333332,
+        "token_work_min": 20503,
+        "token_work_max": 28506,
+        "known_token_components": {
+          "input": 73419,
+          "cache_read": 145536,
+          "cache_write": 0,
+          "output": 2398,
+          "reasoning": 507
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 48.782308403667734,
+        "time_min": 43.92693845053954,
+        "time_max": 53.64967505365429,
+        "token_work_mean": 21260.333333333332,
+        "token_work_min": 10173,
+        "token_work_max": 31304,
+        "known_token_components": {
+          "input": 60780,
+          "cache_read": 174592,
+          "cache_write": 0,
+          "output": 2625,
+          "reasoning": 376
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 5.310718673281372
+      },
+      "time_ratio": 1.090225647517144,
+      "token_work_ratio": 0.8356611288716524
+    },
+    {
+      "task": "provided-full-version",
+      "repository": "packaging-development-v1",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 69.17690615801581,
+        "time_min": 67.80666902998281,
+        "time_max": 71.05988855065597,
+        "token_work_mean": 22591.333333333332,
+        "token_work_min": 12007,
+        "token_work_max": 38911,
+        "known_token_components": {
+          "input": 62926,
+          "cache_read": 247680,
+          "cache_write": 0,
+          "output": 4307,
+          "reasoning": 541
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 64.31534379219455,
+        "time_min": 60.07162148749275,
+        "time_max": 69.07002278940571,
+        "token_work_mean": 16921.666666666668,
+        "token_work_min": 15474,
+        "token_work_max": 18748,
+        "known_token_components": {
+          "input": 46154,
+          "cache_read": 260864,
+          "cache_write": 0,
+          "output": 3955,
+          "reasoning": 656
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 5.260481298435479
+      },
+      "time_ratio": 0.9297227552397856,
+      "token_work_ratio": 0.7490335526898222
+    },
+    {
+      "task": "platform-full-version",
+      "repository": "packaging-development-v1",
+      "plain": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 86.27727974807041,
+        "time_min": 59.90952850237308,
+        "time_max": 121.01184368423937,
+        "token_work_mean": 28519,
+        "token_work_min": 22508,
+        "token_work_max": 34398,
+        "known_token_components": {
+          "input": 80572,
+          "cache_read": 226560,
+          "cache_write": 0,
+          "output": 3576,
+          "reasoning": 1409
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 0,
+        "memory_errors": 0,
+        "preparation_seconds": 0
+      },
+      "cami": {
+        "quality_passes": 3,
+        "operational_passes": 3,
+        "time_mean": 76.76337728675895,
+        "time_min": 67.04518327640189,
+        "time_max": 87.32313390133721,
+        "token_work_mean": 27715.666666666668,
+        "token_work_min": 19984,
+        "token_work_max": 42830,
+        "known_token_components": {
+          "input": 77905,
+          "cache_read": 310784,
+          "cache_write": 0,
+          "output": 3973,
+          "reasoning": 1269
+        },
+        "usage_complete": true,
+        "memory_lookup_calls": 3,
+        "memory_errors": 0,
+        "preparation_seconds": 5.364686395972967
+      },
+      "time_ratio": 0.8897287618583705,
+      "token_work_ratio": 0.9718316444008088
+    }
+  ],
+  "tool_counts": {
+    "plain": {
+      "read": 252,
+      "grep": 78,
+      "shell": 204,
+      "patch": 72,
+      "glob": 10
+    },
+    "cami": {
+      "research_memory_memory_lookup": 36,
+      "read": 262,
+      "grep": 66,
+      "shell": 196,
+      "patch": 82,
+      "glob": 12
+    }
+  },
+  "observed_cami_backend_wall_seconds": 26.93950362689793,
+  "backend_timing_scope": "Nested observed constructor/lookup spans; excludes parts of imports/transport/trace append. Not a complete CPU profile or a bound for a full-language rewrite.",
+  "usage_scope": "Observed OpenCode assistant responses with raw normalized components; no actual invoice reconciliation or visibility into hidden unexported provider calls. Known values from incomplete attempts are lower bounds, never exact totals.",
+  "statistics_scope": "Median of 12 ratios of paired task means across 3 independent fresh sessions per condition. Tasks are the analysis units. Observed min/max are not confidence intervals. Scope is this frozen historical task set."
+}

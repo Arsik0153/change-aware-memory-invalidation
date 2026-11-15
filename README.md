@@ -400,3 +400,25 @@ production-кода независимым proof kernel не заявляетс�
 - [Цена переноса отрицательного ответа](docs/negative_structural_carry_cost_2026-11-04_ru.md): три реализации сокращают число проверок, но увеличивают CPU-время на закреплённых авторских историях. Отдельная регистрация неизменных входов также не окупилась; все результаты и независимые аудиты сохранены.
 
 Последняя полная проверка: [1694 passed, без skips, Ruff и mypy на fe07667](reports/opencode-readable-full-verification-20261106/checks.json). Все Docker-тесты включены; 54 production-файла прошли проверку типов. Снимки исходников до и после совпали. Проверка корректности не заменяет отдельные замеры скорости и памяти. Исторический PDF v10 сохраняет результаты своего прежнего среза.
+
+## Practical audit, November 15
+
+The [new practical audit](reports/practical-20261115/README.md) retains a failed
+local optimization gate and adds a prospective durable task runner with crash
+recovery and explicit unknown usage. Historical logs could not reconstruct exact
+replay inputs. No new general model-level CAMI advantage is established; the
+existing Python search remains the default.
+
+The [completed follow-up comparison](reports/practical-complete-20261115/README.md)
+ran all 72 preregistered sessions on 12 tasks. Both plain and CAMI passed 36/36
+quality checks. Across paired task means, CAMI took 11.25% longer and used 4.78%
+less noncached token work, failing the required 10% improvement in both metrics.
+CAMI is therefore not recommended by default for this fresh-memory workload.
+The corrected local comparison also rejected its candidate under its full gate;
+Python remains the implementation language.
+
+Use [`cami task`](integrations/opencode/TASK_SESSION.md) for ordinary OpenCode
+tasks with automatic input snapshots, visible responses, durable usage records,
+and recovery after interruption. The installed command has been checked with
+real model access. Failed calls retain known usage components; missing usage
+remains explicit. Historical missing inputs are not reconstructed.

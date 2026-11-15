@@ -1,0 +1,42 @@
+{
+  "status": "complete",
+  "required_deliverables": {
+    "runtime": "runtime-manifest.json; task-admission.json; runtime.tar.gz; pinned recipes",
+    "predeclared_full_model_comparison": "protocol.json; protocol-seal.json; 72 preserved terminal attempts; model-audit.json",
+    "output_contract_and_separate_rerun": "output_contract.py; local-comparison-v3: 50 completed trials, all semantic outputs match",
+    "ordinary_task_capture": "installed-task-accounting-admission.json; real installed cami task; original prompt/source; 5 completed observed requests",
+    "failure_accounting_and_recovery": "33 focused checks; provider-error partial usage, duplicates, timeout, parent SIGKILL and idempotent recovery; all admission failures in accounting ledger",
+    "all_attempts_and_decisions": "72/72 primary plus all 5 admissions preserved; default CAMI recommendation and local candidate rejected by fixed gates; Python retained"
+  },
+  "decisions": {
+    "default_cami_for_tested_workload": "reject",
+    "local_candidate": "reject; product worktree implementation still equals baseline",
+    "durable_task_entrypoint": "include",
+    "rust_rewrite": "do not undertake"
+  },
+  "checks": {
+    "general_non_docker": 1813,
+    "latest_capture_and_contract": 33,
+    "docker": 4
+  },
+  "check_scope": "General suite, latest changed capture/contract suite, and Docker suite are separate runs with overlap; counts must not be added as independent tests.",
+  "historical_missing_input_policy": "No reconstructed input snapshots and no fabricated production repeat rate. Admission/model runs excluded from user-frequency denominator.",
+  "billing_scope": "Observed normalized usage for all OpenCode admissions and primary comparison attempts in this execution; not parent-chat usage or an account invoice.",
+  "primary_protocol_sha256": "ac5e1a6bcde83aec8fca87f78b1ec315ed89f06cc89a2e7732276bd671c5fe68",
+  "frozen_experiment_source_sha256": "f87540c79f3c4a74a170a27671a753d3eabf391be924eab73cb02bcb6b77f743",
+  "final_wheel_sha256": "732111e7c0aa561b9e65b6e133241705336503c545605207f43f94a47cfe5206",
+  "archives": {
+    "runtime.tar.gz": {
+      "sha256": "7e2a1f2f021236cfd4ea266aa618ac8c1163fa6674189c58b12a0935ba4c1197",
+      "bytes": 92230086
+    },
+    "raw-evidence.tar.xz": {
+      "sha256": "d4d60bf4d8a95f6e71325f01ff6e917590386e16849969cd71e55b7aaa021d9b",
+      "bytes": 360222904
+    },
+    "final-source.tar.xz": {
+      "sha256": "2608021158c0a696482022f7043ff67d4a1c49d4996f6d65921e4d9ec1c0296d",
+      "bytes": 387120
+    }
+  }
+}

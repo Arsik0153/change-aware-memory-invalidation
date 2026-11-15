@@ -1,0 +1,54 @@
+{
+  "cases": {
+    "help": {
+      "baseline": {
+        "median": 0.21812025038525462,
+        "min": 0.20928306598216295,
+        "max": 0.24817210575565696,
+        "n": 5
+      },
+      "candidate": {
+        "median": 0.22616701293736696,
+        "min": 0.20499667897820473,
+        "max": 0.23977460339665413,
+        "n": 5
+      },
+      "outputs_equal_and_exits_correct": true,
+      "accepted": false
+    },
+    "found": {
+      "baseline": {
+        "median": 0.871589045971632,
+        "min": 0.8404469867236912,
+        "max": 1.7290045111440122,
+        "n": 5
+      },
+      "candidate": {
+        "median": 0.598393171094358,
+        "min": 0.5758116473443806,
+        "max": 1.5077004269696772,
+        "n": 5
+      },
+      "outputs_equal_and_exits_correct": false,
+      "accepted": false
+    },
+    "missing": {
+      "baseline": {
+        "median": 0.8335237558931112,
+        "min": 0.8089715167880058,
+        "max": 0.8911360357888043,
+        "n": 5
+      },
+      "candidate": {
+        "median": 0.6008683643303812,
+        "min": 0.5822523161768913,
+        "max": 0.6164121390320361,
+        "n": 5
+      },
+      "outputs_equal_and_exits_correct": false,
+      "accepted": false
+    }
+  },
+  "accepted": false,
+  "protocol_sha256": "937bb4e8776c9da380c79ab2687f690bc7897cc7ca296f848808d708db6ea223"
+}

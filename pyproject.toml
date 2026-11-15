@@ -46,3 +46,8 @@ markers = ["docker: executes prepared Docker images"]
 [tool.hatch.build.targets.wheel]
 packages = ["src/cami"]
 exclude = ["src/cami/_typescript/node_modules/**"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"integrations/opencode/run_task.py" = "cami/opencode/run_task.py"
+"integrations/opencode/task_session.py" = "cami/opencode/task_session.py"
+"integrations/opencode/task_replay.py" = "cami/opencode/task_replay.py"

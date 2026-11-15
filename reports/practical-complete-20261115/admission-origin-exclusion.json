@@ -1,0 +1,19 @@
+{
+  "scope": "Declared user-origin logs only; origin is a caller declaration. Admission and experiment logs are excluded. No text-similarity matching or reconstruction of missing inputs.",
+  "captured_user_requests": 0,
+  "unique_exact_inputs": 0,
+  "exact_repeat_requests": 0,
+  "observed_exact_repeat_fraction": null,
+  "opportunities_with_previously_completed_quality_passing_solution": 0,
+  "opportunities_with_previously_cache_eligible_solution": 0,
+  "unfinished_user_requests": 0,
+  "excluded": [
+    {
+      "journal": "runs/practical-complete-20261115/ordinary-smoke/journals-final/24cd8e727f5746338f922eb425496baa",
+      "reason": "not_declared_user_origin",
+      "origin": "admission"
+    }
+  ],
+  "chronological_input_keys": [],
+  "interpretation": "Repeat frequency is not measured model savings. A prior result must have completed before the new request to be available for replay. Fresh validation remains mandatory."
+}

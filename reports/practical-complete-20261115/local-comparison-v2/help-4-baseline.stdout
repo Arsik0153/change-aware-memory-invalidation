@@ -1,0 +1,15 @@
+usage: cami [-h]
+            {task,memory,watch,find,setup-typescript,check-inputs,run,demo,score,compare,prepare-scenario,prepare-pilot,pilot-run,pilot-report,pilot-environments,annotate-export,freeze,annotate-import,analyze}
+            ...
+
+positional arguments:
+  {task,memory,watch,find,setup-typescript,check-inputs,run,demo,score,compare,prepare-scenario,prepare-pilot,pilot-run,pilot-report,pilot-environments,annotate-export,freeze,annotate-import,analyze}
+    task                run OpenCode with automatic input and usage capture
+    memory              persistent structural facts and manual notes
+    watch               refresh product memory as the worktree changes
+    find                find Python, JS, and TS definitions in worktree or Git
+                        snapshots
+    setup-typescript    install the pinned trusted compiler in your user cache
+
+options:
+  -h, --help            show this help message and exit

@@ -1,0 +1,24 @@
+[
+  {
+    "operation": "first profile",
+    "command": "python -m cami",
+    "result": "ImportError: No module named cami.__main__",
+    "excluded_from_timing": true
+  },
+  {
+    "operation": "unbounded source profile",
+    "result": "stopped owned process during large artifact traversal; no completed profile",
+    "excluded_from_timing": true
+  },
+  {
+    "operation": "first history parser",
+    "result": "wrongly selected event_msg.user_message; this log format uses response_item user messages",
+    "reported_records": 0,
+    "valid": false,
+    "correction": "parse response_item and filter injected context; same fixed input directory, not search extension"
+  },
+  {
+    "operation": "initial ruff",
+    "result": "six formatting violations; fixed; original log retained"
+  }
+]

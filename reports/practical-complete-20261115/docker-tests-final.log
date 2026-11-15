@@ -1,0 +1,173 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______________ test_docker_real_git_parent_child_and_environment _______________
+
+repo = <conftest.GitFixture object at 0x7b1af1fbfe90>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_docker_real_git_parent_child_and_environment(repo):
+        a = repo.commit({"module.py": "def f(): return 1\n"})
+        b = repo.commit({"module.py": "def f(): return 2\n"})
+        c = repo.commit({"module.py": "import nonexistent_dependency\ndef f(): return 1\n"})
+        config = repo.config(a, [b, c], policy="all_validate")
+        probe = config.parent / "test_probe.py"
+        probe.write_text("from module import f\ndef test_f():\n    assert f() == 1\n")
+        claims_path = config.parent / "claims.jsonl"
+        claim = json.loads(claims_path.read_text())
+        claim.update(kind="behavior_test", predicate={"type": "behavior_test", "probe_path": probe.name,
+                     "probe_sha256": file_hash(probe), "node_id": "test_probe.py::test_f", "environment_id": "test"})
+        claims_path.write_text(json.dumps(claim) + "\n")
+        data = read_json(config)
+        data["validation"]["execution"] = "docker"
+        data["environment_profiles"] = {"test": {"image": os.environ["CAMI_TEST_IMAGE"], "python_version": "3.12.12"}}
+        config.write_text(json.dumps(data))
+        out = config.parent / "out"
+>       run_experiment(config, out)
+
+tests/test_behavior.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/engine.py:40: in run_experiment
+    inputs = check_inputs(config_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+src/cami/inputs.py:24: in check_inputs
+    config = load(config_path, RunConfig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-root/pytest-354/test_docker_real_git_parent_ch0/run.json')
+model = <class 'cami.models.RunConfig'>
+
+    def load(path: Path, model: type[T]) -> T:
+>       return model.model_validate_json(canonical(read_json(path)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for RunConfig
+E       environment_profiles.test.image
+E         String should match pattern '^.+@sha256:[0-9a-f]{64}$' [type=string_pattern_mismatch, input_value='sha256:9e3b5290a54521f5c...6ba6cd265b5372cdc4ca356', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+
+src/cami/artifacts.py:54: ValidationError
+______________________ test_docker_timeout_is_uncertainty ______________________
+
+repo = <conftest.GitFixture object at 0x7b1af1bb7770>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_docker_timeout_is_uncertainty(repo):
+        from cami.artifacts import load_jsonl
+        from cami.behavior import ProbeContext, execute_probe
+        from cami.models import Claim, EnvironmentProfile
+        from test_index import snapshot
+        a = repo.commit({"module.py": "def f(): pass\n"})
+        b = repo.commit({})
+        config = repo.config(a, [b])
+        probe = config.parent / "test_slow.py"
+        probe.write_text("import time\ndef test_slow():\n    time.sleep(10)\n")
+        path = config.parent / "claims.jsonl"
+        row = json.loads(path.read_text())
+        row.update(kind="behavior_test", predicate={"type":"behavior_test", "probe_path":probe.name,
+            "probe_sha256":file_hash(probe), "node_id":"test_slow.py::test_slow", "environment_id":"test"})
+        path.write_text(json.dumps(row) + "\n")
+        claim = load_jsonl(path, Claim)[0]
+>       profile = EnvironmentProfile(image=os.environ["CAMI_TEST_IMAGE"], python_version="3.12.12", timeout_seconds=1)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for EnvironmentProfile
+E       image
+E         String should match pattern '^.+@sha256:[0-9a-f]{64}$' [type=string_pattern_mismatch, input_value='sha256:9e3b5290a54521f5c...6ba6cd265b5372cdc4ca356', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+
+tests/test_behavior.py:74: ValidationError
+___________ test_behavior_hidden_dependency_masks_real_contradiction ___________
+
+repo = <conftest.GitFixture object at 0x7b1af187b8c0>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get("CAMI_TEST_IMAGE"), reason="set CAMI_TEST_IMAGE to prepared image digest")
+    def test_behavior_hidden_dependency_masks_real_contradiction(repo):
+        from cami.artifacts import write_json
+        from cami.evaluation import score_run
+        from cami.models import Dependency, Node
+        from cami.scenarios import edge_fraction, prepare_scenario
+        from test_scenarios import dataset_for
+        a = repo.commit({"module.py":"def f(): return g()\ndef g(): return 1\n"})
+        b = repo.commit({"module.py":"def f(): return g()\ndef g(): return 2\n"})
+        config = repo.config(a,[b])
+        probe = config.parent / "test_dependency.py"
+        probe.write_text("from module import f\ndef test_result():\n    assert f() == 1\n")
+        path = config.parent / "claims.jsonl"
+        claim = json.loads(path.read_text())
+        claim.update(kind="behavior_test",predicate={"type":"behavior_test","probe_path":probe.name,
+            "probe_sha256":file_hash(probe),"node_id":"test_dependency.py::test_result","environment_id":"test"})
+        path.write_text(json.dumps(claim)+"\n")
+        data = read_json(config)
+        data["validation"]["execution"] = "docker"
+        data["environment_profiles"] = {"test":{"image":os.environ["CAMI_TEST_IMAGE"],"python_version":"3.12.12"}}
+        write_json(config,data)
+        labels = config.parent / "independent_labels.jsonl"
+        labels.write_text(json.dumps({"schema_version":1,"claim_id":"f","commit":b,"label":"contradicted",
+            "annotator_id":"synthetic-scenario-author","evidence":["Manually authored scenario changes g return value from 1 to 2; f calls g."],
+            "confirmation_type":"synthetic_manual","adjudication_status":"not_required"})+"\n")
+        dataset = dataset_for(config)
+        edge = Dependency(source=Node(path="module.py",qualname="f"),target=Node(path="module.py",qualname="g"),relation="calls",origin="static")
+        seed = next(seed for seed in [17,42,73] if edge_fraction("fixture",edge,seed)<0.75)
+        for mode, expected in [("known_missing",0.0),("hidden_missing",1.0)]:
+            out = config.parent / mode
+>           public = prepare_scenario(dataset,mode,0.75,seed,out)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_behavior.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/cami/scenarios.py:34: in prepare_scenario
+    inputs = [check_inputs(base / run.config_path) for run in dataset.runs]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/cami/inputs.py:24: in check_inputs
+    config = load(config_path, RunConfig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-root/pytest-354/test_behavior_hidden_dependenc0/run.json')
+model = <class 'cami.models.RunConfig'>
+
+    def load(path: Path, model: type[T]) -> T:
+>       return model.model_validate_json(canonical(read_json(path)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for RunConfig
+E       environment_profiles.test.image
+E         String should match pattern '^.+@sha256:[0-9a-f]{64}$' [type=string_pattern_mismatch, input_value='sha256:9e3b5290a54521f5c...6ba6cd265b5372cdc4ca356', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+
+src/cami/artifacts.py:54: ValidationError
+___________ test_preloaded_pytest_cannot_validate_historical_pytest ____________
+
+repo = <conftest.GitFixture object at 0x7b1af187a780>
+
+    @pytest.mark.docker
+    @pytest.mark.skipif(not os.environ.get('CAMI_TEST_IMAGE'), reason='prepared Docker image required')
+    def test_preloaded_pytest_cannot_validate_historical_pytest(repo):
+        revision = repo.commit({'_pytest/__init__.py': '', '_pytest/compat.py':
+                                "def safe_getattr(obj, name, default): return 'historical-wrong'\n"})
+        probe = repo.root.parent / 'test_collision.py'
+        probe.write_text('from _pytest.compat import safe_getattr\n'
+                         'def test_case():\n'
+                         "    assert safe_getattr(object(), 'missing', 'fallback') == 'fallback'\n")
+        claim = Claim(claim_id='historical-pytest', repo_id='fixture', origin_commit=revision,
+                      kind='behavior_test', text='Historical safe_getattr returns fallback',
+                      scope='One fixed invocation',
+                      subject=Subject(path='_pytest/compat.py', qualname='safe_getattr', node_kind='function'),
+                      predicate=Behavior(type='behavior_test', probe_path=probe.name,
+                                         probe_sha256=file_hash(probe), node_id=probe.name+'::test_case',
+                                         environment_id='test'))
+>       profile = EnvironmentProfile(image=os.environ['CAMI_TEST_IMAGE'], python_version='3.12.12')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for EnvironmentProfile
+E       image
+E         String should match pattern '^.+@sha256:[0-9a-f]{64}$' [type=string_pattern_mismatch, input_value='sha256:9e3b5290a54521f5c...6ba6cd265b5372cdc4ca356', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/string_pattern_mismatch
+
+tests/test_probe_collision.py:27: ValidationError
+=========================== short test summary info ============================
+FAILED tests/test_behavior.py::test_docker_real_git_parent_child_and_environment
+FAILED tests/test_behavior.py::test_docker_timeout_is_uncertainty - pydantic_...
+FAILED tests/test_behavior.py::test_behavior_hidden_dependency_masks_real_contradiction
+FAILED tests/test_probe_collision.py::test_preloaded_pytest_cannot_validate_historical_pytest
+4 failed, 1815 deselected in 2.10s

@@ -1,0 +1,330 @@
+E402 Module level import not at top of file
+  --> scripts/practical/new_study.py:19:1
+   |
+17 |                str(ROOT / 'scripts/opencode_benchmark/analysis'),
+18 |                str(ROOT / 'integrations/opencode')]
+19 | from container_session import source_inventory, shared_service_url, chown_owned
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+20 | from aggregate_metrics import token_fields
+21 | from task_replay import inventory
+   |
+
+E402 Module level import not at top of file
+  --> scripts/practical/new_study.py:20:1
+   |
+18 |                str(ROOT / 'integrations/opencode')]
+19 | from container_session import source_inventory, shared_service_url, chown_owned
+20 | from aggregate_metrics import token_fields
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 | from task_replay import inventory
+22 | from task_session import Journal
+   |
+
+E402 Module level import not at top of file
+  --> scripts/practical/new_study.py:21:1
+   |
+19 | from container_session import source_inventory, shared_service_url, chown_owned
+20 | from aggregate_metrics import token_fields
+21 | from task_replay import inventory
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 | from task_session import Journal
+   |
+
+E402 Module level import not at top of file
+  --> scripts/practical/new_study.py:22:1
+   |
+20 | from aggregate_metrics import token_fields
+21 | from task_replay import inventory
+22 | from task_session import Journal
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 |
+24 | IMAGE = 'sha256:9e3b5290a54521f5c0e3cb4b4c8b75969ba025aac6ba6cd265b5372cdc4ca356'
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> scripts/practical/new_study.py:79:27
+   |
+77 | def memory(workspace, dest, out):
+78 |     dest.mkdir()
+79 |     chown_owned(workspace);chown_owned(dest)
+   |                           ^
+80 |     script="""from pathlib import Path
+81 | from seed_source_literals_v2 import build
+   |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:102:27
+    |
+100 | def admission():
+101 |     tasks=read(RUN/'tasks/manifest.json')
+102 |     out=RUN/'admission-v3';out.mkdir(exist_ok=False)
+    |                           ^
+103 |     receipts=[]
+104 |     for task in tasks:
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:106:33
+    |
+104 |     for task in tasks:
+105 |         base=RUN/'tasks'/task['id']/'base'
+106 |         candidate=out/task['id'];candidate.mkdir()
+    |                                 ^
+107 |         shutil.copytree(base,candidate/'gold')
+108 |         subprocess.run(['git','-C',str(candidate/'gold'),'apply',str(RUN/'tasks'/task['id']/'gold.patch')],check=True)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:139:23
+    |
+137 |     write(REPORT/'runtime-manifest.json',protocol['runtime'])
+138 |     target=REPORT/'protocol.json'
+139 |     if target.exists():raise ValueError('protocol already frozen')
+    |                       ^
+140 |     write(target,protocol)
+141 |     write(REPORT/'protocol-seal.json',{'sha256':digest(target),'attempts':72})
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:154:52
+    |
+152 |     assert digest(REPORT/'protocol.json')==read(REPORT/'protocol-seal.json')['sha256']
+153 |     assert runtime_identity()==protocol['runtime']
+154 |     for name,sha in protocol['source_pins'].items():assert digest(ROOT/name)==sha,name
+    |                                                    ^
+155 |     tasks={t['id']:t for t in protocol['tasks']}
+156 |     out=RUN/'model';out.mkdir(exist_ok=True)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:156:20
+    |
+154 |     for name,sha in protocol['source_pins'].items():assert digest(ROOT/name)==sha,name
+155 |     tasks={t['id']:t for t in protocol['tasks']}
+156 |     out=RUN/'model';out.mkdir(exist_ok=True)
+    |                    ^
+157 |     shared_url=shared_service_url()
+158 |     for trial in protocol['schedule']:
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:160:48
+    |
+158 |     for trial in protocol['schedule']:
+159 |         directory=out/trial['id']
+160 |         if (directory/'terminal.json').exists():continue
+    |                                                ^
+161 |         if directory.exists():raise ValueError('interrupted attempt needs explicit recovery; cannot rerun model')
+162 |         directory.mkdir()
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:161:30
+    |
+159 |         directory=out/trial['id']
+160 |         if (directory/'terminal.json').exists():continue
+161 |         if directory.exists():raise ValueError('interrupted attempt needs explicit recovery; cannot rerun model')
+    |                              ^
+162 |         directory.mkdir()
+163 |         start=time.monotonic()
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:164:35
+    |
+162 | …     directory.mkdir()
+163 | …     start=time.monotonic()
+164 | …     resources=resource_state();write(directory/'resources.json',resources)
+    |                                 ^
+165 | …     if resources['disk_free']<5*1024**3:raise RuntimeError('disk reserve breached; clean only own disposable work before continuing…
+166 | …     task=tasks[trial['task']];taskdir=RUN/'tasks'/trial['task']
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:165:44
+    |
+163 | …     start=time.monotonic()
+164 | …     resources=resource_state();write(directory/'resources.json',resources)
+165 | …     if resources['disk_free']<5*1024**3:raise RuntimeError('disk reserve breached; clean only own disposable work before continuing…
+    |                                          ^
+166 | …     task=tasks[trial['task']];taskdir=RUN/'tasks'/trial['task']
+167 | …     journal=Journal(directory/'events.sqlite')
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:166:34
+    |
+164 | …     resources=resource_state();write(directory/'resources.json',resources)
+165 | …     if resources['disk_free']<5*1024**3:raise RuntimeError('disk reserve breached; clean only own disposable work before continuing…
+166 | …     task=tasks[trial['task']];taskdir=RUN/'tasks'/trial['task']
+    |                                ^
+167 | …     journal=Journal(directory/'events.sqlite')
+168 | …     journal.append('attempt_started',trial)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:169:40
+    |
+167 |         journal=Journal(directory/'events.sqlite')
+168 |         journal.append('attempt_started',trial)
+169 |         workspace=directory/'workspace';shutil.copytree(taskdir/'base',workspace)
+    |                                        ^
+170 |         before=inventory(workspace)
+171 |         journal.append('input_bound',{'files':before,'task_sha256':task['prompt_sha256'], 'context':protocol['runtime']})
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:174:32
+    |
+172 |         mem=directory/'memory'
+173 |         prep={'returncode':0,'wall_seconds':0}
+174 |         if trial['arm']=='cami':prep=memory(workspace,mem,directory/'memory-preparation.log')
+    |                                ^
+175 |         else:mem.mkdir()
+176 |         write(directory/'memory-preparation.json',prep)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:175:13
+    |
+173 |         prep={'returncode':0,'wall_seconds':0}
+174 |         if trial['arm']=='cami':prep=memory(workspace,mem,directory/'memory-preparation.log')
+175 |         else:mem.mkdir()
+    |             ^
+176 |         write(directory/'memory-preparation.json',prep)
+177 |         journal.append('memory_prepared',prep)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:186:36
+    |
+184 |                   '--timeout-seconds','600','--reported-token-budget','250000','--image',IMAGE,
+185 |                   '--shared-server',shared_url,'--memory-response-format','readable']
+186 |             if trial['arm']=='cami':argv+=['--binding-relative','prepared/binding.json']
+    |                                    ^
+187 |             journal.append('session_launching',{'argv':list(map(str,argv))})
+188 |             result=command(argv,directory/'session-host.log',timeout=850)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:191:52
+    |
+189 |             journal.append('session_finished',result)
+190 |         # Grade even after failed sessions; evaluator/config/tests are canonical.
+191 |         evaluation=directory/'evaluation-workspace';shutil.copytree(taskdir/'base',evaluation)
+    |                                                    ^
+192 |         shutil.rmtree(evaluation/'src');shutil.copytree(workspace/'src',evaluation/'src')
+193 |         source=inventory(evaluation/'src');journal.append('solution_preserved',{'source':source})
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:192:40
+    |
+190 |         # Grade even after failed sessions; evaluator/config/tests are canonical.
+191 |         evaluation=directory/'evaluation-workspace';shutil.copytree(taskdir/'base',evaluation)
+192 |         shutil.rmtree(evaluation/'src');shutil.copytree(workspace/'src',evaluation/'src')
+    |                                        ^
+193 |         source=inventory(evaluation/'src');journal.append('solution_preserved',{'source':source})
+194 |         grading=grade(task,evaluation,directory/'grade')
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:193:43
+    |
+191 |         evaluation=directory/'evaluation-workspace';shutil.copytree(taskdir/'base',evaluation)
+192 |         shutil.rmtree(evaluation/'src');shutil.copytree(workspace/'src',evaluation/'src')
+193 |         source=inventory(evaluation/'src');journal.append('solution_preserved',{'source':source})
+    |                                           ^
+194 |         grading=grade(task,evaluation,directory/'grade')
+195 |         journal.append('quality',grading)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:211:44
+    |
+209 |                   'memory_lookup_calls':sum(x.get('event')=='memory_lookup' for x in calls),
+210 |                   'memory_errors':sum(x.get('event')=='memory_lookup' and x.get('error') is not None for x in calls)}
+211 |         journal.append('terminal',terminal);journal.close()
+    |                                            ^
+212 |         write(directory/'terminal.json',terminal)
+213 |         with (REPORT/'progress.jsonl').open('a') as f:
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:214:114
+    |
+212 | …     write(directory/'terminal.json',terminal)
+213 | …     with (REPORT/'progress.jsonl').open('a') as f:
+214 | …         f.write(json.dumps({k:v for k,v in terminal.items() if k not in ['solution_source','quality']})+'\n');f.flush();os.fsync(f.…
+    |                                                                                                                ^
+215 | …     print(trial['id'],'quality',grading['quality_pass'],'usage',complete,'seconds',round(terminal['pipeline_wall_seconds'],1),flush…
+216 | …     # Discard only duplicated evaluation tree and transient bytecode; source/evidence remain.
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:214:124
+    |
+212 | …     write(directory/'terminal.json',terminal)
+213 | …     with (REPORT/'progress.jsonl').open('a') as f:
+214 | …         f.write(json.dumps({k:v for k,v in terminal.items() if k not in ['solution_source','quality']})+'\n');f.flush();os.fsync(f.…
+    |                                                                                                                          ^
+215 | …     print(trial['id'],'quality',grading['quality_pass'],'usage',complete,'seconds',round(terminal['pipeline_wall_seconds'],1),flush…
+216 | …     # Discard only duplicated evaluation tree and transient bytecode; source/evidence remain.
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> scripts/practical/new_study.py:221:37
+    |
+220 | def main():
+221 |     parser=argparse.ArgumentParser();parser.add_argument('action',choices=['admission','freeze','run'])
+    |                                     ^
+222 |     action=parser.parse_args().action
+223 |     {'admission':admission,'freeze':freeze,'run':run}[action]()
+    |
+
+E701 Multiple statements on one line (colon)
+   --> scripts/practical/new_study.py:226:24
+    |
+226 | if __name__=='__main__':main()
+    |                        ^
+    |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests/test_practical_output_contract.py:26:19
+   |
+25 | def test_changed_source_and_changed_result_remain_different():
+26 |     left=fixture();right=copy.deepcopy(left)
+   |                   ^
+27 |     right['snapshot']['snapshot_id']='a'*64
+28 |     right['snapshot']['generation_id']=hashlib.sha256(json.dumps([right['snapshot']['snapshot_id'],right['snapshot']['fingerprint']],s…
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests/test_practical_output_contract.py:30:30
+   |
+28 |     right['snapshot']['generation_id']=hashlib.sha256(json.dumps([right['snapshot']['snapshot_id'],right['snapshot']['fingerprint']],s…
+29 |     assert semantic_payload(left)!=semantic_payload(right)
+30 |     right=copy.deepcopy(left);right['matches'][0]['signature_text']='wrong'
+   |                              ^
+31 |     assert semantic_payload(left)!=semantic_payload(right)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests/test_practical_output_contract.py:35:20
+   |
+34 | def test_identity_tampering_rejected():
+35 |     value=fixture();value['snapshot']['generation_id']='0'*64
+   |                    ^
+36 |     with pytest.raises(ValueError,match='generation identity'):semantic_payload(value)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests/test_practical_output_contract.py:36:63
+   |
+34 | def test_identity_tampering_rejected():
+35 |     value=fixture();value['snapshot']['generation_id']='0'*64
+36 |     with pytest.raises(ValueError,match='generation identity'):semantic_payload(value)
+   |                                                               ^
+   |
+
+Found 33 errors (2 fixed, 31 remaining).

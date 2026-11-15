@@ -1,0 +1,77 @@
+{
+  "cases": {
+    "help": {
+      "baseline": {
+        "median": 0.2156918733380735,
+        "min": 0.20696136029437184,
+        "max": 0.2673903265967965
+      },
+      "candidate": {
+        "median": 0.20727861998602748,
+        "min": 0.20332182431593537,
+        "max": 0.28736371686682105
+      },
+      "correct": true,
+      "accepted": true
+    },
+    "found-cold": {
+      "baseline": {
+        "median": 1.754957613069564,
+        "min": 1.6986433621495962,
+        "max": 2.1800275780260563
+      },
+      "candidate": {
+        "median": 1.4886911269277334,
+        "min": 1.447780478745699,
+        "max": 1.5336858527734876
+      },
+      "correct": true,
+      "accepted": true
+    },
+    "found-warm": {
+      "baseline": {
+        "median": 0.8456434747204185,
+        "min": 0.8272170186974108,
+        "max": 0.8845841819420457
+      },
+      "candidate": {
+        "median": 0.5650062989443541,
+        "min": 0.5226585976779461,
+        "max": 0.6066549490205944
+      },
+      "correct": true,
+      "accepted": true
+    },
+    "missing-cold": {
+      "baseline": {
+        "median": 1.7418066351674497,
+        "min": 1.7139577949419618,
+        "max": 1.776685916353017
+      },
+      "candidate": {
+        "median": 1.4907644800841808,
+        "min": 1.4703503409400582,
+        "max": 1.558393789920956
+      },
+      "correct": false,
+      "accepted": false
+    },
+    "missing-warm": {
+      "baseline": {
+        "median": 0.8280531098134816,
+        "min": 0.8214327306486666,
+        "max": 0.8645758740603924
+      },
+      "candidate": {
+        "median": 0.5990711189806461,
+        "min": 0.595023131929338,
+        "max": 0.6061281193979084
+      },
+      "correct": false,
+      "accepted": false
+    }
+  },
+  "accepted": false,
+  "attempts": 50,
+  "protocol_sha256": "18af7b21a540eb6fa18aebbc3fdbbe907df489abb91a3c72f2cbe293962eea99"
+}

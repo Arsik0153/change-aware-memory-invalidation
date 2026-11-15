@@ -1,0 +1,534 @@
+[
+  {
+    "path": "fault-evidence/test_bytes_change_is_a_miss0/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "cache_record_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": true,
+        "cache_recorded": true,
+        "execution": "success",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_corrupt_journal0/events.sqlite",
+    "expected_corrupt": true
+  },
+  {
+    "path": "fault-evidence/test_launch_error_preserves_an0/session/events.sqlite",
+    "events": {
+      "agent_launch_error": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "failed_or_interrupted",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "fail",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": false,
+          "errors": [],
+          "known_subtotal": null,
+          "missing_usage": [],
+          "requests": 0,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_opaque_agent_never_trains0/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "success",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_quality_and_eligibility_s0/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "cache_record_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": true,
+        "cache_recorded": true,
+        "execution": "success",
+        "input_key": "70ad8a92f4158286dc6bfa1af7d6f262a33496a8a2ca924d01f3a750642543b9",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_quality_and_eligibility_s1/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 2,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "success",
+        "input_key": "70ad8a92f4158286dc6bfa1af7d6f262a33496a8a2ca924d01f3a750642543b9",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": false,
+          "errors": [],
+          "known_subtotal": null,
+          "missing_usage": [
+            "a"
+          ],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_quality_and_eligibility_s2/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "failed_or_interrupted",
+        "input_key": "70ad8a92f4158286dc6bfa1af7d6f262a33496a8a2ca924d01f3a750642543b9",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_quality_and_eligibility_s3/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 5,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "success",
+        "input_key": "70ad8a92f4158286dc6bfa1af7d6f262a33496a8a2ca924d01f3a750642543b9",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": false,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [
+            "a"
+          ],
+          "requests": 2,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_sigkill_and_restart_agent0/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": true,
+        "cache_recorded": false,
+        "execution": "success",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_sigkill_and_restart_captu0/session/events.sqlite",
+    "events": {
+      "capture_input_started": 1
+    },
+    "terminals": []
+  },
+  {
+    "path": "fault-evidence/test_sigkill_and_restart_prepa0/session/events.sqlite",
+    "events": {
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "failed_or_interrupted",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "fail",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": false,
+          "errors": [],
+          "known_subtotal": null,
+          "missing_usage": [],
+          "requests": 0,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_sigkill_and_restart_respo0/session/events.sqlite",
+    "events": {
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 1,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 1,
+      "solution_preserved": 1,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": false,
+        "cache_recorded": false,
+        "execution": "failed_or_interrupted",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": false,
+          "errors": [],
+          "known_subtotal": null,
+          "missing_usage": [
+            "a"
+          ],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": null
+        }
+      }
+    ]
+  },
+  {
+    "path": "fault-evidence/test_sigkill_and_restart_solut0/session/events.sqlite",
+    "events": {
+      "agent_finished": 1,
+      "agent_started": 1,
+      "capture_input_started": 1,
+      "capture_started": 2,
+      "grade_finished": 1,
+      "grade_started": 1,
+      "prepared": 1,
+      "response": 3,
+      "solution_preserved": 2,
+      "terminal": 1
+    },
+    "terminals": [
+      {
+        "cache_eligible": true,
+        "cache_recorded": false,
+        "execution": "success",
+        "input_key": "728600048c829d8666e7c8c37bfdc247e391cc7b384c040e079a3124b65a5495",
+        "quality": "pass",
+        "solution_files": {
+          "src/a.py": {
+            "mode": 420,
+            "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+          }
+        },
+        "telemetry": {
+          "billing_reconciliation": "unavailable; no invoice source configured",
+          "complete": true,
+          "errors": [],
+          "known_subtotal": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          },
+          "missing_usage": [],
+          "requests": 1,
+          "scope": "adapter-declared requests only; opaque provider retries cannot be certified",
+          "total": {
+            "cache_read": 7,
+            "cache_write": 0,
+            "input": 12,
+            "output": 3,
+            "reasoning": 2
+          }
+        }
+      }
+    ]
+  }
+]

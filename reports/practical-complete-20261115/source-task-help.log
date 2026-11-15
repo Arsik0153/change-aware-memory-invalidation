@@ -1,0 +1,22 @@
+usage: cami task [-h] [--workspace WORKSPACE] --task-file TASK_FILE
+                 --context-file CONTEXT_FILE --grade-json GRADE_JSON
+                 [--journal-root JOURNAL_ROOT] [--model MODEL]
+                 [--opencode-binary OPENCODE_BINARY]
+                 [--origin {user,admission,experiment}]
+
+Run captured tasks through a local Linux OpenCode service, or recover their
+journals.
+
+options:
+  -h, --help            show this help message and exit
+  --workspace WORKSPACE
+  --task-file TASK_FILE
+  --context-file CONTEXT_FILE
+                        Declared meaningful external inputs and toolchain
+                        identity
+  --grade-json GRADE_JSON
+                        Fixed test argv as JSON; no shell
+  --journal-root JOURNAL_ROOT
+  --model MODEL
+  --opencode-binary OPENCODE_BINARY
+  --origin {user,admission,experiment}

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from importlib import import_module
 import json
 import sys
 from pathlib import Path
@@ -11,22 +12,50 @@ from cami.errors import IncompleteError, InputError, ResourceError
 
 
 def main(argv: list[str] | None = None) -> int:
+    arguments = sys.argv[1:] if argv is None else argv
+    if arguments[:1] == ["task"]:
+        try:
+            runner = import_module("cami.opencode.run_task")
+        except ModuleNotFoundError as exc:
+            if exc.name not in {"cami.opencode", "cami.opencode.run_task"}:
+                raise
+            source_root = Path(__file__).resolve().parents[2]
+            if not (source_root / "integrations/opencode/run_task.py").is_file():
+                raise
+            sys.path.insert(0, str(source_root))
+            runner = import_module("integrations.opencode.run_task")
+        return int(runner.main(arguments[1:]))
     parser = argparse.ArgumentParser(prog="cami")
     sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("task", help="run OpenCode with automatic input and usage capture")
     from cami.product.memory.cli import add_parser as add_memory_parser
+
     add_memory_parser(sub)
     from cami.product.watch.cli import add_parser as add_watch_parser
+
     add_watch_parser(sub)
-    find = sub.add_parser("find", help="find Python, JS, and TS definitions in worktree or Git snapshots")
+    find = sub.add_parser(
+        "find", help="find Python, JS, and TS definitions in worktree or Git snapshots"
+    )
     find.add_argument("symbol")
     find.add_argument("--repo", type=Path, required=True)
     find.add_argument("--revision", help="read Git objects instead of the working tree")
     find.add_argument("--format", choices=("text", "json"), default="text")
-    find.add_argument("--source-root", action="append", dest="source_roots",
-                      help="repository-relative source root; repeat for multiple roots")
-    find.add_argument("--exclude", action="append", default=[],
-                      help="exclude worktree sources under a relative path; effective config metadata remains captured")
-    sub.add_parser("setup-typescript", help="install the pinned trusted compiler in your user cache")
+    find.add_argument(
+        "--source-root",
+        action="append",
+        dest="source_roots",
+        help="repository-relative source root; repeat for multiple roots",
+    )
+    find.add_argument(
+        "--exclude",
+        action="append",
+        default=[],
+        help="exclude worktree sources under a relative path; effective config metadata remains captured",
+    )
+    sub.add_parser(
+        "setup-typescript", help="install the pinned trusted compiler in your user cache"
+    )
     check = sub.add_parser("check-inputs")
     check.add_argument("--config", type=Path, required=True)
     run = sub.add_parser("run")
@@ -77,6 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "setup-typescript":
             from cami.typescript_runtime import TypeScriptSetupError, setup_typescript
+
             try:
                 directory = setup_typescript()
             except TypeScriptSetupError as error:
@@ -84,59 +114,85 @@ def main(argv: list[str] | None = None) -> int:
             print(f"TypeScript 6.0.3 ready: {directory}")
         elif args.command == "watch":
             from cami.product.watch.cli import execute as watch_execute
+
             return watch_execute(args)
         elif args.command == "memory":
             from cami.product.memory.cli import execute
+
             execute(args)
         elif args.command == "find":
             from cami.symbol_search import find_symbols, format_text
-            result = find_symbols(args.repo, args.symbol, args.revision,
-                                  tuple(args.source_roots) if args.source_roots else None,
-                                  tuple(args.exclude))
-            print(json.dumps(result.model_dump(mode="json"), ensure_ascii=True, sort_keys=True)
-                  if args.format == "json" else format_text(result))
+
+            result = find_symbols(
+                args.repo,
+                args.symbol,
+                args.revision,
+                tuple(args.source_roots) if args.source_roots else None,
+                tuple(args.exclude),
+            )
+            print(
+                json.dumps(result.model_dump(mode="json"), ensure_ascii=True, sort_keys=True)
+                if args.format == "json"
+                else format_text(result)
+            )
         elif args.command == "check-inputs":
             from cami.inputs import check_inputs
+
             inputs = check_inputs(args.config)
-            print(f"valid: {len(inputs.claims)} claims, {len(inputs.config.child_commits)} transitions")
+            print(
+                f"valid: {len(inputs.claims)} claims, {len(inputs.config.child_commits)} transitions"
+            )
         elif args.command == "annotate-export":
             from cami.dataset import annotate_export
+
             annotate_export(args.dataset, args.out)
         elif args.command == "annotate-import":
             from cami.dataset import annotate_import
+
             annotate_import(args.input, args.out)
         elif args.command == "freeze":
             from cami.dataset import freeze_dataset
+
             freeze_dataset(args.dataset, args.out)
         elif args.command == "analyze":
             from cami.aggregate import analyze_dataset
+
             analyze_dataset(args.dataset, args.runs, args.labels, args.out)
         elif args.command == "pilot-environments":
             from cami.environment_pilot import pilot_environments
+
             pilot_environments(args.dataset, args.image, args.out)
         elif args.command == "pilot-report":
             from cami.operational import pilot_report
+
             pilot_report(args.runs, args.out)
         elif args.command == "prepare-pilot":
             from cami.pilot import prepare_pilot
+
             prepare_pilot(args.repo, args.out)
         elif args.command == "pilot-run":
             from cami.pilot import run_pilot
+
             run_pilot(args.dataset, args.out)
         elif args.command == "prepare-scenario":
             from cami.scenarios import prepare_scenario
+
             prepare_scenario(args.dataset, args.mode, args.drop, args.seed, args.out)
         elif args.command == "run":
             from cami.engine import run_experiment
+
             run_experiment(args.config, args.out)
         elif args.command == "demo":
             from cami.demo import demo
+
             demo(args.out)
         elif args.command == "score":
             from cami.evaluation import score_run
+
             score_run(args.run, args.labels, args.out)
         elif args.command == "compare":
             from cami.evaluation import compare_runs
+
             compare_runs(args.runs, args.labels, args.out)
         return 0
     except (InputError, ValidationError, ValueError, OSError) as exc:

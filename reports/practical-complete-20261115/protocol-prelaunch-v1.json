@@ -1,0 +1,785 @@
+{
+  "design": "new-historical-task-plain-cami-v1",
+  "created_at_utc": "2026-11-15T03:24:57Z",
+  "tasks": [
+    {
+      "id": "flag-default-map",
+      "repository": "click",
+      "parent": "5b1624bf09947d6f10eaffd63d6fb737dfe7656a",
+      "gold": "bf1e8be90c46428f8bf8b45f295af80cfaf2e188",
+      "prompt_sha256": "d57001f04cd472a0c06e0f6be04c78f75dda6bfb937d2e651eb668960d860d13",
+      "gold_patch_sha256": "1974d1e102340c8e2445b7d206da0d6c809dd67beecf3af9ee5415f175596f1b",
+      "regression_module": "test_defaults.py",
+      "evaluator_files": {
+        "test_acceptance.py": "51270a69dbb48e073a80679747e5e9941f39884a51df1ad6cec37148a72bba47",
+        "test_regression.py": "3925b5b5cfb05b7097e91bdf82b125eab264013d5fb58871114df26897e643c4",
+        "conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b"
+      },
+      "source_root": "src",
+      "package": "click"
+    },
+    {
+      "id": "empty-default",
+      "repository": "click",
+      "parent": "c021f05c838c1d0401ebc340d1de9b663c7fb578",
+      "gold": "61f8101f4e0d02cb902ef17853fa35ad88185265",
+      "prompt_sha256": "80c8dc244bae867de1ea22bada6cebb1a26434317ad222efac916ce4de0ad765",
+      "gold_patch_sha256": "5716ce6dc4c747796901d07461946b155757abc6b8bfc0626cb96a1e88cfc431",
+      "regression_module": "test_options.py",
+      "evaluator_files": {
+        "test_acceptance.py": "50c1666fb60d4e2a7141389b281307f1d067a4da89390aba70ca1f8f2b8bb2a6",
+        "test_regression.py": "d255173dca90c084e086a06d44fb8d29654285617882dc5706f68fae69783dbb",
+        "conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b"
+      },
+      "source_root": "src",
+      "package": "click"
+    },
+    {
+      "id": "escaped-path",
+      "repository": "click",
+      "parent": "e88c11239971d309744fd3f9139259f64787f45a",
+      "gold": "3f91d2154ebc47651f0cd9798250a03821473521",
+      "prompt_sha256": "2cb2308271fe03beeef2159026947bd035f48daeba8d0c8b9bcf74a249353ef8",
+      "gold_patch_sha256": "6e52b484d2caf83916b04f9ad179b9f699a4d99fd05409df98e081cd801da421",
+      "regression_module": "test_types.py",
+      "evaluator_files": {
+        "test_acceptance.py": "05f50319c862d3c98548731a2fa6d33e74028773ed7eb776c04b8fbd6be043c1",
+        "test_regression.py": "de51df87c7373d36304530763bc5aa05b459bd6e024f67eeff387e7146c59747",
+        "conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b"
+      },
+      "source_root": "src",
+      "package": "click"
+    },
+    {
+      "id": "completion-hidden-argument",
+      "repository": "click",
+      "parent": "549947111c4af2191dd4b245e1de2c25d20c36d6",
+      "gold": "4cf7c6cdb10e441da775b4a3a7ee55caec83249e",
+      "prompt_sha256": "1fca8e8ee1c437ba40a1d907d1a76bb4dff8c9b57c287d89cb4806e8c52420a7",
+      "gold_patch_sha256": "923ad879c9d56ee8d2cba91edd641e2d2d6d0484df53b354a9cc8f327c916fb0",
+      "regression_module": "test_shell_completion.py",
+      "evaluator_files": {
+        "test_acceptance.py": "45769032364fe57e5253ca4551cb0af01d96a3ab9be0ee4ae4d244d0f96b6326",
+        "test_regression.py": "8c958cdf809a21e263e50c07d4917e0db8f556a5b832436d6f5e7d5b74b5eb45",
+        "conftest.py": "192be82444d6048fd222e2d73cd5c3bec768d65c6e10c0ffc230f307f363590b"
+      },
+      "source_root": "src",
+      "package": "click"
+    },
+    {
+      "id": "json-error-pickle",
+      "repository": "requests",
+      "parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+      "gold": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+      "prompt_sha256": "0713d1d048c3c9db7d014f1ba850979f0b043d62b679f4c4407fa6e7b114bc4c",
+      "gold_patch_sha256": "fa8810a527eb41cacc285e266a2ba6430773c610a4aaad060035d5093abb28d0",
+      "regression_module": "test_utils.py",
+      "evaluator_files": {
+        "test_acceptance.py": "800130ed363a59799ea9b9a7a45c1e08b5a0fad7e314c26cc7008f6ac6c2102c",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "92afb58ccef23cc327ff92fcd2992343da79cb6ed522cb65faf6f6406b42c3b1",
+        "compat.py": "d58ff5e3167de0140a667cc51427f809c552e485875c95b9dad43ce13ba15083"
+      },
+      "source_root": "src",
+      "package": "requests"
+    },
+    {
+      "id": "utf8-body-length",
+      "repository": "requests",
+      "parent": "f6707042d8b18d2a3737380bf58ff020872fb07b",
+      "gold": "3fd309a5c14e4cfbd96bea6c8e71b4958fe090bb",
+      "prompt_sha256": "fddc411bf392310d762f6e8e326a995c11ed648c53279aae776cb615b79a3da9",
+      "gold_patch_sha256": "18de62d71c0625fdabef3960faee110ea209ff2585ec45de6ccd233970556fe4",
+      "regression_module": "test_utils.py",
+      "evaluator_files": {
+        "test_acceptance.py": "511828fce21e6cbc3c8ecbb5e63dfb6f2e0b071d624b6c5e5fd4008b3fa801f1",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "92afb58ccef23cc327ff92fcd2992343da79cb6ed522cb65faf6f6406b42c3b1",
+        "compat.py": "d58ff5e3167de0140a667cc51427f809c552e485875c95b9dad43ce13ba15083"
+      },
+      "source_root": "src",
+      "package": "requests"
+    },
+    {
+      "id": "leading-url-slashes",
+      "repository": "requests",
+      "parent": "7a13c041dbef42f9f3feb14110f02626f6892e9a",
+      "gold": "60389df6d69ce833164696dcf36cbb43336d3426",
+      "prompt_sha256": "1077adb9eaa687d6cb46f4250e4350a0cbcf4e1c85d7ae403fc02d29fb570130",
+      "gold_patch_sha256": "c22f679e1a9b72e0d66542d6451f58443bcd0ed107e4884bd343980a19900198",
+      "regression_module": "test_utils.py",
+      "evaluator_files": {
+        "test_acceptance.py": "49256caaca82c2143231aa17118bbbe3ad820bd91160bd85cbfe114b15f370cb",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "92afb58ccef23cc327ff92fcd2992343da79cb6ed522cb65faf6f6406b42c3b1",
+        "compat.py": "d58ff5e3167de0140a667cc51427f809c552e485875c95b9dad43ce13ba15083"
+      },
+      "source_root": "src",
+      "package": "requests"
+    },
+    {
+      "id": "http-status-aliases",
+      "repository": "requests",
+      "parent": "2a438c27b5a5828c8ea0dc958112eecffca70b12",
+      "gold": "e45b428960ff3927812fc9b555e2ac627ba95769",
+      "prompt_sha256": "6ad7dd79272ecc28dae8b3b8aee7864a27cb7f5536be8d9284dce020f65c6ae1",
+      "gold_patch_sha256": "35585076e6b9d2109d0dcc0300f76c05c4eee7265046ab3f36fec575516791e8",
+      "regression_module": "test_utils.py",
+      "evaluator_files": {
+        "test_acceptance.py": "d0dd78d0a95f66993bf42501c035e5690965975ba9537c6b44e8eaa754f79b84",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "6d76461599944810c00b059c4c75acca1e034c3c96701a190b8115f87b5442af",
+        "compat.py": "d58ff5e3167de0140a667cc51427f809c552e485875c95b9dad43ce13ba15083"
+      },
+      "source_root": "src",
+      "package": "requests"
+    },
+    {
+      "id": "iterable-specifiers",
+      "repository": "packaging-development-v1",
+      "parent": "680c31aa25d24f71f897717f84e3dac434a8c063",
+      "gold": "2b06f90cbe2ffbde64ea23ca36c96c35e2aca05a",
+      "prompt_sha256": "bd319c26144b2b7f608342707956b731ba37c3c131a9454bb16be24c2d0e16c7",
+      "gold_patch_sha256": "73ced863d933677947f9a4beb56a2fa3e046a5aeef62be2b504959561b317a8c",
+      "regression_module": "test_specifiers.py",
+      "evaluator_files": {
+        "test_version.py": "1fe8506784512c6195b512bc41b52202d43c5787785b5d46af7737a53f73c22c",
+        "test_acceptance.py": "c498dcb975b17e4561ccb4aedcc02ea13ba56d68fe0243108d3f295f386e1668",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "83fba9b3aebbbae84e2df5f7f289eaaa504a6efacb81fc2eeb4e1f20377f95e9"
+      },
+      "source_root": "src",
+      "package": "packaging"
+    },
+    {
+      "id": "dynamic-field-error",
+      "repository": "packaging-development-v1",
+      "parent": "2b06f90cbe2ffbde64ea23ca36c96c35e2aca05a",
+      "gold": "a716c52b5f3ca9b4a512f538b80ced8ee01b2775",
+      "prompt_sha256": "e569eab699939e7a9526976c5d20a370f8a122e313e9d35fc22eb6b7e14ee0d1",
+      "gold_patch_sha256": "dab69d343182135930ca805f306229137cb39e404115a3cfe553c0769080dee7",
+      "regression_module": "test_metadata.py",
+      "evaluator_files": {
+        "test_acceptance.py": "b3a1a5018717ca5ec1e2e32193f8d0ca8917cd9cf5181d2966f6ca075c01f5fc",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "43a04c54a09118c8a6b58e796e9682f4a2cd1b74bfcdffc50b069bcbd87b57a1",
+        "metadata/everything.metadata": "2c91e1a8871638e5ad22fde0e11ac71cb33cf5ad570f508a07489987770e0406"
+      },
+      "source_root": "src",
+      "package": "packaging"
+    },
+    {
+      "id": "provided-full-version",
+      "repository": "packaging-development-v1",
+      "parent": "ead9d34f9b6a5e504a4563d9246f76d37a112e85",
+      "gold": "c385b58c4d0e4d66f5c8273ebb155801c92aadf3",
+      "prompt_sha256": "53e3558275e36bf2446b411bde67ec418ef5c850a411a43def043a1c645ac601",
+      "gold_patch_sha256": "de68efea41aa6e156ebb7ea4619e90dc045f5275621fe4b4f3f51931733940cc",
+      "regression_module": "test_markers.py",
+      "evaluator_files": {
+        "test_acceptance.py": "4eb3745dd2098a4161c482fe80aacd9f9d7ede1b61266be0ed3f83b29ce07a9a",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "88f62f76c26c4e22baed155b9c1dc7a3255b083b73e946d3663e6ad80a30e39d"
+      },
+      "source_root": "src",
+      "package": "packaging"
+    },
+    {
+      "id": "platform-full-version",
+      "repository": "packaging-development-v1",
+      "parent": "32deafe8668a2130a3366b98154914d188f3718e",
+      "gold": "3e67fc775e93166600c84a5183ab6a86afff84b5",
+      "prompt_sha256": "2d42b8c01ab51343ffcb258b853a9f7fb9530caa5ac8e029ad45721ebf7b061c",
+      "gold_patch_sha256": "2325e2ee66d22941503d7f0f565c682142f5c55d68839e23bde7ed845c1c797d",
+      "regression_module": "test_markers.py",
+      "evaluator_files": {
+        "test_acceptance.py": "2578dc797dd1dc1d16382f582d7b87039dc3dc2f1341ccaa244a94c7cb520b0b",
+        "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_regression.py": "9c86193b3c89fb4deebf1c7017a9f9437a881cf8515876efb8aa6a92bd136a02"
+      },
+      "source_root": "src",
+      "package": "packaging"
+    }
+  ],
+  "schedule": [
+    {
+      "id": "r1-flag-default-map-plain",
+      "task": "flag-default-map",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-flag-default-map-cami",
+      "task": "flag-default-map",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-empty-default-cami",
+      "task": "empty-default",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-empty-default-plain",
+      "task": "empty-default",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-escaped-path-plain",
+      "task": "escaped-path",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-escaped-path-cami",
+      "task": "escaped-path",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-completion-hidden-argument-cami",
+      "task": "completion-hidden-argument",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-completion-hidden-argument-plain",
+      "task": "completion-hidden-argument",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-json-error-pickle-plain",
+      "task": "json-error-pickle",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-json-error-pickle-cami",
+      "task": "json-error-pickle",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-utf8-body-length-cami",
+      "task": "utf8-body-length",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-utf8-body-length-plain",
+      "task": "utf8-body-length",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-leading-url-slashes-plain",
+      "task": "leading-url-slashes",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-leading-url-slashes-cami",
+      "task": "leading-url-slashes",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-http-status-aliases-cami",
+      "task": "http-status-aliases",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-http-status-aliases-plain",
+      "task": "http-status-aliases",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-iterable-specifiers-plain",
+      "task": "iterable-specifiers",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-iterable-specifiers-cami",
+      "task": "iterable-specifiers",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-dynamic-field-error-cami",
+      "task": "dynamic-field-error",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-dynamic-field-error-plain",
+      "task": "dynamic-field-error",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-provided-full-version-plain",
+      "task": "provided-full-version",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r1-provided-full-version-cami",
+      "task": "provided-full-version",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-platform-full-version-cami",
+      "task": "platform-full-version",
+      "arm": "cami",
+      "repetition": 1
+    },
+    {
+      "id": "r1-platform-full-version-plain",
+      "task": "platform-full-version",
+      "arm": "plain",
+      "repetition": 1
+    },
+    {
+      "id": "r2-flag-default-map-cami",
+      "task": "flag-default-map",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-flag-default-map-plain",
+      "task": "flag-default-map",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-empty-default-plain",
+      "task": "empty-default",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-empty-default-cami",
+      "task": "empty-default",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-escaped-path-cami",
+      "task": "escaped-path",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-escaped-path-plain",
+      "task": "escaped-path",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-completion-hidden-argument-plain",
+      "task": "completion-hidden-argument",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-completion-hidden-argument-cami",
+      "task": "completion-hidden-argument",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-json-error-pickle-cami",
+      "task": "json-error-pickle",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-json-error-pickle-plain",
+      "task": "json-error-pickle",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-utf8-body-length-plain",
+      "task": "utf8-body-length",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-utf8-body-length-cami",
+      "task": "utf8-body-length",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-leading-url-slashes-cami",
+      "task": "leading-url-slashes",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-leading-url-slashes-plain",
+      "task": "leading-url-slashes",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-http-status-aliases-plain",
+      "task": "http-status-aliases",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-http-status-aliases-cami",
+      "task": "http-status-aliases",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-iterable-specifiers-cami",
+      "task": "iterable-specifiers",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-iterable-specifiers-plain",
+      "task": "iterable-specifiers",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-dynamic-field-error-plain",
+      "task": "dynamic-field-error",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-dynamic-field-error-cami",
+      "task": "dynamic-field-error",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-provided-full-version-cami",
+      "task": "provided-full-version",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r2-provided-full-version-plain",
+      "task": "provided-full-version",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-platform-full-version-plain",
+      "task": "platform-full-version",
+      "arm": "plain",
+      "repetition": 2
+    },
+    {
+      "id": "r2-platform-full-version-cami",
+      "task": "platform-full-version",
+      "arm": "cami",
+      "repetition": 2
+    },
+    {
+      "id": "r3-flag-default-map-plain",
+      "task": "flag-default-map",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-flag-default-map-cami",
+      "task": "flag-default-map",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-empty-default-cami",
+      "task": "empty-default",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-empty-default-plain",
+      "task": "empty-default",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-escaped-path-plain",
+      "task": "escaped-path",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-escaped-path-cami",
+      "task": "escaped-path",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-completion-hidden-argument-cami",
+      "task": "completion-hidden-argument",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-completion-hidden-argument-plain",
+      "task": "completion-hidden-argument",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-json-error-pickle-plain",
+      "task": "json-error-pickle",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-json-error-pickle-cami",
+      "task": "json-error-pickle",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-utf8-body-length-cami",
+      "task": "utf8-body-length",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-utf8-body-length-plain",
+      "task": "utf8-body-length",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-leading-url-slashes-plain",
+      "task": "leading-url-slashes",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-leading-url-slashes-cami",
+      "task": "leading-url-slashes",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-http-status-aliases-cami",
+      "task": "http-status-aliases",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-http-status-aliases-plain",
+      "task": "http-status-aliases",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-iterable-specifiers-plain",
+      "task": "iterable-specifiers",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-iterable-specifiers-cami",
+      "task": "iterable-specifiers",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-dynamic-field-error-cami",
+      "task": "dynamic-field-error",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-dynamic-field-error-plain",
+      "task": "dynamic-field-error",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-provided-full-version-plain",
+      "task": "provided-full-version",
+      "arm": "plain",
+      "repetition": 3
+    },
+    {
+      "id": "r3-provided-full-version-cami",
+      "task": "provided-full-version",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-platform-full-version-cami",
+      "task": "platform-full-version",
+      "arm": "cami",
+      "repetition": 3
+    },
+    {
+      "id": "r3-platform-full-version-plain",
+      "task": "platform-full-version",
+      "arm": "plain",
+      "repetition": 3
+    }
+  ],
+  "model": "openai/gpt-6.1-sol#high",
+  "attempts": 72,
+  "repeats_per_task_arm": 3,
+  "memory": "Fresh source-only literal catalog per attempt; no task-specific notes, previous solutions, result replay or shared conversation. Readable format, lexical ranking. Native tools unchanged.",
+  "quality": "All acceptance and full fixed upstream regression module must pass. Test edits made by model do not enter grading. Only candidate src replaces canonical source for grading.",
+  "decision": "Enable recommendation only if all scheduled sessions pass operational admission, CAMI has at least as many quality passes as plain, no repository has fewer passes, complete observed usage for all attempts, and median across 12 paired per-task mean total pipeline-time ratios <=0.90 AND token-work ratios <=0.90. Otherwise reject default recommendation for tested workload. Operational and telemetry defects reported separately, never described as proof of zero efficacy.",
+  "budget": {
+    "maximum_model_sessions": 72,
+    "seconds_per_session": 600,
+    "observed_disjoint_token_limit_per_session": 250000,
+    "hard_invoice_limit": null,
+    "authorization": "User explicitly authorized existing model access; no executor-imposed zero-call limit. No session replacement or performance-based extension."
+  },
+  "timing": "Starts before input capture/reset and source-memory construction; ends after source preservation, fresh fixed grading and durable terminal journal. Shared admission cost split equally over 72 attempts. Model-session time and preparation separately retained. Final report/chart work excluded.",
+  "scope": "12 public historical tasks, 3 previously studied Python repositories, 3 fresh repetitions; new task prompts compared with previous model studies, not unseen model training data, not production hit rate. Host is shared, resource state recorded before every attempt.",
+  "shared_admission_wall_seconds": 44.37717980938032,
+  "runtime": {
+    "image_id": "sha256:9e3b5290a54521f5c0e3cb4b4c8b75969ba025aac6ba6cd265b5372cdc4ca356",
+    "binary_sha256": "8d060e1d2fbb9bb44cf09ae6ed1f3f6a7cff070b5227e2f90970132b23a92050",
+    "cami_files": {
+      "cami/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+      "cami/_typescript/.gitignore": "ca1838cde9e4cfb493f3ea87a08bf973a9d6102aac688fc8828107d5586042aa",
+      "cami/_typescript/DEPENDENCIES.md": "59a0a3c193c316984f571bebccaa68c734e51ae5b7fa1b79ae4073941e53e425",
+      "cami/_typescript/analyze.cjs": "ead535884fee59c78fb548bdf0d3372ccd8aadea76ca295e27634034eb37807f",
+      "cami/_typescript/package-lock.json": "31e43b128fe4ba36a8abe58cb60aa45704e94645a52d818c0112ae685ed52d18",
+      "cami/_typescript/package.json": "787f78126f459ba104a3bf43cd607f11aa933426dcbae13e5054c51681a135ab",
+      "cami/aggregate.py": "7f961dd334355d1d11f82aed02b6eeea4d035141ed5f4c48120514efe727c8a3",
+      "cami/artifacts.py": "6fdeb507b95212e4aec9abd633d7bb50e43a24b184a6da34ae96dbfb350ca694",
+      "cami/behavior.py": "6f16e2d8a0e70d1e035c96482a75906c7dd2d4e6550ccce07452569cc0b77af8",
+      "cami/cli.py": "54b8de46aa9a3289b8832da19ddd975d59115e3512992f2cd4294b472129aa00",
+      "cami/dataset.py": "38378a0f4eac47d8299b222e7004879f6330fb0a4514fc4f503e06ff6f537de7",
+      "cami/dataset_models.py": "8c6474da52db266736e17f4f61964e118cfaace8dd770901b704bd6370291609",
+      "cami/demo.py": "964a48f2733f85a7c310c725f48d04b3aa7adc0c8db124c9d98a2e68844721c2",
+      "cami/ecma_models.py": "3a8e3781dd993744708eb08a5449e4b756e0d18d24267639f9ef6922df18c0ed",
+      "cami/engine.py": "d512964fb51092e69c2ec596202e2bcd7686dd3627f9a6d7531ed3004f45ef56",
+      "cami/environment_pilot.py": "09bebb629a3bc44d6ccc5aeb7b08342c9f53425d6b529bd57fb38c9ecc78f25b",
+      "cami/errors.py": "d50b373d244dc247d68a4ed493e2a5fd5cc64bd616e7077983c97572dde1ae1a",
+      "cami/evaluation.py": "2100c5c2b595b06de73de6200bfb2c616411efd0014fedd058c1cd389caacd85",
+      "cami/index.py": "498a3df1077714e56d2cea893414e452f6b2495cfed3412921395a99608157a6",
+      "cami/inputs.py": "56eb28dd886973df26aa3716020d23fe105179e7f6a218a34a46027b6b20bd55",
+      "cami/llm.py": "57ca39a4ee7e6996c01baa08ee70d6b9a1c0d5c346c06d4b60df226324b54069",
+      "cami/models.py": "8e221041e6135bc993d102ebcd5aec6b3d5303c5e115dd9677a6cbb5790aee1a",
+      "cami/operational.py": "c58c6cf03d8e00c5650857658b498d961f86b7f52d6f0f7d02a9f86bcebc6373",
+      "cami/parent_review_html.py": "6dc24f07d96b8f22b1cacae52173d036fa6b7d28ddeb10681ba46854fec877e2",
+      "cami/pilot.py": "c30edda59f04c6b607948d8279cd4f35445dd6875ecea20345e8524dd76a2e46",
+      "cami/policies.py": "1c92f652b6161c9d864ea510bb730462b71ea7e3adaea4ba75b0b0079a82a040",
+      "cami/probe_runner.py": "70021e7e6cbc7f85f8c41406223f49dc4260fb502e747eee40795139173d1d9a",
+      "cami/product/__init__.py": "a9d601771fa5400ddb099236ef5873c555c766e4568d6c802df3930c58bf6c78",
+      "cami/product/ecma.py": "c3c423810c0df21de0a462fa957896c8bb7480766087556e525427911fe006f3",
+      "cami/product/git_snapshot.py": "6fd88b7e734f4c6df93e9bb153a4b3267f7974a1ed98f86f197ed896844d2692",
+      "cami/product/inputs.py": "62d7b93f84440786e9dd6519412e5a4309d93bcc6b010dbaeb5b37246ca9772c",
+      "cami/product/memory/__init__.py": "c364fa6bc6b11b4b8a535ce67c1b35585f0e6709e026e5ac08216b6702f364bd",
+      "cami/product/memory/_ecma_syntax.cjs": "84d9999561fe8df7bd1b8c4a0bb58678b503cdd99ce22d3c0678ebe5affb10b3",
+      "cami/product/memory/adapters.py": "79fe92f7d822ff79eaba27f87f43fe20869cff0a96ea6a12be6eff06aae25403",
+      "cami/product/memory/cli.py": "06b88f797009931037a5b1196f04acefe4f1802c897fe91806861a90547f8167",
+      "cami/product/memory/database.py": "45ce6c90903f452d35854c6ddd6503f89fe1a4d60eae4c2cd3f136f17de007ca",
+      "cami/product/memory/encoding.py": "12597789c499cc13f9d7f25377194c4845c9a2960cddd0c929f486840ee5a570",
+      "cami/product/memory/models.py": "ef439c1db659be9111e9e18b17502fdd4257eb55f15222e4194d03afc3a1d757",
+      "cami/product/memory/python_excerpt.py": "f276d8fcb7f6f1de5b66b794e58c5b8040096ca8bf4c9e55073217ab34b1c157",
+      "cami/product/memory/schema.py": "f3d008db69065dc0a67a11bb5134aa5caa3b3c28a6e3319e82754f9e60579b7f",
+      "cami/product/memory/store.py": "2adee83e9ec528aee17da9b88a3c4818670bcd924a6880cec4e25d1dad4514a9",
+      "cami/product/memory/validation.py": "cca76be12ba6c46ffc8d67a8abc5ec6931463d10a22af84e603b187e0be7e8c6",
+      "cami/product/models.py": "3a8f1b4d1ba21ba1eec2385968e694cc28dd0f07d79c1a2ac028ceef9e70a08d",
+      "cami/product/observation.py": "26e891771e03e5281e624532f14499ea6e25ec340cc5b57135187d44f4c937f3",
+      "cami/product/service.py": "91ef54a270c630ba5c186b122bae702c786c70083cba43ceb913a8a14a0e750e",
+      "cami/product/store.py": "7a78061cdfedf7723e0fada659e95fa3fa5cd8bafac5ac440bc2929864b8c649",
+      "cami/product/watch/__init__.py": "9ba50a923de4e38d26a4e0c81fee6e0f20d93c266ec057116f3b9dbde874f660",
+      "cami/product/watch/cli.py": "e261b31f03c97ecdba05ceca59ef67e162d397ba2cd05dffd10fcf7cf6abcb9e",
+      "cami/product/watch/control.py": "aeaaef795cd28c1d667bf709b0c998e0ae8ff84a7c6f6eaa1b654910073a51be",
+      "cami/product/watch/models.py": "374b52ca349360f0afc3fe98c1a455ef5c96cdfefdf9a06eb2fe1f7acc2df54c",
+      "cami/product/watch/runtime.py": "87eae0624b272c4ebfe45353f1b9ee5d50f1260713ef3fdf292887958a19b01d",
+      "cami/product/watch/worker.py": "f7bb1b694442f9da01214d81154610a9cc5d648575f5a4543a3c695ed99b512c",
+      "cami/product/worktree.py": "535f0a5da0ee1db8ac8d9ea21b0d51da2fd80adfd0cacaaf60aeadf8261f1f93",
+      "cami/provenance_audit.py": "439cfbf03f8cc9b81dd755cf522fd0a2d4adb482a77b53d587f5e0fce147a537",
+      "cami/reporting.py": "72b7d8a2edcb30e648a27d933f03fe84936a6593cd4ea54915a2212b8c0081b5",
+      "cami/repository.py": "8283ca1699fa1826dab9af08d8ad4919ebec5972479185328dea3e8b0fc51a72",
+      "cami/scenarios.py": "fb0eb05f086129d651cf5f5a7a3257133bcd54bbfab5959e2651e60ce11a573b",
+      "cami/structural_closure.py": "037f2286ef81b377d01e3b5b06a5190a28a9f6c31460485cd5205fb25ef87411",
+      "cami/symbol_search.py": "43c44adce5d3a62c33fab6c79e9c64b993c6ed363bbf559194eb79c67abd696d",
+      "cami/typescript_analyzer.py": "8e5afc5bb80f57f43b507676913e1af251582bc7cdef7c819e22873566cfca17",
+      "cami/typescript_runtime.py": "129fd8ba2997fa31bf91d967eab832dde7908fbcc59de42daf5296fee1e6163d",
+      "cami/validation.py": "8132d4386130d9a96538ab8e0c80cae6cf5575eb96463519248cd76be66f3535"
+    },
+    "adapter_files": {
+      "README.md": "709b1e8a2863b7f2d56ef49f594c66444f8d46d65c042d697031fde565f3b450",
+      "TASK_REPLAY.md": "1323995fa8e7719e7bc24ed49262d92be7ecd99b0823fc37aabf70d3122b3bb6",
+      "compact_response.py": "1637d681445201b5883db2ccad67834eb408cfe91af4c6eacdf5ac36b1a87d35",
+      "literal_catalog.py": "c210c10621c52878ec7012716edd82e24e4541a16910aadc74192d766548daf7",
+      "literal_source.py": "a9f2d5414ab20d0d0fa5c2dc3bb975b598e73a87bb97d86a5b7a10b4d9821788",
+      "memory_adapter.py": "da1b685893355c23fc859e970e11b8a1a7c0ac2958152f8ae1b3ebed86badbb4",
+      "memory_backend.py": "ac59bd5712ce4936cbc497badb0bf833142fb2c3a22f2a4bc58ec1718de14386",
+      "opencode.config.template.json": "a8620952d047443c016d148e1a8ea82510b75ad0f789fd4438f98e4c66c9aabe",
+      "readable_response.py": "85bd8be9dbf20deffd0dea2c15b09ecbe6341aa6d4956c907cb1f3efe1db19fa",
+      "run_task.py": "cdf1a01023124120acd7a03f811f84be60505ef29ab943ea531bca4b14dda62e",
+      "seed_source_literals_v2.py": "661063d24f60947f463aa00047f3337b5b6f82bfaf0d14b08899b93fdf4a7f15",
+      "task_replay.py": "6e368ae2a3203693cc9f71780e55c2b5b5d5fc5e3fe7db03d9741c29c0c039fa",
+      "task_session.py": "17334784383f9f970538c3917363c6d557f26a57b6fca8cd15cb293092fd646b",
+      "tool-schema.json": "f038ef45472a11cbb47a4403ddd5597798e10319a57628d024e96866ba783509"
+    }
+  },
+  "base_image_id": "sha256:3e5f5aee66022082251b8cc1fb5c3ea9399ec9589ab98ba3d190a8b0ab46b387",
+  "source_pins": {
+    "scripts/practical/render.py": "85e8719c4967a519e74a2a31ad09130a6aee8511e94d011223b5faeb940398f2",
+    "scripts/practical/new_study.py": "b7f2bfdfb5e7e3a2f5fc76f25683654891c5bce103ce780306257b4170feedff",
+    "scripts/practical/history.py": "e703a678a269d90ade248c730ceac90017979797825ab59f10378038eac8c4e1",
+    "scripts/practical/benchmark_v2.py": "f9d5c5393153da607f25d30153a3f99bf0fd168ec16980b49d0fa74e22c08251",
+    "scripts/practical/prepare_new_tasks.py": "6bfaf8923ffa56ccc31acf1b383f3936488cee69e0c76a0be80aeb752c7f1a2e",
+    "scripts/practical/output_contract.py": "89ee6ef5a2e93728dd2576aae995e03ae2e213939f63c64aa3e487207da13f06",
+    "scripts/practical/benchmark.py": "f617a4ad6204c3fcd05f6892c800dc801e4259734091ff86620692975f31a390",
+    "scripts/opencode_benchmark/harness/test_structured_redaction.py": "c5959253d25f4d2e4e6721a30292e38bc57fb702120f7f666e4d89e352ddf7b6",
+    "scripts/opencode_benchmark/harness/container_common.py": "dd962278943d07cd6c31a21b890ce98f7a91d9069c346c2ce238f7196d06269e",
+    "scripts/opencode_benchmark/harness/test_native_read_evidence.py": "e49e85e2e3576ddce71ed7413917ac06dabae14f0e43920060a5182776f34001",
+    "scripts/opencode_benchmark/harness/native_read_evidence.py": "33c8e992b2d8ed4858b2b9938bce41bb065d1754f00af9377df9ab5d4265b77e",
+    "scripts/opencode_benchmark/harness/container_worker.py": "6343b66a6a6963c4ae891cf063f59f94a10b626c02058e66cb3e7b05321db941",
+    "scripts/opencode_benchmark/harness/evidence_safety.py": "3ff3d798413f7ced9202a9d7ac0ecd16d8643390c3f7790df5fea270936ce430",
+    "scripts/opencode_benchmark/harness/container_session.py": "849d160601f64ee9b33855155ece8545cc8a1584daeec170b5ad45dc44592ef0",
+    "scripts/opencode_benchmark/harness/test_publication_guards.py": "dabdfe747148f6af771a0d28f2f801e55f24c3ea7ed5d54a8a30d163c0dbf0a4",
+    "scripts/opencode_benchmark/harness/trial_guards.py": "03fc81278ae7f0f411a0132c02aec26d8a59405bd6b49d11eca535ebb03f24f1",
+    "scripts/opencode_benchmark/harness/test_failure_contracts.py": "fcd2ce2de8f8a4ff420f090adcf4c50d8ae8abac4b8a51596d9768d12b812c5b",
+    "scripts/opencode_benchmark/controller/memory_seed_schema.py": "98b771932244cb96d13d97a1b6dd6ff99a8cb22c0788e688f3305a48d569a129",
+    "scripts/opencode_benchmark/controller/authored_integration.py": "3a2260c56a6c3ef490c4f1818bf6d94a8af83f6b425b720eb7e6c9dcbdaf57ea",
+    "scripts/opencode_benchmark/controller/test_service_tier.py": "96411a66571c6515e162bb87df3eb39b0bf59b2b6002fcea3fe95e12ea832a0d",
+    "scripts/opencode_benchmark/controller/test_format_probe.py": "842a56bb7da1f5ce1c032aa121f65fa2c9521581dea708cb156a0cf92b972bdb",
+    "scripts/opencode_benchmark/controller/study_controller.py": "0fad44cee89605e7b1eb66dece99b0783ea629d33759f08fc2881ab262ad898e",
+    "scripts/opencode_benchmark/controller/study_ledger.py": "b9a6e62e8588100ab9a9c980332528e9e13d77c9cf7f2ac3bc105358570f2d2c",
+    "scripts/opencode_benchmark/controller/test_non_tool_messages.py": "80e41edb791c51393a374afa91c43236e9c2de91c84d9df7c0453aa1081bafa7",
+    "scripts/opencode_benchmark/controller/test_format_observation.py": "c9010037e0958e22480aee7885faf9cacb3e0313e2ec7678c9fe0cf2ed6ceb77",
+    "scripts/opencode_benchmark/controller/study_runtime.py": "5fae8e222cbfc97275e2df7704f6213f1398b9dd8898b49e0705c9f6f81a0e5b",
+    "scripts/opencode_benchmark/controller/fixed_grader.py": "4d369f797dc067bdf57b154036b1220c0a785ba17b457b79c78a4f315cb07f6a",
+    "scripts/opencode_benchmark/controller/memory_format_evidence.py": "e38234d386bfa86a203719dae8ae19ec9247f38f03a728413b3332a0cc9ca05f",
+    "scripts/opencode_benchmark/controller/literal_stdio_worker.py": "5b2f85e2806785be1908ea2b61937e2ce99435e933c774b5eac2a9f2a1247087",
+    "scripts/opencode_benchmark/controller/study_common.py": "ed094d40a18c393ca9b920e4b5410c4e8b52470f6c137232c18bb7b013c25846",
+    "scripts/opencode_benchmark/controller/preparation_worker.py": "4b45414cf8efab3fa48edc4cc001237e1abcad9d863d46e996401606771baca7",
+    "scripts/opencode_benchmark/controller/test_controller.py": "ab497678ff421f848ac6683f6914d72b387447b93be9e7eb74cfc914c322d810",
+    "scripts/opencode_benchmark/controller/opencode_message_schema.py": "add8fcb6d32b76bc0f35cf4323a81fab3c1b04721ca3487e184b4c693ae7e6f7",
+    "scripts/opencode_benchmark/controller/test_literal_stdio.py": "e2f03e1b7b2998c5deee6fff85d3bd82629869d67af97f727c5a12dc69755dc7",
+    "scripts/opencode_benchmark/controller/test_readable_receipts.py": "485c15ba97ac8282a296f44dc2465368a41786900cf9e58a8bba0ba7bd10c191",
+    "scripts/opencode_benchmark/controller/test_literal_controller.py": "0d38c84880418a280bcaec82ba203656a2974d1a997e1ea9ec0c65f003ebd563",
+    "scripts/opencode_benchmark/controller/verify_literal_containers.py": "802457c9d3771d0eb263142dfa3db1dd095110151053ab4f1f2fdb801f5867b7",
+    "scripts/opencode_benchmark/controller/test_readable_integration.py": "07c689633e520fa3313799c7b792c9e01b0017d114a154e0ec8abe462c07176c",
+    "scripts/opencode_benchmark/controller/test_ranking_probe.py": "cfab3e7b477d3ae5280e5d72b447bf799e84ccdf60abc840ef728eee44c2bd13",
+    "scripts/opencode_benchmark/controller/test_idle_lifecycle.py": "6276bb6e0cd89ebf1d655a346ba5e2458d493f080d99e8497516a311682ed9bd",
+    "scripts/opencode_benchmark/controller/test_format_selection.py": "e86069dc01b23299c70097113c35d8bd91e7957efc0bfc24c3d66077a2cbd71c",
+    "scripts/opencode_benchmark/controller/study_workspace.py": "2ff75bff73001b72e8498f4139b170e79392c29848002fc6409d8a65851af650",
+    "scripts/opencode_benchmark/controller/study_schema.py": "7963e5c22a292c0d913aeebe6fdd3fcaac6d4434c4ec67d634ec5373a9cae209",
+    "scripts/opencode_benchmark/controller/readable_receipts.py": "b045e89ddc7ba64c77a860435f3b8a62f4b2f196e9d1d2800530e0a4f5618324"
+  }
+}

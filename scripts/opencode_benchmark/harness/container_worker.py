@@ -187,6 +187,7 @@ def event_stream(server, done, result):
                     raise ValueError("SSE safety ceiling64MiB reached; trace incomplete")
                 stream.write(line)
                 stream.flush()
+                os.fsync(stream.fileno())
         result.update(status="stopped", events=count, bytes=size)
     except Exception as error:
         result.update(status="stopped" if done.is_set() else "failed", error_type=type(error).__name__, events=count, bytes=size)
@@ -318,6 +319,10 @@ print(json.dumps(result))
             write(OUT / "prompt.json", {"text": prompt})
             manifest["model_session_launches"] = 1
             write(OUT / "model-admission.json", {"session_id": session["id"], "model": session["model"], "location": session["location"], "title": session["title"]})
+            # Admission is written durably before the operation. SSE responses are
+            # fsynced as received, including partial responses and internal retries.
+            with (OUT / "model-admission.json").open("rb") as admission_stream:
+                os.fsync(admission_stream.fileno())
             response = server.request("POST", f"/api/session/{session['id']}/prompt", {"text": prompt})
             write(OUT / "prompt-admitted.json", public(response))
             deadline = time.monotonic() + args.timeout_seconds
